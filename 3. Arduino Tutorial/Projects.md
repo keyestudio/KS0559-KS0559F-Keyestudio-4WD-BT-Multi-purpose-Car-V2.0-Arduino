@@ -3,7 +3,7 @@
 
 ## Project 1: LED Blink
 
-1.  **Description**
+**Description**
 
 ![](/media/7541db758dbca2c2a100b2b0227f9af4.jpeg)For starters and enthusiasts, LED Blink is a
 fundamental program. LED, the abbreviation of light emitting diodes,
@@ -13,7 +13,7 @@ The LED can flash in diverse color by altering the delay time in the
 test code. When in control, power on GND and VCC, the LED will be on if
 S end is in high level, otherwise it will go off.
 
-**2.Specification**
+**Specification**
 
   - ![](/media/85b2076096371fd9ca03671602b1e5ce.png)Control interface:
     digital port
@@ -24,7 +24,7 @@ S end is in high level, otherwise it will go off.
 
   - LED display color: red
 
-**3.Components**
+**Components**
 
 <table>
 <tbody>
@@ -51,7 +51,7 @@ S end is in high level, otherwise it will go off.
 </tbody>
 </table>
 
-**4.Wiring Diagram**
+****
 
 ![](/media/d29f513cc3561c7a3c3b05105e8a9ad3.png)
 
@@ -61,7 +61,7 @@ expansion board is stacked on the Keyestudio 4.0 development board.
 The pin G, V and S of the LED module are connected to G, 5V and D9 of
 the expansion board respectively.
 
-**5.Test Code**
+**Test Code**
 
     //****************************************************************************
     /*
@@ -85,14 +85,14 @@ the expansion board respectively.
     //****************************************************************************
 
 
-**6.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, and use a USB cable to connect
 the computer to power the board. After powering on, you will see the LED
 connected to the D9 will be on and off. 
 
-**7.Code Explanation**
+**Code Explanation**
 
 **pinMode(9，OUTPUT) **- This function can denote that the pin is INPUT
 or OUTPUT
@@ -100,7 +100,7 @@ or OUTPUT
 **digitalWrite(9，HIGH)** - When pin is OUTPUT, we can set it to
 HIGH(output 5V) or LOW(output 0V)
 
-**8.Extension Practice**
+**Extension Practice**
 
 We have succeeded in blinking LED. Next, let’s observe what will happen
 to the LED if we modify the delay time.
@@ -130,9 +130,10 @@ to the LED if we modify the delay time.
 
 The test result shows that the LED flashes faster. Therefore, the
 delaying time enables to affect the flash frequency of the LED.
+
 ## Project 2: Adjust LED Brightness
 
-**1.Description**
+**Description**
 
 In previous lesson, we control LED on and off and make it blink.
 
@@ -163,7 +164,7 @@ this case, the human can’t see it, neither does PWM. If we want
 different voltage, we need to control the ratio of 0 and 1. The more 0,1
 signals output per unit time, the more accurate the control.
 
-**2.Components**
+**Components**
 
 <table>
 <tbody>
@@ -190,13 +191,13 @@ signals output per unit time, the more accurate the control.
 </tbody>
 </table>
 
-**3.Wiring Diagram**
+****
 
 Keep the wiring-up unchanged.
 
 ![](/media/d29f513cc3561c7a3c3b05105e8a9ad3.png)
 
-**4.Test Code**
+**Test Code**
 
     //*****************************************************************
     /*
@@ -227,7 +228,7 @@ Keep the wiring-up unchanged.
     //*****************************************************************
 
 
-**5.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, and use a USB cable to connect
@@ -235,7 +236,7 @@ the computer to power the board. After powering on, you will see that
 the LED gradually changes from bright to dark, like human’s breath,
 rather than turning on and off immediately.
 
-**6.Code Explanation**
+**Code Explanation**
 
 If we need to repeat a certain statement, we could use for statement.
 
@@ -307,7 +308,7 @@ speed of motors.
 It plays a vital role in controlling smart robot cars. I believe that
 you cannot wait to learn the next project.
 
-**7.Extension Practice**
+**Extension Practice**
 
 Let’s modify the value of delay and remain the pin unchanged, then
 observe how the LED changes.
@@ -341,7 +342,7 @@ Upload the code to the development board, then the LED will blink more
 slowly.
 ## Project 3: Line Tracking Sensor
 
-**1.Description** 
+**Description** 
 
 ![](/media/d37c24e508361ab86b019135ab6950a9.png)The tracking sensor is actually an infrared
 sensor. The component used here is the TCRT5000 infrared tube. Its
@@ -359,7 +360,7 @@ and control.
 By rotating the adjustable potentiometer on the sensor, it can adjust
 the detection sensitivity of the sensor.
 
-**2.Specification**
+**Specification**
 
 ![](/media/0b3433af5abda1ab4137e2c078e4b8e7.jpeg)Operating Voltage: 3.3-5V (DC)
 
@@ -373,7 +374,7 @@ Note: Before testing, rotate the potentiometer on the sensor to adjust
 the detection sensitivity.  The sensitivity is best when adjusting the
 LED to a threshold between ON and OFF.  
 
-**3.Components**
+**Components**
 
 <table>
 <tbody>
@@ -404,14 +405,14 @@ LED to a threshold between ON and OFF. 
 </tbody>
 </table>
 
-**4.Wiring Diagram**
+****
 
 ![](/media/6426516400b21d7fbe1d9a1a58a1808b.png)
 
 G, V, S1, S2 and S3 of the line tracking sensor are connected to G（GND),
 V（VCC), D11, D7 and D8 of the sensor expansion board.
 
-**5.Test Code**
+**Test Code**
 
     //****************************************************************************
     /*
@@ -449,7 +450,7 @@ V（VCC), D11, D7 and D8 of the sensor expansion board.
     //****************************************************************************
 
 
-**6.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, and use a USB cable to connect
@@ -463,7 +464,7 @@ three line tracking sensors. When no signals are received, the value is
 
 ![](/media/cbf84d96326071244835b2e691770a97.png)
 
-**7.Code Explanation**
+**Code Explanation**
 
 **Serial.begin(9600)**- Initialize serial port, set baud rate to 9600
 
@@ -472,7 +473,7 @@ three line tracking sensors. When no signals are received, the value is
 **digitalRead-**Read the state of pin, which are generally HIGH and LOW
 level
 
-**8.Extension Practice**
+**Extension Practice**
 
 After knowing its working principle, you can connect an LED to D9 so as
 to control LED by it.
@@ -534,7 +535,7 @@ After powering on, make a paper close to the sensor, then we can find
 the LED light up when covering the line tracking sensor.
 ## Project 4 Servo Control
 
-**1.Description** 
+**Description** 
 
 ![](/media/8dd66d175b0611c729f696cc1c8b773c.jpeg)Servo motor is a position control rotary
 actuator. It mainly consists of a housing, a circuit board, a core-less
@@ -562,7 +563,7 @@ The corresponding servo angles are shown below:
 
 ![](/media/ddc74f62dc936c925d28d70a1a9c2214.png)
 
-**2.Specification**
+**Specification**
 
   - Working voltage: DC 4.8V \~ 6V
 
@@ -581,8 +582,8 @@ The corresponding servo angles are shown below:
   - Stop current: ≦ 850mA (DC 4.8V) ≦ 1000mA (DC 6V)
 
   - Standby current: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
-    
-    **3.Components**
+
+**Components**
 
 <table>
 <tbody>
@@ -609,7 +610,7 @@ The corresponding servo angles are shown below:
 </tbody>
 </table>
 
-**4.Wiring Diagram**
+****
 
 ![](/media/3220a5b142da47a3473390a8a04ce35e.png)
 
@@ -622,7 +623,7 @@ demand for driving servo current. Generally, the current of development
 board is not big enough. If without connecting the external power, the
 development board could be burnt.
 
-**5.Test Code**
+**Test Code**
 
     //****************************************************************************
     /*
@@ -663,14 +664,14 @@ development board could be burnt.
     //****************************************************************************
 
 
-**6.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, and power on the external
 power. After powering on, turn the dip switch to the "ON" end, then
 servo will swing in the range of 0° to 180°.
 
-**7.Extension Practice**
+**Extension Practice**
 
 What’s more, we empower to control the servo via library file. Please
 refer to the link:
@@ -713,7 +714,7 @@ power. After powering on, turn the dip switch to the "ON" end, then
 servo will swing in the range of 0° to 180° too. We usually control it
 by library file.
 
-**8.Code Explanation**
+**Code Explanation**
 
 Arduino comes with **\#include \<Servo.h\>** (servo function and
 statement）
@@ -735,7 +736,7 @@ Note: The above written format is“servo variable name, specific
 statement（）”, for instance: myservo.attach(9).
 ## Project 5 Ultrasonic Sensor
 
-**1.Description** 
+**Description** 
 
 ![](/media/b0906d68835b2659491e53a85567569b.png)The HC-SR04 ultrasonic
 sensor uses sonar to determine distance to an object like what bats do.
@@ -749,7 +750,7 @@ measuring application as well as various other applications. Here we
 have brought the simple method to measure the distance with arduino and
 an ultrasonic sensor and how to use the ultrasonic sensor with Arduino.
 
-**2.Specification**
+**Specification**
 
 ![](/media/9779999818cbbe4e1adf5b57081be431.png)Working Voltage :+5V DC
 
@@ -767,7 +768,7 @@ Measuring Angle: 30 degree
 
 Trigger Input Pulse width: 10uS
 
-**3.Components**
+**Components**
 
 <table>
 <tbody>
@@ -833,14 +834,14 @@ the distance measured by ultrasonic wave = (speed \* time)/2
 
 ![](/media/a25028af84d6c7c94382c2a907101241.jpeg)
 
-**5.Wiring Diagram**
+****
 
 ![](/media/d8fad040d3ab5abe247d6a8d1e08a13d.png)
 
 VCC, Trig, Echo and Gnd of the ultrasonic sensor are connected to 5V(V),
 D12, D13 and Gnd(G)
 
-**6.Test Code**
+**Test Code**
 
     //***************************************************************************
     /*
@@ -885,7 +886,7 @@ D12, D13 and Gnd(G)
     //***************************************************************************
 
 
-**7.****Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, then connect the computer via a
@@ -898,7 +899,7 @@ smaller.
 
 ![](/media/827793527e58638cbc8b1eb2d6c7c5a9.png)
 
-**8.Code Explanation**
+**Code Explanation**
 
 **int trigPin-** this pin is defined to transmit ultrasonic waves,
 generally output.
@@ -922,7 +923,7 @@ We need to divide the traveltime by 2 for we have to take into account
 that the wave was sent, hit the object, and then returned back to the
 sensor.
 
-**9.Extension Practice**
+**Extension Practice**
 
 We have just measured the distance displayed by the ultrasonic. How
 about controlling the LED with the measured distance? Let's try it and
@@ -990,7 +991,7 @@ sensor by hand(the distance is between 2-10cm), then check if the LED is
 on.
 ## Project 6 IR Reception
 
-**1.Description** 
+**Description** 
 
 ![](/media/f247e1010aa68c1e58e16b332680698a.png)There is no doubt that infrared remote control is
 ubiquitous in daily life. It is used to control various household
@@ -1029,7 +1030,7 @@ data transmission. The infrared receiving module made by the receiver
 has only three pins, signal line, VCC and GND. It is very convenient to
 communicate with Arduino and other microcontrollers.
 
-**2.Specification**
+**Specification**
 
 ![](/media/f247e1010aa68c1e58e16b332680698a.png)Operating Voltage: 3.3-5V（DC）
 
@@ -1044,7 +1045,7 @@ Receiving Distance: 10m
 The right picture shows the real product and circuit diagram of the
 infrared receiver
 
-**3.Components**
+**Components**
 
 <table>
 <tbody>
@@ -1076,7 +1077,7 @@ wiring up.
 
 Pins of IR receiver module are G(GND）, V（VCC）and D3.
 
-**4.Test Code**
+**Test Code**
 
     //*************************************************************************************
     /*
@@ -1106,7 +1107,7 @@ Pins of IR receiver module are G(GND）, V（VCC）and D3.
     //*************************************************************************************
 
 
-**5.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, then connect the computer via a
@@ -1123,7 +1124,7 @@ The keys value of Keyestudio remote control are shown below.
 
 > ![](/media/ebcf0cb2055f7784505f76ceeaef9f47.jpeg)
 
-**6.Code Explanation**
+**Code Explanation**
 
 **irrecv.enableIRIn():** After enabling IR decoding, the IR signals will
 be received,
@@ -1136,7 +1137,7 @@ will come back to “true”, and keep result in “results”. After decoding
 the IR signals, run the resume()function and continue to receive the
 next signal.
 
-**7.Extension Practice**
+**Extension Practice**
 
 We have decoded the key value of the IR remote control. How about
 controlling LED by the measured value? We could design an experiment.
@@ -1191,9 +1192,10 @@ After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, then connect the computer via a
 USB cable to power the board. After powering on, press the OK key on
 remote control can make the LED on and off.
+
 ## Project 7 Bluetooth Remote Control
 
-**1.Description**
+**Description**
 
 ![](/media/aa5546baeb5afe1adfe9fff51f497fe8.png)There is a DX-BT24 5.1 Bluetooth module in this
 kit. This bluetooth module comes with 256Kb space and complies with
@@ -1207,7 +1209,7 @@ cost, small size, low power consumption and high sensitivity for sending
 and receiving. Notably, it solely needs a few peripheral components to
 realize its powerful functions.  
 
-**2.Specification**
+**Specification**
 
   - Bluetooth protocol: Bluetooth Specification V5.1 BLE
 
@@ -1227,8 +1229,8 @@ realize its powerful functions.  
   - Power: 5V DC
 
   - Operating temperature: –10℃ to +65℃
-    
-    **3.Application**
+
+**Application**
 
 The DX-BT24 module also supports the BT5.1 BLE protocol, which can be
 directly connected to iOS devices with BLE Bluetooth function, and
@@ -1253,7 +1255,7 @@ cables. Successful application areas of BT24 modules:
 
 ※ Shared bicycles;
 
-**4.Ports**
+**Ports**
 
 ![](/media/cd97cf79ff5cdd5bbd78f4cc960d38e5.png)①STATE：Status pin
 
@@ -1294,7 +1296,7 @@ Connect the BT module to the development board.
 </tbody>
 </table>
 
-**5.Components**
+**Components**
 
 <table>
 <tbody>
@@ -1321,7 +1323,7 @@ Connect the BT module to the development board.
 </tbody>
 </table>
 
-**6.Wiring Diagram**
+****
 
 ![](/media/63b96e5b26ee18337fb6e0dced5bbbe3.png)
 
@@ -1333,7 +1335,7 @@ STATE and BRK of the BT module don’t need connection.
 Note the direction of the BT module when inserting it onto the 8833
 board. And don’t insert it before uploading the code.
 
-**7.Test Code**
+**Test Code**
 
     //***********************************************************************
     /*
@@ -1358,7 +1360,7 @@ board. And don’t insert it before uploading the code.
     //***********************************************************************
 
 
-**8.Test Result**
+**Test Result**
 
 Don’t connect the BT module when uploading the code because serial
 communication port will be occupied when uploading code and inserting
@@ -1509,7 +1511,7 @@ characters will be displayed, as shown below:
 </tbody>
 </table>
 
-**10.Code Explanation**
+**Code Explanation**
 
 **Serial.available()** : Return the number of characters currently
 remaining in the serial port buffer. Generally, this function is used to
@@ -1521,7 +1523,7 @@ and can be read;
 the serial port buffer. For example, if a device sends data to Arduino
 through the serial port, we can use Serial.read() to read the sent data.
 
-**11.Extension Practice**
+**Extension Practice**
 
 Here we look to use the command sent by the mobile phone to turn on or
 off an LED light. Looking at the wiring diagram, an LED is connected to
@@ -1572,7 +1574,11 @@ click![](/media/3b4076135ebca73f47c4ff8d7785dc17.png)to
 control the LED**.**
 ## Project 8 Motor Driving and Speed Control
 
-![](/media/a68b920cd30c3b17941fa8b28b643c8f.png)**1.Description** There are many ways to drive
+![](/media/a68b920cd30c3b17941fa8b28b643c8f.png)
+
+**Description** 
+
+There are many ways to drive
 motors. Our car uses the most commonly used DRV8833 motor driver chip,
 which provides a two-channel bridge electric drive solution for toys,
 printers and other integrated motor applications.
@@ -1602,7 +1608,7 @@ change from transverse connection to longitudinal connection, the
 rotation direction of M1 motor will be opposite to the original rotation
 direction. 
 
-**2.Specification**
+**Specification**
 
 Input voltage for logic：DC 5V
 
@@ -1697,7 +1703,7 @@ rotation of the motor.
 </tbody>
 </table>
 
-**4.Components**
+**Components**
 
 <table>
 <tbody>
@@ -1724,13 +1730,13 @@ rotation of the motor.
 </tbody>
 </table>
 
-**5.Wiring Diagram**
+****
 
 ![](/media/7eee17238d4f40fcba2d6feb26893e7f.png)
 
 Connect the power supply to the BAT port.
 
-**6.Test Code**
+**Test Code**
 
     //****************************************************************************
     /*
@@ -1787,14 +1793,14 @@ Connect the power supply to the BAT port.
     //****************************************************************************
 
 
-**7.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, then power on the external
 power and turn the DIP switch to ON, the car will go forward for 2s,
 back for 2s, turn left for 2s and right for 2s and stop for 2s
 
-**8.Code Explanation**
+**Code Explanation**
 
 **digitalWrite(ML\_Ctrl,LOW):** The rotation direction of motor is
 decided by the high/low level and and the pins that decide rotation
@@ -1803,7 +1809,7 @@ direction are digital pins.
 **analogWrite(ML\_PWM,200):** The speed of motor is regulated by PWM,
 and the pins that decide the speed of motor must be PWM pins.
 
-**9.Code Explanation**
+**Code Explanation**
 
 Adjust the speed that PWM controls the motor, hook up in the same way.
 
@@ -1870,7 +1876,11 @@ motor is much slower.
 Note: Low battery will lead to slow motor speed
 ## Project 9 Facial Expression LED Board
 
-![](/media/7d4e720c582dfaaeb730f284fd93ca6b.png)**1.Description** How fun it is if a expression
+![](/media/7d4e720c582dfaaeb730f284fd93ca6b.png)
+
+**Description**
+
+ How fun it is if a expression
 board is added to the robot. And the Keyestudio 8\*16 LED board can do
 the trick. With the help of it, you could design facial expressions,
 images, patterns and other displays by yourselves.
@@ -1882,7 +1892,7 @@ module, so as to make the dot matrix on the module to display the
 pattern you need. A HX-2.54 4Pin cable is provided for your convenience
 of wiring.
 
-**2.Specification**
+**Specification**
 
   - Working voltage: DC 3.3-5V
 
@@ -1995,7 +2005,7 @@ the hexadecimal data we need will be generated.
 
 ![](/media/586e88bf13c61b0918046437ed7f6796.png)
 
-**3.Components**
+**Components**
 
 <table>
 <tbody>
@@ -2022,7 +2032,7 @@ the hexadecimal data we need will be generated.
 </tbody>
 </table>
 
-**4.Wiring Diagram**
+****
 
 ![](/media/cec50fec4a335b6922e4c6694a133bc1.png)
 
@@ -2034,7 +2044,7 @@ A5 for two-wire serial communication.
 is not for IIC communication. And the IO port here is to simulate I2C
 communication and can be connected with any two pins )
 
-**5.Test Code**
+**Test Code**
 
 The code will show the smile face
 
@@ -2114,7 +2124,7 @@ The code will show the smile face
     //************************************************************************
 
 
-**6.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, then turn the DIP switch to ON,
@@ -2122,7 +2132,7 @@ a smile-shaped pattern will be displayed on the LED board.
 
 > ![](/media/95bb011957896b12285fc6763137bb9a.png)
 
-**7.Code Explanation**
+**Code Explanation**
 
 We use the modulus tool we just learned, http://dotmatrixtool.com/\#, to
 make the dot matrix display the start pattern, going forward, and stop
@@ -2278,7 +2288,7 @@ patterns orderly and repeats this sequence.
 
 ![](/media/644a1976bf17a6b64e0aed1a7240ff1e.jpeg)
 
-**1.Description**
+**Description**
 
 In this project, we look to combine the knowledge of a line tracking
 sensor and motor driver modules to make a restricting smart car.  In the
@@ -2343,7 +2353,7 @@ table.
 </tbody>
 </table>
 
-**3.Wiring Diagram**
+****
 
 ![](/media/88422b5f1464ad447e28ccbb8c39a8d4.png)
 
@@ -2352,7 +2362,7 @@ V（VCC), D11, D7 and D8 of the sensor expansion board.
 
 The power is connected to the BAT port
 
-**4.Test Code**
+**Test Code**
 
     //*************************************************************************
     /*
@@ -2502,7 +2512,7 @@ The power is connected to the BAT port
     //*************************************************************************
 
 
-**5.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, power on the external power
@@ -2512,7 +2522,7 @@ then it will move solely in the circle.
 
 ![](/media/eff7a15e697e8b78bde391f806ea024d.png)
 
-**1.Description**
+**Description**
 
 Based on the working principle of the line tracking sensor, we empower
 to make a line tracking smart car.
@@ -2604,7 +2614,7 @@ in a way that control the smart car to walk along the black line. 
 </tbody>
 </table>
 
-**3.Wiring Diagram**
+****
 
 ![](/media/88422b5f1464ad447e28ccbb8c39a8d4.png)
 
@@ -2613,7 +2623,7 @@ V（VCC), D11, D7 and D8 of the sensor expansion board.
 
 The power is connected to the BAT port
 
-**4.Test Code**
+**Test Code**
 
 <table>
 <tbody>
@@ -2688,7 +2698,7 @@ The power is connected to the BAT port
 </tbody>
 </table>
 
-**5.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, power on the external power
@@ -2698,7 +2708,7 @@ lines.
 
 ![](/media/a3beaada39eb1471b7df6d9788e2bea3.png)
 
-**1.Description**
+**Description**
 
 In this project, we will look to detect the distance between the 4WD
 smart car and the obstacles ahead through an ultrasonic sensor to drive
@@ -2762,7 +2772,7 @@ show a smile facial pattern.
 </tbody>
 </table>
 
-**3.Wiring Diagram**
+****
 
 ![](/media/568a66655a14dd34afd8cb1e6ae5951c.png)
 
@@ -2780,7 +2790,7 @@ is interfaced with A3.
 
 4\. The power is connected to the BAT port
 
-**4.Test Code**
+**Test Code**
 
     //*******************************************************************************
     /*
@@ -2945,7 +2955,7 @@ is interfaced with A3.
     //*******************************************************************************
 
 
-**5.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, power on the external power
@@ -2955,7 +2965,7 @@ move with the obstacles and the 8X16 LED board will show“smile”.
 
 ![](/media/fd4044796307f709987b9d2e215e0911.png)
 
-**1.Description**
+**Description**
 
 **In this project, we aim to make an ultrasonic obstacle avoidance smart
 car. We will use the ultrasonic to detect the distance from the
@@ -3077,7 +3087,7 @@ below:**
 
 \`
 
-**3.Wiring Diagram**
+****
 
 ![](/media/568a66655a14dd34afd8cb1e6ae5951c.png)
 
@@ -3093,7 +3103,7 @@ is interfaced with A3.
 
 4\. The power is connected to the BAT port
 
-**4.Test Code**
+**Test Code**
 
     //*******************************************************************************
     /*
@@ -3295,7 +3305,7 @@ is interfaced with A3.
     //*******************************************************************************
 
 
-**5.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, power on the external power
@@ -3310,7 +3320,7 @@ status pattern.
 
 ![](/media/ff2fec813f8765e1bcd593b37b9c0a4f.jpeg)
 
-**1.Description**
+**Description**
 
 In this project, we will make an IR remote control smart car and press
 the button on the IR remote control to drive the car to move.
@@ -3385,7 +3395,7 @@ the button on the IR remote control to drive the car to move.
 </tbody>
 </table>
 
-**3.Wiring Diagram**
+****
 
 ![](/media/9d8b58dff14fe22b5c87514db944530c.png)
 
@@ -3403,7 +3413,7 @@ the orange wire is interfaced with A3.
 
 4\. The power is connected to the BAT port
 
-**4.Test Code**
+**Test Code**
 
     //*******************************************************************************
     /*
@@ -3589,7 +3599,7 @@ the orange wire is interfaced with A3.
     //*******************************************************************************
 
 
-**5.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, power on the external power
@@ -3600,7 +3610,7 @@ the corresponding status pattern.**
 
 ![](/media/8abdadfa2fc462bdcc0542df52a793e3.jpeg)
 
-**1.Description**
+**Description**
 
 We’ve learned the basic knowledge of Bluetooth. And in this lesson, we
 will make a Bluetooth control smart car. In this project, we aim to
@@ -3698,7 +3708,7 @@ the mobile APP to control the smart car via the Bluetooth. 
 
 **3.Flow Chart**
 
-**4.Wiring Diagram**
+****
 
 ![](/media/61be6959693b2111639252ea45ec60fc.png)
 
@@ -3896,7 +3906,7 @@ the orange wire is interfaced with A3.
     //*******************************************************************************
 
 
-**6.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, power on the external power
@@ -3913,7 +3923,7 @@ fail to upload it.
 
 ![](/media/8abdadfa2fc462bdcc0542df52a793e3.jpeg)
 
-**1.Description**
+**Description**
 
 In this project, we will use a Bluetooth to adjust the speed of the
 smart car. We empower to define a variable speeds and change it to
@@ -3923,7 +3933,7 @@ change the speed of the smart car. 
 
 ![](/media/90ab1f7fb1e16ad3c018b1c631e407c3.png)
 
-**3.Wiring Diagram**
+****
 
 ![](/media/61be6959693b2111639252ea45ec60fc.png)
 
@@ -3941,7 +3951,7 @@ is interfaced with A3.
 
 4\. The power is connected to the BAT port
 
-**4.Test Code**
+**Test Code**
 
     //*******************************************************************************
     /*
@@ -4166,7 +4176,7 @@ is interfaced with A3.
     //*******************************************************************************
 
 
-**5.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, power on the external power
@@ -4184,7 +4194,7 @@ module after uploading the code successfully.
 
 ![](/media/2c1198e0ebd7c31622b7438469fb572c.jpeg)
 
-**1.Description**
+**Description**
 
 In previous projects, the car only performs a single function. However,
 in this lesson, we will integrate all of its functions via a Bluetooth.
@@ -4193,7 +4203,7 @@ in this lesson, we will integrate all of its functions via a Bluetooth.
 
 ![](/media/73f4da1e321bc29282d3b2f5cb3168dd.png)
 
-**3.Wiring Diagram**
+****
 
 ![](/media/fce8edd349ddbcfe02e6f27feb73e90f.png)
 
@@ -4217,7 +4227,7 @@ G（GND), V（VCC), D11, D7 and D8 of the sensor expansion board.
 
 6\. The power is connected to the BAT port
 
-**4.Test Code**
+**Test Code**
 
     //*******************************************************************************
     /*
@@ -4619,7 +4629,7 @@ G（GND), V（VCC), D11, D7 and D8 of the sensor expansion board.
     //*******************************************************************************
 
 
-**5.Test Result**
+**Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the
 wirings according to the wiring diagram, power on the external power
