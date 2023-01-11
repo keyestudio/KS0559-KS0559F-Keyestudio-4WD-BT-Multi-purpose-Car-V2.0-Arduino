@@ -118,7 +118,7 @@ Bluetooth control: support Android and iOS system
 
 ## 4. Kit
 
-<table align="center">
+<table  border="1">
 <tbody>
 <tr class="odd">
 <td><strong>#</strong></td>
