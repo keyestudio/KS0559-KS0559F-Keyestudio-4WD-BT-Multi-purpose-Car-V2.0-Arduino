@@ -389,24 +389,5 @@ Bluetooth control: support Android and iOS system
 </tbody>
 </table>
 
-## 5. Projects
-
-Project 1: LED Blink
-Project 2: Adjust LED Brightness
-Project 3 : Line Tracking Sensor
-Project 4: Servo Control
-Project 5: Ultrasonic Sensor
-Project 6: IR Reception
-Project 7: Bluetooth Remote Control
-Project 8: Motor Driving and Speed Control
-Project 9: Facial Expression LED Board
-Project 10: Restricting Smart Car
-Project 11: Line Tracking Smart Car
-Project 12: Ultrasonic Following Smart Car
-Project 13: Ultrasonic Obstacle Avoidance Smart Car
-Project 14: IR Remote Control Smart Car
-Project 15: Bluetooth Control Smart Car
-Project 16: Bluetooth Speed Control Smart Car
-Project 17: Multi-purpose Bluetooth Smart Car
 
 
