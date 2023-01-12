@@ -16,7 +16,7 @@ jack, 2 ICSP headers and a reset button.
 
 It contains everything needed to support the microcontroller: simply connect it to a computer with a USB cable or power it via an external DC power jack (DC 7-12V) or via female headers Vin/ GND(DC 7-12V) to get started.
 
-<table>
+<table border="1">
 <tbody>
 <tr class="odd">
 <td>Microcontroller</td>

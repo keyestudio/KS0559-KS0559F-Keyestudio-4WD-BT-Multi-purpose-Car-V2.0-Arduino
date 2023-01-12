@@ -1,6 +1,6 @@
 # 5.Product Installation
 
-<table>
+<table border="1">
 <tbody>
 <tr class="odd">
 <td><h1><strong>Part 1</strong></h1></td>
@@ -84,7 +84,7 @@
 </tr>
 <tr class="even">
 <td><h1>Rotate the servo to 90 degrees </h1></td>
-<td><table>
+<td><table border="1">
 <tbody>
 <tr class="odd">
 <td>Servo</td>
@@ -104,7 +104,7 @@
 </tr>
 </tbody>
 </table>
-<table>
+<table border="1">
 <tbody>
 <tr class="odd">
 <td><p>//*******************************************************************</p>
@@ -244,7 +244,7 @@
 </tr>
 <tr class="even">
 <td>The wiring of the ultrasonic sensor</td>
-<td><table>
+<td><table border="1">
 <tbody>
 <tr class="odd">
 <td>Ultrasonic Sensor</td>
@@ -277,7 +277,7 @@
 </tr>
 <tr class="odd">
 <td>The wiring of the 8*16 LED Board</td>
-<td><table>
+<td><table border="1">
 <tbody>
 <tr class="odd">
 <td>8*16 LED Board</td>
@@ -310,7 +310,7 @@
 </tr>
 <tr class="even">
 <td>The wiring of the servo</td>
-<td><table>
+<td><table border="1">
 <tbody>
 <tr class="odd">
 <td>Servo</td>

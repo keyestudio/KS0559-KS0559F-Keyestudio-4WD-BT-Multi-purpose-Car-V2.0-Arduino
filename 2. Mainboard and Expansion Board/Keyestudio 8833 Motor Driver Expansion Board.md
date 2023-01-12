@@ -13,7 +13,7 @@ as well as pin interfaces with Bluetooth and motor driver. 
 
 ## 2. Specification
 
-<table>
+<table border="1">
 <tbody>
 <tr class="odd">
 <td>Voltage</td>

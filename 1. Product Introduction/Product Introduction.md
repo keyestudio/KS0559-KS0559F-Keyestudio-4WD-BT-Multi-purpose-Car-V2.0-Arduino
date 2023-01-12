@@ -118,7 +118,7 @@ Bluetooth control: support Android and iOS system
 
 ## 4. Kit
 
-<table  border="1">
+<table border="1" style="float:center">
 <tbody>
 <tr class="odd">
 <td><strong>#</strong></td>
@@ -127,7 +127,7 @@ Bluetooth control: support Android and iOS system
 <td><strong>Picture</strong></td>
 </tr>
 <tr class="even">
-<td>1</td>
+<td style="float:center">1</td>
 <td>Keyestudio V4.0 Board(UNO compatible)</td>
 <td>1</td>
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Arduino/master/media/8314a7b1b3d92cf10bd970a06384f919.png" style="width:1.46736in;height:1.04861in" /></td>
