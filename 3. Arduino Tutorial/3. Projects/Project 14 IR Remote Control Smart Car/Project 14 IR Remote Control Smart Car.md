@@ -2,13 +2,13 @@
 
 ![](/media/ff2fec813f8765e1bcd593b37b9c0a4f.jpeg)
 
-### **1.Description**
+**1.Description**
 
 In this project, we will make an IR remote control smart car and press the button on the IR remote control to drive the car to move.
 
 
 
-### **2.Flow Chart**
+**2.Flow Chart**
 
 ![img](media/wps274.png)
 
@@ -25,7 +25,7 @@ In this project, we will make an IR remote control smart car and press the butto
 
 
 
-### **3.Wiring Diagram**
+**3.Wiring Diagram**
 
 <img src="/media/9d8b58dff14fe22b5c87514db944530c.png" style="zoom:80%;" />
 
@@ -36,7 +36,7 @@ In this project, we will make an IR remote control smart car and press the butto
 
 
 
-### **4.Test Code**
+**4.Test Code**
 
 ```c
 //*******************************************************************************
@@ -225,7 +225,7 @@ void IIC_send(unsigned char send_data)
 
 
 
-### **5.Test Result**
+**5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. 
 

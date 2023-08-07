@@ -1,6 +1,6 @@
 # Project 7 Bluetooth Remote Control
 
-### **1.Description**
+**1.Description**
 
 ![](/media/aa5546baeb5afe1adfe9fff51f497fe8.png)
 
@@ -10,7 +10,7 @@ Furthermore, it supports UART interface and bluetooth serial port transparent tr
 
 
 
-### **2.Specification**
+**2.Specification**
 
   - Bluetooth protocol: Bluetooth Specification V5.1 BLE
   - Working distance: In an open environment, it can achieve 40m ultra-long distance communication
@@ -23,7 +23,7 @@ Furthermore, it supports UART interface and bluetooth serial port transparent tr
 
 
 
-### **3.Application**
+**3.Application**
 
 The DX-BT24 module also supports the BT5.1 BLE protocol, which can be directly connected to iOS devices with BLE Bluetooth function, and supports resident running of background programs. 
 
@@ -47,7 +47,7 @@ It is mainly used in the field of short-distance data wireless transmission. It 
 
 
 
-### **4.Ports**
+**4.Ports**
 
 ![](/media/cd97cf79ff5cdd5bbd78f4cc960d38e5.png)
 
@@ -91,7 +91,7 @@ Connect the BT module to the development board.
 </table>
 
 
-### **5.Components**
+**5.Components**
 
 | 4.0 Development Board *1                                     | 8833 Motor Driver Expansion Board *1                         | Red LED Module*1                                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -101,7 +101,7 @@ Connect the BT module to the development board.
 
 
 
-### **6.Wiring Diagram**
+**6.Wiring Diagram**
 
 ![](/media/63b96e5b26ee18337fb6e0dced5bbbe3.png)
 
@@ -113,7 +113,7 @@ Note the direction of the BT module when inserting it onto the 8833 board. And d
 
 
 
-### **7.Test Code**
+**7.Test Code**
 
 ```c
 //***********************************************************************
@@ -140,7 +140,7 @@ void loop() {
 
 ​    
 
-### **8.Test Result**
+**8.Test Result**
 
 Don’t connect the BT module when uploading the code because serial communication port will be occupied when uploading code and inserting the BT module.
 
@@ -148,9 +148,9 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 
 
 
-### **9.Download Bluetooth APP**
+**9.Download Bluetooth APP**
 
-#### **Apple system**
+**Apple system**
 
 Open the App Store on the iPhone. Search keyes BT car and download the APP to your phone.
 
@@ -164,7 +164,7 @@ Click "Connect" button in the upper left corner to automatically search for Blue
 
 ![](/media/8a3a43db2709f3231fcc78f3e5fec26f.png)
 
-#### Android System
+Android System
 
 Enter google play store to search for“keyes 4wd”
 
@@ -212,7 +212,7 @@ Pressing the button of the Bluetooth APP, and the corresponding characters will 
 | ![image-20230420160529723](media/image-20230420160529723.png) | Click to send“U”, click again to send“S” | Start ultrasonic follow function; click  again to exit       |
 | ![image-20230420160533426](media/image-20230420160533426.png) | Click to send“G”, click again to send“S” | Start restricting function; click  again to exit             |
 
-### **10.Code Explanation**
+**10.Code Explanation**
 
 **Serial.available()** 
 
@@ -224,7 +224,7 @@ Refers to taking out and reading a Byte of data from the serial port buffer. For
 
 
 
-### **11.Extension Practice**
+**11.Extension Practice**
 
 Here we look to use the command sent by the mobile phone to turn on or off an LED light. Looking at the wiring diagram, an LED is connected to the D9 pin.![](/media/1a719bb514db5eb134cfa943bd138e52.png)
 

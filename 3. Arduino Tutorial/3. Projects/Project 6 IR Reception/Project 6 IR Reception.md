@@ -1,6 +1,6 @@
 # Project 6 IR Reception
 
-### **1.Description** 
+**1.Description** 
 
 ![](/media/f247e1010aa68c1e58e16b332680698a.png)
 
@@ -18,7 +18,7 @@ Infrared receiver we use is an infrared receiver module. Mainly composed of an i
 
 Additionally, it is suitable for infrared remote control and infrared data transmission. The infrared receiving module made by the receiver has only three pins, signal line, VCC and GND. It is very convenient to communicate with Arduino and other microcontrollers.
 
-### **2.Specification**
+**2.Specification**
 
 ![](/media/f247e1010aa68c1e58e16b332680698a.png)
 
@@ -38,7 +38,7 @@ The picture shows the real product and circuit diagram of the infrared receiver
 
 
 
-### **3.Components**
+**3.Components**
 
 | 4.0 Development Board *1                                     | 8833 Motor Driver Expansion Board *1                         | Red LED Module*1                                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -53,7 +53,7 @@ Pins of IR receiver module are G(GND）, V（VCC）and D3.
 
 
 
-### **4.Test Code**
+**4.Test Code**
 
 ```c
 //*************************************************************************************
@@ -86,7 +86,7 @@ void setup()
 
 
 
-### **5.Test Result**
+**5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, open the serial monitor and set baud rate to 9600.
 
@@ -98,7 +98,7 @@ The keys value of Keyestudio remote control are shown below.
 
 > ![](/media/ebcf0cb2055f7784505f76ceeaef9f47.jpeg)
 
-### **6.Code Explanation**
+**6.Code Explanation**
 
 **irrecv.enableIRIn():** After enabling IR decoding, the IR signals will be received,
 
@@ -108,7 +108,7 @@ The keys value of Keyestudio remote control are shown below.
 
 
 
-### **7.Extension Practice**
+**7.Extension Practice**
 
 We have decoded the key value of the IR remote control. How about controlling LED by the measured value? We could design an experiment.
 

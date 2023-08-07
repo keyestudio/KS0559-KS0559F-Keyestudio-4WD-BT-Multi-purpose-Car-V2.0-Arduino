@@ -44,7 +44,7 @@
 - Enforcing changelog.md
 
 ## 2.0.1 - 2015/07/26 - [Release](https://github.com/shirriff/Arduino-IRremote/releases/tag/BETA)
-### Changes
+Changes
 - Updated README
 - Updated Contributors
 - Fixed #110 Mess
@@ -61,7 +61,7 @@
 - Fixed Interrupt on ATmega8
 - Switched to Stable Release of @PlatformIO
 
-### Additions
+Additions
 - Added Aiwa RC-T501 Protocol
 - Added Denon Protocol
 - Added Pronto Support
@@ -73,9 +73,9 @@
 - Added ATtiny85 Support
 - Added isIdle method
 
-### Deletions
+Deletions
 - Removed (Fixed) #110
 - Broke Teensy 3 / 3.1 Support
 
-### Not Working
+Not Working
 - Teensy 3 / 3.1 Support is in Development

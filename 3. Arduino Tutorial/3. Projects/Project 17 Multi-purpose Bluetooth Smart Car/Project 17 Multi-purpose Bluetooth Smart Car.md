@@ -2,19 +2,19 @@
 
 ![image-20230421081724622](media/image-20230421081724622.png)
 
-### **1.Description**
+**1.Description**
 
 In previous projects, the car only performs a single function. However, in this lesson, we will integrate all of its functions via a Bluetooth.
 
 
 
-### **2.Flow Chart**
+**2.Flow Chart**
 
 ![image-20230421081742063](media/image-20230421081742063.png)
 
 
 
-### **3.Wiring Diagram**
+**3.Wiring Diagram**
 
 ![image-20230421081757218](media/image-20230421081757218.png)
 
@@ -32,7 +32,7 @@ In previous projects, the car only performs a single function. However, in this 
 
 
 
-### **4.Test Code**
+**4.Test Code**
 
 ```c
 //*******************************************************************************
@@ -435,7 +435,7 @@ void IIC_send(unsigned char send_data)
 //*******************************************************************************
 ```
 
-### **5.Test Result**
+**5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wiring according to the wiring diagram, power on the external power then turn the DIP switch to ON. 
 

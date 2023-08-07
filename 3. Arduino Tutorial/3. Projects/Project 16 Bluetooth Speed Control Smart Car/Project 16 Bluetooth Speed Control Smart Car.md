@@ -2,19 +2,19 @@
 
 ![image-20230421081453492](media/image-20230421081453492.png)
 
-### **1.Description**
+**1.Description**
 
 In this project, we will use a Bluetooth to adjust the speed of the smart car. We empower to define a variable speeds and change it to change the speed of the smart car. 
 
 
 
-### **2.Flow Chart**
+**2.Flow Chart**
 
 ![image-20230421081522418](media/image-20230421081522418.png)
 
 
 
-### **3.Wiring Diagram**
+**3.Wiring Diagram**
 
 ![image-20230421081531883](media/image-20230421081531883.png)
 
@@ -28,7 +28,7 @@ In this project, we will use a Bluetooth to adjust the speed of the smart car. W
 
 
 
-### **4.Test Code**
+**4.Test Code**
 
 ```c
 //*******************************************************************************
@@ -256,7 +256,7 @@ void IIC_send(unsigned char send_data)
 
 
 
-### **5.Test Result**
+**5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Pairing the APP with Bluetooth, the smart car can be controlled to move by the APP. 
 

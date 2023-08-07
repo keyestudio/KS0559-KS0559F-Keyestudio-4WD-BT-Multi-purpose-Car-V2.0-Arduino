@@ -2,7 +2,7 @@
 
 ![](/media/eff7a15e697e8b78bde391f806ea024d.png)
 
-### **1.Description**
+**1.Description**
 
 Based on the working principle of the line tracking sensor, we empower to make a line tracking smart car. 
 
@@ -10,7 +10,7 @@ In this project, we detect whether there is a black line at the bottom of the sm
 
 
 
-### **2.Flow Chart**
+**2.Flow Chart**
 
 ![img](media/wps272.png)
 
@@ -34,7 +34,7 @@ In this project, we detect whether there is a black line at the bottom of the sm
 |                 | left and right tracking sensor detect black line             | Stop                                                  |
 |                 | left and right tracking sensor detect white line             | Stop                                                  |
 
-### **3.Wiring Diagram**
+**3.Wiring Diagram**
 
 ![](/media/88422b5f1464ad447e28ccbb8c39a8d4.png)
 
@@ -44,7 +44,7 @@ The power is connected to the BAT port.
 
 
 
-### **4.Test Code**
+**4.Test Code**
 
 ```c
 //*************************************************************************
@@ -211,7 +211,7 @@ void IIC_send(unsigned char send_data)
 
 
 
-### **5.Test Result**
+**5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Then the smart car will walk along the lines.
 

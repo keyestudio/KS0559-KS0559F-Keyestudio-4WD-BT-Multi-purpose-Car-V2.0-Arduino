@@ -1,6 +1,6 @@
 # Project 1: LED Blink
 
-### **1. Description**
+**1. Description**
 
 ![](/media/7541db758dbca2c2a100b2b0227f9af4.jpeg)
 
@@ -10,7 +10,7 @@ The LED can flash in diverse color by altering the delay time in the test code. 
 
 
 
-### **2.Specification**
+**2.Specification**
 
 ![](/media/85b2076096371fd9ca03671602b1e5ce.png)
 
@@ -21,7 +21,7 @@ The LED can flash in diverse color by altering the delay time in the test code. 
 
 
 
-### **3.Components**
+**3.Components**
 
 | 4.0 Development Board *1                                     | 8833 Motor Driver Expansion Board *1                         | Red LED Module*1                                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -29,7 +29,7 @@ The LED can flash in diverse color by altering the delay time in the test code. 
 | **3P F-F Dupont Wire*1**                                     | **USB Cable*1**                                              |                                                              |
 | ![img](media/wps198.jpg)                                     | ![img](media/image-20230420161925613.png)                    |                                                              |
 
-### **4.Wiring Diagram**
+**4.Wiring Diagram**
 
 ![](/media/d29f513cc3561c7a3c3b05105e8a9ad3.png)
 
@@ -39,7 +39,7 @@ The pin G, V and S of the LED module are connected to G, 5V and D9 of the expans
 
 
 
-### **5.Test Code**
+**5.Test Code**
 
 ```c
 //****************************************************************************
@@ -64,13 +64,13 @@ void loop() // the loop function runs over and over again forever
 //****************************************************************************
 ```
 
-### **6.Test Result**
+**6.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see the LED connected to the D9 will be on and off. 
 
 
 
-### **7.Code Explanation**
+**7.Code Explanation**
 
 **pinMode(9，OUTPUT) **- This function can denote that the pin is INPUT or OUTPUT
 
@@ -78,7 +78,7 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 
 
 
-### **8.Extension Practice**
+**8.Extension Practice**
 
 We have succeeded in blinking LED. Next, let’s observe what will happen to the LED if we modify the delay time.
 

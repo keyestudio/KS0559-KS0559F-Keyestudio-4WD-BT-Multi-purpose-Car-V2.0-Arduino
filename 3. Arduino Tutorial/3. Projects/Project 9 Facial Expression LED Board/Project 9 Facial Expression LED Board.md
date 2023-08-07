@@ -2,7 +2,7 @@
 
 ![](/media/7d4e720c582dfaaeb730f284fd93ca6b.png)
 
-### **1.Description** 
+**1.Description** 
 
 How fun it is if a expression board is added to the robot. And the Keyestudio 8\*16 LED board can do the trick. With the help of it, you could design facial expressions, images, patterns and other displays by yourselves.
 
@@ -12,7 +12,7 @@ Therefore, it can control the on and off of 128 LEDs on the module, so as to mak
 
 
 
-### **2.Specification**
+**2.Specification**
 
   - Working voltage: DC 3.3-5V
   - Power loss: 400mW
@@ -23,11 +23,11 @@ Therefore, it can control the on and off of 128 LEDs on the module, so as to mak
 
 
 
-### **3.Circuit Diagram**
+**3.Circuit Diagram**
 
 ![](/media/edf6c77d05904eebbaa89d557e9e9c1a.png)
 
-### **4.Working Principle**
+**4.Working Principle**
 
 How to control each LED of the 8\*16 dot matrix? 
 
@@ -87,7 +87,7 @@ As shown in the figure below, press the left mouse button to select,right click 
 
 
 
-### **5.Components**
+**5.Components**
 
 | 4.0 Development Board *1                                     | 8833 Motor Driver Expansion Board *1                         | Keyestudio 8x16 LED Panel*1                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -97,7 +97,7 @@ As shown in the figure below, press the left mouse button to select,right click 
 
 
 
-### **6.Wiring Diagram**
+**6.Wiring Diagram**
 
 ![](/media/cec50fec4a335b6922e4c6694a133bc1.png)
 
@@ -107,7 +107,7 @@ The GND, VCC, SDA, and SCL of the 8x16 LED light board are respectively connecte
 
 
 
-### **7.Test Code**
+**7.Test Code**
 
 The code will show the smile face
 
@@ -188,7 +188,7 @@ void IIC_send(unsigned char send_data)
 //************************************************************************
 ```
 
-### **8.Test Result**
+**8.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then turn the DIP switch to ON, a smile-shaped pattern will be displayed on the LED board.
 
@@ -196,7 +196,7 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 
 
 
-### **9.Code Explanation**
+**9.Code Explanation**
 
 We use the modulus tool we just learned, http://dotmatrixtool.com/#, to make the dot matrix display the start pattern, going forward, and stop and then clear the pattern. The time interval is 2000 ms.
 

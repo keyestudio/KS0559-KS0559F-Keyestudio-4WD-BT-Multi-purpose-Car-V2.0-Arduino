@@ -2,7 +2,7 @@
 
 ![image-20230421080516576](media/image-20230421080516576.png)
 
-### **1.Description**
+**1.Description**
 
 We’ve learned the basic knowledge of Bluetooth. 
 
@@ -10,7 +10,7 @@ And in this lesson, we will make a Bluetooth control smart car. In this project,
 
 
 
-### **2.APP Control Button**
+**2.APP Control Button**
 
 |                             Key                              |           Control Character            | Function                                                     |
 | :----------------------------------------------------------: | :------------------------------------: | ------------------------------------------------------------ |
@@ -30,11 +30,11 @@ And in this lesson, we will make a Bluetooth control smart car. In this project,
 
 
 
-### **3.Flow Chart**
+**3.Flow Chart**
 
 ![Img](./FILES/Project%2015%20Bluetooth%20Control%20Smart%20Car.md/img-20230411134703.png)
 
-### **4.Wiring Diagram**
+**4.Wiring Diagram**
 
 ![image-20230421081220351](media/image-20230421081220351.png)
 
@@ -45,7 +45,7 @@ And in this lesson, we will make a Bluetooth control smart car. In this project,
 
 
 
-### **5.Test Code**
+**5.Test Code**
 
 ```c
 //*******************************************************************************
@@ -228,7 +228,7 @@ void IIC_send(unsigned char send_data)
 
 
 
-### **6.Test Result**
+**6.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. 
 

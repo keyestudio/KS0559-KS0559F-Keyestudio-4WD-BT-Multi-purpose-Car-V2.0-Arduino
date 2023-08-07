@@ -1,6 +1,6 @@
 # 5.Product Installation
 
-### Installation
+Installation
 
 | **Part 1**           |                                                              |
 | -------------------- | :----------------------------------------------------------: |
@@ -74,7 +74,7 @@ void procedure(int myangle) {
 
 
 
-### Wiring
+Wiring
 
 **Wiring Diagram**
 

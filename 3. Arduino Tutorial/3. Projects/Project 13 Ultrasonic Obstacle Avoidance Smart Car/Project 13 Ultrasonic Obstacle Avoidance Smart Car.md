@@ -2,7 +2,7 @@
 
 ![](/media/fd4044796307f709987b9d2e215e0911.png)
 
-### **1.Description**
+**1.Description**
 
 In this project, we aim to make an ultrasonic obstacle avoidance smart car. 
 
@@ -10,7 +10,7 @@ We will use the ultrasonic to detect the distance from the obstacle, which can b
 
 
 
-### **2.Flow Chart**
+**2.Flow Chart**
 
 ![img](media/wps273.png)
 
@@ -35,7 +35,7 @@ We will use the ultrasonic to detect the distance from the obstacle, which can b
 
 
 
-### **3.Wiring Diagram**
+**3.Wiring Diagram**
 
 ![](/media/568a66655a14dd34afd8cb1e6ae5951c.png)
 
@@ -49,7 +49,7 @@ We will use the ultrasonic to detect the distance from the obstacle, which can b
 
 
 
-### **4.Test Code**
+**4.Test Code**
 
 ```c
 //*******************************************************************************
@@ -254,7 +254,7 @@ void IIC_send(unsigned char send_data)
 
 
 
-### **5.Test Result**
+**5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. 
 

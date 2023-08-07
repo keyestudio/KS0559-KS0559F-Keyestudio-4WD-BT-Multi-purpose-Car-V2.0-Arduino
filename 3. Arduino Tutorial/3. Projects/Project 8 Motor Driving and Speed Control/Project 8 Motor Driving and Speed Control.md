@@ -2,7 +2,7 @@
 
 <img src="/media/a68b920cd30c3b17941fa8b28b643c8f.png" style="zoom: 25%;" />
 
-### **1.Description** 
+**1.Description** 
 
 There are many ways to drive motors. Our car uses the most commonly used DRV8833 motor driver chip, which provides a two-channel bridge electric drive solution for toys, printers and other integrated motor applications.
 
@@ -16,7 +16,7 @@ For example, when the 2 jumper caps in front of B1 of the M1 motor change from t
 
 
 
-### **2.Specification**
+**2.Specification**
 
 - Input voltage for logic：DC 5V
 
@@ -39,7 +39,7 @@ For example, when the 2 jumper caps in front of B1 of the M1 motor change from t
 
 
 
-### **3.Working Principle**
+**3.Working Principle**
 
 We use the same side parallel connection mode for the four motors, which can be regarded as two groups of motors. As shown in the wiring diagram, B and B1 are a group, and A and A1 are a group. 
 
@@ -62,7 +62,7 @@ PWM drives the robot car. The PWM value is in the range of 0-255. When we set th
 
 
 
-### **4.Components**
+**4.Components**
 
 | 4.0 Development Board *1                                     | 8833 Motor Driver Expansion Board *1                         | USB Cable*1                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -72,7 +72,7 @@ PWM drives the robot car. The PWM value is in the range of 0-255. When we set th
 
 
 
-### **5.Wiring Diagram**
+**5.Wiring Diagram**
 
 ![](/media/7eee17238d4f40fcba2d6feb26893e7f.png)
 
@@ -80,7 +80,7 @@ Connect the power supply to the BAT port.
 
 
 
-### **6.Test Code**
+**6.Test Code**
 
 ```c
 //****************************************************************************
@@ -138,7 +138,7 @@ void loop()
 //****************************************************************************
 ```
 
-### **7.Test Result**
+**7.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram.
 
@@ -146,7 +146,7 @@ Power on the external power and turn the DIP switch to ON, the car will go forwa
 
 
 
-### **8.Code Explanation**
+**8.Code Explanation**
 
 **digitalWrite(ML\_Ctrl,LOW):** 
 
@@ -158,7 +158,7 @@ The speed of motor is regulated by PWM, and the pins that decide the speed of mo
 
 
 
-### **9.Code Explanation**
+**9.Code Explanation**
 
 Adjust the speed that PWM controls the motor, hook up in the same way.
 

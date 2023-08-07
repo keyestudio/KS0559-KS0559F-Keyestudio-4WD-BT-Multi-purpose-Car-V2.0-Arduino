@@ -1,6 +1,6 @@
 # Project 5 Ultrasonic Sensor
 
-### **1.Description** 
+**1.Description** 
 
 ![](/media/b0906d68835b2659491e53a85567569b.png)
 
@@ -12,7 +12,7 @@ The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronic
 
 
 
-### **2.Specification**
+**2.Specification**
 
 ![](/media/9779999818cbbe4e1adf5b57081be431.png)
 
@@ -33,7 +33,7 @@ The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronic
 
 
 
-### **3.Components**
+**3.Components**
 
 | 4.0 Development Board *1                                     | 8833 Motor Driver Expansion Board *1                         | Red LED Module*1                                             | HC-SR04 Ultrasonic Sensor*1                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -41,7 +41,7 @@ The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronic
 | **4P Dupont Wire*1**                                         | **USB Cable*1**                                              | **3P Dupont Wire*1**                                         |                                                              |
 | ![image-20230420161451334](media/image-20230420161451334.png) | ![image-20230420161459015](media/image-20230420161459015.png) | ![image-20230420161506600](media/image-20230420161506600.png) |                                                              |
 
-### **4.Working Principle**
+**4.Working Principle**
 
 As the above picture shown, it is like two eyes. One is transmitting end, the other is receiving end.
 
@@ -64,7 +64,7 @@ The t is the time that emitting signal meets obstacle and returns. And the propa
 
 ![](/media/a25028af84d6c7c94382c2a907101241.jpeg)
 
-### **5.Wiring Diagram**
+**5.Wiring Diagram**
 
 ![](/media/d8fad040d3ab5abe247d6a8d1e08a13d.png)
 
@@ -72,7 +72,7 @@ VCC, Trig, Echo and Gnd of the ultrasonic sensor are connected to 5V(V), D12, D1
 
 
 
-### **6.Test Code**
+**6.Test Code**
 
 ```c
 //***************************************************************************
@@ -118,7 +118,7 @@ void loop() {
 //***************************************************************************
 ```
 
-### **7. Test Result**
+**7. Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, open the serial monitor and set baud rate to 9600. 
 
@@ -126,7 +126,7 @@ The detected distance will be displayed, and the unit is cm and inch. Hinder the
 
 ![](/media/827793527e58638cbc8b1eb2d6c7c5a9.png)
 
-### **8.Code Explanation**
+**8.Code Explanation**
 
 **int trigPin-** this pin is defined to transmit ultrasonic waves, generally output.
 
@@ -148,7 +148,7 @@ We need to divide the traveltime by 2 for we have to take into account that the 
 
 
 
-### **9.Extension Practice**
+**9.Extension Practice**
 
 We have just measured the distance displayed by the ultrasonic. How about controlling the LED with the measured distance? Let's try it and connect an LED light module to the D9 pin.
 

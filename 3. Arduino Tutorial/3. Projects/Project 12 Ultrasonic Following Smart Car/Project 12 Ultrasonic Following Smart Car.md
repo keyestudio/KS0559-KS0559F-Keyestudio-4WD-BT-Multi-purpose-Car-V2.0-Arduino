@@ -2,13 +2,13 @@
 
 ![](/media/a3beaada39eb1471b7df6d9788e2bea3.png)
 
-### **1.Description**
+**1.Description**
 
 In this project, we will look to detect the distance between the 4WD smart car and the obstacles ahead through an ultrasonic sensor to drive two motors in a way that make the car move and make the 8*8 LED board show a smile facial pattern.
 
 
 
-### **2.Flow Chart**
+**2.Flow Chart**
 
 | Detection                         | Measured distance of front obstacles (distance : cm) |
 | --------------------------------- | ---------------------------------------------------- |
@@ -21,7 +21,7 @@ In this project, we will look to detect the distance between the 4WD smart car a
 
 
 
-### **3.Wiring Diagram**
+**3.Wiring Diagram**
 
 ![](/media/568a66655a14dd34afd8cb1e6ae5951c.png)
 
@@ -37,7 +37,7 @@ Wiring up：
 
 
 
-### **4.Test Code**
+**4.Test Code**
 
 ```c
 //*******************************************************************************
@@ -205,7 +205,7 @@ void IIC_send(unsigned char send_data)
 
 
 
-### **5.Test Result**
+**5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Set the servo to 90°, the smart car will move with the obstacles and the 8X16 LED board will show “smile”.
 

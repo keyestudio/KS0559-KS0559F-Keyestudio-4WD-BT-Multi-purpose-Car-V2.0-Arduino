@@ -1,6 +1,6 @@
 # Project 4 Servo Control
 
-### **1.Description** 
+**1.Description** 
 
 ![](/media/8dd66d175b0611c729f696cc1c8b773c.jpeg)
 
@@ -20,7 +20,7 @@ The corresponding servo angles are shown below:
 
 <img src="/media/ddc74f62dc936c925d28d70a1a9c2214.png" style="zoom: 50%;" />
 
-### **2.Specification**
+**2.Specification**
 
   - Working voltage: DC 4.8V \~ 6V
   - Operating angle range: about 180 ° (at 500 → 2500 μsec)
@@ -33,7 +33,7 @@ The corresponding servo angles are shown below:
 
 
 
-### **3.Components**
+**3.Components**
 
 | 4.0 Development Board *1                                     | 8833 Motor Driver Expansion Board *1                         | Servo*1                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -41,7 +41,7 @@ The corresponding servo angles are shown below:
 | **18650 Battery Holder*1**                                   | **USB Cable*1**                                              | **18650 Battery*2（self-provided）**                         |
 | ![image-20230420161617529](media/image-20230420161617529.png) | ![image-20230420161612310](media/image-20230420161612310.png) | ![img](media/wps218.png)![img](media/wps219.png)             |
 
-### **4.Wiring Diagram**
+**4.Wiring Diagram**
 
 ![](/media/3220a5b142da47a3473390a8a04ce35e.png)
 
@@ -51,7 +51,7 @@ The servo is obliged to connect to the external power due to its high demand for
 
 
 
-### **5.Test Code**
+**5.Test Code**
 
 ```c
 //****************************************************************************
@@ -95,7 +95,7 @@ void procedure(int myangle) {
 
 
 
-### **6.Test Result**
+**6.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and power on the external power. 
 
@@ -103,7 +103,7 @@ After powering on, turn the dip switch to the "ON" end, then servo will swing in
 
 
 
-### **7.Extension Practice**
+**7.Extension Practice**
 
 What’s more, we empower to control the servo via library file. Please refer to the link:
 [<span class="underline">https://www.arduino.cc/en/Reference/Servo</span>](https://www.arduino.cc/en/Reference/Servo).
@@ -146,7 +146,7 @@ After powering on, turn the dip switch to the "ON" end, then servo will swing in
 
 
 
-### **8.Code Explanation**
+**8.Code Explanation**
 
 Arduino comes with **\#include \<Servo.h\>** (servo function and statement）
 

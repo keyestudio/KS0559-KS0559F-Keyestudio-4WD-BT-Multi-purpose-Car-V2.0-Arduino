@@ -36,7 +36,7 @@ Whether you use the Adafruit Neopixel lib, or FastLED, interrupts get disabled o
 
 We are open to suggestions for adding support to new boards, however we highly recommend you contact your supplier first and ask them to provide support from their side.
 
-### Hardware specifications
+Hardware specifications
 
 | Board/CPU                                                                | Send Pin            | Timers            |
 |--------------------------------------------------------------------------|---------------------|-------------------|
@@ -58,7 +58,7 @@ We are open to suggestions for adding support to new boards, however we highly r
 | [Teensy-LC](https://www.pjrc.com/teensy/)                                | **16**              | **TPM1**          |
 
 
-### Experimental patches
+Experimental patches
 The following are strictly community supported patches that have yet to make it into mainstream. If you have issues feel free to ask here. If it works well then let us know!
 
 [Arduino 101](https://github.com/z3t0/Arduino-IRremote/pull/481#issuecomment-311243146)

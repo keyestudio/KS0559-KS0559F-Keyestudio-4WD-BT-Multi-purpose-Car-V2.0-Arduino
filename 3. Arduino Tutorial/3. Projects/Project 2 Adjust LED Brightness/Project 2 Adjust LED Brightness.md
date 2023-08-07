@@ -1,6 +1,6 @@
 # Project 2: Adjust LED Brightness
 
-### **1.Description**
+**1.Description**
 
 In previous lesson, we control LED on and off and make it blink.
 
@@ -18,7 +18,7 @@ If all of the output five hundred are 1, that is 5V; if all of which are 0, that
 
 
 
-### **2.Components**
+**2.Components**
 
 | Keyestudio 4.0 Development Board *1                          | Keyestudio 8833 Motor Driver Expansion Board *1              | Red LED Module*1                                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -26,13 +26,13 @@ If all of the output five hundred are 1, that is 5V; if all of which are 0, that
 | **3P F-F Dupont Wire*1**                                     | **USB Cable*1**                                              |                                                              |
 | ![image-20230420161819687](media/image-20230420161819687.png) | ![image-20230420161825764](media/image-20230420161825764.png) |                                                              |
 
-### **3.Wiring Diagram**
+**3.Wiring Diagram**
 
 Keep the wiring-up unchanged.
 
 ![](/media/d29f513cc3561c7a3c3b05105e8a9ad3.png)
 
-### **4.Test Code**
+**4.Test Code**
 
 ```c
 //*****************************************************************
@@ -64,11 +64,11 @@ void loop () {
 //*****************************************************************
 ```
 
-### **5.Test Result**
+**5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wiring according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see that the LED gradually changes from bright to dark, like human’s breath, rather than turning on and off immediately.
 
-### **6.Code Explanation**
+**6.Code Explanation**
 
 If we need to repeat a certain statement, we could use for statement.
 
@@ -120,7 +120,7 @@ PWM is more used for adjusting the LED’s brightness or the rotation speed of m
 
 It plays a vital role in controlling smart robot cars. I believe that you cannot wait to learn the next project.
 
-### **7.Extension Practice**
+**7.Extension Practice**
 
 Let’s modify the value of delay and remain the pin unchanged, then observe how the LED changes.
 

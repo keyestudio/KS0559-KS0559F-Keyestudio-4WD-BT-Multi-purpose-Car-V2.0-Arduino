@@ -2,7 +2,7 @@
 
 ## 1.Get Started With Arduino 
 
-### **1.1 Install the Arduino IDE**
+**1.1 Install the Arduino IDE**
 
 ![](/media/6cf6312dc7c7db27794b54d58a8bf80c.png)
 
@@ -28,7 +28,7 @@ There are two versions of IDE for Windows system. You can choose between the ins
 
 You just need to click JUST DOWNLOAD.
 
-### **1.2 Install the Driver of the V4.0 Board**
+**1.2 Install the Driver of the V4.0 Board**
 
 Let’s install the driver of keyestudio V4.0 development board. The USB-TTL chip on the V4.0 board adopts the CP2102 serial chip. The driver program of this chip is included in Arduino 1.8 version and above (<https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers>), which is convenient. Plugging on USB port of board, the computer can recognize the hardware and automatically install the driver of CP2102.
 
@@ -58,7 +58,7 @@ When opening the device manager, we will find the yellow exclamation mark disapp
 
 ![](/media/af2324b73308f1796b8b7c9dc14878e7.png)
 
-### **1.3 Install Other Visions of Driver**
+**1.3 Install Other Visions of Driver**
 
 If your board is an Arduino UNO development board, follow these steps to install the driver: 
 
@@ -86,7 +86,7 @@ At this time, open the computer device manager, which will display Arduino seria
 
 ![](/media/09e91fee277b7a69b8ad57ffa3294d48.png)
 
-### **1.4 Arduino IDE** **Setting**
+**1.4 Arduino IDE** **Setting**
 
 Click![](/media/675ae7298ce0973df720b2fbbb514caa.png)icon，and open Arduino IDE.
 
@@ -116,7 +116,7 @@ E- Used to save the sketch.
 
 F- Used to send the serial data received from board to the serial monitor.
 
-### **1.5 Start First Program**
+**1.5 Start First Program**
 
 Open the file to select **Example**, and click **BASIC**\>**BLINK**, as shown below:
 
@@ -142,11 +142,11 @@ After the program is uploaded successfully, the onboard LED will be on for 1s an
 
 ![](/media/a6fc83596009c574d8e29ef383748549.png)
 
-### **2.1 Download Arduino IDE**
+**2.1 Download Arduino IDE**
 
 ![](/media/5d58d3cf67b308423ddb9f286f6cb697.png)
 
-### **2.2 How to Install the CP2102 Driver**
+**2.2 How to Install the CP2102 Driver**
 
 (Note: If you haven’t installed the driver installed, please do the following.) 
 
@@ -236,7 +236,7 @@ Then you can see the following file
 
 ## 3.How to Add a Library?
 
-### **3.1 What are Libraries ?**
+**3.1 What are Libraries ?**
 
 [Libraries ](https://www.arduino.cc/en/Reference/Libraries)are a collection of code that make it easy for you to connect a sensor,display, module, etc.
 
@@ -244,7 +244,7 @@ For example, the built-in LiquidCrystal library helps talk to LCD displays. Ther
 
 The built-in libraries and some of these additional libraries are listed in the reference.
 
-### **3.2 How to Install a Library ?**
+**3.2 How to Install a Library ?**
 
 Here we will introduce the most simple way to add libraries .
 

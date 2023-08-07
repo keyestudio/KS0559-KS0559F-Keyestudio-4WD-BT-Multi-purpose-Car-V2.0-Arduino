@@ -1,6 +1,6 @@
 # Project 3: Line Tracking Sensor
 
-### **1.Description** 
+**1.Description** 
 
 ![](media/d37c24e508361ab86b019135ab6950a9.png)
 
@@ -12,7 +12,7 @@ Keyestudio 3-channel line tracking module has integrated 3 sets of TCRT5000 infr
 
 By rotating the adjustable potentiometer on the sensor, it can adjust the detection sensitivity of the sensor.
 
-### **2.Specification**
+**2.Specification**
 
 ![](/media/0b3433af5abda1ab4137e2c078e4b8e7.jpeg)
 
@@ -28,7 +28,7 @@ Note: Before testing, rotate the potentiometer on the sensor to adjust the detec
 
 
 
-### **3.Components**
+**3.Components**
 
 | 4.0 Development Board *1                                     | 8833 Motor Driver Expansion Board *1                         | Red LED Module*1                                             | Line Tracking Sensor*1                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -38,7 +38,7 @@ Note: Before testing, rotate the potentiometer on the sensor to adjust the detec
 
 
 
-### **4.Wiring Diagram**
+**4.Wiring Diagram**
 
 ![](/media/6426516400b21d7fbe1d9a1a58a1808b.png)
 
@@ -46,7 +46,7 @@ G, V, S1, S2 and S3 of the line tracking sensor are connected to G（GND), V（V
 
 
 
-### **5.Test Code**
+**5.Test Code**
 
 ```c
 //****************************************************************************
@@ -85,7 +85,7 @@ void loop()
 //****************************************************************************
 ```
 
-### **6.Test Result**
+**6.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board.
 
@@ -95,7 +95,7 @@ After powering on, open the serial monitor and you will view status of three lin
 
 ![](/media/cbf84d96326071244835b2e691770a97.png)
 
-#### **7.Code Explanation**
+**7.Code Explanation**
 
 **Serial.begin(9600)**- Initialize serial port, set baud rate to 9600
 
@@ -105,7 +105,7 @@ After powering on, open the serial monitor and you will view status of three lin
 
 
 
-### **8.Extension Practice**
+**8.Extension Practice**
 
 After knowing its working principle, you can connect an LED to D9 so as to control LED by it.
 
