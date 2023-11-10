@@ -1,32 +1,10 @@
-**About keyestudio**
 
-Keyestudio is the best-selling brand of KEYES Corporation. Our products include Arduino development boards, expansion boards, sensors and modules, Raspberry Pi, micro:bit expansion boards as well as smart cars, which are committed to learning about Arduino, Raspberry Pi as well as micro:bit for customers of any level. 
-
-Notably, all of our products are in line with international quality standards and are greatly appreciated in a broad menu of different markets across the world. 
-
-Welcome to check out more contents from our official website: [http://www.keyestudio.com](http://www.keyestudio.com)
-
-**References and After-sales Service**
-
-1. <span style="color: rgb(255, 76, 65);">**Download Profile：**</span>[https://fs.keyestudio.com/KS0559](https://fs.keyestudio.com/KS0559)
-
-2. If you find any parts missing or encounter any troubles, please feel free to contact us: [service@keyestudio.com](http://m.138.gz.cn/webadmin/~CAmsnCrrNXhTAySKCerrIfWjjZuuWVfI/~/usr/mod_edituser.jsp?;uid=service@keyestudio.com;;clearCache=).
-    
-3. We will update projects and products continuously according to your sincere advice.
-
-**Warning**
-
-1. This product contains tiny parts(screws, copper pillars). Therefore, keep it out of reach of children under 8 please.
-    
-2. This product consists of conductive parts (control board and electronic module). Please operate according to the requirements of tutorial. Otherwise, improper operation may cause parts to overheat and be damaged. Do not touch or immediately disconnect the circuit power.
-
-**Copyright**
-
-The keyestudio trademark and logo are the copyright of KEYES DIY ROBOT co.,LTD. All products under keyestudio brand can’t be copied, sold and resold by anyone or any companies without authorization . If you’re interested in our products, please contact with our sales representatives: [fennie@keyestudio.com](http://m.138.gz.cn/webadmin/~CAmsnCrrNXhTAySKCerrIfWjjZuuWVfI/~/usr/mod_edituser.jsp?;uid=fennie@keyestudio.com;;clearCache=).
-
-# 4WD BT Multi-purpose Car V2.0 Kit
+# Getting started with 4WD robot
 
 ![image-20230425133641976](media/image-20230425133641976.png)
+
+**Download Profile：**</span>[https://fs.keyestudio.com/KS0559](https://fs.keyestudio.com/KS0559)
+
 
 ## 1. Introduction
 

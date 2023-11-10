@@ -1,4 +1,4 @@
-# 8833 Motor shield
+# Motor shield
 
 ## 1. Description
 
