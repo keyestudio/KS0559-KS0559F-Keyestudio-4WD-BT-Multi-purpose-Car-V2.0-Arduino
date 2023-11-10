@@ -318,19 +318,3 @@ This product boasts 17 learning projects, from simple to complex, whic
 </tr>
 </tbody>
 </table>
-
-
-## 5. Tutorials
-
-* [1.Mainboard_and_Expansion_Board](1.Mainboard_and_Expansion_Board/Mainboard_and_Expansion_Board.md)
-
-* [2.Arduino_Tutorial](2.Arduino_Tutorial/Arduino_Tutorial.md)
-
-* [3.Scratch_Tutorial](3.Scratch_Tutorial/Scratch_Tutorial.md)
-
-* [4.Common_Problems](4.Common_Problems/Common_Problems.md)
-
-## 6. Resources
-
-* [Relate_Materials](./Relate_Materials.zip)
-
