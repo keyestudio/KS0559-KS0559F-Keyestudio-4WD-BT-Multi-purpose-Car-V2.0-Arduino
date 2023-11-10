@@ -1,4 +1,4 @@
-# V4.0 Development Board
+# Development Board
 
 You need to know that keyestudio V4.0 development board is the core of this 4WD BT Multi-purpose Car V2.0.
 
