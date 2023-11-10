@@ -1,4 +1,4 @@
-# Keyestudio 8833 Motor Driver Expansion Board
+# 8833 Motor shield
 
 ## 1. Description
 

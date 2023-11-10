@@ -1,4 +1,6 @@
-# Install Kidsblock Software(Windows)
+# Kidsblock Tutorial
+
+## Install Kidsblock Software(Windows)
 
 <span style="color: rgb(255, 76, 65);">Note:</span> We take the Windows system as an example.
 <br>
@@ -44,7 +46,7 @@ Download link: [www.kidsbits.net/Down/KidsBlock Desktop 1.1.3 Setup.exe](http://
 
 
 
-# Install Kidsblock Software(MacOS)
+## Install Kidsblock Software(MacOS)
 
 1. Download link：[www.kidsbits.net/Down/KidsBlock Desktop 1.1.3.dmg](https://www.kidsbits.net/Down/KidsBlock%20Desktop%201.1.3.dmg)，as shown below:
 
@@ -82,7 +84,7 @@ Download link: [www.kidsbits.net/Down/KidsBlock Desktop 1.1.3 Setup.exe](http://
 
 ![Img](./media/abcdef.png)
 
-# How to use KidsBlock
+## How to use KidsBlock
 
 We demonstrate how to use KidsBlock on Windows system
 
@@ -228,25 +230,11 @@ The way of deleting other sensors or modules is as same as the passive buzzer.
 
 
 
+## Projects
 
+### Project 1 LED Blink
 
-
-
-
-
-
-
-
-
-
-
-
-
-**# Projects**
-
-## Project 1 LED Blink
-
-### 1. Description
+#### 1. Description
 
 ![](/media/7541db758dbca2c2a100b2b0227f9af4.jpeg)
 
@@ -254,7 +242,7 @@ For starters and enthusiasts, LED Blink is a fundamental program. LED, the abbre
 
 The LED can flash in diverse color by altering the delay time in the test code. When in control, power on GND and VCC, the LED will be on if S end is in high level, otherwise it will go off.
 
-### 2. Specification
+#### 2. Specification
 
 - Control interface: digital port
 
@@ -266,7 +254,7 @@ The LED can flash in diverse color by altering the delay time in the test code. 
 
 ![](/media/85b2076096371fd9ca03671602b1e5ce.png)
 
-### 3. Components
+#### 3. Components
 
 <table border="1">
 <tbody>
@@ -293,7 +281,7 @@ The LED can flash in diverse color by altering the delay time in the test code. 
 </tbody>
 </table>
 
-### 4. Wiring Diagram
+#### 4. Wiring Diagram
 
 ![](/media/d29f513cc3561c7a3c3b05105e8a9ad3.png)
 
@@ -301,7 +289,7 @@ As can be seen from the above figure, the Keyestudio 8833 motor driver expansion
 
 The pin G, V and S of the LED module are connected to G, 5V and D9 of the expansion board respectively.
 
-### 5. Test Code
+#### 5. Test Code
 
 You can drag blocks to edit. Blocks listed below are for your reference.
 
@@ -315,11 +303,11 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/ba4723bab640078eccbe1811da138bc3.png)
 
-### 6. Test Result
+#### 6. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see the LED connected to the D9 will be on and off. 
 
-### 7. Extension Practice
+#### 7. Extension Practice
 
 Next, we look to change the frequency of LED flicker by changing the wait time.
 
@@ -328,9 +316,9 @@ Next, we look to change the frequency of LED flicker by changing the wait time.
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. The test result shows that the LED flashes faster.
 
 
-## Project 2: Adjust LED Brightness
+### Project 2: Adjust LED Brightness
 
-### 1. Description
+#### 1. Description
 
 In previous lesson, we control LED on and off and make it blink.
 
@@ -358,7 +346,7 @@ the lowest, that is, off state.  The longer the high level lasts, the brighter
 
 PWM is more used to adjust the brightness of LED lights or the rotation speed of the motors, and the wheels speed driven by the motors can be easily controlled. When playing with some Arduino robots, the benefits of PWM can be better reflected. 
 
-### 2. Components
+#### 2. Components
 
 <table border="1">
 <tbody>
@@ -385,13 +373,13 @@ PWM is more used to adjust the brightness of LED lights or the rotation speed of
 </tbody>
 </table>
 
-### 3. Wiring Diagram 
+#### 3. Wiring Diagram 
 
 Keep the wiring-up unchanged.
 
 ![](/media/d29f513cc3561c7a3c3b05105e8a9ad3.png)
 
-### 4. Test Code
+#### 4. Test Code
 
 You can drag blocks to edit. Blocks listed below are for your reference.
 
@@ -411,11 +399,11 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/4d4b4fdfe6027bc2d7c84624ec7df774.png)
 
-### 5. Test Result
+#### 5. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see that the LED gradually changes from bright to dark, like human’s breath, rather than turning on and off immediately.
 
-### 6. Extension Practice
+#### 6. Extension Practice
 
 Keep pins of the LED unchanged, then change code(values behind wait)
 
@@ -424,11 +412,11 @@ Keep pins of the LED unchanged, then change code(values behind wait)
 Upload the code to the development board, then the LED will blink more slowly.
 
 
-## Project 3: Line Tracking Sensor
+### Project 3: Line Tracking Sensor
 
 ![](/media/d37c24e508361ab86b019135ab6950a9.png)
 
-### 1. Description 
+#### 1. Description 
 
 The tracking sensor is actually an infrared sensor. The component used here is the TCRT5000 infrared tube. Its working principle is to use different reflectivity of infrared light to colors, then convert the strength of the reflected signal into a current signal.
 
@@ -438,7 +426,7 @@ Keyestudio 3-channel line tracking module has integrated 3 sets of TCRT5000 infr
 
 By rotating the adjustable potentiometer on the sensor, it can adjust the detection sensitivity of the sensor.
 
-### 2. Specification
+#### 2. Specification
 
 - Operating Voltage: 3.3-5V (DC)
 
@@ -452,7 +440,7 @@ By rotating the adjustable potentiometer on the sensor, it can adjust the detect
 
 <span style="color: rgb(255, 76, 65);">Note:</span> Before testing, rotate the potentiometer on the sensor to adjust the detection sensitivity. The sensitivity is best when adjusting the LED to a threshold between ON and OFF. 
 
-### 3. Components
+#### 3. Components
 
 <table border="1">
 <tbody>
@@ -483,13 +471,13 @@ By rotating the adjustable potentiometer on the sensor, it can adjust the detect
 </tbody>
 </table>
 
-### 4. Wiring Diagram
+#### 4. Wiring Diagram
 
 ![](/media/6426516400b21d7fbe1d9a1a58a1808b.png)
 
 G, V, S1, S2 and S3 of the line tracking sensor are connected to G（GND), V（VCC), D11, D7 and D8 of the sensor expansion board.
 
-### 5. Test Code
+#### 5. Test Code
 
 You can drag blocks to edit. Blocks listed below are for your reference.
 
@@ -509,7 +497,7 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/43325e91f8d86baeec6a5dfe9879325e.png)
 
-### 6. Test Result
+#### 6. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board.
 
@@ -519,7 +507,7 @@ After powering on, click![](/media/9011f20d83897d7a5936793c4ae142fc.png)to set t
 
 ![](/media/5630032421adf9446d51b770f0e7f8af.png)
 
-### 7. Extension Practice
+#### 7. Extension Practice
 
 After knowing its working principle, you can connect an LED to D9 so as to control LED by it.
 
@@ -552,9 +540,9 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 After powering on, make a paper close to the sensor, then we can find the LED light up when covering the line tracking sensor.
 
 
-## Project 4 Servo Control
+### Project 4 Servo Control
 
-### 1. Description
+#### 1. Description
 
 ![](/media/8dd66d175b0611c729f696cc1c8b773c.jpeg)
 
@@ -572,7 +560,7 @@ The corresponding servo angles are shown below:
 
 ![](/media/ddc74f62dc936c925d28d70a1a9c2214.png)
 
-### 2. Specification
+#### 2. Specification
 
 - Working voltage: DC 4.8V \~ 6V
 
@@ -590,7 +578,7 @@ The corresponding servo angles are shown below:
 
 - Standby current: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
 
-### 3. Components
+#### 3. Components
 
 <table border="1">
 <tbody>
@@ -617,7 +605,7 @@ The corresponding servo angles are shown below:
 </tbody>
 </table>
 
-### 4. Wiring Diagram
+#### 4. Wiring Diagram
 
 ![](/media/3220a5b142da47a3473390a8a04ce35e.png)
 
@@ -625,7 +613,7 @@ Wiring note: The servo is connected to G（GND）、V（VCC）and A3, the brown 
 
 The servo is obliged to connect to the external power due to its high demand for driving servo current. Generally, the current of development board is not big enough. If without connecting the external power, the development board could be burnt.
 
-### 5. Test Code
+#### 5. Test Code
 
 Before writing the code, it is necessary to import the servo library file. The specific steps are as follows: 
 
@@ -654,13 +642,13 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/cd9c5bf92fa92f6276eadfcf888011c6.png)
 
-### 6. Test Result
+#### 6. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and power on the external power. After powering on, turn the dip switch to the "ON" end, then servo will swing in the range of 0° to 180°.
 
-## Project 5 Ultrasonic Sensor
+### Project 5 Ultrasonic Sensor
 
-### 1. Description
+#### 1. Description
 
 ![](/media/b0906d68835b2659491e53a85567569b.png)
 
@@ -670,7 +658,7 @@ The HC-SR04 ultrasonic sensor uses sonar to determine distance to an object like
 
 The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronics projects for creating obstacle detection and distance measuring application as well as various other applications. Here we have brought the simple method to measure the distance with arduino and an ultrasonic sensor and how to use the ultrasonic sensor with Arduino.
 
-### 2. Specification
+#### 2. Specification
 
 - Working Voltage :+5V DC
 
@@ -690,7 +678,7 @@ The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronic
 
 ![](/media/9779999818cbbe4e1adf5b57081be431.png)
 
-### 3. Components
+#### 3. Components
 
 <table border="1">
 <tbody>
@@ -721,7 +709,7 @@ The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronic
 </tbody>
 </table>
 
-### 4. Working Principle
+#### 4. Working Principle
 
 As the above picture shown, it is like two eyes. One is transmitting end, the other is receiving end.
 
@@ -747,13 +735,13 @@ The t is the time that emitting signal meets obstacle and returns. And the propa
 
 ![](/media/a25028af84d6c7c94382c2a907101241.jpeg)
 
-### 5. Wiring Diagram
+#### 5. Wiring Diagram
 
 ![](/media/d8fad040d3ab5abe247d6a8d1e08a13d.png)
 
 VCC, Trig, Echo and Gnd of the ultrasonic sensor are connected to 5V(V), D12, D13 and Gnd(G)
 
-### 6. Test Code
+#### 6. Test Code
 
 Before writing the code, it is necessary to import the library file of the ultrasonic sensor. The specific steps are as follows: 
 
@@ -787,7 +775,7 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/ecbb44c50762ce75ab4143771a0a9129.png)
 
-### 7. Test Result
+#### 7. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, click ![](/media/9011f20d83897d7a5936793c4ae142fc.png)to set baud rate to 9600.
 
@@ -795,7 +783,7 @@ The detected distance will be displayed, and the unit is cm and inch. Hinder the
 
 ![](/media/4f77acbf5b226e20e3cdd70c0f90602e.png)
 
-### 8. Extension Practice
+#### 8. Extension Practice
 
 We have just measured the distance displayed by the ultrasonic. How about controlling the LED with the measured distance? Let's try it and connect an LED light module to the D9 pin.
 
@@ -825,11 +813,11 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, block the ultrasonic sensor by hand(the distance is between 2-10cm), then check if the LED is on.
 
-## Project 6 IR Reception
+### Project 6 IR Reception
 
 ![](/media/f247e1010aa68c1e58e16b332680698a.png)
 
-### 1. Description 
+#### 1. Description 
 
 There is no doubt that infrared remote control is ubiquitous in daily life. It is used to control various household appliances, such as TVs, stereos, video recorders and satellite signal receivers. Infrared remote control is composed of infrared transmitting and infrared receiving systems, that is, an infrared remote control and infrared receiving module and a single-chip microcomputer capable of decoding.  
 
@@ -845,7 +833,7 @@ Infrared receiver we use is an infrared receiver module. Mainly composed of an i
 
 Additionally, it is suitable for infrared remote control and infrared data transmission. The infrared receiving module made by the receiver has only three pins, signal line, VCC and GND. It is very convenient to communicate with Arduino and other microcontrollers.
 
-### 2. Specification
+#### 2. Specification
 
 - Operating Voltage: 3.3-5V（DC)
 
@@ -863,7 +851,7 @@ The picture shows the real product and circuit diagram of the infrared receiver.
 
 ![](/media/5ad0f889b39646ecb13664511479efc8.png)
 
-### 3. Components
+#### 3. Components
 
 <table border="1">
 <tbody>
@@ -892,7 +880,7 @@ The picture shows the real product and circuit diagram of the infrared receiver.
 
 Since the 8833 board integrates with the IR receiver, it doesn’t need wiring up. Pins of IR receiver module are G(GND）, V（VCC）and D3.
 
-### 4. Test Code
+#### 4. Test Code
 
 Before writing the code, it is necessary to import the library file of the IR receiver sensor. The specific steps are as follows: 
 
@@ -920,7 +908,7 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/90978855cddd94c161f9ed02f85b0674.png)
 
-### 5. Test Result
+#### 5. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, click ![](/media/9011f20d83897d7a5936793c4ae142fc.png)to set baud rate to 9600.
 
@@ -932,7 +920,7 @@ The keys value of remote control are shown below.
 
 ![](/media/ebcf0cb2055f7784505f76ceeaef9f47.jpeg)
 
-### 6. Extension Practice
+#### 6. Extension Practice
 
 We have decoded the key value of the IR remote control. How about controlling LED by the measured value? We could design an experiment.
 
@@ -964,9 +952,9 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, press the "**OK**" key on remote control can make the LED on and off.
 
-## Project 7 Bluetooth Remote Control
+### Project 7 Bluetooth Remote Control
 
-### 1. Description
+#### 1. Description
 
 ![](/media/aa5546baeb5afe1adfe9fff51f497fe8.png)
 
@@ -974,7 +962,7 @@ There is a DX-BT24 5.1 Bluetooth module in this kit. This bluetooth module comes
 
 Furthermore, it supports UART interface and bluetooth serial port transparent transmission, which also contains the advantages of low cost, small size, low power consumption and high sensitivity for sending and receiving. Notably, it solely needs a few peripheral components to realize its powerful functions.  
 
-### 2. Specification
+#### 2. Specification
 
 - Bluetooth protocol: Bluetooth Specification V5.1 BLE
 
@@ -992,7 +980,7 @@ Furthermore, it supports UART interface and bluetooth serial port transparent tr
 
 - Operating temperature: –10℃ to +65℃
     
-### 3. Application
+#### 3. Application
 
 The DX-BT24 module also supports the BT5.1 BLE protocol, which can be directly connected to iOS devices with BLE Bluetooth function, and supports resident running of background programs. It is mainly used in the field of short-distance data wireless transmission. It enables to avoid cumbersome cable connections and can directly replace serial cables.
 
@@ -1057,7 +1045,7 @@ Connect the BT module to the development board.
 </tbody>
 </table>
 
-### 4. Components
+#### 4. Components
 
 <table border="1">
 <tbody>
@@ -1084,7 +1072,7 @@ Connect the BT module to the development board.
 </tbody>
 </table>
 
-### 5. Wiring Diagram
+#### 5. Wiring Diagram
 
 ![](/media/63b96e5b26ee18337fb6e0dced5bbbe3.png)
 
@@ -1094,7 +1082,7 @@ STATE and BRK of the BT module don’t need connection.
 
 <span style="color: rgb(255, 76, 65);">Note:</span> the direction of the BT module when inserting it onto the 8833 board. And don’t insert it before uploading the code.
 
-### 6. Test Code
+#### 6. Test Code
 
 You can drag blocks to edit. Blocks listed below are for your reference.
 
@@ -1116,11 +1104,11 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/4766ada3bf48bb35522f292d9352bb78.png)
 
-### 7. Test Result
+#### 7. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, insert the BT module and the LED will flash, then we need to download the BT app.
 
-### 8. Download Bluetooth APP
+#### 8. Download Bluetooth APP
 
 **Apple system**
 
@@ -1251,7 +1239,7 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 </tbody>
 </table>
 
-### 9. Extension Practice
+#### 9. Extension Practice
 
 Here we look to use the command sent by the mobile phone to turn on or off an LED light. Looking at the wiring diagram, an LED is connected to the D9 pin.
 
@@ -1279,11 +1267,11 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, click<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ae.png)</td> and <td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ag.png)</td> to control the LED turn on and turn off.
 
-## Project 8 Motor Driving and Speed Control
+### Project 8 Motor Driving and Speed Control
 
 ![](/media/a68b920cd30c3b17941fa8b28b643c8f.png)
 
-### 1. Description
+#### 1. Description
 
 There are many ways to drive motors. Our car uses the most commonly used DRV8833 motor driver chip, which provides a two-channel bridge electric drive solution for toys, printers and other integrated motor applications.
 
@@ -1295,7 +1283,7 @@ The expansion board can be connected to four DC motors. When the jumper cap is c
 
 For example, when the 2 jumper caps in front of B1 of the M1 motor change from transverse connection to longitudinal connection, the rotation direction of M1 motor will be opposite to the original rotation direction. 
 
-### 2. Specification
+#### 2. Specification
 
 - Input voltage for logic：DC 5V
 
@@ -1311,7 +1299,7 @@ For example, when the 2 jumper caps in front of B1 of the M1 motor change from t
 
 - Working temperature：-25＋130℃
 
-### 3. Keyestudio 8833 motor driver expansion board
+#### 3. Keyestudio 8833 motor driver expansion board
 
 ![](/media/62ee9578858ecc8e27b824af65fb22bb.png)
 
@@ -1379,7 +1367,7 @@ PWM drives the robot car. The PWM value is in the range of 0-255. When we set th
 </tbody>
 </table>
 
-### 4. Components
+#### 4. Components
 
 <table border="1">
 <tbody>
@@ -1406,13 +1394,13 @@ PWM drives the robot car. The PWM value is in the range of 0-255. When we set th
 </tbody>
 </table>
 
-### 5. Wiring Diagram
+#### 5. Wiring Diagram
 
 ![](/media/7eee17238d4f40fcba2d6feb26893e7f.png)
 
 Connect the power supply to the BAT port.
 
-### 6. Test Code
+#### 6. Test Code
 
 You can drag blocks to edit. Blocks listed below are for your reference
 
@@ -1428,11 +1416,11 @@ You can drag blocks to edit. Blocks listed below are for your reference
 
 ![](/media/d8d3d0524bf35d58106b4c32c8a6e167.png)
 
-### 7. Test Result
+#### 7. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then power on the external power and turn the DIP switch to ON, the car will go forward for 2s, back for 2s, turn left for 2s and right for 2s and stop for 2s.
 
-### 8. Code Explanation
+#### 8. Code Explanation
 
 Adjust the speed that PWM controls the motor, hook up in the same way.
 
@@ -1446,9 +1434,9 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 
 <span style="color: rgb(255, 76, 65);">Note: </span>Low battery will lead to slow motor speed.
 
-## Project 9 Facial Expression LED Board
+### Project 9 Facial Expression LED Board
 
-### 1. Description 
+#### 1. Description 
 
 ![](/media/7d4e720c582dfaaeb730f284fd93ca6b.png)
 
@@ -1456,7 +1444,7 @@ How fun it is if a expression board is added to the robot. And the Keyestudio 8\
 
 The 8\*16 LED board comes with 128 LEDs. The data of the microprocessor(Arduino) communicates with the AiP1640 through a two-wire bus interface. Therefore, it can control the on and off of 128 LEDs on the module, so as to make the dot matrix on the module to display the pattern you need. A HX-2.54 4Pin cable is provided for your convenience of wiring.
 
-### 2. Specification
+#### 2. Specification
 
 - Working voltage: DC 3.3-5V
 
@@ -1470,15 +1458,15 @@ The 8\*16 LED board comes with 128 LEDs. The data of the microprocessor(Arduino)
 
 - Communication mode: I2C
     
-### 3. Circuit Diagram
+#### 3. Circuit Diagram
 
 ![](/media/edf6c77d05904eebbaa89d557e9e9c1a.png)
 
-### 4. Working Principle
+#### 4. Working Principle
 
 How to control each LED of the 8\*16 dot matrix? It is known that each byte has 8 bits and each bit is 0 or 1. when it is 0, LED is off while when it is 1 LED is on. One byte can control one column of the LED,and naturally 16 bytes can control 16 columns of LEDs, that’s the 8\*16 dot matrix.
 
-### 5. Pins description and communication protocol
+#### 5. Pins description and communication protocol
 
 The data of the microprocessor (Arduino) communicates with the AiP1640 through a two-wire bus cable.
 
@@ -1529,7 +1517,7 @@ As shown in the figure below, press the left mouse button to select, right click
 
 ![](/media/586e88bf13c61b0918046437ed7f6796.png)
 
-### 6. Components
+#### 6. Components
 
 <table border="1">
 <tbody>
@@ -1556,7 +1544,7 @@ As shown in the figure below, press the left mouse button to select, right click
 </tbody>
 </table>
 
-### 7. Wiring Diagram
+#### 7. Wiring Diagram
 
 ![](/media/cec50fec4a335b6922e4c6694a133bc1.png)
 
@@ -1564,7 +1552,7 @@ The GND, VCC, SDA, and SCL of the 8x16 LED light board are respectively connecte
 
 (<span style="color: rgb(255, 76, 65);">Note:</span> Though it is connected with the IIC pin of Arduino, this module is not for IIC communication. And the IO port here is to simulate I2C communication and can be connected with any two pins ).
 
-### 8. Test Code
+#### 8. Test Code
 
 Before writing the code, it is necessary to import the library file of the 8x16 LED board. The specific steps are as follows: 
 
@@ -1588,13 +1576,13 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/0390b1394e45bddbff7a4a3bb31b9da5.png)
 
-### 9. Test Result
+#### 9. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then turn the DIP switch to ON, a smile-shaped pattern will be displayed on the LED board.
 
 ![](/media/95bb011957896b12285fc6763137bb9a.png)
 
-### 10. Code Explanation
+#### 10. Code Explanation
 
 We use the modulus tool we just learned, [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#), to make the dot matrix display the start pattern, going forward, and stop and then clear the pattern. The time interval is 2000 ms.
 
@@ -1654,15 +1642,15 @@ After uploading test code, the facial expression board shows these patterns orde
 </table>
 
 
-## Project 10 Restricting Smart Car
+### Project 10 Restricting Smart Car
 
 ![](/media/644a1976bf17a6b64e0aed1a7240ff1e.jpeg)
 
-### 1. Description
+#### 1. Description
 
 In this project, we look to combine the knowledge of a line tracking sensor and motor driver modules to make a restricting smart car.  In the experiment, we aim to use the line tracking sensor to detect whether there is a black line around the smart car, and then control the rotation of the two motors according to the detection results in a way that lock the smart car in a circle drawn in black line.
 
-### 2. Flow Chart
+#### 2. Flow Chart
 
 ![img](media/wps1-16943964312281.png)
 
@@ -1671,7 +1659,7 @@ The specific logic of the restricting 4WD smart car is shown in the table.
 ![Img](./media/img-20231031141415.png)
 
 
-### 3. Wiring Diagram
+#### 3. Wiring Diagram
 
 ![](/media/88422b5f1464ad447e28ccbb8c39a8d4.png)
 
@@ -1679,7 +1667,7 @@ G, V, S1, S2 and S3 of the line tracking sensor are connected to G（GND), V（V
 
 The power is connected to the BAT port
 
-### 4. Test Code
+#### 4. Test Code
 
 You can drag blocks to edit. Blocks listed below are for your reference.
 
@@ -1701,29 +1689,29 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/a42ec602a6d61f30b5dd0970309e18c4.png)
 
-### 5. Test Result
+#### 5. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Put the smart car in the black circle, then it will move solely in the circle.
 
 
-## Project 11 Line Tracking Smart Car
+### Project 11 Line Tracking Smart Car
 
 ![](/media/eff7a15e697e8b78bde391f806ea024d.png)
 
-### 1. Description
+#### 1. Description
 
 Based on the working principle of the line tracking sensor, we empower to make a line tracking smart car.
 
 In this project, we detect whether there is a black line at the bottom of the smart car through a line tracking sensor, and then control the rotation of the two groups of motors according to the detection results in a way that controls the smart car to walk along the black line. 
 
-### 2. Flow Chart
+#### 2. Flow Chart
 
 ![img](media/wps1-16943964659332.png)
 
 ![Img](./media/img-20231031141722.png)
 
 
-### 3. Wiring Diagram
+#### 3. Wiring Diagram
 
 ![](/media/88422b5f1464ad447e28ccbb8c39a8d4.png)
 
@@ -1731,7 +1719,7 @@ G, V, S1, S2 and S3 of the line tracking sensor are connected to G（GND), V（V
 
 The power is connected to the BAT port
 
-### 4. Test Code
+#### 4. Test Code
 
 You can drag blocks to edit. Blocks listed below are for your reference
 
@@ -1753,19 +1741,19 @@ You can drag blocks to edit. Blocks listed below are for your reference
 
 ![](/media/abd0d4efc97cc05c7a1eb843ffb1ed92.png)
 
-### 5. Test Resul
+#### 5. Test Resul
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Then the smart car will walk along the lines.
 
-## Project 12 Ultrasonic Following Smart Car
+### Project 12 Ultrasonic Following Smart Car
 
 ![](/media/a3beaada39eb1471b7df6d9788e2bea3.png)
 
-### 1. Description
+#### 1. Description
 
 In this project, we will look to detect the distance between the 4WD smart car and the obstacles ahead through an ultrasonic sensor to drive two motors in a way that make the car move and make the 8\*8 LED board show a smile facial pattern.
 
-### 2. Flow Chart
+#### 2. Flow Chart
 
 ![img](media/wps1-16943964916713.png)
 
@@ -1824,7 +1812,7 @@ In this project, we will look to detect the distance between the 4WD smart car a
 </tbody>
 </table>
 
-### 3. Wiring Diagram
+#### 3. Wiring Diagram
 
 ![](/media/568a66655a14dd34afd8cb1e6ae5951c.png)
 
@@ -1838,7 +1826,7 @@ In this project, we will look to detect the distance between the 4WD smart car a
 
 4). The power is connected to the BAT port
 
-### 4. Test Code
+#### 4. Test Code
 
 Before writing the code, it is necessary to import the library files of the ultrasonic sensor, 8x16 LED board and the servo. The specific steps are as follows: 
 
@@ -1884,19 +1872,19 @@ You can drag blocks to edit. Blocks listed below are for your reference
 
 ![](/media/47a1afdd6798deef89bfa827147faf01.png)
 
-### 5. Test Result
+#### 5. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Set the servo to 90°，the smart car will move with the obstacles and the 8X16 LED board will show“smile”.
 
-## Project 13 Ultrasonic Obstacle Avoidance Smart Car
+### Project 13 Ultrasonic Obstacle Avoidance Smart Car
 
 ![](/media/fd4044796307f709987b9d2e215e0911.png)
 
-### 1. Description
+#### 1. Description
 
 In this project, we aim to make an ultrasonic obstacle avoidance smart car. We will use the ultrasonic to detect the distance from the obstacle, which can be used to control the servo to rotate so as to make the car move. Meanwhile, the 8X16 LED board will display the corresponding status pattern.
 
-### 2. Flow Chart
+#### 2. Flow Chart
 
 ![img](media/wps1-16943965182034.png)
 
@@ -1907,7 +1895,7 @@ In this project, we aim to make an ultrasonic obstacle avoidance smart car. We w
 ![Img](./media/img-20231031142246.png)
 
 
-### 3. Wiring Diagram
+#### 3. Wiring Diagram
 
 ![](/media/568a66655a14dd34afd8cb1e6ae5951c.png)
 
@@ -1919,7 +1907,7 @@ In this project, we aim to make an ultrasonic obstacle avoidance smart car. We w
 
 4). The power is connected to the BAT port
 
-### 4. Test Code
+#### 4. Test Code
 
 Before writing the code, it is necessary to import the library files of the ultrasonic sensor , 8x16 LED board and the servo. The specific steps are as follows: 
 
@@ -1965,21 +1953,21 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](/media/f59de27be3bf0146487d9f7b0ad32e8c.png)
 
-### 5. Test Result
+#### 5. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
 
 The smart car moves forward and automatically avoids obstacles. When there is no road ahead, the servo will drive the ultrasonic sensor to scan the left, middle and right distances, and the car will turn to the open side. Meanwhile, the 8X16 LED board will display the corresponding status pattern.
 
-## Project 14 IR Remote Control Smart Car
+### Project 14 IR Remote Control Smart Car
 
 ![](/media/ff2fec813f8765e1bcd593b37b9c0a4f.jpeg)
 
-### 1. Description
+#### 1. Description
 
 In this project, we will make an IR remote control smart car and press the button on the IR remote control to drive the car to move.
 
-### 2. Flow Chart
+#### 2. Flow Chart
 
 ![img](media/wps1-16943965431305.png)
 
@@ -2052,7 +2040,7 @@ In this project, we will make an IR remote control smart car and press the butto
 </table>
 
 
-### 3. Wiring Diagram
+#### 3. Wiring Diagram
 
 ![](/media/9d8b58dff14fe22b5c87514db944530c.png)
 
@@ -2064,7 +2052,7 @@ In this project, we will make an IR remote control smart car and press the butto
     
 4). The power is connected to the BAT port
     
-### 4. Test Code
+#### 4. Test Code
     
 Before writing the code, it is necessary to import the library files of the ultrasonic sensor, 8x16 LED board and the servo. The specific steps are as follows: 
     
@@ -2108,20 +2096,20 @@ You can drag blocks to edit. Blocks listed below are for your reference
 
 ![](/media/14247d440f27c4a4d5e682e7aadf36e9.png)
 
-### 5. Test Result
+#### 5. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Then we enable to use the IR remote control drive the car to move to and the 8X16 LED board will display the corresponding status pattern.
 
 
-## Project 15 Bluetooth Control Smart Car
+### Project 15 Bluetooth Control Smart Car
 
 ![](/media/8abdadfa2fc462bdcc0542df52a793e3.jpeg)
 
-### 1. Description
+#### 1. Description
 
 We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will make a Bluetooth control smart car. In this project, we aim to regard the mobile phone as the transmitter (host), and the smart car connected to the BT24 Bluetooth module (slave) as the receiver and use the mobile APP to control the smart car via the Bluetooth. 
 
-### 2. APP Control Button
+#### 2. APP Control Button
 
 <table border="1">
 <tbody>
@@ -2211,11 +2199,11 @@ We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will ma
 </table>
 
 
-### 3. Flow Chart
+#### 3. Flow Chart
 
 ![img](media/wps1.png)
 
-### 4. Wiring Diagram
+#### 4. Wiring Diagram
 
 ![](/media/61be6959693b2111639252ea45ec60fc.png)
 
@@ -2227,7 +2215,7 @@ We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will ma
     
 4). The power is connected to the BAT port
     
-### 5. Test Code
+#### 5. Test Code
     
 Before writing the code, it is necessary to import the library files of the 8x16 LED board and the servo. The specific steps are as follows: 
     
@@ -2278,26 +2266,26 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 ![](/media/fa1637ec96ae350fd72f7e1384ad31c5.png)
 
 
-### 6. Test Result
+#### 6. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
 
 Inset the BT module and open your cellphone to connect the Bluetooth to control the smart car. The can will move forward, backward, turn left and right and stop. Also the 8\*8 LED board will show the corresponding patterns.
 
 
-## Project 16 Bluetooth Speed Control Smart Car
+### Project 16 Bluetooth Speed Control Smart Car
 
 ![](/media/8abdadfa2fc462bdcc0542df52a793e3.jpeg)
 
-### 1. Description
+#### 1. Description
 
 In this project, we will use a Bluetooth to adjust the speed of the smart car. We empower to define a variable speeds and change it to change the speed of the smart car. 
 
-### 2. Flow Chart
+#### 2. Flow Chart
 
 ![](/media/90ab1f7fb1e16ad3c018b1c631e407c3.png)
 
-### 3. Wiring Diagram
+#### 3. Wiring Diagram
 
 ![](/media/61be6959693b2111639252ea45ec60fc.png)
 
@@ -2309,7 +2297,7 @@ In this project, we will use a Bluetooth to adjust the speed of the smart car. W
 
 4). The power is connected to the BAT port
 
-### 4.Test Code
+#### 4.Test Code
 
 Before writing the code, it is necessary to import the library files of the 8x16 LED board and the servo. The specific steps are as follows: 
 
@@ -2365,25 +2353,25 @@ You can drag blocks to edit. Blocks listed below are for your reference
 ![](/media/5e6fad3605ecb86468fe88574fc0c7ad.png)
 
 
-### 5. Test Result
+#### 5. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Pairing the APP with Bluetooth, the smart car can be controlled to move by the APP.
 
 Press![](/media/049343f587e0e7cf19fe8b665d735321.png), the car will speed up, press ![](/media/264f77cce6018584b54f46676fee4247.png), the car will slow down, and the 8\*16 LED board will display the corresponding status pattern of the smart car.
 
-## Project 17 Multi-purpose Bluetooth Smart Car
+### Project 17 Multi-purpose Bluetooth Smart Car
 
 ![](/media/2c1198e0ebd7c31622b7438469fb572c.jpeg)
 
-### 1. Description
+#### 1. Description
 
 In previous projects, the car only performs a single function. However, in this lesson, we will integrate all of its functions via a Bluetooth.
 
-### 2. Flow Chart
+#### 2. Flow Chart
 
 ![](/media/73f4da1e321bc29282d3b2f5cb3168dd.png)
 
-### 3. Wiring Diagram
+#### 3. Wiring Diagram
 
 ![](/media/fce8edd349ddbcfe02e6f27feb73e90f.png)
 
@@ -2399,7 +2387,7 @@ In previous projects, the car only performs a single function. However, in this 
 
 6). The power is connected to the BAT port
 
-### 4. Test Code
+#### 4. Test Code
 
 Before writing the code, it is necessary to import the library files of the ultrasonic sensor, 8x16 LED board and the servo. The specific steps are as follows: 
 
@@ -2424,7 +2412,7 @@ Click ![](/media/29916972665d35bfb34914b6144e28aa.png)to return to the code edit
 ![](/media/7acbfe6b628a17d114f2195b80d35de3.png)
 
 
-### 5. Test Result
+#### 5. Test Result
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
 
