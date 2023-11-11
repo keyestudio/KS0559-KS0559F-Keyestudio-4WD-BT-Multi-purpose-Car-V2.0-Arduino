@@ -50,7 +50,7 @@ This product boasts 17 learning projects, from simple to complex, whic
 
 - Bluetooth control: support Android and iOS system
 
-## 4. Kit
+## 4. Kit list
 
 <table border="1">
 <tbody>
@@ -297,18 +297,81 @@ This product boasts 17 learning projects, from simple to complex, whic
 </tbody>
 </table>
 
+## 5.Development Board
 
-## 5.Common Problems
+You need to know that keyestudio V4.0 development board is the core of this 4WD BT Multi-purpose Car V2.0.
+
+![](/media/4a9093e1b4ad333c296aa18441ca3c0e.png)
+
+Keyestudio V4.0 development board is an Arduino Uno -compatible board, which is based on ATmega328P MCU, and with a CP2102 chip as a UART-to-USB converter. 
+
+![](/media/90e3efbcae2f75e4c40a6bb9c616365e.jpeg)
+
+It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16 MHz quartz crystal, a USB connection, a power jack, 2 ICSP headers and a reset button.
+
+![](/media/95bcb6f3d82a26fd7286459f2e5dd2e6.jpeg)
+
+It contains everything needed to support the microcontroller: simply connect it to a computer with a USB cable or power it via an external DC power jack (DC 7-12V) or via female headers Vin/ GND(DC 7-12V) to get started.
+
+|       Microcontroller       |                      ATmega328P-PU                       |
+| :-------------------------: | :------------------------------------------------------: |
+|      Operating Voltage      |                            5V                            |
+| Input Voltage (recommended) |                         DC 7-12V                         |
+|      Digital I/O Pins       |       14 (D0-D13) (of which 6 provide PWM output)        |
+|    PWM Digital I/O Pins     |               6 (D3, D5, D6, D9, D10, D11)               |
+|      Analog Input Pins      |                        6 (A0-A5)                         |
+|   DC Current per I/O Pin    |                          20 mA                           |
+|   DC Current for 3.3V Pin   |                          50 mA                           |
+|        Flash Memory         | 32 KB (ATmega328P-PU) of which 0.5 KB used by bootloader |
+|            SRAM             |                   2 KB (ATmega328P-PU)                   |
+|           EEPROM            |                   1 KB (ATmega328P-PU)                   |
+|         Clock Speed         |                          16 MHz                          |
+|         Onboard LED         |                           D13                            |
 
 
-###  1. The car has no reaction
+
+## 6.Motor shield
+
+ 1. Description
+
+The 8833 board adopts the 8833 motor driver chip driven by two-channel H bridges , and the maximum driving current of a single channel is up to 1.5A, and the terminal of PH2.0 is used. 
+
+The IR receiver module is also integrated on the board. Furthermore, there are many PH2.0 expansion interfaces on the board such as ultrasonic interface, analog interface, three-channel tracking interface as well as pin interfaces with Bluetooth and motor driver. 
+
+ 2. Specification
+
+|               Voltage               |                       USB 5V，DC 6-9V                        |
+| :---------------------------------: | :----------------------------------------------------------: |
+|               Current               | The maximum output is 3A, the actual output is about 1A <br />(it’s 2A when the motor is loaded) |
+|            Maximum power            |             27W（The actual value is about 9W）              |
+|         Working temperature         |                        -10~50 Degree                         |
+|              Dimension              |                          69*56*18mm                          |
+|               Weight                |                            25.5g                             |
+| Environmental protection attributes |                             ROHS                             |
+
+
+
+ 3. Function
+
+![](/media/d8696e83ade31f2b7c56cc5911eacbd7.GIF)
+
+ 4. Schematic Diagram
+
+![](/media/eea66cf414c489a43e04de775a072bc4.jpeg)
+
+
+
+## 7.Common Problems
+
+
+  1. The car has no reaction
 
 1). Please check whether the batteries are sufficient
 
 2). Please check whether the wirings are correct
 
 
-### 2. Computers can't recognize the USB ports
+ 2. Computers can't recognize the USB ports
 
 1). Please ensure whether the CP2102 driver is installed
 
@@ -316,7 +379,7 @@ This product boasts 17 learning projects, from simple to complex, whic
 
 
 
-### 3. Code fails to burn
+ 3. Code fails to burn
 
 1). Please try whether we can use Keyestudio V4.0 motherboard alone for burning (unplug the peripheral sensors/modules or other electronic components to eliminate external interference). 
 
@@ -325,6 +388,4 @@ This product boasts 17 learning projects, from simple to complex, whic
 3). Please check whether the library files are imported.
 
 
-
-### 4. Fail to connect the APP
 

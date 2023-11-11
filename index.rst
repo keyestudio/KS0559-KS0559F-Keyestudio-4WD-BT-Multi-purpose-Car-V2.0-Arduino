@@ -6,8 +6,6 @@
     
     
    home.md
-   board.md
-   shield.md
    Assemble/assemble
    Arduino/arduino.md
    kidsblock/kidsblock.md
