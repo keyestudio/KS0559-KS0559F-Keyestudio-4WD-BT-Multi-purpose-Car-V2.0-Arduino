@@ -1545,40 +1545,54 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 <td></td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171a.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171a.png)</td>
 <td>Pair DX-BT24 5.1 Bluetooth module</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ab.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ab.png)</td>
 <td>Disconnect Bluetooth</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ac.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ac.png)</td>
 <td>Control character</td>
 <td>Function</td>
 </tr>
 <tr class="odd">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ae.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ae.png)</td>
 <td><p>Press: F</p>
 <p>Release: S</p></td>
 <td>Press the button, the car goes front; release to stop</td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ad.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ad.png)</td>
 <td><p>Press: L</p>
 <p>Release: S</p></td>
 <td>Press the button, the car turns left; release to stop</td>
 </tr>
 <tr class="odd">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171af.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171af.png)</td>
 <td><p>Press: R</p>
 <p>Release: S</p></td>
 <td>Press the button, the car turns right; release to stop</td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ag.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ag.png)</td>
 <td><p>Press: B</p>
 <p>Release: S</p></td>
 <td>Press the button, the car goes back; release to stop</td>
@@ -1597,7 +1611,9 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 <p>(minimum:0)</p></td>
 </tr>
 <tr class="odd">
-<td>![](/media/b0ab7f5ddd031e3f50565fcb06a88fcede.png)</td>
+<td>
+
+![](/media/b0ab7f5ddd031e3f50565fcb06a88fcede.png)</td>
 <td></td>
 <td>Click to start the gravity sensing function of the mobile phone: click again to exit the gravity sensing control</td>
 </tr>
