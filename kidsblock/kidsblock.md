@@ -1,88 +1,16 @@
 # Kidsblock Tutorial
 
-## Install Kidsblock Software(Windows)
+##  Getting started with kidsblock
 
-<span style="color: rgb(255, 76, 65);">Note:</span> We take the Windows system as an example.
-<br>
-<br>
+**Instruction**
 
-Download link: [www.kidsbits.net/Down/KidsBlock Desktop 1.1.3 Setup.exe](http://www.kidsbits.net/Down/KidsBlock%20Desktop%201.1.3%20Setup.exe)
+The Kidsblock, based on the Scratch graphical programming software, integrates multiple mainstream mainboards, sensors as well as modules. It can be programmed by dragging graphical blocks and using the C/C++ programming language, making programming easy and interesting for children to learn.
 
-1. Double click“KidsBlock 1.1.3 Setup.exe”![](/media/f4ccd99cd930d23d39e302ec434c4667.png).
+**Download and install KidsBlock software**
 
-2. Then click“More info”then“Run anyway”.
+**[Windows system](https://www.kidsblock.cn/Down/KidsBlock.exe)**
 
-![](/media/202f587cbd1196800e1ade7fa3203a54.png)
-
-![](/media/5ec25b58a63311f855d75b9c3707d0d0.png)
-
-![](/media/e36a2f4f5028e5703ecb2e6d2f3c4e88.png)
-
-3. Click“**Anyone who uses this computer(all users)**”and click“**Next**”.
-
-![](/media/23cdd561cd1c36ef202e345d4aac0a20.png)
-
-4. Click“**Browse...**”and choose the Disk where the software will be placed (here, we choose C Drive). Then click“**Install**”.
-    
-![](/media/135f443484ab0c5393c5246ac067d307.png)
-    
-![](/media/a431487852db1e4dc44648af42c8fa00.png)
-
-<!-- end list -->
-
-5. After a few seconds, the installation is complete. Click "Finish" to open the installed Kidsblock software.
-    
-![](/media/dcd9105caaf9c24fb41d9a7069abee91.png)
-
-6. If the computer security alert window appears, click **Upgrade and restart** to update the latest version of the KidsBlock.
-    
-![](/media/cbc8cc857d23ca9fe032e1b6b4668fd4.png)
-    
-![](/media/47af0379421e88af11bbebe863ee0cc3.png)
-
-7. Then open Kidsblock. And click **Allow access**.
-
-![](/media/494babd2708cc77d9dd9de96c5a68bf8.png)
-
-
-
-## Install Kidsblock Software(MacOS)
-
-1. Download link：[www.kidsbits.net/Down/KidsBlock Desktop 1.1.3.dmg](https://www.kidsbits.net/Down/KidsBlock%20Desktop%201.1.3.dmg)，as shown below:
-
-![Img](./media/132.png)
-
-2. Double-click KidsBlock icon，then drag KidsBlock Desktop to the Applications folder.
-
-![Img](./media/133.png)
-
-3. It’s installing the kidsblock program on your computer.
-
-![Img](./media/134.png)
-
-4. After the installation is finished, you will view the KidsBlock icon.
-
-![Img](./media/a.png)
-
-5. Click KidsBlock software icon to start the software, it shows that it can't be opened, because the default Apple computer only allows the installation of software in the App Store, other software is not allowed to install. Thus we need to modify the computer settings to start the software.
-
-![Img](./media/ab.png)
-
-6. Open your computer's settings interface, click Privacy & Security, switch the security option to "App Store and identified developers", then click "Open Anyway".
-
-![Img](./media/abc.png)
-
-7. Tap Open.
-
-![Img](./media/abcd.png)
-
-8. Open the software.
-
-![Img](./media/abcde.png)
-
-9. It is the software interface.
-
-![Img](./media/abcdef.png)
+**[MACOS system](https://www.kidsblock.cn/Down/KidsBlock-MACOS.dmg)**
 
 ## How to use KidsBlock
 
@@ -454,7 +382,9 @@ By rotating the adjustable potentiometer on the sensor, it can adjust the detect
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/6131c8d782756fe051b0ef0210a76d03.png" style="width:1.27292in;height:0.91875in" /></td>
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/5e291db96125e27f380e8caf79e8015a.png" style="width:1.09375in;height:0.95625in" /></td>
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/7aacff28b0cb9b99f0dbcbf22eb309e4.png" style="width:0.91111in;height:0.61111in" /></td>
-<td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/635b8724dc3e7a27f940b3953ed4536d.jpeg" style="width:0.99375in;height:0.79514in" /></td>
+<td>
+
+![](/media/d37c24e508361ab86b019135ab6950a9.png)</td>
 </tr>
 <tr class="odd">
 <td>5P Dupont Wire*1</td>
@@ -463,7 +393,9 @@ By rotating the adjustable potentiometer on the sensor, it can adjust the detect
 <td></td>
 </tr>
 <tr class="even">
-<td>![](/media/ffe8b1b6a97abf3d5da8e6723af76401wc.png)</td>
+<td>
+
+![](/media/ffe8b1b6a97abf3d5da8e6723af76401wc.png)</td>
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/4f8d5af6dee9016b45d975adb2391d37.png" style="width:1.25208in;height:0.46319in" /></td>
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/e9aaac06e62418ecca6eaba97a9ec518.png" style="width:1.03056in;height:0.66667in" /></td>
 <td></td>
@@ -1160,40 +1092,54 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 <td></td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171a.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171a.png)</td>
 <td>Pair DX-BT24 5.1 Bluetooth module</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ab.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ab.png)</td>
 <td>Disconnect Bluetooth</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ac.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ac.png)</td>
 <td>Control character</td>
 <td>Function</td>
 </tr>
 <tr class="odd">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ae.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ae.png)</td>
 <td><p>Press: F</p>
 <p>Release: S</p></td>
 <td>Press the button, the car goes front; release to stop</td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ad.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ad.png)</td>
 <td><p>Press: L</p>
 <p>Release: S</p></td>
 <td>Press the button, the car turns left; release to stop</td>
 </tr>
 <tr class="odd">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171af.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171af.png)</td>
 <td><p>Press: R</p>
 <p>Release: S</p></td>
 <td>Press the button, the car turns right; release to stop</td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ag.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ag.png)</td>
 <td><p>Press: B</p>
 <p>Release: S</p></td>
 <td>Press the button, the car goes back; release to stop</td>
@@ -1212,7 +1158,9 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 <p>(minimum:0)</p></td>
 </tr>
 <tr class="odd">
-<td>![](/media/b0ab7f5ddd031e3f50565fcb06a88fcede.png)</td>
+<td>
+
+![](/media/b0ab7f5ddd031e3f50565fcb06a88fcede.png)</td>
 <td></td>
 <td>Click to start the gravity sensing function of the mobile phone: click again to exit the gravity sensing control</td>
 </tr>
@@ -2119,40 +2067,54 @@ We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will ma
 <td></td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171a.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171a.png)</td>
 <td>Pair DX-BT24 5.1 Bluetooth module</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ab.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ab.png)</td>
 <td>Disconnect Bluetooth</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ac.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ac.png)</td>
 <td>Control character</td>
 <td>Function</td>
 </tr>
 <tr class="odd">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ae.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ae.png)</td>
 <td><p>Press: F</p>
 <p>Release: S</p></td>
 <td>Press the button, the car goes front; release to stop</td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ad.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ad.png)</td>
 <td><p>Press: L</p>
 <p>Release: S</p></td>
 <td>Press the button, the car turns left; release to stop</td>
 </tr>
 <tr class="odd">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171af.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171af.png)</td>
 <td><p>Press: R</p>
 <p>Release: S</p></td>
 <td>Press the button, the car turns right; release to stop</td>
 </tr>
 <tr class="even">
-<td>![](/media/3b4076135ebca73f47c4ff8d7785dc171ag.png)</td>
+<td>
+
+![](/media/3b4076135ebca73f47c4ff8d7785dc171ag.png)</td>
 <td><p>Press: B</p>
 <p>Release: S</p></td>
 <td>Press the button, the car goes back; release to stop</td>
@@ -2171,7 +2133,9 @@ We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will ma
 <p>(minimum:0)</p></td>
 </tr>
 <tr class="odd">
-<td>![](/media/b0ab7f5ddd031e3f50565fcb06a88fcede.png)</td>
+<td>
+
+![](/media/b0ab7f5ddd031e3f50565fcb06a88fcede.png)</td>
 <td></td>
 <td>Click to start the gravity sensing function of the mobile phone: click again to exit the gravity sensing control</td>
 </tr>
