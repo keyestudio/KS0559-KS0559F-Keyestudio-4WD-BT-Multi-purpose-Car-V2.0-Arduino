@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'keyestudio WiKi'
+project = '4WD Robot'
 copyright = 'keyestudio , WiKi'
 author = 'keyestudio WiKi'
 

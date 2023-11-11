@@ -1,7 +1,7 @@
 
 .. toctree::
    :maxdepth: 5
-   :caption: KS0559 Keyestudio 4WD BT Multi-purpose Car V2.0 
+   :caption: KS0559 Keyestudio 4WD robot V2.0 
 
     
     
