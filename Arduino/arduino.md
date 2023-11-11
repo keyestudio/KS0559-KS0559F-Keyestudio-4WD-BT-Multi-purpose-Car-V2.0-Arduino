@@ -151,7 +151,7 @@ After the program is uploaded successfully, the onboard LED will be on for 1s an
 
 (1) Connect the keyestudio V4.0 development board to your MacOS computer using a USB cable and open the Arduino IDE. 
 
-![image-20230420151837146](media/image-20230420151837146.png)
+![](media/image-20230420151837146.png)
 
 Click **Tools→Board: Arduino Uno** and **/dev/cu.usbserial-0001.**.
 
@@ -294,7 +294,7 @@ The LED can flash in diverse color by altering the delay time in the test code. 
 <tbody>
 <tr class="odd">
 <td>Keyestudio 4.0 Development Board *1</td>
-<td>Keyestudio 8833 Motor Driver Expansion Board *1</td>
+<td>Keyestudio 8833 Motor Shield *1</td>
 <td>Red LED Module*1</td>
 </tr>
 <tr class="even">
@@ -319,7 +319,7 @@ The LED can flash in diverse color by altering the delay time in the test code. 
 
 ![](/media/d29f513cc3561c7a3c3b05105e8a9ad3.png)
 
-As can be seen from the above figure, the Keyestudio 8833 motor driver expansion board is stacked on the Keyestudio 4.0 development board.
+As can be seen from the above figure, the Keyestudio 8833 motor Shield is stacked on the Keyestudio 4.0 development board.
 
 The pin G, V and S of the LED module are connected to G, 5V and D9 of the expansion board respectively.
 
@@ -422,7 +422,7 @@ PWM is more used to adjust the brightness of LED lights or the rotation speed of
 <tbody>
 <tr class="odd">
 <td>Keyestudio 4.0 Development Board *1</td>
-<td>Keyestudio 8833 Motor Driver Expansion Board *1</td>
+<td>Keyestudio 8833 Motor Shield *1</td>
 <td>Red LED Module*1</td>
 </tr>
 <tr class="even">
@@ -601,7 +601,7 @@ By rotating the adjustable potentiometer on the sensor, it can adjust the detect
 <tbody>
 <tr class="odd">
 <td>Keyestudio 4.0 Development Board *1</td>
-<td>Keyestudio 8833 Motor Driver Expansion Board *1</td>
+<td>Keyestudio 8833 Motor Shield *1</td>
 <td>Red LED Module*1</td>
 <td>Keyestudio Line Tracking Sensor*1</td>
 </tr>
@@ -792,7 +792,7 @@ The corresponding servo angles are shown below:
 <tbody>
 <tr class="odd">
 <td>Keyestudio 4.0 Development Board *1</td>
-<td>Keyestudio 8833 Motor Driver Expansion Board *1</td>
+<td>Keyestudio 8833 Motor Shield *1</td>
 <td>Servo*1</td>
 </tr>
 <tr class="even">
@@ -961,7 +961,7 @@ The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronic
 <tbody>
 <tr class="odd">
 <td>Keyestudio 4.0 Development Board *1</td>
-<td>Keyestudio 8833 Motor Driver Expansion Board *1</td>
+<td>Keyestudio 8833 Motor Shield *1</td>
 <td>Red LED Module*1</td>
 <td>HC-SR04 Ultrasonic Sensor*1</td>
 </tr>
@@ -1198,7 +1198,7 @@ The picture shows the real product and circuit diagram of the infrared receiver.
 <tbody>
 <tr class="odd">
 <td>Keyestudio 4.0 Development Board *1</td>
-<td>Keyestudio 8833 Motor Driver Expansion Board *1</td>
+<td>Keyestudio 8833 Motor Shield *1</td>
 <td>Red LED Module*1</td>
 </tr>
 <tr class="even">
@@ -1424,7 +1424,7 @@ Connect the BT module to the development board.
 <tbody>
 <tr class="odd">
 <td>Keyestudio 4.0 Development Board *1</td>
-<td>Keyestudio 8833 Motor Driver Expansion Board *1</td>
+<td>Keyestudio 8833 Motor Shield *1</td>
 <td>Red LED Module*1</td>
 </tr>
 <tr class="even">
@@ -1680,9 +1680,9 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 
 There are many ways to drive motors. Our car uses the most commonly used DRV8833 motor driver chip, which provides a two-channel bridge electric drive solution for toys, printers and other integrated motor applications.
 
-When we stack the driver expansion board on the 4.0 development board and power on the BAT, then set the DIP switch to the ON end, the external power supply will power on the two boards at the same time. To facilitate wiring connections, the driver expansion board comes with an anti-reverse port (PH2.0-2P-3P-4P-5P). You can connect the motors, power supply, and sensor modules directly to the driver expansion board. 
+When we stack the Shield on the 4.0 development board and power on the BAT, then set the DIP switch to the ON end, the external power supply will power on the two boards at the same time. To facilitate wiring connections, the Shield comes with an anti-reverse port (PH2.0-2P-3P-4P-5P). You can connect the motors, power supply, and sensor modules directly to the Shield. 
 
-The Bluetooth interface of the driver expansion board is fully compatible with the DX-BT24 5.1 Bluetooth module. When connecting the Bluetooth module, you solely need to plug it into the corresponding interface.  At the same time, 2.54 row pins are used to draw out some unused digital and analog ports on the driver expansion board, making it accessible for you to add other sensors and carry out extension experiments. 
+The Bluetooth interface of the Shield is fully compatible with the DX-BT24 5.1 Bluetooth module. When connecting the Bluetooth module, you solely need to plug it into the corresponding interface.  At the same time, 2.54 row pins are used to draw out some unused digital and analog ports on the Shield, making it accessible for you to add other sensors and carry out extension experiments. 
 
 The expansion board can be connected to four DC motors. When the jumper cap is connected by default, the motors of ports A and A1 and B and B1 are connected in parallel and have the same motion law.  8 jumper caps can be used to control the rotation direction of the 4 motor interfaces.
 
@@ -1704,7 +1704,7 @@ For example, when the 2 jumper caps in front of B1 of the M1 motor change from t
 
 - Working temperature：-25＋130℃
 
- 3. Keyestudio 8833 motor driver expansion board
+ 3. Keyestudio 8833 motor Shield
 
 ![](/media/62ee9578858ecc8e27b824af65fb22bb.png)
 
@@ -1778,7 +1778,7 @@ PWM drives the robot car. The PWM value is in the range of 0-255. When we set th
 <tbody>
 <tr class="odd">
 <td>Keyestudio 4.0 Development Board *1</td>
-<td>Keyestudio 8833 Motor Driver Expansion Board *1</td>
+<td>Keyestudio 8833 Motor Shield *1</td>
 <td>USB Cable*1</td>
 </tr>
 <tr class="even">
@@ -2028,7 +2028,7 @@ As shown in the figure below, press the left mouse button to select, right click
 <tbody>
 <tr class="odd">
 <td>Keyestudio 4.0 Development Board *1</td>
-<td>Keyestudio 8833 Motor Driver Expansion Board *1</td>
+<td>Keyestudio 8833 Motor Shield *1</td>
 <td>Keyestudio 8x16 LED Panel*1</td>
 </tr>
 <tr class="even">
@@ -3252,7 +3252,7 @@ In this project, we will make an IR remote control smart car and press the butto
 
 1). GND, VCC, SDA and SCL of the 8\*8 LED board module are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
     
-2). As the IR receiver is integrated on the 8833 motor driver expansion board, there is no need for additional wiring. The pins of the IR receiver on the 8833 board are G (GND), V (VCC) and D3 respectively. 
+2). As the IR receiver is integrated on the 8833 motor Shield, there is no need for additional wiring. The pins of the IR receiver on the 8833 board are G (GND), V (VCC) and D3 respectively. 
     
 3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire is interfaced with A3.
     
@@ -3557,7 +3557,7 @@ We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will ma
 
 1). GND, VCC, SDA and SCL of the 8\*8 LED board are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
     
-2). The RXD, TXD, GND and VCC of the Bluetooth module are respectively connected to TX, RX, G and 5V on the 8833 motor driver expansion board, while the STATE and BRK pins of the Bluetooth module do not need to be connected. 
+2). The RXD, TXD, GND and VCC of the Bluetooth module are respectively connected to TX, RX, G and 5V on the 8833 motor Shield, while the STATE and BRK pins of the Bluetooth module do not need to be connected. 
     
 3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire is interfaced with A3.
     
@@ -3773,7 +3773,7 @@ In this project, we will use a Bluetooth to adjust the speed of the smart car. W
 
 1). GND, VCC, SDA and SCL of the 8\*8 LED board are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
 
-2). The RXD, TXD, GND and VCC of the Bluetooth module are respectively connected to TX, RX, G and 5V on the 8833 motor driver expansion board, while the STATE and BRK pins of the Bluetooth module do not need to be connected. 
+2). The RXD, TXD, GND and VCC of the Bluetooth module are respectively connected to TX, RX, G and 5V on the 8833 motor Shield, while the STATE and BRK pins of the Bluetooth module do not need to be connected. 
 
 3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire is interfaced with A3.
 
@@ -4034,7 +4034,7 @@ In previous projects, the car only performs a single function. However, in this 
 
 1). GND, VCC, SDA and SCL of the 8\*8 LED board are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
 
-2). The RXD, TXD, GND and VCC of the Bluetooth module are respectively connected to TX, RX, G and 5V on the 8833 motor driver expansion board, while the STATE and BRK pins of the Bluetooth module do not need to be connected. 
+2). The RXD, TXD, GND and VCC of the Bluetooth module are respectively connected to TX, RX, G and 5V on the 8833 motor Shield, while the STATE and BRK pins of the Bluetooth module do not need to be connected. 
 
 3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire is interfaced with A3.
 
