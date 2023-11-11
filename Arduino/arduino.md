@@ -609,7 +609,9 @@ By rotating the adjustable potentiometer on the sensor, it can adjust the detect
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/6131c8d782756fe051b0ef0210a76d03.png" style="width:1.27292in;height:0.91875in" /></td>
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/5e291db96125e27f380e8caf79e8015a.png" style="width:1.09375in;height:0.95625in" /></td>
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/7aacff28b0cb9b99f0dbcbf22eb309e4.png" style="width:0.91111in;height:0.61111in" /></td>
-<td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/635b8724dc3e7a27f940b3953ed4536d.jpeg" style="width:0.99375in;height:0.79514in" /></td>
+<td>
+
+![](/media/d37c24e508361ab86b019135ab6950a9.png)</td>
 </tr>
 <tr class="odd">
 <td>5P Dupont Wire*1</td>
@@ -618,7 +620,9 @@ By rotating the adjustable potentiometer on the sensor, it can adjust the detect
 <td></td>
 </tr>
 <tr class="even">
-<td>![](/media/ffe8b1b6a97abf3d5da8e6723af76401wc.png)</td>
+<td>
+
+![](/media/ffe8b1b6a97abf3d5da8e6723af76401wc.png)</td>
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/4f8d5af6dee9016b45d975adb2391d37.png" style="width:1.25208in;height:0.46319in" /></td>
 <td><img src="https://raw.githubusercontent.com/keyestudio/KS0559-KS0559F-Keyestudio-4WD-BT-Multi-purpose-Car-V2.0-Scratch/master/media/e9aaac06e62418ecca6eaba97a9ec518.png" style="width:1.03056in;height:0.66667in" /></td>
 <td></td>
