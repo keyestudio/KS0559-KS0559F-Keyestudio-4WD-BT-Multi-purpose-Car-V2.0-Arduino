@@ -4,45 +4,25 @@
 
 Click to download the code file required for the course：[Click to download](./Kidsblock.7z)
 
-##  5.2 Getting started with kidsblock
+## 5.2 Software installation of Windows System
 
-**Instruction**
+1、Download kidsblock:https://wiki.kidsbits.cc/projects/KidsBlock/en/latest/
 
-The Kidsblock, based on the Scratch graphical programming software, integrates multiple mainstream mainboards, sensors as well as modules. It can be programmed by dragging graphical blocks and using the C/C++ programming language, making programming easy and interesting for children to learn.
+![Ani](./media/Ani-1752116928430-3.gif)
 
-## 5.3 Software installation of Windows System
+2、software installation
 
-1.Download kidsblock:https://www.kidsblock.cn/Down/KidsBlock.exe 
+![An](./media/An.gif)
 
-2.Click “**KidsBlock.exe**”. Click “**More info**” and “**Run anyway**”。
-![Img](media/1.png)
-![Img](media/2.png)
-![Img](media/3.png)
-![Img](media/4.png)
+3.operating software
 
-3.Tick “**Anyone who uses this computer(all users)**”, and click “**Next**”。
-![Img](media/5.png)
+First connect the development board to the computer
 
-4.Click “**Browse...**” to choose an installation path（<span style="color: rgb(255, 76, 65);">Here we choose Disk C, you may choose at will. </span>）.
-  Click“**Install**” and wait a few seconds.
-![Img](media/6.png)
-![Img](media/7.png)
+![A](./media/A.gif)
 
-5.Click “**Finish**” and open Kidsblock.
-![Img](media/8.png)
+## 5.3 Software installation of Mac System
 
-6.If it need to update, click “**Upgrade and restart**” for the latest version. 
-![Img](media/9.png)
-![Img](media/10.png)
-
-7.Now open Kidsblock. If a warning window pops up, click “**Allow access**”.
-
-![Img](media/11.png)
-
-## 5.4 Software installation of Mac System
-
-1.Download kidsblock: https://www.kidsblock.cn/Down/KidsBlock-MACOS.dmg Desktop .dmg.
-![Img](media/12.png)
+1.Download kidsblock:https://xiazai.keyesrobot.cn/KidsBlock.dmg
 
 2.Click KidsBlock, and  drag KidsBlock Desktop into Applications. 
 ![Img](media/13.png)
