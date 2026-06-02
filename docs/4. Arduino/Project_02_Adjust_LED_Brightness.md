@@ -1,6 +1,6 @@
 # Project 2: Adjust LED Brightness
 
-**1.Description**
+### **1.Description**
 
 In previous lesson, we control LED on and off and make it blink.
 
@@ -24,7 +24,7 @@ The green vertical bars represent one period of the square wave.  The value wr
 
 PWM is more used to adjust the brightness of LED lights or the rotation speed of the motors, and the wheels speed driven by the motors can be easily controlled. When playing with some Arduino robots, the benefits of PWM can be better reflected. 
 
-**2.Components**
+### **2.Components**
 
 |           Development Board *1           |           8833 Motor Driver *1           |     Red LED Module*1     |
 | :--------------------------------------: | :--------------------------------------: | :----------------------: |
@@ -32,13 +32,13 @@ PWM is more used to adjust the brightness of LED lights or the rotation speed of
 |             3P Dupont Wire*1             |               USB Cable*1                |                          |
 |         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                          |
 
-**3.Wiring Diagram** 
+### **3.Wiring Diagram** 
 
 Keep the wiring-up unchanged.
 
 ![image-20250508161123490](media/A13.png)
 
-**4.Test Code**
+### **4.Test Code**
 
 ```c
 //*****************************************************************
@@ -70,11 +70,11 @@ void loop () {
 //*****************************************************************
 ```
 
-**5.Test Result**
+### **5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see that the LED gradually changes from bright to dark, like human’s breath, rather than turning on and off immediately.
 
-**6.Code Explanation**
+### **6.Code Explanation**
 
 If we need to repeat a certain statement, we could use for statement.
 
@@ -124,7 +124,7 @@ PWM is more used for adjusting the LED’s brightness or the rotation speed of m
 
 It plays a vital role in controlling smart robot cars. I believe that you cannot wait to learn the next project.
 
-**7.Extension Practice**
+### **7.Extension Practice**
 
 Let’s modify the value of delay and remain the pin unchanged, then observe how the LED changes.
 

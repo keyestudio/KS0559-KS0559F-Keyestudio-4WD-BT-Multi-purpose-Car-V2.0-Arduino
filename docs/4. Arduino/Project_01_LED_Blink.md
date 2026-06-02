@@ -6,7 +6,7 @@
 
 # Project 1: LED Blink
 
-**1.Description**
+### **1.Description**
 
 ![image-20250508161034535](media/A6.png)
 
@@ -14,7 +14,7 @@ For starters and enthusiasts, LED Blink is a fundamental program. LED, the abbre
 
 The LED can flash in diverse color by altering the delay time in the test code. When in control, power on GND and VCC, the LED will be on if S end is in high level, otherwise it will go off.
 
-**2.Specification**
+### **2.Specification**
 
 - Control interface: digital port
 
@@ -26,7 +26,7 @@ The LED can flash in diverse color by altering the delay time in the test code. 
 
 ![image-20250508161015086](media/A7.png)
 
-**3.Components**
+### **3.Components**
 
 |           Development Board *1           |           8833 Motor Driver *1           |     Red LED Module*1     |
 | :--------------------------------------: | :--------------------------------------: | :----------------------: |
@@ -34,7 +34,7 @@ The LED can flash in diverse color by altering the delay time in the test code. 
 |             3P Dupont Wire*1             |               USB Cable*1                |                          |
 |         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                          |
 
-**4.Wiring Diagram**
+### **4.Wiring Diagram**
 
 ![image-20250508161123490](media/A13.png)
 
@@ -42,7 +42,7 @@ As can be seen from the above figure, the Keyestudio 8833 motor Shield is stacke
 
 The pin G, V and S of the LED module are connected to G, 5V and D9 of the expansion board respectively.
 
-**5.Test Code**
+### **5.Test Code**
 
 ```c 
 //****************************************************************************
@@ -67,17 +67,17 @@ void loop() // the loop function runs over and over again forever
 //****************************************************************************
 ```
 
-**6.Test Result**
+### **6.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see the LED connected to the D9 will be on and off. 
 
-**7.Code Explanation**
+### **7.Code Explanation**
 
 pinMode(9，OUTPUT) - This function can denote that the pin is INPUT or OUTPUT
 
 digitalWrite(9，HIGH) - When pin is OUTPUT, we can set it to HIGH(output 5V) or LOW(output 0V)
 
-**8.Extension Practice**
+### **8.Extension Practice**
 
 We have succeeded in blinking LED. Next, let’s observe what will happen to the LED if we modify the delay time.
 

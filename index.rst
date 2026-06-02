@@ -1,6 +1,6 @@
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 3
    :caption: KS0559 Keyestudio 4WD robot V2.0
 
    docs/1. Product introduction/1. Product introduction

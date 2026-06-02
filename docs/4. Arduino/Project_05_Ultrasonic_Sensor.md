@@ -1,6 +1,6 @@
 # Project 5 Ultrasonic Sensor
 
-**1.Description**
+### **1.Description**
 
 ![image-20250509085643931](media/A33.png)
 
@@ -10,7 +10,7 @@ The HC-SR04 ultrasonic sensor uses sonar to determine distance to an object like
 
 The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronics projects for creating obstacle detection and distance measuring application as well as various other applications. Here we have brought the simple method to measure the distance with arduino and an ultrasonic sensor and how to use the ultrasonic sensor with Arduino.
 
-**2.Specification**
+### **2.Specification**
 
 - Working Voltage :+5V DC
 
@@ -30,7 +30,7 @@ The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronic
 
 ![image-20250509085705309](media/A35.png)
 
-**3.Components**
+### **3.Components**
 
 | Development Board *1                                         | 8833 Motor Driver *1                     | Red LED Module*1         | Ultrasonic Sensor*1                                          |
 | ------------------------------------------------------------ | ---------------------------------------- | ------------------------ | ------------------------------------------------------------ |
@@ -38,7 +38,7 @@ The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronic
 | 4P Dupont Wire*1                                             | USB Cable*1                              | 3P Dupont Wire*1         |                                                              |
 | ![image-20250509143737972](media/A36.png) | ![img](media/A12.jpg)                 | ![img](media/A11.jpg) |                                                              |
 
-**4.Working Principle**
+### **4.Working Principle**
 
 As the above picture shown, it is like two eyes. One is transmitting end, the other is receiving end.
 
@@ -58,13 +58,13 @@ The t is the time that emitting signal meets obstacle and returns. And the propa
 
 ![image-20250509154035287](media/A38.png)
 
-**5.Wiring Diagram**
+### **5.Wiring Diagram**
 
 ![image-20250509154107103](media/A39.png)
 
 VCC, Trig, Echo and Gnd of the ultrasonic sensor are connected to 5V(V), D12, D13 and Gnd(G)
 
-**6.Test Code**
+### **6.Test Code**
 
 ```c
 //***************************************************************************
@@ -110,7 +110,7 @@ void loop() {
 //***************************************************************************
 ```
 
-**7.Test Result**
+### **7.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, open the serial monitor and set baud rate to 9600.
 
@@ -118,7 +118,7 @@ The detected distance will be displayed, and the unit is cm and inch. Hinder the
 
 ![image-20250509154147537](media/A40.png)
 
-**8.Code Explanation**
+### **8.Code Explanation**
 
 **int trigPin-** this pin is defined to transmit ultrasonic waves,generally output.
 
@@ -138,7 +138,7 @@ Or in inches: 13503.9in/s = 0.0135in/us = 1/74in/us
 
 We need to divide the traveltime by 2 for we have to take into account that the wave was sent, hit the object, and then returned back to the sensor.
 
-**9.Extension Practice**
+### **9.Extension Practice**
 
 We have just measured the distance displayed by the ultrasonic. How about controlling the LED with the measured distance? Let's try it and connect an LED light module to the D9 pin.
 
