@@ -13,8 +13,7 @@
 4.5 Arduino - Projets
 -----------------------
 
-|image5|
-.. |image5| image:: media/A5.jpeg
+|image1|
 
 **Note : Dans ce cours, l'interface de chaque capteur/module marqué avec (G, -, GND) indique la borne négative, G est connecté à G ou GND du shield capteur ou de la carte de contrôle ; “V” est la borne positive et connectée à V, VCC ou 5V.**
 
@@ -43,7 +42,7 @@
 
 
 
-
+.. |image1| image:: ./media/A5.jpeg
 
 
 
