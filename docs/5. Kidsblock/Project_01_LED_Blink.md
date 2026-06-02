@@ -1,44 +1,44 @@
-# Projekt 1 LED Blink
+# Proyecto 1 Parpadeo de LED
 
-### **1. Beschreibung**
+### **1. Descripción**
 
 ![](media/A40.jpeg)
 
-Für Anfänger und Enthusiasten ist LED Blink ein grundlegendes Programm. LED, die Abkürzung für Light Emitting Diodes, besteht aus chemischen Verbindungen wie Ga, As, P, N und so weiter.
+Para principiantes y entusiastas, el parpadeo de LED es un programa fundamental. LED, la abreviatura de diodos emisores de luz, está compuesto por compuestos químicos como Ga, As, P, N, entre otros.
 
-Die LED kann durch Ändern der Verzögerungszeit im Testcode in verschiedenen Farben blinken. Bei Steuerung und Anschluss an GND und VCC leuchtet die LED, wenn der S-Anschluss auf High-Pegel ist, andernfalls geht sie aus.
+El LED puede parpadear en diversos colores al alterar el tiempo de retardo en el código de prueba. Cuando está bajo control, con alimentación en GND y VCC, el LED se encenderá si el extremo S está en nivel alto, de lo contrario se apagará.
 
-### **2. Spezifikation**
+### **2. Especificaciones**
 
-- Steuerinterface: digitaler Port
+- Interfaz de control: puerto digital
 
-- Betriebsspannung: DC 3,3-5V
+- Voltaje de trabajo: DC 3.3-5V
 
-- Pin-Abstand: 2,54 mm
+- Espaciado de pines: 2.54mm
 
-- LED-Anzeigefarbe: rot
+- Color de visualización del LED: rojo
 
 ![](media/A41.png)
 
-### **3. Komponenten**
+### **3. Componentes**
 
-| Entwicklungsboard *1      | 8833 Motor Driver *1      | Rotes LED-Modul *1          |
-| ------------------------- | ------------------------- | --------------------------- |
-| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)       |
-| 3P F-F Dupont Kabel *1    | USB-Kabel *1              |                             |
-| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                             |
+| Placa de desarrollo *1    | Driver de motor 8833 *1    | Módulo LED rojo *1        |
+| ------------------------- | ------------------------- | ------------------------- |
+| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)     |
+| Cable Dupont 3P F-F *1    | Cable USB *1              |                           |
+| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                           |
 
-### **4. Schaltplan**
+### **4. Diagrama de conexión**
 
 ![](media/A47.png)
 
-Wie aus der obigen Abbildung ersichtlich ist, ist das Keyestudio 8833 Motor Driver Erweiterungsboard auf das Keyestudio 4.0 Entwicklungsboard gesteckt.
+Como se puede ver en la figura anterior, la placa de expansión del driver de motor Keyestudio 8833 está apilada sobre la placa de desarrollo Keyestudio 4.0.
 
-Die Pins G, V und S des LED-Moduls sind jeweils mit G, 5V und D9 des Erweiterungsboards verbunden.
+Los pines G, V y S del módulo LED están conectados respectivamente a G, 5V y D9 de la placa de expansión.
 
-### **5. Testcode**
+### **5. Código de prueba**
 
-Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
+Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia.
 
 (1).![](media/A48.png)
 
@@ -46,18 +46,18 @@ Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke di
 
 (3).![](media/A50.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
 ![](media/A51.png)
 
-### **6. Testergebnis**
+### **6. Resultado de la prueba**
 
-Nach erfolgreichem Hochladen des Codes auf das V4.0 Board verbinden Sie die Kabel gemäß dem Schaltplan und verwenden ein USB-Kabel, um das Board mit dem Computer zu verbinden und mit Strom zu versorgen. Nach dem Einschalten sehen Sie, dass die an D9 angeschlossene LED ein- und ausgeschaltet wird.
+Después de subir exitosamente el código a la placa V4.0, conecta los cables según el diagrama de conexión y usa un cable USB para conectar la computadora y alimentar la placa. Al encender, verás que el LED conectado al D9 se enciende y apaga.
 
-### **7. Erweiterte Übung**
+### **7. Práctica de extensión**
 
-Als nächstes wollen wir die Frequenz des LED-Flackerns durch Ändern der Wartezeit verändern.
+A continuación, vamos a cambiar la frecuencia del parpadeo del LED modificando el tiempo de espera.
 
 ![](media/A52.png)
 
-Nach erfolgreichem Hochladen des Codes auf das V4.0 Board verbinden Sie die Kabel gemäß dem Schaltplan und verwenden ein USB-Kabel, um das Board mit dem Computer zu verbinden und mit Strom zu versorgen. Das Testergebnis zeigt, dass die LED schneller blinkt.
+Después de subir exitosamente el código a la placa V4.0, conecta los cables según el diagrama de conexión y usa un cable USB para conectar la computadora y alimentar la placa. El resultado de la prueba muestra que el LED parpadea más rápido.

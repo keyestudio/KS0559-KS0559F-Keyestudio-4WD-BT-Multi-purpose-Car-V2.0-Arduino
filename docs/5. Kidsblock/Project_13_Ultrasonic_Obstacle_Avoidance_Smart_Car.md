@@ -1,48 +1,48 @@
-# Projekt 13 Ultraschall-Hindernisvermeidung Smart Car
+# Proyecto 13 Coche Inteligente con Evitación de Obstáculos por Ultrasonidos
 
 ![](media/A296.png)
 
-### **1. Beschreibung**
+### **1. Descripción**
 
-In diesem Projekt wollen wir ein Ultraschall-Hindernisvermeidungs-Smart Car bauen. Wir verwenden den Ultraschallsensor, um den Abstand zum Hindernis zu messen, was genutzt wird, um den Servo zu steuern und das Auto zu bewegen. Gleichzeitig zeigt das 8x16 LED-Board das entsprechende Statusmuster an.
+En este proyecto, nuestro objetivo es crear un coche inteligente con evitación de obstáculos por ultrasonidos. Usaremos el sensor ultrasónico para detectar la distancia al obstáculo, lo cual se puede usar para controlar el servo y hacer que gire para que el coche se mueva. Mientras tanto, la placa LED 8X16 mostrará el patrón de estado correspondiente.
 
-### **2. Flussdiagramm**
+### **2. Diagrama de Flujo**
 
 ![img](media/A297.png)
 
-**Die spezifische Logik des Ultraschall-Hindernisvermeidungs-Smart Cars ist unten dargestellt:**
+**La lógica específica del coche inteligente con evitación de obstáculos por ultrasonidos se muestra a continuación:**
 
 ![Img](media/A298.png)
 
 ![Img](media/A299.png)
 
-### **3. Schaltplan**
+### **3. Diagrama de Conexiones**
 
 ![](media/A282.png)
 
-1). GND, VCC, SDA und SCL des 8\*8 LED-Board-Moduls sind mit G (GND), V (VCC), A4 und A5 des Erweiterungsboards verbunden.
+1). GND, VCC, SDA y SCL del módulo de la placa LED 8\*8 están conectados a G (GND), V (VCC), A4 y A5 de la placa de expansión.
 
-2). VCC, Trig, Echo und GND des Ultraschallsensors sind mit 5V (V), D12 (S), D13 (S) und GND (G) verbunden.
+2). VCC, Trig, Echo y Gnd del sensor ultrasónico están conectados a 5V (V), D12 (S), D13 (S) y Gnd (G).
 
-3). Der Servo ist mit G, V und A3 verbunden. Das braune Kabel ist mit GND (G), das rote Kabel mit 5V (V) und das orange Kabel mit A3 verbunden.
+3). El servo está conectado a G, V y A3. El cable marrón está conectado a Gnd (G), el cable rojo está conectado a 5V (V) y el cable naranja está conectado a A3.
 
-4). Die Stromversorgung wird an den BAT-Anschluss angeschlossen.
+4). La alimentación está conectada al puerto BAT.
 
-### **4. Testcode**
+### **4. Código de Prueba**
 
-Bevor der Code geschrieben wird, müssen die Bibliotheksdateien für den Ultraschallsensor, das 8x16 LED-Board und den Servo importiert werden. Die spezifischen Schritte sind wie folgt:
+Antes de escribir el código, es necesario importar los archivos de biblioteca del sensor ultrasónico, la placa LED 8x16 y el servo. Los pasos específicos son los siguientes:
 
-Klicke auf ![](media/A29.png), um die Erweiterungsbibliothek für Sensoren/Module/Komponenten zu öffnen, suche dann nach „Ultrasonic“ Sensor ![](media/A122.png) und klicke darauf. Dadurch ändert sich „**Not loaded**“ zu „**loaded**“, was bedeutet, dass der „**Ultrasonic**“ Sensor erfolgreich hinzugefügt wurde.
+Haz clic en ![](media/A29.png) para entrar en la interfaz de biblioteca de extensiones de sensores/módulos/componentes, luego busca el sensor “Ultrasonic” ![](media/A122.png) y haz clic en él. De esta forma, "**Not loaded**" cambia a "**loaded**", indicando que el sensor “**Ultrasonic**” se añadió correctamente.
 
 ![Img](media/A300.png)
 
 ![](/media/A284.png)
 
-Klicke auf ![](media/A33.png), um zur Code-Editor-Oberfläche zurückzukehren. Der Anweisungsblock des hinzugefügten „**Ultrasonic**“ Sensors, des „**Matrix 8\*16 Aip1640**“ Moduls und der „**Servo**“ Komponente ist im Modulbereich sichtbar.
+Haz clic en ![](media/A33.png) para volver a la interfaz del editor de código, se pueden ver los bloques de instrucciones del sensor “**Ultrasonic**”, el módulo “**Matrix 8\*16 Aip1640**” y el componente “**Servo**” en el área de módulos.
 
 ![](media/A285.png)
 
-Du kannst Blöcke ziehen, um zu programmieren. Die unten aufgeführten Blöcke dienen als Referenz.
+Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia.
 
 (1).![](media/A126.png)
 
@@ -64,7 +64,7 @@ Du kannst Blöcke ziehen, um zu programmieren. Die unten aufgeführten Blöcke d
 
 (10).![](media/A291.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
 ![](media/A303.png)
 
@@ -74,8 +74,8 @@ Du kannst Blöcke ziehen, um zu programmieren. Die unten aufgeführten Blöcke d
 
 ![](media/A306.png)
 
-### **5. Testergebnis**
+### **5. Resultado de la Prueba**
 
-Nach erfolgreichem Hochladen des Codes auf das V4.0 Board, verbinde die Verkabelung gemäß dem Schaltplan, schalte die externe Stromversorgung ein und stelle den DIP-Schalter auf ON.
+Después de subir el código con éxito a la placa V4.0, conecta los cables según el diagrama de conexiones, enciende la alimentación externa y luego gira el interruptor DIP a ON.
 
-Das Smart Car fährt vorwärts und weicht automatisch Hindernissen aus. Wenn kein Weg voraus ist, steuert der Servo den Ultraschallsensor, um die Abstände links, mittig und rechts zu scannen, und das Auto fährt in die offene Richtung. Gleichzeitig zeigt das 8x16 LED-Board das entsprechende Statusmuster an.
+El coche inteligente avanza y evita obstáculos automáticamente. Cuando no hay camino adelante, el servo hará girar el sensor ultrasónico para escanear las distancias a la izquierda, en el centro y a la derecha, y el coche girará hacia el lado abierto. Mientras tanto, la placa LED 8X16 mostrará el patrón de estado correspondiente.

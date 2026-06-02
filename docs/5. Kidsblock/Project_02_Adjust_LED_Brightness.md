@@ -1,48 +1,48 @@
-# Projekt 2: LED-Helligkeit anpassen
+# Proyecto 2: Ajustar el Brillo del LED
 
-### **1. Beschreibung**
+### **1.Descripción**
 
-Im vorherigen Unterricht haben wir die LED ein- und ausgeschaltet und zum Blinken gebracht.
+En la lección anterior, controlamos el encendido y apagado del LED y lo hicimos parpadear.
 
-In diesem Projekt steuern wir die Helligkeit der LED über PWM, um einen Atemeffekt zu simulieren.
+En este proyecto, controlaremos el brillo del LED mediante PWM simulando un efecto de respiración.
 
-PWM ist ein Verfahren zur Steuerung des analogen Ausgangs mittels digitaler Methoden. Die digitale Steuerung erzeugt Rechtecksignale mit unterschiedlichen Tastverhältnissen (ein Signal, das ständig zwischen hohen und niedrigen Pegeln wechselt), um den analogen Ausgang zu steuern. Im Allgemeinen liegen die Eingangsspannungen der Ports bei 0V und 5V.
+PWM es un medio para controlar la salida analógica mediante medios digitales. El control digital se usa para generar ondas cuadradas con diferentes ciclos de trabajo (una señal que cambia constantemente entre niveles alto y bajo) para controlar la salida analógica. En general, los voltajes de entrada de los puertos son 0V y 5V.
 
-Was ist, wenn 3V benötigt werden? Oder ein Umschalten zwischen 1V, 3V und 3,5V? Wir können nicht ständig Widerstände wechseln. Aus diesem Grund greifen wir auf PWM zurück.
+¿Qué pasa si se requiere 3V? ¿O un cambio entre 1V, 3V y 3.5V? No podemos cambiar las resistencias constantemente. Por esta razón, recurrimos al PWM.
 
 ![](media/A53.gif)
 
-Für die Arduino-Digitalport-Spannungsausgabe gibt es nur LOW und HIGH, die den Spannungsausgängen von 0V bzw. 5V entsprechen. Man kann LOW als 0 und HIGH als 1 definieren und den Arduino innerhalb von 1 Sekunde fünfhundert 0- oder 1-Signale ausgeben lassen.
+Para la salida de voltaje del puerto digital de Arduino, solo existen LOW y HIGH, que corresponden a la salida de voltaje de 0V y 5V. Puedes definir LOW como 0 y HIGH como 1, y hacer que Arduino emita quinientas señales 0 o 1 dentro de 1s.
 
-Wenn alle fünfhundert Ausgaben 1 sind, entspricht das 5V; wenn alle 0 sind, entspricht das 0V. Wenn man auf diese Weise 010101010101 ausgibt, beträgt die Ausgangsspannung 2,5V, was einem Film ähnelt. Der Film, den wir sehen, ist nicht vollständig kontinuierlich. Tatsächlich werden 25 Bilder pro Sekunde ausgegeben. In diesem Fall kann der Mensch es nicht sehen, ebenso wenig wie PWM. Wenn wir eine andere Spannung wollen, müssen wir das Verhältnis von 0 und 1 steuern. Je mehr 0- und 1-Signale pro Zeiteinheit ausgegeben werden, desto genauer die Steuerung.
+Si todas las quinientas salidas son 1, eso es 5V; si todas son 0, eso es 0V. Si se emite 010101010101 de esta manera, entonces el puerto de salida es 2.5V, lo que es como mostrar una película. La película que vemos no es completamente continua. En realidad, emite 25 imágenes por segundo. En este caso, el humano no puede verlo, tampoco el PWM. Si queremos un voltaje diferente, necesitamos controlar la proporción de 0 y 1. Cuantas más señales 0 y 1 se emitan por unidad de tiempo, más preciso será el control.
 
-PWM ist eine Technologie, die digitale Methoden verwendet, um analoge Größen zu erhalten. Digitale Steuerung ermöglicht die Bildung eines Rechtecksignals, das nur zwei Zustände hat (hoch und niedrig). Eine Spannung von 0 bis 5V kann simuliert werden, indem das Verhältnis der Ein- zur Aus-Zeit gesteuert wird. Die Zeit, in der das Signal eingeschaltet ist (technisch als High-Pegel bezeichnet), wird Pulsbreite genannt, daher wird PWM auch Pulsweitenmodulation genannt.
+PWM es una tecnología que usa métodos digitales para obtener cantidades analógicas. El control digital permite formar una onda cuadrada, la señal de onda cuadrada solo tiene dos estados: encendido y apagado (alto y bajo). Un voltaje que varía de 0 a 5V puede simularse controlando la proporción de duración de encendido a apagado. El tiempo que dura encendido (técnicamente llamado nivel alto) se llama ancho de pulso, por lo que PWM también se llama modulación por ancho de pulso.
 
 ![](media/A54.png)
 
-Die grünen vertikalen Balken stellen eine Periode des Rechtecksignals dar. Der in jedem analogWrite(value) geschriebene Wert entspricht einem Prozentsatz, der auch als Duty Cycle bezeichnet wird. Dieser Prozentsatz bezieht sich auf das Verhältnis der Zeit, die der High-Pegel in einem Zyklus einnimmt, also Duty Cycle = High-Pegel-Zeit / Zykluszeit.
+Las barras verticales verdes representan un período de la onda cuadrada. El valor escrito en cada analogWrite(value) corresponde a un porcentaje, que también se llama Ciclo de Trabajo (Duty Cycle). Este porcentaje se refiere a la proporción de tiempo ocupado por el nivel alto en un ciclo, es decir, ciclo de trabajo = tiempo de nivel alto / tiempo del ciclo.
 
-Im Bild beträgt der Duty Cycle von oben nach unten beim ersten Rechtecksignal 0%, der entsprechende Wert ist 0, und die LED-Helligkeit ist am niedrigsten, also ausgeschaltet. Je länger der High-Pegel anhält, desto heller wird es. Daher ist der Wert des letzten Duty Cycles von 100% 255, und die LED ist am hellsten. 50% ist halb so hell, und 25% ist dunkler.
+En la figura, de arriba hacia abajo, el ciclo de trabajo de la primera onda cuadrada es 0%, y el valor correspondiente es 0, y el brillo del LED es el más bajo, es decir, estado apagado. Cuanto más tiempo dure el nivel alto, más brillante será. Por lo tanto, el valor del último ciclo de trabajo del 100% es 255, y el LED es el más brillante. El 50% es la mitad de brillo, y el 25% es más oscuro.
 
-PWM wird hauptsächlich verwendet, um die Helligkeit von LEDs oder die Drehzahl von Motoren einzustellen, und die von den Motoren angetriebenen Raddrehzahlen können leicht gesteuert werden. Beim Spielen mit einigen Arduino-Robotern kommen die Vorteile von PWM besser zur Geltung.
+PWM se usa más para ajustar el brillo de luces LED o la velocidad de rotación de motores, y la velocidad de las ruedas impulsadas por los motores puede controlarse fácilmente. Al jugar con algunos robots Arduino, los beneficios del PWM se reflejan mejor.
 
-### **2. Komponenten**
+### **2.Componentes**
 
-| Entwicklungsboard *1      | 8833 Motor Driver *1      | Rotes LED-Modul *1          |
-| ------------------------- | ------------------------- | --------------------------- |
-| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)       |
-| 3P F-F Dupont Kabel *1    | USB-Kabel *1              |                             |
-| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                             |
+| Placa de Desarrollo *1    | Driver de Motor 8833 *1    | Módulo LED Rojo *1         |
+| ------------------------- | ------------------------- | ------------------------- |
+| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)     |
+| Cable Dupont 3P F-F *1    | Cable USB *1              |                           |
+| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                           |
 
-### **3. Schaltplan**
+### **3.Diagrama de Conexiones**
 
-Die Verkabelung bleibt unverändert.
+Mantén las conexiones sin cambios.
 
 ![](media/A47.png)
 
-### **4. Testcode**
+### **4.Código de Prueba**
 
-Du kannst Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
+Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia.
 
 (1).![](media/A55.png)
 
@@ -56,18 +56,18 @@ Du kannst Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dien
 
 (6).![](media/A60.png)
 
-**Vollständiger Testcode**
+**Código Completo de Prueba**
 
 ![](media/A61.png)
 
-### **5. Testergebnis**
+### **5.Resultado de la Prueba**
 
-Nach erfolgreichem Hochladen des Codes auf das V4.0-Board verbinde die Verkabelung gemäß dem Schaltplan und verbinde das Board mit einem USB-Kabel mit dem Computer, um es mit Strom zu versorgen. Nach dem Einschalten siehst du, dass die LED allmählich von hell zu dunkel wechselt, ähnlich wie beim menschlichen Atmen, und nicht sofort ein- und ausgeschaltet wird.
+Después de subir correctamente el código a la placa V4.0, conecta las conexiones según el diagrama de conexiones y usa un cable USB para conectar la computadora y alimentar la placa. Al encender, verás que el LED cambia gradualmente de brillante a oscuro, como la respiración humana, en lugar de encenderse y apagarse inmediatamente.
 
-### **6. Erweiterte Übung**
+### **6.Práctica de Extensión**
 
-Behalte die Pins der LED unverändert und ändere dann den Code (Werte hinter wait).
+Mantén los pines del LED sin cambios, luego cambia el código (valores detrás de wait)
 
 ![](media/A62.png)
 
-Laden Sie den Code auf das Entwicklungsboard hoch, dann blinkt die LED langsamer.
+Sube el código a la placa de desarrollo, luego el LED parpadeará más lentamente.

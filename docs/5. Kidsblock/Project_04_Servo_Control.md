@@ -1,87 +1,87 @@
-# Projekt 4 Servo-Steuerung
+# Proyecto 4 Control de Servo
 
-### **1. Beschreibung**
+### **1.Descripción**
 
 ![](media/A90.jpeg)
 
-Ein Servomotor ist ein positionsgesteuerter Drehaktuator. Er besteht hauptsächlich aus einem Gehäuse, einer Leiterplatte, einem kernlosen Motor, einem Getriebe und einem Positionssensor. Sein Arbeitsprinzip besteht darin, dass der Servo das von MCUs oder Empfängern gesendete Signal empfängt und ein Referenzsignal mit einer Periode von 20 ms und einer Breite von 1,5 ms erzeugt, dann die erfasste Gleichstrom-Vorspannung mit der Spannung des Potentiometers vergleicht und die Spannungsdifferenz ausgibt.
+El motor servo es un actuador rotativo de control de posición. Principalmente consta de una carcasa, una placa de circuito, un motor sin núcleo, un engranaje y un sensor de posición. Su principio de funcionamiento es que el servo recibe la señal enviada por MCUs o receptores y produce una señal de referencia con un período de 20 ms y un ancho de 1.5 ms, luego compara el voltaje de polarización continua adquirido con el voltaje del potenciómetro y obtiene la salida de la diferencia de voltaje.
 
 ![](media/A91.png)
 
-Im Allgemeinen hat der Servo drei Leitungen in Braun, Rot und Orange. Die braune Leitung ist Masse, die rote ist die Plusleitung und die orange ist die Signalleitung.
+En general, el servo tiene tres cables en marrón, rojo y naranja. El cable marrón está conectado a tierra, el rojo es la línea de polo positivo y el naranja es la línea de señal.
 
-Der Drehwinkel des Servomotors wird durch Regulierung des Tastverhältnisses des PWM-(Pulsweitenmodulation)-Signals gesteuert. Der Standardzyklus des PWM-Signals beträgt 20 ms (50 Hz). Theoretisch liegt die Pulsbreite zwischen 1 ms und 2 ms, tatsächlich jedoch zwischen 0,5 ms und 2,5 ms. Die Breite entspricht dem Drehwinkel von 0° bis 180°. Beachten Sie jedoch, dass bei verschiedenen Marken von Motoren dasselbe Signal unterschiedliche Drehwinkel bewirken kann.
+El ángulo de rotación del motor servo se controla regulando el ciclo de trabajo de la señal PWM (Modulación por Ancho de Pulso). El ciclo estándar de la señal PWM es de 20 ms (50 Hz). Teóricamente, el ancho se distribuye entre 1 ms y 2 ms, pero en la práctica está entre 0.5 ms y 2.5 ms. El ancho corresponde al ángulo de rotación de 0° a 180°. Pero tenga en cuenta que para motores de diferentes marcas, la misma señal puede tener diferentes ángulos de rotación.
 
 ![](media/A92.jpg)
 
-Die entsprechenden Servo-Winkel sind unten dargestellt:
+Los ángulos correspondientes del servo se muestran a continuación:
 
 ![](media/A93.png)
 
-### **2. Spezifikation**
+### **2.Especificaciones**
 
-- Betriebsspannung: DC 4,8 V \~ 6 V
+- Voltaje de trabajo: DC 4.8V ~ 6V
 
-- Betriebswinkelbereich: ca. 180 ° (bei 500 → 2500 μs)
+- Rango de ángulo operativo: aproximadamente 180 ° (en 500 → 2500 μsec)
 
-- Pulsweitenbereich: 500 → 2500 μs
+- Rango de ancho de pulso: 500 → 2500 μsec
 
-- Leerlaufdrehzahl: 0,12 ± 0,01 s / 60 (DC 4,8 V) 0,1 ± 0,01 s / 60 (DC 6 V)
+- Velocidad sin carga: 0.12 ± 0.01 seg / 60 (DC 4.8V) 0.1 ± 0.01 seg / 60 (DC 6V)
   
-- Leerlaufstrom: 200 ± 20 mA (DC 4,8 V) 220 ± 20 mA (DC 6 V)
+- Corriente sin carga: 200 ± 20mA (DC 4.8V) 220 ± 20mA (DC 6V)
 
-- Haltemoment: 1,3 ± 0,01 kg·cm (DC 4,8 V) 1,5 ± 0,1 kg·cm (DC 6 V)
+- Torque de parada: 1.3 ± 0.01kg · cm (DC 4.8V) 1.5 ± 0.1kg · cm (DC 6V)
   
-- Haltestrom: ≦ 850 mA (DC 4,8 V) ≦ 1000 mA (DC 6 V)
+- Corriente de parada: ≦ 850mA (DC 4.8V) ≦ 1000mA (DC 6V)
 
-- Standby-Strom: 3 ± 1 mA (DC 4,8 V) 4 ± 1 mA (DC 6 V)
+- Corriente en espera: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
 
-### **3. Komponenten**
+### **3.Componentes**
 
-| Entwicklungsboard *1       | 8833 Motor Driver *1       | Servo*1                                     |
-| -------------------------- | -------------------------- | ------------------------------------------- |
-| ![img](media/A94.jpg)      | ![img](media/A95.jpg)      | ![img](media/A96.png)                       |
-| 18650 Batteriehalter*1     | USB-Kabel*1                | 18650 Batterie*2 (selbst bereitgestellt)    |
-| ![img](media/A97.png)      | ![img](media/A98.jpg)      | ![img](media/A99.png)                       |
+| Placa de Desarrollo *1    | Driver de Motor 8833 *1    | Servo*1                                     |
+| ------------------------- | ------------------------- | ------------------------------------------- |
+| ![img](media/A94.jpg)  | ![img](media/A95.jpg)  | ![img](media/A96.png)                   |
+| Portabaterías 18650*1     | Cable USB*1               | Batería 18650*2 (auto-proporcionada)        |
+| ![img](media/A97.png) | ![img](media/A98.jpg) | ![img](media/A99.png) |
 
-### **4. Schaltplan**
+### **4.Diagrama de Conexiones**
 
 ![](media/A100.png)
 
-Hinweis zur Verkabelung: Der Servo ist mit G (GND), V (VCC) und A3 verbunden, die braune Leitung des Servos ist mit GND (G) verbunden, die rote mit 5 V (V) und die orange mit A3.
+Nota de conexión: El servo se conecta a G (GND), V (VCC) y A3, el cable marrón del servo está conectado a Gnd (G), el rojo está conectado a 5V (V) y el naranja está conectado a A3.
 
-Der Servo muss aufgrund seines hohen Strombedarfs für den Antrieb extern mit Strom versorgt werden. In der Regel reicht der Strom des Entwicklungsboards nicht aus. Ohne externe Stromversorgung könnte das Entwicklungsboard beschädigt werden.
+El servo debe conectarse a una fuente de alimentación externa debido a su alta demanda de corriente para el accionamiento. Generalmente, la corriente de la placa de desarrollo no es suficiente. Si no se conecta la fuente de alimentación externa, la placa de desarrollo podría quemarse.
 
-### **5. Testcode**
+### **5.Código de Prueba**
 
-Vor dem Schreiben des Codes muss die Servo-Bibliothek importiert werden. Die genauen Schritte sind wie folgt:
+Antes de escribir el código, es necesario importar el archivo de la biblioteca del servo. Los pasos específicos son los siguientes:
 
-Klicken Sie auf ![](media/A29.png), um die Erweiterungsbibliothek für Sensoren/Module/Komponenten zu öffnen, und suchen Sie dann nach "**Servo**".
+Haga clic en ![](media/A29.png) para entrar en la interfaz de la biblioteca de extensiones de sensores/módulos/componentes, luego busque "**Servo**".
 
 ![](media/A101.png)
 
-Wählen Sie die Komponente aus und klicken Sie darauf. Dadurch ändert sich "**Not Loaded**" zu "**loaded**", was anzeigt, dass die "**Servo**"-Komponente erfolgreich hinzugefügt wurde.
+Seleccione el componente y haga clic en él. De esta manera, "**Not Loaded**" cambia a "**loaded**", indicando que el componente "**Servo**" fue agregado con éxito.
 
 ![Img](media/A102.png)
 
 ![](media/A103.png)
 
-Klicken Sie auf ![](media/A33.png), um zum Code-Editor zurückzukehren. Im Modulbereich sehen Sie den hinzugefügten "**Servo**"-Komponentenblock.
+Haga clic en ![](media/A33.png) para volver al editor de código, y en el área de módulos podrá ver el bloque directivo del componente "**Servo**" agregado.
 
 ![](media/A104.png)
 
-Sie können Blöcke ziehen, um den Code zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
+Puede arrastrar bloques para editar. Los bloques listados a continuación son para su referencia.
 
-(1). ![](media/A105.png)
+(1).![](media/A105.png)
 
-(2). ![](media/A106.png)
+(2).![](media/A106.png)
 
-(3). ![](media/A107.png)
+(3).![](media/A107.png)
 
-**Vollständiger Testcode**
+**Código Completo de Prueba**
 
 ![](media/A108.png)
 
-### **6. Testergebnis**
+### **6.Resultado de la Prueba**
 
-Nach erfolgreichem Hochladen des Codes auf das V4.0-Board verbinden Sie die Verkabelung gemäß dem Schaltplan und schalten die externe Stromversorgung ein. Nach dem Einschalten stellen Sie den Dip-Schalter auf die "ON"-Position, dann schwingt der Servo im Bereich von 0° bis 180°.
+Después de cargar con éxito el código en la placa V4.0, conecte los cables según el diagrama de conexiones y encienda la fuente de alimentación externa. Después de encender, gire el interruptor DIP al extremo "ON", entonces el servo oscilará en el rango de 0° a 180°.

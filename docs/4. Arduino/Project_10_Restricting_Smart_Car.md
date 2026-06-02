@@ -1,28 +1,28 @@
-# Projekt 10 Einschränkendes Smart Car
+# Proyecto 10 Coche Inteligente Restringido
 
 ![644a1976bf17a6b64e0aed1a7240ff1e](media/A108.jpeg)
 
-### **1. Beschreibung**
+### **1.Descripción**
 
-In diesem Projekt kombinieren wir das Wissen über einen Linienverfolgungssensor und Motortreiber-Module, um ein einschränkendes Smart Car zu bauen. Im Experiment wollen wir den Linienverfolgungssensor verwenden, um zu erkennen, ob sich eine schwarze Linie um das Smart Car befindet, und dann die Drehung der beiden Motoren entsprechend den Erkennungsergebnissen so steuern, dass das Smart Car in einem im Kreis gezogenen schwarzen Linien eingeschlossen wird.
+En este proyecto, buscamos combinar el conocimiento de un sensor de seguimiento de línea y módulos controladores de motor para hacer un coche inteligente restringido. En el experimento, nuestro objetivo es usar el sensor de seguimiento de línea para detectar si hay una línea negra alrededor del coche inteligente, y luego controlar la rotación de los dos motores según los resultados de la detección de manera que se bloquee el coche inteligente dentro de un círculo dibujado con línea negra.
 
-### **2. Flussdiagramm**
+### **2.Diagrama de Flujo**
 
 ![img](media/A109.png)
 
-Die spezifische Logik des einschränkenden 4WD Smart Cars ist in der Tabelle dargestellt.
+La lógica específica del coche inteligente 4WD restringido se muestra en la tabla.
 
 ![Img](media/A110.png)
 
-### **3. Schaltplan**
+### **3.Diagrama de Conexiones**
 
 ![88422b5f1464ad447e28ccbb8c39a8d4](media/A111.png)
 
-G, V, S1, S2 und S3 des Linienverfolgungssensors sind mit G (GND), V (VCC), D11, D7 und D8 des Sensor-Erweiterungsboards verbunden.
+G, V, S1, S2 y S3 del sensor de seguimiento de línea están conectados a G (GND), V (VCC), D11, D7 y D8 de la placa de expansión del sensor.
 
-Die Stromversorgung ist mit dem BAT-Anschluss verbunden.
+La alimentación está conectada al puerto BAT.
 
-### **4. Testcode**
+### **4.Código de Prueba**
 
 ```c
 //*************************************************************************
@@ -32,49 +32,49 @@ Die Stromversorgung ist mit dem BAT-Anschluss verbunden.
  Restricting Smart Car
  http://www.keyestudio.com
 */ 
-//Daten vom Smile-Muster, erhalten vom Touch-Tool
+//Datos del patrón de sonrisa obtenidos de la herramienta táctil
 unsigned char start01[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
-#define SDA_Pin  A4  //Datenpin auf A4 setzen
-#define SCL_Pin  A5  //Taktpin auf A5 setzen
+#define SDA_Pin  A4  //Configurar pin de datos a A4
+#define SCL_Pin  A5  //Configurar pin de reloj a A5
 
-int left_ctrl = 2; //Definiere die Richtungssteuerungspins des Motors Gruppe B
-int left_pwm = 5;  //Definiere die PWM-Steuerungspins des Motors Gruppe B
-int right_ctrl = 4; //Definiere die Richtungssteuerungspins des Motors Gruppe A
-int right_pwm = 6;  //Definiere die PWM-Steuerungspins des Motors Gruppe A
-int sensor_L = 11;  //Definiere den Pin des linken Linienverfolgungssensors
-int sensor_M = 7;   //Definiere den Pin des mittleren Linienverfolgungssensors
-int sensor_R = 8;   //Definiere den Pin des rechten Linienverfolgungssensors
-int L_val, M_val, R_val; //Definiere diese Variablen
+int left_ctrl = 2;//definir los pines de control de dirección del motor grupo B
+int left_pwm = 5;//definir los pines de control PWM del motor grupo B
+int right_ctrl = 4;//definir los pines de control de dirección del motor grupo A
+int right_pwm = 6;//definir los pines de control PWM del motor grupo A
+int sensor_L = 11;//definir el pin del sensor de seguimiento de línea izquierdo
+int sensor_M = 7;//definir el pin del sensor de seguimiento de línea central
+int sensor_R = 8;//definir el pin del sensor de seguimiento de línea derecho
+int L_val,M_val,R_val;//definir estas variables
 
 void setup() {
-  Serial.begin(9600); //Starte den seriellen Monitor und setze die Baudrate auf 9600
-  pinMode(left_ctrl, OUTPUT); //Setze die Richtungssteuerungspins des Motors Gruppe B auf OUTPUT
-  pinMode(left_pwm, OUTPUT);  //Setze die PWM-Steuerungspins des Motors Gruppe B auf OUTPUT
-  pinMode(right_ctrl, OUTPUT); //Setze die Richtungssteuerungspins des Motors Gruppe A auf OUTPUT
-  pinMode(right_pwm, OUTPUT);  //Setze die PWM-Steuerungspins des Motors Gruppe A auf OUTPUT
-  pinMode(sensor_L, INPUT);    //Setze die Pins des linken Linienverfolgungssensors auf INPUT
-  pinMode(sensor_M, INPUT);    //Setze die Pins des mittleren Linienverfolgungssensors auf INPUT
-  pinMode(sensor_R, INPUT);    //Setze die Pins des rechten Linienverfolgungssensors auf INPUT
-  //Setze Pin auf Ausgang
+  Serial.begin(9600);//iniciar monitor serial y configurar baud rate a 9600
+  pinMode(left_ctrl,OUTPUT);//configurar pines de control de dirección del motor grupo B como OUTPUT
+  pinMode(left_pwm,OUTPUT);//configurar pines de control PWM del motor grupo B como OUTPUT
+  pinMode(right_ctrl,OUTPUT);//configurar pines de control de dirección del motor grupo A como OUTPUT
+  pinMode(right_pwm,OUTPUT);//configurar pines de control PWM del motor grupo A como OUTPUT
+  pinMode(sensor_L,INPUT);//configurar pines del sensor de seguimiento de línea izquierdo como INPUT
+  pinMode(sensor_M,INPUT);//configurar pines del sensor de seguimiento de línea central como INPUT
+  pinMode(sensor_R,INPUT);//configurar pines del sensor de seguimiento de línea derecho como INPUT
+ //Configurar pin como salida
   pinMode(SCL_Pin, OUTPUT);
   pinMode(SDA_Pin, OUTPUT);
-  matrix_display(start01); //Zeige Startmuster an
+  matrix_display(start01);//Mostrar patrón de inicio
 }
 
 void loop() 
 {
-  tracking(); //Führe Hauptprogramm aus
+  tracking(); //ejecutar programa principal
 }
 
 void tracking()
 {
-  L_val = digitalRead(sensor_L); //Lese den Wert des linken Linienverfolgungssensors
-  M_val = digitalRead(sensor_M); //Lese den Wert des mittleren Linienverfolgungssensors
-  R_val = digitalRead(sensor_R); //Lese den Wert des rechten Linienverfolgungssensors
-  if ( L_val == 0 && M_val == 0 && R_val == 0 ) { //Wenn keine schwarzen Linien erkannt werden, fährt das Turtle Car vorwärts
+  L_val = digitalRead(sensor_L);//leer el valor del sensor de seguimiento de línea izquierdo
+  M_val = digitalRead(sensor_M);//leer el valor del sensor de seguimiento de línea central
+  R_val = digitalRead(sensor_R);//leer el valor del sensor de seguimiento de línea derecho
+  if ( L_val == 0 && M_val == 0 && R_val == 0 ) { //cuando no se detectan líneas negras, el coche avanza
     Car_front();
   }
-  else { //Andernfalls, wenn einer der Sensoren eine schwarze Linie erkennt, rückwärts fahren und nach links drehen
+  else { //De lo contrario, si alguno de los sensores detecta una línea negra, retroceder y girar a la izquierda
     Car_back();
     delay(500);
     Car_left();
@@ -112,23 +112,22 @@ void Car_Stop()
   analogWrite(right_pwm, 0);
 }
 
-
-//diese Funktion wird für die Punktmatrixanzeige verwendet
+//esta función se utiliza para la pantalla de matriz de puntos
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //die Funktion, die die Datenübertragungs-Startbedingung aufruft
-  IIC_send(0xc0);  //Adresse auswählen
+  IIC_start();  //la función que llama a la condición de inicio de transferencia de datos
+  IIC_send(0xc0);  //seleccionar dirección
 
-  for (int i = 0; i < 16; i++) //die Musterdaten sind 16 Bytes lang
+  for (int i = 0; i < 16; i++) //los datos del patrón son 16 bytes
   {
-    IIC_send(matrix_value[i]); //Übertrage die Daten des Musters
+    IIC_send(matrix_value[i]); //Transmitir los datos del patrón
   }
-  IIC_end();   //Beende die Musterdatenübertragung
+  IIC_end();   //Finalizar la transmisión de datos del patrón
   IIC_start();
-  IIC_send(0x8A);  //Anzeige-Steuerung, wähle 4/16 Pulsbreite
+  IIC_send(0x8A);  //Control de pantalla, seleccionar ancho de pulso 4/16
   IIC_end();
 }
-//Bedingungen, unter denen die Datenübertragung beginnt
+//Condiciones bajo las cuales comienza la transmisión de datos
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -138,7 +137,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Zeigt das Ende der Datenübertragung an
+//Indica el fin de la transmisión de datos
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -149,25 +148,26 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//Daten übertragen
+//transmitir datos
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Jedes Byte hat 8 Bits und wird bitweise beginnend mit dem niedrigsten Bit geprüft
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Cada byte tiene 8 bits y se verifica bit a bit comenzando por el menos significativo
   {
-    if (send_data & mask) { //Setzt die High- und Low-Pegel von SDA_Pin abhängig davon, ob jedes Bit des Bytes eine 1 oder 0 ist
+    if (send_data & mask) { //Establece los niveles alto y bajo de SDA_Pin dependiendo de si cada bit del byte es un 1 o un 0
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Ziehe den Clock-Pin SCL_Pin auf High, um die Datenübertragung zu stoppen
+    digitalWrite(SCL_Pin, HIGH); //Elevar el pin de reloj SCL_Pin para detener la transmisión de datos
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //Ziehe den Clock-Pin SCL_Pin auf Low, um das SIGNAL von SDA zu ändern
+    digitalWrite(SCL_Pin, LOW); //bajar el pin de reloj SCL_Pin para cambiar la SEÑAL de SDA 
   }
 }
 //*************************************************************************
 ```
 
-### **5. Testergebnis**
+### **5. Resultado de la prueba**
 
-Nach dem erfolgreichen Hochladen des Codes auf das V4.0 Board, verbinden Sie die Verkabelung gemäß dem Schaltplan, schalten Sie die externe Stromversorgung einund stellen Sie dann den DIP-Schalter auf ON. Stellen Sie das Smart Car in den schwarzen Kreis, dann wird es sich ausschließlich im Kreis bewegen.
+Después de subir el código con éxito a la placa V4.0, conecta los cables según el diagrama de conexiones, enciende la alimentación externa
+y luego gira el interruptor DIP a ON. Coloca el coche inteligente en el círculo negro, entonces se moverá únicamente dentro del círculo.

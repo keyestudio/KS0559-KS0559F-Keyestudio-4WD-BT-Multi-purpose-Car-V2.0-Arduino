@@ -1,46 +1,46 @@
-# Projekt 3: Linienverfolgungssensor
+# Proyecto 3: Sensor de Seguimiento de Línea
 
 ![](media/A17.png)
 
-### **1. Beschreibung** 
+### **1. Descripción**
 
-Der Verfolgungssensor ist tatsächlich ein Infrarotsensor. Die hier verwendete Komponente ist die TCRT5000 Infrarot-Röhre. Ihr Arbeitsprinzip besteht darin, die unterschiedliche Reflexionsfähigkeit von Infrarotlicht auf Farben zu nutzen und dann die Stärke des reflektierten Signals in ein Stromsignal umzuwandeln.
+El sensor de seguimiento es en realidad un sensor infrarrojo. El componente utilizado aquí es el tubo infrarrojo TCRT5000. Su principio de funcionamiento es usar la diferente reflectividad de la luz infrarroja en los colores, y luego convertir la intensidad de la señal reflejada en una señal de corriente.
 
-Während des Erkennungsprozesses ist Schwarz auf HIGH-Pegel aktiv, während Weiß auf LOW-Pegel aktiv ist. Die Erkennungshöhe beträgt 0-3 cm.
+Durante el proceso de detección, el negro es activo en nivel ALTO mientras que el blanco es activo en nivel BAJO. La altura de detección es de 0-3 cm.
 
-Das Keyestudio 3-Kanal Linienverfolgungsmodul hat 3 Sätze TCRT5000 Infrarot-Röhren auf einer Platine integriert, was die Verkabelung und Steuerung bequemer macht.
+El módulo de seguimiento de línea de 3 canales de Keyestudio integra 3 conjuntos de tubos infrarrojos TCRT5000 en una placa, lo que facilita el cableado y control.
 
-Durch Drehen des einstellbaren Potentiometers am Sensor kann die Erkennungsempfindlichkeit des Sensors angepasst werden.
+Girando el potenciómetro ajustable en el sensor, se puede ajustar la sensibilidad de detección del sensor.
 
-### **2. Spezifikation**
+### **2. Especificaciones**
 
-- Betriebsspannung: 3,3-5V (DC)
+- Voltaje de operación: 3.3-5V (DC)
 
-- Schnittstelle: 5PIN
+- Interfaz: 5PIN
 
-- Ausgangssignal: Digitalsignal
+- Señal de salida: Señal digital
 
-- Erkennungshöhe: 0-3 cm
+- Altura de detección: 0-3 cm
 
 ![image-20250508163247479](media/A18.png)
 
-<span style="color: rgb(255, 76, 65);">Hinweis: Vor dem Testen drehen Sie das Potentiometer am Sensor, um die Erkennungsempfindlichkeit einzustellen. Die Empfindlichkeit ist am besten, wenn die LED an einer Schwelle zwischen EIN und AUS eingestellt wird.</span> 
+<span style="color: rgb(255, 76, 65);">Nota: Antes de la prueba, gire el potenciómetro en el sensor para ajustar la sensibilidad de detección. La sensibilidad es óptima cuando se ajusta el LED a un umbral entre ENCENDIDO y APAGADO.</span> 
 
-### **3. Komponenten**
+### **3. Componentes**
 
-| Entwicklungsboard *1                     | 8833 Motor Driver *1                     | Rotes LED-Modul *1         | Linienverfolgungssensor *1   |
-| ---------------------------------------- | ---------------------------------------- | ------------------------ | ------------------------ |
-| ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) | ![img](media/A19.png) |
-| 5P Dupont Kabel *1                         | USB-Kabel *1                              | 3P Dupont Kabel *1         |                          |
-| ![img](media/A20.png)                 | ![img](media/A12.jpg)                 | ![img](media/A11.jpg) |                          |
+| Placa de Desarrollo *1                  | Driver de Motor 8833 *1                  | Módulo LED Rojo *1       | Sensor de Seguimiento de Línea *1 |
+| -------------------------------------- | --------------------------------------- | ------------------------ | --------------------------------- |
+| ![img](media/A8.jpg)                   | ![img](media/A9.jpg)                     | ![img](media/A10.jpg)    | ![img](media/A19.png)             |
+| Cable Dupont 5P *1                     | Cable USB *1                            | Cable Dupont 3P *1       |                                   |
+| ![img](media/A20.png)                  | ![img](media/A12.jpg)                    | ![img](media/A11.jpg)    |                                   |
 
-### **4. Schaltplan**
+### **4. Diagrama de Conexiones**
 
 ![image-20250508164243044](media/A21.png)
 
-G, V, S1, S2 und S3 des Linienverfolgungssensors sind mit G (GND), V (VCC), D11, D7 und D8 des Sensor-Erweiterungsboards verbunden.
+G, V, S1, S2 y S3 del sensor de seguimiento de línea están conectados a G (GND), V (VCC), D11, D7 y D8 de la placa de expansión del sensor.
 
-### **5. Testcode**
+### **5. Código de Prueba**
 
 ```c
 //****************************************************************************
@@ -50,56 +50,56 @@ lesson 3.1
  Line Track sensor
  http://www.keyestudio.com
 */
-int L_pin = 11;  //Pins des linken Linienverfolgungssensors
-int M_pin = 7;  //Pins des mittleren Linienverfolgungssensors
-int R_pin = 8;  //Pins des rechten Linienverfolgungssensors
-int val_L,val_R,val_M;// definiere die Variablenwerte der drei Sensoren
+int L_pin = 11;  //pines del sensor de seguimiento de línea izquierdo
+int M_pin = 7;  //pines del sensor de seguimiento de línea medio
+int R_pin = 8;  //pines del sensor de seguimiento de línea derecho
+int val_L,val_R,val_M;// definir las variables de valor de los tres sensores
 
 void setup()
 {
-  Serial.begin(9600); // initialisiere serielle Kommunikation mit 9600 Baud
-  pinMode(L_pin,INPUT); // definiere L_pin als Eingang
-  pinMode(M_pin,INPUT); // definiere M_pin als Eingang
-  pinMode(R_pin,INPUT); // definiere R_pin als Eingang
+  Serial.begin(9600); // inicializar comunicación serial a 9600 bits por segundo
+  pinMode(L_pin,INPUT); // configurar L_pin como entrada
+  pinMode(M_pin,INPUT); // configurar M_pin como entrada
+  pinMode(R_pin,INPUT); // configurar R_pin como entrada
 }
 
 void loop() 
 { 
-  val_L = digitalRead(L_pin);// lese den L_pin aus:
-  val_R = digitalRead(R_pin);// lese den R_pin aus:
-  val_M = digitalRead(M_pin);// lese den M_pin aus:
-  Serial.print("links:");
+  val_L = digitalRead(L_pin);//leer L_pin:
+  val_R = digitalRead(R_pin);//leer R_pin:
+  val_M = digitalRead(M_pin);//leer M_pin:
+  Serial.print("left:");
   Serial.print(val_L);
-  Serial.print(" mitte:");
+  Serial.print(" middle:");
   Serial.print(val_M);
-  Serial.print(" rechts:");
+  Serial.print(" right:");
   Serial.println(val_R);
-  delay(500);// Verzögerung zwischen den Messungen für Stabilität
+  delay(500);// retardo entre lecturas para estabilidad
 }
 //****************************************************************************
 ```
 
-### **6. Testergebnis**
+### **6. Resultado de la Prueba**
 
-Nach erfolgreichem Hochladen des Codes auf das V4.0 Board verbinden Sie die Verkabelung gemäß dem Schaltplan und verwenden ein USB-Kabel, um den Computer mit Strom für das Board zu versorgen.
+Después de subir el código exitosamente a la placa V4.0, conecta los cables según el diagrama de conexiones y usa un cable USB para conectar la computadora y alimentar la placa.
 
-Nach dem Einschalten öffnen Sie den seriellen Monitor und sehen den Status der drei Linienverfolgungssensoren. Wenn keine Signale empfangen werden, ist der Wert 1. Wenn wir den Sensor mit weißem Papier abdecken, wird der Wert 0.
+Al encender, abre el monitor serial y verás el estado de los tres sensores de seguimiento de línea. Cuando no se reciben señales, el valor es 1. Si cubrimos el sensor con un papel blanco, el valor será 0.
 
 ![image-20250508164424571](media/A22.png)
 
 ![image-20250508164453274](media/A23.png)
 
-**7. Code-Erklärung**
+### **7. Explicación del Código**
 
-Serial.begin(9600) - Initialisiert die serielle Schnittstelle, setzt die Baudrate auf 9600
+Serial.begin(9600) - Inicializa el puerto serial, establece la velocidad en baudios a 9600
 
-pinMode - Definiert den Pin als Eingangs- oder Ausgangsmodus
+pinMode - Define el pin como modo entrada o salida
 
-digitalRead - Liest den Zustand des Pins, der in der Regel HIGH- oder LOW-Pegel ist
+digitalRead - Lee el estado del pin, que generalmente es nivel ALTO o BAJO
 
-**8. Erweiterte Übung**
+### **8. Práctica de Extensión**
 
-Nachdem Sie das Funktionsprinzip verstanden haben, können Sie eine LED an D9 anschließen, um die LED darüber zu steuern.
+Después de conocer su principio de funcionamiento, puedes conectar un LED al pin D9 para controlar el LED con el sensor.
 
 ![image-20250508164527429](media/A24.png)
 
@@ -110,46 +110,46 @@ lesson 3.2
  Line Track Sensor LED
  http://www.keyestudio.com
 */
-int L_pin = 11;  //Pins des linken Linienverfolgungssensors
-int M_pin = 7;  //Pins des mittleren Linienverfolgungssensors
-int R_pin = 8;  //Pins des rechten Linienverfolgungssensors
-int val_L,val_R,val_M;// definiere die Variablen der drei Sensoren 
+int L_pin = 11;  //pines del sensor de seguimiento de línea izquierdo
+int M_pin = 7;  //pines del sensor de seguimiento de línea central
+int R_pin = 8;  //pines del sensor de seguimiento de línea derecho
+int val_L,val_R,val_M;// definir las variables de los tres sensores 
 
 void setup()
 {
-  Serial.begin(9600); // initialisiere serielle Kommunikation mit 9600 Bits pro Sekunde
-  pinMode(L_pin,INPUT); // setze L_pin als Eingang
-  pinMode(M_pin,INPUT); // setze M_pin als Eingang
-  pinMode(R_pin,INPUT); // setze R_pin als Eingang
+  Serial.begin(9600); // inicializar comunicación serial a 9600 bits por segundo
+  pinMode(L_pin,INPUT); // configurar L_pin como entrada
+  pinMode(M_pin,INPUT); // configurar M_pin como entrada
+  pinMode(R_pin,INPUT); // configurar R_pin como entrada
   pinMode(9, OUTPUT);
 }
 
 void loop() 
 { 
-  val_L = digitalRead(L_pin);// lese L_pin:
-  val_R = digitalRead(R_pin);// lese R_pin:
-  val_M = digitalRead(M_pin);// lese M_pin:
+  val_L = digitalRead(L_pin);//leer el L_pin:
+  val_R = digitalRead(R_pin);//leer el R_pin:
+  val_M = digitalRead(M_pin);//leer el M_pin:
   Serial.print("left:");
   Serial.print(val_L);
   Serial.print(" middle:");
   Serial.print(val_M);
   Serial.print(" right:");
   Serial.println(val_R);
-  delay(500);// Verzögerung zwischen den Messungen für Stabilität
-  if ((val_L == LOW) || (val_M == LOW) || (val_R == LOW))// wenn der linke Linienverfolgungssensor Signale erkennt
+  delay(500);// retardo entre lecturas para estabilidad
+  if ((val_L == LOW) || (val_M == LOW) || (val_R == LOW))//si el sensor de seguimiento de línea izquierdo detecta señales
   { 
     Serial.println("HIGH");
-    digitalWrite(9, HIGH);// LED ist an
+    digitalWrite(9, HIGH);//LED está encendido
   }
-  else// wenn der linke Linienverfolgungssensor keine Signale erkennt
+  else//si el sensor de seguimiento de línea izquierdo no detecta señales
   { 
     Serial.println("LOW");
-    digitalWrite(9, LOW);// LED ist aus
+    digitalWrite(9, LOW);//LED está apagado
   }
  }
 //****************************************************************************
 ```
 
-Nach dem erfolgreichen Hochladen des Codes auf das V4.0 Board, verbinden Sie die Verkabelung gemäß dem Schaltplan und verwenden Sie ein USB-Kabel, um den Computer mit Strom für das Board zu versorgen.
+Después de subir el código con éxito a la placa V4.0, conecta los cables según el diagrama de conexiones y usa un cable USB para conectar la computadora y alimentar la placa.
 
-Nach dem Einschalten halten Sie ein Blatt Papier nahe an den Sensor, dann können Sie feststellen, dass die LED aufleuchtet, wenn der Linienverfolgungssensor abgedeckt wird.
+Después de encender, acerca un papel al sensor, entonces podremos ver que el LED se enciende al cubrir el sensor de seguimiento de línea.

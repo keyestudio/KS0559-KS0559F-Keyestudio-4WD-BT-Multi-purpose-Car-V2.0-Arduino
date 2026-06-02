@@ -10,8 +10,8 @@
 
 
 
-5.5 Kidsblock - Projekte
-------------------------
+5.5 Kidsblock - Proyectos
+-------------------------
 
 .. toctree::
     :maxdepth: 2

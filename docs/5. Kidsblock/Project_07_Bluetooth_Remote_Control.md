@@ -1,70 +1,71 @@
-# Projekt 7 Bluetooth-Fernsteuerung
+# Proyecto 7 Control Remoto Bluetooth
 
 ![](media/A161.png)
 
-### **1. Beschreibung**
+### **1.Descripción**
 
-In diesem Kit befindet sich ein DX-BT24 5.1 Bluetooth-Modul. Dieses Bluetooth-Modul verfügt über 256Kb Speicherplatz und entspricht der Bluetooth-Spezifikation V5.1BLE, die AT-Befehle unterstützt. Benutzer können Parameter wie die Baudrate und den Gerätenamen des seriellen Ports nach Bedarf ändern.
+En este kit hay un módulo Bluetooth DX-BT24 5.1. Este módulo bluetooth cuenta con un espacio de 256Kb y cumple con la especificación Bluetooth V5.1BLE, que soporta comandos AT. Los usuarios pueden cambiar parámetros como la velocidad en baudios y el nombre del dispositivo del puerto serie según sea necesario.
 
-Darüber hinaus unterstützt es die UART-Schnittstelle und die transparente Übertragung des Bluetooth-Seriellports, was auch die Vorteile von niedrigen Kosten, kleinem Format, geringem Stromverbrauch und hoher Empfindlichkeit beim Senden und Empfangen beinhaltet. Bemerkenswert ist, dass es nur wenige Peripheriekomponenten benötigt, um seine leistungsstarken Funktionen zu realisieren.
+Además, soporta interfaz UART y transmisión transparente del puerto serie bluetooth, lo que también contiene las ventajas de bajo costo, tamaño pequeño, bajo consumo de energía y alta sensibilidad para enviar y recibir. Notablemente, solo necesita unos pocos componentes periféricos para realizar sus potentes funciones.
 
-### **2. Spezifikation**
+### **2.Especificaciones**
 
-- Bluetooth-Protokoll: Bluetooth-Spezifikation V5.1 BLE
+- Protocolo Bluetooth: Especificación Bluetooth V5.1 BLE
 
-- Arbeitsreichweite: In einer offenen Umgebung kann eine ultra-lange Distanzkommunikation von 40 m erreicht werden
+- Distancia de trabajo: En un entorno abierto, puede alcanzar una comunicación de ultra larga distancia de 40m
+  
+- Frecuencia de operación: Banda ISM de 2.4GHz
 
-- Betriebsfrequenz: 2,4 GHz ISM-Band
+- Interfaz de comunicación: UART
 
-- Kommunikationsschnittstelle: UART
+- Certificación Bluetooth: Conforme con los estándares de certificación FCC CE ROHS REACH
+  
+- Parámetros del puerto serie: 9600, 8 bits de datos, 1 bit de parada, bit inválido, sin control de flujo
+  
+- Alimentación: 5V DC
 
-- Bluetooth-Zertifizierung: Entspricht den FCC CE ROHS REACH Zertifizierungsstandards
+- Temperatura de operación: –10℃ a +65℃
+  
 
-- Serielle Port-Parameter: 9600, 8 Datenbits, 1 Stoppbit, kein Paritätsbit, keine Flusskontrolle
+### **3.Aplicación**
 
-- Stromversorgung: 5V DC
+El módulo DX-BT24 también soporta el protocolo BT5.1 BLE, que puede conectarse directamente a dispositivos iOS con función Bluetooth BLE, y soporta la ejecución residente de programas en segundo plano. Se usa principalmente en el campo de transmisión inalámbrica de datos a corta distancia. Permite evitar conexiones de cables engorrosas y puede reemplazar directamente cables seriales.
 
-- Betriebstemperatur: –10℃ bis +65℃
+**Áreas de aplicación exitosas de los módulos BT24:**
 
-### **3. Anwendung**
+※ Transmisión inalámbrica de datos Bluetooth;
 
-Das DX-BT24-Modul unterstützt auch das BT5.1 BLE-Protokoll, das direkt mit iOS-Geräten mit BLE-Bluetooth-Funktion verbunden werden kann und die Ausführung von Hintergrundprogrammen im Resident-Modus unterstützt. Es wird hauptsächlich im Bereich der drahtlosen Datenübertragung über kurze Entfernungen eingesetzt. Es ermöglicht die Vermeidung umständlicher Kabelverbindungen und kann serielle Kabel direkt ersetzen.
+※ Equipos periféricos para teléfonos móviles y computadoras;
 
-**Erfolgreiche Anwendungsbereiche der BT24-Module:**
+※ Equipos POS portátiles;
 
-※ Bluetooth-Datenübertragung ohne Kabel;
+※ Transmisión inalámbrica de datos en equipos médicos;
 
-※ Peripheriegeräte für Mobiltelefone und Computer;
+※ Control de hogares inteligentes;
 
-※ Handheld-POS-Geräte;
+※ Impresoras Bluetooth;
 
-※ Drahtlose Datenübertragung von medizinischen Geräten;
+※ Juguetes con control remoto Bluetooth;
 
-※ Smart-Home-Steuerung;
+※ Bicicletas compartidas;
 
-※ Bluetooth-Drucker;
-
-※ Bluetooth-Fernsteuerungsspielzeuge;
-
-※ Fahrräder zum Teilen;
-
-**Anschlüsse**
+**Puertos**
 
 ![](media/A162.png)
 
-①STATE: Status-Pin
+①STATE: Pin de estado
 
-②RX: Empfangspin
+②RX: Pin de recepción
 
-③TX: Sendepin
+③TX: Pin de envío
 
-④GND: Masse
+④GND: Tierra (GND)
 
-⑤VCC: Stromversorgung
+⑤VCC: Alimentación
 
-⑥EN: Enable-Pin
+⑥EN: Pin de habilitación
 
-Verbinden Sie das BT-Modul mit dem Entwicklungsboard.
+Conectar el módulo BT a la placa de desarrollo.
 
 <table border="1">
 <tbody>
@@ -90,27 +91,29 @@ Verbinden Sie das BT-Modul mit dem Entwicklungsboard.
 </tr>
 </tbody>
 </table>
-### **4. Komponenten**
 
-| Entwicklungsboard *1       | 8833 Motor Driver *1       | Rotes LED-Modul *1          |
-| -------------------------- | -------------------------- | --------------------------- |
-| ![img](media/A163.jpg)     | ![img](media/A164.jpg)     | ![img](media/A165.jpg)      |
-| 3P F-F Dupont-Kabel *1     | USB-Kabel *1               | DX-BT24 Bluetooth-Modul *1  |
-| ![img](media/A166.jpg)     | ![img](media/A167.jpg)     | ![img](media/A168.jpg)      |
 
-### **5. Schaltplan**
+### **4.Componentes**
+
+| Placa de Desarrollo *1      | Driver de Motor 8833 *1      | Módulo LED Rojo*1           |
+| ------------------------- | ------------------------- | -------------------------- |
+| ![img](media/A163.jpg) | ![img](media/A164.jpg) | ![img](media/A165.jpg)  |
+| Cable Dupont 3P F-F *1      | Cable USB *1               | Módulo Bluetooth DX-BT24 *1 |
+| ![img](media/A166.jpg) | ![img](media/A167.jpg) | ![img](media/A168.jpg)  |
+
+### **5.Diagrama de Conexiones**
 
 ![](media/A169.png)
 
-RXD, TXD, GND und VCC des BT-Moduls sind mit TX, RX, G und 5V verbunden.
+RXD, TXD, GND y VCC del módulo BT se conectan a TX, RX, G y 5V.
 
-STATE und BRK des BT-Moduls benötigen keine Verbindung.
+STATE y BRK del módulo BT no necesitan conexión.
 
-<span style="color: rgb(255, 76, 65);">Hinweis:</span> Achten Sie auf die Einbaurichtung des BT-Moduls beim Einstecken auf das 8833-Board. Und stecken Sie es nicht ein, bevor der Code hochgeladen wurde.
+<span style="color: rgb(255, 76, 65);">Nota:</span> la dirección del módulo BT al insertarlo en la placa 8833. Y no insertarlo antes de subir el código.
 
-### **6. Testcode**
+### **6.Código de Prueba**
 
-Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
+Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia.
 
 (1).![](media/A126.png)
 
@@ -122,89 +125,89 @@ Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke di
 
 (5).![](media/A173.png)
 
-**Vollständiger Testcode**
+**Código de Prueba Completo**
 
-<span style="color: rgb(255, 76, 65);">**Hinweis:** Entfernen Sie vor dem Hochladen des Testcodes das Bluetooth-Modul, da sonst der Code nicht hochgeladen werden kann. Verbinden Sie das Bluetooth-Modul erst nach erfolgreichem Hochladen des Codes.</span>
+<span style="color: rgb(255, 76, 65);">**Nota:** Antes de subir el código de prueba, necesitas retirar el módulo Bluetooth, de lo contrario el código no se podrá subir. Conecta el módulo Bluetooth después de subir el código exitosamente.</span>
 
 ![](media/A174.png)
 
-### **7. Testergebnis**
+### **7.Resultado de la Prueba**
 
-Nach dem erfolgreichen Hochladen des Codes auf das V4.0-Board verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten stecken Sie das BT-Modul ein und die LED blinkt, dann müssen wir die BT-App herunterladen.
+Después de subir exitosamente el código a la placa V4.0, conecta los cables según el diagrama de conexiones, luego conecta la computadora mediante un cable USB para alimentar la placa. Después de encender, inserta el módulo BT y el LED parpadeará, luego necesitamos descargar la app BT.
 
-### **8. Bluetooth-APP herunterladen**
+### **8.Descargar APP Bluetooth**
 
-**Apple-System**
+**Sistema Apple**
 
-(1). Öffnen Sie den App Store auf dem iPhone.
+(1).Abre la App Store en el iPhone.
 
-(2). Suche nach keyes BT car und lade die APP auf dein Handy herunter.
+(2).Busca keyes BT car y descarga la APP en tu teléfono.
 
 ![](media/A175.png)
     
 
-(3). Nach der Installation die Oberfläche öffnen.
+(3).Después de la instalación, entra en su interfaz.
 
 ![](media/A176.png)
     
 
-(4). Klicke auf die Schaltfläche "**Connect**" oben links, um automatisch nach Bluetooth zu suchen. Wenn **BT24** gefunden wird, klicke auf "**Connect**", um Bluetooth zu verbinden, und dann auf ![](media/A177.png), um in die Steueroberfläche des 4WD Smart Cars zu gelangen.
+(4).Haz clic en el botón "**Connect**" en la esquina superior izquierda para buscar automáticamente Bluetooth. Cuando se encuentre **BT24**, haz clic en "**Connect**" para conectar Bluetooth, y luego haz clic en ![](media/A177.png) para entrar en la interfaz de control del coche inteligente 4WD. 
 
 ![](media/A178.png)
     
-**Android System**
+**Sistema Android**
     
 
-(1). Öffne den Google Play Store und suche nach „**keyes 4wd**“.
+(1).Entra en google play store para buscar “**keyes 4wd**”.
 
 ![](media/A179.png)
 
-(2). Das App-Symbol wird nach der Installation wie unten gezeigt angezeigt.
+(2).El icono de la app se muestra a continuación después de la instalación.
 
 ![](media/A180.png)
 
-(3). Klicke auf die App, um die folgende Seite zu öffnen.
+(3).Haz clic en la app para entrar en la siguiente página.
 
 ![](media/A181.png)
 
-(4). Nach dem Verbinden mit Bluetooth Strom anschließen, und die LED-Anzeige des Bluetooth-Moduls blinkt. Tippe auf „Connect“, um nach Bluetooth zu suchen.
+(4).Después de conectar Bluetooth, conecta la alimentación y el indicador LED del módulo Bluetooth parpadeará. Pulsa “Connect” para buscar el Bluetooth.
 
 ![](media/A182.jpeg)
 
-(5). Wenn **BT24** gefunden wird, klicke auf "**connect**", um Bluetooth zu verbinden. Wenn "**connect**" zu "**is connected**" wechselt, zeigt dies an, dass die Bluetooth-Verbindung erfolgreich ist. Wie im Bild unten gezeigt, bleibt die Bluetooth-LED dauerhaft an.
+(5).Cuando se encuentre **BT24**, haz clic en "**connect**" para conectar Bluetooth. Cuando "**connect**" cambie a "**is connected**", indica que la conexión Bluetooth fue exitosa. Como se muestra en la imagen a continuación, el LED de Bluetooth permanecerá encendido.
 
 ![](media/A183.jpeg)
 
-(6). Nach dem Verbinden mit dem Bluetooth-Modul klicke auf ![](media/A80.png), um die Baudrate auf 9600 einzustellen. Wenn die Taste der Bluetooth-APP gedrückt wird, werden die entsprechenden Zeichen angezeigt, wie unten dargestellt:
+(6).Después de conectar el módulo Bluetooth, haz clic en ![](media/A80.png) para configurar la velocidad en baudios a 9600. Al presionar el botón de la APP Bluetooth, se mostrarán los caracteres correspondientes, como se muestra a continuación:
 
 ![](media/A184.png)
 
-| Taste                                         | Funktion                          |
-| --------------------------------------------- | -------------------------------- |
-| ![wps14](media/A185.jpg)                       | Paaren des DX-BT24 5.1 Bluetooth-Moduls |
-| ![wps15](media/A186.jpg)                       | Bluetooth trennen                |
+| Tecla                                         | Función                          |
+| -------------------------------------------- | --------------------------------- |
+| ![wps14](media/A185.jpg)                  | Emparejar módulo Bluetooth DX-BT24 5.1 |
+| ![wps15](media/A186.jpg) | Desconectar Bluetooth              |
 
-|                                                              | Steuerzeichen                                            | Funktion                                                     |
-| ------------------------------------------------------------ | -------------------------------------------------------- | ------------------------------------------------------------ |
-| ![wps16](media/A187.jpg)                                     | Drücken: F  <br />Loslassen: S                            | Taste drücken, das Auto fährt vorwärts; <br />loslassen zum Stoppen |
-| ![wps17](media/A188.jpg)                                     | Drücken: L  <br />Loslassen: S                            | Taste drücken, das Auto fährt nach links; <br />loslassen zum Stoppen  |
-| ![wps18](media/A189.jpg)                                     | Drücken: R  <br />Loslassen: S                            | Taste drücken, das Auto fährt nach rechts; <br />loslassen zum Stoppen |
-| ![wps19](media/A190.jpg)                                     | Drücken: B  <br />Loslassen: S                            | Taste drücken, das Auto fährt rückwärts; <br />loslassen zum Stoppen   |
-| ![wps20](media/A191.jpg)                                     | Drücken: „a“  <br />Loslassen: „S“                        | Klicken zum Beschleunigen (maximal: 255)                      |
-| ![wps21](media/A192.jpg)                                     | Drücken: „d“  <br />Loslassen: „S“                        | Klicken zum Verlangsamen (minimal: 0)                         |
-| ![wps22](media/A193.jpg)                                     | Klicken, um die Schwerkraft- <br />Sensorfunktion des <br />Handys zu starten: erneut klicken, um <br />die Steuerung zu beenden |                                                              |
-| ![wps23](media/A194.jpg)                                     | Klicken, um „X“ zu senden, <br />erneut klicken, um „S“ zu senden | Linienverfolgungsfunktion starten; <br />erneut klicken zum Beenden |
-| ![wps24](media/A195.jpg)                                     | Klicken, um „Y“ zu senden, <br />erneut klicken, um „S“ zu senden | Ultraschall-Vermeidungsfunktion starten; <br />erneut klicken zum Beenden |
-| ![wps25](media/A196.jpg)                                     | Klicken, um „U“ zu senden, <br />erneut klicken, um „S“ zu senden | Ultraschall-Folgefunktion starten; <br />erneut klicken zum Beenden |
-| ![wps26](media/A197.jpg)                                     | Klicken, um „G“ zu senden, <br />erneut klicken, um „S“ zu senden | Einschränkungsfunktion starten; <br />erneut klicken zum Beenden |
+|                                                              | Carácter de control                                            | Función                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![wps16](media/A187.jpg)                 | Presionar: F  <br />Soltar: S                                   | Presiona el botón, el coche avanza; <br />suéltalo para detener |
+| ![wps17](media/A188.jpg)                 | Presionar: L  <br />Soltar: S                                   | Presiona el botón, el coche gira a la izquierda; <br />suéltalo para detener  |
+| ![wps18](media/A189.jpg)                 | Presionar: R  <br />Soltar: S                                   | Presiona el botón, el coche gira a la derecha; <br />suéltalo para detener |
+| ![wps19](media/A190.jpg)                 | Presionar: B  <br />Soltar: S                                   | Presiona el botón, el coche retrocede; <br />suéltalo para detener   |
+| ![wps20](media/A191.jpg)                 | Presionar: “a”  <br />Soltar: “S”                               | Clic para acelerar (máximo: 255)                               |
+| ![wps21](media/A192.jpg)                 | Presionar: “d”  <br />Soltar: “S”                               | Clic para desacelerar (mínimo: 0)                                |
+| ![wps22](media/A193.jpg)                 | Clic para iniciar la función de detección de gravedad del <br />teléfono móvil: clic de nuevo para <br />salir del control por gravedad |                                                              |
+| ![wps23](media/A194.jpg)                 | Clic para enviar “X”,<br />clic de nuevo para enviar “S”               | Iniciar función de seguimiento de línea; <br />clic de nuevo para salir      |
+| ![wps24](media/A195.jpg)                 | Clic para enviar “Y”, <br />clic de nuevo para enviar “S”               | Iniciar función de evitación ultrasónica;<br />clic de nuevo para salir |
+| ![wps25](media/A196.jpg) | Clic para enviar “U”, <br />clic de nuevo para enviar “S”               | Iniciar función de seguimiento ultrasónico;<br />clic de nuevo para salir |
+| ![wps26](media/A197.jpg)                 | Clic para enviar “G”,<br />clic de nuevo para enviar “S”                | Iniciar función de restricción;<br />clic de nuevo para salir       |
 
-### **9. Erweiterte Übung**
+### **9.Práctica de extensión**
 
-Hier verwenden wir den vom Mobiltelefon gesendeten Befehl, um eine LED ein- oder auszuschalten. Im Schaltplan ist eine LED an den D9-Pin angeschlossen.
+Aquí vamos a usar el comando enviado por el teléfono móvil para encender o apagar una luz LED. Observando el diagrama de conexiones, un LED está conectado al pin D9.
 
 ![](media/A198.png)
 
-Sie können Blöcke ziehen, um sie zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
+Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia.
 
 (1).![](media/A126.png)
 
@@ -220,8 +223,8 @@ Sie können Blöcke ziehen, um sie zu bearbeiten. Die unten aufgeführten Blöck
 
 (7).![](media/A201.png)
 
-**Vollständiger Testcode**
+**Código de prueba completo**
 
 ![](media/A202.png)
 
-Nachdem der Code erfolgreich auf das V4.0-Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen Sie dann das Board über ein USB-Kabel an den Computer an, um es mit Strom zu versorgen. Nach dem Einschalten klicken Sie auf<td>![](media/A203.png)</td> und <td>![](media/A204.png)</td>, um die LED ein- und auszuschalten.
+Después de subir el código con éxito a la placa V4.0, conecta los cables según el diagrama de conexiones, luego conecta la computadora mediante un cable USB para alimentar la placa. Después de encender, haz clic en <td>![](media/A203.png)</td> y <td>![](media/A204.png)</td> para controlar el encendido y apagado del LED.

@@ -1,42 +1,42 @@
-# Projekt 1: LED Blink
+# Proyecto 1: Parpadeo de LED
 
-### **1. Beschreibung**
+### **1.Descripción**
 
 ![image-20250508161034535](media/A6.png)
 
-Für Anfänger und Enthusiasten ist LED Blink ein grundlegendes Programm. LED, die Abkürzung für Light Emitting Diodes, besteht aus chemischen Verbindungen wie Ga, As, P, N usw.
+Para principiantes y entusiastas, el parpadeo de LED es un programa fundamental. LED, la abreviatura de diodos emisores de luz, está compuesto por compuestos químicos como Ga, As, P, N, entre otros.
 
-Die LED kann durch Ändern der Verzögerungszeit im Testcode in verschiedenen Farben blinken. Bei Steuerung und Anschluss an GND und VCC leuchtet die LED, wenn der S-Anschluss auf High-Pegel ist, andernfalls erlischt sie.
+El LED puede parpadear en diversos colores al alterar el tiempo de retardo en el código de prueba. Cuando está bajo control, con alimentación en GND y VCC, el LED se encenderá si el extremo S está en nivel alto, de lo contrario se apagará.
 
-### **2. Spezifikation**
+### **2.Especificaciones**
 
-- Steuerinterface: digitaler Port
+- Interfaz de control: puerto digital
 
-- Betriebsspannung: DC 3,3-5V
+- Voltaje de trabajo: DC 3.3-5V
 
-- Pin-Abstand: 2,54 mm
+- Espaciado de pines: 2.54mm
 
-- LED-Anzeigefarbe: rot
+- Color de visualización del LED: rojo
 
 ![image-20250508161015086](media/A7.png)
 
-### **3. Komponenten**
+### **3.Componentes**
 
-|           Entwicklungsboard *1           |           8833 Motor Driver *1           |     Rotes LED Modul *1     |
-| :--------------------------------------: | :--------------------------------------: | :------------------------: |
+|           Placa de Desarrollo *1           |           Driver de Motor 8833 *1           |     Módulo LED Rojo*1     |
+| :----------------------------------------: | :-----------------------------------------: | :-----------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             3P Dupont Kabel *1             |               USB-Kabel *1                |                            |
-|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                            |
+|             Cable Dupont 3P *1             |               Cable USB *1                   |                           |
+|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                           |
 
-### **4. Schaltplan**
+### **4.Diagrama de Conexiones**
 
 ![image-20250508161123490](media/A13.png)
 
-Wie aus der obigen Abbildung ersichtlich ist, ist das Keyestudio 8833 Motor Shield auf das Keyestudio 4.0 Entwicklungsboard aufgesteckt.
+Como se puede ver en la figura anterior, el Shield de motor Keyestudio 8833 está apilado sobre la placa de desarrollo Keyestudio 4.0.
 
-Die Pins G, V und S des LED-Moduls sind jeweils mit G, 5V und D9 des Erweiterungsboards verbunden.
+Los pines G, V y S del módulo LED están conectados respectivamente a G, 5V y D9 de la placa de expansión.
 
-### **5. Testcode**
+### **5.Código de Prueba**
 
 ```c 
 //****************************************************************************
@@ -48,32 +48,32 @@ http://www.keyestudio.com
 */
 void setup()
 { 
-  pinMode(9, OUTPUT);// initialisiert digitalen Pin 9 als Ausgang.
+  pinMode(9, OUTPUT);// inicializa el pin digital 9 como salida.
 }
     
-void loop() // die loop-Funktion läuft endlos immer wieder
+void loop() // la función loop se ejecuta una y otra vez para siempre
 {  
-  digitalWrite(9, HIGH); // schaltet die LED ein (HIGH ist die Spannungsebene)
-   delay(1000); // wartet eine Sekunde
-   digitalWrite(9, LOW); // schaltet die LED aus, indem die Spannung auf LOW gesetzt wird
-   delay(1000); // wartet eine Sekunde
+  digitalWrite(9, HIGH); // enciende el LED (HIGH es el nivel de voltaje)
+   delay(1000); // espera un segundo
+   digitalWrite(9, LOW); // apaga el LED poniendo el voltaje en LOW
+   delay(1000); // espera un segundo
 }
 //****************************************************************************
 ```
 
-### **6. Testergebnis**
+### **6.Resultado de la Prueba**
 
-Nach erfolgreichem Hochladen des Codes auf das V4.0 Board, verbinden Sie die Kabel gemäß dem Schaltplan und verwenden Sie ein USB-Kabel, um den Computer mit Strom zu versorgen. Nach dem Einschalten sehen Sie, dass die an D9 angeschlossene LED an- und ausgeht.
+Después de subir con éxito el código a la placa V4.0, conecta los cables según el diagrama de conexiones y usa un cable USB para conectar la computadora y alimentar la placa. Al encender, verás que el LED conectado al D9 se enciende y apaga.
 
-### **7. Code-Erklärung**
+### **7.Explicación del Código**
 
-pinMode(9，OUTPUT) - Diese Funktion legt fest, ob der Pin als INPUT oder OUTPUT verwendet wird.
+pinMode(9，OUTPUT) - Esta función indica que el pin es ENTRADA o SALIDA
 
-digitalWrite(9，HIGH) - Wenn der Pin als OUTPUT definiert ist, kann er auf HIGH (5V ausgeben) oder LOW (0V ausgeben) gesetzt werden.
+digitalWrite(9，HIGH) - Cuando el pin es SALIDA, podemos configurarlo en HIGH (salida 5V) o LOW (salida 0V)
 
-### **8. Erweiterte Übung**
+### **8.Práctica de Extensión**
 
-Wir haben es geschafft, die LED blinken zu lassen. Als Nächstes beobachten wir, was passiert, wenn wir die Verzögerungszeit ändern.
+Hemos logrado hacer parpadear el LED. Ahora, observemos qué sucede con el LED si modificamos el tiempo de retardo.
 
 ```c
 //****************************************************************************
@@ -85,18 +85,18 @@ Wir haben es geschafft, die LED blinken zu lassen. Als Nächstes beobachten wir,
 */
 void setup()
 {  
-  // initialisiert digitalen Pin 9 als Ausgang.
+  // inicializa el pin digital 11 como salida.
   pinMode(9, OUTPUT);
 }
-// die loop-Funktion läuft endlos immer wieder
+// la función loop se ejecuta una y otra vez para siempre
 void loop()
 { 
-  digitalWrite(9, HIGH); // schaltet die LED ein (HIGH ist die Spannungsebene)
-  delay(100); // wartet 0,1 Sekunden
-  digitalWrite(9, LOW); // schaltet die LED aus, indem die Spannung auf LOW gesetzt wird
-  delay(100); // wartet 0,1 Sekunden
+  digitalWrite(9, HIGH); // enciende el LED (HIGH es el nivel de voltaje)
+  delay(100); // espera 0.1 segundo
+  digitalWrite(9, LOW); // apaga el LED poniendo el voltaje en LOW
+  delay(100); // espera 0.1 segundo
 }
 //*****************************************************************
 ```
 
-Das Testergebnis zeigt, dass die LED schneller blinkt. Daher beeinflusst die Verzögerungszeit die Blinkfrequenz der LED.
+El resultado de la prueba muestra que el LED parpadea más rápido. Por lo tanto, el tiempo de retardo afecta la frecuencia de parpadeo del LED.

@@ -1,105 +1,101 @@
-# Projekt 6 IR-Empfang
+# Proyecto 6 Recepción IR
 
 ![9681c7da-a7c9-49ed-ad8c-32e00c6aeb07](media/A42.png)
 
-### **1. Beschreibung** 
+### **1. Descripción**
 
-Es besteht kein Zweifel, dass Infrarot-Fernbedienungen im täglichen Leben allgegenwärtig sind. Sie werden verwendet, um verschiedene Haushaltsgeräte zu steuern, wie Fernseher, Stereoanlagen, Videorekorder und Satellitensignalempfänger. Die Infrarot-Fernbedienung besteht aus einem Infrarot-Sende- und einem Infrarot-Empfangssystem, das heißt einer Infrarot-Fernbedienung und einem Infrarot-Empfangsmodul sowie einem Mikrocontroller, der in der Lage ist, die Signale zu dekodieren.  
+No hay duda de que el control remoto infrarrojo es omnipresente en la vida diaria. Se utiliza para controlar varios electrodomésticos, como televisores, estéreos, grabadoras de video y receptores de señal satelital. El control remoto infrarrojo está compuesto por sistemas de transmisión y recepción infrarroja, es decir, un control remoto infrarrojo y un módulo receptor infrarrojo junto con un microcontrolador capaz de decodificar.
 
 ![image-20250509154423060](media/A43.png)
 
-Das 38K Infrarot-Trägersignal, das vom Fernbediener ausgesendet wird, wird vom Kodierungschip im Fernbediener codiert. Es besteht aus einem Abschnitt Pilotcode, Benutzercode, Benutzer-Inverscode, Daten-Code und Daten-Inverscode. Das Zeitintervall des Pulses wird verwendet, um zu unterscheiden, ob es sich um ein 0- oder 1-Signal handelt, und die Kodierung besteht aus diesen 0- und 1-Signalen.
+La señal portadora infrarroja de 38K emitida por el control remoto es codificada por el chip de codificación en el control remoto. Está compuesta por una sección de código piloto, código de usuario, código inverso de usuario, código de datos y código inverso de datos. El intervalo de tiempo del pulso se usa para distinguir si es una señal 0 o 1 y la codificación está formada por estas señales 0 y 1.
 
-Der Benutzercode derselben Fernbedienung ist konstant, während der Daten-Code die Taste unterscheidet.
+El código de usuario del mismo control remoto es constante mientras que el código de datos puede distinguir la tecla.
 
-Wenn die Fernbedienungstaste gedrückt wird, sendet die Fernbedienung ein Infrarot-Trägersignal aus. Wenn der IR-Empfänger das Signal empfängt, dekodiert das Programm das Trägersignal und bestimmt, welche Taste gedrückt wurde. Der MCU dekodiert das empfangene 01-Signal und erkennt so, welche Taste von der Fernbedienung gedrückt wurde.
+Cuando se presiona un botón del control remoto, este envía una señal portadora infrarroja. Cuando el receptor IR recibe la señal, el programa decodifica la señal portadora y determina qué tecla fue presionada. El MCU decodifica la señal 01 recibida, juzgando así qué tecla fue presionada en el control remoto.
 
-Der von uns verwendete Infrarot-Empfänger ist ein Infrarot-Empfangsmodul. Es besteht hauptsächlich aus einem Infrarot-Empfängerkopf, einem Gerät, das Empfang, Verstärkung und Demodulation integriert. Sein interner IC hat die Demodulation abgeschlossen und kann vom Infrarot-Empfang bis zur Ausgabe arbeiten und ist mit TTL-Signalen kompatibel.
+El receptor infrarrojo que usamos es un módulo receptor infrarrojo. Está compuesto principalmente por una cabeza receptora infrarroja, que es un dispositivo que integra recepción, amplificación y demodulación. Su IC interno ha completado la demodulación y puede lograr desde la recepción infrarroja hasta la salida, siendo compatible con señales TTL.
 
-Außerdem ist es geeignet für Infrarot-Fernbedienungen und Infrarot-Datenübertragung. Das vom Empfänger hergestellte Infrarot-Empfangsmodul hat nur drei Pins: Signalleitung, VCC und GND. Es ist sehr bequem, mit Arduino und anderen Mikrocontrollern zu kommunizieren.
+Además, es adecuado para control remoto infrarrojo y transmisión de datos infrarrojos. El módulo receptor infrarrojo fabricado por el receptor tiene solo tres pines: línea de señal, VCC y GND. Es muy conveniente para comunicarse con Arduino y otros microcontroladores.
 
-### **2. Spezifikation**
+### **2. Especificaciones**
 
-- Betriebsspannung: 3,3-5V (DC)
+- Voltaje de operación: 3.3-5V (DC)
+- Señal de salida: Señal digital
+- Ángulo de recepción: 90 grados
+- Frecuencia: 38 kHz
+- Distancia de recepción: 10 m
 
-- Ausgangssignal: Digitalsignal
-
-- Empfangswinkel: 90 Grad
-
-- Frequenz: 38 kHz
-
-- Empfangsreichweite: 10 m
-
-Das Bild zeigt das reale Produkt und den Schaltplan des Infrarot-Empfängers.
+La imagen muestra el producto real y el diagrama del circuito del receptor infrarrojo.
 
 ![image-20250510082651985](media/A44.png)
 
-### **3. Komponenten**
+### **3. Componentes**
 
-|           Entwicklungsboard *1           |           8833 Motor Driver *1           |     Rotes LED-Modul *1     |
-| :--------------------------------------: | :--------------------------------------: | :------------------------: |
+|           Placa de desarrollo *1           |           Driver de motor 8833 *1           |     Módulo LED rojo *1     |
+| :----------------------------------------: | :-----------------------------------------: | :------------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             3P Dupont Kabel *1             |               USB-Kabel *1                |                            |
-|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                            |
+|             Cable Dupont 3P *1             |               Cable USB *1                   |                            |
+|         ![img](media/A11.jpg)               |         ![img](media/A12.jpg)                |                            |
 
-Da das 8833 Board den IR-Empfänger integriert hat, ist keine Verkabelung erforderlich. Die Pins des IR-Empfängermoduls sind G (GND), V (VCC) und D3.
+Dado que la placa 8833 integra el receptor IR, no necesita cableado adicional. Los pines del módulo receptor IR son G (GND), V (VCC) y D3.
 
-### **4. Testcode**
+### **4. Código de prueba**
 
 ```c
 //*************************************************************************************
 /*
  keyestudio 4wd BT Car
- lesson 6.1
- IR remote
+ lección 6.1
+ Control remoto IR
  http://www.keyestudio.com
 */ 
-#include <IRremote.h>     // IRremote Bibliothek einbinden  
-int RECV_PIN = 3;        // Definiere den Pin des IR-Empfängers als D3
+#include <IRremote.h>     // Declaración de la librería IRremote  
+int RECV_PIN = 3;        // definir el pin del receptor IR como D3
 IRrecv irrecv(RECV_PIN);   
-decode_results results;   // Dekodierungsergebnisse befinden sich in „results“ vom Typ „decode_results“
+decode_results results;   // los resultados decodificados existen en “results” de “decode_results”
 void setup()  
 {  
   Serial.begin(9600);  
-  irrecv.enableIRIn(); // Empfänger aktivieren
+  irrecv.enableIRIn(); // Habilitar receptor 
 }  
   
  void loop() {  
-  if (irrecv.decode(&results)) // Erfolgreich dekodiert, ein Satz von Infrarotsignalen empfangen  
+  if (irrecv.decode(&results))// decodificación exitosa, recibe un conjunto de señales infrarrojas  
    {  
-     Serial.println(results.value, HEX); // Ausgabe des Codes im 16er HEX-Format 
-     irrecv.resume(); // Empfang des nächsten Wertes
+     Serial.println(results.value, HEX);// Imprime el valor en hexadecimal de 16 bits y recibe el código 
+     irrecv.resume(); // Recibe el siguiente valor
    }  
    delay(100);  
  } 
 //*************************************************************************************
 ```
 
-### **5. Testergebnis**
+### **5. Resultado de la prueba**
 
-Nach dem erfolgreichen Hochladen des Codes auf das V4.0-Board verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten öffnen Sie den seriellen Monitor und stellen die Baudrate auf 9600 ein.
+Después de cargar con éxito el código en la placa V4.0, conecta los cables según el diagrama de conexiones, luego conecta la computadora mediante un cable USB para alimentar la placa. Después de encenderla, abre el monitor serial y configura la velocidad en baudios a 9600.
 
-Nehmen Sie die Fernbedienung heraus und senden Sie ein Signal an den Infrarot-Empfängersensor. Sie können den Tastwert der entsprechenden Taste sehen. Wenn die Tastzeit zu lang ist, neigt FFFFFFFF zu fehlerhaften Zeichen.
+Saca el control remoto y envía la señal al sensor receptor infrarrojo. Puedes ver el valor de la tecla correspondiente; si el tiempo de pulsación es demasiado largo, FFFFFFFF tiende a mostrar caracteres corruptos.
 
 ![image-20250510082931375](media/A45.png)
 
-Die Tastwerte der Keyestudio-Fernbedienung sind unten dargestellt.
+Los valores de las teclas del control remoto Keyestudio se muestran a continuación.
 
 ![image-20250510082942450](media/A46.png)
 
-### **6. Code-Erklärung**
+### **6. Explicación del Código**
 
-**irrecv.enableIRIn():** Nach dem Aktivieren der IR-Dekodierung werden die IR-Signale empfangen,
+**irrecv.enableIRIn():** Después de habilitar la decodificación IR, se recibirán las señales IR,
 
-**decode():** Die Funktion „decode()“ überprüft kontinuierlich, ob die Dekodierung erfolgreich war.
+**decode():** La función “decode()” verificará continuamente para asegurarse de si la decodificación fue exitosa.
 
-**irrecv.decode(\&results):** Nach erfolgreicher Dekodierung gibt diese Funktion „true“ zurück und speichert das Ergebnis in „results“. Nach der Dekodierung der IR-Signale wird die Funktion resume() ausgeführt und der nächste Signalempfang fortgesetzt.
+**irrecv.decode(\&results):** después de decodificar con éxito, esta función devolverá “true” y guardará el resultado en “results”. Después de decodificar las señales IR, ejecuta la función resume() y continúa recibiendo la siguiente señal.
 
-### **7. Erweiterte Übung**
+**7. Práctica de Extensión**
 
-Wir haben den Tastwert der IR-Fernbedienung dekodiert. Wie wäre es damit, die LED mit dem gemessenen Wert zu steuern? Wir könnten ein Experiment entwerfen.
+Hemos decodificado el valor de la tecla del control remoto IR. ¿Qué tal controlar un LED con el valor medido? Podríamos diseñar un experimento.
 
-Schließen Sie eine LED an D9 an und drücken Sie dann die Tasten der Fernbedienung, um die LED ein- und auszuschalten.
+Conecta un LED al pin D9, luego presiona las teclas del control remoto para encender y apagar el LED.
 
 ![image-20250508161123490](media/A13.png)
 
@@ -112,37 +108,37 @@ IR remote LED
 http://www.keyestudio.com
 */ 
 #include <IRremote.h>
-int RECV_PIN = 3;//definiere den Pin des IR-Empfängers als D3
-int LED_PIN = 9;//definiere den Pin der LED als Pin 9
+int RECV_PIN = 3;//define el pin del receptor IR como D3
+int LED_PIN = 9;//define el pin del LED como pin 9
 int a=0;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
 
 void setup()
 {Serial.begin(9600);
-  irrecv.enableIRIn(); //Initialisiere den IR-Empfänger
-  pinMode(LED_PIN,OUTPUT);//setze Pin 9 der LED auf OUTPUT
+  irrecv.enableIRIn(); //Inicializa el receptor IR
+  pinMode(LED_PIN,OUTPUT);//configura el pin 9 del LED como OUTPUT
 }
 
 void loop() {
   if (irrecv.decode(&results)) 
   {
-    if(results.value==0xFF02FD && (a==0)) //entsprechend dem obigen Tastwert, drücke „OK“ auf der Fernbedienung, LED wird gesteuert
+    if(results.value==0xFF02FD && (a==0)) //según el valor de la tecla anterior, al presionar “OK” en el control remoto, se controlará el LED
     {
       Serial.println("HIGH");
-      digitalWrite(LED_PIN,HIGH);//LED wird eingeschaltet
+      digitalWrite(LED_PIN,HIGH);//el LED se encenderá
       a=1;
     }
-    else if(results.value==0xFF02FD && (a==1)) //erneut drücken
+    else if(results.value==0xFF02FD && (a==1)) //presiona de nuevo
     {
       Serial.println("LOW");
-      digitalWrite(LED_PIN,LOW);//LED wird ausgeschaltet
+      digitalWrite(LED_PIN,LOW);//el LED se apagará
       a=0;
     }
-    irrecv.resume(); // empfange den nächsten Wert
+    irrecv.resume(); // recibe el siguiente valor
   }
 }
 //*************************************************************************************
 ```
 
-Nach dem erfolgreichen Hochladen des Codes auf das V4.0-Board verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten kann durch Drücken der "**OK**"-Taste auf der Fernbedienung die LED ein- und ausgeschaltet werden.
+Después de cargar con éxito el código en la placa V4.0, conecta los cables según el diagrama de conexiones, luego conecta la computadora mediante un cable USB para alimentar la placa. Después de encenderla, presionar la tecla "**OK**" en el control remoto puede hacer que el LED se encienda y apague.

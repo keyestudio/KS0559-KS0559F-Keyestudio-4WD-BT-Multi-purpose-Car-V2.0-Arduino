@@ -1,30 +1,30 @@
-# Projekt 11 Linienverfolgungs-Smartcar
+# Proyecto 11 Coche Inteligente de Seguimiento de Línea
 
 ![](media/A271.png)
 
-### **1. Beschreibung**
+### **1. Descripción**
 
-Basierend auf dem Arbeitsprinzip des Linienverfolgungssensors ermöglichen wir die Herstellung eines Linienverfolgungs-Smartcars.
+Basándonos en el principio de funcionamiento del sensor de seguimiento de línea, creamos un coche inteligente de seguimiento de línea.
 
-In diesem Projekt erkennen wir durch einen Linienverfolgungssensor, ob sich unter dem Smartcar eine schwarze Linie befindet, und steuern dann die Drehung der beiden Motorgruppen entsprechend den Erkennungsergebnissen, um das Smartcar entlang der schwarzen Linie fahren zu lassen.
+En este proyecto, detectamos si hay una línea negra en la parte inferior del coche inteligente mediante un sensor de seguimiento de línea, y luego controlamos la rotación de los dos grupos de motores según los resultados de la detección, de manera que el coche inteligente se desplace siguiendo la línea negra.
 
-### **2. Flussdiagramm**
+### **2. Diagrama de Flujo**
 
 ![img](media/A272.png)
 
 ![Img](media/A273.png)
 
-### **3. Schaltplan**
+### **3. Diagrama de Conexiones**
 
 ![](media/A264.png)
 
-G, V, S1, S2 und S3 des Linienverfolgungssensors sind mit G (GND), V (VCC), D11, D7 und D8 des Sensor-Erweiterungsboards verbunden.
+G, V, S1, S2 y S3 del sensor de seguimiento de línea están conectados a G (GND), V (VCC), D11, D7 y D8 de la placa de expansión de sensores.
 
-Die Stromversorgung wird an den BAT-Anschluss angeschlossen.
+La alimentación se conecta al puerto BAT.
 
-### **4. Testcode**
+### **4. Código de Prueba**
 
-Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
+Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia
 
 (1).![](media/A126.png)
 
@@ -36,7 +36,7 @@ Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke di
 
 (5).![](media/A276.png)
 
-**Vollständiger Testcode**
+**Código Completo de Prueba**
 
 ![](media/A277.png)
 
@@ -44,6 +44,6 @@ Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke di
 
 ![](media/A279.png)
 
-### **5. Testergebnis**
+### **5. Resultado de la Prueba**
 
-Nachdem der Code erfolgreich auf das V4.0-Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan, schalten Sie die externe Stromversorgung ein und stellen Sie dann den DIP-Schalter auf ON. Das Smartcar fährt dann entlang der Linien.
+Después de subir correctamente el código a la placa V4.0, conecta los cables según el diagrama de conexiones, enciende la alimentación externa y luego gira el interruptor DIP a ON. Entonces el coche inteligente seguirá las líneas.

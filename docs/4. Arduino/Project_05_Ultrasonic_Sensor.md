@@ -1,70 +1,70 @@
-# Projekt 5 Ultraschallsensor
+# Proyecto 5 Sensor Ultrasónico
 
-### **1. Beschreibung**
+### **1.Descripción**
 
 ![image-20250509085643931](media/A33.png)
 
-Der HC-SR04 Ultraschallsensor verwendet Sonar, um die Entfernung zu einem Objekt zu bestimmen, ähnlich wie Fledermäuse. Er bietet eine ausgezeichnete berührungslose Abstandserkennung mit hoher Genauigkeit und stabilen Messwerten in einem einfach zu verwendenden Paket. Er wird komplett mit einem Ultraschall-Sender- und Empfangsmodul geliefert.
+El sensor ultrasónico HC-SR04 utiliza sonar para determinar la distancia a un objeto, como lo hacen los murciélagos. Ofrece una excelente detección de rango sin contacto con alta precisión y lecturas estables en un paquete fácil de usar. Viene completo con módulos transmisor y receptor ultrasónicos.
 
 ![Img](media/A34.png)
 
-Der HC-SR04 oder der Ultraschallsensor wird in einer Vielzahl von Elektronikprojekten verwendet, um Hinderniserkennung und Abstandsmessanwendungen sowie verschiedene andere Anwendungen zu realisieren. Hier haben wir eine einfache Methode vorgestellt, um mit Arduino und einem Ultraschallsensor die Entfernung zu messen und wie man den Ultraschallsensor mit Arduino verwendet.
+El HC-SR04 o sensor ultrasónico se utiliza en una amplia gama de proyectos electrónicos para crear aplicaciones de detección de obstáculos y medición de distancia, así como diversas otras aplicaciones. Aquí hemos presentado el método simple para medir la distancia con Arduino y un sensor ultrasónico y cómo usar el sensor ultrasónico con Arduino.
 
-### **2. Spezifikation**
+### **2.Especificaciones**
 
-- Betriebsspannung: +5V DC
+- Voltaje de trabajo: +5V DC
 
-- Ruhestrom: <2mA
+- Corriente en reposo: \<2mA
 
-- Betriebsstrom: 15mA
+- Corriente de trabajo: 15mA
 
-- Effektiver Winkel: <15°
+- Ángulo efectivo: \<15°
 
-- Entfernungsbereich: 2cm – 300 cm
+- Rango de distancia: 2cm – 300 cm
 
-- Genauigkeit: 0,3 cm
+- Precisión: 0.3 cm
 
-- Messwinkel: 30 Grad
+- Ángulo de medición: 30 grados
 
-- Trigger-Eingang Impulsbreite: 10µs
+- Ancho de pulso de entrada Trigger: 10uS
 
 ![image-20250509085705309](media/A35.png)
 
-### **3. Komponenten**
+### **3.Componentes**
 
-| Entwicklungsboard *1                                         | 8833 Motor Driver *1                     | Rotes LED Modul*1         | Ultraschallsensor*1                                          |
+| Placa de desarrollo *1                                      | Driver de motor 8833 *1                  | Módulo LED rojo*1        | Sensor ultrasónico*1                                         |
 | ------------------------------------------------------------ | ---------------------------------------- | ------------------------ | ------------------------------------------------------------ |
 | ![img](media/A8.jpg)                     | ![img](media/A9.jpg) | ![img](media/A10.jpg) | ![image-20250509085643931](media/A33.png) |
-| 4P Dupont Kabel*1                                             | USB Kabel*1                              | 3P Dupont Kabel*1         |                                                              |
+| Cable Dupont 4P*1                                           | Cable USB*1                             | Cable Dupont 3P*1        |                                                              |
 | ![image-20250509143737972](media/A36.png) | ![img](media/A12.jpg)                 | ![img](media/A11.jpg) |                                                              |
 
-### **4. Funktionsprinzip**
+### **4.Principio de funcionamiento**
 
-Wie auf dem obigen Bild gezeigt, ist es wie zwei Augen. Eines ist der Sender, das andere der Empfänger.
+Como muestra la imagen anterior, es como dos ojos. Uno es el extremo transmisor, el otro es el extremo receptor.
 
-Das Ultraschallmodul sendet nach Auslösen eines Signals Ultraschallwellen aus. Wenn die Ultraschallwellen auf ein Objekt treffen und reflektiert werden, gibt das Modul ein Echo-Signal aus, sodass es die Entfernung des Objekts anhand der Zeitdifferenz zwischen dem Trigger-Signal und dem Echo-Signal bestimmen kann.
+El módulo ultrasónico emitirá ondas ultrasónicas después de recibir una señal de disparo. Cuando las ondas ultrasónicas encuentran un objeto y se reflejan, el módulo emite una señal de eco, por lo que puede determinar la distancia del objeto a partir de la diferencia de tiempo entre la señal de disparo y la señal de eco.
 
-t ist die Zeit, die das ausgesendete Signal benötigt, um auf ein Hindernis zu treffen und zurückzukehren. Die Ausbreitungsgeschwindigkeit des Schalls in der Luft beträgt etwa 343 m/s, und Entfernung = Geschwindigkeit \* Zeit. Da die Ultraschallwelle ausgesendet wird und zurückkommt, entspricht dies der doppelten Entfernung. Daher muss durch 2 geteilt werden, die vom Ultraschall gemessene Entfernung = (Geschwindigkeit \* Zeit)/2.
+t es el tiempo que tarda la señal emitida en encontrar el obstáculo y regresar. La velocidad de propagación del sonido en el aire es aproximadamente 343 m/s, y distancia = velocidad \* tiempo. Sin embargo, la onda ultrasónica se emite y regresa, lo que equivale a 2 veces la distancia. Por lo tanto, debe dividirse por 2, la distancia medida por la onda ultrasónica = (velocidad \* tiempo)/2.
 
-**Verwendungsmethode und Diagramm des Ultraschallmoduls:**
+**Método de uso y gráfico del módulo ultrasónico:**
 
-1. Verwenden Sie den GPIO-Pin, um ein High-Level-Signal von mindestens 10μs an den Trig-Pin des SR04 zu geben, um die Entfernungsmessung auszulösen.
-2. Nach dem Auslösen sendet das Modul automatisch acht 40KHz Ultraschallimpulse aus und erkennt, ob ein Signal zurückkommt. Dieser Schritt wird automatisch vom Modul ausgeführt.
-3. Wenn das Signal zurückkommt, gibt der Echo-Pin ein High-Level-Signal aus, dessen Dauer die Zeit vom Aussenden der Ultraschallwelle bis zum Empfang des Echos ist.
+1. Use el pin GPIO para dar una señal de nivel alto de al menos 10μs al pin Trig del SR04, lo que puede activarlo para detectar la distancia.
+2. Después de activar, el módulo enviará automáticamente ocho pulsos ultrasónicos de 40KHz y detectará si hay una señal de retorno. Este paso se completará automáticamente por el módulo.
+3. Si la señal regresa, el pin Echo emitirá un nivel alto, y la duración del nivel alto es el tiempo desde la transmisión de la onda ultrasónica hasta su retorno.
 
 ![image-20250509143833078](media/A37.png)
 
-**Schaltplan des Ultraschallsensors:**
+**Diagrama del circuito del sensor ultrasónico:**
 
 ![image-20250509154035287](media/A38.png)
 
-### **5. Anschlussdiagramm**
+### **5.Diagrama de conexiones**
 
 ![image-20250509154107103](media/A39.png)
 
-VCC, Trig, Echo und Gnd des Ultraschallsensors sind mit 5V(V), D12, D13 und Gnd(G) verbunden.
+VCC, Trig, Echo y Gnd del sensor ultrasónico están conectados a 5V(V), D12, D13 y Gnd(G)
 
-### **6. Testcode**
+### **6.Código de prueba**
 
 ```c
 //***************************************************************************
@@ -78,28 +78,27 @@ int trigPin = 12;    // Trigger
 int echoPin = 13;    // Echo
 long duration, cm, inches;
 void setup() {
-  //Serielle Schnittstelle starten
+  //Iniciar puerto serial
   Serial.begin (9600);
-  //Eingänge und Ausgänge definieren
+  //Definir entradas y salidas
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 }
-
 void loop() {
-  // Der Sensor wird durch einen HIGH-Impuls von 10 oder mehr Mikrosekunden ausgelöst.
-  // Geben Sie vorher einen kurzen LOW-Impuls, um einen sauberen HIGH-Impuls zu gewährleisten:
+  // El sensor se activa con un pulso HIGH de 10 o más microsegundos.
+  // Da un pulso LOW corto antes para asegurar un pulso HIGH limpio:
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-   // Lesen Sie das Signal vom Sensor: ein HIGH-Impuls, dessen
-  // Dauer die Zeit (in Mikrosekunden) vom Senden
-  // des Pings bis zum Empfang seines Echos von einem Objekt ist.
+   // Lee la señal del sensor: un pulso HIGH cuya
+  // duración es el tiempo (en microsegundos) desde el envío
+  // del ping hasta la recepción de su eco reflejado por un objeto.
   duration = pulseIn(echoPin, HIGH);
-   // Konvertieren Sie die Zeit in eine Entfernung
-  cm = (duration/2) / 29.1;     // Teilen durch 29,1 oder multiplizieren mit 0,0343
-  inches = (duration/2) / 74;   // Teilen durch 74 oder multiplizieren mit 0,0135
+   // Convierte el tiempo en una distancia
+  cm = (duration/2) / 29.1;     // Divide por 29.1 o multiplica por 0.0343
+  inches = (duration/2) / 74;   // Divide por 74 o multiplica por 0.0135
   Serial.print(inches);
   Serial.print("in, ");
   Serial.print(cm);
@@ -110,37 +109,37 @@ void loop() {
 //***************************************************************************
 ```
 
-### **7. Testergebnis**
+### **7.Resultado de la Prueba**
 
-Nachdem der Code erfolgreich auf das V4.0 Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen Sie dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten öffnen Sie den seriellen Monitor und stellen die Baudrate auf 9600 ein.
+Después de subir el código con éxito a la placa V4.0, conecta los cables según el diagrama de conexiones, luego conecta la computadora mediante un cable USB para alimentar la placa. Después de encenderla, abre el monitor serial y configura la velocidad en baudios a 9600.
 
-Die erkannte Entfernung wird angezeigt, und die Einheit ist cm und Zoll. Blockieren Sie den Ultraschallsensor mit der Hand, wird der angezeigte Entfernungswert kleiner.
+Se mostrará la distancia detectada, y la unidad es cm y pulgadas. Obstaculiza el sensor ultrasónico con la mano, el valor de distancia mostrado se hará más pequeño.
 
 ![image-20250509154147537](media/A40.png)
 
-### **8. Code-Erklärung**
+### **8.Explicación del Código**
 
-**int trigPin -** Dieser Pin ist definiert, um Ultraschallwellen zu senden, normalerweise Ausgang.
+**int trigPin-** este pin está definido para transmitir ondas ultrasónicas, generalmente salida.
 
-**int echoPin -** Dieser Pin ist als Empfangspin definiert, normalerweise Eingang.
+**int echoPin -** este está definido como el pin de recepción, generalmente entrada.
 
-**cm = (duration/2) / 29.1 -**
+**cm = (duration/2) / 29.1-**
 
-**inches = (duration/2) / 74 -**
+**inches = (duration/2) / 74-**
 
-Wir können die Entfernung mit der folgenden Formel berechnen:
+Podemos calcular la distancia usando la siguiente fórmula:
 
-distance = (Reisezeit/2) x Schallgeschwindigkeit
+distancia = (tiempo de viaje/2) x velocidad del sonido
 
-Die Schallgeschwindigkeit beträgt: 343 m/s = 0,0343 cm/µs = 1/29,1 cm/µs
+La velocidad del sonido es: 343m/s = 0.0343 cm/us = 1/29.1 cm/us
 
-Oder in Zoll: 13503,9 in/s = 0,0135 in/µs = 1/74 in/µs
+O en pulgadas: 13503.9in/s = 0.0135in/us = 1/74in/us
 
-Wir müssen die Reisezeit durch 2 teilen, da wir berücksichtigen müssen, dass die Welle gesendet wurde, das Objekt getroffen hat und dann zum Sensor zurückgekehrt ist.
+Necesitamos dividir el tiempo de viaje por 2 porque debemos tener en cuenta que la onda fue enviada, golpeó el objeto y luego regresó al sensor.
 
-### **9. Erweiterte Übung**
+### **9.Práctica de Extensión**
 
-Wir haben gerade die vom Ultraschall gemessene Entfernung angezeigt. Wie wäre es, die LED mit der gemessenen Entfernung zu steuern? Versuchen wir es und verbinden ein LED-Lichtmodul mit dem Pin D9.
+Acabamos de medir la distancia mostrada por el ultrasónico. ¿Qué tal controlar el LED con la distancia medida? Probémoslo y conecta un módulo de luz LED al pin D9.
 
 ![image-20250509154232505](media/A41.png)
 
@@ -157,27 +156,27 @@ int echoPin = 13;    // Echo
 long duration, cm, inches;
 
 void setup() {
-  Serial.begin (9600);  //Serielle Schnittstelle starten
-  pinMode(trigPin, OUTPUT);  //Definiere Ein- und Ausgänge
+  Serial.begin (9600);  //Inicio del puerto serial
+  pinMode(trigPin, OUTPUT);  //Define entradas y salidas
   pinMode(echoPin, INPUT);
 }
 
 void loop() 
 {
-  // Der Sensor wird durch einen HIGH-Impuls von 10 oder mehr Mikrosekunden ausgelöst.
-  // Geben Sie vorher einen kurzen LOW-Impuls, um einen sauberen HIGH-Impuls zu gewährleisten:
+  // El sensor se activa con un pulso HIGH de 10 o más microsegundos.
+  // Da un pulso LOW corto antes para asegurar un pulso HIGH limpio:
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  // Lesen Sie das Signal vom Sensor: ein HIGH-Impuls, dessen
-  // Dauer die Zeit (in Mikrosekunden) vom Senden
-  // des Pings bis zum Empfang seines Echos von einem Objekt ist.
+  // Lee la señal del sensor: un pulso HIGH cuya
+  // duración es el tiempo (en microsegundos) desde el envío
+  // del ping hasta la recepción de su eco reflejado por un objeto.
   duration = pulseIn(echoPin, HIGH);
-  // Konvertieren Sie die Zeit in eine Entfernung
-  cm = (duration/2) / 29.1;     // Teilen durch 29,1 oder multiplizieren mit 0,0343
-  inches = (duration/2) / 74;   // Teilen durch 74 oder multiplizieren mit 0,0135
+  // Convierte el tiempo en una distancia
+  cm = (duration/2) / 29.1;     // Divide por 29.1 o multiplica por 0.0343
+  inches = (duration/2) / 74;   // Divide por 74 o multiplica por 0.0135
   Serial.print(inches);
   Serial.print("in, ");
   Serial.print(cm);
@@ -198,4 +197,4 @@ void loop()
 //*****************************************************************
 ```
 
-Nachdem der Code erfolgreich auf das V4.0 Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen Sie dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten blockieren Sie den Ultraschallsensor mit der Hand (der Abstand liegt zwischen 2-10 cm) und prüfen, ob die LED leuchtet.
+Después de subir el código con éxito a la placa V4.0, conecta los cables según el diagrama de conexiones, luego conecta la computadora mediante un cable USB para alimentar la placa. Después de encenderla, bloquea el sensor ultrasónico con la mano (la distancia está entre 2-10cm), luego verifica si el LED está encendido.

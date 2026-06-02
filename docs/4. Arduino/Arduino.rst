@@ -10,13 +10,12 @@
 
 
 
-4.5 Arduino - Projekte
-----------------------
+4.5 Arduino - Proyectos
+-----------------------
 
 ![](./media/A5.jpeg)
 
-<font color ="#FF0000">**Hinweis: In diesem Kurs zeigt die Schnittstelle jedes Sensors / Moduls, die mit (G, -, GND) gekennzeichnet ist, den Minuspol an. G ist mit G oder GND des Sensor-Shields oder Steuerboards verbunden; „V“ ist der Pluspol und wird mit V, VCC oder 5V verbunden.**</font>
-
+<font color ="#FF0000">**Nota: En este curso, la interfaz de cada sensor/módulo marcada con (G, -, GND) indica el polo negativo, G se conecta a G o GND del shield del sensor o placa de control; “V” es el polo positivo y se conecta con V, VCC o 5V.**</font>
 
 .. toctree::
     :maxdepth: 2
