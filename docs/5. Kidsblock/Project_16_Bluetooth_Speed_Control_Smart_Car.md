@@ -1,42 +1,42 @@
-# Proyecto 16 Control de Velocidad por Bluetooth para Coche Inteligente
+# Projet 16 Contrôle de Vitesse Bluetooth pour Voiture Intelligente
 
 ![](media/A327.jpeg)
 
-### **1. Descripción**
+### **1.Description**
 
-En este proyecto, utilizaremos Bluetooth para ajustar la velocidad del coche inteligente. Permitimos definir velocidades variables y cambiarlas para modificar la velocidad del coche inteligente.
+Dans ce projet, nous utiliserons un Bluetooth pour ajuster la vitesse de la voiture intelligente. Nous permettons de définir des vitesses variables et de les modifier pour changer la vitesse de la voiture intelligente.
 
-### **2. Diagrama de Flujo**
+### **2.Diagramme de Flux**
 
 ![image-20250513095810478](media/A340.png)
 
-### **3. Diagrama de Conexiones**
+### **3.Schéma de Câblage**
 
 ![](media/A329.png)
 
-1). GND, VCC, SDA y SCL de la placa LED 8\*8 están conectados a G (GND), V (VCC), A4 y A5 de la placa de expansión.
+1). GND, VCC, SDA et SCL de la carte LED 8\*8 sont connectés respectivement à G (GND), V (VCC), A4 et A5 de la carte d’extension.
 
-2). RXD, TXD, GND y VCC del módulo Bluetooth están conectados respectivamente a TX, RX, G y 5V en la placa de expansión del controlador de motor 8833, mientras que los pines STATE y BRK del módulo Bluetooth no necesitan ser conectados.
+2). Les broches RXD, TXD, GND et VCC du module Bluetooth sont respectivement connectées à TX, RX, G et 5V sur la carte d’extension du driver moteur 8833, tandis que les broches STATE et BRK du module Bluetooth n’ont pas besoin d’être connectées.
 
-3). El servo está conectado a G, V y A3. El cable marrón está conectado a Gnd (G), el cable rojo está conectado a 5V (V) y el cable naranja está conectado a A3.
+3). Le servo est connecté à G, V et A3. Le fil marron est connecté à Gnd (G), le fil rouge est connecté à 5V (V) et le fil orange est connecté à A3.
 
-4). La alimentación está conectada al puerto BAT.
+4). L’alimentation est connectée au port BAT.
 
-### **4. Código de Prueba**
+### **4.Code de Test**
 
-Antes de escribir el código, es necesario importar los archivos de la biblioteca de la placa LED 8x16 y del servo. Los pasos específicos son los siguientes:
+Avant d’écrire le code, il est nécessaire d’importer les fichiers de bibliothèque de la carte LED 8x16 et du servo. Les étapes spécifiques sont les suivantes :
 
-Haz clic en ![](media/A29.png) para entrar en la interfaz de la biblioteca de extensiones de sensores/módulos/componentes, luego busca el módulo “Matrix 8\*16 Aip1640” ![](media/A236.png) y haz clic en él. De esta manera, "**Not loaded**" cambia a "**loaded**", indicando que el módulo “**Matrix 8\*16 Aip1640**” fue añadido exitosamente.
+Cliquez sur ![](media/A29.png) pour entrer dans l’interface de la bibliothèque d’extensions des capteurs/modules/composants, puis recherchez le module “Matrix 8\*16 Aip1640” ![](media/A236.png) et cliquez dessus. Ainsi, "**Not loaded**" change en "**loaded**", indiquant que le module “**Matrix 8\*16 Aip1640**” a été ajouté avec succès.
 
 ![Img](media/A237.png)
 
 ![](media/A238.png)
 
-Haz clic en ![](media/A33.png) para volver a la interfaz del editor de código, se pueden ver los bloques de instrucciones del módulo “**Matrix 8\*16 Aip1640**” y del componente “**Servo**” en el área de módulos.
+Cliquez sur ![](media/A33.png) pour revenir à l’interface de l’éditeur de code, le bloc d’instructions du module “**Matrix 8\*16 Aip1640**” ajouté et du composant “**Servo**” peut être vu dans la zone des modules.
 
 ![](media/A330.png)
 
-Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia:
+Vous pouvez faire glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence
 
 (1).![](media/A126.png)
 
@@ -58,9 +58,9 @@ Puedes arrastrar bloques para editar. Los bloques listados a continuación son p
 
 (10).![](media/A341.png)
 
-**Código Completo de Prueba**
+**Code de Test Complet**
 
-<span style="color: rgb(255, 76, 65);">**Nota:** Antes de subir el código de prueba, necesitas retirar el módulo Bluetooth, de lo contrario el código no se podrá subir. Conecta el módulo Bluetooth después de subir el código exitosamente.</span>
+<span style="color: rgb(255, 76, 65);">**Remarque :** Avant de téléverser le code de test, vous devez retirer le module Bluetooth, sinon le code ne pourra pas être téléversé. Reconnectez le module Bluetooth après un téléversement réussi.</span>
 
 ![](media/A342.png)
 
@@ -74,8 +74,8 @@ Puedes arrastrar bloques para editar. Los bloques listados a continuación son p
 
 ![](media/A346.png)
 
-### **5. Resultado de la Prueba**
+### **5.Résultat du Test**
 
-Después de subir exitosamente el código a la placa V4.0, conecta los cables según el diagrama de conexiones, enciende la alimentación externa y luego coloca el interruptor DIP en ON. Empareja la APP con Bluetooth, el coche inteligente podrá ser controlado para moverse mediante la APP.
+Après avoir téléversé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, alimentez l’alimentation externe puis mettez l’interrupteur DIP sur ON. Associez l’APP avec le Bluetooth, la voiture intelligente peut être contrôlée pour se déplacer via l’APP.
 
-Presiona ![](media/A347.png), el coche acelerará, presiona ![](media/A348.png), el coche reducirá la velocidad, y la placa LED 8\*16 mostrará el patrón de estado correspondiente del coche inteligente.
+Appuyez sur ![](media/A347.png), la voiture accélérera, appuyez sur ![](media/A348.png), la voiture ralentira, et la carte LED 8\*16 affichera le motif d’état correspondant de la voiture intelligente.

@@ -1,48 +1,48 @@
-# Proyecto 3: Sensor de Seguimiento de Línea
+# Projet 3 : Capteur de Suivi de Ligne
 
 ![](media/A63.png)
 
-### **1. Descripción**
+### **1.Description** 
 
-El sensor de seguimiento es en realidad un sensor infrarrojo. El componente utilizado aquí es el tubo infrarrojo TCRT5000. Su principio de funcionamiento es usar la diferente reflectividad de la luz infrarroja en los colores, luego convertir la intensidad de la señal reflejada en una señal de corriente.
+Le capteur de suivi est en réalité un capteur infrarouge. Le composant utilisé ici est le tube infrarouge TCRT5000. Son principe de fonctionnement est d'utiliser la réflectivité différente de la lumière infrarouge selon les couleurs, puis de convertir la puissance du signal réfléchi en un signal courant.
 
-Durante el proceso de detección, el negro está activo en nivel ALTO mientras que el blanco está activo en nivel BAJO. La altura de detección es de 0-3 cm.
+Lors du processus de détection, le noir est actif au niveau HAUT tandis que le blanc est actif au niveau BAS. La hauteur de détection est de 0-3 cm.
 
-El módulo de seguimiento de línea de 3 canales de Keyestudio ha integrado 3 conjuntos de tubos infrarrojos TCRT5000 en una placa, lo que es más conveniente para el cableado y control.
+Le module de suivi de ligne 3 canaux Keyestudio intègre 3 ensembles de tubes infrarouges TCRT5000 sur une carte, ce qui est plus pratique pour le câblage et le contrôle.
 
-Girando el potenciómetro ajustable en el sensor, se puede ajustar la sensibilidad de detección del sensor.
+En tournant le potentiomètre réglable sur le capteur, on peut ajuster la sensibilité de détection du capteur.
 
-### **2. Especificaciones**
+### **2.Spécifications**
 
-- Voltaje de operación: 3.3-5V (DC)
+- Tension de fonctionnement : 3,3-5V (DC)
 
-- Interfaz: 5PIN
+- Interface : 5PIN
 
-- Señal de salida: Señal digital
+- Signal de sortie : Signal numérique
 
-- Altura de detección: 0-3 cm
+- Hauteur de détection : 0-3 cm
 
 ![](media/A64.jpeg)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span> Antes de la prueba, gire el potenciómetro en el sensor para ajustar la sensibilidad de detección. La sensibilidad es óptima cuando se ajusta el LED a un umbral entre ENCENDIDO y APAGADO.
+<span style="color: rgb(255, 76, 65);">Note :</span> Avant le test, tournez le potentiomètre sur le capteur pour ajuster la sensibilité de détection. La sensibilité est optimale lorsque la LED est réglée à un seuil entre ON et OFF.
 
-### **3. Componentes**
+### **3.Composants**
 
-| Placa de Desarrollo *1   | Driver de Motor 8833 *1  | Módulo LED Rojo *1       | Sensor de Seguimiento de Línea *1 |
-| ------------------------ | ------------------------ | ------------------------ | --------------------------------- |
-| ![img](media/A65.jpg)    | ![img](media/A66.jpg)    | ![img](media/A67.jpg)    | ![img](media/A68.png)             |
-| Cable Dupont 5P *1       | Cable USB *1             | Cable Dupont 3P *1       |                                   |
-| ![img](media/A69.png)    | ![img](media/A70.jpg)    | ![img](media/A71.jpg)    |                                   |
+| Carte de développement *1 | Driver moteur 8833 *1 | Module LED rouge *1 | Capteur de suivi de ligne *1 |
+| ------------------------- | --------------------- | ------------------- | ---------------------------- |
+| ![img](media/A65.jpg)     | ![img](media/A66.jpg) | ![img](media/A67.jpg) | ![img](media/A68.png)         |
+| Fil Dupont 5P *1          | Câble USB *1          | Fil Dupont 3P *1    |                              |
+| ![img](media/A69.png)     | ![img](media/A70.jpg) | ![img](media/A71.jpg) |                              |
 
-### **4. Diagrama de Conexiones**
+### **4.Schéma de câblage**
 
 ![](media/A72.png)
 
-G, V, S1, S2 y S3 del sensor de seguimiento de línea están conectados a G (GND), V (VCC), D11, D7 y D8 de la placa de expansión del sensor.
+G, V, S1, S2 et S3 du capteur de suivi de ligne sont connectés respectivement à G (GND), V (VCC), D11, D7 et D8 de la carte d’extension du capteur.
 
-### **5. Código de Prueba**
+### **5.Code de test**
 
-Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia.
+Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
 
 (1).![](media/A73.png)
 
@@ -54,29 +54,29 @@ Puedes arrastrar bloques para editar. Los bloques listados a continuación son p
 
 (5).![](media/A77.png)
 
-**Código Completo de Prueba**
+**Code de test complet**
 
 ![](media/A78.png)
 
 ![](media/A79.png)
 
-### **6. Resultado de la Prueba**
+### **6.Résultat du test**
 
-Después de subir exitosamente el código a la placa V4.0, conecta los cables según el diagrama de conexiones y usa un cable USB para conectar la computadora y alimentar la placa.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et utilisez un câble USB pour connecter l’ordinateur afin d’alimenter la carte.
 
-Después de encender, haz clic en ![](media/A80.png) para configurar la velocidad en baudios a 9600 y podrás ver el estado de los tres sensores de seguimiento de línea. Cuando no se reciben señales, el valor es 1. Si cubrimos el sensor con un papel blanco, el valor será 0.
+Après la mise sous tension, cliquez sur ![](media/A80.png) pour régler le débit en bauds à 9600 et vous verrez l’état des trois capteurs de suivi de ligne. Lorsqu’aucun signal n’est reçu, la valeur est 1. Si nous couvrons le capteur avec un papier blanc, la valeur sera 0.
 
 ![](media/A81.png)
 
 ![](media/A82.png)
 
-### **7. Práctica de Extensión**
+### **7.Pratique d’extension**
 
-Después de conocer su principio de funcionamiento, puedes conectar un LED a D9 para controlar el LED con él.
+Après avoir compris son principe de fonctionnement, vous pouvez connecter une LED à D9 afin de contrôler la LED avec ce capteur.
 
 ![](media/A83.png)
 
-Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia.
+Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
 
 (1).![](media/A73.png)
 
@@ -92,12 +92,12 @@ Puedes arrastrar bloques para editar. Los bloques listados a continuación son p
 
 (7).![](media/A87.png)
 
-**Código Completo de Prueba**
+**Code de test complet**
 
 ![](media/A88.png)
 
 ![](media/A89.png)
 
-Después de subir exitosamente el código a la placa V4.0, conecta los cables según el diagrama de conexiones y usa un cable USB para conectar la computadora y alimentar la placa.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et utilisez un câble USB pour connecter l’ordinateur afin d’alimenter la carte.
 
-Después de encender, acerca un papel al sensor, entonces veremos que el LED se enciende al cubrir el sensor de seguimiento de línea.
+Après la mise sous tension, approchez un papier du capteur, puis vous verrez la LED s’allumer lorsque le capteur de suivi de ligne est couvert.

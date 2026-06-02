@@ -1,53 +1,53 @@
-# Proyecto 17 Coche Inteligente Bluetooth Multiusos
+# Projet 17 Voiture intelligente Bluetooth polyvalente
 
 ![](media/A349.jpeg)
 
-### **1.Descripción**
+### **1.Description**
 
-En proyectos anteriores, el coche solo realiza una función única. Sin embargo, en esta lección, integraremos todas sus funciones a través de Bluetooth.
+Dans les projets précédents, la voiture ne réalise qu'une seule fonction. Cependant, dans cette leçon, nous allons intégrer toutes ses fonctions via un Bluetooth.
 
-### **2.Diagrama de Flujo**
+### **2.Diagramme de flux**
 
 ![](media/A350.png)
 
-### **3.Diagrama de Conexiones**
+### **3.Schéma de câblage**
 
 ![](media/A351.png)
 
-1). GND, VCC, SDA y SCL de la placa LED 8\*8 están conectados a G (GND), V (VCC), A4 y A5 de la placa de expansión.
+1). GND, VCC, SDA et SCL de la carte LED 8\*8 sont connectés à G (GND), V (VCC), A4 et A5 de la carte d'extension.
 
-2). RXD, TXD, GND y VCC del módulo Bluetooth están conectados respectivamente a TX, RX, G y 5V en la placa de expansión del controlador de motor 8833, mientras que los pines STATE y BRK del módulo Bluetooth no necesitan ser conectados.
+2). Les broches RXD, TXD, GND et VCC du module Bluetooth sont respectivement connectées à TX, RX, G et 5V sur la carte d'extension du driver moteur 8833, tandis que les broches STATE et BRK du module Bluetooth n'ont pas besoin d'être connectées.
 
-3). El servo está conectado a G, V y A3. El cable marrón está conectado a Gnd (G), el cable rojo está conectado a 5V (V) y el cable naranja está conectado a A3.
+3). Le servo est connecté à G, V et A3. Le fil marron est connecté à Gnd (G), le fil rouge est connecté à 5V (V) et le fil orange est connecté à A3.
 
-4). G, V, S1, S2 y S3 del sensor de seguimiento de línea están conectados a G (GND), V (VCC), D11, D7 y D8 de la placa de expansión del sensor.
+4). G, V, S1, S2 et S3 du capteur de suivi de ligne sont connectés à G (GND), V (VCC), D11, D7 et D8 de la carte d'extension capteur.
 
-5). VCC, Trig, Echo y Gnd del sensor ultrasónico están conectados a 5V (V), D12 (S), D13 (S) y Gnd (G).
+5). VCC, Trig, Echo et Gnd du capteur ultrason sont connectés à 5V (V), D12 (S), D13 (S) et Gnd (G).
 
-6). La alimentación está conectada al puerto BAT.
+6). L'alimentation est connectée au port BAT.
 
-### **4.Código de Prueba**
+### **4.Code de test**
 
-Antes de escribir el código, es necesario importar los archivos de biblioteca del sensor ultrasónico, la placa LED 8x16 y el servo. Los pasos específicos son los siguientes:
+Avant d’écrire le code, il est nécessaire d’importer les fichiers de bibliothèque du capteur ultrason, de la carte LED 8x16 et du servo. Les étapes spécifiques sont les suivantes :
 
-Haz clic en ![](media/A29.png) para entrar en la interfaz de biblioteca de extensiones de sensores/módulos/componentes, luego busca el sensor “**Ultrasonic**” ![](media/A122.png) y haz clic en él. De esta manera, "**Not loaded**" cambia a "**loaded**", indicando que el sensor “**Ultrasonic**” fue agregado con éxito.
+Cliquez sur ![](media/A29.png) pour entrer dans l’interface de la bibliothèque d’extensions des capteurs/modules/composants, puis recherchez le capteur “**Ultrasonic**” ![](media/A122.png) et cliquez dessus. Ainsi, "**Not loaded**" change en "**loaded**", indiquant que le capteur “**Ultrasonic**” a été ajouté avec succès.
 
 ![Img](media/A300.png)
 
 ![](media/A124.png)
 
-Haz clic en ![](media/A33.png) para volver a la interfaz del editor de código, se pueden ver los bloques de instrucciones del sensor “**Ultrasonic**” agregado, el módulo “**Matrix 8\*16 Aip1640**” y el componente “**Servo**” en el área de módulos.
+Cliquez sur ![](media/A33.png) pour revenir à l’interface de l’éditeur de code, le bloc d’instructions du capteur “**Ultrasonic**” ajouté, du module “**Matrix 8\*16 Aip1640**” et du composant “**Servo**” peut être vu dans la zone des modules.
 
 ![](media/A285.png)
 
-**Código Completo de Prueba**
+**Code de test complet**
 
-<span style="color: rgb(255, 76, 65);">**Nota:** Antes de subir el código de prueba, necesitas retirar el módulo Bluetooth, de lo contrario el código no se podrá subir. Conecta el módulo Bluetooth después de subir el código con éxito.</span>
+<span style="color: rgb(255, 76, 65);">**Remarque :** Avant de téléverser le code de test, vous devez retirer le module Bluetooth, sinon le code ne pourra pas être téléversé. Reconnectez le module Bluetooth après un téléversement réussi.</span>
 
 ![](media/A352.png)
 
-### **5.Resultado de la Prueba**
+### **5.Résultat du test**
 
-Después de subir el código con éxito a la placa V4.0, conecta los cables según el diagrama de conexiones, enciende la alimentación externa y luego gira el interruptor DIP a ON.
+Après avoir téléversé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, alimentez l’alimentation externe puis mettez l’interrupteur DIP sur ON.
 
-Después de que el módulo Bluetooth esté conectado a la APP y la APP móvil se conecte con éxito al Bluetooth, el coche inteligente puede ser controlado por la APP móvil. Podemos lograr las funciones correspondientes presionando los botones correspondientes en la APP móvil.
+Après que le module Bluetooth soit connecté à l’APP et que l’application mobile soit connectée avec succès au Bluetooth, la voiture intelligente peut être contrôlée par l’application mobile. Nous pouvons réaliser les fonctions correspondantes en appuyant sur les boutons correspondants de l’application mobile.

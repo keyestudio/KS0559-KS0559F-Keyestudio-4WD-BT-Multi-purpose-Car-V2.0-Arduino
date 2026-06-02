@@ -1,52 +1,52 @@
-# Proyecto 8 Conducción y Control de Velocidad del Motor
+# Projet 8 Conduite de moteur et contrôle de vitesse
 
 ![](media/A205.png)
 
-### **1. Descripción**
+### **1.Description**
 
-Existen muchas formas de conducir motores. Nuestro coche utiliza el chip controlador de motor DRV8833 más comúnmente usado, que proporciona una solución de conducción eléctrica de puente de dos canales para juguetes, impresoras y otras aplicaciones integradas de motores.
+Il existe de nombreuses façons de piloter des moteurs. Notre voiture utilise la puce de pilote de moteur DRV8833 la plus couramment utilisée, qui fournit une solution de commande électrique à pont double canal pour les jouets, imprimantes et autres applications intégrées de moteurs.
 
-Cuando apilamos la placa de expansión del controlador sobre la placa de desarrollo 4.0 y encendemos la alimentación BAT, luego configuramos el interruptor DIP en la posición ON, la fuente de alimentación externa alimentará ambas placas al mismo tiempo. Para facilitar las conexiones de cableado, la placa de expansión del controlador viene con un puerto anti-inversión (PH2.0-2P-3P-4P-5P). Puedes conectar los motores, la fuente de alimentación y los módulos sensores directamente a la placa de expansión del controlador.
+Lorsque nous empilons la carte d'extension du pilote sur la carte de développement 4.0 et que nous alimentons le BAT, puis réglons l'interrupteur DIP sur la position ON, l'alimentation externe alimentera les deux cartes en même temps. Pour faciliter les connexions de câblage, la carte d'extension du pilote est équipée d'un port anti-inversion (PH2.0-2P-3P-4P-5P). Vous pouvez connecter directement les moteurs, l'alimentation et les modules capteurs à la carte d'extension du pilote.
 
-La interfaz Bluetooth de la placa de expansión del controlador es totalmente compatible con el módulo Bluetooth DX-BT24 5.1. Al conectar el módulo Bluetooth, solo necesitas enchufarlo en la interfaz correspondiente. Al mismo tiempo, se utilizan pines de fila 2.54 para sacar algunos puertos digitales y analógicos no usados en la placa de expansión del controlador, facilitando que añadas otros sensores y realices experimentos de extensión.
+L'interface Bluetooth de la carte d'extension du pilote est entièrement compatible avec le module Bluetooth DX-BT24 5.1. Lors de la connexion du module Bluetooth, il vous suffit de le brancher sur l'interface correspondante. En même temps, des broches en rangée 2.54 sont utilisées pour extraire certains ports numériques et analogiques inutilisés sur la carte d'extension du pilote, ce qui vous permet d'ajouter d'autres capteurs et de réaliser des expériences d'extension.
 
-La placa de expansión puede conectarse a cuatro motores DC. Cuando el puente jumper está conectado por defecto, los motores de los puertos A y A1 y B y B1 están conectados en paralelo y tienen la misma ley de movimiento. 8 puentes jumper pueden usarse para controlar la dirección de rotación de las 4 interfaces de motor.
+La carte d'extension peut être connectée à quatre moteurs DC. Lorsque le cavalier est connecté par défaut, les moteurs des ports A et A1 ainsi que B et B1 sont connectés en parallèle et ont la même loi de mouvement. 8 cavaliers peuvent être utilisés pour contrôler la direction de rotation des 4 interfaces moteur.
 
-Por ejemplo, cuando los 2 puentes jumper delante de B1 del motor M1 cambian de conexión transversal a conexión longitudinal, la dirección de rotación del motor M1 será opuesta a la dirección original.
+Par exemple, lorsque les 2 cavaliers devant B1 du moteur M1 passent d'une connexion transversale à une connexion longitudinale, la direction de rotation du moteur M1 sera opposée à la direction de rotation d'origine.
 
-### **2. Especificaciones**
+### **2.Spécifications**
 
-- Voltaje de entrada para lógica: DC 5V
+- Tension d'entrée pour la logique : DC 5V
 
-- Voltaje de entrada para conducción: DC 6-9 V
+- Tension d'entrée pour la commande : DC 6-9 V
 
-- Corriente de trabajo para lógica: \<36mA
+- Courant de fonctionnement pour la logique : \<36mA
 
-- Corriente de trabajo para conducción: \<2A
+- Courant de fonctionnement pour la commande : \<2A
 
-- Máxima disipación de potencia: 25W (T=75℃)
+- Dissipation maximale de puissance : 25W (T=75℃)
 
-- Nivel de entrada para señal de control: nivel alto es 2.3V\<Vin\<5V, nivel bajo es -0.3V\<Vin\<1.5V
+- Niveau d'entrée pour le signal de commande : niveau haut est 2.3V\<Vin\<5V, niveau bas est -0.3V\<Vin\<1.5V
 
-- Temperatura de trabajo: -25＋130℃
+- Température de fonctionnement : -25＋130℃
 
-### **3. Placa de expansión del controlador de motor Keyestudio 8833**
+### **3.Carte d'extension pilote moteur Keyestudio 8833**
 
 ![](media/A206.png)
 
-**Principio de funcionamiento**
+**Principe de fonctionnement**
 
-Usamos el modo de conexión paralela del mismo lado para los cuatro motores, que pueden considerarse dos grupos de motores. Como se muestra en el diagrama de cableado, B y B1 son un grupo, y A y A1 son otro grupo.
+Nous utilisons le mode de connexion parallèle du même côté pour les quatre moteurs, qui peut être considéré comme deux groupes de moteurs. Comme indiqué dans le schéma de câblage, B et B1 forment un groupe, et A et A1 un autre groupe.
 
-Los motores en el mismo grupo deben girar en la misma dirección. Si son diferentes, ajusta los puentes jumper correspondientes junto al terminal para cambiar la dirección.
+Les moteurs du même groupe doivent tourner dans la même direction. S'ils sont différents, veuillez ajuster les cavaliers correspondants à côté de la borne pour changer la direction.
 
-Como se muestra a continuación, si las direcciones de A y A1 son diferentes, ajusta la dirección de los puentes jumper hasta que la dirección de movimiento de los motores del mismo grupo sea consistente.
+Comme montré ci-dessous, si les directions de A et A1 sont différentes, ajustez la direction des cavaliers jusqu'à ce que la direction de mouvement des moteurs du même groupe soit cohérente.
 
 ![](media/A207.png)
 
-Del diagrama anterior, se sabe que el pin de dirección del motor A es D4, el pin de velocidad es D6; D2 es el pin de dirección del motor B; y D6 es el pin de velocidad.
+D'après le schéma ci-dessus, on sait que la broche de direction du moteur A est D4, la broche de vitesse est D6 ; D2 est la broche de direction du moteur B ; et D6 est la broche de vitesse.
 
-PWM conduce el coche robot. El valor PWM está en el rango de 0-255. Cuando configuramos la dirección a HIGH, cuanto menor sea el número PWM, más rápida será la rotación del motor.
+Le PWM pilote la voiture robot. La valeur PWM est dans la plage de 0-255. Lorsque nous réglons la direction sur HIGH, plus le nombre PWM est petit, plus la rotation du moteur est rapide.
 
 <table border="1">
 <tbody>
@@ -54,68 +54,68 @@ PWM conduce el coche robot. El valor PWM está en el rango de 0-255. Cuando conf
 <td></td>
 <td>D2</td>
 <td>D5（PWM）</td>
-<td>Motor B（izquierdo）</td>
+<td>Moteur B (gauche)</td>
 <td>D4</td>
 <td>D6（PWM）</td>
-<td>Motor A（derecho）</td>
+<td>Moteur A (droite)</td>
 </tr>
 <tr class="even">
-<td>Avanzar</td>
+<td>Avancer</td>
 <td>HIGH</td>
 <td>255-200</td>
-<td>Gira en sentido horario</td>
+<td>Rotation horaire</td>
 <td>HIGH</td>
 <td>255-200</td>
-<td>Gira en sentido horario</td>
+<td>Rotation horaire</td>
 </tr>
 <tr class="odd">
-<td>Retroceder</td>
+<td>Reculer</td>
 <td>LOW</td>
 <td>200</td>
-<td>Gira en sentido antihorario</td>
+<td>Rotation antihoraire</td>
 <td>LOW</td>
 <td>200</td>
-<td>Gira en sentido antihorario</td>
+<td>Rotation antihoraire</td>
 </tr>
 <tr class="even">
-<td>Girar a la izquierda</td>
+<td>Tourner à gauche</td>
 <td>HIGH</td>
 <td>255-200</td>
-<td>Gira en sentido horario</td>
+<td>Rotation horaire</td>
 <td>LOW</td>
 <td>200</td>
-<td>Gira en sentido antihorario</td>
+<td>Rotation antihoraire</td>
 </tr>
 <tr class="odd">
-<td>Girar a la derecha</td>
+<td>Tourner à droite</td>
 <td>LOW</td>
 <td>200</td>
-<td>Gira en sentido antihorario</td>
+<td>Rotation antihoraire</td>
 <td>HIGH</td>
 <td>255-200</td>
-<td>Gira en sentido horario</td>
+<td>Rotation horaire</td>
 </tr>
 </tbody>
 </table>
-### **4. Componentes**
+### **4.Composants**
 
-| Placa de Desarrollo *1      | Driver de Motor 8833 *1      | Cable USB*1                       |
-| ------------------------- | ------------------------- | --------------------------------- |
-| ![img](media/A208.jpg) | ![img](media/A209.jpg) | ![img](media/A210.jpg)         |
-| Soporte para Batería 18650*1    | Motor*4                   | Batería 18650 *2（auto-proporcionada） |
-| ![img](media/A211.png) | ![img](media/A212.jpg) | ![img](media/A213.png)         |
+| Carte de développement *1      | Pilote de moteur 8833 *1      | Câble USB*1                       |
+| ----------------------------- | ----------------------------- | --------------------------------- |
+| ![img](media/A208.jpg)        | ![img](media/A209.jpg)        | ![img](media/A210.jpg)             |
+| Support de batterie 18650*1   | Moteur*4                      | Batterie 18650 *2 (fournie par l'utilisateur) |
+| ![img](media/A211.png)        | ![img](media/A212.jpg)        | ![img](media/A213.png)             |
 
 
 
-### **5.Diagrama de Conexiones**
+### **5. Schéma de câblage**
 
 ![](media/A214.png)
 
-Conecte la fuente de alimentación al puerto BAT.
+Connectez l'alimentation au port BAT.
 
-### **6.Código de Prueba**
+### **6. Code de test**
 
-Puede arrastrar bloques para editar. Los bloques listados a continuación son para su referencia
+Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence
 
 (1).![](media/A126.png)
 
@@ -123,26 +123,26 @@ Puede arrastrar bloques para editar. Los bloques listados a continuación son pa
 
 (3).![](media/A216.png)
 
-**Código de Prueba Completo**
+**Code de test complet**
 
 ![Img](media/A217.png)
 
 ![](media/A218.png)
 
-### **7.Resultado de la Prueba**
+### **7. Résultat du test**
 
-Después de cargar el código con éxito en la placa V4.0, conecte los cables según el diagrama de conexiones, luego encienda la fuente de alimentación externa y ponga el interruptor DIP en ON, el coche avanzará durante 2s, retrocederá durante 2s, girará a la izquierda durante 2s y a la derecha durante 2s y se detendrá durante 2s.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, puis alimentez l'alimentation externe et mettez l'interrupteur DIP sur ON, la voiture avancera pendant 2s, reculera pendant 2s, tournera à gauche pendant 2s, à droite pendant 2s et s'arrêtera pendant 2s.
 
-### **8.Explicación del Código**
+### **8. Explication du code**
 
-Ajuste la velocidad que controla el motor mediante PWM, conecte de la misma manera.
+Ajustez la vitesse que le PWM contrôle sur le moteur, branchez de la même manière.
 
-**Código de Prueba Completo**
+**Code de test complet**
 
 ![Img](media/A219.png)
 
 ![](media/A220.png)
 
-Después de cargar el código con éxito en la placa V4.0, conecte los cables según el diagrama de conexiones, luego encienda la fuente de alimentación externa y ponga el interruptor DIP en ON, entonces notará que la velocidad del motor es mucho más lenta.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, puis alimentez l'alimentation externe et mettez l'interrupteur DIP sur ON, vous constaterez que la vitesse du moteur est beaucoup plus lente.
 
-<span style="color: rgb(255, 76, 65);">Nota: </span>Una batería baja provocará una velocidad lenta del motor.
+<span style="color: rgb(255, 76, 65);">Remarque : </span>Une batterie faible entraînera une vitesse de moteur lente.

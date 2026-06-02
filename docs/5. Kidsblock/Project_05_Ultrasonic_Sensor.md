@@ -1,121 +1,121 @@
-# Proyecto 5 Sensor Ultrasónico
+# Projet 5 Capteur Ultrasonique
 
-### **1.Descripción**
+### **1.Description**
 
 ![](media/A109.png)
 
-El sensor ultrasónico HC-SR04 utiliza sonar para determinar la distancia a un objeto, similar a lo que hacen los murciélagos. Ofrece una excelente detección de rango sin contacto con alta precisión y lecturas estables en un paquete fácil de usar. Viene completo con módulos transmisor y receptor ultrasónicos.
+Le capteur ultrasonique HC-SR04 utilise le sonar pour déterminer la distance à un objet, comme le font les chauves-souris. Il offre une excellente détection de distance sans contact avec une grande précision et des lectures stables dans un boîtier facile à utiliser. Il est livré complet avec des modules émetteur et récepteur ultrasoniques.
 
 ![Img](media/A110.png)
 
-El HC-SR04 o sensor ultrasónico se utiliza en una amplia gama de proyectos electrónicos para crear aplicaciones de detección de obstáculos y medición de distancia, así como diversas otras aplicaciones. Aquí presentamos el método simple para medir la distancia con Arduino y un sensor ultrasónico y cómo usar el sensor ultrasónico con Arduino.
+Le HC-SR04 ou capteur ultrasonique est utilisé dans un large éventail de projets électroniques pour créer des applications de détection d'obstacles et de mesure de distance ainsi que diverses autres applications. Ici, nous avons présenté la méthode simple pour mesurer la distance avec Arduino et un capteur ultrasonique et comment utiliser le capteur ultrasonique avec Arduino.
 
-### **2.Especificaciones**
+### **2.Spécifications**
 
-- Voltaje de trabajo: +5V DC
+- Tension de fonctionnement : +5V DC
 
-- Corriente en reposo: \<2mA
+- Courant au repos : <2mA
 
-- Corriente de trabajo: 15mA
+- Courant de fonctionnement : 15mA
 
-- Ángulo efectivo: \<15°
+- Angle effectif : <15°
 
-- Rango de distancia: 2cm – 300 cm
+- Plage de distance : 2cm – 300 cm
 
-- Precisión: 0.3 cm
+- Précision : 0,3 cm
 
-- Ángulo de medición: 30 grados
+- Angle de mesure : 30 degrés
 
-- Ancho del pulso de entrada Trigger: 10uS
+- Largeur d'impulsion d'entrée Trigger : 10µs
 
 ![](media/A111.png)
 
-### **3.Componentes**
+### **3.Composants**
 
-| Placa de desarrollo *1    | Driver de motor 8833 *1    | Módulo LED rojo *1        | Sensor ultrasónico *1     |
+| Carte de développement *1 | Driver moteur 8833 *1     | Module LED rouge *1       | Capteur ultrasonique *1   |
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
 | ![img](media/A112.jpg)    | ![img](media/A113.jpg)    | ![img](media/A114.jpg)    | ![img](media/A115.jpg)    |
-| Cable Dupont 4P *1        | Cable USB *1              | Cable Dupont 3P *1        |                           |
+| Fil Dupont 4P *1          | Câble USB *1              | Fil Dupont 3P *1          |                           |
 | ![img](media/A116.jpg)    | ![img](media/A117.jpg)    | ![img](media/A118.jpg)    |                           |
 
-### **4.Principio de funcionamiento**
+### **4.Principe de fonctionnement**
 
-Como muestra la imagen superior, es como dos ojos. Uno es el extremo transmisor, el otro es el extremo receptor.
+Comme montré sur l'image ci-dessus, c'est comme deux yeux. L'un est l'émetteur, l'autre est le récepteur.
 
-El módulo ultrasónico emitirá ondas ultrasónicas después de recibir una señal de activación. Cuando las ondas ultrasónicas encuentran un objeto y se reflejan, el módulo emite una señal de eco, por lo que puede determinar la distancia del objeto a partir de la diferencia de tiempo entre la señal de activación y la señal de eco.
+Le module ultrasonique émettra des ondes ultrasoniques après avoir reçu un signal de déclenchement. Lorsque les ondes ultrasoniques rencontrent un objet et sont réfléchies, le module émet un signal d'écho, ce qui permet de déterminer la distance de l'objet à partir de la différence de temps entre le signal de déclenchement et le signal d'écho.
 
-t es el tiempo que tarda la señal emitida en encontrar el obstáculo y regresar. La velocidad de propagación del sonido en el aire es aproximadamente 343 m/s, y distancia = velocidad \* tiempo. Sin embargo, la onda ultrasónica se emite y regresa, lo que es 2 veces la distancia. Por lo tanto, debe dividirse por 2, la distancia medida por la onda ultrasónica = (velocidad \* tiempo)/2.
+t est le temps que le signal émis met pour rencontrer l'obstacle et revenir. La vitesse de propagation du son dans l'air est d'environ 343 m/s, et distance = vitesse \* temps. Cependant, l'onde ultrasonique émet et revient, ce qui correspond à 2 fois la distance. Par conséquent, il faut diviser par 2, la distance mesurée par l'onde ultrasonique = (vitesse \* temps)/2.
 
-**Método de uso y gráfico del módulo ultrasónico:**
+**Méthode d'utilisation et schéma du module ultrasonique :**
 
-1).Usar el pin GPIO para dar una señal de nivel alto de al menos 10μs al pin Trig del SR04, lo que puede activarlo para detectar distancia.
+1). Utilisez la broche GPIO pour envoyer un signal haut d'au moins 10μs à la broche Trig du SR04, ce qui peut le déclencher pour détecter la distance.
 
-2).Después de activar, el módulo enviará automáticamente ocho pulsos ultrasónicos de 40KHz y detectará si hay una señal de retorno. Este paso se completará automáticamente por el módulo.
+2). Après le déclenchement, le module enverra automatiquement huit impulsions ultrasoniques à 40KHz et détectera s'il y a un retour de signal. Cette étape est réalisée automatiquement par le module.
 
-3).Si la señal regresa, el pin Echo emitirá un nivel alto, y la duración del nivel alto es el tiempo desde la transmisión de la onda ultrasónica hasta el retorno.
+3). Si le signal revient, la broche Echo émettra un niveau haut, et la durée de ce niveau haut correspond au temps entre l'émission de l'onde ultrasonique et son retour.
 
 ![image-20250509143833078](media/A119.png)
 
 
-**Diagrama del circuito del sensor ultrasónico:**
+**Schéma de circuit du capteur ultrasonique :**
 
 ![](media/A120.jpeg)
 
-### **5.Diagrama de conexión**
+### **5.Schéma de câblage**
 
 ![](media/A121.png)
 
-VCC, Trig, Echo y Gnd del sensor ultrasónico están conectados a 5V(V), D12, D13 y Gnd(G)
+VCC, Trig, Echo et Gnd du capteur ultrasonique sont connectés respectivement à 5V(V), D12, D13 et Gnd(G)
 
-### **6.Código de prueba**
+### **6.Code de test**
 
-Antes de escribir el código, es necesario importar el archivo de la biblioteca del sensor ultrasónico. Los pasos específicos son los siguientes: 
+Avant d'écrire le code, il est nécessaire d'importer le fichier de bibliothèque du capteur ultrasonique. Les étapes spécifiques sont les suivantes : 
 
-Haga clic en ![](media/A29.png) para entrar en la interfaz de biblioteca de extensiones de sensores/módulos/componentes, luego busque el sensor "**Ultrasonic**" ![](media/A122.png) y haga clic en él. De esta manera, "**Not loaded**" cambia a "**loaded**", indicando que el sensor "**Ultrasonic**" fue agregado con éxito. 
+Cliquez sur ![](media/A29.png) pour entrer dans l'interface de la bibliothèque d'extensions de capteurs/modules/composants, puis recherchez le capteur "**Ultrasonic**" ![](media/A122.png) et cliquez dessus. Ainsi, "**Not loaded**" change en "**loaded**", indiquant que le capteur "**Ultrasonic**" a été ajouté avec succès. 
 
 ![Img](media/A123.png)
 
 ![](media/A124.png)
 
-Haga clic en ![](media/A33.png) para volver a la interfaz del editor de código, se puede ver el bloque de instrucciones del sensor "**Ultrasonic**" agregado en el área de módulos. 
+Cliquez sur ![](media/A33.png) pour revenir à l'interface de l'éditeur de code, le bloc d'instructions du capteur "**Ultrasonic**" ajouté peut être vu dans la zone des modules. 
 
 ![](media/A125.png)
 
-Puede arrastrar bloques para editar. Los bloques listados a continuación son para su referencia.
+Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
 
-(1).![](media/A126.png)
+(1). ![](media/A126.png)
 
-(2).![](media/A127.png)
+(2). ![](media/A127.png)
 
-(3).![](media/A128.png)
+(3). ![](media/A128.png)
 
-(4).![](media/A129.png)
+(4). ![](media/A129.png)
 
-(5).![](media/A130.png)
+(5). ![](media/A130.png)
 
 (6).![](media/A131.png)
 
 (7).![](media/A132.png)
 
-**Código de prueba completo**
+**Code de test complet**
 
 ![](media/A133.png)
 
-### **7. Resultado de la prueba**
+### **7. Résultat du test**
 
-Después de cargar el código con éxito en la placa V4.0, conecta los cables según el diagrama de conexiones, luego conecta la computadora mediante un cable USB para alimentar la placa. Después de encenderla, haz clic en ![](media/A80.png) para configurar la velocidad en baudios a 9600.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, puis connectez l'ordinateur via un câble USB pour alimenter la carte. Après la mise sous tension, cliquez sur ![](media/A80.png) pour régler le débit en bauds à 9600.
 
-La distancia detectada se mostrará, y la unidad es cm y pulgadas. Obstaculiza el sensor ultrasónico con la mano, el valor de la distancia mostrada se hará más pequeño.
+La distance détectée sera affichée, et l'unité est en cm et pouces. Obstruez le capteur ultrasonique avec la main, la valeur de distance affichée diminue.
 
 ![](media/A134.png)
 
-### **8. Práctica de extensión**
+### **8. Pratique d'extension**
 
-Acabamos de medir la distancia mostrada por el ultrasónico. ¿Qué tal controlar el LED con la distancia medida? Vamos a intentarlo y conectar un módulo de luz LED al pin D9.
+Nous venons de mesurer la distance affichée par l'ultrason. Que diriez-vous de contrôler la LED avec la distance mesurée ? Essayons et connectons un module de lumière LED à la broche D9.
 
 ![](media/A135.png)
 
-Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia.
+Vous pouvez faire glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
 
 (1).![](media/A126.png)
 
@@ -131,10 +131,10 @@ Puedes arrastrar bloques para editar. Los bloques listados a continuación son p
 
 (7).![](media/A132.png)
 
-**Código de prueba completo**
+**Code de test complet**
 
 ![](media/A139.png)
 
 ![](media/A140.png)
 
-Después de cargar el código con éxito en la placa V4.0, conecta los cables según el diagrama de conexiones, luego conecta la computadora mediante un cable USB para alimentar la placa. Después de encenderla, bloquea el sensor ultrasónico con la mano (la distancia está entre 2-10 cm), luego verifica si el LED está encendido.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, puis connectez l'ordinateur via un câble USB pour alimenter la carte. Après la mise sous tension, bloquez le capteur ultrasonique avec la main (la distance est entre 2-10 cm), puis vérifiez si la LED est allumée.

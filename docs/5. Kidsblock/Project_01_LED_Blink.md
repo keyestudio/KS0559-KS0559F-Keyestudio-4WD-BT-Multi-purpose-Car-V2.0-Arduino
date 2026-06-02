@@ -1,44 +1,44 @@
-# Proyecto 1 Parpadeo de LED
+# Projet 1 Clignotement LED
 
-### **1. Descripción**
+### **1.Description**
 
 ![](media/A40.jpeg)
 
-Para principiantes y entusiastas, el parpadeo de LED es un programa fundamental. LED, la abreviatura de diodos emisores de luz, está compuesto por compuestos químicos como Ga, As, P, N, entre otros.
+Pour les débutants et les passionnés, le clignotement LED est un programme fondamental. LED, l'abréviation de diodes électroluminescentes, est composée de composés chimiques tels que Ga, As, P, N, etc.
 
-El LED puede parpadear en diversos colores al alterar el tiempo de retardo en el código de prueba. Cuando está bajo control, con alimentación en GND y VCC, el LED se encenderá si el extremo S está en nivel alto, de lo contrario se apagará.
+La LED peut clignoter en différentes couleurs en modifiant le temps de délai dans le code de test. Lorsqu'elle est contrôlée, alimentée en GND et VCC, la LED s'allume si la broche S est à un niveau haut, sinon elle s'éteint.
 
-### **2. Especificaciones**
+### **2.Spécifications**
 
-- Interfaz de control: puerto digital
+- Interface de contrôle : port numérique
 
-- Voltaje de trabajo: DC 3.3-5V
+- Tension de fonctionnement : DC 3.3-5V
 
-- Espaciado de pines: 2.54mm
+- Espacement des broches : 2.54mm
 
-- Color de visualización del LED: rojo
+- Couleur d'affichage LED : rouge
 
 ![](media/A41.png)
 
-### **3. Componentes**
+### **3.Composants**
 
-| Placa de desarrollo *1    | Driver de motor 8833 *1    | Módulo LED rojo *1        |
+| Carte de développement *1 | Driver moteur 8833 *1     | Module LED rouge *1       |
 | ------------------------- | ------------------------- | ------------------------- |
 | ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)     |
-| Cable Dupont 3P F-F *1    | Cable USB *1              |                           |
+| Câble Dupont 3P F-F *1    | Câble USB *1              |                           |
 | ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                           |
 
-### **4. Diagrama de conexión**
+### **4.Schéma de câblage**
 
 ![](media/A47.png)
 
-Como se puede ver en la figura anterior, la placa de expansión del driver de motor Keyestudio 8833 está apilada sobre la placa de desarrollo Keyestudio 4.0.
+Comme on peut le voir sur la figure ci-dessus, la carte d'extension driver moteur Keyestudio 8833 est empilée sur la carte de développement Keyestudio 4.0.
 
-Los pines G, V y S del módulo LED están conectados respectivamente a G, 5V y D9 de la placa de expansión.
+Les broches G, V et S du module LED sont respectivement connectées à G, 5V et D9 de la carte d'extension.
 
-### **5. Código de prueba**
+### **5.Code de test**
 
-Puedes arrastrar bloques para editar. Los bloques listados a continuación son para tu referencia.
+Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
 
 (1).![](media/A48.png)
 
@@ -46,18 +46,18 @@ Puedes arrastrar bloques para editar. Los bloques listados a continuación son p
 
 (3).![](media/A50.png)
 
-**Código de prueba completo**
+**Code de test complet**
 
 ![](media/A51.png)
 
-### **6. Resultado de la prueba**
+### **6.Résultat du test**
 
-Después de subir exitosamente el código a la placa V4.0, conecta los cables según el diagrama de conexión y usa un cable USB para conectar la computadora y alimentar la placa. Al encender, verás que el LED conectado al D9 se enciende y apaga.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et utilisez un câble USB pour connecter l'ordinateur afin d'alimenter la carte. Après la mise sous tension, vous verrez la LED connectée à la broche D9 s'allumer et s'éteindre.
 
-### **7. Práctica de extensión**
+**7.Pratique d'extension**
 
-A continuación, vamos a cambiar la frecuencia del parpadeo del LED modificando el tiempo de espera.
+Ensuite, nous allons modifier la fréquence de clignotement de la LED en changeant le temps d'attente.
 
 ![](media/A52.png)
 
-Después de subir exitosamente el código a la placa V4.0, conecta los cables según el diagrama de conexión y usa un cable USB para conectar la computadora y alimentar la placa. El resultado de la prueba muestra que el LED parpadea más rápido.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et utilisez un câble USB pour connecter l'ordinateur afin d'alimenter la carte. Le résultat du test montre que la LED clignote plus rapidement.

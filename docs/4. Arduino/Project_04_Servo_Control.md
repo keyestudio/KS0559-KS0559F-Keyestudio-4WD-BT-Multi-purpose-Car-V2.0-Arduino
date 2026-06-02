@@ -1,58 +1,58 @@
-# Proyecto 4 Control de Servo
+# Projet 4 Contrôle du Servo
 
-### **1.Descripción**
+### **1.Description**
 
 ![image-20250509084654137](media/A25.png)
 
-El motor servo es un actuador rotativo de control de posición. Principalmente consta de una carcasa, una placa de circuito, un motor sin núcleo, un engranaje y un sensor de posición. Su principio de funcionamiento es que el servo recibe la señal enviada por MCUs o receptores y produce una señal de referencia con un período de 20 ms y un ancho de 1.5 ms, luego compara el voltaje de polarización continua adquirido con el voltaje del potenciómetro y obtiene la salida de diferencia de voltaje.
+Le moteur servo est un actionneur rotatif à contrôle de position. Il se compose principalement d’un boîtier, d’une carte de circuit, d’un moteur sans noyau, d’un engrenage et d’un capteur de position. Son principe de fonctionnement est que le servo reçoit le signal envoyé par les MCU ou les récepteurs et produit un signal de référence avec une période de 20 ms et une largeur de 1,5 ms, puis compare la tension de polarisation continue acquise à la tension du potentiomètre et obtient la sortie de la différence de tension.
 
 ![image-20250509084710719](media/A26.png)
 
-En general, el servo tiene tres cables en marrón, rojo y naranja. El cable marrón está conectado a tierra, el rojo es la línea de polo positivo y el naranja es la línea de señal.
+En général, le servo possède trois fils de couleur marron, rouge et orange. Le fil marron est la masse, le rouge est la ligne de pôle positif et l’orange est la ligne de signal.
 
-El ángulo de rotación del motor servo se controla regulando el ciclo de trabajo de la señal PWM (Modulación por Ancho de Pulso). El ciclo estándar de la señal PWM es de 20 ms (50 Hz). Teóricamente, el ancho se distribuye entre 1 ms y 2 ms, pero en la práctica, está entre 0.5 ms y 2.5 ms. El ancho corresponde al ángulo de rotación de 0° a 180°. Pero tenga en cuenta que para motores de diferentes marcas, la misma señal puede tener diferentes ángulos de rotación.
+L’angle de rotation du moteur servo est contrôlé en régulant le cycle de service du signal PWM (modulation de largeur d’impulsion). Le cycle standard du signal PWM est de 20 ms (50 Hz). Théoriquement, la largeur est répartie entre 1 ms et 2 ms, mais en pratique, elle est comprise entre 0,5 ms et 2,5 ms. La largeur correspond à l’angle de rotation de 0° à 180°. Mais notez que pour des moteurs de marques différentes, le même signal peut correspondre à des angles de rotation différents.
 
 ![image-20250509084727797](media/A27.png)
 
-Los ángulos correspondientes del servo se muestran a continuación:
+Les angles de servo correspondants sont indiqués ci-dessous :
 
 ![image-20250509084739380](media/A28.png)
 
-### **2.Especificaciones**
+### **2.Spécifications**
 
-- Voltaje de trabajo: DC 4.8V \~ 6V
+- Tension de fonctionnement : DC 4,8 V \~ 6 V
 
-- Rango de ángulo operativo: aproximadamente 180 ° (en 500 → 2500 μsec)
+- Plage d’angle de fonctionnement : environ 180 ° (à 500 → 2500 μsec)
 
-- Rango de ancho de pulso: 500 → 2500 μsec
+- Plage de largeur d’impulsion : 500 → 2500 μsec
 
-- Velocidad sin carga: 0.12 ± 0.01 seg / 60 (DC 4.8V) 0.1 ± 0.01 seg / 60 (DC 6V)
+- Vitesse à vide : 0,12 ± 0,01 s / 60 (DC 4,8 V) 0,1 ± 0,01 s / 60 (DC 6 V)
 
-- Corriente sin carga: 200 ± 20mA (DC 4.8V) 220 ± 20mA (DC 6V)
+- Courant à vide : 200 ± 20 mA (DC 4,8 V) 220 ± 20 mA (DC 6 V)
 
-- Torque de parada: 1.3 ± 0.01kg · cm (DC 4.8V) 1.5 ± 0.1kg · cm (DC6V)
+- Couple d’arrêt : 1,3 ± 0,01 kg · cm (DC 4,8 V) 1,5 ± 0,1 kg · cm (DC 6 V)
 
-- Corriente de parada: ≦ 850mA (DC 4.8V) ≦ 1000mA (DC 6V)
+- Courant d’arrêt : ≦ 850 mA (DC 4,8 V) ≦ 1000 mA (DC 6 V)
 
-- Corriente en espera: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
+- Courant en veille : 3 ± 1 mA (DC 4,8 V) 4 ± 1 mA (DC 6 V)
 
-### **3.Componentes**
+### **3.Composants**
 
-|                     Placa de Desarrollo *1                     |           Driver de Motor 8833 *1           |                           Servo*1                            |
-| :------------------------------------------------------------: | :------------------------------------------: | :----------------------------------------------------------: |
+|                     Carte de développement *1                     |           Driver moteur 8833 *1           |                           Servo*1                            |
+| :----------------------------------------------------------: | :--------------------------------------: | :----------------------------------------------------------: |
 |           ![img](media/A8.jpg)           | ![img](media/A9.jpg) | ![image-20250509084654137](media/A25.png) |
-|                    Portabaterías 18650*1                      |               Cable USB*1                     |               Batería 18650*2 (proporcionada por el usuario)               |
+|                    Support batterie 18650*1                    |               Câble USB*1                |               Batterie 18650*2 (fournie par l’utilisateur)               |
 | ![image-20250509084950601](media/A29.png) |         ![img](media/A12.jpg)         | ![image-20250509085010348](media/A30.png) |
 
-### **4.Diagrama de Conexiones**
+### **4.Schéma de câblage**
 
 ![image-20250509085038006](media/A31.png)
 
-Nota de conexión: El servo está conectado a G (GND), V (VCC) y A3, el cable marrón del servo está conectado a Gnd (G), el rojo está conectado a 5V (V) y el naranja está conectado a A3.
+Note de câblage : Le servo est connecté à G (GND), V (VCC) et A3, le fil marron du servo est relié à la masse (G), le rouge est connecté au 5 V (V) et l’orange est attaché à A3.
 
-El servo debe conectarse a una fuente de alimentación externa debido a su alta demanda de corriente para conducir el servo. Generalmente, la corriente de la placa de desarrollo no es suficiente. Si no se conecta la alimentación externa, la placa de desarrollo podría quemarse.
+Le servo doit être connecté à une alimentation externe en raison de sa forte demande en courant de pilotage. Généralement, le courant de la carte de développement n’est pas suffisant. Sans connexion à une alimentation externe, la carte de développement pourrait être endommagée.
 
-### **5.Código de Prueba**
+### **5.Code de test**
 
 ```c
 //****************************************************************************
@@ -62,45 +62,45 @@ lesson 4.1
 Servo
 http://www.keyestudio.com
 */
-#define servoPin A3  //Pin del servo
-int pos; //variable del ángulo del servo
-int pulsewidth; //variable del ancho de pulso del servo
+#define servoPin A3  //Broche du servo
+int pos; //variable d’angle du servo
+int pulsewidth; //variable de largeur d’impulsion du servo
 
 void setup() {
-  pinMode(servoPin, OUTPUT);  //configura los pines del servo como salida
-  procedure(0); //configura el ángulo del servo a 0 grados
+  pinMode(servoPin, OUTPUT);  //définir les broches du servo en sortie
+  procedure(0); //définir l’angle du servo à 0 degré
 }
 
 void loop() {
-  for (pos = 0; pos <= 180; pos += 1) { // va de 0 grados a 180 grados
-    // en pasos de 1 grado
-    procedure(pos);              // indica al servo que vaya a la posición en la variable 'pos'
-    delay(15);                   // controla la velocidad de rotación del servo
+  for (pos = 0; pos <= 180; pos += 1) { // va de 0 degrés à 180 degrés
+    // par pas de 1 degré
+    procedure(pos);              // demande au servo d'aller à la position dans la variable 'pos'
+    delay(15);                   // contrôle la vitesse de rotation du servo
   }
-  for (pos = 180; pos >= 0; pos -= 1) { // va de 180 grados a 0 grados
-    procedure(pos);              // indica al servo que vaya a la posición en la variable 'pos'
+  for (pos = 180; pos >= 0; pos -= 1) { // va de 180 degrés à 0 degrés
+    procedure(pos);              // demande au servo d'aller à la position dans la variable 'pos'
     delay(15);                    
   }
 }
 
-//función para controlar el servo
+//fonction pour contrôler le servo
 void procedure(int myangle) {
-  pulsewidth = myangle * 11 + 500;  //calcula el valor del ancho del pulso
+  pulsewidth = myangle * 11 + 500;  // calcule la valeur de la largeur d'impulsion
   digitalWrite(servoPin,HIGH);
-  delayMicroseconds(pulsewidth);   //La duración del nivel alto es el ancho del pulso
+  delayMicroseconds(pulsewidth);   // la durée du niveau haut est la largeur d'impulsion
   digitalWrite(servoPin,LOW);
-  delay((20 - pulsewidth / 1000));  //el ciclo es de 20ms, el nivel bajo dura el resto del tiempo
+  delay((20 - pulsewidth / 1000));  // le cycle est de 20ms, le niveau bas dure le reste du temps
 }
 //****************************************************************************
 ```
 
-### **6.Resultado de la Prueba**
+**6.Résultat du test**
 
-Después de subir con éxito el código a la placa V4.0, conecta los cables según el diagrama de conexiones y enciende la alimentación externa. Tras encender, gira el interruptor DIP al extremo "ON", entonces el servo oscilará en el rango de 0° a 180°.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et alimentez l'alimentation externe. Après la mise sous tension, tournez l'interrupteur DIP vers la position "ON", alors le servo oscillera dans la plage de 0° à 180°.
 
-### **7.Práctica de Extensión**
+**7.Pratique d'extension**
 
-Además, podemos controlar el servo mediante un archivo de biblioteca. Por favor, consulta el enlace: [https://www.arduino.cc/en/Reference/Servo](https://www.arduino.cc/en/Reference/Servo).
+De plus, nous permettons de contrôler le servo via un fichier de bibliothèque. Veuillez vous référer au lien : [https://www.arduino.cc/en/Reference/Servo](https://www.arduino.cc/en/Reference/Servo).
 
 ![image-20250509085122183](media/A32.png)
 
@@ -108,46 +108,46 @@ Además, podemos controlar el servo mediante un archivo de biblioteca. Por favor
 //***************************************************************************
 /*
  keyestudio 4wd BT Car
- lección 4.2
+ leçon 4.2
  Servo
  http://www.keyestudio.com
 */
 #include <Servo.h>
-Servo myservo;  // crea un objeto servo para controlar un servo
-// se pueden crear doce objetos servo en la mayoría de las placas
-int pos = 0;    // variable para almacenar la posición del servo
+Servo myservo;  // crée un objet servo pour contrôler un servo
+// douze objets servo peuvent être créés sur la plupart des cartes
+int pos = 0;    // variable pour stocker la position du servo
 
 void setup() {
-  myservo.attach(A3);  // conecta el servo en el pin A3 al objeto servo
+  myservo.attach(A3);  // attache le servo sur la broche A3 à l'objet servo
 }
 void loop() {
-  for (pos = 0; pos <= 180; pos += 1) { // va de 0 grados a 180 grados
-    // en pasos de 1 grado
-    myservo.write(pos);              // indica al servo que vaya a la posición en la variable 'pos'
-    delay(15);                       // espera 15ms para que el servo alcance la posición
+  for (pos = 0; pos <= 180; pos += 1) { // va de 0 degrés à 180 degrés
+    // par pas de 1 degré
+    myservo.write(pos);              // demande au servo d'aller à la position dans la variable 'pos'
+    delay(15);                       // attend 15ms pour que le servo atteigne la position
   }
-  for (pos = 180; pos >= 0; pos -= 1) { // va de 180 grados a 0 grados
-    myservo.write(pos);              // indica al servo que vaya a la posición en la variable 'pos'
-    delay(15);                       // espera 15ms para que el servo alcance la posición
+  for (pos = 180; pos >= 0; pos -= 1) { // va de 180 degrés à 0 degrés
+    myservo.write(pos);              // demande au servo d'aller à la position dans la variable 'pos'
+    delay(15);                       // attend 15ms pour que le servo atteigne la position
   }
 }
 //***************************************************************************
 ```
 
-Después de subir con éxito el código a la placa V4.0, conecta los cables según el diagrama de conexiones y enciende la alimentación externa. Tras encender, gira el interruptor DIP al extremo "ON", entonces el servo también oscilará en el rango de 0° a 180°. Normalmente lo controlamos mediante archivo de biblioteca.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et alimentez l'alimentation externe. Après la mise sous tension, tournez l'interrupteur DIP vers la position "ON", alors le servo oscillera également dans la plage de 0° à 180°. Nous le contrôlons généralement via un fichier de bibliothèque.
 
-### **8.Explicación del Código**
+### **8.Explication du code**
 
-Arduino incluye **\#include \<Servo.h\>** (función y declaraciones del servo)
+Arduino est livré avec **\#include \<Servo.h\>** (fonction et instructions servo)
 
-A continuación, algunas declaraciones comunes de la función servo:
+Voici quelques instructions courantes de la fonction servo :
 
-1). **attach（interface）**——Configura la interfaz del servo
+1). **attach(interface)**——Définit l'interface du servo
 
-2). **write（angle）**——Se usa para establecer el ángulo de rotación del servo, y el rango de ángulo establecido es de 0° a 180°
+2). **write(angle)**——Utilisé pour définir l'angle de rotation du servo, et la plage d'angle définie est de 0° à 180°
 
-3). **read（）**——se usa para leer el ángulo del servo, es decir, leer el valor del comando de “write()”
+3). **read()**——utilisé pour lire l'angle du servo, c'est-à-dire lire la valeur de commande de “write()”
 
-4). **attached（）**——Determina si el parámetro del servo está asignado a su interfaz
+4). **attached()**——Détermine si le paramètre du servo est envoyé à son interface
 
-<span style="color: rgb(255, 76, 65);">Nota:</span> El formato escrito anterior es “nombre de variable servo, declaración específica（）”, por ejemplo: myservo.attach(9).
+<span style="color: rgb(255, 76, 65);">Note :</span> Le format écrit ci-dessus est “nom de la variable servo, instruction spécifique()”, par exemple : myservo.attach(9).

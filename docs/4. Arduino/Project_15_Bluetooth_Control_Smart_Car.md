@@ -1,61 +1,61 @@
-# Proyecto 15 Coche Inteligente Controlado por Bluetooth
+# Projet 15 Voiture Intelligente Contrôlée par Bluetooth
 
 ![8abdadfa2fc462bdcc0542df52a793e3](media/A131.jpeg)
 
-### **1.Descripción**
+### **1.Description**
 
-Hemos aprendido los conocimientos básicos de Bluetooth. Y en esta lección, haremos un coche inteligente controlado por Bluetooth. En este proyecto, nuestro objetivo es considerar el teléfono móvil como el transmisor (host), y el coche inteligente conectado al módulo Bluetooth BT24 (esclavo) como el receptor, y usar la APP móvil para controlar el coche inteligente vía Bluetooth.
+Nous avons appris les connaissances de base sur le Bluetooth. Dans cette leçon, nous allons fabriquer une voiture intelligente contrôlée par Bluetooth. Dans ce projet, nous considérons le téléphone mobile comme l’émetteur (hôte), et la voiture intelligente connectée au module Bluetooth BT24 (esclave) comme le récepteur, et utilisons l’application mobile pour contrôler la voiture intelligente via le Bluetooth.
 
-### **2.Botones de Control de la APP**
+### **2.Boutons de Contrôle de l’APP**
 
-|                           | Carácter de control                                         | Carácter de control                                         |
-| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![img](media/A63.jpg) | Pulsar: F  <br />Soltar: S                                   | Pulsar el botón, el coche avanza; <br />soltar para detener |
-| ![img](media/A64.jpg) | Pulsar: L  <br />Soltar: S                                   | Pulsar el botón, el coche gira a la izquierda; <br />soltar para detener  |
-| ![img](media/A65.jpg) | Pulsar: R  <br />Soltar: S                                   | Pulsar el botón, el coche gira a la derecha; <br />soltar para detener |
-| ![img](media/A66.jpg) | Pulsar: B  <br />Soltar: S                                   | Pulsar el botón, el coche retrocede; <br />soltar para detener   |
-| ![img](media/A67.jpg) | Pulsar: “a”  <br />Soltar: “S”                               | Clic para acelerar (máximo:255)                               |
-| ![img](media/A68.jpg) | Pulsar: “d”  <br />Soltar: “S”                               | Clic para desacelerar (mínimo:0)                                |
-| ![img](media/A69.jpg) | Clic para iniciar la función de detección de gravedad del <br />teléfono móvil: clic de nuevo para <br />salir del control por gravedad |                                                              |
-| ![img](media/A70.jpg) | Clic para enviar “X”, <br />clic de nuevo para enviar “S”    | Iniciar función de seguimiento de línea; <br />clic de nuevo para salir      |
-| ![img](media/A71.jpg) | Clic para enviar “Y”, <br />clic de nuevo para enviar “S”    | Iniciar función de evitación ultrasónica; <br />clic de nuevo para salir |
-| ![img](media/A72.jpg) | Clic para enviar “U”, <br />clic de nuevo para enviar “S”    | Iniciar función de seguimiento ultrasónico; <br />clic de nuevo para salir |
-| ![img](media/A73.jpg) | Clic para enviar “G”, <br />clic de nuevo para enviar “S”    | Iniciar función de restricción; <br />clic de nuevo para salir       |
+|                           | Caractère de contrôle                                      | Caractère de contrôle                                      |
+| ------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| ![img](media/A63.jpg) | Appui : F  <br />Relâchement : S                           | Appuyez sur le bouton, la voiture avance ; <br />relâchez pour arrêter |
+| ![img](media/A64.jpg) | Appui : L  <br />Relâchement : S                           | Appuyez sur le bouton, la voiture tourne à gauche ; <br />relâchez pour arrêter  |
+| ![img](media/A65.jpg) | Appui : R  <br />Relâchement : S                           | Appuyez sur le bouton, la voiture tourne à droite ; <br />relâchez pour arrêter |
+| ![img](media/A66.jpg) | Appui : B  <br />Relâchement : S                           | Appuyez sur le bouton, la voiture recule ; <br />relâchez pour arrêter   |
+| ![img](media/A67.jpg) | Appui : “a”  <br />Relâchement : “S”                       | Cliquez pour accélérer (maximum : 255)                     |
+| ![img](media/A68.jpg) | Appui : “d”  <br />Relâchement : “S”                       | Cliquez pour ralentir (minimum : 0)                        |
+| ![img](media/A69.jpg) | Cliquez pour démarrer la fonction de détection <br />de gravité du téléphone mobile : cliquez de nouveau pour <br />quitter le contrôle par détection de gravité |                                                              |
+| ![img](media/A70.jpg) | Cliquez pour envoyer “X”, <br />cliquez de nouveau pour envoyer “S” | Démarrer la fonction de suivi de ligne ; <br />cliquez de nouveau pour quitter |
+| ![img](media/A71.jpg) | Cliquez pour envoyer “Y”, <br />cliquez de nouveau pour envoyer “S” | Démarrer la fonction d’évitement ultrasonique ; <br />cliquez de nouveau pour quitter |
+| ![img](media/A72.jpg) | Cliquez pour envoyer “U”, <br />cliquez de nouveau pour envoyer “S” | Démarrer la fonction de suivi ultrasonique ; <br />cliquez de nouveau pour quitter |
+| ![img](media/A73.jpg) | Cliquez pour envoyer “G”, <br />cliquez de nouveau pour envoyer “S” | Démarrer la fonction de restriction ; <br />cliquez de nouveau pour quitter |
 
-### **3.Diagrama de Flujo**
+### **3.Diagramme de Flux**
 
 ![img](media/A132.png)
 
-### **4.Diagrama de Conexiones**
+### **4.Schéma de Câblage**
 
 
 
 ![61be6959693b2111639252ea45ec60fc](media/A133.png)
 
-1). GND, VCC, SDA y SCL de la placa LED 8\*8 están conectados a G (GND), V (VCC), A4 y A5 de la placa de expansión.
+1). GND, VCC, SDA et SCL de la carte LED 8\*8 sont connectés à G (GND), V (VCC), A4 et A5 de la carte d’extension.
     
-2). RXD, TXD, GND y VCC del módulo Bluetooth están conectados respectivamente a TX, RX, G y 5V en el Shield motor 8833, mientras que los pines STATE y BRK del módulo Bluetooth no necesitan ser conectados.
+2). Les broches RXD, TXD, GND et VCC du module Bluetooth sont respectivement connectées à TX, RX, G et 5V sur le Shield moteur 8833, tandis que les broches STATE et BRK du module Bluetooth n’ont pas besoin d’être connectées.
     
-3). El servo está conectado a G, V y A3. El cable marrón está conectado a Gnd (G), el cable rojo está conectado a 5V (V) y el cable naranja está conectado a A3.
+3). Le servo est connecté à G, V et A3. Le fil marron est connecté à Gnd (G), le fil rouge est connecté à 5V (V) et le fil orange est connecté à A3.
     
-4). La alimentación está conectada al puerto BAT
+4). L’alimentation est connectée au port BAT
     
 
-### **5.Código de Prueba**
+### **5.Code de Test**
 
-<span style="color: rgb(255, 76, 65);">**Nota:** Antes de subir el código de prueba, necesitas retirar el módulo Bluetooth, de lo contrario el código no se podrá subir. Conecta el módulo Bluetooth después de subir el código con éxito.</span>
+<span style="color: rgb(255, 76, 65);">**Note :** Avant de téléverser le code de test, vous devez retirer le module Bluetooth, sinon le code ne pourra pas être téléversé. Reconnectez le module Bluetooth après avoir téléversé le code avec succès.</span>
 
 ```c
 //*******************************************************************************
 /*
 keyestudio 4wd BT Car 
-lección 15
-Control del coche por Bluetooth
+leçon 15
+Contrôle Bluetooth de la voiture
 http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //Configurar el pin de reloj en A5
-#define SDA_Pin  A4  //Configurar el pin de datos en A4
-//Array, usado para almacenar los datos del patrón, puede ser calculado por ti mismo o obtenido de la herramienta del módulo
+#define SCL_Pin  A5  //Définir la broche d'horloge sur A5
+#define SDA_Pin  A4  //Définir la broche de données sur A4
+//Tableau, utilisé pour stocker les données du motif, peut être calculé par vous-même ou obtenu à partir de l'outil modulus
 unsigned char start01[] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
 unsigned char front[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char back[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x48,0x90,0x48,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -64,27 +64,27 @@ unsigned char right[] = {0x00,0x10,0x28,0x44,0x10,0x28,0x44,0x10,0x28,0x44,0x00,
 unsigned char STOP01[] = {0x2E,0x2A,0x3A,0x00,0x02,0x3E,0x02,0x00,0x3E,0x22,0x3E,0x00,0x3E,0x0A,0x0E,0x00};
 unsigned char clear[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
-int left_ctrl = 2;//definir los pines de control de dirección del motor del grupo B
-int left_pwm = 5;//definir los pines de control PWM del motor del grupo B
-int right_ctrl = 4;//definir los pines de control de dirección del motor del grupo A
-int right_pwm = 6;//definir los pines de control PWM del motor del grupo A
+int left_ctrl = 2;//définir les broches de contrôle de direction du moteur du groupe B
+int left_pwm = 5;//définir les broches de contrôle PWM du moteur du groupe B
+int right_ctrl = 4;//définir les broches de contrôle de direction du moteur du groupe A
+int right_pwm = 6;//définir les broches de contrôle PWM du moteur du groupe A
 
-const int servopin = A3;//configurar el pin del servo en A3 
+const int servopin = A3;//définir la broche du servo sur A3 
 
 char BLE_val;
 
 void setup() {
   Serial.begin(9600);//
-  pinMode(left_ctrl,OUTPUT);//configurar los pines de control de dirección del motor del grupo B como OUTPUT
-  pinMode(left_pwm,OUTPUT);//configurar los pines de control PWM del motor del grupo B como OUTPUT
-  pinMode(right_ctrl,OUTPUT);//configurar los pines de control de dirección del motor del grupo A como OUTPUT
-  pinMode(right_pwm,OUTPUT);//configurar los pines de control PWM del motor del grupo A como OUTPUT
-  servopulse(servopin,90);//el ángulo del servo es de 90 grados
+  pinMode(left_ctrl,OUTPUT);//définir les broches de contrôle de direction du moteur du groupe B en OUTPUT
+  pinMode(left_pwm,OUTPUT);//définir les broches de contrôle PWM du moteur du groupe B en OUTPUT
+  pinMode(right_ctrl,OUTPUT);//définir les broches de contrôle de direction du moteur du groupe A en OUTPUT
+  pinMode(right_pwm,OUTPUT);//définir les broches de contrôle PWM du moteur du groupe A en OUTPUT
+  servopulse(servopin,90);//l'angle du servo est de 90 degrés
   delay(300);
-  pinMode(SCL_Pin,OUTPUT);// Configurar el pin de reloj como salida
-  pinMode(SDA_Pin,OUTPUT);//Configurar el pin de datos como salida
+  pinMode(SCL_Pin,OUTPUT);//Définir la broche d'horloge en sortie
+  pinMode(SDA_Pin,OUTPUT);//Définir la broche de données en sortie
   matrix_display(clear);
-  matrix_display(start01); //mostrar el patrón de expresión start01
+  matrix_display(start01); //afficher le motif start01
 }
 
 void loop() {
@@ -94,70 +94,69 @@ void loop() {
   } 
     switch(BLE_val)
     {
-      case 'F' : car_front(); //Recibe 'F', el coche avanza
+      case 'F' : car_front(); //Reçoit 'F', la voiture avance
       matrix_display(clear);
       matrix_display(front);   
       break;
       
-      case 'B' : car_back(); //Recibe 'B', el coche retrocede
+      case 'B' : car_back(); //Reçoit 'B', la voiture recule
       matrix_display(clear);
       matrix_display(back); 
       break;
 
-      case 'L' : car_left(); //Recibe 'L', el coche gira a la izquierda
+      case 'L' : car_left(); //Reçoit 'L', la voiture tourne à gauche
       matrix_display(clear);
       matrix_display(left); 
       break;
      
-      case 'R' : car_right();//Recibe 'R', el coche gira a la derecha
+      case 'R' : car_right();//Reçoit 'R', la voiture tourne à droite
       matrix_display(clear);
       matrix_display(right);  
       break;
      
-      case 'S' : car_Stop();//Recibe 'S', el coche se detiene
+      case 'S' : car_Stop();//Reçoit 'S', la voiture s'arrête
       matrix_display(clear);
       matrix_display(STOP01); 
       break;
 }
 }
 
-void car_front()//definir el estado de avance
+void car_front()//définir l'état d'avancer
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,155);
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,155);
 }
-void car_back()//definir el estado de retroceso
+void car_back()//définir l'état de recul
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,100);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,100);
 }
-void car_left()//establecer el estado de giro a la izquierda
+void car_left()//définir l'état de rotation à gauche
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, 100);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, 155);
 }
-void car_right()//establecer el estado de giro a la derecha
+void car_right()//définir l'état de rotation à droite
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, 155);
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, 100);
 }
-void car_Stop()//definir el estado de parada
+void car_Stop()//définir l'état d'arrêt
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,0);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,0);
 }
-
-void servopulse(int servopin,int myangle)//Ángulo de funcionamiento del servomotor
+void servopulse(int servopin,int myangle)//Angle de fonctionnement du servo-moteur
 {
   for(int i=0; i<30; i++)
   {
@@ -169,22 +168,22 @@ void servopulse(int servopin,int myangle)//Ángulo de funcionamiento del servomo
   }  
 }
 
-//esta función se usa para la pantalla de matriz de puntos
+//cette fonction est utilisée pour l'affichage matriciel
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //la función que llama a la condición de inicio de transferencia de datos
-  IIC_send(0xc0);  //seleccionar dirección
+  IIC_start();  //la fonction qui appelle la condition de démarrage du transfert de données
+  IIC_send(0xc0);  //sélectionner l'adresse
 
-  for (int i = 0; i < 16; i++) //los datos del patrón son 16 bytes
+  for (int i = 0; i < 16; i++) //les données du motif sont de 16 octets
   {
-    IIC_send(matrix_value[i]); //Transmitir los datos del patrón
+    IIC_send(matrix_value[i]); //Transmettre les données du motif
   }
-  IIC_end();   //Fin de la transmisión de datos del patrón
+  IIC_end();   //Fin de la transmission des données du motif
   IIC_start();
-  IIC_send(0x8A);  //Control de pantalla, seleccionar ancho de pulso 4/16
+  IIC_send(0x8A);  //Contrôle de l'affichage, sélection de la largeur d'impulsion 4/16
   IIC_end();
 }
-//Condiciones bajo las cuales comienza la transmisión de datos
+//Conditions sous lesquelles la transmission des données commence
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -194,7 +193,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indica el fin de la transmisión de datos
+//Indique la fin de la transmission des données
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -205,27 +204,27 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//transmitir datos
+//transmettre les données
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Cada byte tiene 8 bits y se verifica bit a bit comenzando por el nivel más bajo
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Chaque octet a 8 bits et est vérifié bit par bit en commençant par le niveau le plus bas
   {
-    if (send_data & mask) { //Establece los niveles alto y bajo de SDA_Pin dependiendo de si cada bit del byte es un 1 o un 0
+    if (send_data & mask) { //Définit les niveaux haut et bas de SDA_Pin selon que chaque bit de l'octet est un 1 ou un 0
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Elevar el pin de reloj SCL_Pin para detener la transmisión de datos
+    digitalWrite(SCL_Pin, HIGH); //Met la broche d'horloge SCL_Pin à haut pour arrêter la transmission des données
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //bajar el pin de reloj SCL_Pin para cambiar la SEÑAL de SDA 
+    digitalWrite(SCL_Pin, LOW); //met la broche d'horloge SCL_Pin à bas pour changer le SIGNAL de SDA 
   }
 }
 //*******************************************************************************
 ```
 
-### **6. Resultado de la prueba**
+### **6.Résultat du test**
 
-Después de subir el código con éxito a la placa V4.0, conecta los cables según el diagrama de conexiones, enciende la alimentación externa y luego gira el interruptor DIP a ON.
+Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, alimentez l'alimentation externe puis mettez l'interrupteur DIP sur ON.
 
-Inserta el módulo BT y abre tu celular para conectar el Bluetooth y controlar el smart car. El coche se moverá hacia adelante, hacia atrás, girará a la izquierda y a la derecha y se detendrá. Además, la placa LED 8\*8 mostrará los patrones correspondientes.
+Insérez le module BT et ouvrez votre téléphone portable pour connecter le Bluetooth afin de contrôler la voiture intelligente. La voiture avancera, reculera, tournera à gauche et à droite et s'arrêtera. De plus, la carte LED 8\*8 affichera les motifs correspondants.

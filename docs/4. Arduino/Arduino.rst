@@ -1,5 +1,5 @@
 
-4. Arduino Tutorial
+4. Arduino Tutoriel
 =============================
 
 .. toctree::
@@ -10,12 +10,13 @@
 
 
 
-4.5 Arduino - Proyectos
+4.5 Arduino - Projets
 -----------------------
 
 ![](./media/A5.jpeg)
 
-<font color ="#FF0000">**Nota: En este curso, la interfaz de cada sensor/módulo marcada con (G, -, GND) indica el polo negativo, G se conecta a G o GND del shield del sensor o placa de control; “V” es el polo positivo y se conecta con V, VCC o 5V.**</font>
+<font color ="#FF0000">**Note : Dans ce cours, l'interface de chaque capteur/module marqué avec (G, -, GND) indique la borne négative, G est connecté à G ou GND du shield capteur ou de la carte de contrôle ; “V” est la borne positive et connectée à V, VCC ou 5V.**</font>
+
 
 .. toctree::
     :maxdepth: 2

@@ -1,5 +1,5 @@
 ========================
-5. Kidsblock Tutorial
+5. Kidsblock Tutoriel
 ========================
 
 .. toctree::
@@ -10,7 +10,7 @@
 
 
 
-5.5 Kidsblock - Proyectos
+5.5 Kidsblock - Projets
 -------------------------
 
 .. toctree::
