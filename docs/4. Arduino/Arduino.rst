@@ -13,9 +13,9 @@
 4.5 Arduino - Proyectos
 -----------------------
 
-![](./media/A5.jpeg)
+|image1|
 
-<font color ="#FF0000">**Nota: En este curso, la interfaz de cada sensor/módulo marcada con (G, -, GND) indica el polo negativo, G se conecta a G o GND del shield del sensor o placa de control; “V” es el polo positivo y se conecta con V, VCC o 5V.**</font>
+**Nota: En este curso, la interfaz de cada sensor/módulo marcada con (G, -, GND) indica el polo negativo, G se conecta a G o GND del shield del sensor o placa de control; “V” es el polo positivo y se conecta con V, VCC o 5V.**
 
 .. toctree::
     :maxdepth: 2
@@ -40,7 +40,7 @@
     Project_17_Multi_purpose_Bluetooth_Smart_Car
 
 
-
+.. |image1| image:: ./media/A5.jpeg
 
 
 
