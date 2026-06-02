@@ -13,9 +13,9 @@
 4.5 Arduino - Projekte
 ----------------------
 
-![](./media/A5.jpeg)
+|image1|
 
-<font color ="#FF0000">**Hinweis: In diesem Kurs zeigt die Schnittstelle jedes Sensors / Moduls, die mit (G, -, GND) gekennzeichnet ist, den Minuspol an. G ist mit G oder GND des Sensor-Shields oder Steuerboards verbunden; „V“ ist der Pluspol und wird mit V, VCC oder 5V verbunden.**</font>
+**Hinweis: In diesem Kurs zeigt die Schnittstelle jedes Sensors / Moduls, die mit (G, -, GND) gekennzeichnet ist, den Minuspol an. G ist mit G oder GND des Sensor-Shields oder Steuerboards verbunden; „V“ ist der Pluspol und wird mit V, VCC oder 5V verbunden.**
 
 
 .. toctree::
@@ -41,7 +41,7 @@
     Project_17_Multi_purpose_Bluetooth_Smart_Car
 
 
-
+.. |image1| image:: ./media/A5.jpeg
 
 
 
