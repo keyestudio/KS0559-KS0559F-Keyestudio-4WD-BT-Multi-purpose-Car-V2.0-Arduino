@@ -1,12 +1,12 @@
-
+========================
 5. Kidsblock Tutorial
-=============================
+========================
 
 .. toctree::
     :maxdepth: 2
 
     
-    kidsblock.md
+    5.kidsblock.md
 
 
 
