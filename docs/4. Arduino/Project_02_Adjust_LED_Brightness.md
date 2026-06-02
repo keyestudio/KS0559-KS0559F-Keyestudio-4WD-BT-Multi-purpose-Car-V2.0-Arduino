@@ -1,44 +1,44 @@
-# Project 2: Adjust LED Brightness
+# Projekt 2: LED-Helligkeit anpassen
 
-### **1.Description**
+### **1. Beschreibung**
 
-In previous lesson, we control LED on and off and make it blink.
+Im vorherigen Unterricht haben wir die LED ein- und ausgeschaltet und zum Blinken gebracht.
 
-In this project, we will control LED’s brightness through PWM simulating breathing effect.
+In diesem Projekt steuern wir die Helligkeit der LED über PWM, um einen Atemeffekt zu simulieren.
 
-PWM is a means of controlling the analog output via digital means. Digital control is used to generate square waves with different duty cycles (a signal that constantly switches between high and low levels) to control the analog output. In general, the input voltages of ports are 0V and 5V.
+PWM ist ein Mittel, um den analogen Ausgang digital zu steuern. Die digitale Steuerung wird verwendet, um Rechteckwellen mit unterschiedlichen Tastverhältnissen zu erzeugen (ein Signal, das ständig zwischen hohen und niedrigen Pegeln wechselt), um den analogen Ausgang zu steuern. Im Allgemeinen liegen die Eingangsspannungen der Ports bei 0V und 5V.
 
-What if the 3V is required? Or a switch among 1V, 3V and 3.5V? We cannot change resistors constantly. For this reason, we resort to PWM.
+Was ist, wenn 3V benötigt werden? Oder ein Umschalten zwischen 1V, 3V und 3,5V? Wir können nicht ständig Widerstände wechseln. Aus diesem Grund greifen wir auf PWM zurück.
 
 ![bbcfcb9ae56abb7e80ee587246fc4be9](media/A14.gif)
 
-For the Arduino digital port voltage output, there are only LOW and HIGH, which correspond to the voltage output of 0V and 5V. You can define LOW as 0 and HIGH as 1, and let the Arduino output five hundred 0 or 1 signals within 1s.
+Für die Arduino-Digitalport-Spannungsausgabe gibt es nur LOW und HIGH, die den Spannungsausgängen von 0V und 5V entsprechen. Man kann LOW als 0 und HIGH als 1 definieren und den Arduino innerhalb von 1s fünfhundert 0- oder 1-Signale ausgeben lassen.
 
-If all of the output five hundred are 1, that is 5V; if all of which are 0, that is 0V. If output 010101010101 in this way then the output port is 2.5V, which is like showing movie. The movie we watch are not completely continuous. It actually outputs 25 pictures per second. In this case, the human can’t see it, neither does PWM. If we want different voltage, we need to control the ratio of 0 and 1. The more 0,1 signals output per unit time, the more accurate the control.
+Wenn alle fünfhundert Ausgaben 1 sind, entspricht das 5V; wenn alle 0 sind, entspricht das 0V. Wenn auf diese Weise 010101010101 ausgegeben wird, beträgt die Ausgangsspannung 2,5V, was einem Film ähnelt. Der Film, den wir sehen, ist nicht vollständig kontinuierlich. Tatsächlich werden 25 Bilder pro Sekunde ausgegeben. In diesem Fall kann der Mensch es nicht sehen, ebenso wenig wie PWM. Wenn wir eine andere Spannung wollen, müssen wir das Verhältnis von 0 und 1 steuern. Je mehr 0- und 1-Signale pro Zeiteinheit ausgegeben werden, desto genauer die Steuerung.
 
-PWM is a technology that uses digital methods to obtain analog quantities. Digital control enables to form a square wave, the square wave signal only has on and off two states (high and low).  A voltage ranging from 0 to 5V can be simulated by controlling the ratio of on to off duration.  The time spent on (technically called high level) is called pulse width, so PWM is also called pulse width modulation. 
+PWM ist eine Technologie, die digitale Methoden verwendet, um analoge Größen zu erhalten. Die digitale Steuerung ermöglicht die Bildung einer Rechteckwelle, das Rechteckwellensignal hat nur zwei Zustände: an und aus (hoch und niedrig). Eine Spannung von 0 bis 5V kann simuliert werden, indem das Verhältnis der Dauer von an zu aus gesteuert wird. Die Zeit, die an ist (technisch als High-Level bezeichnet), wird Pulsbreite genannt, daher wird PWM auch Pulsbreitenmodulation genannt.
 
-The green vertical bars represent one period of the square wave.  The value written in each analogWrite(value) corresponds to a percentage, which is also called Duty Cycle. This percentage refers to the ratio of time occupied by the high level in a cycle, that is, duty cycle = high level time/cycle time. 
+Die grünen vertikalen Balken stellen eine Periode der Rechteckwelle dar. Der in jedem analogWrite(value) geschriebene Wert entspricht einem Prozentsatz, der auch als Tastverhältnis bezeichnet wird. Dieser Prozentsatz bezieht sich auf das Verhältnis der vom High-Level eingenommenen Zeit in einem Zyklus, also Tastverhältnis = High-Level-Zeit / Zykluszeit.
 
- In the figure, from top to bottom, the duty cycle of the first square wave is 0%, and the corresponding value is 0, and the LED brightness is the lowest, that is, off state.  The longer the high level lasts, the brighter it will be.  Therefore, the value of the last duty cycle of 100% is 255, and the LED is the brightest.  50% is the brightest half, and 25% is darker.  
+Im Bild ist von oben nach unten das Tastverhältnis der ersten Rechteckwelle 0%, und der entsprechende Wert ist 0, und die LED-Helligkeit ist am niedrigsten, also aus. Je länger der High-Level anhält, desto heller wird es. Daher ist der Wert des letzten Tastverhältnisses von 100% 255, und die LED ist am hellsten. 50% ist halb so hell, und 25% ist dunkler.
 
-PWM is more used to adjust the brightness of LED lights or the rotation speed of the motors, and the wheels speed driven by the motors can be easily controlled. When playing with some Arduino robots, the benefits of PWM can be better reflected. 
+PWM wird hauptsächlich verwendet, um die Helligkeit von LED-Leuchten oder die Drehzahl von Motoren einzustellen, und die von den Motoren angetriebenen Raddrehzahlen können leicht gesteuert werden. Beim Spielen mit einigen Arduino-Robotern kommen die Vorteile von PWM besser zur Geltung.
 
-### **2.Components**
+### **2. Komponenten**
 
-|           Development Board *1           |           8833 Motor Driver *1           |     Red LED Module*1     |
-| :--------------------------------------: | :--------------------------------------: | :----------------------: |
+|           Entwicklungsboard *1           |           8833 Motor Driver *1           |     Rotes LED-Modul *1     |
+| :--------------------------------------: | :--------------------------------------: | :------------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             3P Dupont Wire*1             |               USB Cable*1                |                          |
-|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                          |
+|             3P Dupont Kabel *1             |               USB-Kabel *1                |                            |
+|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                            |
 
-### **3.Wiring Diagram** 
+### **3. Schaltplan**
 
-Keep the wiring-up unchanged.
+Die Verkabelung bleibt unverändert.
 
 ![image-20250508161123490](media/A13.png)
 
-### **4.Test Code**
+### **4. Testcode**
 
 ```c
 //*****************************************************************
@@ -48,85 +48,142 @@ Keep the wiring-up unchanged.
  pwm
  http://www.keyestudio.com
 */
-int ledPin = 9; // Define the LED pin at D9
+int ledPin = 9; // Definiere den LED-Pin an D9
 int value;
 
 void setup () {
-  pinMode (ledPin, OUTPUT); // initialize ledpin as an output.
+  pinMode (ledPin, OUTPUT); // initialisiere ledPin als Ausgang.
 }
-
 void loop () {
   for (value = 0; value <255; value = value + 1) 
   {
-    analogWrite (ledPin, value); // LED lights gradually light up
-    delay (5); // delay 5ms
+    analogWrite (ledPin, value); // LED leuchtet allmählich auf
+    delay (5); // Verzögerung 5ms
   }
   for (value = 255; value> 0; value = value-1) 
   {
-    analogWrite (ledPin, value); // LED gradually goes out
-    delay (5); // delay 5ms
+    analogWrite (ledPin, value); // LED geht allmählich aus
+    delay (5); // Verzögerung 5ms
   }
 }
 //*****************************************************************
 ```
 
-### **5.Test Result**
+### **5. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see that the LED gradually changes from bright to dark, like human’s breath, rather than turning on and off immediately.
+Nachdem der Code erfolgreich auf das V4.0 Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan und verwenden Sie ein USB-Kabel, um den Computer mit Strom für das Board zu versorgen. Nach dem Einschalten sehen Sie, dass die LED allmählich von hell zu dunkel wechselt, ähnlich wie der menschliche Atem, anstatt sofort ein- und auszuschalten.
 
-### **6.Code Explanation**
+### **6. Code-Erklärung**
 
-If we need to repeat a certain statement, we could use for statement.
+Wenn wir eine bestimmte Anweisung wiederholen müssen, können wir die for-Anweisung verwenden.
 
-For statement format is shown below:
+Das Format der for-Anweisung ist wie folgt dargestellt:
 
 ![image-20250508162458776](media/A15.png)
 
-FOR cyclic sequence:
+FOR-Zyklusfolge:
 
-Round 1：1 → 2 → 3 → 4
+Runde 1：1 → 2 → 3 → 4
 
-Round 2：2 → 3 → 4
+Runde 2：2 → 3 → 4
 
 …
 
-Until number 2 is not established, “for”loop is over,
+Bis die Zahl 2 nicht mehr erfüllt ist, ist die „for“-Schleife beendet.
 
-After knowing this order, go back to code:
+Nachdem wir diese Reihenfolge kennen, kehren wir zum Code zurück:
 
-**for (int value = 0; value \< 255; value=value+1)**
+**for (int value = 0; value < 255; value=value+1)**
 
-**for (int value = 255; value \>0; value=value-1)**
+**for (int value = 255; value > 0; value=value-1)**
 
-The two“for”statements make value increase from 0 to 255, then reduce from 255 to 0, then increase to 255....infinitely loop.
+Die beiden „for“-Anweisungen lassen value von 0 auf 255 steigen, dann von 255 auf 0 sinken und dann wieder auf 255 steigen... eine unendliche Schleife.
 
-There is a new function in the following ----- analogWrite().
+Im Folgenden gibt es eine neue Funktion ----- analogWrite().
 
-We know that digital port only has two state of 0 and 1. So how to send an analog value to a digital value? Here, this function is needed. Let’s observe the Arduino board and find 6 pins marked“\~”which can output PWM signals.
+Wir wissen, dass der digitale Port nur zwei Zustände hat: 0 und 1. Wie kann man also einen analogen Wert an einen digitalen Wert senden? Hier wird diese Funktion benötigt. Schauen wir uns das Arduino-Board an und finden 6 Pins mit der Markierung „~“, die PWM-Signale ausgeben können.
 
-Function format as follows:
+Funktionsformat wie folgt:
 
 **analogWrite(pin,value)**
 
-analogWrite() is used to write an analog value from 0\~255 for PWM port, so the value is in the range of 0\~255. Attention that you can only write the digital pins with PWM function, such as pin 3, 5, 6, 9, 10, 11.
+analogWrite() wird verwendet, um einen analogen Wert von 0~255 für PWM-Ports zu schreiben, daher liegt der Wert im Bereich von 0~255. Beachten Sie, dass Sie nur die digitalen Pins mit PWM-Funktion beschreiben können, wie z.B. Pin 3, 5, 6, 9, 10, 11.
 
-PWM is a technology to obtain analog quantity through digital method. Digital control forms a square wave, and the square wave signal only has two states of turning on and off (that is, high or low levels). By controlling the ratio of the duration of turning on and off, a voltage varying from 0 to 5V can be simulated. The time turning on(academically referred to as high level) is called pulse width, so PWM is also called pulse width modulation.
+PWM ist eine Technologie, um analoge Größen durch digitale Methoden zu erhalten. Die digitale Steuerung bildet eine Rechteckwelle, und das Rechteckwellensignal hat nur zwei Zustände: Ein und Aus (also High- oder Low-Pegel). Durch Steuerung des Verhältnisses der Ein- und Aus-Zeit kann eine Spannung simuliert werden, die von 0 bis 5V variiert. Die Einschaltzeit (fachlich als High-Pegel bezeichnet) wird Pulsbreite genannt, daher wird PWM auch Pulsweitenmodulation genannt.
 
-Through the following five square waves, let’s learn more about the PWM.
+Anhand der folgenden fünf Rechteckwellen lernen wir mehr über PWM.
 
 ![image-20250508162529349](media/A16.png)
 
-In the above figure, the green line represents a period, and the value of analogWrite() corresponds to a percentage which is called Duty Cycle as well. Duty cycle implies the ratio of time occupied by the high level in the cycle. From top to bottom, the duty cycle of first square wave is 0% and its corresponding value is 0.
+In der obigen Abbildung stellt die grüne Linie eine Periode dar, und der Wert von analogWrite() entspricht einem Prozentsatz, der auch Duty Cycle genannt wird. Der Duty Cycle gibt das Verhältnis der Zeit an, die der High-Pegel im Zyklus einnimmt. Von oben nach unten beträgt der Duty Cycle der ersten Rechteckwelle 0% und der entsprechende Wert ist 0.
 
-The LED brightness is lowest, that is, light off. The more time the high level lasts, the brighter the LED. Therefore, the last duty cycle is 100%, which corresponds to 255, and LED is the brightest. And 50% is the brightest half, 25% means darker.
+Die LED-Helligkeit ist am niedrigsten, also aus. Je länger der High-Pegel anhält, desto heller leuchtet die LED. Daher beträgt der letzte Duty Cycle 100%, was 255 entspricht, und die LED ist am hellsten. 50% ist halb so hell, 25% bedeutet dunkler.
 
-PWM is more used for adjusting the LED’s brightness or the rotation speed of motors.
+PWM wird hauptsächlich verwendet, um die Helligkeit von LEDs oder die Drehzahl von Motoren einzustellen.
 
-It plays a vital role in controlling smart robot cars. I believe that you cannot wait to learn the next project.
+Es spielt eine wichtige Rolle bei der Steuerung von intelligenten Roboterautos. Ich glaube, Sie können es kaum erwarten, das nächste Projekt zu lernen.
 
-### **7.Extension Practice**
+### **7. Erweiterte Übung**
 
-Let’s modify the value of delay and remain the pin unchanged, then observe how the LED changes.
+Ändern wir den Wert der Verzögerung und lassen den Pin unverändert, und beobachten, wie sich die LED verändert.
+
+### **8. Testergebnis**
+
+Nachdem der Code erfolgreich auf das V4.0 Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan und verwenden Sie ein USB-Kabel, um den Computer mit Strom für das Board zu versorgen. Nach dem Einschalten sehen Sie, dass die LED allmählich von hell zu dunkel wechselt, ähnlich wie der menschliche Atem, anstatt sofort ein- und auszuschalten.
+
+### **9. Code-Erklärung**
+
+Wenn wir eine bestimmte Anweisung wiederholen müssen, können wir die for-Anweisung verwenden.
+
+Das Format der for-Anweisung ist wie folgt dargestellt:
+
+![image-20250508162458776](media/A15.png)
+
+FOR-Zyklusfolge:
+
+Runde 1：1 → 2 → 3 → 4
+
+Runde 2：2 → 3 → 4
+
+…
+
+Bis die Zahl 2 nicht mehr erfüllt ist, ist die „for“-Schleife beendet.
+
+Nachdem wir diese Reihenfolge kennen, kehren wir zum Code zurück:
+
+**for (int value = 0; value < 255; value=value+1)**
+
+**for (int value = 255; value > 0; value=value-1)**
+
+Die beiden „for“-Anweisungen lassen value von 0 auf 255 steigen, dann von 255 auf 0 sinken und dann wieder auf 255 steigen... eine unendliche Schleife.
+
+Im Folgenden gibt es eine neue Funktion ----- analogWrite().
+
+Wir wissen, dass der digitale Port nur zwei Zustände hat: 0 und 1. Wie kann man also einen analogen Wert an einen digitalen Wert senden? Hier wird diese Funktion benötigt. Schauen wir uns das Arduino-Board an und finden 6 Pins mit der Markierung „~“, die PWM-Signale ausgeben können.
+
+Funktionsformat wie folgt:
+
+**analogWrite(pin,value)**
+
+analogWrite() wird verwendet, um einen analogen Wert von 0~255 für PWM-Ports zu schreiben, daher liegt der Wert im Bereich von 0~255. Beachten Sie, dass Sie nur die digitalen Pins mit PWM-Funktion beschreiben können, wie z.B. Pin 3, 5, 6, 9, 10, 11.
+
+PWM ist eine Technologie, um analoge Größen durch digitale Methoden zu erhalten. Die digitale Steuerung bildet eine Rechteckwelle, und das Rechteckwellensignal hat nur zwei Zustände: Ein und Aus (also High- oder Low-Pegel). Durch Steuerung des Verhältnisses der Ein- und Aus-Zeit kann eine Spannung simuliert werden, die von 0 bis 5V variiert. Die Einschaltzeit (fachlich als High-Pegel bezeichnet) wird Pulsbreite genannt, daher wird PWM auch Pulsweitenmodulation genannt.
+
+Anhand der folgenden fünf Rechteckwellen lernen wir mehr über PWM.
+
+![image-20250508162529349](media/A16.png)
+
+In der obigen Abbildung stellt die grüne Linie eine Periode dar, und der Wert von analogWrite() entspricht einem Prozentsatz, der auch Duty Cycle genannt wird. Der Duty Cycle gibt das Verhältnis der Zeit an, die der High-Pegel im Zyklus einnimmt. Von oben nach unten beträgt der Duty Cycle der ersten Rechteckwelle 0% und der entsprechende Wert ist 0.
+
+Die LED-Helligkeit ist am niedrigsten, also aus. Je länger der High-Pegel anhält, desto heller leuchtet die LED. Daher beträgt der letzte Duty Cycle 100%, was 255 entspricht, und die LED ist am hellsten. 50% ist halb so hell, 25% bedeutet dunkler.
+
+PWM wird hauptsächlich verwendet, um die Helligkeit von LEDs oder die Drehzahl von Motoren einzustellen.
+
+Es spielt eine wichtige Rolle bei der Steuerung von intelligenten Roboterautos. Ich glaube, Sie können es kaum erwarten, das nächste Projekt zu lernen.
+
+### **10. Erweiterte Übung**
+
+Ändern wir den Wert der Verzögerung und lassen den Pin unverändert, und beobachten, wie sich die LED verändert.
 
 ```c
 //***********************************************************
@@ -136,23 +193,22 @@ Let’s modify the value of delay and remain the pin unchanged, then observe how
  pwm
  http://www.keyestudio.com
 */
-int ledPin = 9; // Define the LED pin at D9
+int ledPin = 9; // Definiere den LED-Pin an D9
 void setup () {
-   pinMode(ledPin, OUTPUT); // initialize ledpin as an output.
+   pinMode(ledPin, OUTPUT); // initialisiere ledPin als Ausgang.
 }
 
 void loop () {
    for (int value = 0; value <255; value = value + 1) {
-     analogWrite (ledPin, value); // LED lights gradually light up
-     delay (30); // delay 30MS
+     analogWrite (ledPin, value); // LED leuchtet allmählich auf
+     delay (30); // Verzögerung 30ms
    }
    for (int value = 255; value> 0; value = value-1) {
-     analogWrite (ledPin, value); // LED gradually goes out
-     delay (30); // delay 30MS
+     analogWrite (ledPin, value); // LED geht allmählich aus
+     delay (30); // Verzögerung 30ms
    }
 }
 //***********************************************************
 ```
 
-Upload the code to the development board, then the LED will blink more slowly.
-
+Laden Sie den Code auf das Entwicklungsboard hoch, dann blinkt die LED langsamer.

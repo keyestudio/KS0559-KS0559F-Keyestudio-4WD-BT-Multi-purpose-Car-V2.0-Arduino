@@ -1,176 +1,173 @@
-# Project 9 Facial Expression LED Board
+# Projekt 9 Gesichtsausdruck LED-Board
 
 ![](media/A221.png)
 
-**1.Description** 
+### **1. Beschreibung** 
 
-How fun it is if a expression board is added to the robot. And the Keyestudio 8\*16 LED board can do the trick. With the help of it, you could design facial expressions, images, patterns and other displays by yourselves.
+Wie lustig ist es, wenn ein Ausdrucksboard zum Roboter hinzugefügt wird. Und das Keyestudio 8\*16 LED-Board kann das ermöglichen. Mit seiner Hilfe könnt ihr Gesichtsausdrücke, Bilder, Muster und andere Anzeigen selbst gestalten.
 
-The 8\*16 LED board comes with 128 LEDs. The data of the microprocessor(Arduino) communicates with the AiP1640 through a two-wire bus interface. Therefore, it can control the on and off of 128 LEDs on the module, so as to make the dot matrix on the module to display the pattern you need. A HX-2.54 4Pin cable is provided for your convenience of wiring.
+Das 8\*16 LED-Board verfügt über 128 LEDs. Die Daten des Mikroprozessors (Arduino) kommunizieren über eine Zwei-Draht-Busschnittstelle mit dem AiP1640. Dadurch kann es das Ein- und Ausschalten der 128 LEDs auf dem Modul steuern, um die Punktmatrix auf dem Modul so anzuzeigen, dass das gewünschte Muster dargestellt wird. Ein HX-2.54 4Pin-Kabel wird für eine bequeme Verkabelung mitgeliefert.
 
-**2.Specification**
+### **2. Spezifikation**
 
-- Working voltage: DC 3.3-5V
+- Betriebsspannung: DC 3,3-5V
 
-- Power loss: 400mW
+- Leistungsverlust: 400mW
 
-- Oscillation frequency: 450KHz
+- Oszillationsfrequenz: 450KHz
 
-- Drive current: 200mA
+- Ansteuerstrom: 200mA
 
-- Working temperature: -40\~80℃
+- Betriebstemperatur: -40\~80℃
 
-- Communication mode: I2C
+- Kommunikationsmodus: I2C
   
 
-**3.Circuit Diagram**
+### **3. Schaltplan**
 
 ![](media/A222.png)
 
-**4.Working Principle**
+### **4. Funktionsprinzip**
 
-How to control each LED of the 8\*16 dot matrix? It is known that each byte has 8 bits and each bit is 0 or 1. when it is 0, LED is off while when it is 1 LED is on. One byte can control one column of the LED,and naturally 16 bytes can control 16 columns of LEDs, that’s the 8\*16 dot matrix.
+Wie steuert man jede LED der 8\*16 Punktmatrix? Es ist bekannt, dass jedes Byte 8 Bits hat und jedes Bit 0 oder 1 ist. Wenn es 0 ist, ist die LED aus, wenn es 1 ist, ist die LED an. Ein Byte kann eine Spalte der LEDs steuern, und natürlich können 16 Bytes 16 Spalten von LEDs steuern, das ist die 8\*16 Punktmatrix.
 
-**5.Pins description and communication protocol**
+### **5. Pin-Beschreibung und Kommunikationsprotokoll**
 
-The data of the microprocessor (Arduino) communicates with the AiP1640 through a two-wire bus cable.
+Die Daten des Mikroprozessors (Arduino) kommunizieren über ein Zwei-Draht-Buskabel mit dem AiP1640.
 
-The communication protocol diagram is as follows (SCLK) is SCL, (DIN) is SDA.
+Das Kommunikationsprotokoll-Diagramm ist wie folgt (SCLK) ist SCL, (DIN) ist SDA.
 
 ![](media/A223.png)
 
-①The starting condition for data input: SCL is high level and SDA changes from high to low.
+① Die Startbedingung für die Dateneingabe: SCL ist auf hohem Pegel und SDA wechselt von hoch zu niedrig.
 
-②For data command setting, there are methods as shown in the figure below.
+② Für die Einstellung des Datenbefehls gibt es die im folgenden Bild gezeigten Methoden.
 
-In our sample program, select the way to **add 1 to the address automatically**, the binary value is 0100 0000 and the corresponding hexadecimal value is 0x40.
+In unserem Beispielprogramm wählen wir die Methode, **automatisch 1 zur Adresse hinzuzufügen**, der Binärwert ist 0100 0000 und der entsprechende Hexadezimalwert ist 0x40.
 
 ![Img](media/A224.png)
 
-③For address command setting, the address can be selected as shown below.
+③ Für die Einstellung des Adressbefehls kann die Adresse wie unten gezeigt ausgewählt werden.
 
-The first 00H is selected in our sample program, and the binary number 1100 0000 corresponds to the hexadecimal 0xc0.
+Im Beispielprogramm wird die erste 00H ausgewählt, und die Binärzahl 1100 0000 entspricht dem Hexadezimalwert 0xc0.
 
 ![Img](media/A225.png)
 
-④The requirement for data input is that when SCL is at high level when inputting data, the signal on SDA must remain unchanged. Only when the clock signal on SCL is at low level, can the signal on SDA be changed. The input of data is the low bit first, and the high bit later.
+④ Die Anforderung für die Dateneingabe ist, dass wenn SCL auf hohem Pegel ist, während Daten eingegeben werden, das Signal auf SDA unverändert bleiben muss. Nur wenn das Taktsignal auf SCL auf niedrigem Pegel ist, darf das Signal auf SDA geändert werden. Die Eingabe der Daten erfolgt zuerst mit dem niederwertigen Bit, dann mit dem höherwertigen Bit.
 
-⑤The condition for the end of data transmission is that when SCL is at low level, SDA at low level and SCL at high level, the level of SDA becomes high.
+⑤ Die Bedingung für das Ende der Datenübertragung ist, dass wenn SCL auf niedrigem Pegel ist, SDA auf niedrigem Pegel und SCL auf hohem Pegel, der Pegel von SDA auf hoch wechselt.
 
-⑥Display control, set different pulse width, pulse width can be selected as shown in the figure below.
+⑥ Anzeige-Steuerung, unterschiedliche Pulsbreiten einstellen, die Pulsbreite kann wie im Bild unten ausgewählt werden.
 
-In the example, the pulse width is 4/16, and the hexadecimal corresponding to 1000 1010 is 0x8A.
+Im Beispiel beträgt die Pulsbreite 4/16, und der Hexadezimalwert, der 1000 1010 entspricht, ist 0x8A.
 
 ![Img](media/A226.png)
 
-**Instructions for the use of modulus tool**
+**Anleitung zur Verwendung des Modulus-Tools**
 
-The dot matrix tool uses the online version, and the link is :[http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#)
+Das Punktmatrix-Tool verwendet die Online-Version, und der Link ist: [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#)
 
-①Enter the link and the page appears as shown below
+① Gebt den Link ein und die Seite erscheint wie unten gezeigt
 
 ![](media/A227.png)
 
-②The dot matrix is 8\*16, so adjust the height to 8 and width to 16, as shown in the figure below.
+② Die Punktmatrix ist 8\*16, also stellt die Höhe auf 8 und die Breite auf 16 ein, wie im Bild unten gezeigt.
 
 ![](media/A228.png)
 
-③Generate hexadecimal data from the pattern
+③ Hexadezimale Daten aus dem Muster generieren
 
-As shown in the figure below, press the left mouse button to select, right click to cancel; draw the pattern you want, click Generate, and the hexadecimal data we need will be generated.
+Wie im Bild unten gezeigt, mit der linken Maustaste auswählen, mit Rechtsklick abwählen; zeichnet das gewünschte Muster, klickt auf Generate, und die benötigten hexadezimalen Daten werden generiert.
 
 ![](media/A229.png)
 
-**6.Components**
+### **6. Komponenten**
 
-| Development Board *1      | 8833 Motor Driver *1            | 8x16 LED Panel*1          |
+| Entwicklungsboard *1       | 8833 Motor Driver *1            | 8x16 LED Panel*1          |
 | ------------------------- | ------------------------------- | ------------------------- |
 | ![img](media/A230.jpg) | ![img](media/A231.jpg)       | ![img](media/A232.jpg) |
-| USB Cable*1               | HX-2.54 4P Dupont Wire 200mm *1 |                           |
+| USB-Kabel*1               | HX-2.54 4P Dupont Kabel 200mm *1 |                           |
 | ![img](media/A233.jpg) | ![img](media/A234.jpg)       |                           |
 
 
 
-**7.Wiring Diagram**
+### **7. Verdrahtungsdiagramm**
 
 ![](media/A235.png)
 
-The GND, VCC, SDA, and SCL of the 8x16 LED light board are respectively connected to the keyestudio sensor expansion board-(GND), + (VCC), A4, A5 for two-wire serial communication.
+Die GND-, VCC-, SDA- und SCL-Pins der 8x16 LED-Leuchtplatine sind jeweils mit der Keyestudio Sensor-Erweiterungsplatine verbunden – (GND), + (VCC), A4, A5 für die Zwei-Draht-Serielle Kommunikation.
 
-(<span style="color: rgb(255, 76, 65);">Note:</span> Though it is connected with the IIC pin of Arduino, this module is not for IIC communication. And the IO port here is to simulate I2C communication and can be connected with any two pins ).
+(<span style="color: rgb(255, 76, 65);">Hinweis:</span> Obwohl sie mit dem IIC-Pin des Arduino verbunden ist, ist dieses Modul nicht für die IIC-Kommunikation gedacht. Und der IO-Port hier simuliert die I2C-Kommunikation und kann mit beliebigen zwei Pins verbunden werden).
 
-**8.Test Code**
+### **8. Testcode**
 
-Before writing the code, it is necessary to import the library file of the 8x16 LED board. The specific steps are as follows: 
+Bevor der Code geschrieben wird, muss die Bibliotheksdatei der 8x16 LED-Platine importiert werden. Die konkreten Schritte sind wie folgt:
 
-Click ![](media/A29.png)to enter the extension library interface of sensors/modules/components, then search for“**Matrix 8\*16 Aip1640**”module ![](media/A236.png) and click it. In this way, "**Not loaded**" changes to "**loaded**", indicating that“**Matrix 8\*16 Aip1640**”module was added successfully. 
+Klicke auf ![](media/A29.png), um die Erweiterungsbibliothek-Schnittstelle für Sensoren/Module/Komponenten zu öffnen, suche dann nach dem „**Matrix 8\*16 Aip1640**“-Modul ![](media/A236.png) und klicke darauf. Dadurch ändert sich „**Nicht geladen**“ zu „**geladen**“, was anzeigt, dass das „**Matrix 8\*16 Aip1640**“-Modul erfolgreich hinzugefügt wurde.
 
 ![Img](media/A237.png)
 
 ![](media/A238.png)
 
-Click ![](media/A33.png)to return to the code editor interface, the instruction block of the added “**Matrix 8\*16 Aip1640**”module can be seen in the module area. 
+Klicke auf ![](media/A33.png), um zur Code-Editor-Oberfläche zurückzukehren. Der Anweisungsblock des hinzugefügten „**Matrix 8\*16 Aip1640**“-Moduls ist im Modulbereich sichtbar.
 
 ![](media/A239.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Du kannst Blöcke ziehen, um sie zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A126.png)
 
 (2).![](media/A240.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A241.png)
 
-**9.Test Result**
+### **9. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then turn the DIP switch to ON, a smile-shaped pattern will be displayed on the LED board.
+Nachdem der Code erfolgreich auf die V4.0-Platine hochgeladen wurde, verbinde die Verkabelung gemäß dem Schaltplan, dann schalte den DIP-Schalter auf ON. Ein lächelndes Muster wird auf der LED-Platine angezeigt.
 
 ![](media/A242.png)
 
-**10.Code Explanation**
+### **10. Code-Erklärung**
 
-We use the modulus tool we just learned, [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#), to make the dot matrix display the start pattern, going forward, and stop and then clear the pattern. The time interval is 2000 ms.
+Wir verwenden das gerade gelernte Modultool, [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#), um auf der Punktmatrix das Startmuster, Vorwärtsgehen, Stoppen und anschließend das Löschen des Musters anzuzeigen. Das Zeitintervall beträgt 2000 ms.
 
 ![image-20250513092102687](media/A243.png)![image-20250513092107293](media/A244.png)![image-20250513092113035](media/A245.png)![image-20250513092116952](media/A246.png)
 
 
-Instruction block for smiley face![](media/A247.png)
+Anweisungsblock für das Smiley-Gesicht![](media/A247.png)
 
-Instruction block for expression：![](media/A248.png)
+Anweisungsblock für den Ausdruck: ![](media/A248.png)
 
-Instruction block for heart ![](media/A249.png)
+Anweisungsblock für Herz ![](media/A249.png)
 
-Instruction block for going forward![](media/A250.png)
+Anweisungsblock für Vorwärtsgehen![](media/A250.png)
 
-Instruction block for **stepping back** ![](media/A251.png)
+Anweisungsblock für **Rückwärtsgehen** ![](media/A251.png)
 
-Instruction block for **turning left** ![](media/A252.png)
+Anweisungsblock für **Linksabbiegen** ![](media/A252.png)
 
-Instruction block for **turning right** ![](media/A253.png)
+Anweisungsblock für **Rechtsabbiegen** ![](media/A253.png)
 
-Instruction block for **stop**![](media/A254.png)
+Anweisungsblock für **Stoppen**![](media/A254.png)
 
-Instruction block for **clearing screen**![](media/A255.png)
+Anweisungsblock für **Bildschirm löschen**![](media/A255.png)
 
 ![](media/A235.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Du kannst Blöcke ziehen, um sie zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
-（1).![](media/A126.png)
+(1).![](media/A126.png)
 
-（2).![](media/A240.png)
+(2).![](media/A240.png)
 
 (3).![](media/A256.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A257.png)
 
-After uploading test code, the facial expression board shows these patterns orderly and repeats this sequence.
+Nach dem Hochladen des Testcodes zeigt die Gesichtsausdrucksplatine diese Muster der Reihe nach an und wiederholt diese Sequenz.
 
 ![image-20250513092222972](media/A258.png)![image-20250513092233711](media/A259.png)![image-20250513092238552](media/A260.png)
-
-
-

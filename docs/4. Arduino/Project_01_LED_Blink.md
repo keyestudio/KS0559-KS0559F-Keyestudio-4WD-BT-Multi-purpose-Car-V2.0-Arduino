@@ -1,48 +1,42 @@
+# Projekt 1: LED Blink
 
-![](./media/A5.jpeg)
-
-<font color ="#FF0000">**Note: In this course, the interface of each sensor / module marked with (G,-, GND) indicates the negative pole, G is connected to G, or GND of sensor shield or control board; “V” is positive pole and connected with V, VCC or 5V.**</font>
-
-
-# Project 1: LED Blink
-
-### **1.Description**
+### **1. Beschreibung**
 
 ![image-20250508161034535](media/A6.png)
 
-For starters and enthusiasts, LED Blink is a fundamental program. LED, the abbreviation of light emitting diodes, consists of Ga, As, P, N chemical compounds and so on.
+Für Anfänger und Enthusiasten ist LED Blink ein grundlegendes Programm. LED, die Abkürzung für Light Emitting Diodes, besteht aus chemischen Verbindungen wie Ga, As, P, N usw.
 
-The LED can flash in diverse color by altering the delay time in the test code. When in control, power on GND and VCC, the LED will be on if S end is in high level, otherwise it will go off.
+Die LED kann durch Ändern der Verzögerungszeit im Testcode in verschiedenen Farben blinken. Bei Steuerung und Anschluss an GND und VCC leuchtet die LED, wenn der S-Anschluss auf High-Pegel ist, andernfalls erlischt sie.
 
-### **2.Specification**
+### **2. Spezifikation**
 
-- Control interface: digital port
+- Steuerinterface: digitaler Port
 
-- Working voltage: DC 3.3-5V
+- Betriebsspannung: DC 3,3-5V
 
-- Pin spacing: 2.54mm
+- Pin-Abstand: 2,54 mm
 
-- LED display color: red
+- LED-Anzeigefarbe: rot
 
 ![image-20250508161015086](media/A7.png)
 
-### **3.Components**
+### **3. Komponenten**
 
-|           Development Board *1           |           8833 Motor Driver *1           |     Red LED Module*1     |
-| :--------------------------------------: | :--------------------------------------: | :----------------------: |
+|           Entwicklungsboard *1           |           8833 Motor Driver *1           |     Rotes LED Modul *1     |
+| :--------------------------------------: | :--------------------------------------: | :------------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             3P Dupont Wire*1             |               USB Cable*1                |                          |
-|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                          |
+|             3P Dupont Kabel *1             |               USB-Kabel *1                |                            |
+|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                            |
 
-### **4.Wiring Diagram**
+### **4. Schaltplan**
 
 ![image-20250508161123490](media/A13.png)
 
-As can be seen from the above figure, the Keyestudio 8833 motor Shield is stacked on the Keyestudio 4.0 development board.
+Wie aus der obigen Abbildung ersichtlich ist, ist das Keyestudio 8833 Motor Shield auf das Keyestudio 4.0 Entwicklungsboard aufgesteckt.
 
-The pin G, V and S of the LED module are connected to G, 5V and D9 of the expansion board respectively.
+Die Pins G, V und S des LED-Moduls sind jeweils mit G, 5V und D9 des Erweiterungsboards verbunden.
 
-### **5.Test Code**
+### **5. Testcode**
 
 ```c 
 //****************************************************************************
@@ -54,32 +48,32 @@ http://www.keyestudio.com
 */
 void setup()
 { 
-  pinMode(9, OUTPUT);// initialize digital pin 9 as an output.
+  pinMode(9, OUTPUT);// initialisiert digitalen Pin 9 als Ausgang.
 }
     
-void loop() // the loop function runs over and over again forever
+void loop() // die loop-Funktion läuft endlos immer wieder
 {  
-  digitalWrite(9, HIGH); // turn the LED on (HIGH is the voltage level)
-   delay(1000); // wait for a second
-   digitalWrite(9, LOW); // turn the LED off by making the voltage LOW
-   delay(1000); // wait for a second
+  digitalWrite(9, HIGH); // schaltet die LED ein (HIGH ist die Spannungsebene)
+   delay(1000); // wartet eine Sekunde
+   digitalWrite(9, LOW); // schaltet die LED aus, indem die Spannung auf LOW gesetzt wird
+   delay(1000); // wartet eine Sekunde
 }
 //****************************************************************************
 ```
 
-### **6.Test Result**
+### **6. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see the LED connected to the D9 will be on and off. 
+Nach erfolgreichem Hochladen des Codes auf das V4.0 Board, verbinden Sie die Kabel gemäß dem Schaltplan und verwenden Sie ein USB-Kabel, um den Computer mit Strom zu versorgen. Nach dem Einschalten sehen Sie, dass die an D9 angeschlossene LED an- und ausgeht.
 
-### **7.Code Explanation**
+### **7. Code-Erklärung**
 
-pinMode(9，OUTPUT) - This function can denote that the pin is INPUT or OUTPUT
+pinMode(9，OUTPUT) - Diese Funktion legt fest, ob der Pin als INPUT oder OUTPUT verwendet wird.
 
-digitalWrite(9，HIGH) - When pin is OUTPUT, we can set it to HIGH(output 5V) or LOW(output 0V)
+digitalWrite(9，HIGH) - Wenn der Pin als OUTPUT definiert ist, kann er auf HIGH (5V ausgeben) oder LOW (0V ausgeben) gesetzt werden.
 
-### **8.Extension Practice**
+### **8. Erweiterte Übung**
 
-We have succeeded in blinking LED. Next, let’s observe what will happen to the LED if we modify the delay time.
+Wir haben es geschafft, die LED blinken zu lassen. Als Nächstes beobachten wir, was passiert, wenn wir die Verzögerungszeit ändern.
 
 ```c
 //****************************************************************************
@@ -91,19 +85,18 @@ We have succeeded in blinking LED. Next, let’s observe what will happen to the
 */
 void setup()
 {  
-  // initialize digital pin 11 as an output.
+  // initialisiert digitalen Pin 9 als Ausgang.
   pinMode(9, OUTPUT);
 }
-// the loop function runs over and over again forever
+// die loop-Funktion läuft endlos immer wieder
 void loop()
 { 
-  digitalWrite(9, HIGH); // turn the LED on (HIGH is the voltage level)
-  delay(100); // wait for 0.1 second
-  digitalWrite(9, LOW); // turn the LED off by making the voltage LOW
-  delay(100); // wait for 0.1 second
+  digitalWrite(9, HIGH); // schaltet die LED ein (HIGH ist die Spannungsebene)
+  delay(100); // wartet 0,1 Sekunden
+  digitalWrite(9, LOW); // schaltet die LED aus, indem die Spannung auf LOW gesetzt wird
+  delay(100); // wartet 0,1 Sekunden
 }
 //*****************************************************************
 ```
 
-The test result shows that the LED flashes faster. Therefore, the delaying time enables to affect the flash frequency of the LED.
-
+Das Testergebnis zeigt, dass die LED schneller blinkt. Daher beeinflusst die Verzögerungszeit die Blinkfrequenz der LED.

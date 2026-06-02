@@ -1,64 +1,62 @@
-# Project 15 Bluetooth Control Smart Car
+# Projekt 15 Bluetooth-gesteuertes Smart Car
 
 ![](media/A327.jpeg)
 
-**1.Description**
+### **1. Beschreibung**
 
-We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will make a Bluetooth control smart car. In this project, we aim to regard the mobile phone as the transmitter (host), and the smart car connected to the BT24 Bluetooth module (slave) as the receiver and use the mobile APP to control the smart car via the Bluetooth. 
+Wir haben die Grundlagen von Bluetooth gelernt. In dieser Lektion werden wir ein Bluetooth-gesteuertes Smart Car bauen. In diesem Projekt betrachten wir das Mobiltelefon als Sender (Host) und das Smart Car, das mit dem BT24 Bluetooth-Modul (Slave) verbunden ist, als Empfänger. Die Steuerung des Smart Cars erfolgt über die mobile APP via Bluetooth.
 
-**2.APP Control Button**
+### **2. APP-Steuertasten**
 
-| Key                                          | Function                          |
-| -------------------------------------------- | --------------------------------- |
-| ![wps14](media/A185.jpg)                  | Pair DX-BT24 5.1 Bluetooth module |
-| ![wps15](media/A186.jpg) | Disconnect Bluetooth              |
+| Taste                                         | Funktion                          |
+| --------------------------------------------- | --------------------------------- |
+| ![wps14](media/A185.jpg)                  | Koppeln des DX-BT24 5.1 Bluetooth-Moduls |
+| ![wps15](media/A186.jpg) | Bluetooth trennen              |
 
-|                                                              | Control character                                            | Function                                                     |
+|                                                              | Steuerzeichen                                            | Funktion                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![wps16](media/A187.jpg)                 | Press: F  <br />Release: S                                   | Press the button, the car  goes front; <br />release to stop |
-| ![wps17](media/A188.jpg)                 | Press: L  <br />Release: S                                   | Press the button, the car turns left; <br />release to stop  |
-| ![wps18](media/A189.jpg)                 | Press: R  <br />Release: S                                   | Press the button, the car turns right; <br />release to stop |
-| ![wps19](media/A190.jpg)                 | Press: B  <br />Release: S                                   | Press the button, the car goes back; <br />release to stop   |
-| ![wps20](media/A191.jpg)                 | Press: “a”  <br />Release: “S”                               | Click to speed up(maximum:255)                               |
-| ![wps21](media/A192.jpg)                 | Press: “d”  <br />Release: “S”                               | Click to slow down(minimum:0)                                |
-| ![wps22](media/A193.jpg)                 | Click to start the gravity <br />sensing function of the <br />mobile phone: click again to <br />exit the gravity sensing control |                                                              |
-| ![wps23](media/A194.jpg)                 | Click to send“X”,<br /> click again to send“S”               | Start line tracking function; <br />click again to exit      |
-| ![wps24](media/A195.jpg)                 | Click to send“Y”, <br />click again to send“S”               | Start ultrasonic avoiding function;<br /> click again to exit |
-| ![wps25](media/A196.jpg) | Click to send“U”, <br />click again to send“S”               | Start ultrasonic follow function;<br /> click  again to exit |
-| ![wps26](media/A197.jpg)                 | Click to send“G”,<br />click again to send“S”                | Start restricting function;<br /> click  again to exit       |
+| ![wps16](media/A187.jpg)                 | Drücken: F  <br />Loslassen: S                                   | Taste drücken, das Auto fährt vorwärts; <br />loslassen zum Stoppen |
+| ![wps17](media/A188.jpg)                 | Drücken: L  <br />Loslassen: S                                   | Taste drücken, das Auto dreht nach links; <br />loslassen zum Stoppen  |
+| ![wps18](media/A189.jpg)                 | Drücken: R  <br />Loslassen: S                                   | Taste drücken, das Auto dreht nach rechts; <br />loslassen zum Stoppen |
+| ![wps19](media/A190.jpg)                 | Drücken: B  <br />Loslassen: S                                   | Taste drücken, das Auto fährt rückwärts; <br />loslassen zum Stoppen   |
+| ![wps20](media/A191.jpg)                 | Drücken: „a“  <br />Loslassen: „S“                               | Klicken zum Beschleunigen (maximal: 255)                               |
+| ![wps21](media/A192.jpg)                 | Drücken: „d“  <br />Loslassen: „S“                               | Klicken zum Verlangsamen (minimal: 0)                                |
+| ![wps22](media/A193.jpg)                 | Klicken zum Starten der Schwerkraft- <br />Sensorfunktion des <br />Mobiltelefons: erneut klicken zum <br />Beenden der Schwerkraftsteuerung |                                                              |
+| ![wps23](media/A194.jpg)                 | Klicken zum Senden von „X“,<br /> erneut klicken zum Senden von „S“               | Linienverfolgungsfunktion starten; <br />erneut klicken zum Beenden      |
+| ![wps24](media/A195.jpg)                 | Klicken zum Senden von „Y“, <br />erneut klicken zum Senden von „S“               | Ultraschall-Hindernisvermeidung starten;<br /> erneut klicken zum Beenden |
+| ![wps25](media/A196.jpg) | Klicken zum Senden von „U“, <br />erneut klicken zum Senden von „S“               | Ultraschall-Folgefunktion starten;<br /> erneut klicken zum Beenden |
+| ![wps26](media/A197.jpg)                 | Klicken zum Senden von „G“,<br /> erneut klicken zum Senden von „S“                | Begrenzungsfunktion starten;<br /> erneut klicken zum Beenden       |
 
-**3.Flow Chart**
+### **3. Flussdiagramm**
 
 ![img](media/A328.png)
 
-**4.Wiring Diagram**
+### **4. Schaltplan**
 
 ![](media/A329.png)
 
-1). GND, VCC, SDA and SCL of the 8\*8 LED board are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
+1). GND, VCC, SDA und SCL der 8\*8 LED-Anzeige sind mit G (GND), V (VCC), A4 und A5 des Erweiterungsboards verbunden.
     
-2). The RXD, TXD, GND and VCC of the Bluetooth module are respectively connected to TX, RX, G and 5V on the 8833 motor driver expansion board, while the STATE and BRK pins of the Bluetooth module do not need to be connected. 
+2). RXD, TXD, GND und VCC des Bluetooth-Moduls sind jeweils mit TX, RX, G und 5V auf dem 8833 Motor-Treiber-Erweiterungsboard verbunden, während die STATE- und BRK-Pins des Bluetooth-Moduls nicht angeschlossen werden müssen.
     
-3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire is interfaced with A3.
+3). Der Servo ist mit G, V und A3 verbunden. Das braune Kabel ist mit Gnd (G), das rote Kabel mit 5V (V) und das orange Kabel mit A3 verbunden.
     
-4). The power is connected to the BAT port
+4). Die Stromversorgung ist mit dem BAT-Anschluss verbunden.
     
 
-**5.Test Code**
+### **5. Testcode**
 
-Before writing the code, it is necessary to import the library files of the 8x16 LED board and the servo. The specific steps are as follows: 
-    
-Click ![](media/A29.png)to enter the extension library interface of sensors/modules/components, then search for“**Matrix 8\*16 Aip1640**”module![](media/A236.png)and click it. In this way, "**Not loaded**" changes to "**loaded**", indicating that the“**Matrix 8\*16 Aip1640**”module was added successfully. 
+Bevor der Code geschrieben wird, ist es notwendig, die Bibliotheksdateien des 8x16 LED-Boards und des Servos zu importieren. Die konkreten Schritte sind wie folgt:
 
-![Img](media/A237.png)  
+Klicken Sie auf ![](media/A29.png), um die Erweiterungsbibliothek-Schnittstelle für Sensoren/Module/Komponenten zu öffnen, suchen Sie dann nach dem „**Matrix 8\*16 Aip1640**“-Modul ![](media/A236.png) und klicken Sie darauf. Dadurch ändert sich „**Not loaded**“ zu „**loaded**“, was anzeigt, dass das „**Matrix 8\*16 Aip1640**“-Modul erfolgreich hinzugefügt wurde.
 
-![](media/A238.png)
+![Img](media/A237.png)![](media/A238.png)
 
-Click ![](media/A33.png)to return to the code editor interface, the instruction block of the added“**Matrix 8\*16 Aip1640**”module and “**Servo**”component can be seen in the module area. 
+Klicken Sie auf ![](media/A33.png), um zur Code-Editor-Oberfläche zurückzukehren. Der Anweisungsblock des hinzugefügten „**Matrix 8\*16 Aip1640**“-Moduls und der „**Servo**“-Komponente ist im Modulbereich sichtbar.
 
 ![](media/A330.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Sie können Blöcke ziehen, um sie zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A126.png)
 
@@ -78,9 +76,9 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 (9).![](media/A334.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-<span style="color: rgb(255, 76, 65);">**Note:** Before uploading the test code, you need to remove the Bluetooth module, otherwise the code will fail to be uploaded.Connect the Bluetooth module after uploading the code successfully.</span>
+<span style="color: rgb(255, 76, 65);">**Hinweis:** Vor dem Hochladen des Testcodes müssen Sie das Bluetooth-Modul entfernen, da sonst der Code nicht hochgeladen werden kann. Verbinden Sie das Bluetooth-Modul erst nach erfolgreichem Hochladen des Codes wieder.</span>
 
 ![](media/A335.png)
 
@@ -92,10 +90,8 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](media/A339.png)
 
-**6.Test Result**
+### **6. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
+Nachdem der Code erfolgreich auf das V4.0-Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan, schalten Sie die externe Stromversorgung ein und stellen Sie den DIP-Schalter auf ON.
 
-Inset the BT module and open your cellphone to connect the Bluetooth to control the smart car. The can will move forward, backward, turn left and right and stop. Also the 8\*8 LED board will show the corresponding patterns.
-
-
+Setzen Sie das BT-Modul ein und öffnen Sie Ihr Handy, um die Bluetooth-Verbindung herzustellen und das Smart Car zu steuern. Das Auto wird vorwärts, rückwärts fahren, nach links und rechts abbiegen und anhalten. Außerdem zeigt das 8\*8 LED-Board die entsprechenden Muster an.

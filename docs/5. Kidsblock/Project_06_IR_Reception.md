@@ -1,103 +1,102 @@
-# Project 6 IR Reception
+# Projekt 6 IR-Empfang
 
 ![](media/A141.png)
 
-**1.Description** 
+### **1. Beschreibung**
 
-There is no doubt that infrared remote control is ubiquitous in daily life. It is used to control various household appliances, such as TVs, stereos, video recorders and satellite signal receivers. Infrared remote control is composed of infrared transmitting and infrared receiving systems, that is, an infrared remote control and infrared receiving module and a single-chip microcomputer capable of decoding.  
+Es besteht kein Zweifel, dass Infrarot-Fernbedienungen im täglichen Leben allgegenwärtig sind. Sie werden zur Steuerung verschiedener Haushaltsgeräte verwendet, wie Fernseher, Stereoanlagen, Videorekorder und Satellitensignalempfänger. Die Infrarot-Fernbedienung besteht aus einem Infrarot-Sendesystem und einem Infrarot-Empfangssystem, das heißt einer Infrarot-Fernbedienung und einem Infrarot-Empfangsmodul sowie einem Mikrocontroller, der in der Lage ist, die Signale zu decodieren.
 
 ![](media/A142.png)
 
-The 38K infrared carrier signal emitted by remote controller is encoded by the encoding chip in the remote controller. It is composed of a section of pilot code, user code, user inverse code, data code, and data inverse code. The time interval of the pulse is used to distinguish whether it is 0 or 1 signal and the encoding is made up of these 0, 1 signals.
+Das 38K-Infrarot-Trägersignal, das vom Fernbediener ausgesendet wird, wird vom Codierchip im Fernbediener kodiert. Es besteht aus einem Abschnitt Pilotcode, Benutzer-Code, Benutzer-Inverscode, Daten-Code und Daten-Inverscode. Das Zeitintervall des Pulses wird verwendet, um zu unterscheiden, ob es sich um ein 0- oder 1-Signal handelt, und die Kodierung besteht aus diesen 0- und 1-Signalen.
 
-The user code of the same remote control is constant while the data code can distinguish the key.
+Der Benutzer-Code derselben Fernbedienung ist konstant, während der Daten-Code die Taste unterscheidet.
 
-When the remote control button is pressed, the remote control sends out an infrared carrier signal. When the IR receiver receives the signal, the program will decode the carrier signal and determines which key is pressed. The MCU decodes the received 01 signal, thereby judging what key is pressed by the remote control.
+Wenn die Fernbedienungstaste gedrückt wird, sendet die Fernbedienung ein Infrarot-Trägersignal aus. Wenn der IR-Empfänger das Signal empfängt, dekodiert das Programm das Trägersignal und bestimmt, welche Taste gedrückt wurde. Der MCU dekodiert das empfangene 0-1-Signal und erkennt so, welche Taste der Fernbedienung gedrückt wurde.
 
-Infrared receiver we use is an infrared receiver module. Mainly composed of an infrared receiver head, which is a device that integrates reception, amplification, and demodulation. Its internal IC has completed demodulation, and can achieve from infrared reception to output and be compatible with TTL signals.
+Der von uns verwendete Infrarot-Empfänger ist ein Infrarot-Empfangsmodul. Es besteht hauptsächlich aus einem Infrarot-Empfängerkopf, einem Gerät, das Empfang, Verstärkung und Demodulation integriert. Sein interner IC hat die Demodulation abgeschlossen und kann vom Infrarot-Empfang bis zur Ausgabe arbeiten und ist TTL-kompatibel.
 
-Additionally, it is suitable for infrared remote control and infrared data transmission. The infrared receiving module made by the receiver has only three pins, signal line, VCC and GND. It is very convenient to communicate with Arduino and other microcontrollers.
+Außerdem ist es geeignet für Infrarot-Fernbedienungen und Infrarot-Datenübertragung. Das vom Empfänger hergestellte Infrarot-Empfangsmodul hat nur drei Pins: Signalleitung, VCC und GND. Es ist sehr bequem, mit Arduino und anderen Mikrocontrollern zu kommunizieren.
 
-**2.Specification**
+### **2. Spezifikation**
 
-- Operating Voltage: 3.3-5V（DC)
+- Betriebsspannung: 3,3-5V (DC)
 
-- Output Signal: Digital signal
+- Ausgangssignal: Digitalsignal
 
-- Receiving Angle: 90 degrees
+- Empfangswinkel: 90 Grad
 
-- Frequency: 38khz
+- Frequenz: 38 kHz
 
-- Receiving Distance: 10m
+- Empfangsreichweite: 10 m
 
-The picture shows the real product and circuit diagram of the infrared receiver.
+Das Bild zeigt das reale Produkt und das Schaltbild des Infrarot-Empfängers.
 
 ![](media/A141.png)
 
 ![](media/A143.png)
 
-**3.Components**
+### **3. Komponenten**
 
-| Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1          |
-| ------------------------- | ------------------------- | ------------------------- |
-| ![img](media/A42.jpg) | ![img](media/A43.jpg) | ![img](media/A44.jpg) |
-| 3P F-F Dupont Wire*1      | USB Cable*1               |                           |
-| ![img](media/A45.jpg) | ![img](media/A46.jpg) |                           |
+| Entwicklungsboard *1      | 8833 Motor Driver *1      | Rotes LED-Modul *1          |
+| ------------------------- | ------------------------- | --------------------------- |
+| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)       |
+| 3P F-F Dupont-Kabel *1    | USB-Kabel *1              |                             |
+| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                             |
 
+Da das 8833-Board den IR-Empfänger integriert hat, ist keine Verkabelung erforderlich. Die Pins des IR-Empfängermoduls sind G (GND), V (VCC) und D3.
 
-Since the 8833 board integrates with the IR receiver, it doesn’t need wiring up. Pins of IR receiver module are G(GND）, V（VCC）and D3.
+### **4. Testcode**
 
-**4.Test Code**
+<span style="color: rgb(255, 76, 65);">Bitte beachten: Das im Software-Demonstrationsbild gezeigte Infrarotmodul ist bereits in die Erweiterungsplatine integriert und wird nicht separat geliefert. Folglich finden Sie das im Bild unten dargestellte Modul nicht im Produkt.![](media/A144.png)</span>
 
-<span style="color: rgb(255, 76, 65);">Please note: The infrared module shown in the software demonstration is already integrated into the expansion board and is not supplied separately. Consequently, you will not find the module depicted in the image below within the product.![](media/A144.png)</span>
+Bevor Sie den Code schreiben, muss die Bibliotheksdatei des IR-Empfängersensors importiert werden. Die konkreten Schritte sind wie folgt:
 
-Before writing the code, it is necessary to import the library file of the IR receiver sensor. The specific steps are as follows: 
-
-Click ![](media/A29.png)to enter the extension library interface of sensors/modules/components, then search for“**ir remote**” sensor![](media/A144.png) and click it. In this way, "**Not loaded**" changes to "**loaded**", indicating that ir remote”sensor was added successfully. 
+Klicken Sie auf ![](media/A29.png), um die Erweiterungsbibliothek für Sensoren/Module/Komponenten zu öffnen, suchen Sie dann nach dem „**ir remote**“-Sensor ![](media/A144.png) und klicken Sie darauf. Dadurch ändert sich „**Not loaded**“ zu „**loaded**“, was anzeigt, dass der „ir remote“-Sensor erfolgreich hinzugefügt wurde.
 
 ![Img](media/A145.png)
 
 ![](media/A146.png)
 
-Click ![](media/A33.png)to return to the code editor interface, the instruction block of the added “**ir remote**”sensor can be seen in the module area. 
+Klicken Sie auf ![](media/A33.png), um zur Code-Editor-Oberfläche zurückzukehren. Der Block mit den Befehlen des hinzugefügten „**ir remote**“-Sensors ist im Modulbereich sichtbar.
 
 ![](media/A147.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Sie können Blöcke ziehen, um zu programmieren. Die unten aufgeführten Blöcke dienen als Referenz.
 
-(1).![](media/A126.png)
+(1). ![](media/A126.png)
 
-(2).![](media/A148.png)
+(2). ![](media/A148.png)
 
-(3).![](media/A149.png)
+(3). ![](media/A149.png)
 
-(4).![](media/A150.png)
+(4). ![](media/A150.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A151.png)
 
-**5.Test Result**
+### **5. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, click ![](media/A80.png)to set baud rate to 9600.
+Nach dem erfolgreichen Hochladen des Codes auf das V4.0-Board verbinden Sie die Verkabelung gemäß dem Schaltplan, und schließen Sie dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten klicken Sie auf ![](media/A80.png), um die Baudrate auf 9600 einzustellen.
 
-Take out the remote control, and send signal to the infrared receiver sensor. You can see the key value of the corresponding key, if the key time is too long, FFFFFFFF is prone to garbled characters.
+Nehmen Sie die Fernbedienung heraus und senden Sie ein Signal an den Infrarot-Empfängersensor. Sie können den Tastwert der entsprechenden Taste sehen. Wenn die Tastzeit zu lang ist, neigt FFFFFFFF zu fehlerhaften Zeichen.
 
 ![](media/A152.png)
 
-The keys value of remote control are shown below.
+Die Tastwerte der Fernbedienung sind unten dargestellt.
 
 ![](media/A153.jpeg)
 
-**6.Extension Practice**
+### **6. Erweiterte Übung**
 
-We have decoded the key value of the IR remote control. How about controlling LED by the measured value? We could design an experiment.
+Wir haben den Tastwert der IR-Fernbedienung decodiert. Wie wäre es, die LED mit dem gemessenen Wert zu steuern? Wir könnten ein Experiment entwerfen.
 
-Attach an LED to D9, then press the keys of remote control to make LED light on and off.
+Schließen Sie eine LED an D9 an, und drücken Sie dann die Tasten der Fernbedienung, um die LED ein- und auszuschalten.
 
 ![](media/A154.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A126.png)
 
@@ -115,9 +114,8 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 (8).![](media/A159.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A160.png)
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, press the "**OK**" key on remote control can make the LED on and off.
-
+Nach dem erfolgreichen Hochladen des Codes auf das V4.0-Board verbinden Sie die Verkabelung gemäß dem Schaltplan, und schließen Sie dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten kann durch Drücken der "**OK**"-Taste auf der Fernbedienung die LED ein- und ausgeschaltet werden.

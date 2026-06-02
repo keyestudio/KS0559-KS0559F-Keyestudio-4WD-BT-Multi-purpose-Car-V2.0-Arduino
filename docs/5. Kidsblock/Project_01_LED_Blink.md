@@ -1,44 +1,44 @@
-# Project 1 LED Blink
+# Projekt 1 LED Blink
 
-**1.Description**
+### **1. Beschreibung**
 
 ![](media/A40.jpeg)
 
-For starters and enthusiasts, LED Blink is a fundamental program. LED, the abbreviation of light emitting diodes, consists of Ga, As, P, N chemical compounds and so on.
+Für Anfänger und Enthusiasten ist LED Blink ein grundlegendes Programm. LED, die Abkürzung für Light Emitting Diodes, besteht aus chemischen Verbindungen wie Ga, As, P, N und so weiter.
 
-The LED can flash in diverse color by altering the delay time in the test code. When in control, power on GND and VCC, the LED will be on if S end is in high level, otherwise it will go off.
+Die LED kann durch Ändern der Verzögerungszeit im Testcode in verschiedenen Farben blinken. Bei Steuerung und Anschluss an GND und VCC leuchtet die LED, wenn der S-Anschluss auf High-Pegel ist, andernfalls geht sie aus.
 
-**2.Specification**
+### **2. Spezifikation**
 
-- Control interface: digital port
+- Steuerinterface: digitaler Port
 
-- Working voltage: DC 3.3-5V
+- Betriebsspannung: DC 3,3-5V
 
-- Pin spacing: 2.54mm
+- Pin-Abstand: 2,54 mm
 
-- LED display color: red
+- LED-Anzeigefarbe: rot
 
 ![](media/A41.png)
 
-**3.Components**
+### **3. Komponenten**
 
-| Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1          |
-| ------------------------- | ------------------------- | ------------------------- |
-| ![img](media/A42.jpg) | ![img](media/A43.jpg) | ![img](media/A44.jpg) |
-| 3P F-F Dupont Wire*1      | USB Cable*1               |                           |
-| ![img](media/A45.jpg) | ![img](media/A46.jpg) |                           |
+| Entwicklungsboard *1      | 8833 Motor Driver *1      | Rotes LED-Modul *1          |
+| ------------------------- | ------------------------- | --------------------------- |
+| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)       |
+| 3P F-F Dupont Kabel *1    | USB-Kabel *1              |                             |
+| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                             |
 
-**4.Wiring Diagram**
+### **4. Schaltplan**
 
 ![](media/A47.png)
 
-As can be seen from the above figure, the Keyestudio 8833 motor driver expansion board is stacked on the Keyestudio 4.0 development board.
+Wie aus der obigen Abbildung ersichtlich ist, ist das Keyestudio 8833 Motor Driver Erweiterungsboard auf das Keyestudio 4.0 Entwicklungsboard gesteckt.
 
-The pin G, V and S of the LED module are connected to G, 5V and D9 of the expansion board respectively.
+Die Pins G, V und S des LED-Moduls sind jeweils mit G, 5V und D9 des Erweiterungsboards verbunden.
 
-**5.Test Code**
+### **5. Testcode**
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A48.png)
 
@@ -46,20 +46,18 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 (3).![](media/A50.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A51.png)
 
-**6.Test Result**
+### **6. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see the LED connected to the D9 will be on and off. 
+Nach erfolgreichem Hochladen des Codes auf das V4.0 Board verbinden Sie die Kabel gemäß dem Schaltplan und verwenden ein USB-Kabel, um das Board mit dem Computer zu verbinden und mit Strom zu versorgen. Nach dem Einschalten sehen Sie, dass die an D9 angeschlossene LED ein- und ausgeschaltet wird.
 
-**7.Extension Practice**
+### **7. Erweiterte Übung**
 
-Next, we look to change the frequency of LED flicker by changing the wait time.
+Als nächstes wollen wir die Frequenz des LED-Flackerns durch Ändern der Wartezeit verändern.
 
 ![](media/A52.png)
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. The test result shows that the LED flashes faster.
-
-
+Nach erfolgreichem Hochladen des Codes auf das V4.0 Board verbinden Sie die Kabel gemäß dem Schaltplan und verwenden ein USB-Kabel, um das Board mit dem Computer zu verbinden und mit Strom zu versorgen. Das Testergebnis zeigt, dass die LED schneller blinkt.

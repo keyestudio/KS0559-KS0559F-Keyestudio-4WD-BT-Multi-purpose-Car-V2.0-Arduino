@@ -1,34 +1,34 @@
-# Project 17 Multi-purpose Bluetooth Smart Car
+# Projekt 17 Multifunktionales Bluetooth Smart Car
 
 ![2c1198e0ebd7c31622b7438469fb572c](media/A138.jpeg)
 
-**1.Description**
+### **1. Beschreibung**
 
-In previous projects, the car only performs a single function. However, in this lesson, we will integrate all of its functions via a Bluetooth.
+In vorherigen Projekten führt das Auto nur eine einzelne Funktion aus. In dieser Lektion werden wir jedoch alle seine Funktionen über Bluetooth integrieren.
 
-**2.Flow Chart**
+### **2. Flussdiagramm**
 
 ![73f4da1e321bc29282d3b2f5cb3168dd](media/A139.png)
 
-**3.Wiring Diagram**
+### **3. Schaltplan**
 
 ![fce8edd349ddbcfe02e6f27feb73e90f](media/A140.png)
 
-1). GND, VCC, SDA and SCL of the 8\*8 LED board are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
+1). GND, VCC, SDA und SCL des 8\*8 LED-Boards sind mit G (GND), V (VCC), A4 und A5 des Erweiterungsboards verbunden.
 
-2). The RXD, TXD, GND and VCC of the Bluetooth module are respectively connected to TX, RX, G and 5V on the 8833 motor Shield, while the STATE and BRK pins of the Bluetooth module do not need to be connected. 
+2). RXD, TXD, GND und VCC des Bluetooth-Moduls sind jeweils mit TX, RX, G und 5V auf dem 8833 Motor Shield verbunden, während die STATE- und BRK-Pins des Bluetooth-Moduls nicht angeschlossen werden müssen.
 
-3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire is interfaced with A3.
+3). Der Servo ist mit G, V und A3 verbunden. Der braune Draht ist mit Gnd (G), der rote Draht mit 5V (V) und der orange Draht mit A3 verbunden.
 
-4). G, V, S1, S2 and S3 of the line tracking sensor are connected to G（GND), V（VCC), D11, D7 and D8 of the sensor expansion board.
+4). G, V, S1, S2 und S3 des Linienverfolgungssensors sind mit G (GND), V (VCC), D11, D7 und D8 des Sensor-Erweiterungsboards verbunden.
 
-5). VCC, Trig, Echo and Gnd of the ultrasonic sensor are connected to 5V(V), D12(S), D13(S) and Gnd(G).
+5). VCC, Trig, Echo und Gnd des Ultraschallsensors sind mit 5V (V), D12 (S), D13 (S) und Gnd (G) verbunden.
 
-6). The power is connected to the BAT port
+6). Die Stromversorgung ist mit dem BAT-Anschluss verbunden.
 
-**4.Test Code**
+### **4. Testcode**
 
-<span style="color: rgb(255, 76, 65);">**Note:** Before uploading the test code, you need to remove the Bluetooth module, otherwise the code will fail to be uploaded.Connect the Bluetooth module after uploading the code successfully.</span>
+<span style="color: rgb(255, 76, 65);">**Hinweis:** Vor dem Hochladen des Testcodes muss das Bluetooth-Modul entfernt werden, da sonst der Code nicht hochgeladen werden kann. Verbinden Sie das Bluetooth-Modul erst nach erfolgreichem Hochladen des Codes.</span>
 
 ```c
 //*******************************************************************************
@@ -38,9 +38,9 @@ lesson 17
 Bluetooth Multifunctional Car
 http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //Set the clock pin to A5
-#define SDA_Pin  A4  //Set data pin to A4
-//Array, used to store the data of pattern, can be calculated by yourself or obtained from the modulus tool
+#define SCL_Pin  A5  //Setze den Clock-Pin auf A5
+#define SDA_Pin  A4  //Setze den Daten-Pin auf A4
+//Array, verwendet zum Speichern der Musterdaten, kann selbst berechnet oder mit dem Modultool erhalten werden
 unsigned char start01[] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
 unsigned char front[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char back[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x48,0x90,0x48,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -53,42 +53,42 @@ unsigned char speed_a[] =
 unsigned char speed_d[] = 
 {0x00,0x02,0x04,0x08,0x10,0x20,0x40,0xff,0x40,0x20,0x10,0x08,0x04,0x02,0x00,0x00};
 
-int left_ctrl = 2;//define the direction control pins of group B motor
-int left_pwm = 5;//define the PWM control pins of group B motor
-int right_ctrl = 4;//define the direction control pins of group A motor
-int right_pwm = 6;//define the PWM control pins of group A motor
-int speeds = 150; //Set the initial speed to 150
+int left_ctrl = 2; //definiere die Richtungskontrollpins des Motors Gruppe B
+int left_pwm = 5;  //definiere die PWM-Kontrollpins des Motors Gruppe B
+int right_ctrl = 4; //definiere die Richtungskontrollpins des Motors Gruppe A
+int right_pwm = 6;  //definiere die PWM-Kontrollpins des Motors Gruppe A
+int speeds = 150;   //Setze die Anfangsgeschwindigkeit auf 150
 
-const int servopin = A3;//set the pin of servo to A3 
+const int servopin = A3; //setze den Pin des Servos auf A3 
 
-int L_pin = 11; //define the left tracking sensor pin as D11
-int M_pin = 7; //define the middle tracking sensor pin as D7
-int R_pin = 8; //define the right tracking sensor pin as D8
+int L_pin = 11; //definiere den linken Tracking-Sensor-Pin als D11
+int M_pin = 7;  //definiere den mittleren Tracking-Sensor-Pin als D7
+int R_pin = 8;  //definiere den rechten Tracking-Sensor-Pin als D8
 int L_val, M_val, R_val;
 
-int trigPin = 12; //TRIG Pin be connected to D12
-int echoPin = 13; //ECHO Pin be connected to D13
+int trigPin = 12; //TRIG-Pin ist mit D12 verbunden
+int echoPin = 13; //ECHO-Pin ist mit D13 verbunden
 int distance, distance_l, distance_r;
 
 char BLE_val;
 
 void setup() {
-  Serial.begin(9600);//Set baud rate to 9600
-  pinMode(left_ctrl,OUTPUT);//set direction control pins of group B motor to OUTPUT
-  pinMode(left_pwm,OUTPUT);//set PWM control pins of group B motor to OUTPUT
-  pinMode(right_ctrl,OUTPUT);//set direction control pins of group A motor to OUTPUT
-  pinMode(right_pwm,OUTPUT);//set PWM control pins of group A motor to OUTPUT
-  servopulse(servopin,90);//the angle of servo is 90 degree
+  Serial.begin(9600);//Setze Baudrate auf 9600
+  pinMode(left_ctrl,OUTPUT);//Setze Richtungssteuerungs-Pins des Motors Gruppe B auf OUTPUT
+  pinMode(left_pwm,OUTPUT);//Setze PWM-Steuerungs-Pins des Motors Gruppe B auf OUTPUT
+  pinMode(right_ctrl,OUTPUT);//Setze Richtungssteuerungs-Pins des Motors Gruppe A auf OUTPUT
+  pinMode(right_pwm,OUTPUT);//Setze PWM-Steuerungs-Pins des Motors Gruppe A auf OUTPUT
+  servopulse(servopin,90);//Der Winkel des Servos ist 90 Grad
   delay(300);
-  pinMode(L_pin, INPUT); //Tracking sensor pins are configured for input mode
+  pinMode(L_pin, INPUT); //Tracking-Sensor-Pins werden als Eingabemodus konfiguriert
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
-  pinMode(trigPin, OUTPUT); //define TRIG as the output mode
-  pinMode(echoPin, INPUT); //define ECHO as the input mode
-  pinMode(SCL_Pin,OUTPUT);// Set the clock pin to output
-  pinMode(SDA_Pin,OUTPUT);//Set the data pin to output
+  pinMode(trigPin, OUTPUT); //Definiere TRIG als Ausgangsmodus
+  pinMode(echoPin, INPUT); //Definiere ECHO als Eingabemodus
+  pinMode(SCL_Pin,OUTPUT);// Setze den Clock-Pin auf Ausgang
+  pinMode(SDA_Pin,OUTPUT);//Setze den Daten-Pin auf Ausgang
   matrix_display(clear);
-  matrix_display(start01); //display start01 expression pattern
+  matrix_display(start01); //zeige das Ausdrucksmuster start01 an
 }
 
 void loop() {
@@ -107,7 +107,7 @@ void loop() {
       matrix_display(clear);
       matrix_display(back); 
       break;
-
+    
       case 'L' : car_left(); 
       matrix_display(clear);
       matrix_display(left); 
@@ -122,7 +122,7 @@ void loop() {
       matrix_display(clear);
       matrix_display(STOP01); 
       break;
-
+    
       case 'a' : speeds_a();
       matrix_display(clear);
       matrix_display(speed_a);  
@@ -132,47 +132,47 @@ void loop() {
       matrix_display(clear);
       matrix_display(speed_d); 
       break;
-
-      case  'U':  follow();  //Receiving ‘U’,enter follow mode
+    
+      case  'U':  follow();  //Empfange ‘U’, betrete Follow-Modus
       break; 
-      case  'Y':  avoid(); //Receiving ‘Y’,enter obstacle avoidance mode  
+      case  'Y':  avoid(); //Empfange ‘Y’, betrete Hindernisvermeidungsmodus  
       break;  
-      case  'G':  confinement(); //Receiving ‘G’,enter confinement mode
+      case  'G':  confinement(); //Empfange ‘G’, betrete Einschlussmodus
       break;  
-      case  'X':  tracking(); //Receiving ‘X’,enter tracking mode
+      case  'X':  tracking(); //Empfange ‘X’, betrete Tracking-Modus
       break;  
     }
 }
 
-void car_front()//define the state of going front
+void car_front()//definiere den Zustand Vorwärtsfahren
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,(255-speeds));
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,(255-speeds));
 }
-void car_back()//define the status of going back
+void car_back()//definiere den Zustand Rückwärtsfahren
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,speeds);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,speeds);
 }
-void car_left()//set the status of left turning
+void car_left()//setze den Zustand Linkskurve
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, speeds);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, (255-speeds));
 }
-void car_right()//set the status of right turning
+void car_right()//setze den Zustand Rechtskurve
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, (255-speeds));
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, speeds);
 }
-void car_Stop()//define the state of stop
+void car_Stop()//definiere den Zustand Stop
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,0);
@@ -180,44 +180,44 @@ void car_Stop()//define the state of stop
   analogWrite(right_pwm,0);
 }
 
-void speeds_a() { //rapidly growing function
+void speeds_a() { //Funktion für schnelles Beschleunigen
   while (1) {
-    Serial.println(speeds);  //display speed information 
-    if (speeds < 255) { //Up to 255
+    Serial.println(speeds);  //zeige Geschwindigkeitsinformationen an
+    if (speeds < 255) { //Bis zu 255
       matrix_display(clear);
       matrix_display(speed_a);
       speeds++;
-      delay(10);  //adjust the speed of growth 
+      delay(10);  //passe die Geschwindigkeit des Wachstums an
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //Receive 'S',the car stops accelerating
+    if (BLE_val == 'S') //Empfange 'S', das Auto hört auf zu beschleunigen
     break;
   }
 }
-void speeds_d() { //velocity reduction function
+void speeds_d() { //Funktion zur Geschwindigkeitsreduzierung
   while (1) {
-    Serial.println(speeds);  //display speed information
-    if (speeds > 0) { //down to 0
+    Serial.println(speeds);  //zeige Geschwindigkeitsinformationen an
+    if (speeds > 0) { //Bis auf 0
       matrix_display(clear);
       matrix_display(speed_d);
       speeds--;
-      delay(10);    //adjust the speed of deceleration
+      delay(10);    //passe die Verzögerungsgeschwindigkeit an
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //Receive 'S',the car stops deceleration
+    if (BLE_val == 'S') //Empfange 'S', das Auto hört auf zu verzögern
     break;
 }
 }
 
 int get_distance() {
   int distance = 0;
-  digitalWrite(trigPin, LOW);     // send pulse through Trig/Pin, trigger HC-SR04 ranging, so that send out ultrasonic signal interface low level 2μs
+  digitalWrite(trigPin, LOW);     // sende Impuls über Trig/Pin, löse HC-SR04 Abstandsmessung aus, sodass das Ultraschallsignal Interface 2μs lang auf Low-Pegel gesetzt wird
   delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);    // make ultrasonic signal interface high level 10μs, here is at least 10μs
+  digitalWrite(trigPin, HIGH);    // setze Ultraschallsignal Interface für mindestens 10μs auf High-Pegel
   delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);     // keep the ultrasonic signal interface low level
-  distance = pulseIn(echoPin, HIGH) / 58; // read the pulse time and convert the pulse time to the distance (unit: cm)
-  Serial.println(distance);        //output distance value
+  digitalWrite(trigPin, LOW);     // halte das Ultraschallsignal Interface auf Low-Pegel
+  distance = pulseIn(echoPin, HIGH) / 58; // lese die Impulsdauer und wandle die Impulsdauer in die Entfernung um (Einheit: cm)
+  Serial.println(distance);        // Ausgabe des Entfernungswerts
   return distance;
 }
 
@@ -226,29 +226,29 @@ void follow() {
   delay(200);
   int follow_flag = 1;
   while (follow_flag) {
-    distance = get_distance(); //call the ranging function
-    if (distance < 8 ) {//If the distance is less than 8
-      car_back();//the car goes back
+    distance = get_distance(); // rufe die Abstandsmessfunktion auf
+    if (distance < 8 ) {// Wenn die Entfernung kleiner als 8 ist
+      car_back();// fährt das Auto rückwärts
       matrix_display(clear);
       matrix_display(back); 
     }
-    else if (distance >= 8 && distance < 13) { //If the distance is greater than or equal to 8, it's less than 13
-      car_Stop();//stop
+    else if (distance >= 8 && distance < 13) { // Wenn die Entfernung größer oder gleich 8 und kleiner als 13 ist
+      car_Stop();// stoppt
       matrix_display(clear);
       matrix_display(STOP01); 
     }
-    else if (distance >= 13 && distance <= 35 ) { //If the distance is greater than or equal to 13, it's less than 35
-      car_front();//the car goes forward
+    else if (distance >= 13 && distance <= 35 ) { // Wenn die Entfernung größer oder gleich 13 und kleiner oder gleich 35 ist
+      car_front();// fährt das Auto vorwärts
       matrix_display(clear);
       matrix_display(front);
     }
-    else {//If none of the above
-      car_Stop();//stop
+    else {// Wenn keine der obigen Bedingungen zutrifft
+      car_Stop();// stoppt
       matrix_display(clear);
       matrix_display(STOP01); 
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') { //When S is received, the car stops
+    if (BLE_val == 'S') { // Wenn 'S' empfangen wird, stoppt das Auto
       follow_flag = 0;
       car_Stop();
     }
@@ -258,47 +258,47 @@ void follow() {
 void avoid() {
   int avoid_flag = 1;
   while (avoid_flag) {
-    distance = get_distance(); //Call the ranging function
-    if (distance > 0 && distance < 20) { //If the distance is less than 20 and greater than 0
-      car_Stop();//stops
+    distance = get_distance(); // Rufe die Abstandsmessfunktion auf
+    if (distance > 0 && distance < 20) { // Wenn die Entfernung kleiner als 20 und größer als 0 ist
+      car_Stop();// stoppt
       matrix_display(clear);
-      matrix_display(STOP01);   //the dot matrix displays a stop pattern
+      matrix_display(STOP01);   // die Punktmatrix zeigt ein Stop-Muster an
       delay(1000);
-      servopulse(servopin,160); //bring the steering gear over 180 degrees
+      servopulse(servopin,160); // dreht das Servomotor über 180 Grad
       delay(500);
-      distance_l = get_distance(); //gets the left distance 
+      distance_l = get_distance(); // ermittelt die linke Entfernung
       delay(100);
-      servopulse(servopin,20); //turn the steering gear to 0 degrees
+      servopulse(servopin,20); // dreht das Servomotor auf 0 Grad
       delay(500);
-      distance_r = get_distance(); //get the right distance
+      distance_r = get_distance(); // ermittelt die rechte Entfernung
       delay(100);
-      if (distance_l > distance_r) { //compare the distance, if the left is bigger than the right
-        car_left();  //the car turns left
+      if (distance_l > distance_r) { // vergleicht die Entfernungen, wenn links größer als rechts ist
+        car_left();  // dreht das Auto nach links
         matrix_display(clear);
-        matrix_display(left);   //the dot matrix shows a left pattern
-        servopulse(servopin,90);//the steering gear returns to 90 degrees
+        matrix_display(left);   // die Punktmatrix zeigt ein Links-Muster an
+        servopulse(servopin,90);// das Servomotor kehrt auf 90 Grad zurück
         delay(700);
         matrix_display(clear);
-        matrix_display(front);   //the dot matrix displays a forward pattern
+        matrix_display(front);   // die Punktmatrix zeigt ein Vorwärts-Muster an
       } 
-      else { //Otherwise if the right is bigger than the left
-        car_right();//the car turns right
+      else { // Andernfalls, wenn rechts größer als links ist
+        car_right();// dreht das Auto nach rechts
         matrix_display(clear);
-        matrix_display(right);   //the dot matrix shows a left pattern
-        servopulse(servopin,90);//the steering gear returns to 90 degrees
+        matrix_display(right);   // die Punktmatrix zeigt ein Rechts-Muster an
+        servopulse(servopin,90);// das Servomotor kehrt auf 90 Grad zurück
         delay(700);
         matrix_display(clear);
-        matrix_display(front);   //the dot matrix displays a forward pattern
+        matrix_display(front);   // die Punktmatrix zeigt ein Vorwärts-Muster an
       }
     }
-    else { //When the front distance is less than or equal to 10cm
-      car_front();//the car goes forward
+    else { // Wenn die Entfernung vor dem Auto größer oder gleich 20 cm ist
+      car_front();// fährt das Auto vorwärts
       matrix_display(clear);
-      matrix_display(front);   //the dot matrix displays a forward pattern
+      matrix_display(front);   // die Punktmatrix zeigt ein Vorwärts-Muster an
 
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') {//When S is received, the car stops
+    if (BLE_val == 'S') {// Wenn 'S' empfangen wird, stoppt das Auto
       avoid_flag = 0;
       car_Stop();
     }
@@ -308,20 +308,20 @@ void avoid() {
 void confinement() {
   int confinement_flag = 1;
   while (confinement_flag) {
-    L_val = digitalRead(L_pin); //read the value of the left sensor
-    M_val = digitalRead(M_pin); //read the value of the middle sensor
-    R_val = digitalRead(R_pin); //read the value of the right sensor
-    if ( L_val == 0 && M_val == 0 && R_val == 0 ) { //the car goes forward when no black line is detected
+    L_val = digitalRead(L_pin); // Wert des linken Sensors lesen
+    M_val = digitalRead(M_pin); // Wert des mittleren Sensors lesen
+    R_val = digitalRead(R_pin); // Wert des rechten Sensors lesen
+    if ( L_val == 0 && M_val == 0 && R_val == 0 ) { // Das Auto fährt vorwärts, wenn keine schwarze Linie erkannt wird
       car_front();
     }
-    else { //Otherwise, if any of the tracking sensors detect a black line, the goes back and then turns left
+    else { // Andernfalls, wenn einer der Tracking-Sensoren eine schwarze Linie erkennt, fährt das Auto rückwärts und dreht dann nach links
       car_back();
       delay(500);
       car_left();
       delay(800);
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') { //When S is received, the car stops
+    if (BLE_val == 'S') { // Wenn 'S' empfangen wird, stoppt das Auto
       confinement_flag = 0;
       car_Stop();
     }
@@ -331,40 +331,40 @@ void confinement() {
 void tracking() {
   int track_flag = 1;
   while (track_flag) {
-    L_val = digitalRead(L_pin); //read the value of the left sensor
-    M_val = digitalRead(M_pin); //read the value of the middle sensor
-    R_val = digitalRead(R_pin); //read the value of the right sensor
-    if (M_val == 1) { //Black line detected in the middle
-      if (L_val == 1 && R_val == 0) { //If a black line is detected on the left, but not on the right, turn left
+    L_val = digitalRead(L_pin); // Wert des linken Sensors lesen
+    M_val = digitalRead(M_pin); // Wert des mittleren Sensors lesen
+    R_val = digitalRead(R_pin); // Wert des rechten Sensors lesen
+    if (M_val == 1) { // Schwarze Linie in der Mitte erkannt
+      if (L_val == 1 && R_val == 0) { // Wenn eine schwarze Linie links erkannt wird, aber nicht rechts, nach links abbiegen
         car_left();
       }
-      else if (L_val == 0 && R_val == 1) { //Otherwise, if a black line is detected on the right and not on the left, turn right
+      else if (L_val == 0 && R_val == 1) { // Andernfalls, wenn eine schwarze Linie rechts erkannt wird, aber nicht links, nach rechts abbiegen
         car_right();
       }
-      else { //Otherwise, the car goes forward
+      else { // Andernfalls fährt das Auto vorwärts
         car_front();
       }
     }
-    else { //no black lines detected in the middle
-      if (L_val == 1 && R_val == 0) { //If a black line is detected on the left, but not on the right, turn left
+    else { // keine schwarze Linie in der Mitte erkannt
+      if (L_val == 1 && R_val == 0) { // Wenn eine schwarze Linie links erkannt wird, aber nicht rechts, nach links abbiegen
         car_right();
       }
-      else if (L_val == 0 && R_val == 1) { //Otherwise, if a black line is detected on the right and not on the left, turn right
+      else if (L_val == 0 && R_val == 1) { // Andernfalls, wenn eine schwarze Linie rechts erkannt wird, aber nicht links, nach rechts abbiegen
         car_right();;
       }
-      else { //Otherwise, stop
+      else { // Andernfalls anhalten
         car_Stop();
       }
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') { //When S is received, the car stops
+    if (BLE_val == 'S') { // Wenn 'S' empfangen wird, stoppt das Auto
       track_flag = 0;
       car_Stop();
     }
   }
 }
 
-void servopulse(int servopin,int myangle)//Steering gear running angle
+void servopulse(int servopin,int myangle)// Lenkgetriebe Laufwinkel
 {
   for(int i=0; i<30; i++)
   {
@@ -376,22 +376,22 @@ void servopulse(int servopin,int myangle)//Steering gear running angle
   }  
 }
 
-//this function is used for dot matrix display
+// Diese Funktion wird für die Punktmatrixanzeige verwendet
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //the function that calls the data transfer start condition
-  IIC_send(0xc0);  //select address
+  IIC_start();  // Funktion, die die Startbedingung für die Datenübertragung aufruft
+  IIC_send(0xc0);  // Adresse auswählen
 
-  for (int i = 0; i < 16; i++) //the pattern data is 16 bytes
+  for (int i = 0; i < 16; i++) //die Musterdaten sind 16 Bytes
   {
-    IIC_send(matrix_value[i]); //Transmit the data of the pattern
+    IIC_send(matrix_value[i]); //Übertrage die Daten des Musters
   }
-  IIC_end();   //End pattern data transmission
+  IIC_end();   //Beende die Musterdatenübertragung
   IIC_start();
-  IIC_send(0x8A);  //Display control, select 4/16 pulse width
+  IIC_send(0x8A);  //Anzeige-Steuerung, wähle 4/16 Pulsbreite
   IIC_end();
 }
-//Conditions under which data transmission begins
+//Bedingungen, unter denen die Datenübertragung beginnt
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -401,7 +401,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indicates the end of data transmission
+//Zeigt das Ende der Datenübertragung an
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -412,27 +412,27 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//transmit data
+//Daten übertragen
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Each byte has 8 bits and is checked bit by bit starting at the lowest level
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Jedes Byte hat 8 Bits und wird bitweise beginnend mit dem niedrigsten Bit geprüft
   {
-    if (send_data & mask) { //Sets the high and low levels of SDA_Pin depending on whether each bit of the byte is a 1 or a 0
+    if (send_data & mask) { //Setzt die High- und Low-Pegel von SDA_Pin abhängig davon, ob jedes Bit des Bytes eine 1 oder 0 ist
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Pull the clock pin SCL_Pin high to stop data transmission
+    digitalWrite(SCL_Pin, HIGH); //Ziehe den Clock-Pin SCL_Pin auf High, um die Datenübertragung zu stoppen
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //pull the clock pin SCL_Pin low to change the SIGNAL of SDA 
+    digitalWrite(SCL_Pin, LOW); //Ziehe den Clock-Pin SCL_Pin auf Low, um das SIGNAL von SDA zu ändern
   }
 }
 //*******************************************************************************
 ```
 
-**6.Test Result**
+### **5. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
+Nachdem der Code erfolgreich auf das V4.0 Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan, schalten Sie die externe Stromversorgung ein und stellen Sie den DIP-Schalter auf ON.
 
-After the Bluetooth module is plugged into the APP and the mobile APP is successfully connected to the Bluetooth, the smart car can be controlled by the mobile APP.  We can achieve the corresponding functions by pressing the corresponding buttons on the mobile APP. 
+Nachdem das Bluetooth-Modul in die APP eingesteckt wurde und die mobile APP erfolgreich mit dem Bluetooth verbunden ist, kann das Smart Car über die mobile APP gesteuert werden. Wir können die entsprechenden Funktionen durch Drücken der entsprechenden Tasten in der mobilen APP erreichen. 

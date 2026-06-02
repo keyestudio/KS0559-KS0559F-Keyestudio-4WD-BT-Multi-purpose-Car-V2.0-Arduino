@@ -1,56 +1,51 @@
-# Project 17 Multi-purpose Bluetooth Smart Car
+# Projekt 17 Multifunktionales Bluetooth Smart Car
 
 ![](media/A349.jpeg)
 
-**1.Description**
+### **1. Beschreibung**
 
-In previous projects, the car only performs a single function. However, in this lesson, we will integrate all of its functions via a Bluetooth.
+In vorherigen Projekten führt das Auto nur eine einzelne Funktion aus. In dieser Lektion werden wir jedoch alle seine Funktionen über Bluetooth integrieren.
 
-**2.Flow Chart**
+### **2. Flussdiagramm**
 
 ![](media/A350.png)
 
-**3.Wiring Diagram**
+### **3. Schaltplan**
 
 ![](media/A351.png)
 
-1). GND, VCC, SDA and SCL of the 8\*8 LED board are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
+1). GND, VCC, SDA und SCL des 8\*8 LED-Boards sind mit G (GND), V (VCC), A4 und A5 des Erweiterungsboards verbunden.
 
-2). The RXD, TXD, GND and VCC of the Bluetooth module are respectively connected to TX, RX, G and 5V on the 8833 motor driver expansion board, while the STATE and BRK pins of the Bluetooth module do not need to be connected. 
+2). RXD, TXD, GND und VCC des Bluetooth-Moduls sind jeweils mit TX, RX, G und 5V auf dem 8833 Motor-Treiber-Erweiterungsboard verbunden, während die STATE- und BRK-Pins des Bluetooth-Moduls nicht angeschlossen werden müssen.
 
-3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire is interfaced with A3.
+3). Der Servo ist mit G, V und A3 verbunden. Der braune Draht ist mit Gnd (G), der rote Draht mit 5V (V) und der orange Draht mit A3 verbunden.
 
-4). G, V, S1, S2 and S3 of the line tracking sensor are connected to G（GND), V（VCC), D11, D7 and D8 of the sensor expansion board.
+4). G, V, S1, S2 und S3 des Linienverfolgungssensors sind mit G (GND), V (VCC), D11, D7 und D8 des Sensor-Erweiterungsboards verbunden.
 
-5). VCC, Trig, Echo and Gnd of the ultrasonic sensor are connected to 5V(V), D12(S), D13(S) and Gnd(G).
+5). VCC, Trig, Echo und Gnd des Ultraschallsensors sind mit 5V (V), D12 (S), D13 (S) und Gnd (G) verbunden.
 
-6). The power is connected to the BAT port
+6). Die Stromversorgung ist mit dem BAT-Anschluss verbunden.
 
-**4.Test Code**
+### **4. Testcode**
 
-Before writing the code, it is necessary to import the library files of the ultrasonic sensor, 8x16 LED board and the servo. The specific steps are as follows: 
+Bevor der Code geschrieben wird, müssen die Bibliotheksdateien des Ultraschallsensors, des 8x16 LED-Boards und des Servos importiert werden. Die spezifischen Schritte sind wie folgt:
 
-Click ![](media/A29.png)to enter the extension library interface of sensors/modules/components, then search for“**Ultrasonic**”sensor![](media/A122.png)and click it. In this way, "**Not loaded**" changes to "**loaded**", indicating that the“**Ultrasonic**”sensor was added successfully. 
+Klicke auf ![](media/A29.png), um die Erweiterungsbibliotheksschnittstelle für Sensoren/Module/Komponenten zu öffnen, suche dann nach „**Ultrasonic**“ Sensor ![](media/A122.png) und klicke darauf. Dadurch ändert sich „**Not loaded**“ zu „**loaded**“, was anzeigt, dass der „**Ultrasonic**“ Sensor erfolgreich hinzugefügt wurde.
 
-![Img](media/A300.png)
+![Img](media/A300.png)![](media/A124.png)
 
-![](media/A124.png)
-
-Click ![](media/A33.png)to return to the code editor interface, the instruction block of the added “**Ultrasonic**”sensor,“**Matrix 8\*16 Aip1640**”module and “**Servo**”component can be seen in the module area. 
+Klicke auf ![](media/A33.png), um zur Code-Editor-Oberfläche zurückzukehren. Der Befehlsblock des hinzugefügten „**Ultrasonic**“ Sensors, des „**Matrix 8\*16 Aip1640**“ Moduls und der „**Servo**“ Komponente ist im Modulbereich sichtbar.
 
 ![](media/A285.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-<span style="color: rgb(255, 76, 65);">**Note:** Before uploading the test code, you need to remove the Bluetooth module, otherwise the code will fail to be uploaded.Connect the Bluetooth module after uploading the code successfully.</span>
-
+<span style="color: rgb(255, 76, 65);">**Hinweis:** Vor dem Hochladen des Testcodes muss das Bluetooth-Modul entfernt werden, da sonst der Code nicht hochgeladen werden kann. Verbinde das Bluetooth-Modul erst nach erfolgreichem Hochladen des Codes.</span>
 
 ![](media/A352.png)
 
-**5.Test Result**
+### **5. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
+Nach dem erfolgreichen Hochladen des Codes auf das V4.0 Board, verbinde die Verkabelung gemäß dem Schaltplan, schalte die externe Stromversorgung ein und stelle den DIP-Schalter auf ON.
 
-After the Bluetooth module is plugged into the APP and the mobile APP is successfully connected to the Bluetooth, the smart car can be controlled by the mobile APP.  We can achieve the corresponding functions by pressing the corresponding buttons on the mobile APP. 
-
-
+Nachdem das Bluetooth-Modul mit der APP verbunden ist und die mobile APP erfolgreich mit Bluetooth gekoppelt wurde, kann das Smart Car über die mobile APP gesteuert werden. Wir können die entsprechenden Funktionen durch Drücken der entsprechenden Tasten in der mobilen APP ausführen.

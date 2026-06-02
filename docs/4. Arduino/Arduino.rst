@@ -6,12 +6,17 @@
     :maxdepth: 2
 
     
-    ArduinoReadMeFirst
+    4. Arduino
 
 
 
-Arduino - Projects
--------------------
+4.5 Arduino - Projekte
+----------------------
+
+![](./media/A5.jpeg)
+
+<font color ="#FF0000">**Hinweis: In diesem Kurs zeigt die Schnittstelle jedes Sensors / Moduls, die mit (G, -, GND) gekennzeichnet ist, den Minuspol an. G ist mit G oder GND des Sensor-Shields oder Steuerboards verbunden; „V“ ist der Pluspol und wird mit V, VCC oder 5V verbunden.**</font>
+
 
 .. toctree::
     :maxdepth: 2

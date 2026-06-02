@@ -1,58 +1,58 @@
-# Project 14 IR Remote Control Smart Car
+# Projekt 14 IR-Fernbedienung Smart Car
 
 ![](media/A307.jpeg)
 
-**1.Description**
+### **1. Beschreibung**
 
-In this project, we will make an IR remote control smart car and press the button on the IR remote control to drive the car to move.
+In diesem Projekt bauen wir ein IR-Fernbedienungs-Smart-Car und drücken die Taste auf der IR-Fernbedienung, um das Auto zu bewegen.
 
-**2.Flow Chart**
+### **2. Flussdiagramm**
 
 ![img](media/A308.png)
 
-**The specific logic of IR remote control smart car is shown below:**
+**Die spezifische Logik des IR-Fernbedienungs-Smart-Cars ist unten dargestellt:**
 
-| Initial setup                                               |           | LED board displays smile face                     |
-| ----------------------------------------------------------- | --------- | ------------------------------------------------- |
-| Remote control                                              | Key value | Key state                                         |
-| ![wps6-1747037981476-25](media/A309.jpg) | FF629D    | Go front8*8 LED board shows front icon            |
-| ![wps7-1747037985784-27](media/A310.jpg) | FFA857    | Back8*8 LED board shows back icon                 |
-| ![wps8](media/A311.jpg)                  | FF22DD    | Rotate to left8*8 LED board shows leftward icon   |
-| ![wps9](media/A312.jpg)                  | FFC23D    | Rotate to right8*8 LED board shows rightward icon |
-| ![wps10](media/A313.jpg)                                 | FF02FD    | Stop8*8 LED board shows“STOP”                     |
+| Anfangskonfiguration                                       |           | LED-Board zeigt ein Smiley                         |
+| ---------------------------------------------------------- | --------- | ------------------------------------------------- |
+| Fernbedienung                                              | Tastencode| Tastenzustand                                     |
+| ![wps6-1747037981476-25](media/A309.jpg) | FF629D    | Vorwärts 8*8 LED-Board zeigt Vorwärtssymbol       |
+| ![wps7-1747037985784-27](media/A310.jpg) | FFA857    | Rückwärts 8*8 LED-Board zeigt Rückwärtssymbol     |
+| ![wps8](media/A311.jpg)                  | FF22DD    | Nach links drehen 8*8 LED-Board zeigt Links-Symbol|
+| ![wps9](media/A312.jpg)                  | FFC23D    | Nach rechts drehen 8*8 LED-Board zeigt Rechts-Symbol|
+| ![wps10](media/A313.jpg)                                 | FF02FD    | Stopp 8*8 LED-Board zeigt „STOP“                   |
 
 
 
-**3.Wiring Diagram**
+### **3. Schaltplan**
 
 ![](media/A314.png)
 
-1). GND, VCC, SDA and SCL of the 8\*8 LED board module are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
+1). GND, VCC, SDA und SCL des 8\*8 LED-Board-Moduls sind mit G (GND), V (VCC), A4 und A5 des Erweiterungsboards verbunden.
     
-2). As the IR receiver is integrated on the 8833 motor driver expansion board, there is no need for additional wiring. The pins of the IR receiver on the 8833 board are G (GND), V (VCC) and D3 respectively. 
+2). Da der IR-Empfänger im 8833 Motor-Treiber-Erweiterungsboard integriert ist, ist keine zusätzliche Verkabelung erforderlich. Die Pins des IR-Empfängers auf dem 8833-Board sind jeweils G (GND), V (VCC) und D3.
     
-3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire is interfaced with A3.
+3). Der Servo ist mit G, V und A3 verbunden. Der braune Draht ist mit Gnd (G) verbunden, der rote Draht mit 5V (V) und der orange Draht mit A3.
     
-4). The power is connected to the BAT port
+4). Die Stromversorgung ist mit dem BAT-Anschluss verbunden.
     
 
-**4.Test Code**
+### **4. Testcode**
 
-<span style="color: rgb(255, 76, 65);">Please note: The infrared module shown in the software demonstration is already integrated into the expansion board and is not supplied separately. Consequently, you will not find the module depicted in the image below within the product.![](media/A144.png)</span>
+<span style="color: rgb(255, 76, 65);">Bitte beachten: Das im Software-Demonstrationsbild gezeigte Infrarotmodul ist bereits in das Erweiterungsboard integriert und wird nicht separat geliefert. Folglich finden Sie das im Bild unten dargestellte Modul nicht im Produkt.![](media/A144.png)</span>
 
-Before writing the code, it is necessary to import the library files of the ultrasonic sensor, 8x16 LED board and the servo. The specific steps are as follows: 
+Vor dem Schreiben des Codes müssen die Bibliotheksdateien des Ultraschallsensors, des 8x16 LED-Boards und des Servos importiert werden. Die spezifischen Schritte sind wie folgt: 
     
-Click ![](media/A29.png)to enter the extension library interface of sensors/modules/components, then search for“ir remote”sensor![](media/A144.png)and click it. In this way, "**Not loaded**" changes to "**loaded**", indicating that the“**ir remote**”sensor was added successfully. 
+Klicken Sie auf ![](media/A29.png), um die Erweiterungsbibliothek für Sensoren/Module/Komponenten zu öffnen, suchen Sie dann nach „ir remote“ Sensor ![](media/A144.png) und klicken Sie darauf. Dadurch ändert sich „**Not loaded**“ zu „**loaded**“, was anzeigt, dass der „**ir remote**“ Sensor erfolgreich hinzugefügt wurde. 
 
 ![Img](media/A315.png)
 
 ![](media/A146.png)
 
-Click ![](media/A33.png)to return to the code editor interface, the instruction block of the added “**ir remote**”sensor,“**Matrix 8\*16 Aip1640**”module and “**Servo**”component can be seen in the module area. 
+Klicken Sie auf ![](media/A33.png), um zur Code-Editor-Oberfläche zurückzukehren. Der Anweisungsblock des hinzugefügten „**ir remote**“ Sensors, des „**Matrix 8\*16 Aip1640**“ Moduls und der „**Servo**“ Komponente ist im Modulbereich sichtbar. 
 
 ![](media/A316.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference
+Sie können Blöcke ziehen, um zu programmieren. Die unten aufgeführten Blöcke dienen als Referenz:
 
 (1).![](media/A126.png)
 
@@ -70,7 +70,7 @@ You can drag blocks to edit. Blocks listed below are for your reference
 
 (8).![](media/A321.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A322.png)
 
@@ -82,8 +82,6 @@ You can drag blocks to edit. Blocks listed below are for your reference
 
 ![](media/A326.png)
 
-**5.Test Result**
+### **5. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Then we enable to use the IR remote control drive the car to move to and the 8X16 LED board will display the corresponding status pattern.
-
-
+Nach erfolgreichem Hochladen des Codes auf das V4.0 Board verbinden Sie die Verkabelung gemäß dem Schaltplan, schalten die externe Stromversorgung ein und stellen den DIP-Schalter auf ON. Dann können Sie mit der IR-Fernbedienung das Auto steuern und das 8X16 LED-Board zeigt das entsprechende Statusmuster an.

@@ -1,36 +1,34 @@
-# Project 13 Ultrasonic Obstacle Avoidance Smart Car
+# Projekt 13 Ultraschall-Hindernisvermeidung Smart Car
 
 ![fd4044796307f709987b9d2e215e0911](media/A119.png)
 
-**1.Description**
+### **1. Beschreibung**
 
-In this project, we aim to make an ultrasonic obstacle avoidance smart car. We will use the ultrasonic to detect the distance from the obstacle, which can be used to control the servo to rotate so as to make the car move. Meanwhile, the 8X16 LED board will display the
-corresponding status pattern.
+In diesem Projekt wollen wir ein Ultraschall-Hindernisvermeidungs-Smart Car bauen. Wir verwenden den Ultraschallsensor, um den Abstand zum Hindernis zu messen, welcher genutzt wird, um den Servo zu steuern und das Auto zu bewegen. Gleichzeitig zeigt das 8x16 LED-Board das entsprechende Statusmuster an.
 
-**2.Flow Chart**
+### **2. Flussdiagramm**
 
 ![img](media/A120.png)
 
-**The specific logic of ultrasonic obstacle avoidance smart car is shown below:**
+**Die spezifische Logik des Ultraschall-Hindernisvermeidungs-Smart Cars ist unten dargestellt:**
 
 ![Img](media/A121.png)
 
 ![Img](media/A122.png)
 
-**3.Wiring Diagram**
+### **3. Schaltplan**
 
 ![](media/A118.png)
 
-1). GND, VCC, SDA and SCL of the 8\*8 LED board module are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
+1). GND, VCC, SDA und SCL des 8\*8 LED-Board-Moduls sind mit G (GND), V (VCC), A4 und A5 des Erweiterungsboards verbunden.
 
-2). VCC, Trig, Echo and Gnd of the ultrasonic sensor are connected to 5V(V), D12(S), D13(S) and Gnd(G)
+2). VCC, Trig, Echo und GND des Ultraschallsensors sind mit 5V (V), D12 (S), D13 (S) und GND (G) verbunden.
 
-3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire
-is interfaced with A3.
+3). Der Servo ist mit G, V und A3 verbunden. Das braune Kabel ist mit GND (G), das rote Kabel mit 5V (V) und das orange Kabel mit A3 verbunden.
 
-4). The power is connected to the BAT port
+4). Die Stromversorgung ist mit dem BAT-Anschluss verbunden.
 
-**4.Test Code**
+### **4. Testcode**
 
 ```c 
 //*******************************************************************************
@@ -40,125 +38,125 @@ is interfaced with A3.
  Avoiding Car
  http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //Set the clock pin to A5
-#define SDA_Pin  A4  //Set data pin to A4
-//Array, used to store the data of pattern, can be calculated by yourself or obtained from the modulus tool
+#define SCL_Pin  A5  //Setze den Clock-Pin auf A5
+#define SDA_Pin  A4  //Setze den Daten-Pin auf A4
+//Array, verwendet zur Speicherung der Musterdaten, kann selbst berechnet oder mit dem Modultool erhalten werden
 unsigned char front[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char left[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x44,0x28,0x10,0x44,0x28,0x10,0x44,0x28,0x10,0x00};
 unsigned char right[] = {0x00,0x10,0x28,0x44,0x10,0x28,0x44,0x10,0x28,0x44,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char STOP01[] = {0x2E,0x2A,0x3A,0x00,0x02,0x3E,0x02,0x00,0x3E,0x22,0x3E,0x00,0x3E,0x0A,0x0E,0x00};
 unsigned char clear[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
-int left_ctrl = 2;//define the direction control pins of group B motor
-int left_pwm = 5;//define the PWM control pins of group B motor
-int right_ctrl = 4;//define the direction control pins of group A motor
-int right_pwm = 6;//define the PWM control pins of group A motor
+int left_ctrl = 2; //definiere die Richtungssteuerungs-Pins des Motors Gruppe B
+int left_pwm = 5;  //definiere die PWM-Steuerungs-Pins des Motors Gruppe B
+int right_ctrl = 4; //definiere die Richtungssteuerungs-Pins des Motors Gruppe A
+int right_pwm = 6;  //definiere die PWM-Steuerungs-Pins des Motors Gruppe A
 
-#include "SR04.h"//define the library of ultrasonic sensor
-#define TRIG_PIN 12// set the signal output of ultrasonic sensor to D12 
-#define ECHO_PIN 13//set the signal input of ultrasonic sensor to D13 
+#include "SR04.h" //definiere die Bibliothek des Ultraschallsensors
+#define TRIG_PIN 12 //setze das Signal-Ausgangspin des Ultraschallsensors auf D12 
+#define ECHO_PIN 13 //setze das Signal-Eingangspin des Ultraschallsensors auf D13 
 SR04 sr04 = SR04(ECHO_PIN,TRIG_PIN);
-long distance,a1,a2;//define three distance
-const int servopin = A3;//set the pin of servo to A3 
+long distance,a1,a2; //definiere drei Distanzvariablen
+const int servopin = A3; //setze den Pin des Servos auf A3 
 
 void setup() {
-  pinMode(left_ctrl,OUTPUT);//set direction control pins of group B motor to OUTPUT
-  pinMode(left_pwm,OUTPUT);//set PWM control pins of group B motor to OUTPUT
-  pinMode(right_ctrl,OUTPUT);//set direction control pins of group A motor to OUTPUT
-  pinMode(right_pwm,OUTPUT);//set PWM control pins of group A motor to OUTPUT
-  pinMode(TRIG_PIN, OUTPUT); //Set the trig pin to output
-  pinMode(ECHO_PIN, INPUT); //Set the echo pin to input
-  servopulse(servopin,90);//the angle of servo is 90 degree
+  pinMode(left_ctrl,OUTPUT); //setze Richtungssteuerungs-Pins des Motors Gruppe B auf OUTPUT
+  pinMode(left_pwm,OUTPUT);  //setze PWM-Steuerungs-Pins des Motors Gruppe B auf OUTPUT
+  pinMode(right_ctrl,OUTPUT);//setze Richtungssteuerungs-Pins des Motors Gruppe A auf OUTPUT
+  pinMode(right_pwm,OUTPUT); //setze PWM-Steuerungs-Pins des Motors Gruppe A auf OUTPUT
+  pinMode(TRIG_PIN, OUTPUT); //Setze den Trig-Pin auf Ausgang
+  pinMode(ECHO_PIN, INPUT);  //Setze den Echo-Pin auf Eingang
+  servopulse(servopin,90);   //der Winkel des Servos ist 90 Grad
   delay(300);
-  pinMode(SCL_Pin,OUTPUT);// Set the clock pin to output
-  pinMode(SDA_Pin,OUTPUT);//Set the data pin to output
+  pinMode(SCL_Pin,OUTPUT);   //Setze den Clock-Pin auf Ausgang
+  pinMode(SDA_Pin,OUTPUT);   //Setze den Daten-Pin auf Ausgang
   matrix_display(clear);
 }
  
 void loop()
  {
-  avoid();//run the main program
+  avoid(); //führe das Hauptprogramm aus
 }
 
 void avoid()
 {
-  distance=sr04.Distance(); //obtain the value detected by ultrasonic sensor 
+  distance=sr04.Distance(); //ermittle den Wert, der vom Ultraschallsensor gemessen wurde
 
-  if((distance < 20)&&(distance != 0))//if the distance is greater than 0 and less than 10  
+  if((distance < 20)&&(distance != 0)) //wenn der Abstand größer als 0 und kleiner als 10 ist  
 
   {
-    car_Stop();//stop
+    car_Stop();//stoppen
     matrix_display(clear);
-    matrix_display(STOP01);//show stop pattern
+    matrix_display(STOP01);//Stop-Muster anzeigen
     delay(1000);
-    servopulse(servopin,160);//servo rotates to 160°
+    servopulse(servopin,160);//Servo dreht sich auf 160°
     delay(500);
-    a1=sr04.Distance();//measure the distance
+    a1=sr04.Distance();//Entfernung messen
     delay(100);
-    servopulse(servopin,20);//rotate to 20 degree
+    servopulse(servopin,20);//auf 20 Grad drehen
     delay(500);
-    a2=sr04.Distance();//measure the distance
+    a2=sr04.Distance();//Entfernung messen
     delay(100);
-    servopulse(servopin,90);  //Return to the 90 degree position
+    servopulse(servopin,90);  //Zurück zur 90-Grad-Position
     delay(500);
-    if(a1 > a2)//compare the distance, if left distance is more than right distance
+    if(a1 > a2)//Entfernung vergleichen, wenn linke Entfernung größer als rechte Entfernung ist
     {
-      car_left();//turn left
+      car_left();//nach links abbiegen
       matrix_display(clear);
-      matrix_display(left);    //display left-turning pattern
-      servopulse(servopin,90);//servo rotates to 90 degree
-      delay(700); //turn left 700ms
+      matrix_display(left);    //Linkskurven-Muster anzeigen
+      servopulse(servopin,90);//Servo dreht sich auf 90 Grad
+      delay(700); //links 700ms drehen
       matrix_display(clear);
-      matrix_display(front);  //show forward pattern
+      matrix_display(front);  //Vorwärts-Muster anzeigen
     }
-    else//if the right distance is greater than the left
+    else//wenn die rechte Entfernung größer als die linke ist
     {
-      car_right();//turn right
+      car_right();//nach rechts abbiegen
       matrix_display(clear);
-      matrix_display(right);  //display right-turning pattern
-      servopulse(servopin,90);//servo rotates to 90 degree
+      matrix_display(right);  //Rechtskurven-Muster anzeigen
+      servopulse(servopin,90);//Servo dreht sich auf 90 Grad
       delay(700);
       matrix_display(clear);
-      matrix_display(front);  //show forward pattern
+      matrix_display(front);  //Vorwärts-Muster anzeigen
     }
   }
-  else//otherwise
+  else//ansonsten
   {
-    car_front();//go forward
+    car_front();//vorwärts fahren
     matrix_display(clear);
-    matrix_display(front);  // show forward pattern
+    matrix_display(front);  //Vorwärts-Muster anzeigen
   }
 }
 
-void car_front()//car goes forward
+void car_front()//Auto fährt vorwärts
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,155);
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,155);
 }
-void car_back()//go back
+void car_back()//rückwärts fahren
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,100);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,100);
 }
-void car_left()//car turns left
+void car_left()//Auto dreht nach links
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, 100);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, 155);
 }
-void car_right()//car turns right
+void car_right()//Auto dreht nach rechts
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, 155);
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, 100);
 }
-void car_Stop()//stop
+void car_Stop()//anhalten
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,0);
@@ -166,7 +164,7 @@ void car_Stop()//stop
   analogWrite(right_pwm,0);
 }
 
-void servopulse(int servopin,int myangle)//the running angle of servo
+void servopulse(int servopin,int myangle)//der Laufwinkel des Servos
 {
   for(int i=0; i<20; i++)
   {
@@ -178,22 +176,23 @@ void servopulse(int servopin,int myangle)//the running angle of servo
   } 
 }
 
-//this function is used for dot matrix display
+//diese Funktion wird für die Punktmatrixanzeige verwendet
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //the function that calls the data transfer start condition
-  IIC_send(0xc0);  //select address
+  IIC_start();  //die Funktion, die die Datenübertragungs-Startbedingung aufruft
+  IIC_send(0xc0);  //Adresse auswählen
 
-  for (int i = 0; i < 16; i++) //the pattern data is 16 bytes
+```cpp
+  for (int i = 0; i < 16; i++) // die Musterdaten sind 16 Bytes
   {
-    IIC_send(matrix_value[i]); //Transmit the data of the pattern
+    IIC_send(matrix_value[i]); // Übertrage die Daten des Musters
   }
-  IIC_end();   //End pattern data transmission
+  IIC_end();   // Beende die Musterdatenübertragung
   IIC_start();
-  IIC_send(0x8A);  //Display control, select 4/16 pulse width
+  IIC_send(0x8A);  // Anzeige-Steuerung, wähle 4/16 Pulsbreite
   IIC_end();
 }
-//Conditions under which data transmission begins
+// Bedingungen, unter denen die Datenübertragung beginnt
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -203,7 +202,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indicates the end of data transmission
+// Zeigt das Ende der Datenübertragung an
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -214,28 +213,27 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//transmit data
+// Daten übertragen
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Each byte has 8 bits and is checked bit by bit starting at the lowest level
+  for (byte mask = 0x01; mask != 0; mask <<= 1) // Jedes Byte hat 8 Bits und wird bitweise beginnend mit dem niedrigsten Bit geprüft
   {
-    if (send_data & mask) { //Sets the high and low levels of SDA_Pin depending on whether each bit of the byte is a 1 or a 0
+    if (send_data & mask) { // Setzt die Pegel von SDA_Pin je nachdem, ob jedes Bit des Bytes eine 1 oder 0 ist
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Pull the clock pin SCL_Pin high to stop data transmission
+    digitalWrite(SCL_Pin, HIGH); // Ziehe den Clock-Pin SCL_Pin auf HIGH, um die Datenübertragung zu stoppen
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //pull the clock pin SCL_Pin low to change the SIGNAL of SDA 
+    digitalWrite(SCL_Pin, LOW); // Ziehe den Clock-Pin SCL_Pin auf LOW, um das SIGNAL von SDA zu ändern
   }
 }
 //*******************************************************************************
 ```
 
-**5.Test Result**
+### **5.Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
+Nach dem erfolgreichen Hochladen des Codes auf das V4.0 Board verbinden Sie die Verkabelung gemäß dem Schaltplan, schalten die externe Stromversorgung ein und stellen den DIP-Schalter auf ON.
 
-The smart car moves forward and automatically avoids obstacles. When there is no road ahead, the servo will drive the ultrasonic sensor to scan the left, middle and right distances, and the car will turn to the open side. Meanwhile, the 8X16 LED board will display the corresponding status pattern.
-
+Das Smart Car fährt vorwärts und weicht automatisch Hindernissen aus. Wenn kein Weg voraus ist, steuert der Servo den Ultraschallsensor, um die Entfernungen links, mittig und rechts zu scannen, und das Auto fährt in die offene Richtung. Gleichzeitig zeigt die 8X16 LED-Anzeige das entsprechende Statusmuster an.

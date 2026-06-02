@@ -1,75 +1,75 @@
-# Project 8 Motor Driving and Speed Control
+# Projekt 8 Motorsteuerung und Geschwindigkeitsregelung
 
 ![image-20250510090044895](media/A77.png)
 
-**1.Description**
+### **1. Beschreibung**
 
-There are many ways to drive motors. Our car uses the most commonly used DRV8833 motor driver chip, which provides a two-channel bridge electric drive solution for toys, printers and other integrated motor applications.
+Es gibt viele Möglichkeiten, Motoren anzusteuern. Unser Auto verwendet den am häufigsten eingesetzten DRV8833 Motor-Treiberchip, der eine zweikanalige Brückenantriebslösung für Spielzeuge, Drucker und andere integrierte Motoranwendungen bietet.
 
-When we stack the Shield on the 4.0 development board and power on the BAT, then set the DIP switch to the ON end, the external power supply will power on the two boards at the same time. To facilitate wiring connections, the Shield comes with an anti-reverse port (PH2.0-2P-3P-4P-5P). You can connect the motors, power supply, and sensor modules directly to the Shield. 
+Wenn wir das Shield auf das 4.0 Entwicklungsboard stecken und die BAT einschalten, dann den DIP-Schalter auf die ON-Seite stellen, wird die externe Stromversorgung beide Boards gleichzeitig mit Strom versorgen. Zur Erleichterung der Verkabelung verfügt das Shield über einen Verpolungsschutzanschluss (PH2.0-2P-3P-4P-5P). Sie können die Motoren, die Stromversorgung und Sensormodule direkt an das Shield anschließen.
 
-The Bluetooth interface of the Shield is fully compatible with the DX-BT24 5.1 Bluetooth module. When connecting the Bluetooth module, you solely need to plug it into the corresponding interface.  At the same time, 2.54 row pins are used to draw out some unused digital and analog ports on the Shield, making it accessible for you to add other sensors and carry out extension experiments. 
+Die Bluetooth-Schnittstelle des Shields ist vollständig kompatibel mit dem DX-BT24 5.1 Bluetooth-Modul. Beim Anschluss des Bluetooth-Moduls müssen Sie es nur in die entsprechende Schnittstelle stecken. Gleichzeitig werden 2,54 mm Stiftleisten verwendet, um einige ungenutzte digitale und analoge Ports auf dem Shield herauszuführen, sodass Sie weitere Sensoren hinzufügen und Erweiterungsexperimente durchführen können.
 
-The expansion board can be connected to four DC motors. When the jumper cap is connected by default, the motors of ports A and A1 and B and B1 are connected in parallel and have the same motion law.  8 jumper caps can be used to control the rotation direction of the 4 motor interfaces.
+Das Erweiterungsboard kann an vier Gleichstrommotoren angeschlossen werden. Wenn die Jumperkappe standardmäßig verbunden ist, sind die Motoren der Ports A und A1 sowie B und B1 parallel geschaltet und haben das gleiche Bewegungsverhalten. 8 Jumperkappen können verwendet werden, um die Drehrichtung der 4 Motoranschlüsse zu steuern.
 
-For example, when the 2 jumper caps in front of B1 of the M1 motor change from transverse connection to longitudinal connection, the rotation direction of M1 motor will be opposite to the original rotation direction. 
+Zum Beispiel, wenn die 2 Jumperkappen vor B1 des M1-Motors von Quer- auf Längsverbindung geändert werden, wird sich die Drehrichtung des M1-Motors gegenüber der ursprünglichen Drehrichtung umkehren.
 
-**2.Specification**
+### **2. Spezifikation**
 
-- Input voltage for logic：DC 5V
+- Eingangsspannung für Logik: DC 5V
 
-- Input voltage for driving：DC 6-9 V
+- Eingangsspannung für Antrieb: DC 6-9 V
 
-- Working current for logic：\<36mA
+- Betriebsstrom für Logik: \<36mA
 
-- Working current for driving：\<2A
+- Betriebsstrom für Antrieb: \<2A
 
-- Maximum power dissipation：25W（T=75℃）
+- Maximale Verlustleistung: 25W (T=75℃)
 
-- Input level for control signal： high level is 2.3V\<Vin\<5V ，low level is -0.3V\<Vin\<1.5V
+- Eingangspegel für Steuersignal: High-Pegel ist 2,3V\<Vin\<5V, Low-Pegel ist -0,3V\<Vin\<1,5V
 
-- Working temperature：-25＋130℃
+- Betriebstemperatur: -25 bis +130℃
 
-**Keyestudio 8833 motor driver expansion board**
+**Keyestudio 8833 Motor-Treiber-Erweiterungsboard**
 
 ![image-20250510090404192](media/A78.png)
 
-**3.Working Principle**
+### **3. Funktionsprinzip**
 
-We use the same side parallel connection mode for the four motors, which can be regarded as two groups of motors.  As shown in the wiring diagram, B and B1 are a group, and A and A1 are a group.
+Wir verwenden für die vier Motoren die gleiche Seiten-Parallelverbindung, die als zwei Motorgruppen betrachtet werden kann. Wie im Schaltplan gezeigt, sind B und B1 eine Gruppe, und A und A1 eine Gruppe.
 
-The motors in the same group should rotate in the same direction. If they are different, please adjust the corresponding jumper caps next to the terminal to change the direction.  
+Die Motoren in derselben Gruppe sollten sich in die gleiche Richtung drehen. Wenn sie unterschiedlich sind, passen Sie bitte die entsprechenden Jumperkappen neben dem Anschluss an, um die Richtung zu ändern.
 
-As shown below, if the directions of A and A1 are different, adjust the direction of jumper caps until the motor movement direction of the same group is consistent. 
+Wie unten gezeigt, wenn die Richtungen von A und A1 unterschiedlich sind, stellen Sie die Richtung der Jumperkappen so ein, bis die Bewegungsrichtung der Motoren in derselben Gruppe übereinstimmt.
 
 ![image-20250510090532851](media/A79.png)
 
-From the above diagram, it is known that the direction pin of A motor is D4, the speed pin is D6; D2 is the direction pin of B motor; and D6 is speed pin.
+Aus dem obigen Diagramm ist ersichtlich, dass der Richtungs-Pin des A-Motors D4 ist, der Geschwindigkeits-Pin D6; D2 ist der Richtungs-Pin des B-Motors; und D6 ist der Geschwindigkeits-Pin.
 
-<span style="color:red;">PWM drives the robot car. The PWM value is in the range of 0-255. When we set the direction to HIGH, the smaller the PWM number, the faster the rotation of the motor.</span>
+<span style="color:red;">PWM steuert das Roboterauto. Der PWM-Wert liegt im Bereich von 0-255. Wenn wir die Richtung auf HIGH setzen, gilt: Je kleiner die PWM-Zahl, desto schneller dreht sich der Motor.</span>
 
-|            | D2   | D5（PWM） | B Motor（ left）     | D4   | D6（PWM） | A Motor（right）     |
-| ---------- | ---- | --------- | -------------------- | ---- | --------- | -------------------- |
-| Go forward | HIGH | 255-200   | Rotate clockwise     | HIGH | 255-200   | Rotate clockwise     |
-| Go back    | LOW  | 200       | Rotate anticlockwise | LOW  | 200       | Rotate anticlockwise |
-| Turn left  | HIGH | 255-200   | Rotate clockwise     | LOW  | 200       | Rotate anticlockwise |
-| Turn right | LOW  | 200       | Rotate anticlockwise | HIGH | 255-200   | Rotate clockwise     |
+|            | D2   | D5（PWM） | B Motor (links)       | D4   | D6（PWM） | A Motor (rechts)      |
+| ---------- | ---- | --------- | --------------------- | ---- | --------- | --------------------- |
+| Vorwärts   | HIGH | 255-200   | Dreht im Uhrzeigersinn | HIGH | 255-200   | Dreht im Uhrzeigersinn |
+| Rückwärts  | LOW  | 200       | Dreht gegen den Uhrzeigersinn | LOW  | 200       | Dreht gegen den Uhrzeigersinn |
+| Links abbiegen | HIGH | 255-200   | Dreht im Uhrzeigersinn | LOW  | 200       | Dreht gegen den Uhrzeigersinn |
+| Rechts abbiegen | LOW  | 200       | Dreht gegen den Uhrzeigersinn | HIGH | 255-200   | Dreht im Uhrzeigersinn |
 
-**4.Components**
+### **4. Komponenten**
 
-| Development Board *1      | 8833 Motor Driver *1      | USB Cable*1                       |
+| Development Board *1      | 8833 Motor Driver *1      | USB-Kabel*1                       |
 | ------------------------- | ------------------------- | --------------------------------- |
 | ![img](media/A80.jpg) | ![img](media/A81.jpg) | ![img](media/A82.jpg)         |
-| 18650 Battery Holder*1    | Motor*4                   | 18650 Battery *2（self-provided） |
+| 18650 Batteriehalter*1    | Motor*4                   | 18650 Batterie *2 (selbst bereitgestellt) |
 | ![img](media/A83.png) | ![img](media/A84.jpg) | ![img](media/A85.png)         |
 
-**5.Wiring Diagram**
+### **5. Schaltplan**
 
 ![image-20250510090733191](media/A86.png)
 
-Connect the power supply to the BAT port.
+Verbinden Sie die Stromversorgung mit dem BAT-Anschluss.
 
-**6.Test Code**
+### **6. Testcode**
 
 ```c
 //****************************************************************************
@@ -79,67 +79,67 @@ Connect the power supply to the BAT port.
  Motor driver shield
  http://www.keyestudio.com
 */ 
-#define ML_Ctrl 2     //define the direction control pins of group B motor
-#define ML_PWM 5   //define the PWM control pins of group B motor
-#define MR_Ctrl 4    //define the direction control pins of group A motor
-#define MR_PWM 6   //define the PWM control pins of group A motor
+#define ML_Ctrl 2     //definiere die Richtungskontrollpins des Motors Gruppe B
+#define ML_PWM 5   //definiere die PWM-Kontrollpins des Motors Gruppe B
+#define MR_Ctrl 4    //definiere die Richtungskontrollpins des Motors Gruppe A
+#define MR_PWM 6   //definiere die PWM-Kontrollpins des Motors Gruppe A
 
 void setup()
 {
-  pinMode(ML_Ctrl, OUTPUT);//set direction control pins of group B motor to output
-  pinMode(ML_PWM, OUTPUT);//set PWM control pins of group B motor to output
-  pinMode(MR_Ctrl, OUTPUT);//set direction control pins of group A motor to output
-  pinMode(MR_PWM, OUTPUT);//set PWM control pins of group A motor to output
+  pinMode(ML_Ctrl, OUTPUT);//setze Richtungskontrollpins des Motors Gruppe B als Ausgang
+  pinMode(ML_PWM, OUTPUT);//setze PWM-Kontrollpins des Motors Gruppe B als Ausgang
+  pinMode(MR_Ctrl, OUTPUT);//setze Richtungskontrollpins des Motors Gruppe A als Ausgang
+  pinMode(MR_PWM, OUTPUT);//setze PWM-Kontrollpins des Motors Gruppe A als Ausgang
 }
 void loop()
 { 
-  //front
-  digitalWrite(ML_Ctrl,HIGH);//set the direction control pins of group B motor to HIGH
-  analogWrite(ML_PWM,55);//set the PWM control speed of group B motor to 55
-  digitalWrite(MR_Ctrl,HIGH);//set the direction control pins of group A motor to HIGH
-  analogWrite(MR_PWM,55);// set the PWM control speed of group A motor to 55
-  delay(2000);//delay in 2000ms
-  //back
-  digitalWrite(ML_Ctrl,LOW);//set the direction control pins of group B motor to LOW level
-  analogWrite(ML_PWM,200);// set the PWM control speed of group B motor to 200 
-  digitalWrite(MR_Ctrl,LOW);//set the direction control pins of group A motor to LOW level
-  analogWrite(MR_PWM,200);//set the PWM control speed of group A motor to 200
-  delay(2000);//delay in 2000ms
-  //left
-  digitalWrite(ML_Ctrl,LOW);//set the direction control pins of group B motor to LOW level
-  analogWrite(ML_PWM,200);//set the PWM control speed of group B motor to 200 
-  digitalWrite(MR_Ctrl,HIGH);//set the direction control pins of group A motor to HIGH level
-  analogWrite(MR_PWM,55);//set the PWM control speed of group A motor to 200
-  delay(2000);//delay in 2000ms
-  //right
-  digitalWrite(ML_Ctrl,HIGH);//set the direction control pins of group B motor to HIGH level
-  analogWrite(ML_PWM,55);//set the PWM control speed of group B motor to 55 
-  digitalWrite(MR_Ctrl,LOW);// set the direction control pins of group A motor to LOW level
-  analogWrite(MR_PWM,200);//set the PWM control speed of group A motor to 200
-  delay(2000);//delay in 2000ms
+  //vorwärts
+  digitalWrite(ML_Ctrl,HIGH);//setze die Richtungskontrollpins des Motors Gruppe B auf HIGH
+  analogWrite(ML_PWM,55);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe B auf 55
+  digitalWrite(MR_Ctrl,HIGH);//setze die Richtungskontrollpins des Motors Gruppe A auf HIGH
+  analogWrite(MR_PWM,55);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe A auf 55
+  delay(2000);//Verzögerung von 2000ms
+  //rückwärts
+  digitalWrite(ML_Ctrl,LOW);//setze die Richtungskontrollpins des Motors Gruppe B auf LOW
+  analogWrite(ML_PWM,200);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe B auf 200 
+  digitalWrite(MR_Ctrl,LOW);//setze die Richtungskontrollpins des Motors Gruppe A auf LOW
+  analogWrite(MR_PWM,200);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe A auf 200
+  delay(2000);//Verzögerung von 2000ms
+  //links
+  digitalWrite(ML_Ctrl,LOW);//setze die Richtungskontrollpins des Motors Gruppe B auf LOW
+  analogWrite(ML_PWM,200);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe B auf 200 
+  digitalWrite(MR_Ctrl,HIGH);//setze die Richtungskontrollpins des Motors Gruppe A auf HIGH
+  analogWrite(MR_PWM,55);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe A auf 55
+  delay(2000);//Verzögerung von 2000ms
+  //rechts
+  digitalWrite(ML_Ctrl,HIGH);//setze die Richtungskontrollpins des Motors Gruppe B auf HIGH
+  analogWrite(ML_PWM,55);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe B auf 55 
+  digitalWrite(MR_Ctrl,LOW);//setze die Richtungskontrollpins des Motors Gruppe A auf LOW
+  analogWrite(MR_PWM,200);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe A auf 200
+  delay(2000);//Verzögerung von 2000ms
   //stop
-  digitalWrite(ML_Ctrl, LOW);// set the direction control pins of group B motor to LOW level
-  analogWrite(ML_PWM,0);//set the PWM control speed of group B motor to 0
-  digitalWrite(MR_Ctrl, LOW);// set the direction control pins of group A motor to LOW level
-  analogWrite(MR_PWM,0);//set the PWM control speed of group A motor to 0
-  delay(2000);// delay in 2000ms
+  digitalWrite(ML_Ctrl, LOW);//setze die Richtungskontrollpins des Motors Gruppe B auf LOW
+  analogWrite(ML_PWM,0);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe B auf 0
+  digitalWrite(MR_Ctrl, LOW);//setze die Richtungskontrollpins des Motors Gruppe A auf LOW
+  analogWrite(MR_PWM,0);//setze die PWM-Steuergeschwindigkeit des Motors Gruppe A auf 0
+  delay(2000);//Verzögerung von 2000ms
 }
 //****************************************************************************
 ```
 
-**7.Test Result**
+### **7. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then power on the external power and turn the DIP switch to ON, the car will go forward for 2s, back for 2s, turn left for 2s and right for 2s and stop for 2s
+Nach erfolgreichem Hochladen des Codes auf das V4.0 Board verbinden Sie die Verkabelung gemäß dem Schaltplan, schalten dann die externe Stromversorgung ein und stellen den DIP-Schalter auf ON. Das Auto fährt 2 Sekunden vorwärts, 2 Sekunden rückwärts, 2 Sekunden nach links, 2 Sekunden nach rechts und hält dann 2 Sekunden an.
 
-**8.Code Explanation**
+### **8. Code-Erklärung**
 
-**digitalWrite(ML\_Ctrl,LOW):** The rotation direction of motor is decided by the high/low level and and the pins that decide rotation direction are digital pins.
+**digitalWrite(ML\_Ctrl,LOW):** Die Drehrichtung des Motors wird durch den HIGH/LOW-Pegel bestimmt, und die Pins, die die Drehrichtung bestimmen, sind digitale Pins.
 
-**analogWrite(ML\_PWM,200):** The speed of motor is regulated by PWM, and the pins that decide the speed of motor must be PWM pins.
+**analogWrite(ML\_PWM,200):** Die Geschwindigkeit des Motors wird durch PWM geregelt, und die Pins, die die Geschwindigkeit des Motors bestimmen, müssen PWM-Pins sein.
 
-**9.Code Explanation**
+### **9. Code-Erklärung**
 
-Adjust the speed that PWM controls the motor, hook up in the same way.
+Stellen Sie die Geschwindigkeit ein, mit der PWM den Motor steuert, und schließen Sie ihn auf die gleiche Weise an.
 
 ```c
 //************************************************************************
@@ -149,56 +149,54 @@ Adjust the speed that PWM controls the motor, hook up in the same way.
  Motor driver
  http://www.keyestudio.com
 */ 
-#define ML_Ctrl 2     //define the direction control pins of group B motor
-#define ML_PWM 5   //define the PWM control pins of group B motor
-#define MR_Ctrl 4    //define the direction control pins of group A motor
-#define MR_PWM 6   //define the PWM control pins of group A motor
+#define ML_Ctrl 2     //definiere die Richtungskontrollpins des Motors der Gruppe B
+#define ML_PWM 5   //definiere die PWM-Steuerpins des Motors der Gruppe B
+#define MR_Ctrl 4    //definiere die Richtungskontrollpins des Motors der Gruppe A
+#define MR_PWM 6   //definiere die PWM-Steuerpins des Motors der Gruppe A
 
 void setup()
 {
-  pinMode(ML_Ctrl, OUTPUT);//set direction control pins of group B motor to output
-  pinMode(ML_PWM, OUTPUT);//set PWM control pins of group B motor to output
-  pinMode(MR_Ctrl, OUTPUT);//set direction control pins of group A motor to output
-  pinMode(MR_PWM, OUTPUT);//set PWM control pins of group A motor to output
+  pinMode(ML_Ctrl, OUTPUT);//setze die Richtungskontrollpins des Motors der Gruppe B auf Ausgang
+  pinMode(ML_PWM, OUTPUT);//setze die PWM-Steuerpins des Motors der Gruppe B auf Ausgang
+  pinMode(MR_Ctrl, OUTPUT);//setze die Richtungskontrollpins des Motors der Gruppe A auf Ausgang
+  pinMode(MR_PWM, OUTPUT);//setze die PWM-Steuerpins des Motors der Gruppe A auf Ausgang
 }
 void loop()
 { 
-  //front
-  digitalWrite(ML_Ctrl,HIGH);//set the direction control pins of group B motor to HIGH
-  analogWrite(ML_PWM,105);//set the PWM control speed of group B motor to 55
-  digitalWrite(MR_Ctrl,HIGH);//set the direction control pins of group A motor to HIGH
-  analogWrite(MR_PWM,105);// set the PWM control speed of group A motor to 55
-  delay(2000);//delay in 2000ms
-  //back
-  digitalWrite(ML_Ctrl,LOW);//set the direction control pins of group B motor to LOW level
-  analogWrite(ML_PWM,150);// set the PWM control speed of group B motor to 200 
-  digitalWrite(MR_Ctrl,LOW);//set the direction control pins of group A motor to LOW level
-  analogWrite(MR_PWM,150);//set the PWM control speed of group A motor to 200
-  delay(2000);//delay in 2000ms
-  //left
-  digitalWrite(ML_Ctrl,LOW);//set the direction control pins of group B motor to LOW level
-  analogWrite(ML_PWM,150);//set the PWM control speed of group B motor to 200 
-  digitalWrite(MR_Ctrl,HIGH);//set the direction control pins of group A motor to HIGH level
-  analogWrite(MR_PWM,105);//set the PWM control speed of group A motor to 200
-  delay(2000);//delay in 2000ms
-  //right
-  digitalWrite(ML_Ctrl,HIGH);//set the direction control pins of group B motor to HIGH level
-  analogWrite(ML_PWM,105);//set the PWM control speed of group B motor to 55 
-  digitalWrite(MR_Ctrl,LOW);// set the direction control pins of group A motor to LOW level
-  analogWrite(MR_PWM,150);//set the PWM control speed of group A motor to 200
-  delay(2000);//delay in 2000ms
+  //vorwärts
+  digitalWrite(ML_Ctrl,HIGH);//setze die Richtungskontrollpins des Motors der Gruppe B auf HIGH
+  analogWrite(ML_PWM,105);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe B auf 55
+  digitalWrite(MR_Ctrl,HIGH);//setze die Richtungskontrollpins des Motors der Gruppe A auf HIGH
+  analogWrite(MR_PWM,105);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe A auf 55
+  delay(2000);//Verzögerung um 2000ms
+  //rückwärts
+  digitalWrite(ML_Ctrl,LOW);//setze die Richtungskontrollpins des Motors der Gruppe B auf LOW
+  analogWrite(ML_PWM,150);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe B auf 200 
+  digitalWrite(MR_Ctrl,LOW);//setze die Richtungskontrollpins des Motors der Gruppe A auf LOW
+  analogWrite(MR_PWM,150);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe A auf 200
+  delay(2000);//Verzögerung um 2000ms
+  //links
+  digitalWrite(ML_Ctrl,LOW);//setze die Richtungskontrollpins des Motors der Gruppe B auf LOW
+  analogWrite(ML_PWM,150);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe B auf 200 
+  digitalWrite(MR_Ctrl,HIGH);//setze die Richtungskontrollpins des Motors der Gruppe A auf HIGH
+  analogWrite(MR_PWM,105);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe A auf 200
+  delay(2000);//Verzögerung um 2000ms
+  //rechts
+  digitalWrite(ML_Ctrl,HIGH);//setze die Richtungskontrollpins des Motors der Gruppe B auf HIGH
+  analogWrite(ML_PWM,105);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe B auf 55 
+  digitalWrite(MR_Ctrl,LOW);//setze die Richtungskontrollpins des Motors der Gruppe A auf LOW
+  analogWrite(MR_PWM,150);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe A auf 200
+  delay(2000);//Verzögerung um 2000ms
   //stop
-  digitalWrite(ML_Ctrl, LOW);// set the direction control pins of group B motor to LOW level
-  analogWrite(ML_PWM,0);//set the PWM control speed of group B motor to 0
-  digitalWrite(MR_Ctrl, LOW);// set the direction control pins of group A motor to LOW level
-  analogWrite(MR_PWM,0);//set the PWM control speed of group A motor to 0
-  delay(2000);// delay in 2000ms
+  digitalWrite(ML_Ctrl, LOW);//setze die Richtungskontrollpins des Motors der Gruppe B auf LOW
+  analogWrite(ML_PWM,0);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe B auf 0
+  digitalWrite(MR_Ctrl, LOW);//setze die Richtungskontrollpins des Motors der Gruppe A auf LOW
+  analogWrite(MR_PWM,0);//setze die PWM-Steuerungsgeschwindigkeit des Motors der Gruppe A auf 0
+  delay(2000);//Verzögerung um 2000ms
 }
 //************************************************************************
 ```
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then power on the external power and turn the DIP switch to ON, then you find the speed of the motor is much slower.
+Nachdem der Code erfolgreich auf die V4.0-Platine hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan, schalten Sie dann die externe Stromversorgung ein und stellen Sie den DIP-Schalter auf ON, dann werden Sie feststellen, dass die Geschwindigkeit des Motors viel langsamer ist.
 
-<span style="color: rgb(255, 76, 65);">Note:Low battery will lead to slow motor speed.</span> 
-
-
+<span style="color: rgb(255, 76, 65);">Hinweis: Eine niedrige Batteriespannung führt zu einer langsamen Motordrehzahl.</span> 

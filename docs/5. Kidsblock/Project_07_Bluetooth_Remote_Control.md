@@ -1,71 +1,70 @@
-# Project 7 Bluetooth Remote Control
+# Projekt 7 Bluetooth-Fernsteuerung
 
 ![](media/A161.png)
 
-**1.Description**
+### **1. Beschreibung**
 
-There is a DX-BT24 5.1 Bluetooth module in this kit. This bluetooth module comes with 256Kb space and complies with V5.1BLE bluetooth specification, which supports AT commands. Users can change parameters such as the baud rate and device name of the serial port as required.
+In diesem Kit befindet sich ein DX-BT24 5.1 Bluetooth-Modul. Dieses Bluetooth-Modul verfügt über 256Kb Speicherplatz und entspricht der Bluetooth-Spezifikation V5.1BLE, die AT-Befehle unterstützt. Benutzer können Parameter wie die Baudrate und den Gerätenamen des seriellen Ports nach Bedarf ändern.
 
-Furthermore, it supports UART interface and bluetooth serial port transparent transmission, which also contains the advantages of low cost, small size, low power consumption and high sensitivity for sending and receiving. Notably, it solely needs a few peripheral components to realize its powerful functions.  
+Darüber hinaus unterstützt es die UART-Schnittstelle und die transparente Übertragung des Bluetooth-Seriellports, was auch die Vorteile von niedrigen Kosten, kleinem Format, geringem Stromverbrauch und hoher Empfindlichkeit beim Senden und Empfangen beinhaltet. Bemerkenswert ist, dass es nur wenige Peripheriekomponenten benötigt, um seine leistungsstarken Funktionen zu realisieren.
 
-**2.Specification**
+### **2. Spezifikation**
 
-- Bluetooth protocol: Bluetooth Specification V5.1 BLE
+- Bluetooth-Protokoll: Bluetooth-Spezifikation V5.1 BLE
 
-- Working distance: In an open environment, it can achieve 40m ultra-long distance communication
-  
-- Operating frequency: 2.4GHz ISM band
+- Arbeitsreichweite: In einer offenen Umgebung kann eine ultra-lange Distanzkommunikation von 40 m erreicht werden
 
-- Communication interface: UART
+- Betriebsfrequenz: 2,4 GHz ISM-Band
 
-- Bluetooth certification: Accord with FCC CE ROHS REACH certification standard
-  
-- Serial port parameters: 9600, 8 data bits, 1 stop bit, invalid bit, no flow control
-  
-- Power: 5V DC
+- Kommunikationsschnittstelle: UART
 
-- Operating temperature: –10℃ to +65℃
-  
+- Bluetooth-Zertifizierung: Entspricht den FCC CE ROHS REACH Zertifizierungsstandards
 
-**3.Application**
+- Serielle Port-Parameter: 9600, 8 Datenbits, 1 Stoppbit, kein Paritätsbit, keine Flusskontrolle
 
-The DX-BT24 module also supports the BT5.1 BLE protocol, which can be directly connected to iOS devices with BLE Bluetooth function, and supports resident running of background programs. It is mainly used in the field of short-distance data wireless transmission. It enables to avoid cumbersome cable connections and can directly replace serial cables.
+- Stromversorgung: 5V DC
 
-**Successful application areas of BT24 modules:**
+- Betriebstemperatur: –10℃ bis +65℃
 
-※ Bluetooth wireless data transmission;
+### **3. Anwendung**
 
-※ Mobile phone, computer peripheral equipment;
+Das DX-BT24-Modul unterstützt auch das BT5.1 BLE-Protokoll, das direkt mit iOS-Geräten mit BLE-Bluetooth-Funktion verbunden werden kann und die Ausführung von Hintergrundprogrammen im Resident-Modus unterstützt. Es wird hauptsächlich im Bereich der drahtlosen Datenübertragung über kurze Entfernungen eingesetzt. Es ermöglicht die Vermeidung umständlicher Kabelverbindungen und kann serielle Kabel direkt ersetzen.
 
-※ Handheld POS equipment;
+**Erfolgreiche Anwendungsbereiche der BT24-Module:**
 
-※ Wireless data transmission of medical equipment;
+※ Bluetooth-Datenübertragung ohne Kabel;
 
-※ Smart home control;
+※ Peripheriegeräte für Mobiltelefone und Computer;
 
-※ Bluetooth printer;
+※ Handheld-POS-Geräte;
 
-※ Bluetooth remote control toys;
+※ Drahtlose Datenübertragung von medizinischen Geräten;
 
-※ Shared bicycles;
+※ Smart-Home-Steuerung;
 
-**Ports**
+※ Bluetooth-Drucker;
+
+※ Bluetooth-Fernsteuerungsspielzeuge;
+
+※ Fahrräder zum Teilen;
+
+**Anschlüsse**
 
 ![](media/A162.png)
 
-①STATE：Status pin
+①STATE: Status-Pin
 
-②RX：Receiving pin
+②RX: Empfangspin
 
-③TX：sending pin
+③TX: Sendepin
 
-④GND：GND
+④GND: Masse
 
-⑤VCC：Power
+⑤VCC: Stromversorgung
 
-⑥EN： Enable pin
+⑥EN: Enable-Pin
 
-Connect the BT module to the development board.
+Verbinden Sie das BT-Modul mit dem Entwicklungsboard.
 
 <table border="1">
 <tbody>
@@ -91,29 +90,27 @@ Connect the BT module to the development board.
 </tr>
 </tbody>
 </table>
+### **4. Komponenten**
 
+| Entwicklungsboard *1       | 8833 Motor Driver *1       | Rotes LED-Modul *1          |
+| -------------------------- | -------------------------- | --------------------------- |
+| ![img](media/A163.jpg)     | ![img](media/A164.jpg)     | ![img](media/A165.jpg)      |
+| 3P F-F Dupont-Kabel *1     | USB-Kabel *1               | DX-BT24 Bluetooth-Modul *1  |
+| ![img](media/A166.jpg)     | ![img](media/A167.jpg)     | ![img](media/A168.jpg)      |
 
-**4.Components**
-
-| Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1           |
-| ------------------------- | ------------------------- | -------------------------- |
-| ![img](media/A163.jpg) | ![img](media/A164.jpg) | ![img](media/A165.jpg)  |
-| 3P F-F Dupont Wire*1      | USB Cable*1               | DX-BT24 Bluetooth Module*1 |
-| ![img](media/A166.jpg) | ![img](media/A167.jpg) | ![img](media/A168.jpg)  |
-
-**5.Wiring Diagram**
+### **5. Schaltplan**
 
 ![](media/A169.png)
 
-RXD, TXD, GND and VCC of the BT module are connected to TX, RX, G and 5V.
+RXD, TXD, GND und VCC des BT-Moduls sind mit TX, RX, G und 5V verbunden.
 
-STATE and BRK of the BT module don’t need connection.
+STATE und BRK des BT-Moduls benötigen keine Verbindung.
 
-<span style="color: rgb(255, 76, 65);">Note:</span> the direction of the BT module when inserting it onto the 8833 board. And don’t insert it before uploading the code.
+<span style="color: rgb(255, 76, 65);">Hinweis:</span> Achten Sie auf die Einbaurichtung des BT-Moduls beim Einstecken auf das 8833-Board. Und stecken Sie es nicht ein, bevor der Code hochgeladen wurde.
 
-**6.Test Code**
+### **6. Testcode**
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A126.png)
 
@@ -125,89 +122,89 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 (5).![](media/A173.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
-<span style="color: rgb(255, 76, 65);">**Note:** Before uploading the test code, you need to remove the Bluetooth module, otherwise the code will fail to be uploaded.Connect the Bluetooth module after uploading the code successfully.</span>
+<span style="color: rgb(255, 76, 65);">**Hinweis:** Entfernen Sie vor dem Hochladen des Testcodes das Bluetooth-Modul, da sonst der Code nicht hochgeladen werden kann. Verbinden Sie das Bluetooth-Modul erst nach erfolgreichem Hochladen des Codes.</span>
 
 ![](media/A174.png)
 
-**7.Test Result**
+### **7. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, insert the BT module and the LED will flash, then we need to download the BT app.
+Nach dem erfolgreichen Hochladen des Codes auf das V4.0-Board verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten stecken Sie das BT-Modul ein und die LED blinkt, dann müssen wir die BT-App herunterladen.
 
-**8.Download Bluetooth APP**
+### **8. Bluetooth-APP herunterladen**
 
-**Apple system**
+**Apple-System**
 
-(1).Open the App Store on the iPhone.
+(1). Öffnen Sie den App Store auf dem iPhone.
 
-(2).Search keyes BT car and download the APP to your phone.
+(2). Suche nach keyes BT car und lade die APP auf dein Handy herunter.
 
 ![](media/A175.png)
     
 
-(3).After installation, enter its interface.
+(3). Nach der Installation die Oberfläche öffnen.
 
 ![](media/A176.png)
     
 
-(4).Click "**Connect**" button in the upper left corner to automatically search for Bluetooth. When **BT24** is found, click "**Connect**" to connect Bluetooth, and then click ![](media/A177.png)to enter the control interface of 4WD smart car. 
+(4). Klicke auf die Schaltfläche "**Connect**" oben links, um automatisch nach Bluetooth zu suchen. Wenn **BT24** gefunden wird, klicke auf "**Connect**", um Bluetooth zu verbinden, und dann auf ![](media/A177.png), um in die Steueroberfläche des 4WD Smart Cars zu gelangen.
 
 ![](media/A178.png)
     
 **Android System**
     
 
-(1).Enter google play store to search for“**keyes 4wd**”.
+(1). Öffne den Google Play Store und suche nach „**keyes 4wd**“.
 
 ![](media/A179.png)
 
-(2).The app icon is shown below after installation.
+(2). Das App-Symbol wird nach der Installation wie unten gezeigt angezeigt.
 
 ![](media/A180.png)
 
-(3).Click app to enter the following page.
+(3). Klicke auf die App, um die folgende Seite zu öffnen.
 
 ![](media/A181.png)
 
-(4).After connecting Bluetooth, plug in power and LED indicator of Bluetooth module will flicker. Tap“Connect”to search the Bluetooth.
+(4). Nach dem Verbinden mit Bluetooth Strom anschließen, und die LED-Anzeige des Bluetooth-Moduls blinkt. Tippe auf „Connect“, um nach Bluetooth zu suchen.
 
 ![](media/A182.jpeg)
 
-(5).When **BT24** is found, click "**connect**" to connect Bluetooth. When "**connect**" turns into "**is connected**", it indicates that the Bluetooth connection is successful. As shown in the picture below, the Bluetooth LED becomes will stay on.
+(5). Wenn **BT24** gefunden wird, klicke auf "**connect**", um Bluetooth zu verbinden. Wenn "**connect**" zu "**is connected**" wechselt, zeigt dies an, dass die Bluetooth-Verbindung erfolgreich ist. Wie im Bild unten gezeigt, bleibt die Bluetooth-LED dauerhaft an.
 
 ![](media/A183.jpeg)
 
-(6).After connecting Bluetooth module, click ![](media/A80.png)to set baud rate to 9600. Pressing the button of the Bluetooth APP, and the corresponding characters will be displayed, as shown below:
+(6). Nach dem Verbinden mit dem Bluetooth-Modul klicke auf ![](media/A80.png), um die Baudrate auf 9600 einzustellen. Wenn die Taste der Bluetooth-APP gedrückt wird, werden die entsprechenden Zeichen angezeigt, wie unten dargestellt:
 
 ![](media/A184.png)
 
-| Key                                          | Function                          |
-| -------------------------------------------- | --------------------------------- |
-| ![wps14](media/A185.jpg)                  | Pair DX-BT24 5.1 Bluetooth module |
-| ![wps15](media/A186.jpg) | Disconnect Bluetooth              |
+| Taste                                         | Funktion                          |
+| --------------------------------------------- | -------------------------------- |
+| ![wps14](media/A185.jpg)                       | Paaren des DX-BT24 5.1 Bluetooth-Moduls |
+| ![wps15](media/A186.jpg)                       | Bluetooth trennen                |
 
-|                                                              | Control character                                            | Function                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![wps16](media/A187.jpg)                 | Press: F  <br />Release: S                                   | Press the button, the car  goes front; <br />release to stop |
-| ![wps17](media/A188.jpg)                 | Press: L  <br />Release: S                                   | Press the button, the car turns left; <br />release to stop  |
-| ![wps18](media/A189.jpg)                 | Press: R  <br />Release: S                                   | Press the button, the car turns right; <br />release to stop |
-| ![wps19](media/A190.jpg)                 | Press: B  <br />Release: S                                   | Press the button, the car goes back; <br />release to stop   |
-| ![wps20](media/A191.jpg)                 | Press: “a”  <br />Release: “S”                               | Click to speed up(maximum:255)                               |
-| ![wps21](media/A192.jpg)                 | Press: “d”  <br />Release: “S”                               | Click to slow down(minimum:0)                                |
-| ![wps22](media/A193.jpg)                 | Click to start the gravity <br />sensing function of the <br />mobile phone: click again to <br />exit the gravity sensing control |                                                              |
-| ![wps23](media/A194.jpg)                 | Click to send“X”,<br /> click again to send“S”               | Start line tracking function; <br />click again to exit      |
-| ![wps24](media/A195.jpg)                 | Click to send“Y”, <br />click again to send“S”               | Start ultrasonic avoiding function;<br /> click again to exit |
-| ![wps25](media/A196.jpg) | Click to send“U”, <br />click again to send“S”               | Start ultrasonic follow function;<br /> click  again to exit |
-| ![wps26](media/A197.jpg)                 | Click to send“G”,<br />click again to send“S”                | Start restricting function;<br /> click  again to exit       |
+|                                                              | Steuerzeichen                                            | Funktion                                                     |
+| ------------------------------------------------------------ | -------------------------------------------------------- | ------------------------------------------------------------ |
+| ![wps16](media/A187.jpg)                                     | Drücken: F  <br />Loslassen: S                            | Taste drücken, das Auto fährt vorwärts; <br />loslassen zum Stoppen |
+| ![wps17](media/A188.jpg)                                     | Drücken: L  <br />Loslassen: S                            | Taste drücken, das Auto fährt nach links; <br />loslassen zum Stoppen  |
+| ![wps18](media/A189.jpg)                                     | Drücken: R  <br />Loslassen: S                            | Taste drücken, das Auto fährt nach rechts; <br />loslassen zum Stoppen |
+| ![wps19](media/A190.jpg)                                     | Drücken: B  <br />Loslassen: S                            | Taste drücken, das Auto fährt rückwärts; <br />loslassen zum Stoppen   |
+| ![wps20](media/A191.jpg)                                     | Drücken: „a“  <br />Loslassen: „S“                        | Klicken zum Beschleunigen (maximal: 255)                      |
+| ![wps21](media/A192.jpg)                                     | Drücken: „d“  <br />Loslassen: „S“                        | Klicken zum Verlangsamen (minimal: 0)                         |
+| ![wps22](media/A193.jpg)                                     | Klicken, um die Schwerkraft- <br />Sensorfunktion des <br />Handys zu starten: erneut klicken, um <br />die Steuerung zu beenden |                                                              |
+| ![wps23](media/A194.jpg)                                     | Klicken, um „X“ zu senden, <br />erneut klicken, um „S“ zu senden | Linienverfolgungsfunktion starten; <br />erneut klicken zum Beenden |
+| ![wps24](media/A195.jpg)                                     | Klicken, um „Y“ zu senden, <br />erneut klicken, um „S“ zu senden | Ultraschall-Vermeidungsfunktion starten; <br />erneut klicken zum Beenden |
+| ![wps25](media/A196.jpg)                                     | Klicken, um „U“ zu senden, <br />erneut klicken, um „S“ zu senden | Ultraschall-Folgefunktion starten; <br />erneut klicken zum Beenden |
+| ![wps26](media/A197.jpg)                                     | Klicken, um „G“ zu senden, <br />erneut klicken, um „S“ zu senden | Einschränkungsfunktion starten; <br />erneut klicken zum Beenden |
 
-**9.Extension Practice**
+### **9. Erweiterte Übung**
 
-Here we look to use the command sent by the mobile phone to turn on or off an LED light. Looking at the wiring diagram, an LED is connected to the D9 pin.
+Hier verwenden wir den vom Mobiltelefon gesendeten Befehl, um eine LED ein- oder auszuschalten. Im Schaltplan ist eine LED an den D9-Pin angeschlossen.
 
 ![](media/A198.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Sie können Blöcke ziehen, um sie zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A126.png)
 
@@ -223,9 +220,8 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 (7).![](media/A201.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A202.png)
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, click<td>![](media/A203.png)</td> and <td>![](media/A204.png)</td> to control the LED turn on and turn off.
-
+Nachdem der Code erfolgreich auf das V4.0-Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen Sie dann das Board über ein USB-Kabel an den Computer an, um es mit Strom zu versorgen. Nach dem Einschalten klicken Sie auf<td>![](media/A203.png)</td> und <td>![](media/A204.png)</td>, um die LED ein- und auszuschalten.

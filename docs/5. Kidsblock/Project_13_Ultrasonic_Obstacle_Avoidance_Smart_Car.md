@@ -1,48 +1,48 @@
-# Project 13 Ultrasonic Obstacle Avoidance Smart Car
+# Projekt 13 Ultraschall-Hindernisvermeidung Smart Car
 
 ![](media/A296.png)
 
-**1.Description**
+### **1. Beschreibung**
 
-In this project, we aim to make an ultrasonic obstacle avoidance smart car. We will use the ultrasonic to detect the distance from the obstacle, which can be used to control the servo to rotate so as to make the car move. Meanwhile, the 8X16 LED board will display the corresponding status pattern.
+In diesem Projekt wollen wir ein Ultraschall-Hindernisvermeidungs-Smart Car bauen. Wir verwenden den Ultraschallsensor, um den Abstand zum Hindernis zu messen, was genutzt wird, um den Servo zu steuern und das Auto zu bewegen. Gleichzeitig zeigt das 8x16 LED-Board das entsprechende Statusmuster an.
 
-**2.Flow Chart**
+### **2. Flussdiagramm**
 
 ![img](media/A297.png)
 
-**The specific logic of ultrasonic obstacle avoidance smart car is shown below:**
+**Die spezifische Logik des Ultraschall-Hindernisvermeidungs-Smart Cars ist unten dargestellt:**
 
 ![Img](media/A298.png)
 
 ![Img](media/A299.png)
 
-**3.Wiring Diagram**
+### **3. Schaltplan**
 
 ![](media/A282.png)
 
-1). GND, VCC, SDA and SCL of the 8\*8 LED board module are connected to G（GND), V（VCC), A4 and A5 of the expansion board.
+1). GND, VCC, SDA und SCL des 8\*8 LED-Board-Moduls sind mit G (GND), V (VCC), A4 und A5 des Erweiterungsboards verbunden.
 
-2). VCC, Trig, Echo and Gnd of the ultrasonic sensor are connected to 5V(V), D12(S), D13(S) and Gnd(G).
+2). VCC, Trig, Echo und GND des Ultraschallsensors sind mit 5V (V), D12 (S), D13 (S) und GND (G) verbunden.
 
-3). The servo is connected to G, V and A3. The brown wire is interfaced with Gnd(G), the red wire is interfaced with 5V(V) and the orange wire is interfaced with A3.
+3). Der Servo ist mit G, V und A3 verbunden. Das braune Kabel ist mit GND (G), das rote Kabel mit 5V (V) und das orange Kabel mit A3 verbunden.
 
-4). The power is connected to the BAT port
+4). Die Stromversorgung wird an den BAT-Anschluss angeschlossen.
 
-**4.Test Code**
+### **4. Testcode**
 
-Before writing the code, it is necessary to import the library files of the ultrasonic sensor , 8x16 LED board and the servo. The specific steps are as follows: 
+Bevor der Code geschrieben wird, müssen die Bibliotheksdateien für den Ultraschallsensor, das 8x16 LED-Board und den Servo importiert werden. Die spezifischen Schritte sind wie folgt:
 
-Click ![](media/A29.png)to enter the extension library interface of sensors/modules/components, then search for“Ultrasonic”sensor ![](media/A122.png)and click it. In this way, "**Not loaded**" changes to "**loaded**", indicating that the“**Ultrasonic**”sensor was added successfully. 
+Klicke auf ![](media/A29.png), um die Erweiterungsbibliothek für Sensoren/Module/Komponenten zu öffnen, suche dann nach „Ultrasonic“ Sensor ![](media/A122.png) und klicke darauf. Dadurch ändert sich „**Not loaded**“ zu „**loaded**“, was bedeutet, dass der „**Ultrasonic**“ Sensor erfolgreich hinzugefügt wurde.
 
 ![Img](media/A300.png)
 
 ![](/media/A284.png)
 
-Click ![](media/A33.png)to return to the code editor interface, the instruction block of the added “**Ultrasonic”sensor**,“**Matrix 8\*16 Aip1640**”module and “**Servo**”component can be seen in the module area. 
+Klicke auf ![](media/A33.png), um zur Code-Editor-Oberfläche zurückzukehren. Der Anweisungsblock des hinzugefügten „**Ultrasonic**“ Sensors, des „**Matrix 8\*16 Aip1640**“ Moduls und der „**Servo**“ Komponente ist im Modulbereich sichtbar.
 
 ![](media/A285.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Du kannst Blöcke ziehen, um zu programmieren. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A126.png)
 
@@ -64,7 +64,7 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 (10).![](media/A291.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A303.png)
 
@@ -74,9 +74,8 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](media/A306.png)
 
-**5.Test Result**
+### **5. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
+Nach erfolgreichem Hochladen des Codes auf das V4.0 Board, verbinde die Verkabelung gemäß dem Schaltplan, schalte die externe Stromversorgung ein und stelle den DIP-Schalter auf ON.
 
-The smart car moves forward and automatically avoids obstacles. When there is no road ahead, the servo will drive the ultrasonic sensor to scan the left, middle and right distances, and the car will turn to the open side. Meanwhile, the 8X16 LED board will display the corresponding status pattern.
-
+Das Smart Car fährt vorwärts und weicht automatisch Hindernissen aus. Wenn kein Weg voraus ist, steuert der Servo den Ultraschallsensor, um die Abstände links, mittig und rechts zu scannen, und das Auto fährt in die offene Richtung. Gleichzeitig zeigt das 8x16 LED-Board das entsprechende Statusmuster an.

@@ -6,8 +6,8 @@
    docs/1. Product introduction/1. Product introduction
    docs/2. Product installation/2. Product installation
    docs/3. Driver installation/3. Driver installation
-   docs/4. Arduino/Arduino
-   docs/5. Kidsblock/kidsblock
+   docs/4. Arduino/Arduino.rst
+   docs/5. Kidsblock/kidsblock.rst
 
 
 

@@ -1,70 +1,70 @@
-# Project 7 Bluetooth Remote Control
+# Projekt 7 Bluetooth-Fernsteuerung
 
-**1.Description**
+### **1. Beschreibung**
 
 ![image-20250510083107283](media/A47.png)
 
-There is a DX-BT24 5.1 Bluetooth module in this kit. This bluetooth module comes with 256Kb space and complies with V5.1BLE bluetooth specification, which supports AT commands. Users can change parameters such as the baud rate and device name of the serial port as required.
+In diesem Kit ist ein DX-BT24 5.1 Bluetooth-Modul enthalten. Dieses Bluetooth-Modul verfügt über 256Kb Speicherplatz und entspricht der V5.1BLE Bluetooth-Spezifikation, die AT-Befehle unterstützt. Benutzer können Parameter wie die Baudrate und den Gerätenamen des seriellen Ports nach Bedarf ändern.
 
-Furthermore, it supports UART interface and bluetooth serial port transparent transmission, which also contains the advantages of low cost, small size, low power consumption and high sensitivity for sending and receiving. Notably, it solely needs a few peripheral components to realize its powerful functions.  
+Darüber hinaus unterstützt es die UART-Schnittstelle und die transparente Übertragung des Bluetooth-Seriellports, was auch die Vorteile von niedrigen Kosten, kleinem Formfaktor, geringem Stromverbrauch und hoher Empfindlichkeit beim Senden und Empfangen beinhaltet. Bemerkenswert ist, dass es nur wenige Peripheriekomponenten benötigt, um seine leistungsstarken Funktionen zu realisieren.  
 
-**2.Specification**
+### **2. Spezifikation**
 
-- Bluetooth protocol: Bluetooth Specification V5.1 BLE
+- Bluetooth-Protokoll: Bluetooth-Spezifikation V5.1 BLE
 
-- Working distance: In an open environment, it can achieve 40m ultra-long distance communication
+- Arbeitsreichweite: In einer offenen Umgebung kann eine ultra-lange Distanzkommunikation von 40 m erreicht werden
 
-- Operating frequency: 2.4GHz ISM band
+- Betriebsfrequenz: 2,4 GHz ISM-Band
 
-- Communication interface: UART
+- Kommunikationsschnittstelle: UART
 
-- Bluetooth certification: Accord with FCC CE ROHS REACH certification standard
+- Bluetooth-Zertifizierung: Entspricht den FCC CE ROHS REACH Zertifizierungsstandards
 
-- Serial port parameters: 9600, 8 data bits, 1 stop bit, invalid bit, no flow control
+- Serielle Port-Parameter: 9600, 8 Datenbits, 1 Stoppbit, kein Paritätsbit, keine Flusskontrolle
 
-- Power: 5V DC
+- Stromversorgung: 5V DC
 
-- Operating temperature: –10℃ to +65℃
+- Betriebstemperatur: –10℃ bis +65℃
 
-**3.Application**
+### **3. Anwendung**
 
-The DX-BT24 module also supports the BT5.1 BLE protocol, which can be directly connected to iOS devices with BLE Bluetooth function, and supports resident running of background programs. It is mainly used in the field of short-distance data wireless transmission. It enables to avoid cumbersome cable connections and can directly replace serial cables.
+Das DX-BT24 Modul unterstützt auch das BT5.1 BLE-Protokoll, das direkt mit iOS-Geräten mit BLE-Bluetooth-Funktion verbunden werden kann und die Ausführung von Hintergrundprogrammen im Resident-Modus unterstützt. Es wird hauptsächlich im Bereich der drahtlosen Datenübertragung über kurze Distanzen eingesetzt. Es ermöglicht die Vermeidung umständlicher Kabelverbindungen und kann serielle Kabel direkt ersetzen.
 
-**Successful application areas of BT24 modules:**
+**Erfolgreiche Anwendungsbereiche der BT24-Module:**
 
-※ Bluetooth wireless data transmission;
+※ Bluetooth-Datenübertragung ohne Kabel;
 
-※ Mobile phone, computer peripheral equipment;
+※ Peripheriegeräte für Mobiltelefone und Computer;
 
-※ Handheld POS equipment;
+※ Handheld-POS-Geräte;
 
-※ Wireless data transmission of medical equipment;
+※ Drahtlose Datenübertragung von medizinischen Geräten;
 
-※ Smart home control;
+※ Smart-Home-Steuerung;
 
-※ Bluetooth printer;
+※ Bluetooth-Drucker;
 
-※ Bluetooth remote control toys;
+※ Bluetooth-Fernsteuerungsspielzeug;
 
-※ Shared bicycles;
+※ Fahrradverleihsysteme;
 
-**4.Ports**
+### **4. Anschlüsse**
 
 ![420af966-aaa4-4736-9d35-2a9ccc7215f3](media/A48.png)
 
-①STATE：Status pin
+①STATE：Status-Pin
 
-②RX：Receiving pin
+②RX：Empfangspin
 
-③TX：sending pin
+③TX：Sendepin
 
 ④GND：GND
 
-⑤VCC：Power
+⑤VCC：Stromversorgung
 
-⑥EN： Enable pin
+⑥EN： Enable-Pin
 
-Connect the BT module to the development board.
+Verbinden Sie das BT-Modul mit dem Entwicklungsboard.
 
 | Uno  | BT24 |
 | :--: | :--: |
@@ -73,27 +73,27 @@ Connect the BT module to the development board.
 | VCC  |  5V  |
 | GND  | GND  |
 
-**5.Components**
+### **5. Komponenten**
 
-|           Development Board *1           |           8833 Motor Driver *1           |                       Red LED Module*1                       |
+|           Entwicklungsboard *1           |           8833 Motor Driver *1           |                       Rotes LED-Modul*1                       |
 | :--------------------------------------: | :--------------------------------------: | :----------------------------------------------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) |                   ![img](media/A10.jpg)                   |
-|             3P Dupont Wire*1             |               USB Cable*1                |                  DX-BT24 Bluetooth Module*1                  |
+|             3P Dupont-Kabel*1             |               USB-Kabel*1                |                  DX-BT24 Bluetooth-Modul*1                  |
 |         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         | ![image-20250510083534209](media/A49.png) |
 
-**6.Wiring Diagram**
+### **6. Schaltplan**
 
 ![image-20250510083927915](media/A50.png)
 
-RXD, TXD, GND and VCC of the BT module are connected to TX, RX, G and 5V.
+RXD, TXD, GND und VCC des BT-Moduls sind mit TX, RX, G und 5V verbunden.
 
-STATE and BRK of the BT module don’t need connection.
+STATE und BRK des BT-Moduls benötigen keine Verbindung.
 
-<span style="color: rgb(255, 76, 65);">Note:the direction of the BT module when inserting it onto the 8833 board. And don’t insert it before uploading the code.</span> 
+<span style="color: rgb(255, 76, 65);">Hinweis: Die Ausrichtung des BT-Moduls beim Einstecken auf das 8833-Board beachten. Und es nicht vor dem Hochladen des Codes einstecken.</span> 
 
-**7.Test Code**
+### **7. Testcode**
 
-<span style="color: rgb(255, 76, 65);">**Note:** Before uploading the test code, you need to remove the Bluetooth module, otherwise the code will fail to be uploaded.Connect the Bluetooth module after uploading the code successfully.</span>
+<span style="color: rgb(255, 76, 65);">**Hinweis:** Vor dem Hochladen des Testcodes muss das Bluetooth-Modul entfernt werden, da sonst das Hochladen fehlschlägt. Verbinden Sie das Bluetooth-Modul erst nach erfolgreichem Hochladen des Codes.</span>
 
 ```c
 //***********************************************************************
@@ -103,104 +103,97 @@ lesson 7.1
 Bluetooth 
 http://www.keyestudio.com
 */
-char ble_val; //character variable, used to store the value received by Bluetooth 
-
+char ble_val; // Zeichenvariable, die den vom Bluetooth empfangenen Wert speichert 
 
 void setup() {
   Serial.begin(9600);
 }
 void loop() {
-  if(Serial.available() > 0)  //make sure if there is data in serial buffer
+  if(Serial.available() > 0)  // sicherstellen, dass Daten im seriellen Puffer sind
   {
-    ble_val = Serial.read();  //Read data from serial buffer
-    Serial.println(ble_val);  //Print
+    ble_val = Serial.read();  // Daten aus dem seriellen Puffer lesen
+    Serial.println(ble_val);  // Ausgeben
   }
 }
 //***********************************************************************
 ```
 
-**8.Test Result**
+### **8. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, insert the BT module and the LED will flash, then we need to download the BT app.
+Nachdem der Code erfolgreich auf das V4.0 Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan, und schließen Sie dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten stecken Sie das BT-Modul ein und die LED blinkt, anschließend müssen wir die BT-App herunterladen.
 
-**9.Download Bluetooth APP**
+### **9. Bluetooth APP herunterladen**
 
-**Apple system**
+**Apple-System**
 
-(1). Open the App Store on the iPhone.
+(1). Öffnen Sie den App Store auf dem iPhone.
 
-(2). Search keyes BT car and download the APP to your phone.
-
-
+(2). Suchen Sie nach keyes BT car und laden Sie die APP auf Ihr Telefon herunter.
 
 ![image-20250510084716811](media/A51.png)
     
-
-(3). After installation, enter its interface.
+(3). Nach der Installation öffnen Sie die App.
 
 ![image-20250510084812821](media/A52.png)
     
-
-(4). Click "**Connect**" button in the upper left corner to automatically search for Bluetooth. When **BT24** is found, click "**Connect**" to connect Bluetooth, and then click ![image-20250510084833837](media/A53.png) to enter the control interface of 4WD smart car. 
+(4). Klicken Sie auf die Schaltfläche "**Connect**" oben links, um automatisch nach Bluetooth zu suchen. Wenn **BT24** gefunden wird, klicken Sie auf "**Connect**", um Bluetooth zu verbinden, und klicken Sie dann auf ![image-20250510084833837](media/A53.png), um die Steueroberfläche des 4WD Smart Cars zu öffnen.
 
 ![image-20250510084902641](media/A54.png)
-    **Android System**
-    
 
-(1). Enter google play store to search for“keyes 4wd”.
+**Android-System**
+
+(1). Öffnen Sie den Google Play Store und suchen Sie nach „keyes 4wd“.
 
 ![image-20250510084916086](media/A55.png)
 
-(2). The app icon is shown below after installation.
+(2). Das App-Symbol wird nach der Installation wie unten gezeigt angezeigt.
 
 ![image-20250510084933465](media/A56.png)
 
-(3). Click app to enter the following page.
+(3). Klicken Sie auf die App, um die folgende Seite zu öffnen.
 
 ![image-20250510084946146](media/A57.png)
 
-(4). After connecting Bluetooth, plug in power and LED indicator of Bluetooth module will flicker. Tap“**Connect**”to search the Bluetooth.
+(4). Nach dem Verbinden von Bluetooth stecken Sie die Stromversorgung ein und die LED-Anzeige des Bluetooth-Moduls blinkt. Tippen Sie auf „**Connect**“, um nach Bluetooth zu suchen.
 
 ![image-20250510085007028](media/A58.png)
 
-(5). When **BT24** is found, click "Connect" to connect Bluetooth. When "**Connect**" turns into "**is Connected**", it indicates that the Bluetooth connection is successful. As shown in the picture below, the Bluetooth LED becomes will stay on.
+(5). Wenn **BT24** gefunden wird, klicken Sie auf "Connect", um Bluetooth zu verbinden. Wenn "**Connect**" zu "**is Connected**" wechselt, bedeutet dies, dass die Bluetooth-Verbindung erfolgreich ist. Wie im Bild unten gezeigt, bleibt die Bluetooth-LED dauerhaft an.
 
 ![image-20250510085026219](media/A59.png)
 
-(6). After connecting Bluetooth module, open serial monitor to set baud rate to 9600. Pressing the button of the Bluetooth APP, and the corresponding characters will be displayed, as shown below:
+(6). Nach dem Verbinden des Bluetooth-Moduls öffnen Sie den seriellen Monitor und stellen die Baudrate auf 9600 ein. Drücken Sie die Taste in der Bluetooth-APP, und die entsprechenden Zeichen werden angezeigt, wie unten dargestellt:
 
 ![image-20250510085039562](media/A60.png)
 
-| Key                       | Function                          |
+| Taste                     | Funktion                          |
 | ------------------------- | --------------------------------- |
-| ![img](./media/A61.jpg) | Pair DX-BT24 5.1 Bluetooth module |
-| ![img](./media/A62.jpg) | Disconnect Bluetooth              |
+| ![img](media/A61.jpg) | DX-BT24 5.1 Bluetooth-Modul koppeln |
+| ![img](media/A62.jpg)   | Bluetooth trennen                 |
 
-
-
-|                           | Control character                                            | Control character                                            |
+|                           | Steuerzeichen                                              | Steuerzeichen                                              |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![img](media/A63.jpg) | Press: F  <br />Release: S                                   | Press the button, the car  goes front; <br />release to stop |
-| ![img](media/A64.jpg) | Press: L  <br />Release: S                                   | Press the button, the car turns left; <br />release to stop  |
-| ![img](media/A65.jpg) | Press: R  <br />Release: S                                   | Press the button, the car turns right; <br />release to stop |
-| ![img](media/A66.jpg) | Press: B  <br />Release: S                                   | Press the button, the car goes back; <br />release to stop   |
-| ![img](media/A67.jpg) | Press: “a”  <br />Release: “S”                               | Click to speed up(maximum:255)                               |
-| ![img](media/A68.jpg) | Press: “d”  <br />Release: “S”                               | Click to slow down(minimum:0)                                |
-| ![img](media/A69.jpg) | Click to start the gravity <br />sensing function of the <br />mobile phone: click again to <br />exit the gravity sensing control |                                                              |
-| ![img](media/A70.jpg) | Click to send“X”, <br />click again to send“S”               | Start line tracking function; <br />click again to exit      |
-| ![img](media/A71.jpg) | Click to send“Y”, <br />click again to send“S”               | Start ultrasonic avoiding function; <br />click again to exit |
-| ![img](media/A72.jpg) | Click to send“U”, <br />click again to send“S”               | Start ultrasonic follow function; <br />click  again to exit |
-| ![img](media/A73.jpg) | Click to send“G”, <br />click again to send“S”               | Start restricting function;<br /> click  again to exit       |
+| ![img](media/A63.jpg) | Drücken: F  <br />Loslassen: S                              | Taste drücken, das Auto fährt vorwärts; <br />loslassen zum Stoppen |
+| ![img](media/A64.jpg) | Drücken: L  <br />Loslassen: S                              | Taste drücken, das Auto dreht nach links; <br />loslassen zum Stoppen  |
+| ![img](media/A65.jpg) | Drücken: R  <br />Loslassen: S                              | Taste drücken, das Auto dreht nach rechts; <br />loslassen zum Stoppen |
+| ![img](media/A66.jpg) | Drücken: B  <br />Loslassen: S                              | Taste drücken, das Auto fährt rückwärts; <br />loslassen zum Stoppen   |
+| ![img](media/A67.jpg) | Drücken: „a“  <br />Loslassen: „S“                          | Klicken zum Beschleunigen (maximal: 255)                     |
+| ![img](media/A68.jpg) | Drücken: „d“  <br />Loslassen: „S“                          | Klicken zum Verlangsamen (minimal: 0)                        |
+| ![img](media/A69.jpg) | Klicken, um die Schwerkraft- <br />Sensorfunktion des <br />Handys zu starten: erneut klicken, <br />um die Schwerkraftsteuerung zu beenden |                                                              |
+| ![img](media/A70.jpg) | Klicken, um „X“ zu senden, <br />erneut klicken, um „S“ zu senden | Linienverfolgungsfunktion starten; <br />erneut klicken zum Beenden |
+| ![img](media/A71.jpg) | Klicken, um „Y“ zu senden, <br />erneut klicken, um „S“ zu senden | Ultraschall-Hindernisvermeidung starten; <br />erneut klicken zum Beenden |
+| ![img](media/A72.jpg) | Klicken, um „U“ zu senden, <br />erneut klicken, um „S“ zu senden | Ultraschall-Folgen starten; <br />erneut klicken zum Beenden    |
+| ![img](media/A73.jpg) | Klicken, um „G“ zu senden, <br />erneut klicken, um „S“ zu senden | Einschränkungsfunktion starten; <br />erneut klicken zum Beenden |
 
-**9.Code Explanation**
+### **10. Code-Erklärung**
 
-**Serial.available()** : Return the number of characters currently remaining in the serial port buffer. Generally, this function is used to judge whether there is data in the buffer of the serial port. When Serial.available()\>0, it means that the serial port has received data and can be read;
+**Serial.available()** : Gibt die Anzahl der aktuell im seriellen Puffer verbleibenden Zeichen zurück. Im Allgemeinen wird diese Funktion verwendet, um zu prüfen, ob Daten im Puffer des seriellen Ports vorhanden sind. Wenn Serial.available() > 0 ist, bedeutet dies, dass der serielle Port Daten empfangen hat und gelesen werden können;
 
-**Serial.read() :** Refers to taking out and reading a Byte of data from the serial port buffer. For example, if a device sends data to Arduino through the serial port, we can use Serial.read() to read the sent data.
+**Serial.read() :** Bezieht sich darauf, ein Byte Daten aus dem seriellen Puffer zu entnehmen und zu lesen. Zum Beispiel, wenn ein Gerät Daten über den seriellen Port an Arduino sendet, können wir Serial.read() verwenden, um die gesendeten Daten zu lesen.
 
-**10.Extension Practice**
+### **11. Erweiterte Übung**
 
-Here we look to use the command sent by the mobile phone to turn on or off an LED light. Looking at the wiring diagram, an LED is connected to the D9 pin.
+Hier wollen wir den vom Handy gesendeten Befehl verwenden, um eine LED ein- oder auszuschalten. Im Schaltplan ist eine LED an den Pin D9 angeschlossen.
 
 ![image-20250510085856954](media/A74.png)
 
@@ -213,7 +206,7 @@ Here we look to use the command sent by the mobile phone to turn on or off an LE
  http://www.keyestudio.com
 */ 
 int ledpin=9;
-char ble_val;// An integer variable used to store the value received by Bluetooth
+char ble_val;// Eine Ganzzahlvariable, die den über Bluetooth empfangenen Wert speichert
 
 void setup()
 {
@@ -223,9 +216,9 @@ void setup()
 
 void loop()
 { 
-  if (Serial.available() > 0) //Check whether there is data in the serial port cache
+  if (Serial.available() > 0) // Prüfen, ob Daten im seriellen Puffer vorhanden sind
   {
-    ble_val = Serial.read();  //Read data from the serial port cache
+    ble_val = Serial.read();  // Daten aus dem seriellen Puffer lesen
     Serial.print("DATA RECEIVED:");
     Serial.println(ble_val);
     if (ble_val == 'F') {
@@ -241,5 +234,4 @@ void loop()
 //****************************************************************************
 ```
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, click![image-20250510085919039](media/A75.png) and ![image-20250510085931709](media/A76.png) to control the LED turn on and turn off.
-
+Nach dem erfolgreichen Hochladen des Codes auf das V4.0-Board verbinden Sie die Verkabelung gemäß dem Schaltplan, und schließen Sie dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten klicken Sie auf ![image-20250510085919039](media/A75.png) und ![image-20250510085931709](media/A76.png), um die LED ein- und auszuschalten.

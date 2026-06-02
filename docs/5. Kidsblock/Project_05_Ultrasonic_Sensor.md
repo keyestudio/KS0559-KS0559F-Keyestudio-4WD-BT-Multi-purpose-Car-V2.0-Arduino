@@ -1,121 +1,121 @@
-# Project 5 Ultrasonic Sensor
+# Projekt 5 Ultraschallsensor
 
-**1.Description**
+### **1. Beschreibung**
 
 ![](media/A109.png)
 
-The HC-SR04 ultrasonic sensor uses sonar to determine distance to an object like what bats do. It offers excellent non-contact range detection with high accuracy and stable readings in an easy-to-use package. It comes complete with an ultrasonic transmitter and receiver modules.
+Der HC-SR04 Ultraschallsensor verwendet Sonar, um die Entfernung zu einem Objekt zu bestimmen, ähnlich wie Fledermäuse es tun. Er bietet eine ausgezeichnete berührungslose Abstandserkennung mit hoher Genauigkeit und stabilen Messwerten in einem einfach zu verwendenden Paket. Er besteht aus einem Ultraschall-Sender- und Empfangsmodul.
 
 ![Img](media/A110.png)
 
-The HC-SR04 or the ultrasonic sensor is being used in a wide range of electronics projects for creating obstacle detection and distance measuring application as well as various other applications. Here we have brought the simple method to measure the distance with arduino and an ultrasonic sensor and how to use the ultrasonic sensor with Arduino.
+Der HC-SR04 oder der Ultraschallsensor wird in einer Vielzahl von Elektronikprojekten verwendet, um Hinderniserkennung und Distanzmessanwendungen sowie verschiedene andere Anwendungen zu realisieren. Hier zeigen wir die einfache Methode, die Entfernung mit Arduino und einem Ultraschallsensor zu messen und wie man den Ultraschallsensor mit Arduino verwendet.
 
-**2.Specification**
+### **2. Spezifikation**
 
-- Working Voltage :+5V DC
+- Betriebsspannung: +5V DC
 
-- Quiescent Current : \<2mA
+- Ruhestrom: \<2mA
 
-- Working Current: 15mA
+- Betriebsstrom: 15mA
 
-- Effectual Angle: \<15°
+- Effektiver Winkel: \<15°
 
-- Distance Range : 2cm – 300 cm
+- Entfernungsbereich: 2cm – 300 cm
 
-- Precision : 0.3 cm
+- Genauigkeit: 0,3 cm
 
-- Measuring Angle: 30 degree
+- Messwinkel: 30 Grad
 
-- Trigger Input Pulse width: 10uS
+- Trigger-Eingang Impulsbreite: 10µs
 
 ![](media/A111.png)
 
-**3.Components**
+### **3. Komponenten**
 
-| Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1          | Ultrasonic Sensor*1       |
+| Entwicklungsboard *1      | 8833 Motor Driver *1      | Rotes LED Modul *1        | Ultraschallsensor *1      |
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| ![img](media/A112.jpg) | ![img](media/A113.jpg) | ![img](media/A114.jpg) | ![img](media/A115.jpg) |
-| 4P Dupont Wire*1          | USB Cable*1               | 3P Dupont Wire*1          |                           |
-| ![img](media/A116.jpg) | ![img](media/A117.jpg) | ![img](media/A118.jpg) |                           |
+| ![img](media/A112.jpg)    | ![img](media/A113.jpg)    | ![img](media/A114.jpg)    | ![img](media/A115.jpg)    |
+| 4P Dupont Kabel *1        | USB Kabel *1              | 3P Dupont Kabel *1        |                           |
+| ![img](media/A116.jpg)    | ![img](media/A117.jpg)    | ![img](media/A118.jpg)    |                           |
 
-**4.Working Principle**
+### **4. Funktionsprinzip**
 
-As the above picture shown, it is like two eyes. One is transmitting end, the other is receiving end.
+Wie auf dem obigen Bild gezeigt, ist es wie zwei Augen. Eines ist der Sendeteil, das andere der Empfangsteil.
 
-The ultrasonic module will emit the ultrasonic waves after triggering a signal. When the ultrasonic waves encounter the object and are reflected back, the module outputs an echo signal, so it can determine the distance of the object from the time difference between the trigger signal and the echo signal.
+Das Ultraschallmodul sendet nach Auslösen eines Signals Ultraschallwellen aus. Wenn die Ultraschallwellen auf ein Objekt treffen und reflektiert werden, gibt das Modul ein Echo-Signal aus, sodass es die Entfernung des Objekts anhand der Zeitdifferenz zwischen dem Trigger-Signal und dem Echo-Signal bestimmen kann.
 
-The t is the time that emitting signal meets obstacle and returns. And the propagation speed of sound in the air is about 343m/s, and distance = speed \* time. However, the ultrasonic wave emits and comes back, which is 2 times of distance. Therefore, it needs to be divided by 2, the distance measured by ultrasonic wave = (speed \* time)/2.
+t ist die Zeit, die das ausgesendete Signal benötigt, um auf ein Hindernis zu treffen und zurückzukehren. Die Ausbreitungsgeschwindigkeit des Schalls in der Luft beträgt etwa 343 m/s, und Entfernung = Geschwindigkeit \* Zeit. Da die Ultraschallwelle ausgesendet wird und zurückkommt, entspricht dies der doppelten Entfernung. Daher muss durch 2 geteilt werden, die vom Ultraschall gemessene Entfernung = (Geschwindigkeit \* Zeit)/2.
 
-**Use method and chart of ultrasonic module:**
+**Verwendungsmethode und Diagramm des Ultraschallmoduls:**
 
-1).Use the GPIO pin to give a high level signal of at least 10μs to the Trig pin of SR04, which can trigger it to detect distance.
+1). Verwenden Sie den GPIO-Pin, um ein High-Level-Signal von mindestens 10μs an den Trig-Pin des SR04 zu geben, um die Entfernungsmessung auszulösen.
 
-2).After triggering, the module will automatically send eight 40KHz ultrasonic pulses and detect whether there is a signal return. This step will be completed automatically by the module.
+2). Nach dem Auslösen sendet das Modul automatisch acht 40KHz Ultraschallimpulse aus und erkennt, ob ein Signal zurückkommt. Dieser Schritt wird automatisch vom Modul ausgeführt.
 
-3).If the signal returns, the Echo pin will output a high level, and the duration of the high level is the time from the transmission of the ultrasonic wave to the return.
+3). Wenn das Signal zurückkommt, gibt der Echo-Pin ein High-Level-Signal aus, dessen Dauer die Zeit vom Aussenden der Ultraschallwelle bis zum Empfang des Echos ist.
 
 ![image-20250509143833078](media/A119.png)
 
 
-**Circuit diagram of ultrasonic sensor:**
+**Schaltplan des Ultraschallsensors:**
 
 ![](media/A120.jpeg)
 
-**5.Wiring Diagram**
+### **5. Anschlussdiagramm**
 
 ![](media/A121.png)
 
-VCC, Trig, Echo and Gnd of the ultrasonic sensor are connected to 5V(V), D12, D13 and Gnd(G)
+VCC, Trig, Echo und Gnd des Ultraschallsensors sind mit 5V(V), D12, D13 und Gnd(G) verbunden.
 
-**6.Test Code**
+### **6. Testcode**
 
-Before writing the code, it is necessary to import the library file of the ultrasonic sensor. The specific steps are as follows: 
+Bevor der Code geschrieben wird, muss die Bibliotheksdatei des Ultraschallsensors importiert werden. Die konkreten Schritte sind wie folgt:
 
-Click ![](media/A29.png)to enter the extension library interface of sensors/modules/components, then search for "**Ultrasonic**" sensor ![](media/A122.png)and click it. In this way, "**Not loaded**" changes to "**loaded**", indicating that "**Ultrasonic**" sensor was added successfully. 
+Klicken Sie auf ![](media/A29.png), um die Erweiterungsbibliothek-Schnittstelle für Sensoren/Module/Komponenten zu öffnen, suchen Sie dann nach dem "**Ultrasonic**" Sensor ![](media/A122.png) und klicken Sie darauf. Dadurch ändert sich "**Not loaded**" zu "**loaded**", was anzeigt, dass der "**Ultrasonic**" Sensor erfolgreich hinzugefügt wurde.
 
 ![Img](media/A123.png)
 
 ![](media/A124.png)
 
-Click ![](media/A33.png)to return to the code editor interface, the instruction block of the added "**Ultrasonic**" sensor can be seen in the module area. 
+Klicken Sie auf ![](media/A33.png), um zur Code-Editor-Oberfläche zurückzukehren. Der Befehlblock des hinzugefügten "**Ultrasonic**" Sensors ist im Modulbereich sichtbar.
 
 ![](media/A125.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Sie können Blöcke ziehen, um zu programmieren. Die unten aufgeführten Blöcke dienen als Referenz.
 
-（1).![](media/A126.png)
+(1). ![](media/A126.png)
 
-(2).![](media/A127.png)
+(2). ![](media/A127.png)
 
-(3).![](media/A128.png)
+(3). ![](media/A128.png)
 
-(4).![](media/A129.png)
+(4). ![](media/A129.png)
 
-(5).![](media/A130.png)
+(5). ![](media/A130.png)
 
 (6).![](media/A131.png)
 
 (7).![](media/A132.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A133.png)
 
-**7.Test Result**
+### **7. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, click ![](media/A80.png)to set baud rate to 9600.
+Nachdem der Code erfolgreich auf das V4.0-Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen Sie dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten klicken Sie auf ![](media/A80.png), um die Baudrate auf 9600 einzustellen.
 
-The detected distance will be displayed, and the unit is cm and inch. Hinder the ultrasonic sensor by hand, the displayed distance value gets smaller.
+Die erkannte Entfernung wird angezeigt, und die Einheit ist cm und Zoll. Blockieren Sie den Ultraschallsensor mit der Hand, wird der angezeigte Entfernungswert kleiner.
 
 ![](media/A134.png)
 
-**8.Extension Practice**
+### **8. Erweiterte Übung**
 
-We have just measured the distance displayed by the ultrasonic. How about controlling the LED with the measured distance? Let's try it and connect an LED light module to the D9 pin.
+Wir haben gerade die vom Ultraschall angezeigte Entfernung gemessen. Wie wäre es, die LED mit der gemessenen Entfernung zu steuern? Versuchen wir es und schließen ein LED-Lichtmodul an den D9-Pin an.
 
 ![](media/A135.png)
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A126.png)
 
@@ -131,11 +131,10 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 (7).![](media/A132.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A139.png)
 
 ![](media/A140.png)
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, block the ultrasonic sensor by hand(the distance is between 2-10cm), then check if the LED is on.
-
+Nachdem der Code erfolgreich auf das V4.0-Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan und schließen Sie dann den Computer über ein USB-Kabel an, um das Board mit Strom zu versorgen. Nach dem Einschalten blockieren Sie den Ultraschallsensor mit der Hand (die Entfernung liegt zwischen 2-10 cm) und prüfen Sie, ob die LED leuchtet.

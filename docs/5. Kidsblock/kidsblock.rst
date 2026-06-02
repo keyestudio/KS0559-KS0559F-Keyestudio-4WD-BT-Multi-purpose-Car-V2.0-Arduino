@@ -6,12 +6,12 @@
     :maxdepth: 2
 
     
-    kidsblockReadMeFirst
+    kidsblock.md
 
 
 
-Kidsblock - Projects
--------------------
+5.5 Kidsblock - Projekte
+------------------------
 
 .. toctree::
     :maxdepth: 2

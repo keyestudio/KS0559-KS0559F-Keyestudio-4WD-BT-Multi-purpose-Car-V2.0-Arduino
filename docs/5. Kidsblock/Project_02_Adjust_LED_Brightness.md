@@ -1,50 +1,48 @@
-# Project 2: Adjust LED Brightness
+# Projekt 2: LED-Helligkeit anpassen
 
-**1.Description**
+### **1. Beschreibung**
 
-In previous lesson, we control LED on and off and make it blink.
+Im vorherigen Unterricht haben wir die LED ein- und ausgeschaltet und zum Blinken gebracht.
 
-In this project, we will control LED’s brightness through PWM simulating breathing effect.
+In diesem Projekt steuern wir die Helligkeit der LED über PWM, um einen Atemeffekt zu simulieren.
 
-PWM is a means of controlling the analog output via digital means. Digital control is used to generate square waves with different duty cycles (a signal that constantly switches between high and low levels) to control the analog output. In general, the input voltages of ports are 0V and 5V.
+PWM ist ein Verfahren zur Steuerung des analogen Ausgangs mittels digitaler Methoden. Die digitale Steuerung erzeugt Rechtecksignale mit unterschiedlichen Tastverhältnissen (ein Signal, das ständig zwischen hohen und niedrigen Pegeln wechselt), um den analogen Ausgang zu steuern. Im Allgemeinen liegen die Eingangsspannungen der Ports bei 0V und 5V.
 
-What if the 3V is required? Or a switch among 1V, 3V and 3.5V? We cannot change resistors constantly. For this reason, we resort to PWM.
+Was ist, wenn 3V benötigt werden? Oder ein Umschalten zwischen 1V, 3V und 3,5V? Wir können nicht ständig Widerstände wechseln. Aus diesem Grund greifen wir auf PWM zurück.
 
 ![](media/A53.gif)
 
-For the Arduino digital port voltage output, there are only LOW and HIGH, which correspond to the voltage output of 0V and 5V. You can define LOW as 0 and HIGH as 1, and let the Arduino output five hundred 0 or 1 signals within 1s.
+Für die Arduino-Digitalport-Spannungsausgabe gibt es nur LOW und HIGH, die den Spannungsausgängen von 0V bzw. 5V entsprechen. Man kann LOW als 0 und HIGH als 1 definieren und den Arduino innerhalb von 1 Sekunde fünfhundert 0- oder 1-Signale ausgeben lassen.
 
-If all of the output five hundred are 1, that is 5V; if all of which are 0, that is 0V. If output 010101010101 in this way then the output port is 2.5V, which is like showing movie. The movie we watch are not completely continuous. It actually outputs 25 pictures per second. In this case, the human can’t see it, neither does PWM. If we want different voltage, we need to control the ratio of 0 and 1. The more 0,1 signals output per unit time, the more accurate the control.
+Wenn alle fünfhundert Ausgaben 1 sind, entspricht das 5V; wenn alle 0 sind, entspricht das 0V. Wenn man auf diese Weise 010101010101 ausgibt, beträgt die Ausgangsspannung 2,5V, was einem Film ähnelt. Der Film, den wir sehen, ist nicht vollständig kontinuierlich. Tatsächlich werden 25 Bilder pro Sekunde ausgegeben. In diesem Fall kann der Mensch es nicht sehen, ebenso wenig wie PWM. Wenn wir eine andere Spannung wollen, müssen wir das Verhältnis von 0 und 1 steuern. Je mehr 0- und 1-Signale pro Zeiteinheit ausgegeben werden, desto genauer die Steuerung.
 
-PWM is a technology that uses digital methods to obtain analog quantities. Digital control enables to form a square wave, the square wave signal only has on and off two states (high and low).  A voltage ranging from 0 to 5V can be simulated by controlling the ratio of on to off duration.  The time spent on (technically called high level) is called pulse width, so PWM is also called pulse width modulation. 
+PWM ist eine Technologie, die digitale Methoden verwendet, um analoge Größen zu erhalten. Digitale Steuerung ermöglicht die Bildung eines Rechtecksignals, das nur zwei Zustände hat (hoch und niedrig). Eine Spannung von 0 bis 5V kann simuliert werden, indem das Verhältnis der Ein- zur Aus-Zeit gesteuert wird. Die Zeit, in der das Signal eingeschaltet ist (technisch als High-Pegel bezeichnet), wird Pulsbreite genannt, daher wird PWM auch Pulsweitenmodulation genannt.
 
 ![](media/A54.png)
 
-The green vertical bars represent one period of the square wave.  The value written in each analogWrite(value) corresponds to a percentage,
-which is also called Duty Cycle. This percentage refers to the ratio of time occupied by the high level in a cycle, that is, duty cycle = high level time/cycle time. 
+Die grünen vertikalen Balken stellen eine Periode des Rechtecksignals dar. Der in jedem analogWrite(value) geschriebene Wert entspricht einem Prozentsatz, der auch als Duty Cycle bezeichnet wird. Dieser Prozentsatz bezieht sich auf das Verhältnis der Zeit, die der High-Pegel in einem Zyklus einnimmt, also Duty Cycle = High-Pegel-Zeit / Zykluszeit.
 
- In the figure, from top to bottom, the duty cycle of the first square wave is 0%, and the corresponding value is 0, and the LED brightness is
-the lowest, that is, off state.  The longer the high level lasts, the brighter it will be.  Therefore, the value of the last duty cycle of 100% is 255, and the LED is the brightest.  50% is the brightest half, and 25% is darker.  
+Im Bild beträgt der Duty Cycle von oben nach unten beim ersten Rechtecksignal 0%, der entsprechende Wert ist 0, und die LED-Helligkeit ist am niedrigsten, also ausgeschaltet. Je länger der High-Pegel anhält, desto heller wird es. Daher ist der Wert des letzten Duty Cycles von 100% 255, und die LED ist am hellsten. 50% ist halb so hell, und 25% ist dunkler.
 
-PWM is more used to adjust the brightness of LED lights or the rotation speed of the motors, and the wheels speed driven by the motors can be easily controlled. When playing with some Arduino robots, the benefits of PWM can be better reflected. 
+PWM wird hauptsächlich verwendet, um die Helligkeit von LEDs oder die Drehzahl von Motoren einzustellen, und die von den Motoren angetriebenen Raddrehzahlen können leicht gesteuert werden. Beim Spielen mit einigen Arduino-Robotern kommen die Vorteile von PWM besser zur Geltung.
 
-**2.Components**
+### **2. Komponenten**
 
-| Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1          |
-| ------------------------- | ------------------------- | ------------------------- |
-| ![img](media/A42.jpg) | ![img](media/A43.jpg) | ![img](media/A44.jpg) |
-| 3P F-F Dupont Wire*1      | USB Cable*1               |                           |
-| ![img](media/A45.jpg) | ![img](media/A46.jpg) |                           |
+| Entwicklungsboard *1      | 8833 Motor Driver *1      | Rotes LED-Modul *1          |
+| ------------------------- | ------------------------- | --------------------------- |
+| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)       |
+| 3P F-F Dupont Kabel *1    | USB-Kabel *1              |                             |
+| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                             |
 
-**3.Wiring Diagram** 
+### **3. Schaltplan**
 
-Keep the wiring-up unchanged.
+Die Verkabelung bleibt unverändert.
 
 ![](media/A47.png)
 
-**4.Test Code**
+### **4. Testcode**
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Du kannst Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A55.png)
 
@@ -58,20 +56,18 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 (6).![](media/A60.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![](media/A61.png)
 
-**5.Test Result**
+### **5. Testergebnis**
 
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see that the LED gradually changes from bright to dark, like human’s breath, rather than turning on and off immediately.
+Nach erfolgreichem Hochladen des Codes auf das V4.0-Board verbinde die Verkabelung gemäß dem Schaltplan und verbinde das Board mit einem USB-Kabel mit dem Computer, um es mit Strom zu versorgen. Nach dem Einschalten siehst du, dass die LED allmählich von hell zu dunkel wechselt, ähnlich wie beim menschlichen Atmen, und nicht sofort ein- und ausgeschaltet wird.
 
-**6.Extension Practice**
+### **6. Erweiterte Übung**
 
-Keep pins of the LED unchanged, then change code(values behind wait)
+Behalte die Pins der LED unverändert und ändere dann den Code (Werte hinter wait).
 
 ![](media/A62.png)
 
-Upload the code to the development board, then the LED will blink more slowly.
-
-
+Laden Sie den Code auf das Entwicklungsboard hoch, dann blinkt die LED langsamer.

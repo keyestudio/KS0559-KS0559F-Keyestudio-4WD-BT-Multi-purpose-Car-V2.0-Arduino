@@ -1,30 +1,30 @@
-# Project 10 Restricting Smart Car
+# Projekt 10 Einschränkendes Smart Car
 
 ![](media/A261.jpeg)
 
-**1.Description**
+### **1. Beschreibung**
 
-In this project, we look to combine the knowledge of a line tracking sensor and motor driver modules to make a restricting smart car.  In the experiment, we aim to use the line tracking sensor to detect whether there is a black line around the smart car, and then control the rotation of the two motors according to the detection results in a way that lock the smart car in a circle drawn in black line.
+In diesem Projekt kombinieren wir das Wissen über einen Linienverfolgungssensor und Motortreiber-Module, um ein einschränkendes Smart Car zu bauen. Im Experiment wollen wir den Linienverfolgungssensor verwenden, um zu erkennen, ob sich eine schwarze Linie um das Smart Car befindet, und dann die Drehung der beiden Motoren entsprechend den Erkennungsergebnissen so steuern, dass das Smart Car in einem im Kreis gezogenen schwarzen Linien eingeschlossen wird.
 
-**2.Flow Chart**
+### **2. Flussdiagramm**
 
 ![img](media/A262.png)
 
-The specific logic of the restricting 4WD smart car is shown in the table.
+Die spezifische Logik des einschränkenden 4WD Smart Cars ist in der Tabelle dargestellt.
 
 ![Img](media/A263.png)
 
-**3.Wiring Diagram**
+### **3. Schaltplan**
 
 ![](media/A264.png)
 
-G, V, S1, S2 and S3 of the line tracking sensor are connected to G（GND), V（VCC), D11, D7 and D8 of the sensor expansion board.
+G, V, S1, S2 und S3 des Linienverfolgungssensors sind mit G (GND), V (VCC), D11, D7 und D8 des Sensor-Erweiterungsboards verbunden.
 
-The power is connected to the BAT port
+Die Stromversorgung ist mit dem BAT-Anschluss verbunden.
 
-**4.Test Code**
+### **4. Testcode**
 
-You can drag blocks to edit. Blocks listed below are for your reference.
+Sie können Blöcke ziehen, um zu bearbeiten. Die unten aufgeführten Blöcke dienen als Referenz.
 
 (1).![](media/A126.png)
 
@@ -38,14 +38,10 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 (6).![](media/A269.png)
 
-**Complete Test Code**
+**Vollständiger Testcode**
 
 ![KidsBlock Project-1747127137354](media/A270.png)
 
+### **5. Testergebnis**
 
-
-**5.Test Result**
-
-After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Put the smart car in the black circle, then it will move solely in the circle.
-
-
+Nachdem der Code erfolgreich auf das V4.0 Board hochgeladen wurde, verbinden Sie die Verkabelung gemäß dem Schaltplan, schalten Sie die externe Stromversorgung ein und stellen Sie den DIP-Schalter auf ON. Stellen Sie das Smart Car in den schwarzen Kreis, dann bewegt es sich ausschließlich im Kreis.
