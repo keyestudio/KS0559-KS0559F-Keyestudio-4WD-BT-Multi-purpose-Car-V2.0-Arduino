@@ -1,48 +1,48 @@
-# Projet 13 Voiture Intelligente à Évitement d’Obstacles Ultrasonique
+# Progetto 13 Auto Intelligente con Evitamento Ostacoli a Ultrasuoni
 
 ![](media/A296.png)
 
-### **1.Description**
+### **1.Descrizione**
 
-Dans ce projet, nous visons à réaliser une voiture intelligente à évitement d’obstacles ultrasonique. Nous utiliserons l’ultrason pour détecter la distance par rapport à l’obstacle, ce qui peut être utilisé pour contrôler le servo afin de faire tourner la voiture. Parallèlement, la matrice LED 8x16 affichera le motif de statut correspondant.
+In questo progetto, miriamo a realizzare un'auto intelligente con evitamento ostacoli a ultrasuoni. Utilizzeremo l'ultrasuono per rilevare la distanza dall'ostacolo, che può essere usata per controllare il servo per ruotare e far muovere l'auto. Nel frattempo, la scheda LED 8X16 mostrerà il corrispondente schema di stato.
 
-### **2.Diagramme de Flux**
+### **2.Diagramma di Flusso**
 
 ![img](media/A297.png)
 
-**La logique spécifique de la voiture intelligente à évitement d’obstacles ultrasonique est montrée ci-dessous :**
+**La logica specifica dell'auto intelligente con evitamento ostacoli a ultrasuoni è mostrata di seguito:**
 
 ![Img](media/A298.png)
 
 ![Img](media/A299.png)
 
-### **3.Schéma de Câblage**
+### **3.Diagramma di Collegamento**
 
 ![](media/A282.png)
 
-1). GND, VCC, SDA et SCL du module matrice LED 8\*8 sont connectés à G (GND), V (VCC), A4 et A5 de la carte d’extension.
+1). GND, VCC, SDA e SCL del modulo scheda LED 8\*8 sono collegati a G (GND), V (VCC), A4 e A5 della scheda di espansione.
 
-2). VCC, Trig, Echo et Gnd du capteur ultrasonique sont connectés à 5V (V), D12 (S), D13 (S) et Gnd (G).
+2). VCC, Trig, Echo e Gnd del sensore a ultrasuoni sono collegati a 5V (V), D12 (S), D13 (S) e Gnd (G).
 
-3). Le servo est connecté à G, V et A3. Le fil marron est connecté à Gnd (G), le fil rouge est connecté à 5V (V) et le fil orange est connecté à A3.
+3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso è collegato a 5V (V) e il filo arancione è collegato ad A3.
 
-4). L’alimentation est connectée au port BAT.
+4). L'alimentazione è collegata alla porta BAT.
 
-### **4.Code de Test**
+### **4.Codice di Test**
 
-Avant d’écrire le code, il est nécessaire d’importer les fichiers de bibliothèque du capteur ultrasonique, de la matrice LED 8x16 et du servo. Les étapes spécifiques sont les suivantes :
+Prima di scrivere il codice, è necessario importare i file di libreria del sensore a ultrasuoni, della scheda LED 8x16 e del servo. I passaggi specifici sono i seguenti:
 
-Cliquez sur ![](media/A29.png) pour entrer dans l’interface de la bibliothèque d’extensions des capteurs/modules/composants, puis recherchez le capteur “Ultrasonic” ![](media/A122.png) et cliquez dessus. Ainsi, "**Not loaded**" change en "**loaded**", indiquant que le capteur “**Ultrasonic**” a été ajouté avec succès.
+Clicca ![](media/A29.png) per entrare nell'interfaccia della libreria di estensione di sensori/moduli/componenti, poi cerca il sensore “Ultrasonic” ![](media/A122.png) e cliccaci sopra. In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il sensore “**Ultrasonic**” è stato aggiunto con successo.
 
 ![Img](media/A300.png)
 
 ![](/media/A284.png)
 
-Cliquez sur ![](media/A33.png) pour revenir à l’interface de l’éditeur de code, le bloc d’instructions du capteur “**Ultrasonic**”, du module “**Matrix 8\*16 Aip1640**” et du composant “**Servo**” peut être vu dans la zone des modules.
+Clicca ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, si possono vedere i blocchi di istruzioni del sensore “**Ultrasonic**”, del modulo “**Matrix 8\*16 Aip1640**” e del componente “**Servo**” nell'area moduli.
 
 ![](media/A285.png)
 
-Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
+Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
 
 (1).![](media/A126.png)
 
@@ -64,7 +64,7 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 (10).![](media/A291.png)
 
-**Code de Test Complet**
+**Codice di Test Completo**
 
 ![](media/A303.png)
 
@@ -74,8 +74,8 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 ![](media/A306.png)
 
-### **5.Résultat du Test**
+### **5.Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, alimentez la carte avec une source externe puis mettez l’interrupteur DIP sur ON.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo il diagramma di collegamento, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON.
 
-La voiture intelligente avance et évite automatiquement les obstacles. Lorsqu’il n’y a pas de route devant, le servo fera pivoter le capteur ultrasonique pour scanner les distances à gauche, au centre et à droite, et la voiture tournera vers le côté libre. Parallèlement, la matrice LED 8x16 affichera le motif de statut correspondant.
+L'auto intelligente si muove in avanti ed evita automaticamente gli ostacoli. Quando non c'è strada davanti, il servo guiderà il sensore a ultrasuoni a scansionare le distanze a sinistra, al centro e a destra, e l'auto girerà verso il lato aperto. Nel frattempo, la scheda LED 8X16 mostrerà il corrispondente schema di stato.

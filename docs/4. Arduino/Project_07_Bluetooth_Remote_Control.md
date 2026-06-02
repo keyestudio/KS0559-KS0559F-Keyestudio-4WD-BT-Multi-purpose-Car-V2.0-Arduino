@@ -1,70 +1,70 @@
-# Projet 7 Contrôle à distance Bluetooth
+# Progetto 7 Controllo Remoto Bluetooth
 
-### **1.Description**
+### **1.Descrizione**
 
 ![image-20250510083107283](media/A47.png)
 
-Ce kit contient un module Bluetooth DX-BT24 5.1. Ce module Bluetooth dispose d’un espace de 256Kb et est conforme à la spécification Bluetooth V5.1BLE, qui prend en charge les commandes AT. Les utilisateurs peuvent modifier des paramètres tels que le débit en bauds et le nom de l’appareil du port série selon leurs besoins.
+In questo kit è presente un modulo Bluetooth DX-BT24 5.1. Questo modulo bluetooth dispone di uno spazio di 256Kb e rispetta la specifica Bluetooth V5.1BLE, che supporta i comandi AT. Gli utenti possono modificare parametri come la velocità di trasmissione (baud rate) e il nome del dispositivo della porta seriale secondo necessità.
 
-De plus, il prend en charge l’interface UART et la transmission transparente du port série Bluetooth, ce qui inclut également les avantages d’un faible coût, d’une petite taille, d’une faible consommation d’énergie et d’une haute sensibilité pour l’envoi et la réception. Notamment, il nécessite seulement quelques composants périphériques pour réaliser ses fonctions puissantes.
+Inoltre, supporta l'interfaccia UART e la trasmissione trasparente della porta seriale bluetooth, che include anche i vantaggi di basso costo, dimensioni ridotte, basso consumo energetico e alta sensibilità per l'invio e la ricezione. Notevolmente, necessita solo di pochi componenti periferici per realizzare le sue potenti funzioni.
 
-### **2.Spécifications**
+### **2.Specifiche**
 
-- Protocole Bluetooth : Spécification Bluetooth V5.1 BLE
+- Protocollo Bluetooth: Bluetooth Specification V5.1 BLE
 
-- Distance de fonctionnement : En environnement ouvert, il peut atteindre une communication ultra-longue distance de 40m
+- Distanza di lavoro: In ambiente aperto, può raggiungere una comunicazione a ultra lunga distanza di 40m
 
-- Fréquence de fonctionnement : bande ISM 2,4 GHz
+- Frequenza operativa: banda ISM a 2.4GHz
 
-- Interface de communication : UART
+- Interfaccia di comunicazione: UART
 
-- Certification Bluetooth : Conforme aux normes de certification FCC CE ROHS REACH
+- Certificazione Bluetooth: Conforme agli standard di certificazione FCC CE ROHS REACH
 
-- Paramètres du port série : 9600, 8 bits de données, 1 bit de stop, bit invalide, pas de contrôle de flux
+- Parametri porta seriale: 9600, 8 bit dati, 1 bit di stop, bit di parità disabilitato, nessun controllo di flusso
 
-- Alimentation : 5V DC
+- Alimentazione: 5V DC
 
-- Température de fonctionnement : –10℃ à +65℃
+- Temperatura di esercizio: –10℃ a +65℃
 
-### **3.Application**
+### **3.Applicazione**
 
-Le module DX-BT24 prend également en charge le protocole BT5.1 BLE, qui peut être directement connecté aux appareils iOS avec fonction Bluetooth BLE, et prend en charge l’exécution résidente des programmes en arrière-plan. Il est principalement utilisé dans le domaine de la transmission de données sans fil à courte distance. Il permet d’éviter les connexions câblées encombrantes et peut remplacer directement les câbles série.
+Il modulo DX-BT24 supporta anche il protocollo BT5.1 BLE, che può essere collegato direttamente a dispositivi iOS con funzione Bluetooth BLE, e supporta l'esecuzione residente di programmi in background. È principalmente utilizzato nel campo della trasmissione wireless di dati a breve distanza. Permette di evitare collegamenti via cavo ingombranti e può sostituire direttamente i cavi seriali.
 
-**Domaines d’application réussis des modules BT24 :**
+**Aree di applicazione di successo dei moduli BT24:**
 
-※ Transmission de données sans fil Bluetooth ;
+※ Trasmissione dati wireless Bluetooth;
 
-※ Téléphone mobile, périphériques informatiques ;
+※ Periferiche per telefoni cellulari e computer;
 
-※ Équipement POS portable ;
+※ Dispositivi POS portatili;
 
-※ Transmission de données sans fil d’équipements médicaux ;
+※ Trasmissione dati wireless di apparecchiature mediche;
 
-※ Contrôle domotique intelligent ;
+※ Controllo domotico intelligente;
 
-※ Imprimante Bluetooth ;
+※ Stampanti Bluetooth;
 
-※ Jouets télécommandés Bluetooth ;
+※ Giocattoli telecomandati Bluetooth;
 
-※ Vélos en libre-service ;
+※ Biciclette condivise;
 
-### **4.Ports**
+### **4.Porte**
 
 ![420af966-aaa4-4736-9d35-2a9ccc7215f3](media/A48.png)
 
-①STATE : Broche d’état
+①STATE：Pin di stato
 
-②RX : Broche de réception
+②RX：Pin di ricezione
 
-③TX : Broche d’envoi
+③TX：Pin di trasmissione
 
-④GND : Masse
+④GND：GND
 
-⑤VCC : Alimentation
+⑤VCC：Alimentazione
 
-⑥EN : Broche d’activation
+⑥EN：Pin di abilitazione
 
-Connectez le module BT à la carte de développement.
+Collegare il modulo BT alla scheda di sviluppo.
 
 | Uno  | BT24 |
 | :--: | :--: |
@@ -73,27 +73,27 @@ Connectez le module BT à la carte de développement.
 | VCC  |  5V  |
 | GND  | GND  |
 
-### **5.Composants**
+### **5.Componenti**
 
-|           Carte de développement *1           |           Driver moteur 8833 *1           |                       Module LED rouge *1                       |
-| :--------------------------------------------: | :---------------------------------------: | :-------------------------------------------------------------: |
+|           Scheda di sviluppo *1           |           Driver motore 8833 *1           |                       Modulo LED Rosso *1                       |
+| :--------------------------------------: | :--------------------------------------: | :-------------------------------------------------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) |                   ![img](media/A10.jpg)                   |
-|             Fil Dupont 3P *1             |               Câble USB *1                |                  Module Bluetooth DX-BT24 *1                  |
+|             Cavo Dupont 3P *1             |               Cavo USB *1                |                  Modulo Bluetooth DX-BT24 *1                  |
 |         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         | ![image-20250510083534209](media/A49.png) |
 
-### **6.Schéma de câblage**
+### **6.Diagramma di collegamento**
 
 ![image-20250510083927915](media/A50.png)
 
-RXD, TXD, GND et VCC du module BT sont connectés respectivement à TX, RX, G et 5V.
+RXD, TXD, GND e VCC del modulo BT sono collegati rispettivamente a TX, RX, G e 5V.
 
-STATE et BRK du module BT n’ont pas besoin d’être connectés.
+STATE e BRK del modulo BT non necessitano di collegamento.
 
-<span style="color: rgb(255, 76, 65);">Note : faites attention à la direction du module BT lors de son insertion sur la carte 8833. Ne l’insérez pas avant d’avoir téléversé le code.</span> 
+<span style="color: rgb(255, 76, 65);">Nota: la direzione del modulo BT quando viene inserito sulla scheda 8833. E non inserirlo prima di caricare il codice.</span> 
 
-### **7.Code de test**
+### **7.Codice di test**
 
-<span style="color: rgb(255, 76, 65);">**Note :** Avant de téléverser le code de test, vous devez retirer le module Bluetooth, sinon le code ne pourra pas être téléversé. Reconnectez le module Bluetooth après un téléversement réussi.</span>
+<span style="color: rgb(255, 76, 65);">**Nota:** Prima di caricare il codice di test, è necessario rimuovere il modulo Bluetooth, altrimenti il caricamento del codice fallirà. Collegare il modulo Bluetooth dopo aver caricato correttamente il codice.</span>
 
 ```c
 //***********************************************************************
@@ -103,101 +103,98 @@ lesson 7.1
 Bluetooth 
 http://www.keyestudio.com
 */
-char ble_val; //variable caractère, utilisée pour stocker la valeur reçue par Bluetooth 
+char ble_val; //variabile carattere, usata per memorizzare il valore ricevuto dal Bluetooth 
 
+```cpp
 void setup() {
   Serial.begin(9600);
 }
 void loop() {
-  if(Serial.available() > 0)  // s'assurer qu'il y a des données dans le tampon série
+  if(Serial.available() > 0)  // assicurarsi che ci siano dati nel buffer seriale
   {
-    ble_val = Serial.read();  // Lire les données du tampon série
-    Serial.println(ble_val);  // Afficher
+    ble_val = Serial.read();  // Leggi i dati dal buffer seriale
+    Serial.println(ble_val);  // Stampa
   }
 }
 //***********************************************************************
 ```
 
-### **8. Résultat du test**
+### **8. Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, puis connectez l'ordinateur via un câble USB pour alimenter la carte. Après la mise sous tension, insérez le module BT et la LED clignotera, puis nous devons télécharger l'application BT.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, quindi collegare il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, inserire il modulo BT e il LED lampeggerà, quindi è necessario scaricare l'app BT.
 
-### **9. Télécharger l'application Bluetooth**
+### **9. Scarica l'APP Bluetooth**
 
-**Système Apple**
+**Sistema Apple**
 
-(1). Ouvrez l'App Store sur l'iPhone.
+(1). Aprire l'App Store sull'iPhone.
 
-(2). Recherchez keyes BT car et téléchargez l'application sur votre téléphone.
-
-
+(2). Cercare keyes BT car e scaricare l'APP sul telefono.
 
 ![image-20250510084716811](media/A51.png)
     
-
-(3). Après l'installation, entrez dans son interface.
+(3). Dopo l'installazione, entrare nella sua interfaccia.
 
 ![image-20250510084812821](media/A52.png)
     
-
-(4). Cliquez sur le bouton "**Connect**" en haut à gauche pour rechercher automatiquement le Bluetooth. Lorsque **BT24** est trouvé, cliquez sur "**Connect**" pour connecter le Bluetooth, puis cliquez sur ![image-20250510084833837](media/A53.png) pour entrer dans l'interface de contrôle de la voiture intelligente 4WD. 
+(4). Cliccare il pulsante "**Connect**" nell'angolo in alto a sinistra per cercare automaticamente il Bluetooth. Quando viene trovato **BT24**, cliccare "**Connect**" per connettere il Bluetooth, quindi cliccare ![image-20250510084833837](media/A53.png) per entrare nell'interfaccia di controllo dell'auto smart 4WD.
 
 ![image-20250510084902641](media/A54.png)
-    **Système Android**
-    
 
-(1). Entrez dans le Google Play Store pour rechercher “keyes 4wd”.
+**Sistema Android**
+
+(1). Entrare nel Google Play Store e cercare “keyes 4wd”.
 
 ![image-20250510084916086](media/A55.png)
 
-(2). L'icône de l'application s'affiche ci-dessous après l'installation.
+(2). L'icona dell'app appare come mostrato dopo l'installazione.
 
 ![image-20250510084933465](media/A56.png)
 
-(3). Cliquez sur l'application pour entrer dans la page suivante.
+(3). Cliccare sull'app per entrare nella pagina seguente.
 
 ![image-20250510084946146](media/A57.png)
 
-(4). Après avoir connecté le Bluetooth, branchez l'alimentation et le témoin LED du module Bluetooth clignotera. Appuyez sur “**Connect**” pour rechercher le Bluetooth.
+(4). Dopo aver connesso il Bluetooth, collegare l'alimentazione e l'indicatore LED del modulo Bluetooth lampeggerà. Toccare “**Connect**” per cercare il Bluetooth.
 
 ![image-20250510085007028](media/A58.png)
 
-(5). Lorsque **BT24** est trouvé, cliquez sur "Connect" pour connecter le Bluetooth. Lorsque "**Connect**" devient "**is Connected**", cela indique que la connexion Bluetooth est réussie. Comme montré sur l'image ci-dessous, la LED Bluetooth restera allumée.
+(5). Quando viene trovato **BT24**, cliccare "Connect" per connettere il Bluetooth. Quando "**Connect**" diventa "**is Connected**", significa che la connessione Bluetooth è avvenuta con successo. Come mostrato nell'immagine sottostante, il LED Bluetooth rimane acceso.
 
 ![image-20250510085026219](media/A59.png)
 
-(6). Après avoir connecté le module Bluetooth, ouvrez le moniteur série pour régler le débit en bauds à 9600. En appuyant sur le bouton de l'application Bluetooth, les caractères correspondants s'afficheront, comme montré ci-dessous :
+(6). Dopo aver connesso il modulo Bluetooth, aprire il monitor seriale e impostare la velocità di trasmissione a 9600 baud. Premendo il pulsante dell'APP Bluetooth, verranno visualizzati i caratteri corrispondenti, come mostrato di seguito:
 
 ![image-20250510085039562](media/A60.png)
 
-| Touche                    | Fonction                          |
+| Tasto                     | Funzione                          |
 | ------------------------- | --------------------------------- |
-| ![img](./media/A61.jpg) | Jumeler le module Bluetooth DX-BT24 5.1 |
-| ![img](./media/A62.jpg) | Déconnecter le Bluetooth              |
+| ![img](./media/A61.jpg)   | Associa modulo Bluetooth DX-BT24 5.1 |
+| ![img](./media/A62.jpg)   | Disconnetti Bluetooth              |
 
-|                           | Caractère de contrôle                                        | Caractère de contrôle                                        |
+|                           | Carattere di controllo                                      | Carattere di controllo                                      |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![img](media/A63.jpg) | Appuyer : F  <br />Relâcher : S                              | Appuyez sur le bouton, la voiture avance ; <br />relâchez pour arrêter |
-| ![img](media/A64.jpg) | Appuyer : L  <br />Relâcher : S                              | Appuyez sur le bouton, la voiture tourne à gauche ; <br />relâchez pour arrêter  |
-| ![img](media/A65.jpg) | Appuyer : R  <br />Relâcher : S                              | Appuyez sur le bouton, la voiture tourne à droite ; <br />relâchez pour arrêter |
-| ![img](media/A66.jpg) | Appuyer : B  <br />Relâcher : S                              | Appuyez sur le bouton, la voiture recule ; <br />relâchez pour arrêter   |
-| ![img](media/A67.jpg) | Appuyer : “a”  <br />Relâcher : “S”                          | Cliquez pour accélérer (maximum : 255)                        |
-| ![img](media/A68.jpg) | Appuyer : “d”  <br />Relâcher : “S”                          | Cliquez pour ralentir (minimum : 0)                           |
-| ![img](media/A69.jpg) | Cliquez pour démarrer la fonction de détection <br />de gravité du <br />téléphone mobile : cliquez de nouveau pour <br />quitter le contrôle par détection de gravité |                                                              |
-| ![img](media/A70.jpg) | Cliquez pour envoyer “X”, <br />cliquez de nouveau pour envoyer “S” | Démarrer la fonction de suivi de ligne ; <br />cliquez de nouveau pour quitter      |
-| ![img](media/A71.jpg) | Cliquez pour envoyer “Y”, <br />cliquez de nouveau pour envoyer “S” | Démarrer la fonction d’évitement ultrasonique ; <br />cliquez de nouveau pour quitter |
-| ![img](media/A72.jpg) | Cliquez pour envoyer “U”, <br />cliquez de nouveau pour envoyer “S” | Démarrer la fonction de suivi ultrasonique ; <br />cliquez de nouveau pour quitter |
-| ![img](media/A73.jpg) | Cliquez pour envoyer “G”, <br />cliquez de nouveau pour envoyer “S” | Démarrer la fonction de restriction ;<br /> cliquez de nouveau pour quitter       |
+| ![img](media/A63.jpg) | Premere: F  <br />Rilasciare: S                             | Premere il pulsante, l'auto va avanti; <br />rilasciare per fermarsi |
+| ![img](media/A64.jpg) | Premere: L  <br />Rilasciare: S                             | Premere il pulsante, l'auto gira a sinistra; <br />rilasciare per fermarsi  |
+| ![img](media/A65.jpg) | Premere: R  <br />Rilasciare: S                             | Premere il pulsante, l'auto gira a destra; <br />rilasciare per fermarsi |
+| ![img](media/A66.jpg) | Premere: B  <br />Rilasciare: S                             | Premere il pulsante, l'auto va indietro; <br />rilasciare per fermarsi   |
+| ![img](media/A67.jpg) | Premere: “a”  <br />Rilasciare: “S”                         | Clicca per accelerare (massimo:255)                          |
+| ![img](media/A68.jpg) | Premere: “d”  <br />Rilasciare: “S”                         | Clicca per rallentare (minimo:0)                             |
+| ![img](media/A69.jpg) | Clicca per avviare la funzione di <br />rilevamento della gravità del <br />telefono cellulare: clicca di nuovo per <br />uscire dal controllo di rilevamento della gravità |                                                              |
+| ![img](media/A70.jpg) | Clicca per inviare “X”, <br />clicca di nuovo per inviare “S” | Avvia la funzione di tracciamento della linea; <br />clicca di nuovo per uscire      |
+| ![img](media/A71.jpg) | Clicca per inviare “Y”, <br />clicca di nuovo per inviare “S” | Avvia la funzione di evitamento ad ultrasuoni; <br />clicca di nuovo per uscire |
+| ![img](media/A72.jpg) | Clicca per inviare “U”, <br />clicca di nuovo per inviare “S” | Avvia la funzione di inseguimento ad ultrasuoni; <br />clicca di nuovo per uscire |
+| ![img](media/A73.jpg) | Clicca per inviare “G”, <br />clicca di nuovo per inviare “S” | Avvia la funzione di restrizione; <br />clicca di nuovo per uscire       |
 
-### **10. Explication du code**
+### **10. Spiegazione del Codice**
 
-**Serial.available()** : Retourne le nombre de caractères actuellement présents dans le tampon du port série. Généralement, cette fonction est utilisée pour vérifier s’il y a des données dans le tampon du port série. Lorsque Serial.available() > 0, cela signifie que le port série a reçu des données et peut être lu ;
+**Serial.available()** : Restituisce il numero di caratteri attualmente presenti nel buffer della porta seriale. Generalmente, questa funzione viene utilizzata per verificare se ci sono dati nel buffer della porta seriale. Quando Serial.available() > 0, significa che la porta seriale ha ricevuto dati e possono essere letti;
 
-**Serial.read() :** Fait référence à la lecture et à la récupération d’un octet de données depuis le tampon du port série. Par exemple, si un appareil envoie des données à Arduino via le port série, on peut utiliser Serial.read() pour lire les données envoyées.
+**Serial.read() :** Si riferisce all'estrazione e alla lettura di un Byte di dati dal buffer della porta seriale. Ad esempio, se un dispositivo invia dati ad Arduino tramite la porta seriale, possiamo usare Serial.read() per leggere i dati inviati.
 
-### **11. Pratique d’extension**
+### **11. Pratica Estesa**
 
-Ici, nous cherchons à utiliser la commande envoyée par le téléphone mobile pour allumer ou éteindre une LED. En regardant le schéma de câblage, une LED est connectée à la broche D9.
+Qui vediamo come utilizzare il comando inviato dal telefono cellulare per accendere o spegnere un LED. Guardando lo schema di collegamento, un LED è collegato al pin D9.
 
 ![image-20250510085856954](media/A74.png)
 
@@ -210,7 +207,7 @@ Ici, nous cherchons à utiliser la commande envoyée par le téléphone mobile p
  http://www.keyestudio.com
 */ 
 int ledpin=9;
-char ble_val;// Une variable entière utilisée pour stocker la valeur reçue par Bluetooth
+char ble_val;// Una variabile intera usata per memorizzare il valore ricevuto via Bluetooth
 
 void setup()
 {
@@ -220,22 +217,22 @@ void setup()
 
 void loop()
 { 
-  if (Serial.available() > 0) //Vérifie s’il y a des données dans le cache du port série
+  if (Serial.available() > 0) //Controlla se ci sono dati nella cache della porta seriale
   {
-    ble_val = Serial.read();  //Lit les données du cache du port série
-    Serial.print("DATA RECEIVED:");
+    ble_val = Serial.read();  //Legge i dati dalla cache della porta seriale
+    Serial.print("DATI RICEVUTI:");
     Serial.println(ble_val);
     if (ble_val == 'F') {
       digitalWrite(ledpin, HIGH);
-      Serial.println("led on");
+      Serial.println("led acceso");
     }
     if (ble_val == 'B') {
       digitalWrite(ledpin, LOW);
-      Serial.println("led off");
+      Serial.println("led spento");
     }
    }
 }
 //****************************************************************************
 ```
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, puis connectez l'ordinateur via un câble USB pour alimenter la carte. Après la mise sous tension, cliquez sur ![image-20250510085919039](media/A75.png) et ![image-20250510085931709](media/A76.png) pour contrôler l'allumage et l'extinction de la LED.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, quindi collega il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, clicca su ![image-20250510085919039](media/A75.png) e ![image-20250510085931709](media/A76.png) per controllare l'accensione e lo spegnimento del LED.

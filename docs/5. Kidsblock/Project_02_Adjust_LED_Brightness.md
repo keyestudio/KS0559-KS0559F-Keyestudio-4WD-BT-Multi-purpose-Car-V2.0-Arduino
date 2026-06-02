@@ -1,48 +1,48 @@
-# Projet 2 : Ajuster la luminosité de la LED
+# Progetto 2: Regolare la Luminosità del LED
 
-### **1.Description**
+### **1.Descrizione**
 
-Dans la leçon précédente, nous avons contrôlé l’allumage et l’extinction de la LED et l’avons fait clignoter.
+Nella lezione precedente, abbiamo controllato l'accensione e lo spegnimento del LED e lo abbiamo fatto lampeggiare.
 
-Dans ce projet, nous allons contrôler la luminosité de la LED via le PWM simulant un effet de respiration.
+In questo progetto, controlleremo la luminosità del LED tramite PWM simulando un effetto di respiro.
 
-Le PWM est un moyen de contrôler la sortie analogique par des moyens numériques. Le contrôle numérique est utilisé pour générer des ondes carrées avec différents cycles de service (un signal qui alterne constamment entre des niveaux haut et bas) pour contrôler la sortie analogique. En général, les tensions d’entrée des ports sont 0V et 5V.
+PWM è un mezzo per controllare l'uscita analogica tramite metodi digitali. Il controllo digitale viene utilizzato per generare onde quadre con diversi cicli di lavoro (un segnale che passa costantemente tra livelli alti e bassi) per controllare l'uscita analogica. In generale, le tensioni di ingresso delle porte sono 0V e 5V.
 
-Que faire si 3V sont nécessaires ? Ou un commutateur entre 1V, 3V et 3,5V ? Nous ne pouvons pas changer constamment les résistances. Pour cette raison, nous utilisons le PWM.
+Cosa succede se è necessario 3V? O un interruttore tra 1V, 3V e 3,5V? Non possiamo cambiare continuamente le resistenze. Per questo motivo, ricorriamo al PWM.
 
 ![](media/A53.gif)
 
-Pour la sortie de tension du port numérique Arduino, il n’y a que LOW et HIGH, qui correspondent à une sortie de tension de 0V et 5V. Vous pouvez définir LOW comme 0 et HIGH comme 1, et laisser l’Arduino émettre cinq cents signaux 0 ou 1 en 1 seconde.
+Per l'uscita di tensione della porta digitale Arduino, ci sono solo LOW e HIGH, che corrispondono all'uscita di tensione di 0V e 5V. Puoi definire LOW come 0 e HIGH come 1, e lasciare che Arduino emetta cinquecento segnali 0 o 1 in 1s.
 
-Si tous les cinq cents signaux sont 1, cela correspond à 5V ; si tous sont 0, cela correspond à 0V. Si la sortie est 010101010101 de cette manière, alors la sortie du port est de 2,5V, ce qui est comme un film. Le film que nous regardons n’est pas complètement continu. Il affiche en fait 25 images par seconde. Dans ce cas, l’humain ne peut pas le voir, pas plus que le PWM. Si nous voulons une tension différente, nous devons contrôler le ratio de 0 et 1. Plus il y a de signaux 0,1 émis par unité de temps, plus le contrôle est précis.
+Se tutti i cinquecento output sono 1, cioè 5V; se tutti sono 0, cioè 0V. Se l'output è 010101010101 in questo modo, allora la porta di uscita è 2,5V, che è come mostrare un film. Il film che guardiamo non è completamente continuo. In realtà emette 25 immagini al secondo. In questo caso, l'occhio umano non lo vede, né lo fa il PWM. Se vogliamo una tensione diversa, dobbiamo controllare il rapporto tra 0 e 1. Più segnali 0,1 vengono emessi per unità di tempo, più preciso sarà il controllo.
 
-Le PWM est une technologie qui utilise des méthodes numériques pour obtenir des quantités analogiques. Le contrôle numérique permet de former une onde carrée, le signal d’onde carrée n’a que deux états, marche et arrêt (haut et bas). Une tension allant de 0 à 5V peut être simulée en contrôlant le rapport entre la durée de marche et d’arrêt. Le temps passé en marche (appelé techniquement niveau haut) est appelé largeur d’impulsion, donc le PWM est aussi appelé modulation de largeur d’impulsion.
+PWM è una tecnologia che utilizza metodi digitali per ottenere quantità analogiche. Il controllo digitale consente di formare un'onda quadra, il segnale a onda quadra ha solo due stati on e off (alto e basso). Una tensione che va da 0 a 5V può essere simulata controllando il rapporto tra durata on e off. Il tempo trascorso in on (tecnicamente chiamato livello alto) è chiamato larghezza dell'impulso, quindi PWM è anche chiamato modulazione della larghezza dell'impulso.
 
 ![](media/A54.png)
 
-Les barres verticales vertes représentent une période de l’onde carrée. La valeur écrite dans chaque analogWrite(value) correspond à un pourcentage, appelé aussi cycle de service (Duty Cycle). Ce pourcentage fait référence au rapport du temps occupé par le niveau haut dans un cycle, c’est-à-dire cycle de service = temps niveau haut / temps du cycle.
+Le barre verticali verdi rappresentano un periodo dell'onda quadra. Il valore scritto in ogni analogWrite(value) corrisponde a una percentuale, chiamata anche Duty Cycle. Questa percentuale si riferisce al rapporto del tempo occupato dal livello alto in un ciclo, cioè duty cycle = tempo livello alto/tempo ciclo.
 
-Dans la figure, de haut en bas, le cycle de service de la première onde carrée est de 0%, et la valeur correspondante est 0, et la luminosité de la LED est la plus faible, c’est-à-dire éteinte. Plus la durée du niveau haut est longue, plus la LED sera brillante. Par conséquent, la valeur du dernier cycle de service de 100% est 255, et la LED est la plus brillante. 50% correspond à une luminosité à moitié maximale, et 25% est plus faible.
+Nella figura, dall'alto verso il basso, il duty cycle della prima onda quadra è 0%, e il valore corrispondente è 0, e la luminosità del LED è la più bassa, cioè spento. Più a lungo dura il livello alto, più sarà luminoso. Pertanto, il valore dell'ultimo duty cycle del 100% è 255, e il LED è il più luminoso. Il 50% è metà luminoso, e il 25% è più scuro.
 
-Le PWM est principalement utilisé pour ajuster la luminosité des LED ou la vitesse de rotation des moteurs, et la vitesse des roues entraînées par les moteurs peut être facilement contrôlée. Lorsqu’on joue avec certains robots Arduino, les avantages du PWM sont mieux mis en valeur.
+PWM è più usato per regolare la luminosità delle luci LED o la velocità di rotazione dei motori, e la velocità delle ruote azionate dai motori può essere facilmente controllata. Quando si gioca con alcuni robot Arduino, i vantaggi del PWM si riflettono meglio.
 
-### **2.Composants**
+### **2.Componenti**
 
-| Carte de développement *1 | Driver moteur 8833 *1 | Module LED rouge *1 |
-| ------------------------- | --------------------- | ------------------- |
-| ![img](media/A42.jpg)     | ![img](media/A43.jpg) | ![img](media/A44.jpg) |
-| Câble Dupont 3P F-F *1    | Câble USB *1          |                     |
-| ![img](media/A45.jpg)     | ![img](media/A46.jpg) |                     |
+| Scheda di Sviluppo *1      | Driver Motore 8833 *1      | Modulo LED Rosso*1          |
+| ------------------------- | ------------------------- | ------------------------- |
+| ![img](media/A42.jpg) | ![img](media/A43.jpg) | ![img](media/A44.jpg) |
+| Cavo Dupont 3P F-F*1      | Cavo USB*1               |                           |
+| ![img](media/A45.jpg) | ![img](media/A46.jpg) |                           |
 
-**3.Schéma de câblage**
+### **3.Diagramma di Collegamento**
 
-Gardez le câblage inchangé.
+Mantieni il cablaggio invariato.
 
 ![](media/A47.png)
 
-### **4.Code de test**
+### **4.Codice di Test**
 
-Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
+Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
 
 (1).![](media/A55.png)
 
@@ -56,18 +56,18 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 (6).![](media/A60.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
 ![](media/A61.png)
 
-### **5.Résultat du test**
+### **5.Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câbles selon le schéma de câblage, et utilisez un câble USB pour connecter l’ordinateur afin d’alimenter la carte. Après la mise sous tension, vous verrez que la LED change progressivement de lumineux à sombre, comme la respiration humaine, plutôt que de s’allumer et s’éteindre immédiatement.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo il diagramma di collegamento e usa un cavo USB per collegare il computer per alimentare la scheda. Dopo l'accensione, vedrai che il LED cambia gradualmente da luminoso a spento, come il respiro umano, invece di accendersi e spegnersi immediatamente.
 
-### **6.Pratique d’extension**
+### **6.Esercizio di Estensione**
 
-Gardez les broches de la LED inchangées, puis modifiez le code (valeurs derrière wait)
+Mantieni i pin del LED invariati, poi cambia il codice (valori dietro wait)
 
 ![](media/A62.png)
 
-Téléversez le code sur la carte de développement, puis la LED clignotera plus lentement.
+Carica il codice sulla scheda di sviluppo, quindi il LED lampeggerà più lentamente.

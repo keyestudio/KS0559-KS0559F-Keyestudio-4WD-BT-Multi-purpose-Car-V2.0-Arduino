@@ -10,12 +10,18 @@
 
 
 
-4.5 Arduino - Projets
+4.5 Arduino - Progetti
 -----------------------
 
-![](./media/A5.jpeg)
+|image1|
 
-<font color ="#FF0000">**Note : Dans ce cours, l'interface de chaque capteur/module marqué avec (G, -, GND) indique la borne négative, G est connecté à G ou GND du shield capteur ou de la carte de contrôle ; “V” est la borne positive et connectée à V, VCC ou 5V.**</font>
+
+**Nota: In questo corso, l'interfaccia di ogni sensore/modulo
+contrassegnata con (G, -, GND) indica il polo negativo, G è collegato a
+G o GND dello shield sensore o della scheda di controllo; “V” è il polo
+positivo ed è collegato a V, VCC o 5V.**
+
+
 
 
 .. toctree::
@@ -41,7 +47,7 @@
     Project_17_Multi_purpose_Bluetooth_Smart_Car
 
 
-
+.. |image1| image:: ./media/A5.jpeg
 
 
 

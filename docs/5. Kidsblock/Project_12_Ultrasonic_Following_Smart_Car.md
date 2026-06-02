@@ -1,104 +1,104 @@
-# Projet 12 Voiture Intelligente Suiveuse Ultrasonique
+# Progetto 12 Auto Intelligente a Inseguimento Ultrasonico
 
 ![](media/A280.png)
 
-### **1.Description**
+### **1.Descrizione**
 
-Dans ce projet, nous allons détecter la distance entre la voiture intelligente 4WD et les obstacles devant elle grâce à un capteur ultrasonique afin de piloter deux moteurs de manière à faire avancer la voiture et afficher un motif de visage souriant sur la matrice LED 8\*8.
+In questo progetto, cercheremo di rilevare la distanza tra l'auto intelligente 4WD e gli ostacoli davanti tramite un sensore ultrasonico per pilotare due motori in modo che l'auto si muova e faccia mostrare alla scheda LED 8\*8 un motivo facciale sorridente.
 
-### **2.Diagramme de Flux**
+### **2.Diagramma di Flusso**
 
 ![img](media/A281.png)
 
 <table border="1">
 <tbody>
 <tr class="odd">
-<td>Détection</td>
-<td>Distance mesurée des obstacles devant</td>
-<td>distance (unité : cm)</td>
+<td>Rilevamento</td>
+<td>Distanza misurata degli ostacoli frontali</td>
+<td>distanza (unità: cm)</td>
 </tr>
 <tr class="even">
-<td>Paramétrage</td>
-<td>La matrice LED 8*16 affiche un motif souriant.</td>
+<td>Impostazione</td>
+<td>La scheda LED 8*16 mostra un motivo sorridente.</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Positionner le servo à 90°</td>
+<td>Imposta il servo a 90°</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condition</td>
-<td>distance≥20 et distance≤50</td>
+<td>Condizione</td>
+<td>distanza≥20 e distanza≤50</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>État</td>
-<td>Avancer</td>
+<td>Stato</td>
+<td>Avanti</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condition</td>
-<td>distance＞10 et distance＜20</td>
+<td>Condizione</td>
+<td>distanza＞10 e distanza＜20</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>distance＞50</td>
+<td>distanza＞50</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condition</td>
-<td>arrêt</td>
+<td>Condizione</td>
+<td>fermo</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>Condition</td>
-<td>distance≤10</td>
+<td>Condizione</td>
+<td>distanza≤10</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condition</td>
-<td>Reculer</td>
+<td>Condizione</td>
+<td>Indietro</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 
 
-### **3.Schéma de Câblage**
+### **3.Diagramma di Collegamento**
 
 ![](media/A282.png)
 
-**Câblage :**
+**Collegamenti:**
 
-1). GND, VCC, SDA et SCL de la matrice LED 8\*8 sont connectés à G (GND), V (VCC), A4 et A5 de la carte d’extension.
+1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati a G (GND), V (VCC), A4 e A5 della scheda di espansione.
 
-2). VCC, Trig, Echo et Gnd du capteur ultrasonique sont connectés à 5V (V), D12 (S), D13 (S) et Gnd (G).
+2). VCC, Trig, Echo e Gnd del sensore ultrasonico sono collegati a 5V (V), D12 (S), D13 (S) e Gnd (G).
 
-3). Le servo est connecté à G, V et A3. Le fil marron est connecté à Gnd (G), le fil rouge à 5V (V) et le fil orange à A3.
+3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso è collegato a 5V (V) e il filo arancione è collegato ad A3.
 
-4). L’alimentation est connectée au port BAT.
+4). L'alimentazione è collegata alla porta BAT.
 
-### **4.Code de Test**
+### **4.Codice di Test**
 
-Avant d’écrire le code, il est nécessaire d’importer les fichiers de bibliothèque du capteur ultrasonique, de la matrice LED 8x16 et du servo. Les étapes spécifiques sont les suivantes :
+Prima di scrivere il codice, è necessario importare i file di libreria del sensore ultrasonico, della scheda LED 8x16 e del servo. I passaggi specifici sono i seguenti:
 
-Cliquez sur ![](media/A29.png) pour entrer dans l’interface de la bibliothèque d’extensions des capteurs/modules/composants, puis recherchez le capteur “Ultrasonic” ![](media/A122.png) et cliquez dessus.
+Clicca ![](media/A29.png) per entrare nell'interfaccia della libreria di estensione di sensori/moduli/componenti, poi cerca il sensore “Ultrasonic” ![](media/A122.png) e cliccalo.
 
-Ainsi, "**Not loaded**" change en "**loaded**", indiquant que le capteur “**Ultrasonic**” a été ajouté avec succès.
+In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il sensore “**Ultrasonic**” è stato aggiunto con successo.
 
 ![Img](media/A283.png)
 
 ![](/media/A284.png)
 
-Les fichiers de bibliothèque de la matrice LED 8x16 et du servo sont ajoutés de la même manière que pour le capteur ultrasonique.
+I file di libreria della scheda LED 8x16 e del servo sono aggiunti allo stesso modo del sensore ultrasonico.
 
-Cliquez sur ![](media/A33.png) pour revenir à l’interface de l’éditeur de code, le bloc d’instructions du capteur “**Ultrasonic**”, du module “**Matrix 8\*16 Aip1640**” et du composant “**Servo**” peut être vu dans la zone des modules.
+Clicca ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, il blocco di istruzioni del sensore “**Ultrasonic**”, del modulo “**Matrix 8\*16 Aip1640**” e del componente “**Servo**” può essere visto nell'area modulo.
 
 ![](media/A285.png)
 
-Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence
+Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento
 
 (1).![](media/A126.png)
 
@@ -118,7 +118,7 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 (9).![](media/A292.png)
 
-**Code de Test Complet**
+**Codice di Test Completo**
 
 ![](media/A293.png)
 
@@ -126,6 +126,6 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 ![](media/A295.png)
 
-### **5.Résultat du Test**
+### **5.Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma, alimentez la carte externe puis mettez l’interrupteur DIP sur ON. Positionnez le servo à 90°, la voiture intelligente se déplacera en fonction des obstacles et la matrice LED 8X16 affichera un “sourire”.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo il diagramma di collegamento, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON. Imposta il servo a 90°, l'auto intelligente si muoverà in base agli ostacoli e la scheda LED 8X16 mostrerà un “sorriso”.

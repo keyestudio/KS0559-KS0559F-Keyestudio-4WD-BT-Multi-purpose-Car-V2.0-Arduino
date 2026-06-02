@@ -1,44 +1,44 @@
-# Projet 1 Clignotement LED
+# Progetto 1 LED Blink
 
-### **1.Description**
+### **1.Descrizione**
 
 ![](media/A40.jpeg)
 
-Pour les débutants et les passionnés, le clignotement LED est un programme fondamental. LED, l'abréviation de diodes électroluminescentes, est composée de composés chimiques tels que Ga, As, P, N, etc.
+Per principianti e appassionati, LED Blink è un programma fondamentale. LED, abbreviazione di light emitting diodes, è composto da composti chimici come Ga, As, P, N e così via.
 
-La LED peut clignoter en différentes couleurs en modifiant le temps de délai dans le code de test. Lorsqu'elle est contrôlée, alimentée en GND et VCC, la LED s'allume si la broche S est à un niveau haut, sinon elle s'éteint.
+Il LED può lampeggiare in diversi colori modificando il tempo di ritardo nel codice di prova. Quando è sotto controllo, alimentando GND e VCC, il LED si accenderà se il terminale S è a livello alto, altrimenti si spegnerà.
 
-### **2.Spécifications**
+### **2.Specifiche**
 
-- Interface de contrôle : port numérique
+- Interfaccia di controllo: porta digitale
 
-- Tension de fonctionnement : DC 3.3-5V
+- Tensione di lavoro: DC 3.3-5V
 
-- Espacement des broches : 2.54mm
+- Spaziatura pin: 2.54mm
 
-- Couleur d'affichage LED : rouge
+- Colore display LED: rosso
 
 ![](media/A41.png)
 
-### **3.Composants**
+### **3.Componenti**
 
-| Carte de développement *1 | Driver moteur 8833 *1     | Module LED rouge *1       |
+| Scheda di sviluppo *1      | Driver motore 8833 *1      | Modulo LED rosso*1          |
 | ------------------------- | ------------------------- | ------------------------- |
-| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)     |
-| Câble Dupont 3P F-F *1    | Câble USB *1              |                           |
-| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                           |
+| ![img](media/A42.jpg) | ![img](media/A43.jpg) | ![img](media/A44.jpg) |
+| Cavo Dupont 3P F-F*1      | Cavo USB*1               |                           |
+| ![img](media/A45.jpg) | ![img](media/A46.jpg) |                           |
 
-### **4.Schéma de câblage**
+### **4.Diagramma di collegamento**
 
 ![](media/A47.png)
 
-Comme on peut le voir sur la figure ci-dessus, la carte d'extension driver moteur Keyestudio 8833 est empilée sur la carte de développement Keyestudio 4.0.
+Come si vede dalla figura sopra, la scheda di espansione driver motore Keyestudio 8833 è impilata sulla scheda di sviluppo Keyestudio 4.0.
 
-Les broches G, V et S du module LED sont respectivement connectées à G, 5V et D9 de la carte d'extension.
+I pin G, V e S del modulo LED sono collegati rispettivamente a G, 5V e D9 della scheda di espansione.
 
-### **5.Code de test**
+### **5.Codice di prova**
 
-Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
+Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono a titolo di riferimento.
 
 (1).![](media/A48.png)
 
@@ -46,18 +46,18 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 (3).![](media/A50.png)
 
-**Code de test complet**
+**Codice di prova completo**
 
 ![](media/A51.png)
 
-### **6.Résultat du test**
+### **6.Risultato del test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et utilisez un câble USB pour connecter l'ordinateur afin d'alimenter la carte. Après la mise sous tension, vous verrez la LED connectée à la broche D9 s'allumer et s'éteindre.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i fili secondo il diagramma di collegamento e usa un cavo USB per collegare il computer e alimentare la scheda. Dopo l'accensione, vedrai il LED collegato al D9 accendersi e spegnersi.
 
-**7.Pratique d'extension**
+### **7.Prassi di estensione**
 
-Ensuite, nous allons modifier la fréquence de clignotement de la LED en changeant le temps d'attente.
+Successivamente, vediamo come cambiare la frequenza del lampeggio del LED modificando il tempo di attesa.
 
 ![](media/A52.png)
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et utilisez un câble USB pour connecter l'ordinateur afin d'alimenter la carte. Le résultat du test montre que la LED clignote plus rapidement.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i fili secondo il diagramma di collegamento e usa un cavo USB per collegare il computer e alimentare la scheda. Il risultato del test mostra che il LED lampeggia più velocemente.

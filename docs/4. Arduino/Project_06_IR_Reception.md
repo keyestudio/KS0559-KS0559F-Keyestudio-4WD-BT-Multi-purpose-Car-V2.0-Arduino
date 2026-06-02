@@ -1,51 +1,51 @@
-# Projet 6 Réception IR
+# Progetto 6 Ricezione IR
 
 ![9681c7da-a7c9-49ed-ad8c-32e00c6aeb07](media/A42.png)
 
-### **1.Description** 
+### **1.Descrizione** 
 
-Il ne fait aucun doute que la télécommande infrarouge est omniprésente dans la vie quotidienne. Elle est utilisée pour contrôler divers appareils électroménagers, tels que les téléviseurs, les chaînes stéréo, les magnétoscopes et les récepteurs de signaux satellite. La télécommande infrarouge est composée d’un système d’émission infrarouge et d’un système de réception infrarouge, c’est-à-dire une télécommande infrarouge et un module de réception infrarouge ainsi qu’un microcontrôleur capable de décoder.  
+Non c'è dubbio che il telecomando a infrarossi sia onnipresente nella vita quotidiana. Viene utilizzato per controllare vari elettrodomestici, come TV, stereo, videoregistratori e ricevitori di segnali satellitari. Il telecomando a infrarossi è composto da un sistema di trasmissione a infrarossi e un sistema di ricezione a infrarossi, cioè un telecomando a infrarossi e un modulo ricevitore a infrarossi e un microcontrollore in grado di decodificare.  
 
 ![image-20250509154423060](media/A43.png)
 
-Le signal porteur infrarouge à 38K émis par la télécommande est codé par la puce d’encodage dans la télécommande. Il est composé d’une section de code pilote, code utilisateur, code inverse utilisateur, code de données et code inverse de données. L’intervalle de temps de l’impulsion est utilisé pour distinguer s’il s’agit d’un signal 0 ou 1 et le codage est constitué de ces signaux 0, 1.
+Il segnale portante a infrarossi a 38K emesso dal telecomando è codificato dal chip di codifica nel telecomando. È composto da una sezione di codice pilota, codice utente, codice utente inverso, codice dati e codice dati inverso. L'intervallo di tempo dell'impulso viene utilizzato per distinguere se è un segnale 0 o 1 e la codifica è composta da questi segnali 0, 1.
 
-Le code utilisateur de la même télécommande est constant tandis que le code de données permet de distinguer la touche.
+Il codice utente dello stesso telecomando è costante mentre il codice dati può distinguere il tasto.
 
-Lorsque le bouton de la télécommande est pressé, la télécommande envoie un signal porteur infrarouge. Lorsque le récepteur IR reçoit le signal, le programme décode le signal porteur et détermine quelle touche est pressée. Le MCU décode le signal 01 reçu, jugeant ainsi quelle touche est pressée sur la télécommande.
+Quando si preme un tasto del telecomando, il telecomando invia un segnale portante a infrarossi. Quando il ricevitore IR riceve il segnale, il programma decodifica il segnale portante e determina quale tasto è stato premuto. Il MCU decodifica il segnale 01 ricevuto, giudicando così quale tasto è stato premuto dal telecomando.
 
-Le récepteur infrarouge que nous utilisons est un module récepteur infrarouge. Il est principalement composé d’une tête réceptrice infrarouge, qui est un dispositif intégrant réception, amplification et démodulation. Son circuit intégré interne a déjà effectué la démodulation, et peut réaliser la réception infrarouge jusqu’à la sortie compatible avec les signaux TTL.
+Il ricevitore a infrarossi che usiamo è un modulo ricevitore a infrarossi. Composto principalmente da una testa ricevente a infrarossi, che è un dispositivo che integra ricezione, amplificazione e demodulazione. Il suo IC interno ha completato la demodulazione e può realizzare dalla ricezione a infrarossi all'uscita ed è compatibile con segnali TTL.
 
-De plus, il est adapté pour la télécommande infrarouge et la transmission de données infrarouges. Le module de réception infrarouge fabriqué par le récepteur ne possède que trois broches : ligne de signal, VCC et GND. Il est très pratique pour communiquer avec Arduino et d’autres microcontrôleurs.
+Inoltre, è adatto per telecomandi a infrarossi e trasmissione dati a infrarossi. Il modulo ricevitore a infrarossi realizzato dal ricevitore ha solo tre pin, linea del segnale, VCC e GND. È molto comodo per comunicare con Arduino e altri microcontrollori.
 
-### **2.Spécifications**
+### **2.Specifiche**
 
-- Tension de fonctionnement : 3.3-5V (DC)
+- Tensione di funzionamento: 3.3-5V (DC)
 
-- Signal de sortie : Signal numérique
+- Segnale di uscita: Segnale digitale
 
-- Angle de réception : 90 degrés
+- Angolo di ricezione: 90 gradi
 
-- Fréquence : 38 kHz
+- Frequenza: 38kHz
 
-- Distance de réception : 10 m
+- Distanza di ricezione: 10m
 
-L’image montre le produit réel et le schéma du circuit du récepteur infrarouge.
+L'immagine mostra il prodotto reale e lo schema elettrico del ricevitore a infrarossi.
 
 ![image-20250510082651985](media/A44.png)
 
-### **3.Composants**
+### **3.Componenti**
 
-|           Carte de développement *1           |           Driver moteur 8833 *1           |     Module LED rouge *1     |
-| :--------------------------------------------: | :---------------------------------------: | :-------------------------: |
+|           Scheda di Sviluppo *1           |           Driver Motore 8833 *1           |     Modulo LED Rosso*1     |
+| :---------------------------------------: | :---------------------------------------: | :------------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             Fil Dupont 3P *1                    |               Câble USB *1                 |                             |
-|         ![img](media/A11.jpg)                   |         ![img](media/A12.jpg)              |                             |
+|             Cavo Dupont 3P*1             |               Cavo USB*1                |                            |
+|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                            |
 
 
-Puisque la carte 8833 intègre le récepteur IR, il n’est pas nécessaire de faire de câblage. Les broches du module récepteur IR sont G (GND), V (VCC) et D3.
+Poiché la scheda 8833 integra il ricevitore IR, non necessita di cablaggio. I pin del modulo ricevitore IR sono G (GND), V (VCC) e D3.
 
-### **4.Code de test**
+### **4.Codice di Test**
 
 ```c
 //*************************************************************************************
@@ -55,52 +55,52 @@ Puisque la carte 8833 intègre le récepteur IR, il n’est pas nécessaire de f
  IR remote
  http://www.keyestudio.com
 */ 
-#include <IRremote.h>     //Bibliothèque IRremote  
-int RECV_PIN = 3;        //définir la broche du récepteur IR comme D3
+#include <IRremote.h>     //dichiarazione libreria IRremote  
+int RECV_PIN = 3;        //definisce il pin del ricevitore IR come D3
 IRrecv irrecv(RECV_PIN);   
-decode_results results;   // les résultats décodés existent dans “results” de “decode_results”
+decode_results results;   // i risultati della decodifica esistono in “results” di “decode_results”
 void setup()  
 {  
   Serial.begin(9600);  
-  irrecv.enableIRIn(); // Activer le récepteur 
+  irrecv.enableIRIn(); // Abilita il ricevitore 
 }  
   
  void loop() {  
-  if (irrecv.decode(&results))//décodage réussi, réception d’un ensemble de signaux infrarouges  
+  if (irrecv.decode(&results))//decodifica con successo, riceve un set di segnali a infrarossi  
    {  
-     Serial.println(results.value, HEX);//Afficher le mot en HEX 16 bits et recevoir le code 
-     irrecv.resume(); // Recevoir la valeur suivante
+     Serial.println(results.value, HEX);//Stampa il valore in esadecimale a 16 bit e riceve il codice 
+     irrecv.resume(); // Riceve il valore successivo
    }  
    delay(100);  
  } 
 //*************************************************************************************
 ```
 
-### **5.Résultat du test**
+### **5.Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, puis connectez l’ordinateur via un câble USB pour alimenter la carte. Après la mise sous tension, ouvrez le moniteur série et réglez le débit en bauds à 9600.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, quindi collegare il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, aprire il monitor seriale e impostare la velocità di trasmissione a 9600.
 
-Sortez la télécommande et envoyez un signal au capteur récepteur infrarouge. Vous pouvez voir la valeur de la touche correspondante, si la durée d’appui sur la touche est trop longue, FFFFFFFF a tendance à afficher des caractères illisibles.
+Prendere il telecomando e inviare il segnale al sensore ricevitore a infrarossi. È possibile vedere il valore del tasto corrispondente; se il tempo di pressione del tasto è troppo lungo, FFFFFFFF tende a generare caratteri illeggibili.
 
 ![image-20250510082931375](media/A45.png)
 
-Les valeurs des touches de la télécommande Keyestudio sont affichées ci-dessous.
+I valori dei tasti del telecomando Keyestudio sono mostrati di seguito.
 
 ![image-20250510082942450](media/A46.png)
 
-### **6. Explication du code**
+### **6. Spiegazione del Codice**
 
-**irrecv.enableIRIn() :** Après avoir activé le décodage IR, les signaux IR seront reçus,
+**irrecv.enableIRIn():** Dopo aver abilitato la decodifica IR, i segnali IR verranno ricevuti,
 
-**decode() :** La fonction « decode() » vérifiera en continu pour s’assurer que le décodage est réussi.
+**decode():** La funzione “decode()” controllerà continuamente per assicurarsi che la decodifica sia avvenuta con successo.
 
-**irrecv.decode(\&results) :** après un décodage réussi, cette fonction retournera « true », et conservera le résultat dans « results ». Après avoir décodé les signaux IR, exécutez la fonction resume() et continuez à recevoir le signal suivant.
+**irrecv.decode(\&results):** dopo una decodifica riuscita, questa funzione restituirà “true” e conserverà il risultato in “results”. Dopo aver decodificato i segnali IR, eseguire la funzione resume() e continuare a ricevere il segnale successivo.
 
-### **7. Pratique d’extension**
+### **7. Pratica Estesa**
 
-Nous avons décodé la valeur des touches de la télécommande IR. Que diriez-vous de contrôler une LED avec la valeur mesurée ? Nous pourrions concevoir une expérience.
+Abbiamo decodificato il valore dei tasti del telecomando IR. Che ne dite di controllare il LED tramite il valore misurato? Potremmo progettare un esperimento.
 
-Connectez une LED à D9, puis appuyez sur les touches de la télécommande pour allumer et éteindre la LED.
+Collegare un LED a D9, quindi premere i tasti del telecomando per accendere e spegnere il LED.
 
 ![image-20250508161123490](media/A13.png)
 
@@ -113,37 +113,37 @@ IR remote LED
 http://www.keyestudio.com
 */ 
 #include <IRremote.h>
-int RECV_PIN = 3;//définir la broche du récepteur IR comme D3
-int LED_PIN = 9;//définir la broche de la LED comme broche 9
+int RECV_PIN = 3;//definisce il pin del ricevitore IR come D3
+int LED_PIN = 9;//definisce il pin del LED come pin 9
 int a=0;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
 
 void setup()
 {Serial.begin(9600);
-  irrecv.enableIRIn(); //Initialiser le récepteur IR
-  pinMode(LED_PIN,OUTPUT);//définir la broche 9 de la LED en SORTIE
+  irrecv.enableIRIn(); //Inizializza il ricevitore IR
+  pinMode(LED_PIN,OUTPUT);//imposta il pin 9 del LED come OUTPUT
 }
 
 void loop() {
   if (irrecv.decode(&results)) 
   {
-    if(results.value==0xFF02FD && (a==0)) //selon la valeur de la touche ci-dessus, appuyez sur « OK » sur la télécommande, la LED sera contrôlée
+    if(results.value==0xFF02FD && (a==0)) //secondo il valore del tasto sopra, premendo “OK” sul telecomando, il LED sarà controllato
     {
       Serial.println("HIGH");
-      digitalWrite(LED_PIN,HIGH);//la LED s’allumera
+      digitalWrite(LED_PIN,HIGH);//il LED si accenderà
       a=1;
     }
-    else if(results.value==0xFF02FD && (a==1)) //appuyez de nouveau
+    else if(results.value==0xFF02FD && (a==1)) //premere di nuovo
     {
       Serial.println("LOW");
-      digitalWrite(LED_PIN,LOW);//la LED s’éteindra
+      digitalWrite(LED_PIN,LOW);//il LED si spegnerà
       a=0;
     }
-    irrecv.resume(); // recevoir la valeur suivante
+    irrecv.resume(); // riceve il valore successivo
   }
 }
 //*************************************************************************************
 ```
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, puis connectez l’ordinateur via un câble USB pour alimenter la carte. Après la mise sous tension, appuyer sur la touche "**OK**" de la télécommande peut allumer et éteindre la LED.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, quindi collegare il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, premendo il tasto "**OK**" sul telecomando si può accendere e spegnere il LED.

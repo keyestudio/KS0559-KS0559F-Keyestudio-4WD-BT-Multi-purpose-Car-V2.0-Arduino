@@ -1,30 +1,30 @@
-# Projet 16 Contrôle de Vitesse Bluetooth Voiture Intelligente
+# Progetto 16 Controllo Velocità Bluetooth Smart Car
 
 ![](media/A131.jpeg)
 
-### **1.Description**
+### **1.Descrizione**
 
-Dans ce projet, nous utiliserons un Bluetooth pour ajuster la vitesse de la voiture intelligente. Nous permettons de définir des vitesses variables et de les changer pour modifier la vitesse de la voiture intelligente.
+In questo progetto, utilizzeremo un modulo Bluetooth per regolare la velocità della smart car. Consentiamo di definire velocità variabili e modificarle per cambiare la velocità della smart car.
 
-### **2.Diagramme de Flux**
+### **2.Diagramma di Flusso**
 
 ![90ab1f7fb1e16ad3c018b1c631e407c3](media/A134.png)
 
-### **3.Schéma de Câblage**
+### **3.Diagramma di Collegamento**
 
 ![](media/A135.png)
 
-1). GND, VCC, SDA et SCL de la carte LED 8\*8 sont connectés à G (GND), V (VCC), A4 et A5 de la carte d’extension.
+1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati rispettivamente a G (GND), V (VCC), A4 e A5 della scheda di espansione.
 
-2). Les broches RXD, TXD, GND et VCC du module Bluetooth sont respectivement connectées à TX, RX, G et 5V sur le Shield moteur 8833, tandis que les broches STATE et BRK du module Bluetooth n’ont pas besoin d’être connectées.
+2). RXD, TXD, GND e VCC del modulo Bluetooth sono collegati rispettivamente a TX, RX, G e 5V sullo Shield motore 8833, mentre i pin STATE e BRK del modulo Bluetooth non devono essere collegati.
 
-3). Le servo est connecté à G, V et A3. Le fil marron est connecté à Gnd (G), le fil rouge est connecté à 5V (V) et le fil orange est connecté à A3.
+3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso a 5V (V) e il filo arancione a A3.
 
-4). L’alimentation est connectée au port BAT.
+4). L'alimentazione è collegata alla porta BAT.
 
-### **4.Code de Test**
+### **4.Codice di Test**
 
-<span style="color: rgb(255, 76, 65);">**Note :** Avant de téléverser le code de test, vous devez retirer le module Bluetooth, sinon le code ne pourra pas être téléversé. Reconnectez le module Bluetooth après avoir téléversé le code avec succès.</span>
+<span style="color: rgb(255, 76, 65);">**Nota:** Prima di caricare il codice di test, è necessario rimuovere il modulo Bluetooth, altrimenti il caricamento del codice fallirà. Collegare il modulo Bluetooth dopo aver caricato con successo il codice.</span>
 
 ```c
 //*******************************************************************************
@@ -34,9 +34,9 @@ lesson 16
 Bluetooth Speed Control Car
 http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //Définir la broche d’horloge sur A5
-#define SDA_Pin  A4  //Définir la broche de données sur A4
-//Tableau, utilisé pour stocker les données du motif, peut être calculé par vous-même ou obtenu à partir de l’outil de module
+#define SCL_Pin  A5  //Imposta il pin clock su A5
+#define SDA_Pin  A4  //Imposta il pin dati su A4
+//Array, usato per memorizzare i dati del pattern, può essere calcolato da soli o ottenuto dallo strumento modulo
 unsigned char start01[] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
 unsigned char front[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char back[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x48,0x90,0x48,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -49,29 +49,29 @@ unsigned char speed_a[] =
 unsigned char speed_d[] = 
 {0x00,0x02,0x04,0x08,0x10,0x20,0x40,0xff,0x40,0x20,0x10,0x08,0x04,0x02,0x00,0x00};
 
-int left_ctrl = 2;//définir les broches de contrôle de direction du moteur groupe B
-int left_pwm = 5;//définir les broches de contrôle PWM du moteur groupe B
-int right_ctrl = 4;//définir les broches de contrôle de direction du moteur groupe A
-int right_pwm = 6;//définir les broches de contrôle PWM du moteur groupe A
+int left_ctrl = 2;//definisce i pin di controllo direzione del motore gruppo B
+int left_pwm = 5;//definisce i pin di controllo PWM del motore gruppo B
+int right_ctrl = 4;//definisce i pin di controllo direzione del motore gruppo A
+int right_pwm = 6;//definisce i pin di controllo PWM del motore gruppo A
 
-int speeds = 150; //Définir la vitesse initiale à 150
+int speeds = 150; //Imposta la velocità iniziale a 150
 
-const int servopin = A3;//définir la broche du servo sur A3 
+const int servopin = A3;//imposta il pin del servo su A3 
 
 char BLE_val;
 
 void setup() {
   Serial.begin(9600);//
-  pinMode(left_ctrl,OUTPUT);//définir les broches de contrôle de direction du moteur groupe B en sortie
-  pinMode(left_pwm,OUTPUT);//définir les broches de contrôle PWM du moteur groupe B en sortie
-  pinMode(right_ctrl,OUTPUT);//définir les broches de contrôle de direction du moteur groupe A en sortie
-  pinMode(right_pwm,OUTPUT);//définir les broches de contrôle PWM du moteur groupe A en sortie
-  servopulse(servopin,90);//l’angle du servo est de 90 degrés
+  pinMode(left_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo B come OUTPUT
+  pinMode(left_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo B come OUTPUT
+  pinMode(right_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo A come OUTPUT
+  pinMode(right_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo A come OUTPUT
+  servopulse(servopin,90);//l'angolo del servo è 90 gradi
   delay(300);
-  pinMode(SCL_Pin,OUTPUT);// Définir la broche d’horloge en sortie
-  pinMode(SDA_Pin,OUTPUT);//Définir la broche de données en sortie
+  pinMode(SCL_Pin,OUTPUT);// Imposta il pin clock come output
+  pinMode(SDA_Pin,OUTPUT);//Imposta il pin dati come output
   matrix_display(clear);
-  matrix_display(start01); //afficher le motif start01
+  matrix_display(start01); //mostra il pattern start01
 }
 
 void loop() {
@@ -118,35 +118,35 @@ void loop() {
     }
 }
 
-void car_front()//définir l'état d'avancer
+void car_front()//definisce lo stato di avanzamento
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,(255-speeds));
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,(255-speeds));
 }
-void car_back()//définir l'état de recul
+void car_back()//definisce lo stato di retromarcia
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,speeds);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,speeds);
 }
-void car_left()//définir l'état de virage à gauche
+void car_left()//imposta lo stato di svolta a sinistra
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, speeds);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, (255-speeds));
 }
-void car_right()//définir l'état de virage à droite
+void car_right()//imposta lo stato di svolta a destra
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, (255-speeds));
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, speeds);
 }
-void car_Stop()//définir l'état d'arrêt
+void car_Stop()//definisce lo stato di stop
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,0);
@@ -154,36 +154,36 @@ void car_Stop()//définir l'état d'arrêt
   analogWrite(right_pwm,0);
 }
 
-void speeds_a() { //fonction d'accélération rapide
+void speeds_a() { //funzione di accelerazione rapida
   while (1) {
-    Serial.println(speeds);  //afficher les informations de vitesse 
-    if (speeds < 255) { //jusqu'à 255
+    Serial.println(speeds);  //mostra le informazioni sulla velocità
+    if (speeds < 255) { //fino a 255
       matrix_display(clear);
       matrix_display(speed_a);
       speeds++;
-      delay(10);  //ajuster la vitesse de croissance
+      delay(10);  //regola la velocità di crescita
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //Reçoit 'S', la voiture arrête d'accélérer
+    if (BLE_val == 'S') //Riceve 'S', l'auto smette di accelerare
     break;
   }
 }
-void speeds_d() { //fonction de réduction de vitesse
+void speeds_d() { //funzione di decelerazione
   while (1) {
-    Serial.println(speeds);  //afficher les informations de vitesse
-    if (speeds > 0) { //jusqu'à 0
+    Serial.println(speeds);  //mostra le informazioni sulla velocità
+    if (speeds > 0) { //fino a 0
       matrix_display(clear);
       matrix_display(speed_d);
       speeds--;
-      delay(10);    //ajuster la vitesse de décélération
+      delay(10);    //regola la velocità di decelerazione
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //Reçoit 'S', la voiture arrête de décélérer
+    if (BLE_val == 'S') //Riceve 'S', l'auto smette di decelerare
     break;
 }
 }
 
-void servopulse(int servopin,int myangle)//angle de fonctionnement du servo
+void servopulse(int servopin,int myangle)//Angolo di funzionamento del servocomando
 {
   for(int i=0; i<30; i++)
   {
@@ -195,22 +195,22 @@ void servopulse(int servopin,int myangle)//angle de fonctionnement du servo
   }  
 }
 
-//cette fonction est utilisée pour l'affichage sur matrice de points
+//questa funzione è usata per la visualizzazione a matrice di punti
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //la fonction qui appelle la condition de début de transfert de données
-  IIC_send(0xc0);  //sélectionner l'adresse
+  IIC_start();  //la funzione che richiama la condizione di inizio trasferimento dati
+  IIC_send(0xc0);  //seleziona l'indirizzo
 
-  for (int i = 0; i < 16; i++) // les données du motif sont sur 16 octets
+  for (int i = 0; i < 16; i++) //i dati del pattern sono 16 byte
   {
-    IIC_send(matrix_value[i]); // Transmettre les données du motif
+    IIC_send(matrix_value[i]); //Trasmetti i dati del pattern
   }
-  IIC_end();   // Fin de la transmission des données du motif
+  IIC_end();   //Termina la trasmissione dei dati del pattern
   IIC_start();
-  IIC_send(0x8A);  // Contrôle de l'affichage, sélection de la largeur d'impulsion 4/16
+  IIC_send(0x8A);  //Controllo display, seleziona larghezza impulso 4/16
   IIC_end();
 }
-// Conditions dans lesquelles la transmission des données commence
+//Condizioni in cui inizia la trasmissione dei dati
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -220,7 +220,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-// Indique la fin de la transmission des données
+//Indica la fine della trasmissione dei dati
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -231,27 +231,27 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-// transmettre les données
+//trasmetti dati
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) // Chaque octet a 8 bits et est vérifié bit par bit en commençant par le bit de poids faible
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Ogni byte ha 8 bit e viene controllato bit per bit iniziando dal livello più basso
   {
-    if (send_data & mask) { // Définit les niveaux haut et bas de SDA_Pin selon que chaque bit de l'octet est un 1 ou un 0
+    if (send_data & mask) { //Imposta i livelli alto e basso di SDA_Pin a seconda che ogni bit del byte sia 1 o 0
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); // Met la broche d'horloge SCL_Pin à haut pour arrêter la transmission des données
+    digitalWrite(SCL_Pin, HIGH); //Porta alto il pin clock SCL_Pin per fermare la trasmissione dei dati
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); // Met la broche d'horloge SCL_Pin à bas pour changer le SIGNAL de SDA 
+    digitalWrite(SCL_Pin, LOW); //Porta basso il pin clock SCL_Pin per cambiare il SEGNALE di SDA 
   }
 }
 //*******************************************************************************
 ```
 
-### **5. Résultat du test**
+### **5. Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, alimentez l'alimentation externe puis mettez l'interrupteur DIP sur ON. En appariant l'APP avec le Bluetooth, la voiture intelligente peut être contrôlée pour se déplacer via l'APP.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, alimenta la fonte di alimentazione esterna e poi porta l'interruttore DIP su ON. Associa l'APP tramite Bluetooth, l'auto intelligente può essere controllata dall'APP per muoversi.
 
-Appuyez sur ![049343f587e0e7cf19fe8b665d735321](media/A136.png), la voiture accélérera, appuyez sur ![264f77cce6018584b54f46676fee4247](media/A137.png), la voiture ralentira, et la carte LED 8\*16 affichera le motif d'état correspondant de la voiture intelligente.
+Premi ![049343f587e0e7cf19fe8b665d735321](media/A136.png), l'auto accelererà, premi ![264f77cce6018584b54f46676fee4247](media/A137.png), l'auto rallenterà, e la scheda LED 8\*16 mostrerà il pattern di stato corrispondente dell'auto intelligente.

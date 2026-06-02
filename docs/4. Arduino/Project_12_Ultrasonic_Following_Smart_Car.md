@@ -1,86 +1,84 @@
-# Projet 12 Voiture intelligente à suivi ultrasonique
+# Progetto 12 Auto Intelligente a Inseguimento Ultrasonico
 
 ![a3beaada39eb1471b7df6d9788e2bea3](media/A116.png)
 
-### **1.Description**
+### **1. Descrizione**
 
-Dans ce projet, nous allons détecter la distance entre la voiture intelligente 4WD et les obstacles devant elle grâce à un capteur ultrasonique afin de piloter deux moteurs de manière à faire avancer la voiture et afficher un motif de visage souriant sur la matrice LED 8\*8.
+In questo progetto, cercheremo di rilevare la distanza tra l'auto intelligente 4WD e gli ostacoli davanti tramite un sensore ultrasonico per azionare due motori in modo che l'auto si muova e faccia mostrare alla scheda LED 8\*8 un motivo facciale sorridente.
 
-### **2.Diagramme de flux**
+### **2. Diagramma di Flusso**
 
 ![img](media/A117.png)
 
 <table border="1">
 <tbody>
 <tr class="odd">
-<td>Détection</td>
-<td>Distance mesurée des obstacles devant</td>
-<td>distance (unité : cm)</td>
+<td>Rilevamento</td>
+<td>Distanza misurata degli ostacoli frontali</td>
+<td>distanza (unità: cm)</td>
 </tr>
 <tr class="even">
-<td>Réglage</td>
-<td>La matrice LED 8*16 affiche un motif souriant.</td>
+<td>Impostazione</td>
+<td>La scheda LED 8*16 mostra un motivo sorridente.</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Positionner le servo à 90°</td>
+<td>Imposta il servo a 90°</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condition</td>
-<td>distance≥20 et distance≤50</td>
+<td>Condizione</td>
+<td>distanza≥20 e distanza≤50</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>État</td>
-<td>Avancer</td>
+<td>Stato</td>
+<td>Avanti</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condition</td>
-<td>distance＞10 et distance＜20</td>
+<td>Condizione</td>
+<td>distanza＞10 e distanza＜20</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>distance＞50</td>
+<td>distanza＞50</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condition</td>
-<td>arrêt</td>
+<td>Condizione</td>
+<td>fermo</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>Condition</td>
-<td>distance≤10</td>
+<td>Condizione</td>
+<td>distanza≤10</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condition</td>
-<td>Reculer</td>
+<td>Condizione</td>
+<td>Indietro</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-
-
-### **3.Schéma de câblage**
+### **3. Schema di Collegamento**
 
 ![568a66655a14dd34afd8cb1e6ae5951c](media/A118.png)
 
-**Câblage :**
+**Collegamenti:**
 
-1). GND, VCC, SDA et SCL de la matrice LED 8\*8 sont connectés à G (GND), V (VCC), A4 et A5 de la carte d’extension.
+1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati a G (GND), V (VCC), A4 e A5 della scheda di espansione.
 
-2). VCC, Trig, Echo et Gnd du capteur ultrasonique sont connectés à 5V (V), D12 (S), D13 (S) et Gnd (G).
+2). VCC, Trig, Echo e Gnd del sensore ultrasonico sono collegati a 5V (V), D12 (S), D13 (S) e Gnd (G).
 
-3). Le servo est connecté à G, V et A3. Le fil marron est connecté à Gnd (G), le fil rouge à 5V (V) et le fil orange à A3.
+3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso è collegato a 5V (V) e il filo arancione è collegato ad A3.
 
-4). L’alimentation est connectée au port BAT.
+4). L'alimentazione è collegata alla porta BAT.
 
-### **4.Code de test**
+### **4. Codice di Test**
 
 ```c
 //*******************************************************************************
@@ -90,88 +88,88 @@ Dans ce projet, nous allons détecter la distance entre la voiture intelligente 
  Flowing Car
  http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //Définir la broche d'horloge sur A5
-#define SDA_Pin  A4  //Définir la broche de données sur A4
+#define SCL_Pin  A5  //Imposta il pin clock su A5
+#define SDA_Pin  A4  //Imposta il pin dati su A4
 
-//Tableau, utilisé pour stocker les données du motif, peut être calculé soi-même ou obtenu via l'outil de module
+//Array, usato per memorizzare i dati del motivo, può essere calcolato da soli o ottenuto dallo strumento modulo
 unsigned char smile[] = {0x00, 0x00, 0x1c, 0x02, 0x02, 0x02, 0x5c, 0x40, 0x40, 0x5c, 0x02, 0x02, 0x02, 0x1c, 0x00, 0x00};
 
-const int servopin = A3;//Définir la broche du servo
+const int servopin = A3;//Imposta il pin del servocomando
  
-#include "SR04.h" //définir la bibliothèque de fonctions du capteur ultrasonique
-#define TRIG_PIN 12// définir la broche trig du capteur ultrasonique sur D12
-#define ECHO_PIN 13// définir la broche echo du capteur ultrasonique sur D13
+#include "SR04.h" //definisce la libreria di funzioni del sensore ultrasonico
+#define TRIG_PIN 12// imposta il segnale del sensore ultrasonico su D12
+#define ECHO_PIN 13// imposta il segnale del sensore ultrasonico su D13
 SR04 sr04 = SR04(ECHO_PIN,TRIG_PIN);
 long distance;
 
-int left_ctrl = 2;//définir les broches de contrôle de direction du moteur groupe B
-int left_pwm = 5;//définir les broches PWM du moteur groupe B
-int right_ctrl = 4;//définir les broches de contrôle de direction du moteur groupe A
-int right_pwm = 6;//définir les broches PWM du moteur groupe A
+int left_ctrl = 2;//definisce i pin di controllo direzione del motore gruppo B
+int left_pwm = 5;//definisce i pin PWM di controllo del motore gruppo B
+int right_ctrl = 4;//definisce i pin di controllo direzione del motore gruppo A
+int right_pwm = 6;//definisce i pin PWM di controllo del motore gruppo A
 
 void setup() {
-  pinMode(left_ctrl,OUTPUT);//configurer les broches de contrôle de direction du moteur groupe B en sortie
-  pinMode(left_pwm,OUTPUT);//configurer les broches PWM du moteur groupe B en sortie
-  pinMode(right_ctrl,OUTPUT);//configurer les broches de contrôle de direction du moteur groupe A en sortie
-  pinMode(right_pwm,OUTPUT);//configurer les broches PWM du moteur groupe A en sortie
-  pinMode(TRIG_PIN, OUTPUT); //Configurer la broche trig en sortie
-  pinMode(ECHO_PIN, INPUT); //Configurer la broche echo en entrée
-  pinMode(SCL_Pin,OUTPUT);//Configurer la broche d'horloge en sortie
-  pinMode(SDA_Pin,OUTPUT);//Configurer la broche de données en sortie
-  servopulse(servopin,90);//Définir l'angle initial du servo à 90°
-  delay(500); //attendre 500ms
-  matrix_display(smile);  //afficher le motif de sourire  
+  pinMode(left_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo B come OUTPUT
+  pinMode(left_pwm,OUTPUT);//imposta i pin PWM di controllo del motore gruppo B come OUTPUT
+  pinMode(right_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo A come OUTPUT
+  pinMode(right_pwm,OUTPUT);//imposta i pin PWM di controllo del motore gruppo A come OUTPUT
+  pinMode(TRIG_PIN, OUTPUT); //Imposta il pin trig come output
+  pinMode(ECHO_PIN, INPUT); //Imposta il pin echo come input
+  pinMode(SCL_Pin,OUTPUT);//Imposta il pin clock come output
+  pinMode(SDA_Pin,OUTPUT);//Imposta il pin dati come output
+  servopulse(servopin,90);//Imposta l'angolo iniziale del servocomando a 90°
+  delay(500); //attende 500ms
+  matrix_display(smile);  //mostra il motivo dell'espressione sorridente  
 }
 
 void loop() {
-  distance = sr04.Distance();//distance détectée par le capteur ultrasonique
-   if(distance <= 10)//si la distance est inférieure à 10
+  distance = sr04.Distance();//la distanza rilevata dal sensore ultrasonico
+   if(distance <= 10)//se la distanza è inferiore a 10
   {
-    back();//reculer
+    back();//indietro
   }
-  else if((distance > 10)&&(distance< 20 ))//si 10<distance<20
+  else if((distance > 10)&&(distance< 20 ))//se 10<distanza<20
   {
-    Stop();//arrêter
+    Stop();//fermo
   }
-  else if((distance >= 20)&&(distance <= 50))//si 20≤distance≤50  
+  else if((distance >= 20)&&(distance <= 50))//se 20≤distanza≤50  
 {
-    front();//avancer
+    front();//inseguimento
   }
-  else//sinon
+  else//altrimenti
   {
-    Stop();//arrêter
+    Stop();//fermo
   }
 }
 
-void front()//définir l'état d'avancement vers l'avant
+void front()//definisce lo stato di avanzamento
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,100);
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,100);
 }
-void back()//définir l'état de recul
+void back()//definisce lo stato di retromarcia
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,150);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,150);
 }
-void left()//définir l'état de virage à gauche
+void left()//definisce lo stato di svolta a sinistra
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, 100);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, 155);
 }
-void right()//définir l'état de virage à droite
+void right()//definisce lo stato di svolta a destra
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, 155);
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, 100);
 }
-void Stop()//définir l'état d'arrêt
+void Stop()//definisce lo stato di stop
 {
   digitalWrite(left_ctrl, LOW);  
   analogWrite(left_pwm,0);
@@ -179,7 +177,7 @@ void Stop()//définir l'état d'arrêt
   analogWrite(right_pwm,0);
 }
 
-void servopulse(int servopin,int myangle)//Angle de fonctionnement du servo-moteur
+void servopulse(int servopin,int myangle)//Angolo di rotazione del servomotore
 {
   for(int i=0; i<30; i++)
   {
@@ -191,22 +189,22 @@ void servopulse(int servopin,int myangle)//Angle de fonctionnement du servo-mote
   }  
 }
 
-//cette fonction est utilisée pour l'affichage sur matrice de points
+//questa funzione è utilizzata per la visualizzazione su matrice di punti
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //la fonction qui appelle la condition de démarrage du transfert de données
-  IIC_send(0xc0);  //sélectionner l'adresse
+  IIC_start();  //la funzione che richiama la condizione di inizio trasferimento dati
+  IIC_send(0xc0);  //seleziona l'indirizzo
 
-  for (int i = 0; i < 16; i++) //les données du motif sont de 16 octets
+  for (int i = 0; i < 16; i++) //i dati del pattern sono 16 byte
   {
-    IIC_send(matrix_value[i]); //Transmettre les données du motif
+    IIC_send(matrix_value[i]); //Trasmette i dati del pattern
   }
-  IIC_end();   //Fin de la transmission des données du motif
+  IIC_end();   //Termina la trasmissione dei dati del pattern
   IIC_start();
-  IIC_send(0x8A);  //Contrôle d'affichage, sélection de la largeur d'impulsion 4/16
+  IIC_send(0x8A);  //Controllo display, seleziona larghezza impulso 4/16
   IIC_end();
 }
-//Conditions sous lesquelles la transmission des données commence
+//Condizioni in cui inizia la trasmissione dati
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -216,7 +214,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indique la fin de la transmission des données
+//Indica la fine della trasmissione dati
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -227,25 +225,26 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//transmettre les données
+//trasmette dati
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Chaque octet a 8 bits et est vérifié bit par bit en commençant par le niveau le plus bas
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Ogni byte ha 8 bit e viene controllato bit per bit partendo dal livello più basso
   {
-    if (send_data & mask) { //Définit les niveaux haut et bas de SDA_Pin selon que chaque bit de l'octet est un 1 ou un 0
+    if (send_data & mask) { //Imposta i livelli alto e basso di SDA_Pin a seconda che ogni bit del byte sia 1 o 0
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Met la broche d'horloge SCL_Pin à haut pour arrêter la transmission des données
+    digitalWrite(SCL_Pin, HIGH); //Alza il pin clock SCL_Pin per fermare la trasmissione dati
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //met la broche d'horloge SCL_Pin à bas pour changer le SIGNAL de SDA 
+    digitalWrite(SCL_Pin, LOW); //Abbassa il pin clock SCL_Pin per cambiare il SEGNALE di SDA 
   }
 }
 //*******************************************************************************
 ```
 
-### **5.Résultat du test**
+### **5.Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, alimentez l'alimentation externe puis mettez le commutateur DIP sur ON. Réglez le servo à 90°, la voiture intelligente se déplacera en évitant les obstacles et la carte LED 8X16 affichera « smile ».
+Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, accendere l'alimentazione esterna  
+quindi impostare l'interruttore DIP su ON. Impostare il servo a 90°, la smart car si muoverà evitando gli ostacoli e la scheda LED 8X16 mostrerà “smile”.

@@ -1,64 +1,64 @@
-# Projet 15 Voiture Intelligente Contrôlée par Bluetooth
+# Project 15 Bluetooth Control Smart Car
 
 ![](media/A327.jpeg)
 
-### **1.Description**
+### **1.Descrizione**
 
-Nous avons appris les connaissances de base sur le Bluetooth. Dans cette leçon, nous allons fabriquer une voiture intelligente contrôlée par Bluetooth. Dans ce projet, nous considérons le téléphone mobile comme l’émetteur (hôte), et la voiture intelligente connectée au module Bluetooth BT24 (esclave) comme le récepteur, et utilisons l’application mobile pour contrôler la voiture intelligente via le Bluetooth.
+Abbiamo appreso le conoscenze di base del Bluetooth. In questa lezione, realizzeremo un'auto intelligente controllata via Bluetooth. In questo progetto, consideriamo il telefono cellulare come trasmettitore (host) e l'auto intelligente collegata al modulo Bluetooth BT24 (slave) come ricevitore, utilizzando l'app mobile per controllare l'auto tramite Bluetooth.
 
-### **2.Boutons de Contrôle de l’APP**
+### **2.Pulsanti di Controllo APP**
 
-| Touche                                        | Fonction                          |
+| Tasto                                         | Funzione                          |
 | --------------------------------------------- | --------------------------------- |
-| ![wps14](media/A185.jpg)                       | Jumeler le module Bluetooth DX-BT24 5.1 |
-| ![wps15](media/A186.jpg)                       | Déconnecter le Bluetooth          |
+| ![wps14](media/A185.jpg)                  | Associa modulo Bluetooth DX-BT24 5.1 |
+| ![wps15](media/A186.jpg) | Disconnetti Bluetooth              |
 
-|                                                              | Caractère de contrôle                                         | Fonction                                                     |
+|                                                              | Carattere di controllo                                            | Funzione                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![wps16](media/A187.jpg)                                     | Appuyer : F  <br />Relâcher : S                              | Appuyer sur le bouton, la voiture avance ; <br />relâcher pour arrêter |
-| ![wps17](media/A188.jpg)                                     | Appuyer : L  <br />Relâcher : S                              | Appuyer sur le bouton, la voiture tourne à gauche ; <br />relâcher pour arrêter  |
-| ![wps18](media/A189.jpg)                                     | Appuyer : R  <br />Relâcher : S                              | Appuyer sur le bouton, la voiture tourne à droite ; <br />relâcher pour arrêter |
-| ![wps19](media/A190.jpg)                                     | Appuyer : B  <br />Relâcher : S                              | Appuyer sur le bouton, la voiture recule ; <br />relâcher pour arrêter   |
-| ![wps20](media/A191.jpg)                                     | Appuyer : “a”  <br />Relâcher : “S”                          | Cliquer pour accélérer (maximum : 255)                       |
-| ![wps21](media/A192.jpg)                                     | Appuyer : “d”  <br />Relâcher : “S”                          | Cliquer pour ralentir (minimum : 0)                          |
-| ![wps22](media/A193.jpg)                                     | Cliquer pour démarrer la fonction de détection de gravité du téléphone mobile : cliquer à nouveau pour quitter le contrôle par gravité |                                                              |
-| ![wps23](media/A194.jpg)                                     | Cliquer pour envoyer “X”, <br />cliquer à nouveau pour envoyer “S” | Démarrer la fonction de suivi de ligne ; <br />cliquer à nouveau pour quitter |
-| ![wps24](media/A195.jpg)                                     | Cliquer pour envoyer “Y”, <br />cliquer à nouveau pour envoyer “S” | Démarrer la fonction d’évitement ultrasonique ; <br />cliquer à nouveau pour quitter |
-| ![wps25](media/A196.jpg)                                     | Cliquer pour envoyer “U”, <br />cliquer à nouveau pour envoyer “S” | Démarrer la fonction de suivi ultrasonique ; <br />cliquer à nouveau pour quitter |
-| ![wps26](media/A197.jpg)                                     | Cliquer pour envoyer “G”, <br />cliquer à nouveau pour envoyer “S” | Démarrer la fonction de restriction ; <br />cliquer à nouveau pour quitter |
+| ![wps16](media/A187.jpg)                 | Premuto: F  <br />Rilasciato: S                                   | Premi il pulsante, l'auto va avanti; <br />rilascia per fermare |
+| ![wps17](media/A188.jpg)                 | Premuto: L  <br />Rilasciato: S                                   | Premi il pulsante, l'auto gira a sinistra; <br />rilascia per fermare  |
+| ![wps18](media/A189.jpg)                 | Premuto: R  <br />Rilasciato: S                                   | Premi il pulsante, l'auto gira a destra; <br />rilascia per fermare |
+| ![wps19](media/A190.jpg)                 | Premuto: B  <br />Rilasciato: S                                   | Premi il pulsante, l'auto va indietro; <br />rilascia per fermare   |
+| ![wps20](media/A191.jpg)                 | Premuto: “a”  <br />Rilasciato: “S”                               | Clicca per accelerare (massimo:255)                               |
+| ![wps21](media/A192.jpg)                 | Premuto: “d”  <br />Rilasciato: “S”                               | Clicca per rallentare (minimo:0)                                |
+| ![wps22](media/A193.jpg)                 | Clicca per avviare la funzione di <br />rilevamento della gravità del <br />telefono: clicca di nuovo per <br />uscire dal controllo di gravità |                                                              |
+| ![wps23](media/A194.jpg)                 | Clicca per inviare “X”,<br /> clicca di nuovo per inviare “S”               | Avvia la funzione di tracciamento linea; <br />clicca di nuovo per uscire      |
+| ![wps24](media/A195.jpg)                 | Clicca per inviare “Y”, <br />clicca di nuovo per inviare “S”               | Avvia la funzione di evitamento ad ultrasuoni;<br /> clicca di nuovo per uscire |
+| ![wps25](media/A196.jpg) | Clicca per inviare “U”, <br />clicca di nuovo per inviare “S”               | Avvia la funzione di inseguimento ad ultrasuoni;<br /> clicca di nuovo per uscire |
+| ![wps26](media/A197.jpg)                 | Clicca per inviare “G”,<br />clicca di nuovo per inviare “S”                | Avvia la funzione di restrizione;<br /> clicca di nuovo per uscire       |
 
-### **3.Diagramme de Flux**
+### **3.Diagramma di Flusso**
 
 ![img](media/A328.png)
 
-### **4.Schéma de Câblage**
+### **4.Diagramma di Collegamento**
 
 ![](media/A329.png)
 
-1). GND, VCC, SDA et SCL de la carte LED 8\*8 sont connectés respectivement à G (GND), V (VCC), A4 et A5 de la carte d’extension.
+1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati rispettivamente a G (GND), V (VCC), A4 e A5 della scheda di espansione.
     
-2). Les broches RXD, TXD, GND et VCC du module Bluetooth sont respectivement connectées à TX, RX, G et 5V sur la carte d’extension du driver moteur 8833, tandis que les broches STATE et BRK du module Bluetooth n’ont pas besoin d’être connectées.
+2). RXD, TXD, GND e VCC del modulo Bluetooth sono collegati rispettivamente a TX, RX, G e 5V sulla scheda di espansione driver motore 8833, mentre i pin STATE e BRK del modulo Bluetooth non devono essere collegati.
     
-3). Le servo est connecté à G, V et A3. Le fil marron est connecté à Gnd (G), le fil rouge est connecté à 5V (V) et le fil orange est connecté à A3.
+3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso a 5V (V) e il filo arancione a A3.
     
-4). L’alimentation est connectée au port BAT
+4). L'alimentazione è collegata alla porta BAT
     
 
-### **5.Code de Test**
+### **5.Codice di Test**
 
-Avant d’écrire le code, il est nécessaire d’importer les fichiers de bibliothèque de la carte LED 8x16 et du servo. Les étapes spécifiques sont les suivantes : 
+Prima di scrivere il codice, è necessario importare i file della libreria della scheda LED 8x16 e del servo. I passaggi specifici sono i seguenti: 
     
-Cliquez sur ![](media/A29.png) pour entrer dans l’interface de la bibliothèque d’extensions des capteurs/modules/composants, puis recherchez le module “**Matrix 8\*16 Aip1640**” ![](media/A236.png) et cliquez dessus. Ainsi, "**Not loaded**" change en "**loaded**", indiquant que le module “**Matrix 8\*16 Aip1640**” a été ajouté avec succès. 
+Clicca su ![](media/A29.png) per entrare nell'interfaccia della libreria di estensioni di sensori/moduli/componenti, quindi cerca il modulo “**Matrix 8\*16 Aip1640**” ![](media/A236.png) e cliccaci sopra. In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il modulo “**Matrix 8\*16 Aip1640**” è stato aggiunto con successo. 
 
 ![Img](media/A237.png)  
 
 ![](media/A238.png)
 
-Cliquez sur ![](media/A33.png) pour revenir à l’interface de l’éditeur de code, le bloc d’instructions du module “**Matrix 8\*16 Aip1640**” ajouté et du composant “**Servo**” peut être vu dans la zone des modules. 
+Clicca su ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, si possono vedere i blocchi di istruzioni del modulo “**Matrix 8\*16 Aip1640**” aggiunto e del componente “**Servo**” nell'area modulo. 
 
 ![](media/A330.png)
 
-Vous pouvez faire glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
+Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
 
 (1).![](media/A126.png)
 
@@ -78,9 +78,9 @@ Vous pouvez faire glisser les blocs pour éditer. Les blocs listés ci-dessous s
 
 (9).![](media/A334.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
-<span style="color: rgb(255, 76, 65);">**Note :** Avant de téléverser le code de test, vous devez retirer le module Bluetooth, sinon le code ne pourra pas être téléversé. Reconnectez le module Bluetooth après avoir téléversé le code avec succès.</span>
+<span style="color: rgb(255, 76, 65);">**Nota:** Prima di caricare il codice di test, è necessario rimuovere il modulo Bluetooth, altrimenti il codice non verrà caricato correttamente. Collega il modulo Bluetooth dopo aver caricato con successo il codice.</span>
 
 ![](media/A335.png)
 
@@ -92,8 +92,8 @@ Vous pouvez faire glisser les blocs pour éditer. Les blocs listés ci-dessous s
 
 ![](media/A339.png)
 
-### **6. Résultat du test**
+### **6. Risultato del Test**
 
-Après avoir téléversé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, alimentez l’alimentation externe puis mettez l’interrupteur DIP sur ON.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON.
 
-Insérez le module BT et ouvrez votre téléphone pour connecter le Bluetooth afin de contrôler la voiture intelligente. La voiture avancera, reculera, tournera à gauche et à droite et s’arrêtera. De plus, la carte LED 8\*8 affichera les motifs correspondants.
+Inserisci il modulo BT e apri il cellulare per connetterti al Bluetooth per controllare l'auto intelligente. L'auto si muoverà avanti, indietro, girerà a sinistra e a destra e si fermerà. Inoltre, la scheda LED 8\*8 mostrerà i pattern corrispondenti.

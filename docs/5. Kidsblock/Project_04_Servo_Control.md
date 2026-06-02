@@ -1,76 +1,76 @@
-# Projet 4 Contrôle du Servo
+# Progetto 4 Controllo Servo
 
-### **1.Description**
+### **1. Descrizione**
 
 ![](media/A90.jpeg)
 
-Le moteur servo est un actionneur rotatif à contrôle de position. Il se compose principalement d’un boîtier, d’une carte de circuit, d’un moteur sans noyau, d’un engrenage et d’un capteur de position. Son principe de fonctionnement est que le servo reçoit le signal envoyé par les MCU ou les récepteurs et produit un signal de référence avec une période de 20 ms et une largeur de 1,5 ms, puis compare la tension de polarisation continue acquise à la tension du potentiomètre et obtient la sortie de la différence de tension.
+Il servo motore è un attuatore rotativo a controllo di posizione. È composto principalmente da un alloggiamento, una scheda circuito, un motore core-less, un ingranaggio e un sensore di posizione. Il suo principio di funzionamento è che il servo riceve il segnale inviato da MCU o ricevitori e produce un segnale di riferimento con un periodo di 20ms e una larghezza di 1,5ms, quindi confronta la tensione di polarizzazione continua acquisita con la tensione del potenziometro e ottiene l'uscita della differenza di tensione.
 
 ![](media/A91.png)
 
-En général, le servo possède trois fils de couleur marron, rouge et orange. Le fil marron est la masse, le rouge est la ligne de pôle positif et l’orange est la ligne de signal.
+In generale, il servo ha tre fili di colore marrone, rosso e arancione. Il filo marrone è collegato a massa, quello rosso è il polo positivo e quello arancione è il filo del segnale.
 
-L’angle de rotation du moteur servo est contrôlé en régulant le rapport cyclique du signal PWM (Pulse-Width Modulation). Le cycle standard du signal PWM est de 20 ms (50 Hz). Théoriquement, la largeur est comprise entre 1 ms et 2 ms, mais en réalité, elle est comprise entre 0,5 ms et 2,5 ms. La largeur correspond à l’angle de rotation de 0° à 180°. Mais notez que pour des moteurs de marques différentes, le même signal peut correspondre à des angles de rotation différents.
+L'angolo di rotazione del servo motore è controllato regolando il duty cycle del segnale PWM (Pulse-Width Modulation). Il ciclo standard del segnale PWM è di 20ms (50Hz). Teoricamente, la larghezza è distribuita tra 1ms e 2ms, ma in realtà è tra 0,5ms e 2,5ms. La larghezza corrisponde all'angolo di rotazione da 0° a 180°. Ma si noti che per motori di marche diverse, lo stesso segnale può avere angoli di rotazione differenti.
 
 ![](media/A92.jpg)
 
-Les angles de servo correspondants sont indiqués ci-dessous :
+Gli angoli corrispondenti del servo sono mostrati di seguito:
 
 ![](media/A93.png)
 
-### **2.Spécifications**
+### **2. Specifiche**
 
-- Tension de fonctionnement : DC 4,8 V \~ 6 V
+- Tensione di lavoro: DC 4.8V ~ 6V
 
-- Plage d’angle de fonctionnement : environ 180 ° (à 500 → 2500 μsec)
+- Gamma angolare operativa: circa 180° (a 500 → 2500 μsec)
 
-- Plage de largeur d’impulsion : 500 → 2500 μsec
+- Gamma di larghezza impulso: 500 → 2500 μsec
 
-- Vitesse à vide : 0,12 ± 0,01 s / 60 (DC 4,8 V) 0,1 ± 0,01 s / 60 (DC 6 V)
+- Velocità a vuoto: 0.12 ± 0.01 sec / 60 (DC 4.8V) 0.1 ± 0.01 sec / 60 (DC 6V)
   
-- Courant à vide : 200 ± 20 mA (DC 4,8 V) 220 ± 20 mA (DC 6 V)
+- Corrente a vuoto: 200 ± 20mA (DC 4.8V) 220 ± 20mA (DC 6V)
 
-- Couple d’arrêt : 1,3 ± 0,01 kg · cm (DC 4,8 V) 1,5 ± 0,1 kg · cm (DC 6 V)
+- Coppia di arresto: 1.3 ± 0.01kg · cm (DC 4.8V) 1.5 ± 0.1kg · cm (DC 6V)
   
-- Courant d’arrêt : ≦ 850 mA (DC 4,8 V) ≦ 1000 mA (DC 6 V)
+- Corrente di arresto: ≦ 850mA (DC 4.8V) ≦ 1000mA (DC 6V)
 
-- Courant en veille : 3 ± 1 mA (DC 4,8 V) 4 ± 1 mA (DC 6 V)
+- Corrente in standby: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
 
-### **3.Composants**
+### **3. Componenti**
 
-| Carte de développement *1 | Driver moteur 8833 *1     | Servo*1                                     |
+| Scheda di Sviluppo *1      | Driver Motore 8833 *1      | Servo*1                                     |
 | ------------------------- | ------------------------- | ------------------------------------------- |
-| ![img](media/A94.jpg)     | ![img](media/A95.jpg)     | ![img](media/A96.png)                       |
-| Support batterie 18650*1  | Câble USB*1               | Batterie 18650*2 (fournie par l’utilisateur) |
-| ![img](media/A97.png)     | ![img](media/A98.jpg)     | ![img](media/A99.png)                       |
+| ![img](media/A94.jpg)  | ![img](media/A95.jpg)  | ![img](media/A96.png)                   |
+| Porta batteria 18650*1    | Cavo USB*1               | Batteria 18650*2 (fornita dall'utente)            |
+| ![img](media/A97.png) | ![img](media/A98.jpg) | ![img](media/A99.png) |
 
-### **4.Schéma de câblage**
+### **4. Schema di Collegamento**
 
 ![](media/A100.png)
 
-Note de câblage : Le servo est connecté à G (GND), V (VCC) et A3, le fil marron du servo est relié à la masse (G), le rouge est connecté au 5 V (V) et l’orange est attaché à A3.
+Nota sul cablaggio: Il servo è collegato a G (GND), V (VCC) e A3, il filo marrone del servo è collegato a Gnd (G), quello rosso è collegato a 5V (V) e quello arancione è collegato ad A3.
 
-Le servo doit être connecté à une alimentation externe en raison de sa forte demande en courant de pilotage. En général, le courant de la carte de développement n’est pas suffisant. Sans alimentation externe, la carte de développement pourrait être endommagée.
+Il servo deve essere collegato a un'alimentazione esterna a causa dell'elevata richiesta di corrente per la guida del servo. Generalmente, la corrente della scheda di sviluppo non è sufficiente. Se non si collega l'alimentazione esterna, la scheda di sviluppo potrebbe bruciarsi.
 
-### **5.Code de test**
+### **5. Codice di Test**
 
-Avant d’écrire le code, il est nécessaire d’importer la bibliothèque servo. Les étapes spécifiques sont les suivantes :
+Prima di scrivere il codice, è necessario importare il file della libreria servo. I passaggi specifici sono i seguenti:
 
-Cliquez sur ![](media/A29.png) pour entrer dans l’interface de la bibliothèque d’extensions des capteurs/modules/composants, puis recherchez "**Servo**".
+Cliccare ![](media/A29.png) per entrare nell'interfaccia della libreria di estensione di sensori/moduli/componenti, quindi cercare "**Servo**".
 
 ![](media/A101.png)
 
-Sélectionnez le composant et cliquez dessus. Ainsi, "**Not Loaded**" change en "**loaded**", indiquant que le composant "**Servo**" a été ajouté avec succès.
+Selezionare il componente e cliccarlo. In questo modo, "**Not Loaded**" cambia in "**loaded**", indicando che il componente "**Servo**" è stato aggiunto con successo.
 
 ![Img](media/A102.png)
 
 ![](media/A103.png)
 
-Cliquez sur ![](media/A33.png) pour revenir à l’éditeur de code, et dans la zone des modules vous pouvez voir le bloc de directive du composant "**Servo**" ajouté.
+Cliccare ![](media/A33.png) per tornare all'editor di codice, e nell'area moduli si può vedere il blocco direttiva del componente "**Servo**" aggiunto.
 
 ![](media/A104.png)
 
-Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
+È possibile trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
 
 (1).![](media/A105.png)
 
@@ -78,10 +78,10 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 (3).![](media/A107.png)
 
-**Code de test complet**
+**Codice di Test Completo**
 
 ![](media/A108.png)
 
-### **6.Résultat du test**
+### **6. Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et alimentez l’alimentation externe. Après la mise sous tension, tournez l’interrupteur DIP sur la position "ON", alors le servo oscillera dans la plage de 0° à 180°.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema di collegamento e alimentare l'alimentazione esterna. Dopo l'accensione, spostare l'interruttore dip su "ON", quindi il servo oscillerà nell'intervallo da 0° a 180°.

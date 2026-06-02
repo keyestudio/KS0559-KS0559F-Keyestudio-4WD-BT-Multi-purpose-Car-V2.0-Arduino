@@ -1,102 +1,102 @@
-# Projet 1 : Clignotement de LED
+# Progetto 1: Lampeggio LED
 
-### **1.Description**
+### **1.Descrizione**
 
 ![image-20250508161034535](media/A6.png)
 
-Pour les débutants et les passionnés, le clignotement de LED est un programme fondamental. LED, l'abréviation de diodes électroluminescentes, est composée de composés chimiques tels que Ga, As, P, N, etc.
+Per principianti e appassionati, il lampeggio del LED è un programma fondamentale. LED, abbreviazione di light emitting diodes, è composto da composti chimici come Ga, As, P, N e così via.
 
-La LED peut clignoter en différentes couleurs en modifiant le temps de délai dans le code de test. Lorsqu'elle est contrôlée, alimentée en GND et VCC, la LED s'allume si la broche S est à un niveau haut, sinon elle s'éteint.
+Il LED può lampeggiare in diversi colori modificando il tempo di ritardo nel codice di prova. Quando è sotto controllo, alimentando GND e VCC, il LED si accenderà se il terminale S è a livello alto, altrimenti si spegnerà.
 
-### **2.Spécifications**
+### **2.Specifiche**
 
-- Interface de contrôle : port numérique
+- Interfaccia di controllo: porta digitale
 
-- Tension de fonctionnement : DC 3.3-5V
+- Tensione di lavoro: DC 3.3-5V
 
-- Espacement des broches : 2,54 mm
+- Spaziatura pin: 2.54mm
 
-- Couleur d'affichage de la LED : rouge
+- Colore display LED: rosso
 
 ![image-20250508161015086](media/A7.png)
 
-### **3.Composants**
+### **3.Componenti**
 
-|           Carte de développement *1           |           Driver moteur 8833 *1           |     Module LED rouge *1     |
-| :--------------------------------------------: | :---------------------------------------: | :-------------------------: |
+|           Scheda di Sviluppo *1           |           Driver Motore 8833 *1           |     Modulo LED Rosso*1     |
+| :---------------------------------------: | :---------------------------------------: | :------------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             Fil Dupont 3P *1                   |               Câble USB *1                 |                             |
-|         ![img](media/A11.jpg)                   |         ![img](media/A12.jpg)              |                             |
+|             Cavo Dupont 3P*1             |               Cavo USB*1                |                            |
+|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                            |
 
-### **4.Schéma de câblage**
+### **4.Diagramma di Collegamento**
 
 ![image-20250508161123490](media/A13.png)
 
-Comme on peut le voir sur la figure ci-dessus, le Shield moteur Keyestudio 8833 est empilé sur la carte de développement Keyestudio 4.0.
+Come si vede dalla figura sopra, il Keyestudio 8833 motor Shield è impilato sulla scheda di sviluppo Keyestudio 4.0.
 
-Les broches G, V et S du module LED sont respectivement connectées à G, 5V et D9 de la carte d'extension.
+I pin G, V e S del modulo LED sono collegati rispettivamente a G, 5V e D9 della scheda di espansione.
 
-### **5.Code de test**
+### **5.Codice di Test**
 
 ```c 
 //****************************************************************************
 /*
 keyestudio 4wd BT Car
-lesson 1.1
-Blink
+lezione 1.1
+Lampeggio
 http://www.keyestudio.com
 */
 void setup()
 { 
-  pinMode(9, OUTPUT);// initialise la broche numérique 9 en sortie.
+  pinMode(9, OUTPUT);// inizializza il pin digitale 9 come uscita.
 }
     
-void loop() // la fonction loop s'exécute en boucle indéfiniment
+void loop() // la funzione loop viene eseguita ripetutamente all'infinito
 {  
-  digitalWrite(9, HIGH); // allume la LED (HIGH est le niveau de tension)
-   delay(1000); // attend une seconde
-   digitalWrite(9, LOW); // éteint la LED en mettant la tension à LOW
-   delay(1000); // attend une seconde
+  digitalWrite(9, HIGH); // accende il LED (HIGH è il livello di tensione)
+   delay(1000); // aspetta un secondo
+   digitalWrite(9, LOW); // spegne il LED portando la tensione a LOW
+   delay(1000); // aspetta un secondo
 }
 //****************************************************************************
 ```
 
-### **6.Résultat du test**
+### **6.Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et utilisez un câble USB pour connecter l'ordinateur afin d'alimenter la carte. Après la mise sous tension, vous verrez la LED connectée à la broche D9 s'allumer et s'éteindre.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i fili secondo il diagramma di collegamento e utilizzare un cavo USB per collegare il computer e alimentare la scheda. Dopo l'accensione, vedrai il LED collegato al D9 accendersi e spegnersi.
 
-### **7.Explication du code**
+### **7.Spiegazione del Codice**
 
-pinMode(9，OUTPUT) - Cette fonction permet de définir si la broche est en entrée (INPUT) ou en sortie (OUTPUT)
+pinMode(9，OUTPUT) - Questa funzione indica che il pin è INPUT o OUTPUT
 
-digitalWrite(9，HIGH) - Lorsque la broche est en sortie, on peut la mettre à HIGH (sortie 5V) ou LOW (sortie 0V)
+digitalWrite(9，HIGH) - Quando il pin è OUTPUT, possiamo impostarlo su HIGH (uscita 5V) o LOW (uscita 0V)
 
-### **8.Pratique d'extension**
+### **8.Esercizio di Estensione**
 
-Nous avons réussi à faire clignoter la LED. Ensuite, observons ce qui se passe avec la LED si nous modifions le temps de délai.
+Abbiamo fatto lampeggiare con successo il LED. Ora, osserviamo cosa succede al LED se modifichiamo il tempo di ritardo.
 
 ```c
 //****************************************************************************
 /*
  keyestudio 4wd BT Car
- lesson 1.2
- delay
+ lezione 1.2
+ ritardo
  http://www.keyestudio.com
 */
 void setup()
 {  
-  // initialise la broche numérique 9 en sortie.
+  // inizializza il pin digitale 11 come uscita.
   pinMode(9, OUTPUT);
 }
-// la fonction loop s'exécute en boucle indéfiniment
+// la funzione loop viene eseguita ripetutamente all'infinito
 void loop()
 { 
-  digitalWrite(9, HIGH); // allume la LED (HIGH est le niveau de tension)
-  delay(100); // attend 0,1 seconde
-  digitalWrite(9, LOW); // éteint la LED en mettant la tension à LOW
-  delay(100); // attend 0,1 seconde
+  digitalWrite(9, HIGH); // accende il LED (HIGH è il livello di tensione)
+  delay(100); // aspetta 0.1 secondi
+  digitalWrite(9, LOW); // spegne il LED portando la tensione a LOW
+  delay(100); // aspetta 0.1 secondi
 }
 //*****************************************************************
 ```
 
-Le résultat du test montre que la LED clignote plus rapidement. Par conséquent, le temps de délai influence la fréquence de clignotement de la LED.
+Il risultato del test mostra che il LED lampeggia più velocemente. Pertanto, il tempo di ritardo influisce sulla frequenza di lampeggio del LED.

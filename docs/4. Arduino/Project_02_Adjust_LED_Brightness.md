@@ -1,44 +1,44 @@
-# Projet 2 : Ajuster la luminosité de la LED
+# Progetto 2: Regolare la luminosità del LED
 
-### **1.Description**
+### **1.Descrizione**
 
-Dans la leçon précédente, nous avons contrôlé l’allumage et l’extinction de la LED et fait clignoter celle-ci.
+Nella lezione precedente, abbiamo controllato l'accensione e lo spegnimento del LED e lo abbiamo fatto lampeggiare.
 
-Dans ce projet, nous allons contrôler la luminosité de la LED via le PWM simulant un effet de respiration.
+In questo progetto, controlleremo la luminosità del LED tramite PWM simulando un effetto di respiro.
 
-Le PWM est un moyen de contrôler la sortie analogique par des moyens numériques. Le contrôle numérique est utilisé pour générer des ondes carrées avec différents cycles de service (un signal qui bascule constamment entre des niveaux haut et bas) pour contrôler la sortie analogique. En général, les tensions d’entrée des ports sont 0V et 5V.
+PWM è un mezzo per controllare l'uscita analogica tramite mezzi digitali. Il controllo digitale viene utilizzato per generare onde quadre con diversi cicli di lavoro (un segnale che passa costantemente tra livelli alti e bassi) per controllare l'uscita analogica. In generale, le tensioni di ingresso delle porte sono 0V e 5V.
 
-Que faire si 3V sont nécessaires ? Ou un commutateur entre 1V, 3V et 3,5V ? Nous ne pouvons pas changer constamment les résistances. Pour cette raison, nous recourons au PWM.
+Cosa succede se è richiesto 3V? O un interruttore tra 1V, 3V e 3,5V? Non possiamo cambiare continuamente le resistenze. Per questo motivo, ricorriamo al PWM.
 
 ![bbcfcb9ae56abb7e80ee587246fc4be9](media/A14.gif)
 
-Pour la sortie de tension du port numérique Arduino, il n’y a que LOW et HIGH, qui correspondent à une sortie de tension de 0V et 5V. Vous pouvez définir LOW comme 0 et HIGH comme 1, et laisser l’Arduino émettre cinq cents signaux 0 ou 1 en 1 seconde.
+Per l'uscita di tensione della porta digitale di Arduino, ci sono solo LOW e HIGH, che corrispondono all'uscita di tensione di 0V e 5V. Puoi definire LOW come 0 e HIGH come 1, e lasciare che Arduino emetta cinquecento segnali 0 o 1 in 1s.
 
-Si tous les cinq cents signaux sont 1, cela correspond à 5V ; si tous sont 0, cela correspond à 0V. Si la sortie est 010101010101 de cette manière, alors la sortie du port est de 2,5V, ce qui est comme montrer un film. Le film que nous regardons n’est pas complètement continu. Il affiche en fait 25 images par seconde. Dans ce cas, l’humain ne peut pas le voir, ni le PWM. Si nous voulons une tension différente, nous devons contrôler le ratio de 0 et 1. Plus il y a de signaux 0,1 émis par unité de temps, plus le contrôle est précis.
+Se tutti i cinquecento output sono 1, cioè 5V; se tutti sono 0, cioè 0V. Se l'output è 010101010101 in questo modo, allora la porta di uscita è 2,5V, che è come mostrare un film. Il film che guardiamo non è completamente continuo. In realtà emette 25 immagini al secondo. In questo caso, l'uomo non può vederlo, né il PWM. Se vogliamo una tensione diversa, dobbiamo controllare il rapporto tra 0 e 1. Più segnali 0,1 vengono emessi per unità di tempo, più preciso è il controllo.
 
-Le PWM est une technologie qui utilise des méthodes numériques pour obtenir des quantités analogiques. Le contrôle numérique permet de former une onde carrée, le signal d’onde carrée n’a que deux états, marche et arrêt (haut et bas). Une tension allant de 0 à 5V peut être simulée en contrôlant le rapport de la durée de marche sur la durée d’arrêt. Le temps passé en marche (appelé techniquement niveau haut) est appelé largeur d’impulsion, donc le PWM est aussi appelé modulation de largeur d’impulsion.
+PWM è una tecnologia che utilizza metodi digitali per ottenere quantità analogiche. Il controllo digitale consente di formare un'onda quadra, il segnale dell'onda quadra ha solo due stati on e off (alto e basso). Una tensione che va da 0 a 5V può essere simulata controllando il rapporto tra la durata on e off. Il tempo trascorso in on (tecnicamente chiamato livello alto) è chiamato larghezza dell'impulso, quindi PWM è anche chiamato modulazione della larghezza dell'impulso.
 
-Les barres verticales vertes représentent une période de l’onde carrée. La valeur écrite dans chaque analogWrite(value) correspond à un pourcentage, appelé aussi cycle de service. Ce pourcentage fait référence au rapport du temps occupé par le niveau haut dans un cycle, c’est-à-dire cycle de service = temps niveau haut / temps du cycle.
+Le barre verticali verdi rappresentano un periodo dell'onda quadra. Il valore scritto in ogni analogWrite(value) corrisponde a una percentuale, chiamata anche Duty Cycle. Questa percentuale si riferisce al rapporto del tempo occupato dal livello alto in un ciclo, cioè duty cycle = tempo livello alto/tempo ciclo.
 
-Dans la figure, de haut en bas, le cycle de service de la première onde carrée est de 0%, et la valeur correspondante est 0, et la luminosité de la LED est la plus faible, c’est-à-dire l’état éteint. Plus le niveau haut dure longtemps, plus la LED sera brillante. Par conséquent, la valeur du dernier cycle de service de 100% est 255, et la LED est la plus brillante. 50% correspond à la moitié de la luminosité maximale, et 25% est plus faible.
+Nella figura, dall'alto verso il basso, il duty cycle della prima onda quadra è 0%, e il valore corrispondente è 0, e la luminosità del LED è la più bassa, cioè spento. Più a lungo dura il livello alto, più sarà luminoso. Pertanto, il valore dell'ultimo duty cycle del 100% è 255, e il LED è il più luminoso. Il 50% è metà luminoso, e il 25% è più scuro.
 
-Le PWM est surtout utilisé pour ajuster la luminosité des LED ou la vitesse de rotation des moteurs, et la vitesse des roues entraînées par les moteurs peut être facilement contrôlée. Lorsqu’on joue avec certains robots Arduino, les avantages du PWM sont mieux mis en évidence.
+PWM è più usato per regolare la luminosità delle luci LED o la velocità di rotazione dei motori, e la velocità delle ruote azionate dai motori può essere facilmente controllata. Quando si gioca con alcuni robot Arduino, i vantaggi del PWM possono essere meglio evidenziati.
 
-### **2.Composants**
+### **2.Componenti**
 
-|           Carte de développement *1           |           Driver moteur 8833 *1           |     Module LED rouge *1     |
-| :--------------------------------------------: | :---------------------------------------: | :-------------------------: |
+|           Development Board *1           |           8833 Motor Driver *1           |     Red LED Module*1     |
+| :--------------------------------------: | :--------------------------------------: | :----------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             Fil Dupont 3P *1                   |               Câble USB *1                 |                             |
-|         ![img](media/A11.jpg)                   |         ![img](media/A12.jpg)              |                             |
+|             3P Dupont Wire*1             |               USB Cable*1                |                          |
+|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                          |
 
-### **3.Schéma de câblage**
+### **3.Diagramma di collegamento**
 
-Gardez le câblage inchangé.
+Mantieni il cablaggio invariato.
 
 ![image-20250508161123490](media/A13.png)
 
-### **4.Code de test**
+### **4.Codice di test**
 
 ```c
 //*****************************************************************
@@ -48,85 +48,85 @@ Gardez le câblage inchangé.
  pwm
  http://www.keyestudio.com
 */
-int ledPin = 9; // Définir la broche LED sur D9
+int ledPin = 9; // Definisci il pin LED su D9
 int value;
 
 void setup () {
-  pinMode (ledPin, OUTPUT); // initialiser ledPin comme une sortie.
+  pinMode (ledPin, OUTPUT); // inizializza ledPin come uscita.
 }
 
 void loop () {
   for (value = 0; value <255; value = value + 1) 
   {
-    analogWrite (ledPin, value); // La LED s'allume progressivement
-    delay (5); // délai de 5 ms
+    analogWrite (ledPin, value); // Il LED si accende gradualmente
+    delay (5); // ritardo di 5ms
   }
   for (value = 255; value> 0; value = value-1) 
   {
-    analogWrite (ledPin, value); // La LED s'éteint progressivement
-    delay (5); // délai de 5 ms
+    analogWrite (ledPin, value); // Il LED si spegne gradualmente
+    delay (5); // ritardo di 5ms
   }
 }
 //*****************************************************************
 ```
 
-**5. Résultat du test**
+### **5.Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, et utilisez un câble USB pour connecter l'ordinateur afin d'alimenter la carte. Après la mise sous tension, vous verrez que la LED change progressivement de lumineux à sombre, comme la respiration humaine, plutôt que de s'allumer et s'éteindre immédiatement.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico e usa un cavo USB per collegare il computer e alimentare la scheda. Dopo l'accensione, vedrai che il LED cambia gradualmente da luminoso a spento, come il respiro umano, invece di accendersi e spegnersi immediatamente.
 
-**6. Explication du code**
+### **6.Spiegazione del Codice**
 
-Si nous devons répéter une certaine instruction, nous pouvons utiliser l'instruction for.
+Se abbiamo bisogno di ripetere una certa istruzione, possiamo usare l'istruzione for.
 
-Le format de l'instruction for est présenté ci-dessous :
+Il formato dell'istruzione for è mostrato di seguito:
 
 ![image-20250508162458776](media/A15.png)
 
-Séquence cyclique FOR :
+Sequenza ciclica FOR:
 
-Tour 1 : 1 → 2 → 3 → 4
+Giro 1：1 → 2 → 3 → 4
 
-Tour 2 : 2 → 3 → 4
+Giro 2：2 → 3 → 4
 
 …
 
-Jusqu'à ce que le nombre 2 ne soit plus établi, la boucle "for" est terminée,
+Fino a quando il numero 2 non è stabilito, il ciclo “for” è terminato,
 
-Après avoir compris cet ordre, revenons au code :
+Dopo aver compreso questo ordine, torniamo al codice:
 
 **for (int value = 0; value \< 255; value=value+1)**
 
 **for (int value = 255; value \>0; value=value-1)**
 
-Les deux instructions “for” font augmenter la valeur de 0 à 255, puis la réduire de 255 à 0, puis augmenter à 255... en boucle infinie.
+Le due istruzioni “for” fanno aumentare value da 0 a 255, poi diminuirlo da 255 a 0, poi aumentare a 255.... ciclo infinito.
 
-Il y a une nouvelle fonction dans ce qui suit ----- analogWrite().
+C'è una nuova funzione nel seguito ----- analogWrite().
 
-Nous savons que le port numérique n'a que deux états, 0 et 1. Alors comment envoyer une valeur analogique à une valeur numérique ? Ici, cette fonction est nécessaire. Observons la carte Arduino et trouvons 6 broches marquées “\~” qui peuvent émettre des signaux PWM.
+Sappiamo che la porta digitale ha solo due stati, 0 e 1. Quindi come inviare un valore analogico a una porta digitale? Qui serve questa funzione. Osserviamo la scheda Arduino e troviamo 6 pin contrassegnati con “\~” che possono emettere segnali PWM.
 
-Le format de la fonction est le suivant :
+Formato della funzione come segue:
 
 **analogWrite(pin,value)**
 
-analogWrite() est utilisée pour écrire une valeur analogique de 0 à 255 pour un port PWM, donc la valeur est dans la plage de 0 à 255. Attention, vous ne pouvez écrire que sur les broches numériques avec fonction PWM, telles que les broches 3, 5, 6, 9, 10, 11.
+analogWrite() serve per scrivere un valore analogico da 0 a 255 per la porta PWM, quindi il valore è nell'intervallo 0~255. Attenzione che puoi scrivere solo sui pin digitali con funzione PWM, come i pin 3, 5, 6, 9, 10, 11.
 
-Le PWM est une technologie pour obtenir une grandeur analogique par méthode numérique. Le contrôle numérique forme une onde carrée, et le signal d'onde carrée n'a que deux états, allumé et éteint (c'est-à-dire niveaux haut ou bas). En contrôlant le rapport de la durée d'allumage et d'extinction, une tension variant de 0 à 5V peut être simulée. Le temps d'allumage (appelé académiquement niveau haut) est appelé largeur d'impulsion, donc PWM est aussi appelé modulation de largeur d'impulsion.
+PWM è una tecnologia per ottenere quantità analogiche tramite metodo digitale. Il controllo digitale forma un'onda quadra, e il segnale dell'onda quadra ha solo due stati di accensione e spegnimento (cioè livelli alto o basso). Controllando il rapporto tra la durata di accensione e spegnimento, si può simulare una tensione variabile da 0 a 5V. Il tempo di accensione (accademicamente chiamato livello alto) è chiamato larghezza dell'impulso, quindi PWM è anche chiamato modulazione della larghezza dell'impulso.
 
-À travers les cinq ondes carrées suivantes, apprenons-en plus sur le PWM.
+Attraverso le seguenti cinque onde quadre, impariamo di più sul PWM.
 
 ![image-20250508162529349](media/A16.png)
 
-Dans la figure ci-dessus, la ligne verte représente une période, et la valeur de analogWrite() correspond à un pourcentage appelé aussi cycle de service (Duty Cycle). Le cycle de service implique le rapport du temps occupé par le niveau haut dans le cycle. De haut en bas, le cycle de service de la première onde carrée est de 0 % et sa valeur correspondante est 0.
+Nella figura sopra, la linea verde rappresenta un periodo, e il valore di analogWrite() corrisponde a una percentuale chiamata anche Duty Cycle. Il duty cycle indica il rapporto del tempo occupato dal livello alto nel ciclo. Dall'alto verso il basso, il duty cycle della prima onda quadra è 0% e il suo valore corrispondente è 0.
 
-La luminosité de la LED est la plus faible, c'est-à-dire éteinte. Plus le temps de niveau haut dure, plus la LED est brillante. Par conséquent, le dernier cycle de service est de 100 %, ce qui correspond à 255, et la LED est la plus brillante. Et 50 % est la moitié la plus brillante, 25 % signifie plus sombre.
+La luminosità del LED è la più bassa, cioè spento. Più a lungo dura il livello alto, più il LED è luminoso. Pertanto, l'ultimo duty cycle è 100%, che corrisponde a 255, e il LED è al massimo della luminosità. Il 50% è metà luminosità, il 25% significa più scuro.
 
-Le PWM est principalement utilisé pour ajuster la luminosité des LED ou la vitesse de rotation des moteurs.
+Il PWM è usato principalmente per regolare la luminosità del LED o la velocità di rotazione dei motori.
 
-Il joue un rôle vital dans le contrôle des voitures robots intelligentes. Je suis sûr que vous avez hâte d'apprendre le prochain projet.
+Ha un ruolo vitale nel controllo delle auto robot intelligenti. Credo che non vediate l'ora di imparare il prossimo progetto.
 
-**7. Pratique d'extension**
+**7.Esercizio di Estensione**
 
-Modifions la valeur du délai tout en laissant la broche inchangée, puis observons comment la LED change.
+Modifichiamo il valore del delay mantenendo il pin invariato, quindi osserviamo come cambia il LED.
 
 ```c
 //***********************************************************
@@ -136,22 +136,22 @@ Modifions la valeur du délai tout en laissant la broche inchangée, puis observ
  pwm
  http://www.keyestudio.com
 */
-int ledPin = 9; // Définir la broche LED sur D9
+int ledPin = 9; // Definisce il pin LED su D9
 void setup () {
-   pinMode(ledPin, OUTPUT); // initialiser ledPin comme sortie.
+   pinMode(ledPin, OUTPUT); // inizializza ledPin come uscita.
 }
 
 void loop () {
    for (int value = 0; value <255; value = value + 1) {
-     analogWrite (ledPin, value); // La LED s'allume progressivement
-     delay (30); // délai de 30 ms
+     analogWrite (ledPin, value); // Il LED si accende gradualmente
+     delay (30); // ritardo di 30ms
    }
    for (int value = 255; value> 0; value = value-1) {
-     analogWrite (ledPin, value); // La LED s'éteint progressivement
-     delay (30); // délai de 30 ms
+     analogWrite (ledPin, value); // Il LED si spegne gradualmente
+     delay (30); // ritardo di 30ms
    }
 }
 //***********************************************************
 ```
 
-Téléchargez le code sur la carte de développement, puis la LED clignotera plus lentement.
+Carica il codice sulla scheda di sviluppo, quindi il LED lampeggerà più lentamente.

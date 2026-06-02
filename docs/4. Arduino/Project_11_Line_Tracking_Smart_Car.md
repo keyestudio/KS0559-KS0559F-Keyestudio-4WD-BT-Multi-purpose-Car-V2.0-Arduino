@@ -1,130 +1,130 @@
-# Projet 11 Voiture Intelligente Suiveuse de Ligne
+# Progetto 11 Auto Intelligente con Tracciamento Linea
 
 ![eff7a15e697e8b78bde391f806ea024d](media/A112.png)
 
-### **1.Description**
+### **1.Descrizione**
 
-Basé sur le principe de fonctionnement du capteur suiveur de ligne, nous réalisons une voiture intelligente suiveuse de ligne.
+Basandoci sul principio di funzionamento del sensore di tracciamento linea, realizziamo un'auto intelligente con tracciamento linea.
 
-Dans ce projet, nous détectons s'il y a une ligne noire sous la voiture intelligente grâce à un capteur suiveur de ligne, puis contrôlons la rotation des deux groupes de moteurs selon les résultats de détection de manière à faire suivre à la voiture intelligente la ligne noire.
+In questo progetto, rileviamo se c'è una linea nera sotto l'auto intelligente tramite un sensore di tracciamento linea, e poi controlliamo la rotazione dei due gruppi di motori in base ai risultati della rilevazione in modo da far muovere l'auto intelligente lungo la linea nera.
 
-### **2.Diagramme de Flux**
+### **2.Diagramma di Flusso**
 
 ![img](media/A113.png)
 
 ![Img](media/A114.png)
 
-### **3.Schéma de Câblage**
+### **3.Diagramma di Collegamento**
 
 ![88422b5f1464ad447e28ccbb8c39a8d4](media/A115.png)
 
-G, V, S1, S2 et S3 du capteur suiveur de ligne sont connectés respectivement à G (GND), V (VCC), D11, D7 et D8 de la carte d'extension capteur.
+G, V, S1, S2 e S3 del sensore di tracciamento linea sono collegati a G (GND), V (VCC), D11, D7 e D8 della scheda di espansione sensori.
 
-L'alimentation est connectée au port BAT.
+L'alimentazione è collegata alla porta BAT.
 
-### **4.Code de Test**
+### **4.Codice di Test**
 
 ```c
 //*************************************************************************
 /*
  keyestudio 4wd BT Car
- lesson 11
- Tracking Car
+ lezione 11
+ Auto con Tracciamento
  http://www.keyestudio.com
 */ 
-//Données du motif sourire obtenues depuis l'outil tactile
+//Dati del pattern sorriso ottenuti dallo strumento touch
 unsigned char start01[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
-#define SDA_Pin  A4  //Définir la broche de données sur A4
-#define SCL_Pin  A5  //Définir la broche d'horloge sur A5
+#define SDA_Pin  A4  //Imposta il pin dati su A4
+#define SCL_Pin  A5  //Imposta il pin clock su A5
 
-int left_ctrl = 2;//définir les broches de contrôle de direction du moteur groupe B
-int left_pwm = 5;//définir les broches de contrôle PWM du moteur groupe B
-int right_ctrl = 4;//définir les broches de contrôle de direction du moteur groupe A
-int right_pwm = 6;//définir les broches de contrôle PWM du moteur groupe A
-int sensor_L = 11;//définir la broche du capteur suiveur de ligne gauche
-int sensor_M = 7;//définir la broche du capteur suiveur de ligne milieu
-int sensor_R = 8;//définir la broche du capteur suiveur de ligne droite
-int L_val,M_val,R_val;//définir ces variables
+int left_ctrl = 2;//definisce i pin di controllo direzione del motore gruppo B
+int left_pwm = 5;//definisce i pin di controllo PWM del motore gruppo B
+int right_ctrl = 4;//definisce i pin di controllo direzione del motore gruppo A
+int right_pwm = 6;//definisce i pin di controllo PWM del motore gruppo A
+int sensor_L = 11;//definisce il pin del sensore di tracciamento linea sinistro
+int sensor_M = 7;//definisce il pin del sensore di tracciamento linea centrale
+int sensor_R = 8;//definisce il pin del sensore di tracciamento linea destro
+int L_val,M_val,R_val;//definisce queste variabili
 
 void setup() {
-  Serial.begin(9600);//démarrer le moniteur série et définir le débit à 9600
-  pinMode(left_ctrl,OUTPUT);//définir les broches de contrôle de direction du moteur groupe B en sortie
-  pinMode(left_pwm,OUTPUT);//définir les broches de contrôle PWM du moteur groupe B en sortie
-  pinMode(right_ctrl,OUTPUT);//définir les broches de contrôle de direction du moteur groupe A en sortie
-  pinMode(right_pwm,OUTPUT);//définir les broches de contrôle PWM du moteur groupe A en sortie
-  pinMode(sensor_L,INPUT);//définir les broches du capteur suiveur de ligne gauche en entrée
-  pinMode(sensor_M,INPUT);//définir les broches du capteur suiveur de ligne milieu en entrée
-  pinMode(sensor_R,INPUT);//définir les broches du capteur suiveur de ligne droite en entrée
-  //Définir les broches en sortie
+  Serial.begin(9600);//avvia il monitor seriale e imposta la velocità a 9600 baud
+  pinMode(left_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo B come OUTPUT
+  pinMode(left_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo B come OUTPUT
+  pinMode(right_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo A come OUTPUT
+  pinMode(right_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo A come OUTPUT
+  pinMode(sensor_L,INPUT);//imposta i pin del sensore di tracciamento linea sinistro come INPUT
+  pinMode(sensor_M,INPUT);//imposta i pin del sensore di tracciamento linea centrale come INPUT
+  pinMode(sensor_R,INPUT);//imposta i pin del sensore di tracciamento linea destro come INPUT
+  //Imposta i pin come output
   pinMode(SCL_Pin, OUTPUT);
   pinMode(SDA_Pin, OUTPUT);
-  matrix_display(start01);//Afficher le motif de démarrage
+  matrix_display(start01);//Mostra il pattern di avvio
 }
 
 void loop() 
 {
-  tracking(); //exécuter le programme principal
+  tracking(); //esegue il programma principale
 }
 
 void tracking()
 {
-  L_val = digitalRead(sensor_L);//lire la valeur du capteur suiveur de ligne gauche
-  M_val = digitalRead(sensor_M);//lire la valeur du capteur suiveur de ligne milieu
-  R_val = digitalRead(sensor_R);//lire la valeur du capteur suiveur de ligne droite
+  L_val = digitalRead(sensor_L);//legge il valore del sensore di tracciamento linea sinistro
+  M_val = digitalRead(sensor_M);//legge il valore del sensore di tracciamento linea centrale
+  R_val = digitalRead(sensor_R);//legge il valore del sensore di tracciamento linea destro
 
-  if(M_val == 1){//si l'état du capteur du milieu est 1, ce qui signifie détection de la ligne noire
+  if(M_val == 1){//se lo stato del sensore centrale è 1, significa che rileva la linea nera
 
-     if (L_val == 1 && R_val == 0) { //Si une ligne noire est détectée à gauche, mais pas à droite, tourner à gauche
+     if (L_val == 1 && R_val == 0) { //Se viene rilevata una linea nera a sinistra, ma non a destra, gira a sinistra
         left();
     }
-     else if (L_val == 0 && R_val == 1) { //Sinon, si une ligne noire est détectée à droite et pas à gauche, tourner à droite
+     else if (L_val == 0 && R_val == 1) { //Altrimenti, se viene rilevata una linea nera a destra e non a sinistra, gira a destra
       right();
     }
-     else { //Sinon, avancer
+     else { //Altrimenti, avanti
       front();
     }
   }
-  else { //Aucune ligne noire détectée au milieu
-    if (L_val == 1 && R_val == 0) { //Si une ligne noire est détectée à gauche, mais pas à droite, tourner à gauche
+  else { //Nessuna linea nera rilevata al centro
+    if (L_val == 1 && R_val == 0) { //Se viene rilevata una linea nera a sinistra, ma non a destra, gira a sinistra
       left();
     }
-    else if (L_val == 0 && R_val == 1) { //Sinon, si une ligne noire est détectée à droite et pas à gauche, tourner à droite
+    else if (L_val == 0 && R_val == 1) { //Altrimenti, se viene rilevata una linea nera a destra e non a sinistra, gira a destra
       right();
     }
-    else { //Sinon, arrêter
+    else { //Altrimenti, fermati
       Stop();
     }
   }
 }
-void front()//définir l'état d'avancer
+void front()//definisce lo stato di avanzamento
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,155);
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,155);
 }
-void back()//définir l'état de reculer
+void back()//definisce lo stato di retromarcia
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,100);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,100);
 }
-void left()//définir l'état de tourner à gauche
+void left()//definisce lo stato di svolta a sinistra
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, 100);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, 155);
 }
-void right()//définir l'état de tourner à droite
+void right()//definisce lo stato di svolta a destra
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, 155);
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, 100);
 }
-void Stop()//définir l'état d'arrêt
+void Stop()//definisce lo stato di stop
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm,0);
@@ -132,22 +132,22 @@ void Stop()//définir l'état d'arrêt
   analogWrite(right_pwm,0);
 }
 
-//cette fonction est utilisée pour l'affichage matriciel
+//questa funzione è usata per il display a matrice di punti
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //la fonction qui appelle la condition de début de transfert de données
-  IIC_send(0xc0);  //sélectionner l'adresse
+  IIC_start();  //la funzione che richiama la condizione di inizio trasferimento dati
+  IIC_send(0xc0);  //seleziona l'indirizzo
 
-  for (int i = 0; i < 16; i++) //les données du motif sont 16 octets
+  for (int i = 0; i < 16; i++) //i dati del pattern sono 16 byte
   {
-    IIC_send(matrix_value[i]); //Transmettre les données du motif
+    IIC_send(matrix_value[i]); //Trasmette i dati del pattern
   }
-  IIC_end();   //Fin de la transmission des données du motif
+  IIC_end();   //Termina la trasmissione dei dati del pattern
   IIC_start();
-  IIC_send(0x8A);  //Contrôle d'affichage, sélectionner une largeur d'impulsion 4/16
+  IIC_send(0x8A);  //Controllo display, seleziona larghezza impulso 4/16
   IIC_end();
 }
-//Conditions sous lesquelles la transmission de données commence
+//Condizioni sotto le quali inizia la trasmissione dati
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -157,7 +157,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indique la fin de la transmission de données
+//Indica la fine della trasmissione dati
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -168,25 +168,25 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//transmettre les données
+//trasmette dati
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Chaque octet a 8 bits et est vérifié bit par bit en commençant par le niveau le plus bas
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Ogni byte ha 8 bit e viene controllato bit per bit partendo dal livello più basso
   {
-    if (send_data & mask) { //Définit les niveaux haut et bas de SDA_Pin selon que chaque bit de l'octet est un 1 ou un 0
+    if (send_data & mask) { //Imposta i livelli alto e basso di SDA_Pin a seconda che ogni bit del byte sia 1 o 0
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Met le pin d'horloge SCL_Pin à haut pour arrêter la transmission des données
+    digitalWrite(SCL_Pin, HIGH); //Alza il pin clock SCL_Pin per fermare la trasmissione dati
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //met le pin d'horloge SCL_Pin à bas pour changer le SIGNAL de SDA 
+    digitalWrite(SCL_Pin, LOW); //Abbassa il pin clock SCL_Pin per cambiare il SEGNALE di SDA 
   }
 }
 //*************************************************************************
 ```
 
-### **5. Résultat du test**
+### **5. Risultati del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, alimentez l'alimentation externe puis mettez l'interrupteur DIP sur ON. Ensuite, la voiture intelligente suivra les lignes.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, alimentare la fonte esterna e quindi impostare l'interruttore DIP su ON. A questo punto l'auto intelligente seguirà le linee.

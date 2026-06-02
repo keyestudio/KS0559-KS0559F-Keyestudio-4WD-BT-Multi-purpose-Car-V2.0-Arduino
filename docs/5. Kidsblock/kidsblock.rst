@@ -10,7 +10,7 @@
 
 
 
-5.5 Kidsblock - Projets
+5.5 Kidsblock - Progetti
 -------------------------
 
 .. toctree::

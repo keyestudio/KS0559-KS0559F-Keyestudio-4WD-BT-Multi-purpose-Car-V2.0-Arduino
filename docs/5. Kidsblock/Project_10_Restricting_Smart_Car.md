@@ -1,30 +1,30 @@
-# Projet 10 Voiture Intelligente Limitée
+# Progetto 10 Auto Intelligente Limitata
 
 ![](media/A261.jpeg)
 
-### **1.Description**
+### **1. Descrizione**
 
-Dans ce projet, nous cherchons à combiner les connaissances d'un capteur de suivi de ligne et des modules de pilote de moteur pour fabriquer une voiture intelligente limitée. Lors de l'expérience, nous visons à utiliser le capteur de suivi de ligne pour détecter s'il y a une ligne noire autour de la voiture intelligente, puis contrôler la rotation des deux moteurs selon les résultats de détection de manière à verrouiller la voiture intelligente dans un cercle tracé en ligne noire.
+In questo progetto, vogliamo combinare le conoscenze di un sensore di tracciamento linea e moduli driver per motori per realizzare un'auto intelligente limitata. Nell'esperimento, l'obiettivo è utilizzare il sensore di tracciamento linea per rilevare se c'è una linea nera intorno all'auto intelligente, e quindi controllare la rotazione dei due motori in base ai risultati del rilevamento in modo da bloccare l'auto intelligente in un cerchio disegnato con linea nera.
 
-### **2.Diagramme de Flux**
+### **2. Diagramma di Flusso**
 
 ![img](media/A262.png)
 
-La logique spécifique de la voiture intelligente 4WD limitée est montrée dans le tableau.
+La logica specifica dell'auto intelligente 4WD limitata è mostrata nella tabella.
 
 ![Img](media/A263.png)
 
-### **3.Schéma de Câblage**
+### **3. Schema di Collegamento**
 
 ![](media/A264.png)
 
-G, V, S1, S2 et S3 du capteur de suivi de ligne sont connectés à G (GND), V (VCC), D11, D7 et D8 de la carte d'extension du capteur.
+G, V, S1, S2 e S3 del sensore di tracciamento linea sono collegati a G (GND), V (VCC), D11, D7 e D8 della scheda di espansione sensori.
 
-L'alimentation est connectée au port BAT.
+L'alimentazione è collegata alla porta BAT.
 
-### **4.Code de Test**
+### **4. Codice di Test**
 
-Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
+Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono a titolo di riferimento.
 
 (1).![](media/A126.png)
 
@@ -38,12 +38,10 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 (6).![](media/A269.png)
 
-**Code de Test Complet**
+**Codice di Test Completo**
 
 ![KidsBlock Project-1747127137354](media/A270.png)
 
+### **5. Risultato del Test**
 
-
-### **5.Résultat du Test**
-
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câblages selon le schéma de câblage, alimentez l'alimentation externe puis mettez l'interrupteur DIP sur ON. Placez la voiture intelligente dans le cercle noir, elle se déplacera alors uniquement dans le cercle.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema di collegamento, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON. Metti l'auto intelligente nel cerchio nero, quindi si muoverà esclusivamente all'interno del cerchio.

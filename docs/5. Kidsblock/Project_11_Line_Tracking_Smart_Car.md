@@ -1,30 +1,30 @@
-# Projet 11 Voiture Intelligente Suiveuse de Ligne
+# Progetto 11 Auto Intelligente a Inseguimento di Linea
 
 ![](media/A271.png)
 
-### **1.Description**
+### **1. Descrizione**
 
-Basé sur le principe de fonctionnement du capteur suiveur de ligne, nous réalisons une voiture intelligente suiveuse de ligne.
+Basandoci sul principio di funzionamento del sensore di inseguimento linea, realizziamo un'auto intelligente a inseguimento di linea.
 
-Dans ce projet, nous détectons s'il y a une ligne noire sous la voiture intelligente grâce à un capteur suiveur de ligne, puis contrôlons la rotation des deux groupes de moteurs selon les résultats de détection afin de faire avancer la voiture intelligente le long de la ligne noire.
+In questo progetto, rileviamo se c'è una linea nera sotto l'auto intelligente tramite un sensore di inseguimento linea, e poi controlliamo la rotazione dei due gruppi di motori in base ai risultati della rilevazione in modo da far muovere l'auto intelligente lungo la linea nera.
 
-### **2.Diagramme de Flux**
+### **2. Diagramma di Flusso**
 
 ![img](media/A272.png)
 
 ![Img](media/A273.png)
 
-### **3.Schéma de Câblage**
+### **3. Schema di Collegamento**
 
 ![](media/A264.png)
 
-G, V, S1, S2 et S3 du capteur suiveur de ligne sont connectés respectivement à G (GND), V (VCC), D11, D7 et D8 de la carte d'extension capteur.
+G, V, S1, S2 e S3 del sensore di inseguimento linea sono collegati a G (GND), V (VCC), D11, D7 e D8 della scheda di espansione sensori.
 
-L'alimentation est connectée au port BAT.
+L'alimentazione è collegata alla porta BAT.
 
-### **4.Code de Test**
+### **4. Codice di Test**
 
-Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont pour votre référence.
+Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
 
 (1).![](media/A126.png)
 
@@ -36,7 +36,7 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 (5).![](media/A276.png)
 
-**Code de Test Complet**
+**Codice di Test Completo**
 
 ![](media/A277.png)
 
@@ -44,6 +44,6 @@ Vous pouvez glisser les blocs pour éditer. Les blocs listés ci-dessous sont po
 
 ![](media/A279.png)
 
-### **5.Résultat du Test**
+### **5. Risultato del Test**
 
-Après avoir téléchargé avec succès le code sur la carte V4.0, connectez les câbles selon le schéma de câblage, alimentez la carte avec une source externe puis mettez l'interrupteur DIP sur ON. La voiture intelligente suivra alors la ligne.
+Dopo aver caricato con successo il codice sulla scheda V4.0, collega i fili secondo lo schema di collegamento, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON. A questo punto l'auto intelligente seguirà le linee.
