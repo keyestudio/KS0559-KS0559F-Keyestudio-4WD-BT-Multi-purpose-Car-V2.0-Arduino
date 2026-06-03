@@ -2,7 +2,7 @@
 
 ![](media/A63.png)
 
-**1.Description** 
+### **1.Description** 
 
 The tracking sensor is actually an infrared sensor. The component used here is the TCRT5000 infrared tube. Its working principle is to use different reflectivity of infrared light to colors, then convert the strength of the reflected signal into a current signal.
 
@@ -12,7 +12,7 @@ Keyestudio 3-channel line tracking module has integrated 3 sets of TCRT5000 infr
 
 By rotating the adjustable potentiometer on the sensor, it can adjust the detection sensitivity of the sensor.
 
-**2.Specification**
+### **2.Specification**
 
 - Operating Voltage: 3.3-5V (DC)
 
@@ -26,7 +26,7 @@ By rotating the adjustable potentiometer on the sensor, it can adjust the detect
 
 <span style="color: rgb(255, 76, 65);">Note:</span> Before testing, rotate the potentiometer on the sensor to adjust the detection sensitivity. The sensitivity is best when adjusting the LED to a threshold between ON and OFF. 
 
-**3.Components**
+### **3.Components**
 
 | Development Board *1     | 8833 Motor Driver *1     | Red LED Module*1         | Line Tracking Sensor*1   |
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
@@ -34,13 +34,13 @@ By rotating the adjustable potentiometer on the sensor, it can adjust the detect
 | 5P Dupont Wire*1         | USB Cable*1              | 3P  Dupont Wire*1        |                          |
 | ![img](media/A69.png) | ![img](media/A70.jpg) | ![img](media/A71.jpg) |                          |
 
-**4.Wiring Diagram**
+### **4.Wiring Diagram**
 
 ![](media/A72.png)
 
 G, V, S1, S2 and S3 of the line tracking sensor are connected to G（GND), V（VCC), D11, D7 and D8 of the sensor expansion board.
 
-**5.Test Code**
+### **5.Test Code**
 
 You can drag blocks to edit. Blocks listed below are for your reference.
 
@@ -60,7 +60,7 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](media/A79.png)
 
-**6.Test Result**
+### **6.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board.
 
@@ -70,7 +70,7 @@ After powering on, click![](media/A80.png)to set the baud rate to 9600 and you w
 
 ![](media/A82.png)
 
-**7.Extension Practice**
+### **7.Extension Practice**
 
 After knowing its working principle, you can connect an LED to D9 so as to control LED by it.
 
@@ -101,5 +101,4 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board.
 
 After powering on, make a paper close to the sensor, then we can find the LED light up when covering the line tracking sensor.
-
 

@@ -2,15 +2,15 @@
 
 ![](media/A327.jpeg)
 
-**1.Description**
+### **1.Description**
 
 In this project, we will use a Bluetooth to adjust the speed of the smart car. We empower to define a variable speeds and change it to change the speed of the smart car. 
 
-**2.Flow Chart**
+### **2.Flow Chart**
 
 ![image-20250513095810478](media/A340.png)
 
-**3.Wiring Diagram**
+### **3.Wiring Diagram**
 
 ![](media/A329.png)
 
@@ -22,7 +22,7 @@ In this project, we will use a Bluetooth to adjust the speed of the smart car. W
 
 4). The power is connected to the BAT port
 
- **4.Test Code**
+###  **4.Test Code**
 
 Before writing the code, it is necessary to import the library files of the 8x16 LED board and the servo. The specific steps are as follows: 
 
@@ -75,7 +75,7 @@ You can drag blocks to edit. Blocks listed below are for your reference
 
 ![](media/A346.png)
 
-**5.Test Result**
+### **5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Pairing the APP with Bluetooth, the smart car can be controlled to move by the APP.
 

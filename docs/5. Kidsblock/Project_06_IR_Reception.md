@@ -2,7 +2,7 @@
 
 ![](media/A141.png)
 
-**1.Description** 
+### **1.Description** 
 
 There is no doubt that infrared remote control is ubiquitous in daily life. It is used to control various household appliances, such as TVs, stereos, video recorders and satellite signal receivers. Infrared remote control is composed of infrared transmitting and infrared receiving systems, that is, an infrared remote control and infrared receiving module and a single-chip microcomputer capable of decoding.  
 
@@ -18,7 +18,7 @@ Infrared receiver we use is an infrared receiver module. Mainly composed of an i
 
 Additionally, it is suitable for infrared remote control and infrared data transmission. The infrared receiving module made by the receiver has only three pins, signal line, VCC and GND. It is very convenient to communicate with Arduino and other microcontrollers.
 
-**2.Specification**
+### **2.Specification**
 
 - Operating Voltage: 3.3-5V（DC)
 
@@ -36,7 +36,7 @@ The picture shows the real product and circuit diagram of the infrared receiver.
 
 ![](media/A143.png)
 
-**3.Components**
+### **3.Components**
 
 | Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1          |
 | ------------------------- | ------------------------- | ------------------------- |
@@ -47,7 +47,7 @@ The picture shows the real product and circuit diagram of the infrared receiver.
 
 Since the 8833 board integrates with the IR receiver, it doesn’t need wiring up. Pins of IR receiver module are G(GND）, V（VCC）and D3.
 
-**4.Test Code**
+### **4.Test Code**
 
 <span style="color: rgb(255, 76, 65);">Please note: The infrared module shown in the software demonstration is already integrated into the expansion board and is not supplied separately. Consequently, you will not find the module depicted in the image below within the product.![](media/A144.png)</span>
 
@@ -77,7 +77,7 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](media/A151.png)
 
-**5.Test Result**
+### **5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, click ![](media/A80.png)to set baud rate to 9600.
 
@@ -89,7 +89,7 @@ The keys value of remote control are shown below.
 
 ![](media/A153.jpeg)
 
-**6.Extension Practice**
+### **6.Extension Practice**
 
 We have decoded the key value of the IR remote control. How about controlling LED by the measured value? We could design an experiment.
 

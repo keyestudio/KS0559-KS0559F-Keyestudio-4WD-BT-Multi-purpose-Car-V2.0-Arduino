@@ -2,15 +2,15 @@
 
 ![](media/A349.jpeg)
 
-**1.Description**
+### **1.Description**
 
 In previous projects, the car only performs a single function. However, in this lesson, we will integrate all of its functions via a Bluetooth.
 
-**2.Flow Chart**
+### **2.Flow Chart**
 
 ![](media/A350.png)
 
-**3.Wiring Diagram**
+### **3.Wiring Diagram**
 
 ![](media/A351.png)
 
@@ -26,7 +26,7 @@ In previous projects, the car only performs a single function. However, in this 
 
 6). The power is connected to the BAT port
 
-**4.Test Code**
+### **4.Test Code**
 
 Before writing the code, it is necessary to import the library files of the ultrasonic sensor, 8x16 LED board and the servo. The specific steps are as follows: 
 
@@ -47,10 +47,9 @@ Click ![](media/A33.png)to return to the code editor interface, the instruction 
 
 ![](media/A352.png)
 
-**5.Test Result**
+### **5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
 
 After the Bluetooth module is plugged into the APP and the mobile APP is successfully connected to the Bluetooth, the smart car can be controlled by the mobile APP.  We can achieve the corresponding functions by pressing the corresponding buttons on the mobile APP. 
-
 

@@ -2,11 +2,11 @@
 
 ![](media/A296.png)
 
-**1.Description**
+### **1.Description**
 
 In this project, we aim to make an ultrasonic obstacle avoidance smart car. We will use the ultrasonic to detect the distance from the obstacle, which can be used to control the servo to rotate so as to make the car move. Meanwhile, the 8X16 LED board will display the corresponding status pattern.
 
-**2.Flow Chart**
+### **2.Flow Chart**
 
 ![img](media/A297.png)
 
@@ -16,7 +16,7 @@ In this project, we aim to make an ultrasonic obstacle avoidance smart car. We w
 
 ![Img](media/A299.png)
 
-**3.Wiring Diagram**
+### **3.Wiring Diagram**
 
 ![](media/A282.png)
 
@@ -28,7 +28,7 @@ In this project, we aim to make an ultrasonic obstacle avoidance smart car. We w
 
 4). The power is connected to the BAT port
 
-**4.Test Code**
+### **4.Test Code**
 
 Before writing the code, it is necessary to import the library files of the ultrasonic sensor , 8x16 LED board and the servo. The specific steps are as follows: 
 
@@ -74,7 +74,7 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](media/A306.png)
 
-**5.Test Result**
+### **5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
 

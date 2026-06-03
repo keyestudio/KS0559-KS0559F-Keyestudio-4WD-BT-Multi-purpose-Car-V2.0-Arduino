@@ -2,7 +2,7 @@
 
 ![image-20250510090044895](media/A77.png)
 
-**1.Description**
+### **1.Description**
 
 There are many ways to drive motors. Our car uses the most commonly used DRV8833 motor driver chip, which provides a two-channel bridge electric drive solution for toys, printers and other integrated motor applications.
 
@@ -14,7 +14,7 @@ The expansion board can be connected to four DC motors. When the jumper cap is c
 
 For example, when the 2 jumper caps in front of B1 of the M1 motor change from transverse connection to longitudinal connection, the rotation direction of M1 motor will be opposite to the original rotation direction. 
 
-**2.Specification**
+### **2.Specification**
 
 - Input voltage for logic：DC 5V
 
@@ -34,7 +34,7 @@ For example, when the 2 jumper caps in front of B1 of the M1 motor change from t
 
 ![image-20250510090404192](media/A78.png)
 
-**3.Working Principle**
+### **3.Working Principle**
 
 We use the same side parallel connection mode for the four motors, which can be regarded as two groups of motors.  As shown in the wiring diagram, B and B1 are a group, and A and A1 are a group.
 
@@ -55,7 +55,7 @@ From the above diagram, it is known that the direction pin of A motor is D4, the
 | Turn left  | HIGH | 255-200   | Rotate clockwise     | LOW  | 200       | Rotate anticlockwise |
 | Turn right | LOW  | 200       | Rotate anticlockwise | HIGH | 255-200   | Rotate clockwise     |
 
-**4.Components**
+### **4.Components**
 
 | Development Board *1      | 8833 Motor Driver *1      | USB Cable*1                       |
 | ------------------------- | ------------------------- | --------------------------------- |
@@ -63,13 +63,13 @@ From the above diagram, it is known that the direction pin of A motor is D4, the
 | 18650 Battery Holder*1    | Motor*4                   | 18650 Battery *2（self-provided） |
 | ![img](media/A83.png) | ![img](media/A84.jpg) | ![img](media/A85.png)         |
 
-**5.Wiring Diagram**
+### **5.Wiring Diagram**
 
 ![image-20250510090733191](media/A86.png)
 
 Connect the power supply to the BAT port.
 
-**6.Test Code**
+### **6.Test Code**
 
 ```c
 //****************************************************************************
@@ -127,17 +127,17 @@ void loop()
 //****************************************************************************
 ```
 
-**7.Test Result**
+### **7.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then power on the external power and turn the DIP switch to ON, the car will go forward for 2s, back for 2s, turn left for 2s and right for 2s and stop for 2s
 
-**8.Code Explanation**
+### **8.Code Explanation**
 
 **digitalWrite(ML\_Ctrl,LOW):** The rotation direction of motor is decided by the high/low level and and the pins that decide rotation direction are digital pins.
 
 **analogWrite(ML\_PWM,200):** The speed of motor is regulated by PWM, and the pins that decide the speed of motor must be PWM pins.
 
-**9.Code Explanation**
+### **9.Code Expansion**
 
 Adjust the speed that PWM controls the motor, hook up in the same way.
 
@@ -200,5 +200,4 @@ void loop()
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then power on the external power and turn the DIP switch to ON, then you find the speed of the motor is much slower.
 
 <span style="color: rgb(255, 76, 65);">Note:Low battery will lead to slow motor speed.</span> 
-
 

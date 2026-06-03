@@ -2,7 +2,7 @@
 
 ![](media/A205.png)
 
-**1.Description**
+### **1.Description**
 
 There are many ways to drive motors. Our car uses the most commonly used DRV8833 motor driver chip, which provides a two-channel bridge electric drive solution for toys, printers and other integrated motor applications.
 
@@ -14,7 +14,7 @@ The expansion board can be connected to four DC motors. When the jumper cap is c
 
 For example, when the 2 jumper caps in front of B1 of the M1 motor change from transverse connection to longitudinal connection, the rotation direction of M1 motor will be opposite to the original rotation direction. 
 
-**2.Specification**
+### **2.Specification**
 
 - Input voltage for logic：DC 5V
 
@@ -30,7 +30,7 @@ For example, when the 2 jumper caps in front of B1 of the M1 motor change from t
 
 - Working temperature：-25＋130℃
 
-**3.Keyestudio 8833 motor driver expansion board**
+### **3.Keyestudio 8833 motor driver expansion board**
 
 ![](media/A206.png)
 
@@ -99,7 +99,7 @@ PWM drives the robot car. The PWM value is in the range of 0-255. When we set th
 </table>
 
 
-**4.Components**
+### **4.Components**
 
 | Development Board *1      | 8833 Motor Driver *1      | USB Cable*1                       |
 | ------------------------- | ------------------------- | --------------------------------- |
@@ -109,13 +109,13 @@ PWM drives the robot car. The PWM value is in the range of 0-255. When we set th
 
 
 
-**5.Wiring Diagram**
+### **5.Wiring Diagram**
 
 ![](media/A214.png)
 
 Connect the power supply to the BAT port.
 
-**6.Test Code**
+### **6.Test Code**
 
 You can drag blocks to edit. Blocks listed below are for your reference
 
@@ -131,11 +131,11 @@ You can drag blocks to edit. Blocks listed below are for your reference
 
 ![](media/A218.png)
 
-**7.Test Result**
+### **7.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then power on the external power and turn the DIP switch to ON, the car will go forward for 2s, back for 2s, turn left for 2s and right for 2s and stop for 2s.
 
-**8.Code Explanation**
+### **8.Code Explanation**
 
 Adjust the speed that PWM controls the motor, hook up in the same way.
 

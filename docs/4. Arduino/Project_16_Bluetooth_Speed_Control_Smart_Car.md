@@ -2,15 +2,15 @@
 
 ![](media/A131.jpeg)
 
-**1.Description**
+### **1.Description**
 
 In this project, we will use a Bluetooth to adjust the speed of the smart car. We empower to define a variable speeds and change it to change the speed of the smart car. 
 
-**2.Flow Chart**
+### **2.Flow Chart**
 
 ![90ab1f7fb1e16ad3c018b1c631e407c3](media/A134.png)
 
-**3.Wiring Diagram**
+### **3.Wiring Diagram**
 
 ![](media/A135.png)
 
@@ -22,7 +22,7 @@ In this project, we will use a Bluetooth to adjust the speed of the smart car. W
 
 4). The power is connected to the BAT port
 
- **4.Test Code**
+###  **4.Test Code**
 
 <span style="color: rgb(255, 76, 65);">**Note:** Before uploading the test code, you need to remove the Bluetooth module, otherwise the code will fail to be uploaded.Connect the Bluetooth module after uploading the code successfully.</span>
 
@@ -250,10 +250,9 @@ void IIC_send(unsigned char send_data)
 //*******************************************************************************
 ```
 
-**5.Test Result**
+### **5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON. Pairing the APP with Bluetooth, the smart car can be controlled to move by the APP.
 
 Press![049343f587e0e7cf19fe8b665d735321](media/A136.png), the car will speed up, press ![264f77cce6018584b54f46676fee4247](media/A137.png), the car will slow down, and the 8\*16 LED board will display the corresponding status pattern of the smart car.
-
 

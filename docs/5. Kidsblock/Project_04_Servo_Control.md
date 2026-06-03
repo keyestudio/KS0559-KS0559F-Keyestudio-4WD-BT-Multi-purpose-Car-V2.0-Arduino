@@ -1,6 +1,6 @@
 # Project 4 Servo Control
 
-**1.Description**
+### **1.Description**
 
 ![](media/A90.jpeg)
 
@@ -18,7 +18,7 @@ The corresponding servo angles are shown below:
 
 ![](media/A93.png)
 
-**2.Specification**
+### **2.Specification**
 
 - Working voltage: DC 4.8V \~ 6V
 
@@ -36,7 +36,7 @@ The corresponding servo angles are shown below:
 
 - Standby current: 3 ± 1mA (DC 4.8V) 4 ± 1mA (DC 6V)
 
-**3.Components**
+### **3.Components**
 
 | Development Board *1      | 8833 Motor Driver *1      | Servo*1                                     |
 | ------------------------- | ------------------------- | ------------------------------------------- |
@@ -44,7 +44,7 @@ The corresponding servo angles are shown below:
 | 18650 Battery Holder*1    | USB Cable*1               | 18650 Battery*2（self-provided）            |
 | ![img](media/A97.png) | ![img](media/A98.jpg) | ![img](media/A99.png) |
 
-**4.Wiring Diagram**
+### **4.Wiring Diagram**
 
 ![](media/A100.png)
 
@@ -52,7 +52,7 @@ Wiring note: The servo is connected to G（GND）、V（VCC）and A3, the brown 
 
 The servo is obliged to connect to the external power due to its high demand for driving servo current. Generally, the current of development board is not big enough. If without connecting the external power, the development board could be burnt.
 
-**5.Test Code**
+### **5.Test Code**
 
 Before writing the code, it is necessary to import the servo library file. The specific steps are as follows: 
 
@@ -81,7 +81,7 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](media/A108.png)
 
-**6.Test Result**
+### **6.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and power on the external power. After powering on, turn the dip switch to the "ON" end, then servo will swing in the range of 0° to 180°.
 

@@ -2,12 +2,12 @@
 
 ![fd4044796307f709987b9d2e215e0911](media/A119.png)
 
-**1.Description**
+### **1.Description**
 
 In this project, we aim to make an ultrasonic obstacle avoidance smart car. We will use the ultrasonic to detect the distance from the obstacle, which can be used to control the servo to rotate so as to make the car move. Meanwhile, the 8X16 LED board will display the
 corresponding status pattern.
 
-**2.Flow Chart**
+### **2.Flow Chart**
 
 ![img](media/A120.png)
 
@@ -17,7 +17,7 @@ corresponding status pattern.
 
 ![Img](media/A122.png)
 
-**3.Wiring Diagram**
+### **3.Wiring Diagram**
 
 ![](media/A118.png)
 
@@ -30,7 +30,7 @@ is interfaced with A3.
 
 4). The power is connected to the BAT port
 
-**4.Test Code**
+### **4.Test Code**
 
 ```c 
 //*******************************************************************************
@@ -233,7 +233,7 @@ void IIC_send(unsigned char send_data)
 //*******************************************************************************
 ```
 
-**5.Test Result**
+### **5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
 

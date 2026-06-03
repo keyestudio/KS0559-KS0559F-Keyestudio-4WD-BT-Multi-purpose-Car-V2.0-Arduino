@@ -2,13 +2,13 @@
 
 ![](media/A161.png)
 
-**1.Description**
+### **1.Description**
 
 There is a DX-BT24 5.1 Bluetooth module in this kit. This bluetooth module comes with 256Kb space and complies with V5.1BLE bluetooth specification, which supports AT commands. Users can change parameters such as the baud rate and device name of the serial port as required.
 
 Furthermore, it supports UART interface and bluetooth serial port transparent transmission, which also contains the advantages of low cost, small size, low power consumption and high sensitivity for sending and receiving. Notably, it solely needs a few peripheral components to realize its powerful functions.  
 
-**2.Specification**
+### **2.Specification**
 
 - Bluetooth protocol: Bluetooth Specification V5.1 BLE
 
@@ -27,7 +27,7 @@ Furthermore, it supports UART interface and bluetooth serial port transparent tr
 - Operating temperature: –10℃ to +65℃
   
 
-**3.Application**
+### **3.Application**
 
 The DX-BT24 module also supports the BT5.1 BLE protocol, which can be directly connected to iOS devices with BLE Bluetooth function, and supports resident running of background programs. It is mainly used in the field of short-distance data wireless transmission. It enables to avoid cumbersome cable connections and can directly replace serial cables.
 
@@ -93,7 +93,7 @@ Connect the BT module to the development board.
 </table>
 
 
-**4.Components**
+### **4.Components**
 
 | Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1           |
 | ------------------------- | ------------------------- | -------------------------- |
@@ -101,7 +101,7 @@ Connect the BT module to the development board.
 | 3P F-F Dupont Wire*1      | USB Cable*1               | DX-BT24 Bluetooth Module*1 |
 | ![img](media/A166.jpg) | ![img](media/A167.jpg) | ![img](media/A168.jpg)  |
 
-**5.Wiring Diagram**
+### **5.Wiring Diagram**
 
 ![](media/A169.png)
 
@@ -111,7 +111,7 @@ STATE and BRK of the BT module don’t need connection.
 
 <span style="color: rgb(255, 76, 65);">Note:</span> the direction of the BT module when inserting it onto the 8833 board. And don’t insert it before uploading the code.
 
-**6.Test Code**
+### **6.Test Code**
 
 You can drag blocks to edit. Blocks listed below are for your reference.
 
@@ -131,11 +131,11 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](media/A174.png)
 
-**7.Test Result**
+### **7.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, insert the BT module and the LED will flash, then we need to download the BT app.
 
-**8.Download Bluetooth APP**
+### **8.Download Bluetooth APP**
 
 **Apple system**
 
@@ -201,7 +201,7 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 | ![wps25](media/A196.jpg) | Click to send“U”, <br />click again to send“S”               | Start ultrasonic follow function;<br /> click  again to exit |
 | ![wps26](media/A197.jpg)                 | Click to send“G”,<br />click again to send“S”                | Start restricting function;<br /> click  again to exit       |
 
-**9.Extension Practice**
+### **9.Extension Practice**
 
 Here we look to use the command sent by the mobile phone to turn on or off an LED light. Looking at the wiring diagram, an LED is connected to the D9 pin.
 

@@ -1,6 +1,6 @@
 # Project 7 Bluetooth Remote Control
 
-**1.Description**
+### **1.Description**
 
 ![image-20250510083107283](media/A47.png)
 
@@ -8,7 +8,7 @@ There is a DX-BT24 5.1 Bluetooth module in this kit. This bluetooth module comes
 
 Furthermore, it supports UART interface and bluetooth serial port transparent transmission, which also contains the advantages of low cost, small size, low power consumption and high sensitivity for sending and receiving. Notably, it solely needs a few peripheral components to realize its powerful functions.  
 
-**2.Specification**
+### **2.Specification**
 
 - Bluetooth protocol: Bluetooth Specification V5.1 BLE
 
@@ -26,7 +26,7 @@ Furthermore, it supports UART interface and bluetooth serial port transparent tr
 
 - Operating temperature: –10℃ to +65℃
 
-**3.Application**
+### **3.Application**
 
 The DX-BT24 module also supports the BT5.1 BLE protocol, which can be directly connected to iOS devices with BLE Bluetooth function, and supports resident running of background programs. It is mainly used in the field of short-distance data wireless transmission. It enables to avoid cumbersome cable connections and can directly replace serial cables.
 
@@ -48,7 +48,7 @@ The DX-BT24 module also supports the BT5.1 BLE protocol, which can be directly c
 
 ※ Shared bicycles;
 
-**4.Ports**
+### **4.Ports**
 
 ![420af966-aaa4-4736-9d35-2a9ccc7215f3](media/A48.png)
 
@@ -73,7 +73,7 @@ Connect the BT module to the development board.
 | VCC  |  5V  |
 | GND  | GND  |
 
-**5.Components**
+### **5.Components**
 
 |           Development Board *1           |           8833 Motor Driver *1           |                       Red LED Module*1                       |
 | :--------------------------------------: | :--------------------------------------: | :----------------------------------------------------------: |
@@ -81,7 +81,7 @@ Connect the BT module to the development board.
 |             3P Dupont Wire*1             |               USB Cable*1                |                  DX-BT24 Bluetooth Module*1                  |
 |         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         | ![image-20250510083534209](media/A49.png) |
 
-**6.Wiring Diagram**
+### **6.Wiring Diagram**
 
 ![image-20250510083927915](media/A50.png)
 
@@ -91,7 +91,7 @@ STATE and BRK of the BT module don’t need connection.
 
 <span style="color: rgb(255, 76, 65);">Note:the direction of the BT module when inserting it onto the 8833 board. And don’t insert it before uploading the code.</span> 
 
-**7.Test Code**
+### **7.Test Code**
 
 <span style="color: rgb(255, 76, 65);">**Note:** Before uploading the test code, you need to remove the Bluetooth module, otherwise the code will fail to be uploaded.Connect the Bluetooth module after uploading the code successfully.</span>
 
@@ -119,11 +119,11 @@ void loop() {
 //***********************************************************************
 ```
 
-**8.Test Result**
+### **8.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then connect the computer via a USB cable to power the board. After powering on, insert the BT module and the LED will flash, then we need to download the BT app.
 
-**9.Download Bluetooth APP**
+### **9.Download Bluetooth APP**
 
 **Apple system**
 
@@ -192,13 +192,13 @@ After successfully uploading the code to the V4.0 board, connect the wirings acc
 | ![img](media/A72.jpg) | Click to send“U”, <br />click again to send“S”               | Start ultrasonic follow function; <br />click  again to exit |
 | ![img](media/A73.jpg) | Click to send“G”, <br />click again to send“S”               | Start restricting function;<br /> click  again to exit       |
 
-**9.Code Explanation**
+### **10.Code Explanation**
 
 **Serial.available()** : Return the number of characters currently remaining in the serial port buffer. Generally, this function is used to judge whether there is data in the buffer of the serial port. When Serial.available()\>0, it means that the serial port has received data and can be read;
 
 **Serial.read() :** Refers to taking out and reading a Byte of data from the serial port buffer. For example, if a device sends data to Arduino through the serial port, we can use Serial.read() to read the sent data.
 
-**10.Extension Practice**
+### **11.Extension Practice**
 
 Here we look to use the command sent by the mobile phone to turn on or off an LED light. Looking at the wiring diagram, an LED is connected to the D9 pin.
 

@@ -2,13 +2,13 @@
 
 ![image-20250510090912741](media/A87.png)
 
-**1.Description**
+### **1.Description**
 
 How fun it is if a expression board is added to the robot. And the Keyestudio 8\*16 LED board can do the trick. With the help of it, you could design facial expressions, images, patterns and other displays by yourselves.
 
 The 8\*16 LED board comes with 128 LEDs. The data of the microprocessor(Arduino) communicates with the AiP1640 through a two-wire bus interface. Therefore, it can control the on and off of 128 LEDs on the module, so as to make the dot matrix on the module to display the pattern you need. A HX-2.54 4Pin cable is provided for your convenience of wiring.
 
-**2.Specification**
+### **2.Specification**
 
 - Working voltage: DC 3.3-5V
 
@@ -22,15 +22,15 @@ The 8\*16 LED board comes with 128 LEDs. The data of the microprocessor(Arduino)
 
 - Communication mode: I2C
 
-**3.Circuit Diagram**
+### **3.Circuit Diagram**
 
 ![image-20250510091309725](media/A88.png)
 
-**4.Working Principle**
+### **4.Working Principle**
 
 How to control each LED of the 8\*16 dot matrix? It is known that each byte has 8 bits and each bit is 0 or 1. when it is 0, LED is off while when it is 1 LED is on. One byte can control one column of the LED,and naturally 16 bytes can control 16 columns of LEDs, that’s the 8\*16 dot matrix.
 
-**5.Pins description and communication protocol**
+### **5.Pins description and communication protocol**
 
 The data of the microprocessor (Arduino) communicates with the AiP1640 through a two-wire bus cable.
 
@@ -80,7 +80,7 @@ As shown in the figure below, press the left mouse button to select, right click
 
 ![image-20250510091457463](media/A95.png)
 
-**6.Components**
+### **6.Components**
 
 | Development Board *1                                         | 8833 Motor Driver *1                                         | USB Cable*1               |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------- |
@@ -88,7 +88,7 @@ As shown in the figure below, press the left mouse button to select, right click
 | USB Cable*1                                                  | HX-2.54 4P Dupont Wire 200mm *1                              |                           |
 | ![image-20250512155818434](media/A96.png) | ![image-20250512155822969](media/A97.png) |                           |
 
-**7.Wiring Diagram**
+### **7.Wiring Diagram**
 
 ![cec50fec4a335b6922e4c6694a133bc1](media/A98.png)
 
@@ -96,7 +96,8 @@ The GND, VCC, SDA, and SCL of the 8x16 LED light board are respectively connecte
 
 (<span style="color: rgb(255, 76, 65);">Note:</span> Though it is connected with the IIC pin of Arduino, this module is not for IIC communication. And the IO port here is to simulate I2C communication and can be connected with any two pins ).
 
-**8.Test Code**
+### **8.Test Code**
+
 The code will show the smile face.
 
 ```c
@@ -176,13 +177,13 @@ void IIC_send(unsigned char send_data)
 //************************************************************************
 ```
 
-**9.Test Result**
+### **9.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, then turn the DIP switch to ON, a smile-shaped pattern will be displayed on the LED board.
 
 ![95bb011957896b12285fc6763137bb9a](media/A99.png)
 
-**10.Code Explanation**
+### **10.Code Explanation**
 
 We use the modulus tool we just learned, [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#), to make the dot matrix display the start pattern, going forward, and stop and then clear the pattern. The time interval is 2000 ms.
 

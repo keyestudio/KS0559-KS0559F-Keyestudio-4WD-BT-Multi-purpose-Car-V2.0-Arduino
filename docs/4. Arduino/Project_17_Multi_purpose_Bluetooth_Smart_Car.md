@@ -2,15 +2,15 @@
 
 ![2c1198e0ebd7c31622b7438469fb572c](media/A138.jpeg)
 
-**1.Description**
+### **1.Description**
 
 In previous projects, the car only performs a single function. However, in this lesson, we will integrate all of its functions via a Bluetooth.
 
-**2.Flow Chart**
+### **2.Flow Chart**
 
 ![73f4da1e321bc29282d3b2f5cb3168dd](media/A139.png)
 
-**3.Wiring Diagram**
+### **3.Wiring Diagram**
 
 ![fce8edd349ddbcfe02e6f27feb73e90f](media/A140.png)
 
@@ -26,7 +26,7 @@ In previous projects, the car only performs a single function. However, in this 
 
 6). The power is connected to the BAT port
 
-**4.Test Code**
+### **4.Test Code**
 
 <span style="color: rgb(255, 76, 65);">**Note:** Before uploading the test code, you need to remove the Bluetooth module, otherwise the code will fail to be uploaded.Connect the Bluetooth module after uploading the code successfully.</span>
 
@@ -431,7 +431,7 @@ void IIC_send(unsigned char send_data)
 //*******************************************************************************
 ```
 
-**6.Test Result**
+### **5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
 

@@ -1,6 +1,6 @@
 # Project 2: Adjust LED Brightness
 
-**1.Description**
+### **1.Description**
 
 In previous lesson, we control LED on and off and make it blink.
 
@@ -28,7 +28,7 @@ the lowest, that is, off state.  The longer the high level lasts, the brighter
 
 PWM is more used to adjust the brightness of LED lights or the rotation speed of the motors, and the wheels speed driven by the motors can be easily controlled. When playing with some Arduino robots, the benefits of PWM can be better reflected. 
 
-**2.Components**
+### **2.Components**
 
 | Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1          |
 | ------------------------- | ------------------------- | ------------------------- |
@@ -36,13 +36,13 @@ PWM is more used to adjust the brightness of LED lights or the rotation speed of
 | 3P F-F Dupont Wire*1      | USB Cable*1               |                           |
 | ![img](media/A45.jpg) | ![img](media/A46.jpg) |                           |
 
-**3.Wiring Diagram** 
+### **3.Wiring Diagram** 
 
 Keep the wiring-up unchanged.
 
 ![](media/A47.png)
 
-**4.Test Code**
+### **4.Test Code**
 
 You can drag blocks to edit. Blocks listed below are for your reference.
 
@@ -62,16 +62,15 @@ You can drag blocks to edit. Blocks listed below are for your reference.
 
 ![](media/A61.png)
 
-**5.Test Result**
+### **5.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, and use a USB cable to connect the computer to power the board. After powering on, you will see that the LED gradually changes from bright to dark, like human’s breath, rather than turning on and off immediately.
 
-**6.Extension Practice**
+### **6.Extension Practice**
 
 Keep pins of the LED unchanged, then change code(values behind wait)
 
 ![](media/A62.png)
 
 Upload the code to the development board, then the LED will blink more slowly.
-
 

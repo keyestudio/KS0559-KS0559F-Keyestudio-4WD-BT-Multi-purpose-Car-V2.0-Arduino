@@ -2,11 +2,11 @@
 
 ![8abdadfa2fc462bdcc0542df52a793e3](media/A131.jpeg)
 
-**1.Description**
+### **1.Description**
 
 We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will make a Bluetooth control smart car. In this project, we aim to regard the mobile phone as the transmitter (host), and the smart car connected to the BT24 Bluetooth module (slave) as the receiver and use the mobile APP to control the smart car via the Bluetooth. 
 
-**2.APP Control Button**
+### **2.APP Control Button**
 
 |                           | Control character                                            | Control character                                            |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -22,11 +22,11 @@ We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will ma
 | ![img](media/A72.jpg) | Click to send“U”, <br />click again to send“S”               | Start ultrasonic follow function; <br />click  again to exit |
 | ![img](media/A73.jpg) | Click to send“G”, <br />click again to send“S”               | Start restricting function;<br /> click  again to exit       |
 
-**3.Flow Chart**
+### **3.Flow Chart**
 
 ![img](media/A132.png)
 
-**4.Wiring Diagram**
+### **4.Wiring Diagram**
 
 
 
@@ -41,7 +41,7 @@ We’ve learned the basic knowledge of Bluetooth. And in this lesson, we will ma
 4). The power is connected to the BAT port
     
 
-**5.Test Code**
+### **5.Test Code**
 
 <span style="color: rgb(255, 76, 65);">**Note:** Before uploading the test code, you need to remove the Bluetooth module, otherwise the code will fail to be uploaded.Connect the Bluetooth module after uploading the code successfully.</span>
 
@@ -224,10 +224,9 @@ void IIC_send(unsigned char send_data)
 //*******************************************************************************
 ```
 
-**6.Test Result**
+### **6.Test Result**
 
 After successfully uploading the code to the V4.0 board, connect the wirings according to the wiring diagram, power on the external power then turn the DIP switch to ON.
 
 Inset the BT module and open your cellphone to connect the Bluetooth to control the smart car. The can will move forward, backward, turn left and right and stop. Also the 8\*8 LED board will show the corresponding patterns.
-
 
