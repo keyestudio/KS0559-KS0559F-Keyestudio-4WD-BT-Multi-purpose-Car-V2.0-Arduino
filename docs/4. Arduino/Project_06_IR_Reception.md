@@ -1,51 +1,50 @@
-# Progetto 6 Ricezione IR
+# Project 6 IR Reception
 
 ![9681c7da-a7c9-49ed-ad8c-32e00c6aeb07](media/A42.png)
 
-### **1.Descrizione** 
+### **1.説明**
 
-Non c'è dubbio che il telecomando a infrarossi sia onnipresente nella vita quotidiana. Viene utilizzato per controllare vari elettrodomestici, come TV, stereo, videoregistratori e ricevitori di segnali satellitari. Il telecomando a infrarossi è composto da un sistema di trasmissione a infrarossi e un sistema di ricezione a infrarossi, cioè un telecomando a infrarossi e un modulo ricevitore a infrarossi e un microcontrollore in grado di decodificare.  
+赤外線リモコンは日常生活で広く使われていることは間違いありません。テレビ、ステレオ、ビデオレコーダー、衛星信号受信機など、さまざまな家電製品の制御に使用されます。赤外線リモコンは赤外線送信システムと赤外線受信システムで構成されており、すなわち赤外線リモコンと赤外線受信モジュール、およびデコード可能なマイコンから成り立っています。
 
 ![image-20250509154423060](media/A43.png)
 
-Il segnale portante a infrarossi a 38K emesso dal telecomando è codificato dal chip di codifica nel telecomando. È composto da una sezione di codice pilota, codice utente, codice utente inverso, codice dati e codice dati inverso. L'intervallo di tempo dell'impulso viene utilizzato per distinguere se è un segnale 0 o 1 e la codifica è composta da questi segnali 0, 1.
+リモコンから発せられる38Kの赤外線搬送波信号は、リモコン内のエンコードチップによって符号化されています。これはパイロットコード、ユーザーコード、ユーザー逆コード、データコード、データ逆コードの一連のコードで構成されています。パルスの時間間隔によって0か1の信号かを区別し、これらの0、1信号で符号化が行われています。
 
-Il codice utente dello stesso telecomando è costante mentre il codice dati può distinguere il tasto.
+同じリモコンのユーザーコードは一定ですが、データコードはキーを識別します。
 
-Quando si preme un tasto del telecomando, il telecomando invia un segnale portante a infrarossi. Quando il ricevitore IR riceve il segnale, il programma decodifica il segnale portante e determina quale tasto è stato premuto. Il MCU decodifica il segnale 01 ricevuto, giudicando così quale tasto è stato premuto dal telecomando.
+リモコンのボタンが押されると、リモコンは赤外線搬送波信号を送信します。IR受信機が信号を受信すると、プログラムは搬送波信号をデコードし、どのキーが押されたかを判定します。MCUは受信した0と1の信号をデコードし、リモコンのどのキーが押されたかを判断します。
 
-Il ricevitore a infrarossi che usiamo è un modulo ricevitore a infrarossi. Composto principalmente da una testa ricevente a infrarossi, che è un dispositivo che integra ricezione, amplificazione e demodulazione. Il suo IC interno ha completato la demodulazione e può realizzare dalla ricezione a infrarossi all'uscita ed è compatibile con segnali TTL.
+使用する赤外線受信機は赤外線受信モジュールです。主に受信、増幅、復調を統合した赤外線受信ヘッドで構成されています。内部ICは復調を完了しており、赤外線受信から出力までを実現し、TTL信号に対応しています。
 
-Inoltre, è adatto per telecomandi a infrarossi e trasmissione dati a infrarossi. Il modulo ricevitore a infrarossi realizzato dal ricevitore ha solo tre pin, linea del segnale, VCC e GND. È molto comodo per comunicare con Arduino e altri microcontrollori.
+さらに、赤外線リモコンや赤外線データ伝送に適しています。受信機で作られた赤外線受信モジュールは信号線、VCC、GNDの3ピンのみで構成されており、Arduinoや他のマイコンとの通信が非常に便利です。
 
-### **2.Specifiche**
+### **2.仕様**
 
-- Tensione di funzionamento: 3.3-5V (DC)
+- 動作電圧：3.3-5V（DC）
 
-- Segnale di uscita: Segnale digitale
+- 出力信号：デジタル信号
 
-- Angolo di ricezione: 90 gradi
+- 受信角度：90度
 
-- Frequenza: 38kHz
+- 周波数：38kHz
 
-- Distanza di ricezione: 10m
+- 受信距離：10m
 
-L'immagine mostra il prodotto reale e lo schema elettrico del ricevitore a infrarossi.
+下の写真は赤外線受信機の実物と回路図です。
 
 ![image-20250510082651985](media/A44.png)
 
-### **3.Componenti**
+### **3.部品**
 
-|           Scheda di Sviluppo *1           |           Driver Motore 8833 *1           |     Modulo LED Rosso*1     |
-| :---------------------------------------: | :---------------------------------------: | :------------------------: |
-| ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             Cavo Dupont 3P*1             |               Cavo USB*1                |                            |
-|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                            |
+|           開発ボード *1           |           8833 モータードライバ *1           |     赤色LEDモジュール*1     |
+| :------------------------------: | :--------------------------------------------: | :--------------------------: |
+| ![img](media/A8.jpg)             | ![img](media/A9.jpg)                           | ![img](media/A10.jpg)        |
+|             3P デュポン線*1      |               USBケーブル*1                     |                              |
+|         ![img](media/A11.jpg)    |         ![img](media/A12.jpg)                   |                              |
 
+8833ボードはIR受信機を統合しているため、配線は不要です。IR受信モジュールのピンはG（GND）、V（VCC）、D3です。
 
-Poiché la scheda 8833 integra il ricevitore IR, non necessita di cablaggio. I pin del modulo ricevitore IR sono G (GND), V (VCC) e D3.
-
-### **4.Codice di Test**
+### **4.テストコード**
 
 ```c
 //*************************************************************************************
@@ -55,52 +54,52 @@ Poiché la scheda 8833 integra il ricevitore IR, non necessita di cablaggio. I p
  IR remote
  http://www.keyestudio.com
 */ 
-#include <IRremote.h>     //dichiarazione libreria IRremote  
-int RECV_PIN = 3;        //definisce il pin del ricevitore IR come D3
+#include <IRremote.h>     // IRremoteライブラリの宣言  
+int RECV_PIN = 3;        // IR受信機のピンをD3に定義
 IRrecv irrecv(RECV_PIN);   
-decode_results results;   // i risultati della decodifica esistono in “results” di “decode_results”
+decode_results results;   // decode_resultsの“results”にデコード結果が存在
 void setup()  
 {  
   Serial.begin(9600);  
-  irrecv.enableIRIn(); // Abilita il ricevitore 
+  irrecv.enableIRIn(); // 受信機を有効化
 }  
   
  void loop() {  
-  if (irrecv.decode(&results))//decodifica con successo, riceve un set di segnali a infrarossi  
+  if (irrecv.decode(&results))// デコード成功、赤外線信号を受信  
    {  
-     Serial.println(results.value, HEX);//Stampa il valore in esadecimale a 16 bit e riceve il codice 
-     irrecv.resume(); // Riceve il valore successivo
+     Serial.println(results.value, HEX);// 16進数でコードを出力  
+     irrecv.resume(); // 次の値を受信
    }  
    delay(100);  
  } 
 //*************************************************************************************
 ```
 
-### **5.Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, quindi collegare il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, aprire il monitor seriale e impostare la velocità di trasmissione a 9600.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、シリアルモニターを開き、ボーレートを9600に設定します。
 
-Prendere il telecomando e inviare il segnale al sensore ricevitore a infrarossi. È possibile vedere il valore del tasto corrispondente; se il tempo di pressione del tasto è troppo lungo, FFFFFFFF tende a generare caratteri illeggibili.
+リモコンを取り出し、赤外線受信センサーに信号を送信します。対応するキーのキー値が表示されます。キーの押下時間が長すぎると、FFFFFFFFが文字化けしやすくなります。
 
 ![image-20250510082931375](media/A45.png)
 
-I valori dei tasti del telecomando Keyestudio sono mostrati di seguito.
+Keyestudioリモコンのキー値は以下の通りです。
 
 ![image-20250510082942450](media/A46.png)
 
-### **6. Spiegazione del Codice**
+### **6.コード説明**
 
-**irrecv.enableIRIn():** Dopo aver abilitato la decodifica IR, i segnali IR verranno ricevuti,
+**irrecv.enableIRIn():** IRデコードを有効にすると、IR信号が受信されます。
 
-**decode():** La funzione “decode()” controllerà continuamente per assicurarsi che la decodifica sia avvenuta con successo.
+**decode():** 関数“decode()”はデコードが成功したかどうかを継続的にチェックします。
 
-**irrecv.decode(\&results):** dopo una decodifica riuscita, questa funzione restituirà “true” e conserverà il risultato in “results”. Dopo aver decodificato i segnali IR, eseguire la funzione resume() e continuare a ricevere il segnale successivo.
+**irrecv.decode(\&results):** デコードに成功すると、この関数は“true”を返し、結果を“results”に保持します。IR信号のデコード後、resume()関数を実行して次の信号の受信を続けます。
 
-### **7. Pratica Estesa**
+**7.拡張練習**
 
-Abbiamo decodificato il valore dei tasti del telecomando IR. Che ne dite di controllare il LED tramite il valore misurato? Potremmo progettare un esperimento.
+IRリモコンのキー値をデコードしました。測定した値でLEDを制御してみませんか？実験を設計してみましょう。
 
-Collegare un LED a D9, quindi premere i tasti del telecomando per accendere e spegnere il LED.
+LEDをD9に接続し、リモコンのキーを押してLEDの点灯・消灯を行います。
 
 ![image-20250508161123490](media/A13.png)
 
@@ -113,37 +112,37 @@ IR remote LED
 http://www.keyestudio.com
 */ 
 #include <IRremote.h>
-int RECV_PIN = 3;//definisce il pin del ricevitore IR come D3
-int LED_PIN = 9;//definisce il pin del LED come pin 9
+int RECV_PIN = 3;//IR受信機のピンをD3に定義
+int LED_PIN = 9;//LEDのピンを9に定義
 int a=0;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
 
 void setup()
 {Serial.begin(9600);
-  irrecv.enableIRIn(); //Inizializza il ricevitore IR
-  pinMode(LED_PIN,OUTPUT);//imposta il pin 9 del LED come OUTPUT
+  irrecv.enableIRIn(); //IR受信機を初期化
+  pinMode(LED_PIN,OUTPUT);//LEDのピン9を出力に設定
 }
 
 void loop() {
   if (irrecv.decode(&results)) 
   {
-    if(results.value==0xFF02FD && (a==0)) //secondo il valore del tasto sopra, premendo “OK” sul telecomando, il LED sarà controllato
+    if(results.value==0xFF02FD && (a==0)) //上記のキー値に従い、リモコンの“OK”を押すとLEDを制御
     {
       Serial.println("HIGH");
-      digitalWrite(LED_PIN,HIGH);//il LED si accenderà
+      digitalWrite(LED_PIN,HIGH);//LEDが点灯
       a=1;
     }
-    else if(results.value==0xFF02FD && (a==1)) //premere di nuovo
+    else if(results.value==0xFF02FD && (a==1)) //再度押すと
     {
       Serial.println("LOW");
-      digitalWrite(LED_PIN,LOW);//il LED si spegnerà
+      digitalWrite(LED_PIN,LOW);//LEDが消灯
       a=0;
     }
-    irrecv.resume(); // riceve il valore successivo
+    irrecv.resume(); //次の値を受信
   }
 }
 //*************************************************************************************
 ```
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, quindi collegare il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, premendo il tasto "**OK**" sul telecomando si può accendere e spegnere il LED.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、リモコンの「**OK**」キーを押すとLEDの点灯・消灯ができます。

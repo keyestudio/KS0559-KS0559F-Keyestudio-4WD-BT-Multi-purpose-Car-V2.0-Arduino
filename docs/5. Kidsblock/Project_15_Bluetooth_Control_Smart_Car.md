@@ -2,63 +2,63 @@
 
 ![](media/A327.jpeg)
 
-### **1.Descrizione**
+### **1.説明**
 
-Abbiamo appreso le conoscenze di base del Bluetooth. In questa lezione, realizzeremo un'auto intelligente controllata via Bluetooth. In questo progetto, consideriamo il telefono cellulare come trasmettitore (host) e l'auto intelligente collegata al modulo Bluetooth BT24 (slave) come ricevitore, utilizzando l'app mobile per controllare l'auto tramite Bluetooth.
+Bluetoothの基本知識を学びました。このレッスンでは、Bluetooth制御のスマートカーを作成します。このプロジェクトでは、携帯電話を送信機（ホスト）として、BT24 Bluetoothモジュールに接続されたスマートカー（スレーブ）を受信機として扱い、携帯アプリを使ってBluetooth経由でスマートカーを制御することを目的としています。
 
-### **2.Pulsanti di Controllo APP**
+### **2.APP制御ボタン**
 
-| Tasto                                         | Funzione                          |
-| --------------------------------------------- | --------------------------------- |
-| ![wps14](media/A185.jpg)                  | Associa modulo Bluetooth DX-BT24 5.1 |
-| ![wps15](media/A186.jpg) | Disconnetti Bluetooth              |
+| キー                                          | 機能                          |
+| -------------------------------------------- | --------------------------------- |
+| ![wps14](media/A185.jpg)                  | DX-BT24 5.1 Bluetoothモジュールとペアリング |
+| ![wps15](media/A186.jpg) | Bluetooth切断              |
 
-|                                                              | Carattere di controllo                                            | Funzione                                                     |
+|                                                              | 制御文字                                            | 機能                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![wps16](media/A187.jpg)                 | Premuto: F  <br />Rilasciato: S                                   | Premi il pulsante, l'auto va avanti; <br />rilascia per fermare |
-| ![wps17](media/A188.jpg)                 | Premuto: L  <br />Rilasciato: S                                   | Premi il pulsante, l'auto gira a sinistra; <br />rilascia per fermare  |
-| ![wps18](media/A189.jpg)                 | Premuto: R  <br />Rilasciato: S                                   | Premi il pulsante, l'auto gira a destra; <br />rilascia per fermare |
-| ![wps19](media/A190.jpg)                 | Premuto: B  <br />Rilasciato: S                                   | Premi il pulsante, l'auto va indietro; <br />rilascia per fermare   |
-| ![wps20](media/A191.jpg)                 | Premuto: “a”  <br />Rilasciato: “S”                               | Clicca per accelerare (massimo:255)                               |
-| ![wps21](media/A192.jpg)                 | Premuto: “d”  <br />Rilasciato: “S”                               | Clicca per rallentare (minimo:0)                                |
-| ![wps22](media/A193.jpg)                 | Clicca per avviare la funzione di <br />rilevamento della gravità del <br />telefono: clicca di nuovo per <br />uscire dal controllo di gravità |                                                              |
-| ![wps23](media/A194.jpg)                 | Clicca per inviare “X”,<br /> clicca di nuovo per inviare “S”               | Avvia la funzione di tracciamento linea; <br />clicca di nuovo per uscire      |
-| ![wps24](media/A195.jpg)                 | Clicca per inviare “Y”, <br />clicca di nuovo per inviare “S”               | Avvia la funzione di evitamento ad ultrasuoni;<br /> clicca di nuovo per uscire |
-| ![wps25](media/A196.jpg) | Clicca per inviare “U”, <br />clicca di nuovo per inviare “S”               | Avvia la funzione di inseguimento ad ultrasuoni;<br /> clicca di nuovo per uscire |
-| ![wps26](media/A197.jpg)                 | Clicca per inviare “G”,<br />clicca di nuovo per inviare “S”                | Avvia la funzione di restrizione;<br /> clicca di nuovo per uscire       |
+| ![wps16](media/A187.jpg)                 | 押す: F  <br />離す: S                                   | ボタンを押すと車が前進；<br />離すと停止                     |
+| ![wps17](media/A188.jpg)                 | 押す: L  <br />離す: S                                   | ボタンを押すと車が左折；<br />離すと停止                     |
+| ![wps18](media/A189.jpg)                 | 押す: R  <br />離す: S                                   | ボタンを押すと車が右折；<br />離すと停止                     |
+| ![wps19](media/A190.jpg)                 | 押す: B  <br />離す: S                                   | ボタンを押すと車が後退；<br />離すと停止                     |
+| ![wps20](media/A191.jpg)                 | 押す: “a”  <br />離す: “S”                               | クリックで加速（最大値:255）                               |
+| ![wps21](media/A192.jpg)                 | 押す: “d”  <br />離す: “S”                               | クリックで減速（最小値:0）                                |
+| ![wps22](media/A193.jpg)                 | クリックで携帯電話の重力センサー機能を開始<br />再度クリックで重力センサー制御を終了 |                                                              |
+| ![wps23](media/A194.jpg)                 | “X”を送信、<br />再度クリックで“S”を送信               | ライントラッキング機能を開始；<br />再度クリックで終了      |
+| ![wps24](media/A195.jpg)                 | “Y”を送信、<br />再度クリックで“S”を送信               | 超音波回避機能を開始；<br />再度クリックで終了              |
+| ![wps25](media/A196.jpg) | “U”を送信、<br />再度クリックで“S”を送信               | 超音波追従機能を開始；<br />再度クリックで終了              |
+| ![wps26](media/A197.jpg)                 | “G”を送信、<br />再度クリックで“S”を送信                | 制限機能を開始；<br />再度クリックで終了                     |
 
-### **3.Diagramma di Flusso**
+### **3.フローチャート**
 
 ![img](media/A328.png)
 
-### **4.Diagramma di Collegamento**
+### **4.配線図**
 
 ![](media/A329.png)
 
-1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati rispettivamente a G (GND), V (VCC), A4 e A5 della scheda di espansione.
+1). 8\*8 LEDボードのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
     
-2). RXD, TXD, GND e VCC del modulo Bluetooth sono collegati rispettivamente a TX, RX, G e 5V sulla scheda di espansione driver motore 8833, mentre i pin STATE e BRK del modulo Bluetooth non devono essere collegati.
+2). BluetoothモジュールのRXD、TXD、GND、VCCはそれぞれ8833モータードライバー拡張ボードのTX、RX、G、5Vに接続します。BluetoothモジュールのSTATEとBRKピンは接続不要です。
     
-3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso a 5V (V) e il filo arancione a A3.
+3). サーボはG、V、A3に接続します。茶色の線はGnd(G)、赤色の線は5V(V)、オレンジ色の線はA3に接続します。
     
-4). L'alimentazione è collegata alla porta BAT
+4). 電源はBATポートに接続します。
     
 
-### **5.Codice di Test**
+### **5.テストコード**
 
-Prima di scrivere il codice, è necessario importare i file della libreria della scheda LED 8x16 e del servo. I passaggi specifici sono i seguenti: 
-    
-Clicca su ![](media/A29.png) per entrare nell'interfaccia della libreria di estensioni di sensori/moduli/componenti, quindi cerca il modulo “**Matrix 8\*16 Aip1640**” ![](media/A236.png) e cliccaci sopra. In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il modulo “**Matrix 8\*16 Aip1640**” è stato aggiunto con successo. 
+コードを書く前に、8x16 LEDボードとサーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+
+![](media/A29.png)をクリックしてセンサー／モジュール／コンポーネントの拡張ライブラリ画面に入り、「**Matrix 8\*16 Aip1640**」モジュール![](media/A236.png)を検索してクリックします。これにより、「**Not loaded**」が「**loaded**」に変わり、「**Matrix 8\*16 Aip1640**」モジュールが正常に追加されたことを示します。
 
 ![Img](media/A237.png)  
 
 ![](media/A238.png)
 
-Clicca su ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, si possono vedere i blocchi di istruzioni del modulo “**Matrix 8\*16 Aip1640**” aggiunto e del componente “**Servo**” nell'area modulo. 
+![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加された「**Matrix 8\*16 Aip1640**」モジュールと「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
 
 ![](media/A330.png)
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
+ブロックをドラッグして編集できます。以下に示すブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -78,9 +78,9 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (9).![](media/A334.png)
 
-**Codice di Test Completo**
+**完成したテストコード**
 
-<span style="color: rgb(255, 76, 65);">**Nota:** Prima di caricare il codice di test, è necessario rimuovere il modulo Bluetooth, altrimenti il codice non verrà caricato correttamente. Collega il modulo Bluetooth dopo aver caricato con successo il codice.</span>
+<span style="color: rgb(255, 76, 65);">**注意：** テストコードをアップロードする前にBluetoothモジュールを取り外す必要があります。そうしないとコードのアップロードに失敗します。コードのアップロードが成功した後にBluetoothモジュールを接続してください。</span>
 
 ![](media/A335.png)
 
@@ -92,8 +92,8 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 ![](media/A339.png)
 
-### **6. Risultato del Test**
+**6. テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源を入れてからDIPスイッチをONにします。
 
-Inserisci il modulo BT e apri il cellulare per connetterti al Bluetooth per controllare l'auto intelligente. L'auto si muoverà avanti, indietro, girerà a sinistra e a destra e si fermerà. Inoltre, la scheda LED 8\*8 mostrerà i pattern corrispondenti.
+BTモジュールを差し込み、スマートフォンでBluetoothに接続してスマートカーを操作します。車は前進、後退、左折、右折、停止が可能です。また、8\*8 LEDボードには対応するパターンが表示されます。

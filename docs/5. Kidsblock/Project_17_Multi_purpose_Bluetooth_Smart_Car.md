@@ -1,53 +1,53 @@
-# Progetto 17 Auto Smart Bluetooth Multiuso
+# Project 17 多機能 Bluetooth スマートカー
 
 ![](media/A349.jpeg)
 
-### **1.Descrizione**
+### **1.説明**
 
-Nei progetti precedenti, l'auto eseguiva solo una singola funzione. Tuttavia, in questa lezione, integreremo tutte le sue funzioni tramite Bluetooth.
+これまでのプロジェクトでは、車は単一の機能のみを実行していました。しかし、このレッスンでは、Bluetoothを介してすべての機能を統合します。
 
-### **2.Diagramma di Flusso**
+### **2.フローチャート**
 
 ![](media/A350.png)
 
-### **3.Diagramma di Collegamento**
+### **3.配線図**
 
 ![](media/A351.png)
 
-1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati a G (GND), V (VCC), A4 e A5 della scheda di espansione.
+1). 8\*8 LEDボードのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
 
-2). RXD, TXD, GND e VCC del modulo Bluetooth sono rispettivamente collegati a TX, RX, G e 5V sulla scheda di espansione driver motore 8833, mentre i pin STATE e BRK del modulo Bluetooth non devono essere collegati.
+2). BluetoothモジュールのRXD、TXD、GND、VCCはそれぞれ8833モータードライバー拡張ボードのTX、RX、G、5Vに接続します。BluetoothモジュールのSTATEおよびBRKピンは接続不要です。
 
-3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso è collegato a 5V (V) e il filo arancione è collegato ad A3.
+3). サーボはG、V、A3に接続します。茶色の線はGnd（G）に、赤色の線は5V（V）に、オレンジ色の線はA3に接続します。
 
-4). G, V, S1, S2 e S3 del sensore di tracciamento linea sono collegati a G (GND), V (VCC), D11, D7 e D8 della scheda di espansione sensori.
+4). ライントラッキングセンサーのG、V、S1、S2、S3はセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
 
-5). VCC, Trig, Echo e Gnd del sensore ad ultrasuoni sono collegati a 5V (V), D12 (S), D13 (S) e Gnd (G).
+5). 超音波センサーのVCC、Trig、Echo、Gndはそれぞれ5V（V）、D12（S）、D13（S）、Gnd（G）に接続します。
 
-6). L'alimentazione è collegata alla porta BAT.
+6). 電源はBATポートに接続します。
 
-### **4.Codice di Test**
+### **4.テストコード**
 
-Prima di scrivere il codice, è necessario importare i file della libreria del sensore ad ultrasuoni, della scheda LED 8x16 e del servo. I passaggi specifici sono i seguenti:
+コードを書く前に、超音波センサー、8x16 LEDボード、サーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
 
-Cliccare ![](media/A29.png) per entrare nell'interfaccia della libreria di estensione di sensori/moduli/componenti, quindi cercare il sensore “**Ultrasonic**” ![](media/A122.png) e cliccarlo. In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il sensore “**Ultrasonic**” è stato aggiunto con successo.
+![](media/A29.png)をクリックしてセンサー／モジュール／コンポーネントの拡張ライブラリ画面に入り、「**Ultrasonic**」センサー![](media/A122.png)を検索してクリックします。これにより「**Not loaded**」が「**loaded**」に変わり、「**Ultrasonic**」センサーが正常に追加されたことを示します。
 
 ![Img](media/A300.png)
 
 ![](media/A124.png)
 
-Cliccare ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, si possono vedere i blocchi di istruzioni del sensore “**Ultrasonic**”, del modulo “**Matrix 8\*16 Aip1640**” e del componente “**Servo**” nell'area moduli.
+![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加された「**Ultrasonic**」センサー、「**Matrix 8\*16 Aip1640**」モジュール、「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
 
 ![](media/A285.png)
 
-**Codice di Test Completo**
+**完成したテストコード**
 
-<span style="color: rgb(255, 76, 65);">**Nota:** Prima di caricare il codice di test, è necessario rimuovere il modulo Bluetooth, altrimenti il caricamento del codice fallirà. Collegare il modulo Bluetooth dopo aver caricato con successo il codice.</span>
+<span style="color: rgb(255, 76, 65);">**注意：** テストコードをアップロードする前にBluetoothモジュールを取り外す必要があります。そうしないとコードのアップロードに失敗します。コードのアップロードが成功した後にBluetoothモジュールを接続してください。</span>
 
 ![](media/A352.png)
 
-### **5.Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo il diagramma di collegamento, alimentare l'alimentazione esterna e quindi impostare l'interruttore DIP su ON.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源を入れてDIPスイッチをONにします。
 
-Dopo che il modulo Bluetooth è stato collegato all'APP e l'APP mobile si è connessa con successo al Bluetooth, l'auto smart può essere controllata tramite l'APP mobile. Possiamo ottenere le funzioni corrispondenti premendo i pulsanti corrispondenti sull'APP mobile.
+BluetoothモジュールがAPPに接続され、モバイルAPPがBluetoothに正常に接続されると、スマートカーはモバイルAPPで制御可能になります。モバイルAPPの対応するボタンを押すことで、対応する機能を実現できます。

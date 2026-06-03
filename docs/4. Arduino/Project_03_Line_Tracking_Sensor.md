@@ -1,46 +1,43 @@
-# Progetto 3: Sensore di Tracciamento Linea
+# Project 3: ライントラッキングセンサー
 
 ![](media/A17.png)
 
-### **1. Descrizione**
+### **1.説明**
 
-Il sensore di tracciamento è in realtà un sensore a infrarossi. Il componente utilizzato qui è il tubo a infrarossi TCRT5000. Il suo principio di funzionamento è utilizzare la diversa riflettività della luce infrarossa rispetto ai colori, quindi convertire l'intensità del segnale riflesso in un segnale di corrente.
+トラッキングセンサーは実際には赤外線センサーです。ここで使用されているコンポーネントはTCRT5000赤外線チューブです。その動作原理は、赤外線の反射率の違いを色で検出し、反射信号の強さを電流信号に変換することです。
 
-Durante il processo di rilevamento, il nero è attivo a livello HIGH mentre il bianco è attivo a livello LOW. L'altezza di rilevamento è 0-3 cm.
+検出の過程では、黒はHIGHレベルでアクティブ、白はLOWレベルでアクティブとなります。検出高さは0〜3cmです。
 
-Il modulo di tracciamento linea a 3 canali Keyestudio ha integrato 3 set di tubi a infrarossi TCRT5000 su una scheda, il che rende più comodo il cablaggio e il controllo.
+Keyestudioの3チャンネルライントラッキングモジュールは、3セットのTCRT5000赤外線チューブを基板上に統合しており、配線と制御がより便利です。
 
-Ruotando il potenziometro regolabile sul sensore, è possibile regolare la sensibilità di rilevamento del sensore.
+センサー上の調整可能なポテンショメーターを回すことで、センサーの検出感度を調整できます。
 
-### **2. Specifiche**
+### **2.仕様**
 
-- Tensione di funzionamento: 3.3-5V (DC)
-
-- Interfaccia: 5PIN
-
-- Segnale di uscita: Segnale digitale
-
-- Altezza di rilevamento: 0-3 cm
+- 動作電圧：3.3-5V（DC）
+- インターフェース：5PIN
+- 出力信号：デジタル信号
+- 検出高さ：0〜3cm
 
 ![image-20250508163247479](media/A18.png)
 
-<span style="color: rgb(255, 76, 65);">Nota: Prima del test, ruotare il potenziometro sul sensore per regolare la sensibilità di rilevamento. La sensibilità è ottimale quando si regola il LED a una soglia tra acceso e spento.</span> 
+<span style="color: rgb(255, 76, 65);">注意：テスト前にセンサー上のポテンショメーターを回して検出感度を調整してください。LEDがONとOFFの境界にあるときが最適な感度です。</span>
 
-### **3. Componenti**
+### **3.コンポーネント**
 
-| Scheda di Sviluppo *1                   | Driver Motore 8833 *1                    | Modulo LED Rosso *1       | Sensore di Tracciamento Linea *1 |
-| -------------------------------------- | -------------------------------------- | ------------------------ | ------------------------------- |
-| ![img](media/A8.jpg)                   | ![img](media/A9.jpg)                    | ![img](media/A10.jpg)    | ![img](media/A19.png)            |
-| Cavo Dupont 5P *1                      | Cavo USB *1                            | Cavo Dupont 3P *1        |                                 |
-| ![img](media/A20.png)                  | ![img](media/A12.jpg)                   | ![img](media/A11.jpg)    |                                 |
+| 開発ボード *1                     | 8833 モータードライバー *1                     | 赤色LEDモジュール*1         | ライントラッキングセンサー*1   |
+| -------------------------------- | ---------------------------------------------- | ---------------------------- | ------------------------------ |
+| ![img](media/A8.jpg)             | ![img](media/A9.jpg)                           | ![img](media/A10.jpg)        | ![img](media/A19.png)          |
+| 5P デュポンワイヤー*1            | USBケーブル*1                                 | 3P デュポンワイヤー*1        |                                |
+| ![img](media/A20.png)            | ![img](media/A12.jpg)                          | ![img](media/A11.jpg)        |                                |
 
-### **4. Schema di Collegamento**
+### **4.配線図**
 
 ![image-20250508164243044](media/A21.png)
 
-G, V, S1, S2 e S3 del sensore di tracciamento linea sono collegati rispettivamente a G (GND), V (VCC), D11, D7 e D8 della scheda di espansione sensori.
+ライントラッキングセンサーのG、V、S1、S2、S3は、それぞれセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
 
-### **5. Codice di Test**
+### **5.テストコード**
 
 ```c
 //****************************************************************************
@@ -50,56 +47,56 @@ lesson 3.1
  Line Track sensor
  http://www.keyestudio.com
 */
-int L_pin = 11;  //pin del sensore di tracciamento linea sinistro
-int M_pin = 7;   //pin del sensore di tracciamento linea centrale
-int R_pin = 8;   //pin del sensore di tracciamento linea destro
-int val_L,val_R,val_M; // definisci le variabili valore dei tre sensori
+int L_pin = 11;  // 左側ライントラッキングセンサーのピン
+int M_pin = 7;   // 中央ライントラッキングセンサーのピン
+int R_pin = 8;   // 右側ライントラッキングセンサーのピン
+int val_L,val_R,val_M; // 3つのセンサーの値を格納する変数を定義
 
 void setup()
 {
-  Serial.begin(9600); // inizializza la comunicazione seriale a 9600 bit al secondo
-  pinMode(L_pin,INPUT); // imposta L_pin come ingresso
-  pinMode(M_pin,INPUT); // imposta M_pin come ingresso
-  pinMode(R_pin,INPUT); // imposta R_pin come ingresso
+  Serial.begin(9600); // シリアル通信を9600ボーで初期化
+  pinMode(L_pin,INPUT); // L_pinを入力モードに設定
+  pinMode(M_pin,INPUT); // M_pinを入力モードに設定
+  pinMode(R_pin,INPUT); // R_pinを入力モードに設定
 }
 
 void loop() 
 { 
-  val_L = digitalRead(L_pin); // leggi L_pin:
-  val_R = digitalRead(R_pin); // leggi R_pin:
-  val_M = digitalRead(M_pin); // leggi M_pin:
+  val_L = digitalRead(L_pin); // L_pinの状態を読み取る
+  val_R = digitalRead(R_pin); // R_pinの状態を読み取る
+  val_M = digitalRead(M_pin); // M_pinの状態を読み取る
   Serial.print("left:");
   Serial.print(val_L);
   Serial.print(" middle:");
   Serial.print(val_M);
   Serial.print(" right:");
   Serial.println(val_R);
-  delay(500); // ritardo tra le letture per stabilità
+  delay(500); // 安定のため読み取り間隔を遅延
 }
 //****************************************************************************
 ```
 
-### **6. Risultato del Test**
+### **6.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema di collegamento e utilizzare un cavo USB per collegare il computer e alimentare la scheda.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、USBケーブルでコンピューターと接続してボードに電源を供給します。
 
-Dopo l'accensione, aprire il monitor seriale e si visualizzerà lo stato dei tre sensori di tracciamento linea. Quando non vengono ricevuti segnali, il valore è 1. Se copriamo il sensore con un foglio bianco, il valore sarà 0.
+電源を入れたらシリアルモニターを開くと、3つのライントラッキングセンサーの状態が表示されます。信号が受信されていない場合は値が1になります。センサーを白い紙で覆うと値は0になります。
 
 ![image-20250508164424571](media/A22.png)
 
 ![image-20250508164453274](media/A23.png)
 
-### **7. Spiegazione del Codice**
+### **7.コード説明**
 
-Serial.begin(9600) - Inizializza la porta seriale, imposta la velocità di trasmissione a 9600 baud
+Serial.begin(9600) - シリアルポートを初期化し、ボーレートを9600に設定
 
-pinMode - Definisce il pin come modalità input o output
+pinMode - ピンを入力または出力モードに定義
 
-digitalRead - Legge lo stato del pin, che generalmente è livello HIGH o LOW
+digitalRead - ピンの状態を読み取る（通常はHIGHまたはLOWレベル）
 
-### **8. Pratica Estesa**
+**8.拡張練習**
 
-Dopo aver compreso il principio di funzionamento, puoi collegare un LED a D9 per controllare il LED tramite il sensore.
+動作原理を理解した後、LEDをD9に接続して、センサーでLEDを制御することができます。
 
 ![image-20250508164527429](media/A24.png)
 
@@ -110,46 +107,46 @@ lesson 3.2
  Line Track Sensor LED
  http://www.keyestudio.com
 */
-int L_pin = 11;  //pin del sensore di tracciamento linea sinistro
-int M_pin = 7;  //pin del sensore di tracciamento linea centrale
-int R_pin = 8;  //pin del sensore di tracciamento linea destro
-int val_L,val_R,val_M;// definisci le variabili dei tre sensori 
+int L_pin = 11;  // 左側ライン追跡センサーのピン
+int M_pin = 7;  // 中央ライン追跡センサーのピン
+int R_pin = 8;  // 右側ライン追跡センサーのピン
+int val_L,val_R,val_M;// 3つのセンサーの変数を定義
 
 void setup()
 {
-  Serial.begin(9600); // inizializza la comunicazione seriale a 9600 bit al secondo
-  pinMode(L_pin,INPUT); // imposta L_pin come input
-  pinMode(M_pin,INPUT); // imposta M_pin come input
-  pinMode(R_pin,INPUT); // imposta R_pin come input
+  Serial.begin(9600); // 9600ビット毎秒でシリアル通信を初期化
+  pinMode(L_pin,INPUT); // L_pinを入力に設定
+  pinMode(M_pin,INPUT); // M_pinを入力に設定
+  pinMode(R_pin,INPUT); // R_pinを入力に設定
   pinMode(9, OUTPUT);
 }
 
 void loop() 
 { 
-  val_L = digitalRead(L_pin);//leggi L_pin:
-  val_R = digitalRead(R_pin);//leggi R_pin:
-  val_M = digitalRead(M_pin);//leggi M_pin:
+  val_L = digitalRead(L_pin);// L_pinの読み取り
+  val_R = digitalRead(R_pin);// R_pinの読み取り
+  val_M = digitalRead(M_pin);// M_pinの読み取り
   Serial.print("left:");
   Serial.print(val_L);
   Serial.print(" middle:");
   Serial.print(val_M);
   Serial.print(" right:");
   Serial.println(val_R);
-  delay(500);// ritardo tra le letture per stabilità
-  if ((val_L == LOW) || (val_M == LOW) || (val_R == LOW))//se il sensore di tracciamento linea sinistro rileva segnali
+  delay(500);// 安定のため読み取り間に遅延
+  if ((val_L == LOW) || (val_M == LOW) || (val_R == LOW))// 左ライン追跡センサーが信号を検出した場合
   { 
     Serial.println("HIGH");
-    digitalWrite(9, HIGH);//LED acceso
+    digitalWrite(9, HIGH);// LEDが点灯
   }
-  else//se il sensore di tracciamento linea sinistro non rileva segnali
+  else// 左ライン追跡センサーが信号を検出しなかった場合
   { 
     Serial.println("LOW");
-    digitalWrite(9, LOW);//LED spento
+    digitalWrite(9, LOW);// LEDが消灯
   }
  }
 //****************************************************************************
 ```
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i fili secondo lo schema di collegamento e usa un cavo USB per collegare il computer e alimentare la scheda.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピューターと接続してボードに電源を供給します。
 
-Dopo l'accensione, avvicina un foglio di carta al sensore, quindi noterai che il LED si accende quando copri il sensore di tracciamento linea.
+電源を入れた後、センサーの近くに紙を置くと、ライン追跡センサーを覆ったときにLEDが点灯するのが確認できます。

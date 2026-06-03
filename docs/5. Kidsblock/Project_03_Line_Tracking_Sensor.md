@@ -1,48 +1,48 @@
-# Progetto 3: Sensore di Tracciamento Linee
+# Project 3: ライントラッキングセンサー
 
 ![](media/A63.png)
 
-### **1.Descrizione** 
+### **1.説明**
 
-Il sensore di tracciamento è in realtà un sensore a infrarossi. Il componente utilizzato qui è il tubo a infrarossi TCRT5000. Il suo principio di funzionamento è utilizzare la diversa riflettività della luce infrarossa sui colori, quindi convertire l'intensità del segnale riflesso in un segnale di corrente.
+トラッキングセンサーは実際には赤外線センサーです。ここで使用されているコンポーネントはTCRT5000赤外線チューブです。その動作原理は、赤外線の色に対する反射率の違いを利用し、反射された信号の強さを電流信号に変換することです。
 
-Durante il processo di rilevamento, il nero è attivo a livello HIGH mentre il bianco è attivo a livello LOW. L'altezza di rilevamento è 0-3 cm.
+検出の過程では、黒はHIGHレベルでアクティブ、白はLOWレベルでアクティブになります。検出高さは0〜3cmです。
 
-Il modulo di tracciamento lineare a 3 canali Keyestudio ha integrato 3 set di tubi a infrarossi TCRT5000 su una scheda, il che è più comodo per il cablaggio e il controllo.
+Keyestudioの3チャンネルライントラッキングモジュールは、3セットのTCRT5000赤外線チューブを基板上に統合しており、配線と制御がより便利です。
 
-Ruotando il potenziometro regolabile sul sensore, è possibile regolare la sensibilità di rilevamento del sensore.
+センサー上の調整可能なポテンショメーターを回すことで、センサーの検出感度を調整できます。
 
-### **2.Specifiche**
+### **2.仕様**
 
-- Tensione di funzionamento: 3.3-5V (DC)
+- 動作電圧: 3.3-5V (DC)
 
-- Interfaccia: 5PIN
+- インターフェース: 5PIN
 
-- Segnale di uscita: Segnale digitale
+- 出力信号: デジタル信号
 
-- Altezza di rilevamento: 0-3 cm
+- 検出高さ: 0-3 cm
 
 ![](media/A64.jpeg)
 
-<span style="color: rgb(255, 76, 65);">Nota:</span> Prima del test, ruotare il potenziometro sul sensore per regolare la sensibilità di rilevamento. La sensibilità è ottimale quando si regola il LED a una soglia tra ON e OFF.
+<span style="color: rgb(255, 76, 65);">注意:</span> テスト前に、センサー上のポテンショメーターを回して検出感度を調整してください。LEDがONとOFFの境界の閾値に調整されたときが最も感度が良いです。
 
-### **3.Componenti**
+### **3.コンポーネント**
 
-| Scheda di Sviluppo *1     | Driver Motore 8833 *1     | Modulo LED Rosso*1         | Sensore di Tracciamento Linee*1   |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| ![img](media/A65.jpg) | ![img](media/A66.jpg) | ![img](media/A67.jpg) | ![img](media/A68.png) |
-| Cavo Dupont 5P*1         | Cavo USB*1              | Cavo Dupont 3P*1        |                          |
-| ![img](media/A69.png) | ![img](media/A70.jpg) | ![img](media/A71.jpg) |                          |
+| 開発ボード *1           | 8833 モータードライバー *1 | 赤色LEDモジュール *1       | ライントラッキングセンサー *1 |
+| ------------------------ | -------------------------- | -------------------------- | ------------------------------ |
+| ![img](media/A65.jpg)    | ![img](media/A66.jpg)      | ![img](media/A67.jpg)      | ![img](media/A68.png)          |
+| 5P デュポンワイヤー *1   | USBケーブル *1             | 3P デュポンワイヤー *1     |                                |
+| ![img](media/A69.png)    | ![img](media/A70.jpg)      | ![img](media/A71.jpg)      |                                |
 
-### **4.Diagramma di Collegamento**
+### **4.配線図**
 
 ![](media/A72.png)
 
-G, V, S1, S2 e S3 del sensore di tracciamento linee sono collegati a G (GND), V (VCC), D11, D7 e D8 della scheda di espansione sensori.
+ライントラッキングセンサーのG、V、S1、S2、S3は、それぞれセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
 
-### **5.Codice di Test**
+### **5.テストコード**
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A73.png)
 
@@ -54,29 +54,29 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (5).![](media/A77.png)
 
-**Codice Completo di Test**
+**完成テストコード**
 
 ![](media/A78.png)
 
 ![](media/A79.png)
 
-### **6.Risultato del Test**
+### **6.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo il diagramma di collegamento e usa un cavo USB per collegare il computer e alimentare la scheda.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、USBケーブルでコンピューターと接続してボードに電源を供給します。
 
-Dopo l'accensione, clicca![](media/A80.png)per impostare la velocità di trasmissione a 9600 e vedrai lo stato dei tre sensori di tracciamento linee. Quando non vengono ricevuti segnali, il valore è 1. Se copriamo il sensore con un foglio bianco, il valore sarà 0.
+電源を入れたら、![](media/A80.png)をクリックしてボーレートを9600に設定すると、3つのライントラッキングセンサーの状態が表示されます。信号が受信されていない場合は値が1です。センサーを白い紙で覆うと値は0になります。
 
 ![](media/A81.png)
 
 ![](media/A82.png)
 
-### **7.Esercizio di Estensione**
+### **7.拡張練習**
 
-Dopo aver compreso il suo principio di funzionamento, puoi collegare un LED a D9 per controllare il LED tramite il sensore.
+動作原理を理解した後、LEDをD9に接続してLEDを制御することができます。
 
 ![](media/A83.png)
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A73.png)
 
@@ -92,12 +92,12 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (7).![](media/A87.png)
 
-**Codice Completo di Test**
+**完成テストコード**
 
 ![](media/A88.png)
 
 ![](media/A89.png)
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo il diagramma di collegamento e usa un cavo USB per collegare il computer e alimentare la scheda.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、USBケーブルでコンピューターと接続してボードに電源を供給します。
 
-Dopo l'accensione, avvicina un foglio di carta al sensore, quindi noterai che il LED si accende quando copri il sensore di tracciamento linee.
+電源を入れたら、センサーに紙を近づけると、ライントラッキングセンサーを覆ったときにLEDが点灯するのが確認できます。

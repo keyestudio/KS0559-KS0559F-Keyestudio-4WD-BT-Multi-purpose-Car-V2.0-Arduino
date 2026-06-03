@@ -1,61 +1,61 @@
-# Progetto 8 Guida del Motore e Controllo della Velocità
+# Project 8 モーター駆動と速度制御
 
 ![image-20250510090044895](media/A77.png)
 
-### **1.Descrizione**
+### **1.説明**
 
-Esistono molti modi per pilotare i motori. La nostra auto utilizza il chip driver per motori DRV8833 più comunemente usato, che fornisce una soluzione di guida elettrica a ponte a due canali per giocattoli, stampanti e altre applicazioni integrate con motori.
+モーターを駆動する方法は多くあります。私たちの車は最も一般的に使用されているDRV8833モータードライバーチップを使用しており、これはおもちゃ、プリンターなどの統合モーターアプリケーション向けに2チャネルのブリッジ電気駆動ソリューションを提供します。
 
-Quando impiliamo lo Shield sulla scheda di sviluppo 4.0 e accendiamo il BAT, quindi impostiamo l'interruttore DIP sull'estremità ON, l'alimentazione esterna alimenterà contemporaneamente le due schede. Per facilitare le connessioni dei cavi, lo Shield è dotato di una porta anti-inversione (PH2.0-2P-3P-4P-5P). Puoi collegare direttamente i motori, l'alimentazione e i moduli sensore allo Shield.
+4.0開発ボードにShieldを重ねてBATに電源を入れ、DIPスイッチをON端に設定すると、外部電源が2つのボードに同時に電力を供給します。配線接続を容易にするために、Shieldには逆接続防止ポート（PH2.0-2P-3P-4P-5P）が付いています。モーター、電源、センサーモジュールを直接Shieldに接続できます。
 
-L'interfaccia Bluetooth dello Shield è completamente compatibile con il modulo Bluetooth DX-BT24 5.1. Quando colleghi il modulo Bluetooth, devi solo inserirlo nell'interfaccia corrispondente. Allo stesso tempo, i pin a fila da 2,54 mm sono utilizzati per estrarre alcune porte digitali e analogiche inutilizzate sullo Shield, rendendolo accessibile per aggiungere altri sensori e realizzare esperimenti di estensione.
+ShieldのBluetoothインターフェースはDX-BT24 5.1 Bluetoothモジュールと完全互換です。Bluetoothモジュールを接続する際は、対応するインターフェースに差し込むだけで済みます。同時に、2.54ピッチのピン列を使ってShield上の未使用のデジタルおよびアナログポートを引き出しており、他のセンサーの追加や拡張実験が可能です。
 
-La scheda di espansione può essere collegata a quattro motori DC. Quando il cappuccio jumper è collegato di default, i motori delle porte A e A1 e B e B1 sono collegati in parallelo e hanno la stessa legge di movimento. 8 cappucci jumper possono essere usati per controllare la direzione di rotazione delle 4 interfacce motore.
+拡張ボードは4つのDCモーターに接続できます。ジャンパーキャップがデフォルトで接続されている場合、ポートAとA1、BとB1のモーターは並列接続され、同じ動作をします。8つのジャンパーキャップで4つのモーターインターフェースの回転方向を制御できます。
 
-Ad esempio, quando i 2 cappucci jumper davanti a B1 del motore M1 cambiano da collegamento trasversale a collegamento longitudinale, la direzione di rotazione del motore M1 sarà opposta alla direzione di rotazione originale.
+例えば、M1モーターのB1前の2つのジャンパーキャップを横方向接続から縦方向接続に変更すると、M1モーターの回転方向は元の回転方向と逆になります。
 
-### **2.Specifiche**
+### **2.仕様**
 
-- Tensione di ingresso per la logica: DC 5V
+- ロジック入力電圧：DC 5V
 
-- Tensione di ingresso per la guida: DC 6-9 V
+- 駆動入力電圧：DC 6-9 V
 
-- Corrente di lavoro per la logica: \<36mA
+- ロジック動作電流：\<36mA
 
-- Corrente di lavoro per la guida: \<2A
+- 駆動動作電流：\<2A
 
-- Massima dissipazione di potenza: 25W（T=75℃）
+- 最大消費電力：25W（T=75℃）
 
-- Livello di ingresso per il segnale di controllo: livello alto è 2.3V\<Vin\<5V, livello basso è -0.3V\<Vin\<1.5V
+- 制御信号入力レベル：高レベルは2.3V\<Vin\<5V、低レベルは-0.3V\<Vin\<1.5V
 
-- Temperatura di lavoro: -25＋130℃
+- 動作温度：-25＋130℃
 
-**Scheda di espansione driver motore Keyestudio 8833**
+**Keyestudio 8833 モータードライバー拡張ボード**
 
 ![image-20250510090404192](media/A78.png)
 
-### **3.Principio di Funzionamento**
+### **3.動作原理**
 
-Utilizziamo la modalità di collegamento parallelo sullo stesso lato per i quattro motori, che possono essere considerati come due gruppi di motori. Come mostrato nel diagramma di cablaggio, B e B1 sono un gruppo, e A e A1 sono un gruppo.
+4つのモーターは同じ側の並列接続モードを使用し、2つのモーターグループと見なせます。配線図のように、BとB1が1グループ、AとA1がもう1グループです。
 
-I motori dello stesso gruppo devono ruotare nella stessa direzione. Se sono diversi, regola i cappucci jumper corrispondenti accanto al terminale per cambiare la direzione.
+同じグループのモーターは同じ方向に回転する必要があります。異なる場合は、端子横の対応するジャンパーキャップを調整して方向を変更してください。
 
-Come mostrato di seguito, se le direzioni di A e A1 sono diverse, regola la direzione dei cappucci jumper finché la direzione di movimento dei motori dello stesso gruppo non è coerente.
+下図のように、AとA1の方向が異なる場合は、ジャンパーキャップの方向を調整して同じグループのモーターの動作方向を一致させます。
 
 ![image-20250510090532851](media/A79.png)
 
-Dal diagramma sopra si evince che il pin di direzione del motore A è D4, il pin di velocità è D6; D2 è il pin di direzione del motore B; e D6 è il pin di velocità.
+上図から、Aモーターの方向ピンはD4、速度ピンはD6であることがわかります。D2はBモーターの方向ピン、D6は速度ピンです。
 
-<span style="color:red;">Il PWM guida l'auto robot. Il valore PWM è nell'intervallo 0-255. Quando impostiamo la direzione su HIGH, più piccolo è il numero PWM, più veloce è la rotazione del motore.</span>
+<span style="color:red;">PWMはロボットカーを駆動します。PWM値は0-255の範囲です。方向をHIGHに設定すると、PWMの数値が小さいほどモーターの回転が速くなります。</span>
 
-|            | D2   | D5（PWM） | Motore B（sinistro） | D4   | D6（PWM） | Motore A（destro）   |
+|            | D2   | D5（PWM） | Bモーター（左）       | D4   | D6（PWM） | Aモーター（右）       |
 | ---------- | ---- | --------- | -------------------- | ---- | --------- | -------------------- |
-| Avanti     | HIGH | 255-200   | Ruota in senso orario | HIGH | 255-200   | Ruota in senso orario |
-| Indietro   | LOW  | 200       | Ruota in senso antiorario | LOW  | 200       | Ruota in senso antiorario |
-| Svolta a sinistra | HIGH | 255-200   | Ruota in senso orario | LOW  | 200       | Ruota in senso antiorario |
-| Svolta a destra | LOW  | 200       | Ruota in senso antiorario | HIGH | 255-200   | Ruota in senso orario |
+| 前進       | HIGH | 255-200   | 時計回り回転         | HIGH | 255-200   | 時計回り回転         |
+| 後退       | LOW  | 200       | 反時計回り回転       | LOW  | 200       | 反時計回り回転       |
+| 左折       | HIGH | 255-200   | 時計回り回転         | LOW  | 200       | 反時計回り回転       |
+| 右折       | LOW  | 200       | 反時計回り回転       | HIGH | 255-200   | 時計回り回転         |
 
-### **4.Componenti**
+### **4.コンポーネント**
 
 | Development Board *1      | 8833 Motor Driver *1      | USB Cable*1                       |
 | ------------------------- | ------------------------- | --------------------------------- |
@@ -63,13 +63,13 @@ Dal diagramma sopra si evince che il pin di direzione del motore A è D4, il pin
 | 18650 Battery Holder*1    | Motor*4                   | 18650 Battery *2（self-provided） |
 | ![img](media/A83.png) | ![img](media/A84.jpg) | ![img](media/A85.png)         |
 
-### **5.Diagramma di Collegamento**
+### **5.配線図**
 
 ![image-20250510090733191](media/A86.png)
 
-Collegare l'alimentazione alla porta BAT.
+電源をBATポートに接続します。
 
-### **6.Codice di Test**
+### **6.テストコード**
 
 ```c
 //****************************************************************************
@@ -79,67 +79,67 @@ Collegare l'alimentazione alla porta BAT.
  Motor driver shield
  http://www.keyestudio.com
 */ 
-#define ML_Ctrl 2     //definisce i pin di controllo direzione del motore gruppo B
-#define ML_PWM 5   //definisce i pin di controllo PWM del motore gruppo B
-#define MR_Ctrl 4    //definisce i pin di controllo direzione del motore gruppo A
-#define MR_PWM 6   //definisce i pin di controllo PWM del motore gruppo A
+#define ML_Ctrl 2     //グループBモーターの回転方向制御ピンを定義
+#define ML_PWM 5   //グループBモーターのPWM制御ピンを定義
+#define MR_Ctrl 4    //グループAモーターの回転方向制御ピンを定義
+#define MR_PWM 6   //グループAモーターのPWM制御ピンを定義
 
 void setup()
 {
-  pinMode(ML_Ctrl, OUTPUT);//imposta i pin di controllo direzione del motore gruppo B come output
-  pinMode(ML_PWM, OUTPUT);//imposta i pin di controllo PWM del motore gruppo B come output
-  pinMode(MR_Ctrl, OUTPUT);//imposta i pin di controllo direzione del motore gruppo A come output
-  pinMode(MR_PWM, OUTPUT);//imposta i pin di controllo PWM del motore gruppo A come output
+  pinMode(ML_Ctrl, OUTPUT);//グループBモーターの回転方向制御ピンを出力に設定
+  pinMode(ML_PWM, OUTPUT);//グループBモーターのPWM制御ピンを出力に設定
+  pinMode(MR_Ctrl, OUTPUT);//グループAモーターの回転方向制御ピンを出力に設定
+  pinMode(MR_PWM, OUTPUT);//グループAモーターのPWM制御ピンを出力に設定
 }
 void loop()
 { 
-  //avanti
-  digitalWrite(ML_Ctrl,HIGH);//imposta i pin di controllo direzione del motore gruppo B a HIGH
-  analogWrite(ML_PWM,55);//imposta la velocità PWM del motore gruppo B a 55
-  digitalWrite(MR_Ctrl,HIGH);//imposta i pin di controllo direzione del motore gruppo A a HIGH
-  analogWrite(MR_PWM,55);//imposta la velocità PWM del motore gruppo A a 55
-  delay(2000);//ritardo di 2000ms
-  //indietro
-  digitalWrite(ML_Ctrl,LOW);//imposta i pin di controllo direzione del motore gruppo B a livello LOW
-  analogWrite(ML_PWM,200);//imposta la velocità PWM del motore gruppo B a 200 
-  digitalWrite(MR_Ctrl,LOW);//imposta i pin di controllo direzione del motore gruppo A a livello LOW
-  analogWrite(MR_PWM,200);//imposta la velocità PWM del motore gruppo A a 200
-  delay(2000);//ritardo di 2000ms
-  //sinistra
-  digitalWrite(ML_Ctrl,LOW);//imposta i pin di controllo direzione del motore gruppo B a livello LOW
-  analogWrite(ML_PWM,200);//imposta la velocità PWM del motore gruppo B a 200 
-  digitalWrite(MR_Ctrl,HIGH);//imposta i pin di controllo direzione del motore gruppo A a livello HIGH
-  analogWrite(MR_PWM,55);//imposta la velocità PWM del motore gruppo A a 55
-  delay(2000);//ritardo di 2000ms
-  //destra
-  digitalWrite(ML_Ctrl,HIGH);//imposta i pin di controllo direzione del motore gruppo B a livello HIGH
-  analogWrite(ML_PWM,55);//imposta la velocità PWM del motore gruppo B a 55 
-  digitalWrite(MR_Ctrl,LOW);//imposta i pin di controllo direzione del motore gruppo A a livello LOW
-  analogWrite(MR_PWM,200);//imposta la velocità PWM del motore gruppo A a 200
-  delay(2000);//ritardo di 2000ms
-  //fermo
-  digitalWrite(ML_Ctrl, LOW);//imposta i pin di controllo direzione del motore gruppo B a livello LOW
-  analogWrite(ML_PWM,0);//imposta la velocità PWM del motore gruppo B a 0
-  digitalWrite(MR_Ctrl, LOW);//imposta i pin di controllo direzione del motore gruppo A a livello LOW
-  analogWrite(MR_PWM,0);//imposta la velocità PWM del motore gruppo A a 0
-  delay(2000);//ritardo di 2000ms
+  //前進
+  digitalWrite(ML_Ctrl,HIGH);//グループBモーターの回転方向制御ピンをHIGHに設定
+  analogWrite(ML_PWM,55);//グループBモーターのPWM制御速度を55に設定
+  digitalWrite(MR_Ctrl,HIGH);//グループAモーターの回転方向制御ピンをHIGHに設定
+  analogWrite(MR_PWM,55);//グループAモーターのPWM制御速度を55に設定
+  delay(2000);//2000ms待機
+  //後退
+  digitalWrite(ML_Ctrl,LOW);//グループBモーターの回転方向制御ピンをLOWに設定
+  analogWrite(ML_PWM,200);//グループBモーターのPWM制御速度を200に設定
+  digitalWrite(MR_Ctrl,LOW);//グループAモーターの回転方向制御ピンをLOWに設定
+  analogWrite(MR_PWM,200);//グループAモーターのPWM制御速度を200に設定
+  delay(2000);//2000ms待機
+  //左折
+  digitalWrite(ML_Ctrl,LOW);//グループBモーターの回転方向制御ピンをLOWに設定
+  analogWrite(ML_PWM,200);//グループBモーターのPWM制御速度を200に設定
+  digitalWrite(MR_Ctrl,HIGH);//グループAモーターの回転方向制御ピンをHIGHに設定
+  analogWrite(MR_PWM,55);//グループAモーターのPWM制御速度を55に設定
+  delay(2000);//2000ms待機
+  //右折
+  digitalWrite(ML_Ctrl,HIGH);//グループBモーターの回転方向制御ピンをHIGHに設定
+  analogWrite(ML_PWM,55);//グループBモーターのPWM制御速度を55に設定
+  digitalWrite(MR_Ctrl,LOW);//グループAモーターの回転方向制御ピンをLOWに設定
+  analogWrite(MR_PWM,200);//グループAモーターのPWM制御速度を200に設定
+  delay(2000);//2000ms待機
+  //停止
+  digitalWrite(ML_Ctrl, LOW);//グループBモーターの回転方向制御ピンをLOWに設定
+  analogWrite(ML_PWM,0);//グループBモーターのPWM制御速度を0に設定
+  digitalWrite(MR_Ctrl, LOW);//グループAモーターの回転方向制御ピンをLOWに設定
+  analogWrite(MR_PWM,0);//グループAモーターのPWM制御速度を0に設定
+  delay(2000);//2000ms待機
 }
 //****************************************************************************
 ```
 
-### **7.Risultato del Test**
+### **7.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i fili secondo il diagramma di collegamento, quindi accendere l'alimentazione esterna e impostare l'interruttore DIP su ON, la macchina si muoverà in avanti per 2s, indietro per 2s, girerà a sinistra per 2s, a destra per 2s e si fermerà per 2s.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源をオンにしてDIPスイッチをONにすると、車は2秒間前進し、2秒間後退し、2秒間左折し、2秒間右折し、2秒間停止します。
 
-### **8.Spiegazione del Codice**
+### **8.コード説明**
 
-**digitalWrite(ML\_Ctrl,LOW):** La direzione di rotazione del motore è decisa dal livello alto/basso e i pin che decidono la direzione di rotazione sono pin digitali.
+**digitalWrite(ML\_Ctrl,LOW):** モーターの回転方向はHIGH/LOWレベルによって決まり、回転方向を決定するピンはデジタルピンです。
 
-**analogWrite(ML\_PWM,200):** La velocità del motore è regolata tramite PWM, e i pin che decidono la velocità del motore devono essere pin PWM.
+**analogWrite(ML\_PWM,200):** モーターの速度はPWMで調整され、速度を決定するピンはPWMピンでなければなりません。
 
-### **9.Spiegazione del Codice**
+### **9.コード説明**
 
-Regola la velocità con cui il PWM controlla il motore, collegalo nello stesso modo.
+PWMでモーターの速度を調整します。配線は同じ方法で接続してください。
 
 ```c
 //************************************************************************
@@ -149,54 +149,54 @@ Regola la velocità con cui il PWM controlla il motore, collegalo nello stesso m
  Motor driver
  http://www.keyestudio.com
 */ 
-#define ML_Ctrl 2     //definisci i pin di controllo della direzione del motore del gruppo B
-#define ML_PWM 5   //definisci i pin di controllo PWM del motore del gruppo B
-#define MR_Ctrl 4    //definisci i pin di controllo della direzione del motore del gruppo A
-#define MR_PWM 6   //definisci i pin di controllo PWM del motore del gruppo A
+#define ML_Ctrl 2     //グループBモーターの方向制御ピンを定義
+#define ML_PWM 5   //グループBモーターのPWM制御ピンを定義
+#define MR_Ctrl 4    //グループAモーターの方向制御ピンを定義
+#define MR_PWM 6   //グループAモーターのPWM制御ピンを定義
 
 void setup()
 {
-  pinMode(ML_Ctrl, OUTPUT);//imposta i pin di controllo della direzione del motore del gruppo B come output
-  pinMode(ML_PWM, OUTPUT);//imposta i pin di controllo PWM del motore del gruppo B come output
-  pinMode(MR_Ctrl, OUTPUT);//imposta i pin di controllo della direzione del motore del gruppo A come output
-  pinMode(MR_PWM, OUTPUT);//imposta i pin di controllo PWM del motore del gruppo A come output
+  pinMode(ML_Ctrl, OUTPUT);//グループBモーターの方向制御ピンを出力に設定
+  pinMode(ML_PWM, OUTPUT);//グループBモーターのPWM制御ピンを出力に設定
+  pinMode(MR_Ctrl, OUTPUT);//グループAモーターの方向制御ピンを出力に設定
+  pinMode(MR_PWM, OUTPUT);//グループAモーターのPWM制御ピンを出力に設定
 }
 void loop()
 { 
-  //avanti
-  digitalWrite(ML_Ctrl,HIGH);//imposta i pin di controllo della direzione del motore del gruppo B su HIGH
-  analogWrite(ML_PWM,105);//imposta la velocità di controllo PWM del motore del gruppo B a 55
-  digitalWrite(MR_Ctrl,HIGH);//imposta i pin di controllo della direzione del motore del gruppo A su HIGH
-  analogWrite(MR_PWM,105);//imposta la velocità di controllo PWM del motore del gruppo A a 55
-  delay(2000);//ritardo di 2000ms
-  //indietro
-  digitalWrite(ML_Ctrl,LOW);//imposta i pin di controllo della direzione del motore del gruppo B su livello LOW
-  analogWrite(ML_PWM,150);//imposta la velocità di controllo PWM del motore del gruppo B a 200 
-  digitalWrite(MR_Ctrl,LOW);//imposta i pin di controllo della direzione del motore del gruppo A su livello LOW
-  analogWrite(MR_PWM,150);//imposta la velocità di controllo PWM del motore del gruppo A a 200
-  delay(2000);//ritardo di 2000ms
-  //sinistra
-  digitalWrite(ML_Ctrl,LOW);//imposta i pin di controllo della direzione del motore del gruppo B su livello LOW
-  analogWrite(ML_PWM,150);//imposta la velocità di controllo PWM del motore del gruppo B a 200 
-  digitalWrite(MR_Ctrl,HIGH);//imposta i pin di controllo della direzione del motore del gruppo A su livello HIGH
-  analogWrite(MR_PWM,105);//imposta la velocità di controllo PWM del motore del gruppo A a 200
-  delay(2000);//ritardo di 2000ms
-  //destra
-  digitalWrite(ML_Ctrl,HIGH);//imposta i pin di controllo della direzione del motore del gruppo B su livello HIGH
-  analogWrite(ML_PWM,105);//imposta la velocità di controllo PWM del motore del gruppo B a 55 
-  digitalWrite(MR_Ctrl,LOW);//imposta i pin di controllo della direzione del motore del gruppo A su livello LOW
-  analogWrite(MR_PWM,150);//imposta la velocità di controllo PWM del motore del gruppo A a 200
-  delay(2000);//ritardo di 2000ms
-  //stop
-  digitalWrite(ML_Ctrl, LOW);//imposta i pin di controllo della direzione del motore del gruppo B su livello LOW
-  analogWrite(ML_PWM,0);//imposta la velocità di controllo PWM del motore del gruppo B a 0
-  digitalWrite(MR_Ctrl, LOW);//imposta i pin di controllo della direzione del motore del gruppo A su livello LOW
-  analogWrite(MR_PWM,0);//imposta la velocità di controllo PWM del motore del gruppo A a 0
-  delay(2000);//ritardo di 2000ms
+  //前進
+  digitalWrite(ML_Ctrl,HIGH);//グループBモーターの方向制御ピンをHIGHに設定
+  analogWrite(ML_PWM,105);//グループBモーターのPWM制御速度を105に設定
+  digitalWrite(MR_Ctrl,HIGH);//グループAモーターの方向制御ピンをHIGHに設定
+  analogWrite(MR_PWM,105);//グループAモーターのPWM制御速度を105に設定
+  delay(2000);//2000ms待機
+  //後退
+  digitalWrite(ML_Ctrl,LOW);//グループBモーターの方向制御ピンをLOWに設定
+  analogWrite(ML_PWM,150);//グループBモーターのPWM制御速度を150に設定
+  digitalWrite(MR_Ctrl,LOW);//グループAモーターの方向制御ピンをLOWに設定
+  analogWrite(MR_PWM,150);//グループAモーターのPWM制御速度を150に設定
+  delay(2000);//2000ms待機
+  //左折
+  digitalWrite(ML_Ctrl,LOW);//グループBモーターの方向制御ピンをLOWに設定
+  analogWrite(ML_PWM,150);//グループBモーターのPWM制御速度を150に設定
+  digitalWrite(MR_Ctrl,HIGH);//グループAモーターの方向制御ピンをHIGHに設定
+  analogWrite(MR_PWM,105);//グループAモーターのPWM制御速度を105に設定
+  delay(2000);//2000ms待機
+  //右折
+  digitalWrite(ML_Ctrl,HIGH);//グループBモーターの方向制御ピンをHIGHに設定
+  analogWrite(ML_PWM,105);//グループBモーターのPWM制御速度を105に設定
+  digitalWrite(MR_Ctrl,LOW);//グループAモーターの方向制御ピンをLOWに設定
+  analogWrite(MR_PWM,150);//グループAモーターのPWM制御速度を150に設定
+  delay(2000);//2000ms待機
+  //停止
+  digitalWrite(ML_Ctrl, LOW);//グループBモーターの方向制御ピンをLOWに設定
+  analogWrite(ML_PWM,0);//グループBモーターのPWM制御速度を0に設定
+  digitalWrite(MR_Ctrl, LOW);//グループAモーターの方向制御ピンをLOWに設定
+  analogWrite(MR_PWM,0);//グループAモーターのPWM制御速度を0に設定
+  delay(2000);//2000ms待機
 }
 //************************************************************************
 ```
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, quindi accendi l'alimentazione esterna e porta l'interruttore DIP su ON, noterai che la velocità del motore è molto più lenta.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源の電源を入れ、DIPスイッチをONにすると、モーターの速度がかなり遅くなっていることがわかります。
 
-<span style="color: rgb(255, 76, 65);">Nota: Una batteria scarica porterà a una velocità del motore più lenta.</span> 
+<span style="color: rgb(255, 76, 65);">注意: バッテリー残量が低いとモーターの速度が遅くなります。</span> 

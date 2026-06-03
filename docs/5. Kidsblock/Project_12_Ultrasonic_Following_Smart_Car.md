@@ -1,104 +1,104 @@
-# Progetto 12 Auto Intelligente a Inseguimento Ultrasonico
+# Project 12 超音波追従スマートカー
 
 ![](media/A280.png)
 
-### **1.Descrizione**
+### **1.説明**
 
-In questo progetto, cercheremo di rilevare la distanza tra l'auto intelligente 4WD e gli ostacoli davanti tramite un sensore ultrasonico per pilotare due motori in modo che l'auto si muova e faccia mostrare alla scheda LED 8\*8 un motivo facciale sorridente.
+このプロジェクトでは、超音波センサーを使って4WDスマートカーと前方の障害物との距離を検出し、2つのモーターを制御して車を動かし、8\*8 LEDボードに笑顔のパターンを表示させます。
 
-### **2.Diagramma di Flusso**
+### **2.フローチャート**
 
 ![img](media/A281.png)
 
 <table border="1">
 <tbody>
 <tr class="odd">
-<td>Rilevamento</td>
-<td>Distanza misurata degli ostacoli frontali</td>
-<td>distanza (unità: cm)</td>
+<td>検出</td>
+<td>前方障害物の測定距離</td>
+<td>距離（単位：cm）</td>
 </tr>
 <tr class="even">
-<td>Impostazione</td>
-<td>La scheda LED 8*16 mostra un motivo sorridente.</td>
+<td>設定</td>
+<td>8*16 LEDボードに笑顔のパターンを表示</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Imposta il servo a 90°</td>
+<td>サーボを90°に設定</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condizione</td>
-<td>distanza≥20 e distanza≤50</td>
+<td>条件</td>
+<td>距離≥20 かつ 距離≤50</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>Stato</td>
-<td>Avanti</td>
+<td>状態</td>
+<td>前進</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condizione</td>
-<td>distanza＞10 e distanza＜20</td>
+<td>条件</td>
+<td>距離＞10 かつ 距離＜20</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>distanza＞50</td>
+<td>距離＞50</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condizione</td>
-<td>fermo</td>
+<td>条件</td>
+<td>停止</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>Condizione</td>
-<td>distanza≤10</td>
+<td>条件</td>
+<td>距離≤10</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condizione</td>
-<td>Indietro</td>
+<td>条件</td>
+<td>後退</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 
 
-### **3.Diagramma di Collegamento**
+### **3.配線図**
 
 ![](media/A282.png)
 
-**Collegamenti:**
+**配線方法：**
 
-1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati a G (GND), V (VCC), A4 e A5 della scheda di espansione.
+1). 8\*8 LEDボードのGND、VCC、SDA、SCLを拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
 
-2). VCC, Trig, Echo e Gnd del sensore ultrasonico sono collegati a 5V (V), D12 (S), D13 (S) e Gnd (G).
+2). 超音波センサーのVCC、Trig、Echo、Gndをそれぞれ5V(V)、D12(S)、D13(S)、Gnd(G)に接続します。
 
-3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso è collegato a 5V (V) e il filo arancione è collegato ad A3.
+3). サーボはG、V、A3に接続します。茶色の線はGnd(G)、赤色の線は5V(V)、オレンジ色の線はA3に接続します。
 
-4). L'alimentazione è collegata alla porta BAT.
+4). 電源はBATポートに接続します。
 
-### **4.Codice di Test**
+### **4.テストコード**
 
-Prima di scrivere il codice, è necessario importare i file di libreria del sensore ultrasonico, della scheda LED 8x16 e del servo. I passaggi specifici sono i seguenti:
+コードを書く前に、超音波センサー、8x16 LEDボード、サーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
 
-Clicca ![](media/A29.png) per entrare nell'interfaccia della libreria di estensione di sensori/moduli/componenti, poi cerca il sensore “Ultrasonic” ![](media/A122.png) e cliccalo.
+センサー/モジュール/コンポーネントの拡張ライブラリ画面に入るには ![](media/A29.png) をクリックし、「Ultrasonic」センサーを検索して ![](media/A122.png) をクリックします。
 
-In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il sensore “**Ultrasonic**” è stato aggiunto con successo.
+これで「**Not loaded**」が「**loaded**」に変わり、「**Ultrasonic**」センサーが正常に追加されたことを示します。
 
 ![Img](media/A283.png)
 
 ![](/media/A284.png)
 
-I file di libreria della scheda LED 8x16 e del servo sono aggiunti allo stesso modo del sensore ultrasonico.
+8x16 LEDボードとサーボのライブラリファイルも超音波センサーと同様に追加します。
 
-Clicca ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, il blocco di istruzioni del sensore “**Ultrasonic**”, del modulo “**Matrix 8\*16 Aip1640**” e del componente “**Servo**” può essere visto nell'area modulo.
+![](media/A33.png) をクリックしてコードエディタ画面に戻ると、追加した「**Ultrasonic**」センサー、「**Matrix 8\*16 Aip1640**」モジュール、「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
 
 ![](media/A285.png)
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -118,7 +118,7 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (9).![](media/A292.png)
 
-**Codice di Test Completo**
+**完成したテストコード**
 
 ![](media/A293.png)
 
@@ -126,6 +126,6 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 ![](media/A295.png)
 
-### **5.Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo il diagramma di collegamento, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON. Imposta il servo a 90°, l'auto intelligente si muoverà in base agli ostacoli e la scheda LED 8X16 mostrerà un “sorriso”.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れてDIPスイッチをONにします。サーボを90°に設定すると、スマートカーは障害物に合わせて動き、8X16 LEDボードに「smile」が表示されます。

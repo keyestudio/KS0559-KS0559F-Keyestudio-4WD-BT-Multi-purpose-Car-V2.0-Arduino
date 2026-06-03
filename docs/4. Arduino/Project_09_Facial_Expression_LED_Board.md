@@ -1,143 +1,143 @@
-# Progetto 9 Pannello LED con Espressione Facciale
+# Project 9 Facial Expression LED Board
 
 ![image-20250510090912741](media/A87.png)
 
-### **1.Descrizione**
+### **1.説明**
 
-Quanto è divertente aggiungere un pannello di espressioni al robot. E il pannello LED Keyestudio 8\*16 può fare al caso vostro. Con il suo aiuto, potrete progettare espressioni facciali, immagini, motivi e altre visualizzazioni da soli.
+ロボットに表情ボードが追加されたらどれほど楽しいでしょうか。Keyestudioの8\*16 LEDボードがその役割を果たします。これを使えば、自分で表情、画像、パターンなどの表示をデザインできます。
 
-Il pannello LED 8\*16 è dotato di 128 LED. I dati del microprocessore (Arduino) comunicano con l’AiP1640 tramite un’interfaccia bus a due fili. Pertanto, può controllare l’accensione e lo spegnimento dei 128 LED sul modulo, in modo da far visualizzare al display a matrice di punti sul modulo il motivo desiderato. È fornito un cavo HX-2.54 a 4 pin per facilitare il cablaggio.
+8\*16 LEDボードは128個のLEDを搭載しています。マイクロプロセッサ（Arduino）のデータは2線式バスインターフェースを通じてAiP1640と通信します。これにより、モジュール上の128個のLEDのオン・オフを制御し、モジュール上のドットマトリックスに必要なパターンを表示できます。配線の便宜のためにHX-2.54 4ピンケーブルが付属しています。
 
-### **2.Specifiche**
+### **2.仕様**
 
-- Tensione di lavoro: DC 3.3-5V
+- 動作電圧: DC 3.3-5V
 
-- Perdita di potenza: 400mW
+- 消費電力: 400mW
 
-- Frequenza di oscillazione: 450KHz
+- 発振周波数: 450KHz
 
-- Corrente di pilotaggio: 200mA
+- 駆動電流: 200mA
 
-- Temperatura di lavoro: -40\~80℃
+- 動作温度: -40〜80℃
 
-- Modalità di comunicazione: I2C
+- 通信方式: I2C
 
-### **3.Diagramma Circuitale**
+### **3.回路図**
 
 ![image-20250510091309725](media/A88.png)
 
-### **4.Principio di Funzionamento**
+### **4.動作原理**
 
-Come controllare ogni LED della matrice a punti 8\*16? Si sa che ogni byte ha 8 bit e ogni bit è 0 o 1. Quando è 0, il LED è spento mentre quando è 1 il LED è acceso. Un byte può controllare una colonna di LED, e naturalmente 16 byte possono controllare 16 colonne di LED, questa è la matrice a punti 8\*16.
+8\*16ドットマトリックスの各LEDをどのように制御するか？1バイトは8ビットで、それぞれのビットは0か1です。0のときはLEDが消灯、1のときは点灯します。1バイトでLEDの1列を制御でき、16バイトで16列のLEDを制御できます。これが8\*16ドットマトリックスです。
 
-### **5.Descrizione dei Pin e Protocollo di Comunicazione**
+### **5.ピンの説明と通信プロトコル**
 
-I dati del microprocessore (Arduino) comunicano con l’AiP1640 tramite un cavo bus a due fili.
+マイクロプロセッサ（Arduino）のデータは2線式バスケーブルを通じてAiP1640と通信します。
 
-Il diagramma del protocollo di comunicazione è il seguente (SCLK) è SCL, (DIN) è SDA.
+通信プロトコル図は以下の通りです。（SCLK）はSCL、（DIN）はSDAです。
 
 ![image-20250510091407219](media/A89.png)
 
-①Condizione di inizio per l’input dei dati: SCL è a livello alto e SDA cambia da alto a basso.
+①データ入力の開始条件：SCLが高レベルで、SDAが高から低に変化する。
 
-②Per l’impostazione del comando dati, ci sono i metodi mostrati nella figura sottostante.
+②データコマンド設定には以下の方法があります。
 
-Nel nostro programma di esempio, selezioniamo il modo per **aggiungere 1 all’indirizzo automaticamente**, il valore binario è 0100 0000 e il valore esadecimale corrispondente è 0x40.
+サンプルプログラムでは**アドレスを自動的に1ずつ加算する方法**を選択し、2進数は0100 0000、対応する16進数は0x40です。
 
 ![Img](media/A90.png)
 
-③Per l’impostazione del comando indirizzo, l’indirizzo può essere selezionato come mostrato di seguito.
+③アドレスコマンド設定は以下のように選択できます。
 
-Nel nostro programma di esempio è selezionato il primo 00H, e il numero binario 1100 0000 corrisponde all’esadecimale 0xc0.
+サンプルプログラムでは最初の00Hを選択し、2進数1100 0000は16進数0xc0に対応します。
 
 ![Img](media/A91.png)
 
-④La richiesta per l’input dei dati è che quando SCL è a livello alto durante l’input dei dati, il segnale su SDA deve rimanere invariato. Solo quando il segnale di clock su SCL è a livello basso, il segnale su SDA può essere cambiato. L’input dei dati avviene dal bit basso prima, e dal bit alto dopo.
+④データ入力の要件は、SCLが高レベルのときにSDAの信号は変化してはいけません。SCLが低レベルのときのみSDAの信号を変化させることができます。データは下位ビットから入力し、その後上位ビットです。
 
-⑤La condizione per la fine della trasmissione dati è che quando SCL è a livello basso, SDA a livello basso e SCL a livello alto, il livello di SDA diventa alto.
+⑤データ送信終了の条件は、SCLが低レベル、SDAが低レベルの状態からSCLが高レベルになったときにSDAが高レベルになることです。
 
-⑥Controllo del display, impostare diverse larghezze di impulso, la larghezza di impulso può essere selezionata come mostrato nella figura sottostante.
+⑥表示制御では異なるパルス幅を設定できます。パルス幅は以下の図のように選択可能です。
 
-Nell’esempio, la larghezza di impulso è 4/16, e l’esadecimale corrispondente a 1000 1010 è 0x8A.
+例ではパルス幅は4/16で、2進数1000 1010に対応する16進数は0x8Aです。
 
 ![Img](media/A92.png)
 
-**Istruzioni per l’uso dello strumento modulo**
+**モジュールツールの使用方法**
 
-Lo strumento matrice a punti utilizza la versione online, e il link è: [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#)
+ドットマトリックスツールはオンライン版を使用し、リンクは：[http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#)
 
-①Inserire il link e la pagina appare come mostrato di seguito
+①リンクにアクセスすると以下のページが表示されます。
 
 ![image-20250510091438524](media/A93.png)
 
-②La matrice a punti è 8\*16, quindi regolare l’altezza a 8 e la larghezza a 16, come mostrato nella figura sottostante.
+②ドットマトリックスは8\*16なので、高さを8、幅を16に調整します。以下の図のように設定してください。
 
 ![image-20250510091446519](media/A94.png)
 
-③Generare dati esadecimali dal motivo
+③パターンから16進データを生成する
 
-Come mostrato nella figura sottostante, premere il tasto sinistro del mouse per selezionare, cliccare con il tasto destro per annullare; disegnare il motivo desiderato, cliccare su Generate, e verranno generati i dati esadecimali necessari.
+以下の図のように、左クリックで選択、右クリックでキャンセルし、表示したいパターンを描きます。生成ボタンをクリックすると必要な16進データが生成されます。
 
 ![image-20250510091457463](media/A95.png)
 
-### **6.Componenti**
+### **6.部品**
 
-| Scheda di Sviluppo *1                                         | Driver Motore 8833 *1                                         | Cavo USB*1               |
+| Development Board *1                                         | 8833 Motor Driver *1                                         | USB Cable*1               |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------- |
 | ![img](media/A80.jpg)                                    | ![img](media/A81.jpg)                                    | ![img](media/A82.jpg) |
-| Cavo USB*1                                                  | Filo Dupont HX-2.54 4P 200mm *1                              |                           |
+| USB Cable*1                                                  | HX-2.54 4P Dupont Wire 200mm *1                              |                           |
 | ![image-20250512155818434](media/A96.png) | ![image-20250512155822969](media/A97.png) |                           |
 
-### **7.Diagramma di Collegamento**
+### **7.配線図**
 
 ![cec50fec4a335b6922e4c6694a133bc1](media/A98.png)
 
-Il GND, VCC, SDA e SCL della scheda LED 8x16 sono rispettivamente collegati alla scheda di espansione sensori keyestudio - (GND), + (VCC), A4, A5 per la comunicazione seriale a due fili.
+8x16 LEDライトボードのGND、VCC、SDA、SCLはそれぞれkeyestudioセンサー拡張ボードの-(GND)、+ (VCC)、A4、A5に接続され、2線式シリアル通信を行います。
 
-(<span style="color: rgb(255, 76, 65);">Nota:</span> Sebbene sia collegato al pin IIC di Arduino, questo modulo non è per comunicazione IIC. E la porta IO qui serve a simulare la comunicazione I2C e può essere collegata a qualsiasi due pin).
+(<span style="color: rgb(255, 76, 65);">注意：</span> ArduinoのIICピンに接続されていますが、このモジュールはIIC通信用ではありません。ここでのIOポートはI2C通信をシミュレートするもので、任意の2つのピンに接続可能です)。
 
-### **8.Codice di Test**  
+### **8.テストコード**  
 
-Il codice mostrerà una faccina sorridente.
+このコードはスマイルフェイスを表示します。
 
 ```c
 //************************************************************************
 /*
  keyestudio 4wd BT Car
-  lezione 9.1
-  Faccia a matrice
+  lesson 9.1
+  Matrix face
   http://www.keyestudio.com
 */
-//Dati del pattern sorriso ottenuti dallo strumento touch
+//Data from the smile pattern obtained from the touch tool
 unsigned char smile[] = {0x00, 0x00, 0x1c, 0x02, 0x02, 0x02, 0x5c, 0x40, 0x40, 0x5c, 0x02, 0x02, 0x02, 0x1c, 0x00, 0x00};
-#define SCL_Pin  A5  //Imposta il pin clock su A5
-#define SDA_Pin  A4  //Imposta il pin dati su A4
+#define SCL_Pin  A5  //クロックピンをA5に設定
+#define SDA_Pin  A4  //データピンをA4に設定
 void setup() {
-  //Imposta i pin come output
+  //ピンを出力に設定
   pinMode(SCL_Pin, OUTPUT);
   pinMode(SDA_Pin, OUTPUT);
-  //pulisci
+  //クリア
   //matrix_display(clear);
 }
 void loop() {
-  matrix_display(smile);  //mostra il pattern dell'espressione sorridente
+  matrix_display(smile);  //笑顔のパターンを表示
 }
-//questa funzione è usata per la visualizzazione a matrice di punti
+//この関数はドットマトリックス表示用
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //funzione che chiama la condizione di inizio trasferimento dati
-  IIC_send(0xc0);  //seleziona indirizzo
+  IIC_start();  //データ転送開始条件を呼び出す関数
+  IIC_send(0xc0);  //アドレス選択
 
-  for (int i = 0; i < 16; i++) //i dati del pattern sono 16 byte
+  for (int i = 0; i < 16; i++) //パターンデータは16バイト
   {
-    IIC_send(matrix_value[i]); //Trasmette i dati del pattern
+    IIC_send(matrix_value[i]); //パターンのデータを送信
   }
-  IIC_end();   //Termina la trasmissione dei dati del pattern
+  IIC_end();   //パターンデータ送信終了
   IIC_start();
-  IIC_send(0x8A);  //Controllo display, seleziona larghezza impulso 4/16
+  IIC_send(0x8A);  //表示制御、4/16パルス幅を選択
   IIC_end();
 }
-//Condizioni in cui inizia la trasmissione dati
+//データ送信開始条件
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -147,7 +147,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indica la fine della trasmissione dati
+//データ送信終了を示す
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -158,64 +158,64 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//trasmette dati
+//データ送信
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Ogni byte ha 8 bit e viene controllato bit per bit a partire dal meno significativo
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //各バイトは8ビットで、最下位ビットから順にチェック
   {
-    if (send_data & mask) { //Imposta i livelli alto e basso di SDA_Pin a seconda che ogni bit del byte sia 1 o 0
+    if (send_data & mask) { //バイトの各ビットが1か0かに応じてSDA_Pinの高低レベルを設定
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Alza il pin clock SCL_Pin per fermare la trasmissione dati
+    digitalWrite(SCL_Pin, HIGH); //クロックピンSCL_PinをHIGHにしてデータ送信を停止
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //Abbassa il pin clock SCL_Pin per cambiare il SEGNALE di SDA 
+    digitalWrite(SCL_Pin, LOW); //クロックピンSCL_PinをLOWにしてSDAの信号を変更
   }
 }
 //************************************************************************
 ```
 
-### **9.Risultato del Test**
+### **9.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i fili secondo il diagramma di collegamento, quindi impostare l'interruttore DIP su ON, verrà visualizzato un pattern a forma di sorriso sulla scheda LED.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、DIPスイッチをONにすると、LEDボードにスマイル型のパターンが表示されます。
 
 ![95bb011957896b12285fc6763137bb9a](media/A99.png)
 
-### **10.Spiegazione del Codice**
+### **10.コード説明**
 
-Utilizziamo lo strumento modulo che abbiamo appena imparato, [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#), per far visualizzare al display a matrice di punti il pattern di avvio, andare avanti, fermarsi e poi cancellare il pattern. L'intervallo di tempo è di 2000 ms.
+私たちは、先ほど学んだモジュールツール、[http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#) を使って、ドットマトリックスにスタートパターン、前進パターン、停止パターンを表示し、その後パターンをクリアします。時間間隔は2000 msです。
 
 ![image-20250512155957415](media/A100.png)![image-20250512160002378](media/A101.png)![image-20250512160006841](media/A102.png)![image-20250512160010543](media/A103.png)
 
-**Codice ottenuto dallo strumento modulo：**
+**モジュールツールから得られたコード：**
 
-**Codice per il pattern di avvio:**
+**スタートパターンのコード：**
 
 0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01
 
-**Codice per il pattern andare avanti:**
+**前進パターンのコード：**
 
 0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00
 
-**Codice per il pattern fare un passo indietro:**
+**後退パターンのコード：**
 
 0x00,0x00,0x00,0x00,0x00,0x24,0x48,0x90,0x48,0x24,0x00,0x00,0x00,0x00,0x00,0x00
 
-**Codice per il pattern girare a sinistra：**
+**左折パターンのコード：**
 
 0x00,0x00,0x00,0x00,0x00,0x00,0x44,0x28,0x10,0x44,0x28,0x10,0x44,0x28,0x10,0x00
 
-**Codice per il pattern girare a destra：**
+**右折パターンのコード：**
 
 0x00,0x10,0x28,0x44,0x10,0x28,0x44,0x10,0x28,0x44,0x00,0x00,0x00,0x00,0x00,0x00
 
-**Codice per il pattern stop：**
+**停止パターンのコード：**
 
 0x2E,0x2A,0x3A,0x00,0x02,0x3E,0x02,0x00,0x3E,0x22,0x3E,0x00,0x3E,0x0A,0x0E,0x00
 
-**Codice per cancellare lo schermo：**
+**画面クリアのコード：**
 
 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
 
@@ -225,11 +225,11 @@ Utilizziamo lo strumento modulo che abbiamo appena imparato, [http://dotmatrixto
 //************************************************************************
 /*
  keyestudio 4wd BT Car
-  lezione 9.2
-  Faccia matrice
+  lesson 9.2
+  Matrix face
   http://www.keyestudio.com
 */
-//Dati del pattern sorriso ottenuti dallo strumento touch
+//タッチツールから取得したスマイルパターンのデータ
 unsigned char start01[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 unsigned char front[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x12, 0x09, 0x12, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char back[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x48, 0x90, 0x48, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -237,41 +237,41 @@ unsigned char left[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x44, 0x28, 0x10, 0x
 unsigned char right[] = {0x00, 0x10, 0x28, 0x44, 0x10, 0x28, 0x44, 0x10, 0x28, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 unsigned char STOP01[] = {0x2E, 0x2A, 0x3A, 0x00, 0x02, 0x3E, 0x02, 0x00, 0x3E, 0x22, 0x3E, 0x00, 0x3E, 0x0A, 0x0E, 0x00};
 unsigned char clear[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-#define SCL_Pin  A5  //Imposta il pin clock su A5
-#define SDA_Pin  A4  //Imposta il pin dati su A4
+#define SCL_Pin  A5  //クロックピンをA5に設定
+#define SDA_Pin  A4  //データピンをA4に設定
 void setup() {
-  //Imposta i pin come output
+  //ピンを出力に設定
   pinMode(SCL_Pin, OUTPUT);
   pinMode(SDA_Pin, OUTPUT);
-  //cancella
+  //クリア
   //matrix_display(clear);
 }
 void loop() {
-    matrix_display(start01);  //Mostra il pattern di avvio
+    matrix_display(start01);  //スタートパターンを表示
     delay(2000);
-    matrix_display(front);    //Mostra il pattern andare avanti
+    matrix_display(front);    //前進パターンを表示
     delay(2000);
-    matrix_display(STOP01);   //Mostra il pattern stop
+    matrix_display(STOP01);   //停止パターンを表示
     delay(2000);
-    matrix_display(clear);    //Pulisce lo schermo
+    matrix_display(clear);    //画面をクリア
     delay(2000);
 }
-//questa funzione è usata per la visualizzazione sulla matrice di punti
+//この関数はドットマトリックス表示用
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //funzione che chiama la condizione di start per il trasferimento dati
-  IIC_send(0xc0);  //seleziona indirizzo
+  IIC_start();  //データ転送開始条件を呼び出す関数
+  IIC_send(0xc0);  //アドレスを選択
 
-  for (int i = 0; i < 16; i++) // i dati del pattern sono 16 byte
+  for (int i = 0; i < 16; i++) //パターンデータは16バイトです
   {
-    IIC_send(matrix_value[i]); //Trasmetti i dati del pattern
+    IIC_send(matrix_value[i]); //パターンのデータを送信します
   }
-  IIC_end();   //Termina la trasmissione dei dati del pattern
+  IIC_end();   //パターンデータ送信終了
   IIC_start();
-  IIC_send(0x8A);  //Controllo display, seleziona larghezza impulso 4/16
+  IIC_send(0x8A);  //表示制御、4/16パルス幅を選択
   IIC_end();
 }
-//Condizioni in cui inizia la trasmissione dei dati
+//データ送信が開始される条件
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -281,7 +281,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indica la fine della trasmissione dei dati
+//データ送信の終了を示す
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -292,25 +292,25 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//trasmetti dati
+//データ送信
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Ogni byte ha 8 bit e viene controllato bit per bit a partire dal livello più basso
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //各バイトは8ビットで、最下位からビット単位でチェックします
   {
-    if (send_data & mask) { //Imposta i livelli alto e basso di SDA_Pin a seconda che ogni bit del byte sia 1 o 0
+    if (send_data & mask) { //バイトの各ビットが1か0かに応じてSDA_Pinの高低レベルを設定します
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Porta alto il pin clock SCL_Pin per fermare la trasmissione dei dati
+    digitalWrite(SCL_Pin, HIGH); //クロックピンSCL_Pinを高レベルにしてデータ送信を停止します
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //Porta basso il pin clock SCL_Pin per cambiare il SEGNALE di SDA 
+    digitalWrite(SCL_Pin, LOW); //クロックピンSCL_Pinを低レベルにしてSDAの信号を変化させます
   }
 }
 //************************************************************************
 ```
 
-Dopo aver caricato il codice di test, la scheda con espressioni facciali mostra questi pattern in ordine e ripete questa sequenza.
+テストコードをアップロードすると、表情ボードはこれらのパターンを順番に表示し、このシーケンスを繰り返します。
 
 ![image-20250512160131674](media/A105.png)![image-20250512160135717](media/A106.png)![image-20250512160139283](media/A107.png)

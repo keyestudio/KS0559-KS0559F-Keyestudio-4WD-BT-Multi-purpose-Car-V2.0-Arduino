@@ -1,44 +1,44 @@
-# Progetto 1 LED Blink
+# Project 1 LED Blink
 
-### **1.Descrizione**
+### **1.説明**
 
 ![](media/A40.jpeg)
 
-Per principianti e appassionati, LED Blink è un programma fondamentale. LED, abbreviazione di light emitting diodes, è composto da composti chimici come Ga, As, P, N e così via.
+初心者や愛好家向けに、LED Blinkは基本的なプログラムです。LEDはlight emitting diodes（発光ダイオード）の略で、Ga、As、P、Nなどの化学化合物で構成されています。
 
-Il LED può lampeggiare in diversi colori modificando il tempo di ritardo nel codice di prova. Quando è sotto controllo, alimentando GND e VCC, il LED si accenderà se il terminale S è a livello alto, altrimenti si spegnerà.
+テストコードの遅延時間を変えることで、LEDはさまざまな色で点滅できます。制御時には、GNDとVCCに電源を入れ、S端子が高レベルの場合はLEDが点灯し、そうでなければ消灯します。
 
-### **2.Specifiche**
+### **2.仕様**
 
-- Interfaccia di controllo: porta digitale
+- 制御インターフェース：デジタルポート
 
-- Tensione di lavoro: DC 3.3-5V
+- 動作電圧：DC 3.3-5V
 
-- Spaziatura pin: 2.54mm
+- ピン間隔：2.54mm
 
-- Colore display LED: rosso
+- LED表示色：赤
 
 ![](media/A41.png)
 
-### **3.Componenti**
+### **3.コンポーネント**
 
-| Scheda di sviluppo *1      | Driver motore 8833 *1      | Modulo LED rosso*1          |
+| Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1          |
 | ------------------------- | ------------------------- | ------------------------- |
 | ![img](media/A42.jpg) | ![img](media/A43.jpg) | ![img](media/A44.jpg) |
-| Cavo Dupont 3P F-F*1      | Cavo USB*1               |                           |
+| 3P F-F Dupont Wire*1      | USB Cable*1               |                           |
 | ![img](media/A45.jpg) | ![img](media/A46.jpg) |                           |
 
-### **4.Diagramma di collegamento**
+### **4.配線図**
 
 ![](media/A47.png)
 
-Come si vede dalla figura sopra, la scheda di espansione driver motore Keyestudio 8833 è impilata sulla scheda di sviluppo Keyestudio 4.0.
+上図からわかるように、Keyestudio 8833モータードライバー拡張ボードはKeyestudio 4.0開発ボードに重ねられています。
 
-I pin G, V e S del modulo LED sono collegati rispettivamente a G, 5V e D9 della scheda di espansione.
+LEDモジュールのピンG、V、Sはそれぞれ拡張ボードのG、5V、D9に接続されています。
 
-### **5.Codice di prova**
+### **5.テストコード**
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono a titolo di riferimento.
+ブロックをドラッグして編集できます。以下に参考用のブロックを示します。
 
 (1).![](media/A48.png)
 
@@ -46,18 +46,18 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono a t
 
 (3).![](media/A50.png)
 
-**Codice di prova completo**
+**完成したテストコード**
 
 ![](media/A51.png)
 
-### **6.Risultato del test**
+### **6.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i fili secondo il diagramma di collegamento e usa un cavo USB per collegare il computer e alimentare la scheda. Dopo l'accensione, vedrai il LED collegato al D9 accendersi e spegnersi.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、USBケーブルでコンピュータと接続してボードに電源を供給します。電源を入れると、D9に接続されたLEDが点灯と消灯を繰り返します。
 
-### **7.Prassi di estensione**
+### **7.拡張練習**
 
-Successivamente, vediamo come cambiare la frequenza del lampeggio del LED modificando il tempo di attesa.
+次に、待機時間を変えてLEDの点滅周波数を変更してみます。
 
 ![](media/A52.png)
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i fili secondo il diagramma di collegamento e usa un cavo USB per collegare il computer e alimentare la scheda. Il risultato del test mostra che il LED lampeggia più velocemente.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、USBケーブルでコンピュータと接続してボードに電源を供給します。テスト結果はLEDがより速く点滅することを示しています。

@@ -1,30 +1,30 @@
-# Progetto 11 Auto Intelligente a Inseguimento di Linea
+# Project 11 ライントラッキングスマートカー
 
 ![](media/A271.png)
 
-### **1. Descrizione**
+### **1.説明**
 
-Basandoci sul principio di funzionamento del sensore di inseguimento linea, realizziamo un'auto intelligente a inseguimento di linea.
+ライントラッキングセンサーの動作原理に基づき、ライントラッキングスマートカーを作成します。
 
-In questo progetto, rileviamo se c'è una linea nera sotto l'auto intelligente tramite un sensore di inseguimento linea, e poi controlliamo la rotazione dei due gruppi di motori in base ai risultati della rilevazione in modo da far muovere l'auto intelligente lungo la linea nera.
+このプロジェクトでは、スマートカーの底部に黒い線があるかどうかをライントラッキングセンサーで検出し、その検出結果に応じて2つのモーターグループの回転を制御し、スマートカーが黒い線に沿って走行するように制御します。
 
-### **2. Diagramma di Flusso**
+### **2.フローチャート**
 
 ![img](media/A272.png)
 
 ![Img](media/A273.png)
 
-### **3. Schema di Collegamento**
+### **3.配線図**
 
 ![](media/A264.png)
 
-G, V, S1, S2 e S3 del sensore di inseguimento linea sono collegati a G (GND), V (VCC), D11, D7 e D8 della scheda di espansione sensori.
+ライントラッキングセンサーのG、V、S1、S2、S3はセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
 
-L'alimentazione è collegata alla porta BAT.
+電源はBATポートに接続します。
 
-### **4. Codice di Test**
+### **4.テストコード**
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -36,7 +36,7 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (5).![](media/A276.png)
 
-**Codice di Test Completo**
+**完成テストコード**
 
 ![](media/A277.png)
 
@@ -44,6 +44,6 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 ![](media/A279.png)
 
-### **5. Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i fili secondo lo schema di collegamento, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON. A questo punto l'auto intelligente seguirà le linee.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れてからDIPスイッチをONにします。するとスマートカーがラインに沿って走行します。

@@ -1,52 +1,52 @@
-# Progetto 8 Controllo Motore e Velocità
+# プロジェクト8 モーター駆動と速度制御
 
 ![](media/A205.png)
 
-### **1. Descrizione**
+### **1.説明**
 
-Esistono molti modi per pilotare i motori. La nostra auto utilizza il chip driver motore DRV8833 più comunemente usato, che fornisce una soluzione di pilotaggio elettrico a ponte a due canali per giocattoli, stampanti e altre applicazioni integrate con motori.
+モーターを駆動する方法は多くあります。私たちの車は最も一般的に使用されているDRV8833モータードライバーチップを使用しており、これはおもちゃ、プリンターなどの統合モーターアプリケーション向けに2チャネルのブリッジ電気駆動ソリューションを提供します。
 
-Quando impiliamo la scheda di espansione driver sulla scheda di sviluppo 4.0 e accendiamo la BAT, quindi impostiamo l'interruttore DIP sull'estremità ON, l'alimentazione esterna alimenterà contemporaneamente entrambe le schede. Per facilitare le connessioni dei cavi, la scheda di espansione driver è dotata di una porta anti-inversione (PH2.0-2P-3P-4P-5P). È possibile collegare direttamente i motori, l'alimentazione e i moduli sensore alla scheda di espansione driver.
+ドライバー拡張ボードを4.0開発ボードに重ねてBATに電源を入れ、DIPスイッチをON端に設定すると、外部電源が2つのボードに同時に電力を供給します。配線接続を容易にするために、ドライバー拡張ボードには逆接続防止ポート（PH2.0-2P-3P-4P-5P）が付いています。モーター、電源、センサーモジュールを直接ドライバー拡張ボードに接続できます。
 
-L'interfaccia Bluetooth della scheda di espansione driver è completamente compatibile con il modulo Bluetooth DX-BT24 5.1. Quando si collega il modulo Bluetooth, è sufficiente inserirlo nell'interfaccia corrispondente. Allo stesso tempo, i pin a fila da 2,54 mm sono utilizzati per estrarre alcune porte digitali e analogiche inutilizzate sulla scheda di espansione driver, rendendola accessibile per aggiungere altri sensori e realizzare esperimenti di estensione.
+ドライバー拡張ボードのBluetoothインターフェースはDX-BT24 5.1 Bluetoothモジュールと完全互換です。Bluetoothモジュールを接続する際は、対応するインターフェースに差し込むだけで済みます。同時に、2.54ピッチのピン列を使ってドライバー拡張ボード上の未使用のデジタルおよびアナログポートを引き出しており、他のセンサーを追加したり拡張実験を行ったりすることが可能です。
 
-La scheda di espansione può essere collegata a quattro motori DC. Quando il cappuccio jumper è collegato di default, i motori delle porte A e A1 e B e B1 sono collegati in parallelo e hanno la stessa legge di movimento. 8 cappucci jumper possono essere utilizzati per controllare la direzione di rotazione delle 4 interfacce motore.
+拡張ボードは4つのDCモーターに接続できます。ジャンパーキャップがデフォルトで接続されている場合、ポートAとA1、BとB1のモーターは並列接続され、同じ動作パターンになります。8つのジャンパーキャップで4つのモーターインターフェースの回転方向を制御できます。
 
-Ad esempio, quando i 2 cappucci jumper davanti a B1 del motore M1 cambiano da collegamento trasversale a collegamento longitudinale, la direzione di rotazione del motore M1 sarà opposta alla direzione di rotazione originale.
+例えば、M1モーターのB1前の2つのジャンパーキャップを横方向接続から縦方向接続に変更すると、M1モーターの回転方向は元の回転方向と逆になります。
 
-### **2. Specifiche**
+### **2.仕様**
 
-- Tensione di ingresso per la logica: DC 5V
+- ロジック入力電圧：DC 5V
 
-- Tensione di ingresso per il pilotaggio: DC 6-9 V
+- 駆動入力電圧：DC 6-9 V
 
-- Corrente di lavoro per la logica: \<36mA
+- ロジック動作電流：\<36mA
 
-- Corrente di lavoro per il pilotaggio: \<2A
+- 駆動動作電流：\<2A
 
-- Massima dissipazione di potenza: 25W（T=75℃）
+- 最大消費電力：25W（T=75℃）
 
-- Livello di ingresso per il segnale di controllo: livello alto è 2.3V\<Vin\<5V, livello basso è -0.3V\<Vin\<1.5V
+- 制御信号入力レベル：高レベルは2.3V\<Vin\<5V、低レベルは-0.3V\<Vin\<1.5V
 
-- Temperatura di lavoro: -25＋130℃
+- 動作温度：-25＋130℃
 
-### **3. Scheda di espansione driver motore Keyestudio 8833**
+### **3.Keyestudio 8833 モータードライバー拡張ボード**
 
 ![](media/A206.png)
 
-**Principio di funzionamento**
+**動作原理**
 
-Utilizziamo la modalità di collegamento parallelo sullo stesso lato per i quattro motori, che possono essere considerati come due gruppi di motori. Come mostrato nel diagramma di cablaggio, B e B1 sono un gruppo, e A e A1 sono un gruppo.
+4つのモーターは同じ側の並列接続モードを使用し、2つのモーターグループとして扱います。配線図のように、BとB1が1グループ、AとA1がもう1グループです。
 
-I motori dello stesso gruppo devono ruotare nella stessa direzione. Se sono diversi, regolare i cappucci jumper corrispondenti accanto al terminale per cambiare la direzione.
+同じグループのモーターは同じ方向に回転する必要があります。異なる場合は、端子横の対応するジャンパーキャップを調整して方向を変更してください。
 
-Come mostrato di seguito, se le direzioni di A e A1 sono diverse, regolare la direzione dei cappucci jumper fino a quando la direzione di movimento dei motori dello stesso gruppo è coerente.
+下図のように、AとA1の方向が異なる場合は、ジャンパーキャップの方向を調整して同じグループのモーターの動作方向を一致させます。
 
 ![](media/A207.png)
 
-Dal diagramma sopra, si sa che il pin di direzione del motore A è D4, il pin di velocità è D6; D2 è il pin di direzione del motore B; e D6 è il pin di velocità.
+上図から、Aモーターの方向ピンはD4、速度ピンはD6であることがわかります。D2はBモーターの方向ピン、D6は速度ピンです。
 
-Il PWM pilota l'auto robot. Il valore PWM è nell'intervallo 0-255. Quando impostiamo la direzione su HIGH, più piccolo è il numero PWM, più veloce è la rotazione del motore.
+PWMでロボットカーを駆動します。PWM値は0-255の範囲です。方向をHIGHに設定すると、PWMの数値が小さいほどモーターの回転が速くなります。
 
 <table border="1">
 <tbody>
@@ -54,68 +54,68 @@ Il PWM pilota l'auto robot. Il valore PWM è nell'intervallo 0-255. Quando impos
 <td></td>
 <td>D2</td>
 <td>D5（PWM）</td>
-<td>Motore B（sinistra）</td>
+<td>Bモーター（左）</td>
 <td>D4</td>
 <td>D6（PWM）</td>
-<td>Motore A（destra）</td>
+<td>Aモーター（右）</td>
 </tr>
 <tr class="even">
-<td>Avanti</td>
+<td>前進</td>
 <td>HIGH</td>
 <td>255-200</td>
-<td>Ruota in senso orario</td>
+<td>時計回り回転</td>
 <td>HIGH</td>
 <td>255-200</td>
-<td>Ruota in senso orario</td>
+<td>時計回り回転</td>
 </tr>
 <tr class="odd">
-<td>Indietro</td>
+<td>後退</td>
 <td>LOW</td>
 <td>200</td>
-<td>Ruota in senso antiorario</td>
+<td>反時計回り回転</td>
 <td>LOW</td>
 <td>200</td>
-<td>Ruota in senso antiorario</td>
+<td>反時計回り回転</td>
 </tr>
 <tr class="even">
-<td>Gira a sinistra</td>
+<td>左折</td>
 <td>HIGH</td>
 <td>255-200</td>
-<td>Ruota in senso orario</td>
+<td>時計回り回転</td>
 <td>LOW</td>
 <td>200</td>
-<td>Ruota in senso antiorario</td>
+<td>反時計回り回転</td>
 </tr>
 <tr class="odd">
-<td>Gira a destra</td>
+<td>右折</td>
 <td>LOW</td>
 <td>200</td>
-<td>Ruota in senso antiorario</td>
+<td>反時計回り回転</td>
 <td>HIGH</td>
 <td>255-200</td>
-<td>Ruota in senso orario</td>
+<td>時計回り回転</td>
 </tr>
 </tbody>
 </table>
-### **4. Componenti**
+### **4.コンポーネント**
 
-| Scheda di Sviluppo *1      | Driver Motore 8833 *1      | Cavo USB*1                       |
+| Development Board *1      | 8833 Motor Driver *1      | USB Cable*1                       |
 | ------------------------- | ------------------------- | --------------------------------- |
 | ![img](media/A208.jpg) | ![img](media/A209.jpg) | ![img](media/A210.jpg)         |
-| Supporto Batteria 18650*1    | Motore*4                   | Batteria 18650 *2（fornita dall'utente） |
+| 18650 Battery Holder*1    | Motor*4                   | 18650 Battery *2（自己準備）       |
 | ![img](media/A211.png) | ![img](media/A212.jpg) | ![img](media/A213.png)         |
 
 
 
-### **5.Diagramma di Collegamento**
+### **5.配線図**
 
 ![](media/A214.png)
 
-Collegare l'alimentazione alla porta BAT.
+電源をBATポートに接続します。
 
-### **6.Codice di Test**
+### **6.テストコード**
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -123,26 +123,26 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (3).![](media/A216.png)
 
-**Codice di Test Completo**
+**完成テストコード**
 
 ![Img](media/A217.png)
 
 ![](media/A218.png)
 
-### **7.Risultato del Test**
+### **7.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo il diagramma di collegamento, quindi accendere l'alimentazione esterna e impostare l'interruttore DIP su ON, l'auto andrà avanti per 2s, indietro per 2s, girerà a sinistra per 2s e a destra per 2s e si fermerà per 2s.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源の電源を入れてDIPスイッチをONにすると、車は2秒間前進し、2秒間後退し、2秒間左折し、2秒間右折し、2秒間停止します。
 
-### **8.Spiegazione del Codice**
+### **8.コード説明**
 
-Regola la velocità con cui il PWM controlla il motore, collegare nello stesso modo.
+PWMでモーターの速度を調整します。同様に接続してください。
 
-**Codice di Test Completo**
+**完成テストコード**
 
 ![Img](media/A219.png)
 
 ![](media/A220.png)
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo il diagramma di collegamento, quindi accendere l'alimentazione esterna e impostare l'interruttore DIP su ON, noterai che la velocità del motore è molto più lenta.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源の電源を入れてDIPスイッチをONにすると、モーターの速度がかなり遅くなることがわかります。
 
-<span style="color: rgb(255, 76, 65);">Nota: </span>La batteria scarica porterà a una velocità del motore più lenta.
+<span style="color: rgb(255, 76, 65);">注意: </span>バッテリー残量が低いとモーターの速度が遅くなります。

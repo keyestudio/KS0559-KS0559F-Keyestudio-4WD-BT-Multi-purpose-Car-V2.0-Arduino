@@ -1,89 +1,89 @@
-# Progetto 5 Sensore Ultrasonico
+# Project 5 超音波センサー
 
-### **1. Descrizione**
+### **1.説明**
 
 ![](media/A109.png)
 
-Il sensore ultrasonico HC-SR04 utilizza il sonar per determinare la distanza da un oggetto, proprio come fanno i pipistrelli. Offre un'eccellente rilevazione della distanza senza contatto con alta precisione e letture stabili in un pacchetto facile da usare. Include moduli trasmettitore e ricevitore ultrasonici.
+HC-SR04超音波センサーは、コウモリが行うようにソナーを使って物体までの距離を測定します。高精度で安定した読み取りが可能な非接触距離検出を簡単に利用できるパッケージで提供します。超音波送信モジュールと受信モジュールがセットになっています。
 
 ![Img](media/A110.png)
 
-L'HC-SR04 o sensore ultrasonico viene utilizzato in una vasta gamma di progetti elettronici per creare applicazioni di rilevamento ostacoli e misurazione della distanza, oltre a varie altre applicazioni. Qui abbiamo presentato un metodo semplice per misurare la distanza con Arduino e un sensore ultrasonico e come utilizzare il sensore ultrasonico con Arduino.
+HC-SR04または超音波センサーは、障害物検知や距離測定アプリケーションをはじめ、さまざまな電子プロジェクトで広く使われています。ここでは、Arduinoと超音波センサーを使った距離測定の簡単な方法と、Arduinoでの超音波センサーの使い方を紹介します。
 
-### **2. Specifiche**
+### **2.仕様**
 
-- Tensione di funzionamento: +5V DC
+- 動作電圧 : +5V DC
 
-- Corrente a riposo: \<2mA
+- 待機電流 : \<2mA
 
-- Corrente di funzionamento: 15mA
+- 動作電流 : 15mA
 
-- Angolo efficace: \<15°
+- 有効角度 : \<15°
 
-- Intervallo di distanza: 2cm – 300 cm
+- 測定距離範囲 : 2cm – 300 cm
 
-- Precisione: 0.3 cm
+- 精度 : 0.3 cm
 
-- Angolo di misurazione: 30 gradi
+- 測定角度 : 30度
 
-- Larghezza impulso di ingresso Trigger: 10uS
+- トリガ入力パルス幅 : 10μS
 
 ![](media/A111.png)
 
-### **3. Componenti**
+### **3.部品**
 
-| Scheda di sviluppo *1      | Driver motore 8833 *1      | Modulo LED Rosso *1          | Sensore Ultrasonico *1       |
+| 開発ボード *1             | 8833 モータードライバー *1 | 赤色LEDモジュール*1       | 超音波センサー*1          |
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| ![img](media/A112.jpg) | ![img](media/A113.jpg) | ![img](media/A114.jpg) | ![img](media/A115.jpg) |
-| Cavo Dupont 4P *1          | Cavo USB *1               | Cavo Dupont 3P *1          |                           |
-| ![img](media/A116.jpg) | ![img](media/A117.jpg) | ![img](media/A118.jpg) |                           |
+| ![img](media/A112.jpg)    | ![img](media/A113.jpg)    | ![img](media/A114.jpg)    | ![img](media/A115.jpg)    |
+| 4P デュポン線*1           | USBケーブル*1             | 3P デュポン線*1           |                           |
+| ![img](media/A116.jpg)    | ![img](media/A117.jpg)    | ![img](media/A118.jpg)    |                           |
 
-### **4. Principio di funzionamento**
+### **4.動作原理**
 
-Come mostrato nell'immagine sopra, è come due occhi. Uno è il trasmettitore, l'altro è il ricevitore.
+上の写真のように、2つの目のような形をしています。1つは送信側、もう1つは受信側です。
 
-Il modulo ultrasonico emetterà onde ultrasoniche dopo aver ricevuto un segnale di trigger. Quando le onde ultrasoniche incontrano un oggetto e vengono riflesse, il modulo emette un segnale di eco, così può determinare la distanza dell'oggetto dal tempo trascorso tra il segnale di trigger e il segnale di eco.
+超音波モジュールはトリガ信号を受けると超音波を発信します。超音波が物体に当たり反射して戻ってくると、モジュールはエコー信号を出力します。これにより、トリガ信号とエコー信号の時間差から物体までの距離を測定できます。
 
-t è il tempo che il segnale emesso impiega per incontrare l'ostacolo e tornare indietro. La velocità di propagazione del suono nell'aria è circa 343m/s, e distanza = velocità \* tempo. Tuttavia, l'onda ultrasonica viene emessa e ritorna, quindi percorre due volte la distanza. Pertanto, deve essere divisa per 2, la distanza misurata dall'onda ultrasonica = (velocità \* tempo)/2.
+tは信号が障害物に当たり戻ってくるまでの時間です。空気中の音速は約343m/sで、距離 = 速度 × 時間です。ただし、超音波は往復するため距離の2倍の時間がかかります。したがって、2で割る必要があり、超音波で測定した距離 = (速度 × 時間) / 2 となります。
 
-**Metodo d'uso e diagramma del modulo ultrasonico:**
+**超音波モジュールの使用方法とチャート：**
 
-1). Usa il pin GPIO per fornire un segnale alto di almeno 10μs al pin Trig dell'SR04, che può attivarlo per rilevare la distanza.
+1). GPIOピンを使ってSR04のTrigピンに少なくとも10μsの高レベル信号を与え、距離測定をトリガします。
 
-2). Dopo il trigger, il modulo invierà automaticamente otto impulsi ultrasonici a 40KHz e rileverà se c'è un segnale di ritorno. Questo passaggio viene completato automaticamente dal modulo.
+2). トリガ後、モジュールは自動的に8回の40KHz超音波パルスを送信し、信号の戻りを検出します。この処理はモジュールが自動で行います。
 
-3). Se il segnale ritorna, il pin Echo emetterà un livello alto, e la durata del livello alto è il tempo dal trasmissione dell'onda ultrasonica al ritorno.
+3). 信号が戻ると、Echoピンは高レベルを出力し、その高レベルの継続時間が超音波送信から戻りまでの時間となります。
 
 ![image-20250509143833078](media/A119.png)
 
 
-**Schema elettrico del sensore ultrasonico:**
+**超音波センサーの回路図：**
 
 ![](media/A120.jpeg)
 
-### **5. Schema di collegamento**
+### **5.配線図**
 
 ![](media/A121.png)
 
-VCC, Trig, Echo e Gnd del sensore ultrasonico sono collegati rispettivamente a 5V(V), D12, D13 e Gnd(G)
+超音波センサーのVCC、Trig、Echo、Gndはそれぞれ5V(V)、D12、D13、Gnd(G)に接続します。
 
-### **6. Codice di test**
+### **6.テストコード**
 
-Prima di scrivere il codice, è necessario importare il file della libreria del sensore ultrasonico. I passaggi specifici sono i seguenti: 
+コードを書く前に、超音波センサーのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
 
-Clicca ![](media/A29.png) per entrare nell'interfaccia della libreria di estensione di sensori/moduli/componenti, quindi cerca il sensore "**Ultrasonic**" ![](media/A122.png) e cliccaci sopra. In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il sensore "**Ultrasonic**" è stato aggiunto con successo. 
+![](media/A29.png)をクリックしてセンサー/モジュール/コンポーネントの拡張ライブラリ画面に入り、「**Ultrasonic**」センサーを検索し ![](media/A122.png)をクリックします。これで「**Not loaded**」が「**loaded**」に変わり、「**Ultrasonic**」センサーが正常に追加されたことを示します。
 
 ![Img](media/A123.png)
 
 ![](media/A124.png)
 
-Clicca ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, il blocco di istruzioni del sensore "**Ultrasonic**" aggiunto sarà visibile nell'area moduli. 
+![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加した「**Ultrasonic**」センサーの命令ブロックがモジュールエリアに表示されます。
 
 ![](media/A125.png)
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
-(1).![](media/A126.png)
+（1).![](media/A126.png)
 
 (2).![](media/A127.png)
 
@@ -97,25 +97,25 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (7).![](media/A132.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
 ![](media/A133.png)
 
-### **7. Risultato del Test**
+### **7.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, quindi collega il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, clicca su ![](media/A80.png) per impostare la velocità di trasmissione a 9600 baud.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、![](media/A80.png)をクリックしてボーレートを9600に設定します。
 
-La distanza rilevata verrà visualizzata, e l'unità è cm e pollici. Ostacola il sensore a ultrasuoni con la mano, il valore della distanza visualizzato diminuisce.
+検出された距離が表示され、単位はcmとinchです。超音波センサーを手で遮ると、表示される距離の値が小さくなります。
 
 ![](media/A134.png)
 
-### **8. Pratica Estesa**
+### **8.拡張練習**
 
-Abbiamo appena misurato la distanza visualizzata dall'ultrasuoni. Che ne dici di controllare il LED con la distanza misurata? Proviamo e colleghiamo un modulo luce LED al pin D9.
+超音波で距離を測定して表示しました。測定した距離でLEDを制御してみませんか？試してみましょう。LEDライトモジュールをD9ピンに接続します。
 
 ![](media/A135.png)
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -131,10 +131,10 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (7).![](media/A132.png)
 
-**Codice di Test Completo**
+**完全なテストコード**
 
 ![](media/A139.png)
 
 ![](media/A140.png)
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, quindi collega il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, blocca il sensore a ultrasuoni con la mano (la distanza è tra 2-10 cm), quindi verifica se il LED si accende.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、超音波センサーを手で遮ってください（距離は2〜10cmの間）。その後、LEDが点灯するか確認します。

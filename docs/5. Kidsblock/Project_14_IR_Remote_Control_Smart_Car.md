@@ -1,58 +1,58 @@
-# Progetto 14 Auto Intelligente Controllata da Telecomando IR
+# Project 14 IRリモコン制御スマートカー
 
 ![](media/A307.jpeg)
 
-### **1. Descrizione**
+### **1.説明**
 
-In questo progetto, realizzeremo un'auto intelligente controllata da telecomando IR e premeremo il pulsante sul telecomando IR per far muovere l'auto.
+このプロジェクトでは、IRリモコン制御のスマートカーを作成し、IRリモコンのボタンを押して車を動かします。
 
-### **2. Diagramma di Flusso**
+### **2.フローチャート**
 
 ![img](media/A308.png)
 
-**La logica specifica dell'auto intelligente controllata da telecomando IR è mostrata di seguito:**
+**IRリモコン制御スマートカーの具体的なロジックは以下の通りです：**
 
-| Configurazione iniziale                                    |           | La scheda LED mostra una faccina sorridente        |
-| ---------------------------------------------------------- | --------- | -------------------------------------------------- |
-| Telecomando                                                | Valore tasto | Stato tasto                                       |
-| ![wps6-1747037981476-25](media/A309.jpg) | FF629D    | Avanti, la scheda LED 8*8 mostra l'icona avanti    |
-| ![wps7-1747037985784-27](media/A310.jpg) | FFA857    | Indietro, la scheda LED 8*8 mostra l'icona indietro|
-| ![wps8](media/A311.jpg)                  | FF22DD    | Ruota a sinistra, la scheda LED 8*8 mostra l'icona verso sinistra |
-| ![wps9](media/A312.jpg)                  | FFC23D    | Ruota a destra, la scheda LED 8*8 mostra l'icona verso destra   |
-| ![wps10](media/A313.jpg)                                 | FF02FD    | Stop, la scheda LED 8*8 mostra “STOP”              |
+| 初期設定                                                     |           | LEDボードにスマイルフェイスを表示                   |
+| ----------------------------------------------------------- | --------- | ------------------------------------------------- |
+| リモコン                                                     | キー値    | キー状態                                          |
+| ![wps6-1747037981476-25](media/A309.jpg) | FF629D    | 前進 8*8 LEDボードに前進アイコンを表示             |
+| ![wps7-1747037985784-27](media/A310.jpg) | FFA857    | 後退 8*8 LEDボードに後退アイコンを表示             |
+| ![wps8](media/A311.jpg)                  | FF22DD    | 左回転 8*8 LEDボードに左向きアイコンを表示         |
+| ![wps9](media/A312.jpg)                  | FFC23D    | 右回転 8*8 LEDボードに右向きアイコンを表示         |
+| ![wps10](media/A313.jpg)                                 | FF02FD    | 停止 8*8 LEDボードに「STOP」を表示                  |
 
 
 
-### **3. Schema di Collegamento**
+### **3.配線図**
 
 ![](media/A314.png)
 
-1). GND, VCC, SDA e SCL del modulo scheda LED 8\*8 sono collegati rispettivamente a G (GND), V (VCC), A4 e A5 della scheda di espansione.
+1). 8\*8 LEDボードモジュールのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
     
-2). Poiché il ricevitore IR è integrato sulla scheda di espansione motore 8833, non è necessario alcun cablaggio aggiuntivo. I pin del ricevitore IR sulla scheda 8833 sono rispettivamente G (GND), V (VCC) e D3.
+2). IR受信機は8833モータードライバー拡張ボードに統合されているため、追加の配線は不要です。8833ボード上のIR受信機のピンはそれぞれG（GND）、V（VCC）、D3です。
     
-3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso a 5V (V) e il filo arancione ad A3.
+3). サーボはG、V、A3に接続します。茶色の線はGnd（G）に、赤色の線は5V（V）に、オレンジ色の線はA3に接続します。
     
-4). L'alimentazione è collegata alla porta BAT.
+4). 電源はBATポートに接続します。
     
 
-### **4. Codice di Test**
+### **4.テストコード**
 
-<span style="color: rgb(255, 76, 65);">Nota bene: Il modulo a infrarossi mostrato nella dimostrazione software è già integrato nella scheda di espansione e non viene fornito separatamente. Di conseguenza, non troverai il modulo raffigurato nell'immagine sottostante all'interno del prodotto.![](media/A144.png)</span>
+<span style="color: rgb(255, 76, 65);">ご注意：ソフトウェアデモに表示されている赤外線モジュールはすでに拡張ボードに統合されており、別途供給されていません。そのため、下記画像に示されたモジュールは製品内に含まれていません。![](media/A144.png)</span>
 
-Prima di scrivere il codice, è necessario importare i file della libreria del sensore ultrasonico, della scheda LED 8x16 e del servo. I passaggi specifici sono i seguenti: 
+コードを書く前に、超音波センサー、8x16 LEDボード、サーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
     
-Clicca ![](media/A29.png) per entrare nell'interfaccia della libreria di estensione di sensori/moduli/componenti, quindi cerca il sensore “ir remote” ![](media/A144.png) e cliccaci sopra. In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il sensore “**ir remote**” è stato aggiunto con successo. 
+![](media/A29.png)をクリックしてセンサー/モジュール/コンポーネントの拡張ライブラリ画面に入り、「ir remote」センサー![](media/A144.png)を検索してクリックします。これにより「**Not loaded**」が「**loaded**」に変わり、「**ir remote**」センサーが正常に追加されたことを示します。
 
 ![Img](media/A315.png)
 
 ![](media/A146.png)
 
-Clicca ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, nell'area moduli potrai vedere il blocco istruzioni del sensore “**ir remote**”, del modulo “**Matrix 8\*16 Aip1640**” e del componente “**Servo**”. 
+![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加された「**ir remote**」センサー、「**Matrix 8*16 Aip1640**」モジュール、「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
 
 ![](media/A316.png)
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono a tua disposizione come riferimento
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -70,7 +70,7 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono a t
 
 (8).![](media/A321.png)
 
-**Codice di Test Completo**
+**完成したテストコード**
 
 ![](media/A322.png)
 
@@ -82,6 +82,6 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono a t
 
 ![](media/A326.png)
 
-### **5. Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema di collegamento, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON. A questo punto potrai usare il telecomando IR per far muovere l'auto e la scheda LED 8X16 mostrerà il pattern di stato corrispondente.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れてからDIPスイッチをONにします。これでIRリモコンを使って車を動かすことができ、8X16 LEDボードに対応する状態パターンが表示されます。

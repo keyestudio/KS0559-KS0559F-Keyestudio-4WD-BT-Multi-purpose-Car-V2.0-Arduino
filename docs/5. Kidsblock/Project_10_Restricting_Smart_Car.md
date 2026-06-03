@@ -1,30 +1,30 @@
-# Progetto 10 Auto Intelligente Limitata
+# プロジェクト10 制限付きスマートカー
 
 ![](media/A261.jpeg)
 
-### **1. Descrizione**
+### **1.説明**
 
-In questo progetto, vogliamo combinare le conoscenze di un sensore di tracciamento linea e moduli driver per motori per realizzare un'auto intelligente limitata. Nell'esperimento, l'obiettivo è utilizzare il sensore di tracciamento linea per rilevare se c'è una linea nera intorno all'auto intelligente, e quindi controllare la rotazione dei due motori in base ai risultati del rilevamento in modo da bloccare l'auto intelligente in un cerchio disegnato con linea nera.
+このプロジェクトでは、ライン追跡センサーとモータードライバーモジュールの知識を組み合わせて、制限付きスマートカーを作成します。実験では、ライン追跡センサーを使用してスマートカーの周囲に黒い線があるかどうかを検出し、その検出結果に基づいて2つのモーターの回転を制御し、黒い線で描かれた円の中にスマートカーをロックすることを目指します。
 
-### **2. Diagramma di Flusso**
+### **2.フローチャート**
 
 ![img](media/A262.png)
 
-La logica specifica dell'auto intelligente 4WD limitata è mostrata nella tabella.
+制限付き4WDスマートカーの具体的なロジックは以下の表に示されています。
 
 ![Img](media/A263.png)
 
-### **3. Schema di Collegamento**
+### **3.配線図**
 
 ![](media/A264.png)
 
-G, V, S1, S2 e S3 del sensore di tracciamento linea sono collegati a G (GND), V (VCC), D11, D7 e D8 della scheda di espansione sensori.
+ライン追跡センサーのG、V、S1、S2、S3は、それぞれセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
 
-L'alimentazione è collegata alla porta BAT.
+電源はBATポートに接続します。
 
-### **4. Codice di Test**
+### **4.テストコード**
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono a titolo di riferimento.
+ブロックをドラッグして編集できます。以下に示すブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -38,10 +38,10 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono a t
 
 (6).![](media/A269.png)
 
-**Codice di Test Completo**
+**完成テストコード**
 
 ![KidsBlock Project-1747127137354](media/A270.png)
 
-### **5. Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema di collegamento, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON. Metti l'auto intelligente nel cerchio nero, quindi si muoverà esclusivamente all'interno del cerchio.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源を入れてからDIPスイッチをONにします。スマートカーを黒い円の中に置くと、その円の中だけを自律的に移動します。

@@ -1,70 +1,70 @@
-# Progetto 7 Controllo Remoto Bluetooth
+# Project 7 Bluetooth Remote Control
 
-### **1.Descrizione**
+### **1.説明**
 
 ![image-20250510083107283](media/A47.png)
 
-In questo kit è presente un modulo Bluetooth DX-BT24 5.1. Questo modulo bluetooth dispone di uno spazio di 256Kb e rispetta la specifica Bluetooth V5.1BLE, che supporta i comandi AT. Gli utenti possono modificare parametri come la velocità di trasmissione (baud rate) e il nome del dispositivo della porta seriale secondo necessità.
+このキットにはDX-BT24 5.1 Bluetoothモジュールが含まれています。このBluetoothモジュールは256Kbのメモリを持ち、V5.1BLE Bluetooth仕様に準拠しており、ATコマンドをサポートしています。ユーザーは必要に応じてシリアルポートのボーレートやデバイス名などのパラメータを変更できます。
 
-Inoltre, supporta l'interfaccia UART e la trasmissione trasparente della porta seriale bluetooth, che include anche i vantaggi di basso costo, dimensioni ridotte, basso consumo energetico e alta sensibilità per l'invio e la ricezione. Notevolmente, necessita solo di pochi componenti periferici per realizzare le sue potenti funzioni.
+さらに、UARTインターフェースとBluetoothシリアルポートの透過伝送をサポートしており、低コスト、小型、低消費電力、高感度の送受信の利点も備えています。特に、強力な機能を実現するために必要な周辺部品はわずかです。
 
-### **2.Specifiche**
+### **2.仕様**
 
-- Protocollo Bluetooth: Bluetooth Specification V5.1 BLE
+- Bluetoothプロトコル: Bluetooth Specification V5.1 BLE
 
-- Distanza di lavoro: In ambiente aperto, può raggiungere una comunicazione a ultra lunga distanza di 40m
+- 動作距離: 開放環境で40mの超長距離通信が可能
 
-- Frequenza operativa: banda ISM a 2.4GHz
+- 動作周波数: 2.4GHz ISMバンド
 
-- Interfaccia di comunicazione: UART
+- 通信インターフェース: UART
 
-- Certificazione Bluetooth: Conforme agli standard di certificazione FCC CE ROHS REACH
+- Bluetooth認証: FCC CE ROHS REACH認証基準に準拠
 
-- Parametri porta seriale: 9600, 8 bit dati, 1 bit di stop, bit di parità disabilitato, nessun controllo di flusso
+- シリアルポートパラメータ: 9600、8データビット、1ストップビット、パリティなし、フロー制御なし
 
-- Alimentazione: 5V DC
+- 電源: 5V DC
 
-- Temperatura di esercizio: –10℃ a +65℃
+- 動作温度: –10℃ ～ +65℃
 
-### **3.Applicazione**
+### **3.用途**
 
-Il modulo DX-BT24 supporta anche il protocollo BT5.1 BLE, che può essere collegato direttamente a dispositivi iOS con funzione Bluetooth BLE, e supporta l'esecuzione residente di programmi in background. È principalmente utilizzato nel campo della trasmissione wireless di dati a breve distanza. Permette di evitare collegamenti via cavo ingombranti e può sostituire direttamente i cavi seriali.
+DX-BT24モジュールはBT5.1 BLEプロトコルもサポートしており、BLE Bluetooth機能を持つiOSデバイスに直接接続でき、バックグラウンドプログラムの常駐実行もサポートします。主に短距離データの無線伝送分野で使用され、煩雑なケーブル接続を回避し、シリアルケーブルの直接置き換えが可能です。
 
-**Aree di applicazione di successo dei moduli BT24:**
+**BT24モジュールの成功した応用分野：**
 
-※ Trasmissione dati wireless Bluetooth;
+※ Bluetooth無線データ伝送；
 
-※ Periferiche per telefoni cellulari e computer;
+※ 携帯電話、コンピュータ周辺機器；
 
-※ Dispositivi POS portatili;
+※ ハンドヘルドPOS機器；
 
-※ Trasmissione dati wireless di apparecchiature mediche;
+※ 医療機器の無線データ伝送；
 
-※ Controllo domotico intelligente;
+※ スマートホーム制御；
 
-※ Stampanti Bluetooth;
+※ Bluetoothプリンター；
 
-※ Giocattoli telecomandati Bluetooth;
+※ Bluetoothリモコン玩具；
 
-※ Biciclette condivise;
+※ 共有自転車；
 
-### **4.Porte**
+### **4.ポート**
 
 ![420af966-aaa4-4736-9d35-2a9ccc7215f3](media/A48.png)
 
-①STATE：Pin di stato
+①STATE：ステータスピン
 
-②RX：Pin di ricezione
+②RX：受信ピン
 
-③TX：Pin di trasmissione
+③TX：送信ピン
 
-④GND：GND
+④GND：グランド
 
-⑤VCC：Alimentazione
+⑤VCC：電源
 
-⑥EN：Pin di abilitazione
+⑥EN：イネーブルピン
 
-Collegare il modulo BT alla scheda di sviluppo.
+BTモジュールを開発ボードに接続します。
 
 | Uno  | BT24 |
 | :--: | :--: |
@@ -73,27 +73,27 @@ Collegare il modulo BT alla scheda di sviluppo.
 | VCC  |  5V  |
 | GND  | GND  |
 
-### **5.Componenti**
+### **5.コンポーネント**
 
-|           Scheda di sviluppo *1           |           Driver motore 8833 *1           |                       Modulo LED Rosso *1                       |
-| :--------------------------------------: | :--------------------------------------: | :-------------------------------------------------------------: |
+|           開発ボード *1           |           8833 モータードライバー *1           |                       赤色LEDモジュール*1                       |
+| :------------------------------: | :----------------------------------------------: | :------------------------------------------------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) |                   ![img](media/A10.jpg)                   |
-|             Cavo Dupont 3P *1             |               Cavo USB *1                |                  Modulo Bluetooth DX-BT24 *1                  |
+|             3P デュポンワイヤー*1             |               USBケーブル*1                |                  DX-BT24 Bluetoothモジュール*1                  |
 |         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         | ![image-20250510083534209](media/A49.png) |
 
-### **6.Diagramma di collegamento**
+### **6.配線図**
 
 ![image-20250510083927915](media/A50.png)
 
-RXD, TXD, GND e VCC del modulo BT sono collegati rispettivamente a TX, RX, G e 5V.
+BTモジュールのRXD、TXD、GND、VCCはそれぞれTX、RX、G、5Vに接続します。
 
-STATE e BRK del modulo BT non necessitano di collegamento.
+BTモジュールのSTATEとBRKは接続不要です。
 
-<span style="color: rgb(255, 76, 65);">Nota: la direzione del modulo BT quando viene inserito sulla scheda 8833. E non inserirlo prima di caricare il codice.</span> 
+<span style="color: rgb(255, 76, 65);">注意：BTモジュールを8833ボードに挿入する際の向きに注意してください。コードをアップロードする前に挿入しないでください。</span> 
 
-### **7.Codice di test**
+### **7.テストコード**
 
-<span style="color: rgb(255, 76, 65);">**Nota:** Prima di caricare il codice di test, è necessario rimuovere il modulo Bluetooth, altrimenti il caricamento del codice fallirà. Collegare il modulo Bluetooth dopo aver caricato correttamente il codice.</span>
+<span style="color: rgb(255, 76, 65);">**注意:** テストコードをアップロードする前にBluetoothモジュールを取り外す必要があります。そうしないとコードのアップロードに失敗します。コードのアップロードが成功した後にBluetoothモジュールを接続してください。</span>
 
 ```c
 //***********************************************************************
@@ -103,98 +103,102 @@ lesson 7.1
 Bluetooth 
 http://www.keyestudio.com
 */
-char ble_val; //variabile carattere, usata per memorizzare il valore ricevuto dal Bluetooth 
+char ble_val; //character variable, used to store the value received by Bluetooth 
 
-```cpp
+
 void setup() {
   Serial.begin(9600);
 }
 void loop() {
-  if(Serial.available() > 0)  // assicurarsi che ci siano dati nel buffer seriale
+  if(Serial.available() > 0)  //シリアルバッファにデータがあるか確認
   {
-    ble_val = Serial.read();  // Leggi i dati dal buffer seriale
-    Serial.println(ble_val);  // Stampa
+    ble_val = Serial.read();  //シリアルバッファからデータを読み取る
+    Serial.println(ble_val);  //表示
   }
 }
 //***********************************************************************
 ```
 
-### **8. Risultato del Test**
+### **8.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, quindi collegare il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, inserire il modulo BT e il LED lampeggerà, quindi è necessario scaricare l'app BT.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れた後、BTモジュールを挿入するとLEDが点滅し、その後BTアプリをダウンロードする必要があります。
 
-### **9. Scarica l'APP Bluetooth**
+### **9.Bluetoothアプリのダウンロード**
 
-**Sistema Apple**
+**Appleシステム**
 
-(1). Aprire l'App Store sull'iPhone.
+(1). iPhoneのApp Storeを開きます。
 
-(2). Cercare keyes BT car e scaricare l'APP sul telefono.
+(2). 「keyes BT car」を検索し、アプリを携帯にダウンロードします。
+
+
 
 ![image-20250510084716811](media/A51.png)
     
-(3). Dopo l'installazione, entrare nella sua interfaccia.
+
+(3). インストール後、アプリのインターフェースに入ります。
 
 ![image-20250510084812821](media/A52.png)
     
-(4). Cliccare il pulsante "**Connect**" nell'angolo in alto a sinistra per cercare automaticamente il Bluetooth. Quando viene trovato **BT24**, cliccare "**Connect**" per connettere il Bluetooth, quindi cliccare ![image-20250510084833837](media/A53.png) per entrare nell'interfaccia di controllo dell'auto smart 4WD.
+
+(4). 左上の「**Connect**」ボタンをクリックしてBluetoothを自動検索します。**BT24**が見つかったら「**Connect**」をクリックしてBluetoothに接続し、次に ![image-20250510084833837](media/A53.png) をクリックして4WDスマートカーの制御インターフェースに入ります。 
 
 ![image-20250510084902641](media/A54.png)
+    **Androidシステム**
+    
 
-**Sistema Android**
-
-(1). Entrare nel Google Play Store e cercare “keyes 4wd”.
+(1). Google Playストアに入り、「keyes 4wd」を検索します。
 
 ![image-20250510084916086](media/A55.png)
 
-(2). L'icona dell'app appare come mostrato dopo l'installazione.
+(2). インストール後のアプリアイコンは以下の通りです。
 
 ![image-20250510084933465](media/A56.png)
 
-(3). Cliccare sull'app per entrare nella pagina seguente.
+(3). アプリをクリックして以下のページに入ります。
 
 ![image-20250510084946146](media/A57.png)
 
-(4). Dopo aver connesso il Bluetooth, collegare l'alimentazione e l'indicatore LED del modulo Bluetooth lampeggerà. Toccare “**Connect**” per cercare il Bluetooth.
+(4). Bluetoothに接続した後、電源を入れるとBluetoothモジュールのLEDインジケーターが点滅します。「**Connect**」をタップしてBluetoothを検索します。
 
 ![image-20250510085007028](media/A58.png)
 
-(5). Quando viene trovato **BT24**, cliccare "Connect" per connettere il Bluetooth. Quando "**Connect**" diventa "**is Connected**", significa che la connessione Bluetooth è avvenuta con successo. Come mostrato nell'immagine sottostante, il LED Bluetooth rimane acceso.
+(5). **BT24**が見つかったら「Connect」をクリックしてBluetoothに接続します。「**Connect**」が「**is Connected**」に変わればBluetooth接続成功を示します。下の画像のようにBluetoothのLEDが点灯したままになります。
 
 ![image-20250510085026219](media/A59.png)
 
-(6). Dopo aver connesso il modulo Bluetooth, aprire il monitor seriale e impostare la velocità di trasmissione a 9600 baud. Premendo il pulsante dell'APP Bluetooth, verranno visualizzati i caratteri corrispondenti, come mostrato di seguito:
+(6). Bluetoothモジュールに接続した後、シリアルモニターを開き、ボーレートを9600に設定します。Bluetoothアプリのボタンを押すと、対応する文字が表示されます。以下の通りです：
 
 ![image-20250510085039562](media/A60.png)
 
-| Tasto                     | Funzione                          |
+| キー                       | 機能                          |
 | ------------------------- | --------------------------------- |
-| ![img](./media/A61.jpg)   | Associa modulo Bluetooth DX-BT24 5.1 |
-| ![img](./media/A62.jpg)   | Disconnetti Bluetooth              |
+| ![img](./media/A61.jpg) | DX-BT24 5.1 Bluetoothモジュールとペアリング |
+| ![img](./media/A62.jpg) | Bluetoothの切断              |
 
-|                           | Carattere di controllo                                      | Carattere di controllo                                      |
+|                           | 制御文字                                                    | 制御文字                                                    |
 | ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![img](media/A63.jpg) | Premere: F  <br />Rilasciare: S                             | Premere il pulsante, l'auto va avanti; <br />rilasciare per fermarsi |
-| ![img](media/A64.jpg) | Premere: L  <br />Rilasciare: S                             | Premere il pulsante, l'auto gira a sinistra; <br />rilasciare per fermarsi  |
-| ![img](media/A65.jpg) | Premere: R  <br />Rilasciare: S                             | Premere il pulsante, l'auto gira a destra; <br />rilasciare per fermarsi |
-| ![img](media/A66.jpg) | Premere: B  <br />Rilasciare: S                             | Premere il pulsante, l'auto va indietro; <br />rilasciare per fermarsi   |
-| ![img](media/A67.jpg) | Premere: “a”  <br />Rilasciare: “S”                         | Clicca per accelerare (massimo:255)                          |
-| ![img](media/A68.jpg) | Premere: “d”  <br />Rilasciare: “S”                         | Clicca per rallentare (minimo:0)                             |
-| ![img](media/A69.jpg) | Clicca per avviare la funzione di <br />rilevamento della gravità del <br />telefono cellulare: clicca di nuovo per <br />uscire dal controllo di rilevamento della gravità |                                                              |
-| ![img](media/A70.jpg) | Clicca per inviare “X”, <br />clicca di nuovo per inviare “S” | Avvia la funzione di tracciamento della linea; <br />clicca di nuovo per uscire      |
-| ![img](media/A71.jpg) | Clicca per inviare “Y”, <br />clicca di nuovo per inviare “S” | Avvia la funzione di evitamento ad ultrasuoni; <br />clicca di nuovo per uscire |
-| ![img](media/A72.jpg) | Clicca per inviare “U”, <br />clicca di nuovo per inviare “S” | Avvia la funzione di inseguimento ad ultrasuoni; <br />clicca di nuovo per uscire |
-| ![img](media/A73.jpg) | Clicca per inviare “G”, <br />clicca di nuovo per inviare “S” | Avvia la funzione di restrizione; <br />clicca di nuovo per uscire       |
+| ![img](media/A63.jpg) | 押す: F  <br />離す: S                                   | ボタンを押すと車が前進します；<br />離すと停止します         |
+| ![img](media/A64.jpg) | 押す: L  <br />離す: S                                   | ボタンを押すと車が左に曲がります；<br />離すと停止します     |
+| ![img](media/A65.jpg) | 押す: R  <br />離す: S                                   | ボタンを押すと車が右に曲がります；<br />離すと停止します     |
+| ![img](media/A66.jpg) | 押す: B  <br />離す: S                                   | ボタンを押すと車が後退します；<br />離すと停止します         |
+| ![img](media/A67.jpg) | 押す: “a”  <br />離す: “S”                               | クリックで加速（最大値:255）                                |
+| ![img](media/A68.jpg) | 押す: “d”  <br />離す: “S”                               | クリックで減速（最小値:0）                                  |
+| ![img](media/A69.jpg) | クリックで携帯電話の重力感知機能を開始<br />もう一度クリックで重力感知制御を終了 |                                                              |
+| ![img](media/A70.jpg) | クリックで“X”を送信、<br />もう一度クリックで“S”を送信    | ライントレース機能を開始；<br />もう一度クリックで終了      |
+| ![img](media/A71.jpg) | クリックで“Y”を送信、<br />もう一度クリックで“S”を送信    | 超音波回避機能を開始；<br />もう一度クリックで終了          |
+| ![img](media/A72.jpg) | クリックで“U”を送信、<br />もう一度クリックで“S”を送信    | 超音波追従機能を開始；<br />もう一度クリックで終了          |
+| ![img](media/A73.jpg) | クリックで“G”を送信、<br />もう一度クリックで“S”を送信    | 制限機能を開始；<br />もう一度クリックで終了                |
 
-### **10. Spiegazione del Codice**
+### **10.コード説明**
 
-**Serial.available()** : Restituisce il numero di caratteri attualmente presenti nel buffer della porta seriale. Generalmente, questa funzione viene utilizzata per verificare se ci sono dati nel buffer della porta seriale. Quando Serial.available() > 0, significa che la porta seriale ha ricevuto dati e possono essere letti;
+**Serial.available()** : シリアルポートのバッファに現在残っている文字数を返します。一般的に、この関数はシリアルポートのバッファにデータがあるかどうかを判断するために使用されます。Serial.available() > 0 の場合、シリアルポートがデータを受信しており、読み取ることができることを意味します。
 
-**Serial.read() :** Si riferisce all'estrazione e alla lettura di un Byte di dati dal buffer della porta seriale. Ad esempio, se un dispositivo invia dati ad Arduino tramite la porta seriale, possiamo usare Serial.read() per leggere i dati inviati.
+**Serial.read() :** シリアルポートのバッファから1バイトのデータを取り出して読み取ることを指します。例えば、デバイスがシリアルポートを通じてArduinoにデータを送信した場合、Serial.read()を使って送信されたデータを読み取ることができます。
 
-### **11. Pratica Estesa**
+### **11.拡張練習**
 
-Qui vediamo come utilizzare il comando inviato dal telefono cellulare per accendere o spegnere un LED. Guardando lo schema di collegamento, un LED è collegato al pin D9.
+ここでは、携帯電話から送信されたコマンドを使ってLEDライトをオンまたはオフにする方法を見ていきます。配線図を見ると、LEDはD9ピンに接続されています。
 
 ![image-20250510085856954](media/A74.png)
 
@@ -207,7 +211,7 @@ Qui vediamo come utilizzare il comando inviato dal telefono cellulare per accend
  http://www.keyestudio.com
 */ 
 int ledpin=9;
-char ble_val;// Una variabile intera usata per memorizzare il valore ricevuto via Bluetooth
+char ble_val;// Bluetoothで受信した値を格納するための文字変数
 
 void setup()
 {
@@ -217,22 +221,22 @@ void setup()
 
 void loop()
 { 
-  if (Serial.available() > 0) //Controlla se ci sono dati nella cache della porta seriale
+  if (Serial.available() > 0) // シリアルポートのキャッシュにデータがあるか確認
   {
-    ble_val = Serial.read();  //Legge i dati dalla cache della porta seriale
-    Serial.print("DATI RICEVUTI:");
+    ble_val = Serial.read();  // シリアルポートのキャッシュからデータを読み取る
+    Serial.print("DATA RECEIVED:");
     Serial.println(ble_val);
     if (ble_val == 'F') {
       digitalWrite(ledpin, HIGH);
-      Serial.println("led acceso");
+      Serial.println("led on");
     }
     if (ble_val == 'B') {
       digitalWrite(ledpin, LOW);
-      Serial.println("led spento");
+      Serial.println("led off");
     }
    }
 }
 //****************************************************************************
 ```
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, quindi collega il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, clicca su ![image-20250510085919039](media/A75.png) e ![image-20250510085931709](media/A76.png) per controllare l'accensione e lo spegnimento del LED.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、![image-20250510085919039](media/A75.png) と ![image-20250510085931709](media/A76.png) をクリックしてLEDの点灯と消灯を制御します。

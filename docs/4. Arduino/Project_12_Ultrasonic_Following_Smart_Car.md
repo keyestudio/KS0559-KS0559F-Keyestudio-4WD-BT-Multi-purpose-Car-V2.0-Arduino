@@ -1,84 +1,86 @@
-# Progetto 12 Auto Intelligente a Inseguimento Ultrasonico
+# Project 12 超音波追従スマートカー
 
 ![a3beaada39eb1471b7df6d9788e2bea3](media/A116.png)
 
-### **1. Descrizione**
+### **1.説明**
 
-In questo progetto, cercheremo di rilevare la distanza tra l'auto intelligente 4WD e gli ostacoli davanti tramite un sensore ultrasonico per azionare due motori in modo che l'auto si muova e faccia mostrare alla scheda LED 8\*8 un motivo facciale sorridente.
+このプロジェクトでは、超音波センサーを使って4WDスマートカーと前方の障害物との距離を検出し、2つのモーターを制御して車を動かし、8\*8 LEDボードに笑顔のパターンを表示させます。
 
-### **2. Diagramma di Flusso**
+### **2.フローチャート**
 
 ![img](media/A117.png)
 
 <table border="1">
 <tbody>
 <tr class="odd">
-<td>Rilevamento</td>
-<td>Distanza misurata degli ostacoli frontali</td>
-<td>distanza (unità: cm)</td>
+<td>検出</td>
+<td>前方障害物の測定距離</td>
+<td>距離（単位：cm）</td>
 </tr>
 <tr class="even">
-<td>Impostazione</td>
-<td>La scheda LED 8*16 mostra un motivo sorridente.</td>
+<td>設定</td>
+<td>8*16 LEDボードに笑顔のパターンを表示</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Imposta il servo a 90°</td>
+<td>サーボを90°に設定</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condizione</td>
-<td>distanza≥20 e distanza≤50</td>
+<td>条件</td>
+<td>距離≥20 かつ 距離≤50</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>Stato</td>
-<td>Avanti</td>
+<td>状態</td>
+<td>前進</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condizione</td>
-<td>distanza＞10 e distanza＜20</td>
+<td>条件</td>
+<td>距離＞10 かつ 距離＜20</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>distanza＞50</td>
+<td>距離＞50</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condizione</td>
-<td>fermo</td>
+<td>条件</td>
+<td>停止</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>Condizione</td>
-<td>distanza≤10</td>
+<td>条件</td>
+<td>距離≤10</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>Condizione</td>
-<td>Indietro</td>
+<td>条件</td>
+<td>後退</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-### **3. Schema di Collegamento**
+
+
+### **3.配線図**
 
 ![568a66655a14dd34afd8cb1e6ae5951c](media/A118.png)
 
-**Collegamenti:**
+**配線方法：**
 
-1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati a G (GND), V (VCC), A4 e A5 della scheda di espansione.
+1). 8\*8 LEDボードのGND、VCC、SDA、SCLを拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
 
-2). VCC, Trig, Echo e Gnd del sensore ultrasonico sono collegati a 5V (V), D12 (S), D13 (S) e Gnd (G).
+2). 超音波センサーのVCC、Trig、Echo、Gndをそれぞれ5V(V)、D12(S)、D13(S)、Gnd(G)に接続します。
 
-3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso è collegato a 5V (V) e il filo arancione è collegato ad A3.
+3). サーボはG、V、A3に接続します。茶色の線はGnd(G)、赤色の線は5V(V)、オレンジ色の線はA3に接続します。
 
-4). L'alimentazione è collegata alla porta BAT.
+4). 電源はBATポートに接続します。
 
-### **4. Codice di Test**
+### **4.テストコード**
 
 ```c
 //*******************************************************************************
@@ -88,88 +90,88 @@ In questo progetto, cercheremo di rilevare la distanza tra l'auto intelligente 4
  Flowing Car
  http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //Imposta il pin clock su A5
-#define SDA_Pin  A4  //Imposta il pin dati su A4
+#define SCL_Pin  A5  // クロックピンをA5に設定
+#define SDA_Pin  A4  // データピンをA4に設定
 
-//Array, usato per memorizzare i dati del motivo, può essere calcolato da soli o ottenuto dallo strumento modulo
+// パターンのデータを格納する配列。自分で計算するかモジュールツールから取得可能
 unsigned char smile[] = {0x00, 0x00, 0x1c, 0x02, 0x02, 0x02, 0x5c, 0x40, 0x40, 0x5c, 0x02, 0x02, 0x02, 0x1c, 0x00, 0x00};
 
-const int servopin = A3;//Imposta il pin del servocomando
+const int servopin = A3; // サーボのピンを設定
  
-#include "SR04.h" //definisce la libreria di funzioni del sensore ultrasonico
-#define TRIG_PIN 12// imposta il segnale del sensore ultrasonico su D12
-#define ECHO_PIN 13// imposta il segnale del sensore ultrasonico su D13
+#include "SR04.h" // 超音波センサーの関数ライブラリを定義
+#define TRIG_PIN 12 // 超音波センサーのTrig信号をD12に設定
+#define ECHO_PIN 13 // 超音波センサーのEcho信号をD13に設定
 SR04 sr04 = SR04(ECHO_PIN,TRIG_PIN);
 long distance;
 
-int left_ctrl = 2;//definisce i pin di controllo direzione del motore gruppo B
-int left_pwm = 5;//definisce i pin PWM di controllo del motore gruppo B
-int right_ctrl = 4;//definisce i pin di controllo direzione del motore gruppo A
-int right_pwm = 6;//definisce i pin PWM di controllo del motore gruppo A
+int left_ctrl = 2;  // グループBモーターの方向制御ピンを定義
+int left_pwm = 5;   // グループBモーターのPWM制御ピンを定義
+int right_ctrl = 4; // グループAモーターの方向制御ピンを定義
+int right_pwm = 6;  // グループAモーターのPWM制御ピンを定義
 
 void setup() {
-  pinMode(left_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo B come OUTPUT
-  pinMode(left_pwm,OUTPUT);//imposta i pin PWM di controllo del motore gruppo B come OUTPUT
-  pinMode(right_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo A come OUTPUT
-  pinMode(right_pwm,OUTPUT);//imposta i pin PWM di controllo del motore gruppo A come OUTPUT
-  pinMode(TRIG_PIN, OUTPUT); //Imposta il pin trig come output
-  pinMode(ECHO_PIN, INPUT); //Imposta il pin echo come input
-  pinMode(SCL_Pin,OUTPUT);//Imposta il pin clock come output
-  pinMode(SDA_Pin,OUTPUT);//Imposta il pin dati come output
-  servopulse(servopin,90);//Imposta l'angolo iniziale del servocomando a 90°
-  delay(500); //attende 500ms
-  matrix_display(smile);  //mostra il motivo dell'espressione sorridente  
+  pinMode(left_ctrl,OUTPUT);  // グループBモーターの方向制御ピンを出力に設定
+  pinMode(left_pwm,OUTPUT);   // グループBモーターのPWM制御ピンを出力に設定
+  pinMode(right_ctrl,OUTPUT); // グループAモーターの方向制御ピンを出力に設定
+  pinMode(right_pwm,OUTPUT);  // グループAモーターのPWM制御ピンを出力に設定
+  pinMode(TRIG_PIN, OUTPUT);  // Trigピンを出力に設定
+  pinMode(ECHO_PIN, INPUT);   // Echoピンを入力に設定
+  pinMode(SCL_Pin,OUTPUT);    // クロックピンを出力に設定
+  pinMode(SDA_Pin,OUTPUT);    // データピンを出力に設定
+  servopulse(servopin,90);    // 初期のサーボ角度を90°に設定
+  delay(500);                 // 500ms待機
+  matrix_display(smile);      // 笑顔のパターンを表示  
 }
 
 void loop() {
-  distance = sr04.Distance();//la distanza rilevata dal sensore ultrasonico
-   if(distance <= 10)//se la distanza è inferiore a 10
+  distance = sr04.Distance(); // 超音波センサーで距離を検出
+   if(distance <= 10) // 距離が10以下の場合
   {
-    back();//indietro
+    back(); // 後退
   }
-  else if((distance > 10)&&(distance< 20 ))//se 10<distanza<20
+  else if((distance > 10)&&(distance< 20 )) // 10 < 距離 < 20 の場合
   {
-    Stop();//fermo
+    Stop(); // 停止
   }
-  else if((distance >= 20)&&(distance <= 50))//se 20≤distanza≤50  
+  else if((distance >= 20)&&(distance <= 50)) // 20 ≤ 距離 ≤ 50 の場合  
 {
-    front();//inseguimento
+    front(); // 追従（前進）
   }
-  else//altrimenti
+  else // それ以外の場合
   {
-    Stop();//fermo
+    Stop(); // 停止
   }
 }
 
-void front()//definisce lo stato di avanzamento
+void front()//前進の状態を定義
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,100);
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,100);
 }
-void back()//definisce lo stato di retromarcia
+void back()//後退の状態を定義
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,150);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,150);
 }
-void left()//definisce lo stato di svolta a sinistra
+void left()//左折の状態を定義
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, 100);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, 155);
 }
-void right()//definisce lo stato di svolta a destra
+void right()//右折の状態を定義
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, 155);
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, 100);
 }
-void Stop()//definisce lo stato di stop
+void Stop()//停止状態を定義
 {
   digitalWrite(left_ctrl, LOW);  
   analogWrite(left_pwm,0);
@@ -177,7 +179,7 @@ void Stop()//definisce lo stato di stop
   analogWrite(right_pwm,0);
 }
 
-void servopulse(int servopin,int myangle)//Angolo di rotazione del servomotore
+void servopulse(int servopin,int myangle)//サーボの動作角度
 {
   for(int i=0; i<30; i++)
   {
@@ -189,22 +191,22 @@ void servopulse(int servopin,int myangle)//Angolo di rotazione del servomotore
   }  
 }
 
-//questa funzione è utilizzata per la visualizzazione su matrice di punti
+//この関数はドットマトリックス表示に使用されます
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //la funzione che richiama la condizione di inizio trasferimento dati
-  IIC_send(0xc0);  //seleziona l'indirizzo
+  IIC_start();  //データ転送開始条件を呼び出す関数
+  IIC_send(0xc0);  //アドレス選択
 
-  for (int i = 0; i < 16; i++) //i dati del pattern sono 16 byte
+  for (int i = 0; i < 16; i++) //パターンデータは16バイト
   {
-    IIC_send(matrix_value[i]); //Trasmette i dati del pattern
+    IIC_send(matrix_value[i]); //パターンのデータを送信
   }
-  IIC_end();   //Termina la trasmissione dei dati del pattern
+  IIC_end();   //パターンデータ送信終了
   IIC_start();
-  IIC_send(0x8A);  //Controllo display, seleziona larghezza impulso 4/16
+  IIC_send(0x8A);  //表示制御、4/16パルス幅を選択
   IIC_end();
 }
-//Condizioni in cui inizia la trasmissione dati
+//データ送信開始の条件
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -214,7 +216,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indica la fine della trasmissione dati
+//データ送信終了を示す
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -225,26 +227,26 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//trasmette dati
+//データ送信
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Ogni byte ha 8 bit e viene controllato bit per bit partendo dal livello più basso
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //各バイトは8ビットで、最下位からビットごとにチェック
   {
-    if (send_data & mask) { //Imposta i livelli alto e basso di SDA_Pin a seconda che ogni bit del byte sia 1 o 0
+    if (send_data & mask) { //バイトの各ビットが1か0かに応じてSDA_Pinの高低レベルを設定
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Alza il pin clock SCL_Pin per fermare la trasmissione dati
+    digitalWrite(SCL_Pin, HIGH); //クロックピンSCL_Pinを高レベルにしてデータ送信を停止
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //Abbassa il pin clock SCL_Pin per cambiare il SEGNALE di SDA 
+    digitalWrite(SCL_Pin, LOW); //クロックピンSCL_Pinを低レベルにしてSDAの信号を変更
   }
 }
 //*******************************************************************************
 ```
 
-### **5.Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, accendere l'alimentazione esterna  
-quindi impostare l'interruttore DIP su ON. Impostare il servo a 90°, la smart car si muoverà evitando gli ostacoli e la scheda LED 8X16 mostrerà “smile”.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源をオンにします。  
+次にDIPスイッチをONに切り替えます。サーボを90°に設定すると、スマートカーは障害物を避けて動き、8X16 LEDボードに「smile」が表示されます。

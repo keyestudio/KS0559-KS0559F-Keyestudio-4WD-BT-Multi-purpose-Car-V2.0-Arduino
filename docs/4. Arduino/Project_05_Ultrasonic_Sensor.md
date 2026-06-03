@@ -1,70 +1,70 @@
-# Progetto 5 Sensore Ultrasonico
+# Project 5 超音波センサー
 
-### **1.Descrizione**
+### **1.説明**
 
 ![image-20250509085643931](media/A33.png)
 
-Il sensore ultrasonico HC-SR04 utilizza il sonar per determinare la distanza da un oggetto, come fanno i pipistrelli. Offre un'eccellente rilevazione della distanza senza contatto con alta precisione e letture stabili in un pacchetto facile da usare. È completo di moduli trasmettitore e ricevitore ultrasonici.
+HC-SR04超音波センサーは、コウモリのようにソナーを使って物体までの距離を測定します。高精度で安定した読み取りが可能な非接触距離検出を簡単に行えるパッケージで提供されます。超音波送信モジュールと受信モジュールがセットになっています。
 
 ![Img](media/A34.png)
 
-L'HC-SR04 o sensore ultrasonico viene utilizzato in una vasta gamma di progetti elettronici per creare applicazioni di rilevamento ostacoli e misurazione della distanza, oltre a varie altre applicazioni. Qui abbiamo presentato un metodo semplice per misurare la distanza con Arduino e un sensore ultrasonico e come utilizzare il sensore ultrasonico con Arduino.
+HC-SR04または超音波センサーは、障害物検知や距離測定アプリケーションをはじめ、さまざまな電子プロジェクトで広く使われています。ここでは、Arduinoと超音波センサーを使った距離測定の簡単な方法と、超音波センサーのArduinoでの使い方を紹介します。
 
-### **2.Specifiche**
+### **2.仕様**
 
-- Tensione di funzionamento : +5V DC
+- 動作電圧 : +5V DC
 
-- Corrente a riposo : \<2mA
+- 待機電流 : \<2mA
 
-- Corrente di funzionamento: 15mA
+- 動作電流 : 15mA
 
-- Angolo efficace: \<15°
+- 有効角度 : \<15°
 
-- Intervallo di distanza : 2cm – 300 cm
+- 測定距離範囲 : 2cm – 300 cm
 
-- Precisione : 0.3 cm
+- 精度 : 0.3 cm
 
-- Angolo di misurazione: 30 gradi
+- 測定角度 : 30度
 
-- Larghezza impulso di ingresso Trigger: 10uS
+- トリガ入力パルス幅 : 10μS
 
 ![image-20250509085705309](media/A35.png)
 
-### **3.Componenti**
+### **3.部品**
 
-| Scheda di sviluppo *1                                         | Driver motore 8833 *1                     | Modulo LED Rosso*1         | Sensore Ultrasonico*1                                          |
+| 開発ボード *1                                              | 8833 モータードライバー *1               | 赤色LEDモジュール*1       | 超音波センサー*1                                            |
 | ------------------------------------------------------------ | ---------------------------------------- | ------------------------ | ------------------------------------------------------------ |
 | ![img](media/A8.jpg)                     | ![img](media/A9.jpg) | ![img](media/A10.jpg) | ![image-20250509085643931](media/A33.png) |
-| Cavo Dupont 4P*1                                             | Cavo USB*1                              | Cavo Dupont 3P*1         |                                                              |
+| 4P デュポン線*1                                            | USBケーブル*1                           | 3P デュポン線*1          |                                                              |
 | ![image-20250509143737972](media/A36.png) | ![img](media/A12.jpg)                 | ![img](media/A11.jpg) |                                                              |
 
-### **4.Principio di funzionamento**
+### **4.動作原理**
 
-Come mostrato nell'immagine sopra, è come due occhi. Uno è il trasmettitore, l'altro è il ricevitore.
+上の写真のように、2つの目のような形をしています。片方が送信端、もう片方が受信端です。
 
-Il modulo ultrasonico emetterà onde ultrasoniche dopo aver ricevuto un segnale di trigger. Quando le onde ultrasoniche incontrano un oggetto e vengono riflesse, il modulo emette un segnale di eco, così può determinare la distanza dell'oggetto dal tempo di differenza tra il segnale di trigger e il segnale di eco.
+超音波モジュールはトリガ信号を受けると超音波を発信します。超音波が物体に当たり反射して戻ってくると、モジュールはエコー信号を出力します。これにより、トリガ信号とエコー信号の時間差から物体までの距離を測定できます。
 
-t è il tempo che il segnale emesso impiega per incontrare l'ostacolo e tornare indietro. La velocità di propagazione del suono nell'aria è circa 343m/s, e distanza = velocità \* tempo. Tuttavia, l'onda ultrasonica viene emessa e torna indietro, quindi percorre 2 volte la distanza. Pertanto, deve essere divisa per 2, la distanza misurata dall'onda ultrasonica = (velocità \* tempo)/2.
+tは信号が障害物に当たり戻ってくるまでの時間です。空気中の音速は約343m/sで、距離 = 速度 × 時間です。ただし、超音波は往復するため距離の2倍の時間がかかります。したがって、距離 = (速度 × 時間) / 2 となります。
 
-**Metodo d'uso e diagramma del modulo ultrasonico:**
+**超音波モジュールの使用方法とチャート：**
 
-1. Usa il pin GPIO per fornire un segnale alto di almeno 10μs al pin Trig dell'SR04, che può attivarlo per rilevare la distanza.
-2. Dopo il trigger, il modulo invierà automaticamente otto impulsi ultrasonici a 40KHz e rileverà se c'è un segnale di ritorno. Questo passaggio sarà completato automaticamente dal modulo.
-3. Se il segnale ritorna, il pin Echo emetterà un livello alto, e la durata del livello alto è il tempo dal trasmissione dell'onda ultrasonica al ritorno.
+1. GPIOピンを使ってSR04のTrigピンに10μs以上の高レベル信号を与え、距離測定をトリガーします。
+2. トリガー後、モジュールは自動的に8回の40KHz超音波パルスを送信し、信号の戻りを検出します。この処理はモジュールが自動で行います。
+3. 信号が戻ると、Echoピンは高レベルを出力し、その高レベルの持続時間が超音波送信から戻りまでの時間となります。
 
 ![image-20250509143833078](media/A37.png)
 
-**Schema elettrico del sensore ultrasonico:**
+**超音波センサーの回路図：**
 
 ![image-20250509154035287](media/A38.png)
 
-### **5.Diagramma di collegamento**
+### **5.配線図**
 
 ![image-20250509154107103](media/A39.png)
 
-VCC, Trig, Echo e Gnd del sensore ultrasonico sono collegati rispettivamente a 5V(V), D12, D13 e Gnd(G)
+超音波センサーのVCC、Trig、Echo、Gndはそれぞれ5V(V)、D12、D13、Gnd(G)に接続します。
 
-### **6.Codice di test**
+### **6.テストコード**
 
 ```c
 //***************************************************************************
@@ -74,33 +74,31 @@ VCC, Trig, Echo e Gnd del sensore ultrasonico sono collegati rispettivamente a 5
  Ultrasonic Sensor
  http://www.keyestudio.com
 */ 
-int trigPin = 12;    // Trigger
-int echoPin = 13;    // Echo
+int trigPin = 12;    // トリガー
+int echoPin = 13;    // エコー
 long duration, cm, inches;
 void setup() {
-  //Inizio porta seriale
+  // シリアルポート開始
   Serial.begin (9600);
-  //Definisci ingressi e uscite
+  // 入出力の定義
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 }
 
-```c
 void loop() {
-  // Il sensore viene attivato da un impulso HIGH di 10 o più microsecondi.
-  // Fornire un breve impulso LOW prima per garantire un impulso HIGH pulito:
+  // センサーは10マイクロ秒以上のHIGHパルスでトリガーされます。
+  // クリーンなHIGHパルスを確実にするために、事前に短いLOWパルスを与えます：
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-   // Leggi il segnale dal sensore: un impulso HIGH la cui
-  // durata è il tempo (in microsecondi) dal momento
-  // dell'invio del ping alla ricezione del suo eco da un oggetto.
+   // センサーからの信号を読み取ります：HIGHパルスの
+  // 持続時間は、パルス送信から物体でのエコー受信までの時間（マイクロ秒単位）です。
   duration = pulseIn(echoPin, HIGH);
-   // Converti il tempo in una distanza
-  cm = (duration/2) / 29.1;     // Dividi per 29.1 o moltiplica per 0.0343
-  inches = (duration/2) / 74;   // Dividi per 74 o moltiplica per 0.0135
+   // 時間を距離に変換します
+  cm = (duration/2) / 29.1;     // 29.1で割るか、0.0343を掛ける
+  inches = (duration/2) / 74;   // 74で割るか、0.0135を掛ける
   Serial.print(inches);
   Serial.print("in, ");
   Serial.print(cm);
@@ -111,37 +109,37 @@ void loop() {
 //***************************************************************************
 ```
 
-### **7.Risultato del Test**
+**7.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, quindi collega il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, apri il monitor seriale e imposta la velocità di trasmissione a 9600 baud.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、シリアルモニターを開き、ボーレートを9600に設定します。
 
-La distanza rilevata verrà visualizzata, e l'unità di misura è cm e pollici. Ostacola il sensore ad ultrasuoni con la mano, il valore della distanza visualizzato diminuisce.
+検出された距離が表示され、単位はcmとinchです。超音波センサーを手で遮ると、表示される距離の値が小さくなります。
 
 ![image-20250509154147537](media/A40.png)
 
-### **8.Spiegazione del Codice**
+**8.コード説明**
 
-**int trigPin-** questo pin è definito per trasmettere onde ultrasoniche, generalmente in output.
+**int trigPin -** このピンは超音波を送信するために定義されており、通常は出力です。
 
-**int echoPin -** questo è definito come il pin di ricezione, generalmente in input.
+**int echoPin -** これは受信ピンとして定義されており、通常は入力です。
 
-**cm = (duration/2) / 29.1-**
+**cm = (duration/2) / 29.1 -**
 
-**inches = (duration/2) / 74-**
+**inches = (duration/2) / 74 -**
 
-Possiamo calcolare la distanza usando la seguente formula:
+以下の式を使って距離を計算できます：
 
-distanza = (tempo di percorrenza/2) x velocità del suono
+distance = (往復時間 / 2) × 音速
 
-La velocità del suono è: 343m/s = 0.0343 cm/us = 1/29.1 cm/us
+音速は：343m/s = 0.0343 cm/μs = 1/29.1 cm/μs
 
-Oppure in pollici: 13503.9in/s = 0.0135in/us = 1/74in/us
+インチの場合：13503.9in/s = 0.0135 in/μs = 1/74 in/μs
 
-Dobbiamo dividere il tempo di percorrenza per 2 perché dobbiamo considerare che l'onda è stata inviata, ha colpito l'oggetto e poi è tornata indietro al sensore.
+波が送信され、物体に当たり、センサーに戻るまでの時間を考慮するため、往復時間を2で割る必要があります。
 
-### **9.Esercizio di Estensione**
+**9.拡張練習**
 
-Abbiamo appena misurato la distanza visualizzata dall'ultrasuoni. Che ne dici di controllare il LED con la distanza misurata? Proviamo a collegare un modulo luce LED al pin D9.
+超音波で測定した距離を表示しました。測定した距離でLEDを制御してみませんか？試してみましょう。LEDライトモジュールをD9ピンに接続します。
 
 ![image-20250509154232505](media/A41.png)
 
@@ -149,36 +147,35 @@ Abbiamo appena misurato la distanza visualizzata dall'ultrasuoni. Che ne dici di
 //*****************************************************************
 /*
  keyestudio 4wd BT Car
- lezione 5.2
+ lesson 5.2
  Ultrasonic LED
  http://www.keyestudio.com
 */ 
-int trigPin = 12;    // Trigger
-int echoPin = 13;    // Echo
+int trigPin = 12;    // トリガー
+int echoPin = 13;    // エコー
 long duration, cm, inches;
 
 void setup() {
-  Serial.begin (9600);  //Inizio porta seriale
-  pinMode(trigPin, OUTPUT);  //Definisci ingressi e uscite
+  Serial.begin (9600);  // シリアルポート開始
+  pinMode(trigPin, OUTPUT);  // 入出力の定義
   pinMode(echoPin, INPUT);
 }
 
 void loop() 
 {
-  // Il sensore viene attivato da un impulso HIGH di 10 o più microsecondi.
-  // Fornire un breve impulso LOW prima per garantire un impulso HIGH pulito:
+  // センサーは10マイクロ秒以上のHIGHパルスでトリガーされます。
+  // クリーンなHIGHパルスを確実にするために、事前に短いLOWパルスを与えます：
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  // Leggi il segnale dal sensore: un impulso HIGH la cui
-  // durata è il tempo (in microsecondi) dal momento
-  // dell'invio del ping alla ricezione del suo eco da un oggetto.
+  // センサーからの信号を読み取ります：HIGHパルスの
+  // 持続時間は、パルス送信から物体でのエコー受信までの時間（マイクロ秒単位）です。
   duration = pulseIn(echoPin, HIGH);
-  // Converti il tempo in una distanza
-  cm = (duration/2) / 29.1;     // Dividi per 29.1 o moltiplica per 0.0343
-  inches = (duration/2) / 74;   // Dividi per 74 o moltiplica per 0.0135
+  // 時間を距離に変換します
+  cm = (duration/2) / 29.1;     // 29.1で割るか、0.0343を掛ける
+  inches = (duration/2) / 74;   // 74で割るか、0.0135を掛ける
   Serial.print(inches);
   Serial.print("in, ");
   Serial.print(cm);
@@ -199,4 +196,4 @@ void loop()
 //*****************************************************************
 ```
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, quindi collega il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, blocca il sensore ad ultrasuoni con la mano (la distanza è tra 2-10 cm), quindi verifica se il LED si accende.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、超音波センサーを手で遮って（距離が2〜10cmの間）、LEDが点灯するか確認してください。

@@ -1,30 +1,30 @@
-# Progetto 16 Controllo Velocità Bluetooth Smart Car
+# Project 16 Bluetooth Speed Control Smart Car
 
 ![](media/A131.jpeg)
 
-### **1.Descrizione**
+### **1.説明**
 
-In questo progetto, utilizzeremo un modulo Bluetooth per regolare la velocità della smart car. Consentiamo di definire velocità variabili e modificarle per cambiare la velocità della smart car.
+このプロジェクトでは、Bluetoothを使ってスマートカーの速度を調整します。変数speedsを定義し、それを変更することでスマートカーの速度を変えることができます。
 
-### **2.Diagramma di Flusso**
+### **2.フローチャート**
 
 ![90ab1f7fb1e16ad3c018b1c631e407c3](media/A134.png)
 
-### **3.Diagramma di Collegamento**
+### **3.配線図**
 
 ![](media/A135.png)
 
-1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati rispettivamente a G (GND), V (VCC), A4 e A5 della scheda di espansione.
+1). 8×8 LEDボードのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
 
-2). RXD, TXD, GND e VCC del modulo Bluetooth sono collegati rispettivamente a TX, RX, G e 5V sullo Shield motore 8833, mentre i pin STATE e BRK del modulo Bluetooth non devono essere collegati.
+2). BluetoothモジュールのRXD、TXD、GND、VCCはそれぞれ8833モーターシールドのTX、RX、G、5Vに接続します。BluetoothモジュールのSTATEとBRKピンは接続不要です。
 
-3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso a 5V (V) e il filo arancione a A3.
+3). サーボはG、V、A3に接続します。茶色の線はGnd（G）、赤色の線は5V（V）、オレンジ色の線はA3に接続します。
 
-4). L'alimentazione è collegata alla porta BAT.
+4). 電源はBATポートに接続します。
 
-### **4.Codice di Test**
+### **4.テストコード**
 
-<span style="color: rgb(255, 76, 65);">**Nota:** Prima di caricare il codice di test, è necessario rimuovere il modulo Bluetooth, altrimenti il caricamento del codice fallirà. Collegare il modulo Bluetooth dopo aver caricato con successo il codice.</span>
+<span style="color: rgb(255, 76, 65);">**注意:** テストコードをアップロードする前にBluetoothモジュールを取り外す必要があります。そうしないとコードのアップロードに失敗します。コードのアップロードが成功したらBluetoothモジュールを接続してください。</span>
 
 ```c
 //*******************************************************************************
@@ -34,9 +34,9 @@ lesson 16
 Bluetooth Speed Control Car
 http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //Imposta il pin clock su A5
-#define SDA_Pin  A4  //Imposta il pin dati su A4
-//Array, usato per memorizzare i dati del pattern, può essere calcolato da soli o ottenuto dallo strumento modulo
+#define SCL_Pin  A5  //クロックピンをA5に設定
+#define SDA_Pin  A4  //データピンをA4に設定
+//パターンのデータを格納する配列。自分で計算するかモジュールツールから取得可能
 unsigned char start01[] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
 unsigned char front[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char back[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x48,0x90,0x48,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -49,29 +49,29 @@ unsigned char speed_a[] =
 unsigned char speed_d[] = 
 {0x00,0x02,0x04,0x08,0x10,0x20,0x40,0xff,0x40,0x20,0x10,0x08,0x04,0x02,0x00,0x00};
 
-int left_ctrl = 2;//definisce i pin di controllo direzione del motore gruppo B
-int left_pwm = 5;//definisce i pin di controllo PWM del motore gruppo B
-int right_ctrl = 4;//definisce i pin di controllo direzione del motore gruppo A
-int right_pwm = 6;//definisce i pin di controllo PWM del motore gruppo A
+int left_ctrl = 2;//グループBモーターの方向制御ピンを定義
+int left_pwm = 5;//グループBモーターのPWM制御ピンを定義
+int right_ctrl = 4;//グループAモーターの方向制御ピンを定義
+int right_pwm = 6;//グループAモーターのPWM制御ピンを定義
 
-int speeds = 150; //Imposta la velocità iniziale a 150
+int speeds = 150; //初期速度を150に設定
 
-const int servopin = A3;//imposta il pin del servo su A3 
+const int servopin = A3;//サーボのピンをA3に設定
 
 char BLE_val;
 
 void setup() {
   Serial.begin(9600);//
-  pinMode(left_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo B come OUTPUT
-  pinMode(left_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo B come OUTPUT
-  pinMode(right_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo A come OUTPUT
-  pinMode(right_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo A come OUTPUT
-  servopulse(servopin,90);//l'angolo del servo è 90 gradi
+  pinMode(left_ctrl,OUTPUT);//グループBモーターの方向制御ピンをOUTPUTに設定
+  pinMode(left_pwm,OUTPUT);//グループBモーターのPWM制御ピンをOUTPUTに設定
+  pinMode(right_ctrl,OUTPUT);//グループAモーターの方向制御ピンをOUTPUTに設定
+  pinMode(right_pwm,OUTPUT);//グループAモーターのPWM制御ピンをOUTPUTに設定
+  servopulse(servopin,90);//サーボの角度を90度に設定
   delay(300);
-  pinMode(SCL_Pin,OUTPUT);// Imposta il pin clock come output
-  pinMode(SDA_Pin,OUTPUT);//Imposta il pin dati come output
+  pinMode(SCL_Pin,OUTPUT);//クロックピンを出力に設定
+  pinMode(SDA_Pin,OUTPUT);//データピンを出力に設定
   matrix_display(clear);
-  matrix_display(start01); //mostra il pattern start01
+  matrix_display(start01); //start01の表現パターンを表示
 }
 
 void loop() {
@@ -105,7 +105,7 @@ void loop() {
       matrix_display(clear);
       matrix_display(STOP01); 
       break;
-
+    
       case 'a' : speeds_a();
       matrix_display(clear);
       matrix_display(speed_a);  
@@ -118,35 +118,35 @@ void loop() {
     }
 }
 
-void car_front()//definisce lo stato di avanzamento
+void car_front()//前進状態を定義
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,(255-speeds));
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,(255-speeds));
 }
-void car_back()//definisce lo stato di retromarcia
+void car_back()//後退状態を定義
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,speeds);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,speeds);
 }
-void car_left()//imposta lo stato di svolta a sinistra
+void car_left()//左折状態を設定
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, speeds);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, (255-speeds));
 }
-void car_right()//imposta lo stato di svolta a destra
+void car_right()//右折状態を設定
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, (255-speeds));
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, speeds);
 }
-void car_Stop()//definisce lo stato di stop
+void car_Stop()//停止状態を定義
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,0);
@@ -154,36 +154,36 @@ void car_Stop()//definisce lo stato di stop
   analogWrite(right_pwm,0);
 }
 
-void speeds_a() { //funzione di accelerazione rapida
+void speeds_a() { //速度急増関数
   while (1) {
-    Serial.println(speeds);  //mostra le informazioni sulla velocità
-    if (speeds < 255) { //fino a 255
+    Serial.println(speeds);  //速度情報を表示
+    if (speeds < 255) { //最大255まで
       matrix_display(clear);
       matrix_display(speed_a);
       speeds++;
-      delay(10);  //regola la velocità di crescita
+      delay(10);  //成長速度を調整
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //Riceve 'S', l'auto smette di accelerare
+    if (BLE_val == 'S') // 'S'を受信したら加速停止
     break;
   }
 }
-void speeds_d() { //funzione di decelerazione
+void speeds_d() { //速度減少関数
   while (1) {
-    Serial.println(speeds);  //mostra le informazioni sulla velocità
-    if (speeds > 0) { //fino a 0
+    Serial.println(speeds);  //速度情報を表示
+    if (speeds > 0) { //0まで減速
       matrix_display(clear);
       matrix_display(speed_d);
       speeds--;
-      delay(10);    //regola la velocità di decelerazione
+      delay(10);    //減速速度を調整
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //Riceve 'S', l'auto smette di decelerare
+    if (BLE_val == 'S') // 'S'を受信したら減速停止
     break;
 }
 }
 
-void servopulse(int servopin,int myangle)//Angolo di funzionamento del servocomando
+void servopulse(int servopin,int myangle)//サーボの動作角度
 {
   for(int i=0; i<30; i++)
   {
@@ -195,22 +195,22 @@ void servopulse(int servopin,int myangle)//Angolo di funzionamento del servocoma
   }  
 }
 
-//questa funzione è usata per la visualizzazione a matrice di punti
+//この関数はドットマトリックス表示用
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //la funzione che richiama la condizione di inizio trasferimento dati
-  IIC_send(0xc0);  //seleziona l'indirizzo
+  IIC_start();  //データ転送開始条件を呼び出す関数
+  IIC_send(0xc0);  //アドレス選択
 
-  for (int i = 0; i < 16; i++) //i dati del pattern sono 16 byte
+  for (int i = 0; i < 16; i++) //パターンデータは16バイトです
   {
-    IIC_send(matrix_value[i]); //Trasmetti i dati del pattern
+    IIC_send(matrix_value[i]); //パターンのデータを送信します
   }
-  IIC_end();   //Termina la trasmissione dei dati del pattern
+  IIC_end();   //パターンデータ送信終了
   IIC_start();
-  IIC_send(0x8A);  //Controllo display, seleziona larghezza impulso 4/16
+  IIC_send(0x8A);  //表示制御、4/16パルス幅を選択
   IIC_end();
 }
-//Condizioni in cui inizia la trasmissione dei dati
+//データ送信が開始される条件
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -220,7 +220,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indica la fine della trasmissione dei dati
+//データ送信の終了を示す
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -231,27 +231,27 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//trasmetti dati
+//データ送信
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Ogni byte ha 8 bit e viene controllato bit per bit iniziando dal livello più basso
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //各バイトは8ビットで、最下位からビットごとにチェックします
   {
-    if (send_data & mask) { //Imposta i livelli alto e basso di SDA_Pin a seconda che ogni bit del byte sia 1 o 0
+    if (send_data & mask) { //バイトの各ビットが1か0かに応じてSDA_Pinの高低レベルを設定します
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Porta alto il pin clock SCL_Pin per fermare la trasmissione dei dati
+    digitalWrite(SCL_Pin, HIGH); //クロックピンSCL_Pinを高レベルにしてデータ送信を停止します
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //Porta basso il pin clock SCL_Pin per cambiare il SEGNALE di SDA 
+    digitalWrite(SCL_Pin, LOW); //クロックピンSCL_Pinを低レベルにしてSDAの信号を変化させます
   }
 }
 //*******************************************************************************
 ```
 
-### **5. Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, alimenta la fonte di alimentazione esterna e poi porta l'interruttore DIP su ON. Associa l'APP tramite Bluetooth, l'auto intelligente può essere controllata dall'APP per muoversi.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源をオンにしてからDIPスイッチをONにします。APPとBluetoothをペアリングすると、APPでスマートカーを操作して動かすことができます。
 
-Premi ![049343f587e0e7cf19fe8b665d735321](media/A136.png), l'auto accelererà, premi ![264f77cce6018584b54f46676fee4247](media/A137.png), l'auto rallenterà, e la scheda LED 8\*16 mostrerà il pattern di stato corrispondente dell'auto intelligente.
+![049343f587e0e7cf19fe8b665d735321](media/A136.png)を押すと、車は加速し、![264f77cce6018584b54f46676fee4247](media/A137.png)を押すと、車は減速し、8\*16 LEDボードにスマートカーの対応する状態パターンが表示されます。

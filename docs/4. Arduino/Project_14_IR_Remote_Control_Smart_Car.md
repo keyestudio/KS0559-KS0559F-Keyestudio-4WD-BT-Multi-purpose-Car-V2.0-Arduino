@@ -1,40 +1,40 @@
-# Progetto 14 Auto Intelligente Controllata da Telecomando IR
+# Project 14 IRリモコン制御スマートカー
 
 ![ff2fec813f8765e1bcd593b37b9c0a4f](media/A123.jpeg)
 
-### **1.Descrizione**
+### **1.説明**
 
-In questo progetto, realizzeremo un'auto intelligente controllata da telecomando IR e premeremo il pulsante sul telecomando IR per far muovere l'auto.
+このプロジェクトでは、IRリモコン制御のスマートカーを作成し、IRリモコンのボタンを押して車を動かします。
 
-### **2.Diagramma di Flusso**
+### **2.フローチャート**
 
 ![img](media/A124.png)
 
-**La logica specifica dell'auto intelligente controllata da telecomando IR è mostrata di seguito:**
+**IRリモコン制御スマートカーの具体的なロジックは以下の通りです：**
 
-| Configurazione iniziale                   |           | La scheda LED mostra una faccina sorridente      |
+| 初期設定                             |           | LEDボードにスマイルフェイスを表示                     |
 | ----------------------------------------- | --------- | ------------------------------------------------- |
-| Telecomando                              | Valore tasto | Stato tasto                                       |
-| ![img](media/A125.jpg) | FF629D    | Avanti La scheda LED 8*8 mostra l'icona avanti    |
-| ![img](media/A126.jpg) | FFA857    | Indietro La scheda LED 8*8 mostra l'icona indietro|
-| ![img](media/A127.jpg)                  | FF22DD    | Ruota a sinistra La scheda LED 8*8 mostra l'icona verso sinistra |
-| ![img](media/A128.jpg)                  | FFC23D    | Ruota a destra La scheda LED 8*8 mostra l'icona verso destra |
-| ![img](media/A129.jpg)                 | FF02FD    | Stop La scheda LED 8*8 mostra “STOP”              |
+| リモコン                            | キー値 | キー状態                                         |
+| ![img](media/A125.jpg) | FF629D    | 前進8*8 LEDボードに前方アイコンを表示            |
+| ![img](media/A126.jpg) | FFA857    | 後退8*8 LEDボードに後方アイコンを表示                 |
+| ![img](media/A127.jpg)                  | FF22DD    | 左回転8*8 LEDボードに左向きアイコンを表示   |
+| ![img](media/A128.jpg)                  | FFC23D    | 右回転8*8 LEDボードに右向きアイコンを表示 |
+| ![img](media/A129.jpg)                 | FF02FD    | 停止8*8 LEDボードに「STOP」を表示                     |
 
-### **3.Diagramma dei Collegamenti**
+### **3.配線図**
 
 ![9d8b58dff14fe22b5c87514db944530c](media/A130.png)
 
-1). GND, VCC, SDA e SCL del modulo scheda LED 8\*8 sono collegati rispettivamente a G (GND), V (VCC), A4 e A5 della scheda di espansione.
+1). 8\*8 LEDボードモジュールのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
 
-2). Poiché il ricevitore IR è integrato sulla Shield motore 8833, non è necessario alcun cablaggio aggiuntivo. I pin del ricevitore IR sulla scheda 8833 sono rispettivamente G (GND), V (VCC) e D3.
+2). IR受信機は8833モーターシールドに統合されているため、追加の配線は不要です。8833ボード上のIR受信機のピンはそれぞれG（GND）、V（VCC）、D3です。
 
-3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso è collegato a 5V (V) e il filo arancione è collegato ad A3.
+3). サーボはG、V、A3に接続します。茶色の線はGnd（G）、赤色の線は5V（V）、オレンジ色の線はA3に接続します。
 
-4). L'alimentazione è collegata alla porta BAT
+4). 電源はBATポートに接続します。
     
 
-### **4.Codice di Test**
+### **4.テストコード**
 
 ```c
 //*******************************************************************************
@@ -44,9 +44,9 @@ lesson 14
 IR remote Control Car
 http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //Imposta il pin clock su A5
-#define SDA_Pin  A4  //Imposta il pin dati su A4
-//Array, usato per memorizzare i dati del pattern, può essere calcolato da soli o ottenuto dallo strumento modulo
+#define SCL_Pin  A5  // クロックピンをA5に設定
+#define SDA_Pin  A4  // データピンをA4に設定
+// パターンのデータを格納する配列。自分で計算するかモジュールツールから取得可能
 unsigned char start01[] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
 unsigned char front[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char back[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x48,0x90,0x48,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -56,41 +56,41 @@ unsigned char STOP01[] = {0x2E,0x2A,0x3A,0x00,0x02,0x3E,0x02,0x00,0x3E,0x22,0x3E
 unsigned char clear[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
 #include <Arduino.h>
-#include <IRremote.h>//libreria per il controllo remoto IR
-int RECV_PIN = 3;//imposta il pin del ricevitore IR su D3
+#include <IRremote.h>// IRリモコン制御の機能ライブラリ
+int RECV_PIN = 3;// IR受信機のピンをD3に設定
 IRrecv irrecv(RECV_PIN);
 long irr_val;
 decode_results results;
 
-int left_ctrl = 2;//definisce i pin di controllo direzione del motore gruppo B
-int left_pwm = 5;//definisce i pin di controllo PWM del motore gruppo B
-int right_ctrl = 4;//definisce i pin di controllo direzione del motore gruppo A
-int right_pwm = 6;//definisce i pin di controllo PWM del motore gruppo A
+int left_ctrl = 2;// グループBモーターの方向制御ピンを定義
+int left_pwm = 5;// グループBモーターのPWM制御ピンを定義
+int right_ctrl = 4;// グループAモーターの方向制御ピンを定義
+int right_pwm = 6;// グループAモーターのPWM制御ピンを定義
 
 #include <Servo.h>
-Servo servo_A3;//imposta il pin del servo su A3 
+Servo servo_A3;// サーボのピンをA3に設定
 
 unsigned char data_line = 0;
 unsigned char delay_count = 0;
 
 void setup() {
   Serial.begin(9600);//
-  // Nel caso in cui il driver di interrupt si blocchi all'avvio, fornire un indizio
-  // all'utente su cosa sta succedendo.
+  // 割り込みドライバがセットアップ時にクラッシュする場合に備えて、
+  // ユーザーに何が起きているかを知らせる手がかりを与える。
   Serial.println("Enabling IRin");
-  irrecv.enableIRIn(); // Avvia il ricevitore
+  irrecv.enableIRIn(); // 受信機を開始
   Serial.println("Enabled IRin");
-  pinMode(left_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo B come OUTPUT
-  pinMode(left_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo B come OUTPUT
-  pinMode(right_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo A come OUTPUT
-  pinMode(right_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo A come OUTPUT
+  pinMode(left_ctrl,OUTPUT);//グループBモーターの方向制御ピンをOUTPUTに設定
+  pinMode(left_pwm,OUTPUT);//グループBモーターのPWM制御ピンをOUTPUTに設定
+  pinMode(right_ctrl,OUTPUT);//グループAモーターの方向制御ピンをOUTPUTに設定
+  pinMode(right_pwm,OUTPUT);//グループAモーターのPWM制御ピンをOUTPUTに設定
   servo_A3.attach(A3);
-  servo_A3.write(90);//l'angolo del servo è 90 gradi
+  servo_A3.write(90);//サーボの角度を90度に設定
   delay(300);
-  pinMode(SCL_Pin,OUTPUT);// Imposta il pin clock come output
-  pinMode(SDA_Pin,OUTPUT);//Imposta il pin dati come output
+  pinMode(SCL_Pin,OUTPUT);//クロックピンを出力に設定
+  pinMode(SDA_Pin,OUTPUT);//データピンを出力に設定
   matrix_display(clear);
-  matrix_display(start01); //mostra il pattern di espressione start01
+  matrix_display(start01); //start01の表情パターンを表示
 }
 
 void loop()
@@ -98,67 +98,67 @@ void loop()
   if (irrecv.decode(&results)) 
  {
     irr_val = results.value;
-    Serial.println(irr_val, HEX);//stampa seriale i segnali IR remoti letti 
+    Serial.println(irr_val, HEX);//読み取ったIRリモコン信号をシリアル出力
     switch(irr_val)
     {
-      case 0xFF629D : car_front(); //Riceve 0xFF629D, la macchina va avanti
+      case 0xFF629D : car_front(); //0xFF629Dを受信したら、車は前進
       matrix_display(clear);
       matrix_display(front);   
       break;
       
-      case 0xFFA857 : car_back(); //Riceve 0xFFA857, la macchina va indietro
+      case 0xFFA857 : car_back(); //0xFFA857を受信したら、車は後退
       matrix_display(clear);
       matrix_display(back); 
       break;
     
-      case 0xFF22DD : car_left(); //Riceve 0xFF22DD, la macchina ruota a sinistra
+      case 0xFF22DD : car_left(); //0xFF22DDを受信したら、車は左回転
       matrix_display(clear);
       matrix_display(left); 
       break;
      
-      case 0xFFC23D : car_right();//Riceve 0xFFC23D, la macchina ruota a destra
+      case 0xFFC23D : car_right();//0xFFC23Dを受信したら、車は右回転
       matrix_display(clear);
       matrix_display(right);  
       break;
      
-      case 0xFF02FD : car_Stop();//Riceve 0xFF02FD, la macchina si ferma
+      case 0xFF02FD : car_Stop();//0xFF02FDを受信したら、車は停止
       matrix_display(clear);
       matrix_display(STOP01); 
       break;
     }
-        irrecv.resume(); // Riceve il valore successivo
+        irrecv.resume(); // 次の値を受信
   }
 }
 
-void car_front()//definisce lo stato di avanzamento
+void car_front()//前進状態を定義
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,105);
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,105);
 }
-void car_back()//definisce lo stato di retromarcia
+void car_back()//後退状態を定義
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,150);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,150);
 }
-void car_left()//imposta lo stato di svolta a sinistra
+void car_left()//左回転状態を設定
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, 100);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, 155);
 }
-void car_right()//imposta lo stato di svolta a destra
+void car_right()//右回転状態を設定
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, 155);
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, 100);
 }
-void car_Stop()//definisce lo stato di stop
+void car_Stop()//停止状態を定義
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,0);
@@ -166,22 +166,22 @@ void car_Stop()//definisce lo stato di stop
   analogWrite(right_pwm,0);
 }
 
-//questa funzione è usata per la visualizzazione su matrice di punti
+// この関数はドットマトリックス表示用
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //la funzione che chiama la condizione di inizio trasferimento dati
-  IIC_send(0xc0);  //seleziona l'indirizzo
+  IIC_start();  //データ転送開始条件を呼び出す関数
+  IIC_send(0xc0);  //アドレスを選択
 
-  for (int i = 0; i < 16; i++) // i dati del pattern sono 16 byte
+  for (int i = 0; i < 16; i++) //パターンデータは16バイト
   {
-    IIC_send(matrix_value[i]); //Trasmetti i dati del pattern
+    IIC_send(matrix_value[i]); //パターンのデータを送信
   }
-  IIC_end();   //Termina la trasmissione dei dati del pattern
+  IIC_end();   //パターンデータ送信終了
   IIC_start();
-  IIC_send(0x8A);  //Controllo display, seleziona larghezza impulso 4/16
+  IIC_send(0x8A);  //表示制御、4/16パルス幅を選択
   IIC_end();
 }
-//Condizioni in cui inizia la trasmissione dei dati
+//データ送信開始の条件
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -191,7 +191,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indica la fine della trasmissione dei dati
+//データ送信終了を示す
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -202,25 +202,25 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//trasmetti dati
+//データ送信
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Ogni byte ha 8 bit e viene controllato bit per bit a partire dal livello più basso
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //各バイトは8ビットで、最下位からビット単位でチェック
   {
-    if (send_data & mask) { //Imposta i livelli alto e basso di SDA_Pin a seconda che ogni bit del byte sia 1 o 0
+    if (send_data & mask) { //バイトの各ビットが1か0かに応じてSDA_Pinの高低レベルを設定
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Porta alto il pin clock SCL_Pin per fermare la trasmissione dei dati
+    digitalWrite(SCL_Pin, HIGH); //クロックピンSCL_Pinを高レベルにしてデータ送信を停止
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //porta basso il pin clock SCL_Pin per cambiare il SEGNALE di SDA 
+    digitalWrite(SCL_Pin, LOW); //クロックピンSCL_Pinを低レベルにしてSDAの信号を変化させる
   }
 }
 //*******************************************************************************
 ```
 
-### **5. Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collegare i cablaggi secondo lo schema elettrico, alimentare la fonte esterna e quindi impostare l'interruttore DIP su ON. Successivamente è possibile utilizzare il telecomando IR per guidare l'auto a muoversi e la scheda LED 8X16 mostrerà il pattern di stato corrispondente.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源の電源を入れてからDIPスイッチをONにします。すると、IRリモコンで車を操作して動かすことができ、8X16 LEDボードには対応する状態パターンが表示されます。

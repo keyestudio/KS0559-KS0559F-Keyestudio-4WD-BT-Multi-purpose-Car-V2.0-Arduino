@@ -1,69 +1,68 @@
-# Progetto 6 Ricezione IR
+# Project 6 IR Reception
 
 ![](media/A141.png)
 
-### **1.Descrizione** 
+### **1.説明**
 
-Non c'è dubbio che il telecomando a infrarossi sia onnipresente nella vita quotidiana. Viene utilizzato per controllare vari elettrodomestici, come TV, stereo, videoregistratori e ricevitori di segnali satellitari. Il telecomando a infrarossi è composto da un sistema di trasmissione a infrarossi e da un sistema di ricezione a infrarossi, cioè un telecomando a infrarossi e un modulo ricevitore a infrarossi e un microcontrollore in grado di decodificare.  
+赤外線リモコンは日常生活で広く使われていることは間違いありません。テレビ、ステレオ、ビデオレコーダー、衛星信号受信機など、さまざまな家電製品の制御に使用されます。赤外線リモコンは赤外線送信システムと赤外線受信システムで構成されており、つまり赤外線リモコンと赤外線受信モジュール、およびデコード可能なマイコンから成り立っています。
 
 ![](media/A142.png)
 
-Il segnale portante a infrarossi a 38K emesso dal telecomando è codificato dal chip di codifica nel telecomando. È composto da una sezione di codice pilota, codice utente, codice inverso utente, codice dati e codice inverso dati. L'intervallo di tempo dell'impulso viene utilizzato per distinguere se è un segnale 0 o 1 e la codifica è composta da questi segnali 0, 1.
+リモコンから発信される38Kの赤外線搬送波信号は、リモコン内のエンコードチップによって符号化されています。これはパイロットコード、ユーザーコード、ユーザー逆コード、データコード、データ逆コードの一連で構成されています。パルスの時間間隔によって0か1の信号かを区別し、これらの0、1信号で符号化が行われています。
 
-Il codice utente dello stesso telecomando è costante mentre il codice dati può distinguere il tasto.
+同じリモコンのユーザーコードは一定ですが、データコードはキーを識別します。
 
-Quando si preme un tasto del telecomando, il telecomando invia un segnale portante a infrarossi. Quando il ricevitore IR riceve il segnale, il programma decodifica il segnale portante e determina quale tasto è stato premuto. L'MCU decodifica il segnale 01 ricevuto, giudicando così quale tasto è stato premuto dal telecomando.
+リモコンのボタンが押されると、リモコンは赤外線搬送波信号を送信します。IR受信機が信号を受信すると、プログラムは搬送波信号をデコードし、どのキーが押されたかを判定します。MCUは受信した0と1の信号をデコードし、リモコンのどのキーが押されたかを判断します。
 
-Il ricevitore a infrarossi che utilizziamo è un modulo ricevitore a infrarossi. È composto principalmente da una testa ricevente a infrarossi, che è un dispositivo che integra ricezione, amplificazione e demodulazione. Il suo IC interno ha completato la demodulazione e può realizzare dalla ricezione a infrarossi all'uscita ed è compatibile con segnali TTL.
+使用する赤外線受信機は赤外線受信モジュールです。主に赤外線受信ヘッドで構成されており、受信、増幅、復調を一体化したデバイスです。内部ICは復調を完了しており、赤外線受信から出力までを実現し、TTL信号に対応しています。
 
-Inoltre, è adatto per telecomandi a infrarossi e trasmissione dati a infrarossi. Il modulo ricevitore a infrarossi realizzato dal ricevitore ha solo tre pin, linea del segnale, VCC e GND. È molto comodo per comunicare con Arduino e altri microcontrollori.
+さらに、赤外線リモコンや赤外線データ伝送に適しています。受信機で作られた赤外線受信モジュールは信号線、VCC、GNDの3ピンのみで構成されており、Arduinoや他のマイコンとの通信が非常に便利です。
 
-### **2.Specifiche**
+### **2.仕様**
 
-- Tensione di funzionamento: 3.3-5V (DC)
+- 動作電圧: 3.3-5V（DC）
 
-- Segnale di uscita: Segnale digitale
+- 出力信号: デジタル信号
 
-- Angolo di ricezione: 90 gradi
+- 受信角度: 90度
 
-- Frequenza: 38khz
+- 周波数: 38kHz
 
-- Distanza di ricezione: 10m
+- 受信距離: 10m
 
-L'immagine mostra il prodotto reale e lo schema elettrico del ricevitore a infrarossi.
+下の写真は赤外線受信機の実物と回路図です。
 
 ![](media/A141.png)
 
 ![](media/A143.png)
 
-### **3.Componenti**
+### **3.部品**
 
-| Scheda di sviluppo *1      | Driver motore 8833 *1      | Modulo LED Rosso*1          |
+| 開発ボード *1             | 8833 モータードライバ *1  | 赤色LEDモジュール *1       |
 | ------------------------- | ------------------------- | ------------------------- |
-| ![img](media/A42.jpg) | ![img](media/A43.jpg) | ![img](media/A44.jpg) |
-| Cavo Dupont 3P F-F*1      | Cavo USB*1               |                           |
-| ![img](media/A45.jpg) | ![img](media/A46.jpg) |                           |
+| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)     |
+| 3P F-F デュポン線 *1      | USBケーブル *1            |                           |
+| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                           |
 
+8833ボードはIR受信機を統合しているため、配線は不要です。IR受信モジュールのピンはG（GND）、V（VCC）、D3です。
 
-Poiché la scheda 8833 integra il ricevitore IR, non è necessario effettuare collegamenti. I pin del modulo ricevitore IR sono G (GND), V (VCC) e D3.
+### **4.テストコード**
 
-### **4.Codice di test**
+<span style="color: rgb(255, 76, 65);">ご注意：ソフトウェアデモに表示されている赤外線モジュールはすでに拡張ボードに統合されており、単体での供給はありません。そのため、下の画像に示されているモジュールは製品に含まれていません。![](media/A144.png)</span>
 
-<span style="color: rgb(255, 76, 65);">Nota bene: Il modulo a infrarossi mostrato nella dimostrazione software è già integrato nella scheda di espansione e non viene fornito separatamente. Di conseguenza, non troverai il modulo raffigurato nell'immagine sottostante all'interno del prodotto.![](media/A144.png)</span>
+コードを書く前に、IR受信センサーのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
 
-Prima di scrivere il codice, è necessario importare il file della libreria del sensore ricevitore IR. I passaggi specifici sono i seguenti: 
-
-Clicca su ![](media/A29.png) per entrare nell'interfaccia della libreria di estensione di sensori/moduli/componenti, quindi cerca il sensore “**ir remote**” ![](media/A144.png) e cliccaci sopra. In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il sensore “ir remote” è stato aggiunto con successo. 
+![](media/A29.png)をクリックしてセンサー/モジュール/コンポーネントの拡張ライブラリ画面に入り、「**ir remote**」センサー![](media/A144.png)を検索してクリックします。これにより「**Not loaded**」が「**loaded**」に変わり、「ir remote」センサーが正常に追加されたことを示します。
 
 ![Img](media/A145.png)
 
 ![](media/A146.png)
 
-Clicca su ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, si può vedere il blocco di istruzioni del sensore “**ir remote**” aggiunto nell'area modulo. 
+![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加された「**ir remote**」センサーの命令ブロックがモジュールエリアに表示されます。
 
 ![](media/A147.png)
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -73,31 +72,31 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (4).![](media/A150.png)
 
-**Codice di test completo**
+**完成したテストコード**
 
 ![](media/A151.png)
 
-### **5.Risultato del test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, quindi collega il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, clicca su ![](media/A80.png) per impostare la velocità di trasmissione a 9600 baud.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、![](media/A80.png)をクリックしてボーレートを9600に設定します。
 
-Prendi il telecomando e invia il segnale al sensore ricevitore a infrarossi. Puoi vedere il valore del tasto corrispondente; se il tempo di pressione del tasto è troppo lungo, FFFFFFFF tende a generare caratteri illeggibili.
+リモコンを取り出し、赤外線受信センサーに信号を送信します。対応するキーのキー値が表示されます。キーの押下時間が長すぎると、FFFFFFFFが文字化けしやすくなります。
 
 ![](media/A152.png)
 
-I valori dei tasti del telecomando sono mostrati di seguito.
+リモコンのキー値は以下の通りです。
 
 ![](media/A153.jpeg)
 
-### **6. Pratica di Estensione**
+### **6. 拡張練習**
 
-Abbiamo decodificato il valore del tasto del telecomando IR. Che ne dici di controllare il LED tramite il valore misurato? Potremmo progettare un esperimento.
+IRリモコンのキー値をデコードしました。測定値でLEDを制御してみませんか？実験を設計してみましょう。
 
-Collega un LED a D9, quindi premi i tasti del telecomando per accendere e spegnere il LED.
+LEDをD9に接続し、リモコンのキーを押してLEDの点灯・消灯を行います。
 
 ![](media/A154.png)
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -115,8 +114,8 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (8).![](media/A159.png)
 
-**Codice di Test Completo**
+**完成したテストコード**
 
 ![](media/A160.png)
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, quindi collega il computer tramite un cavo USB per alimentare la scheda. Dopo l'accensione, premendo il tasto "**OK**" sul telecomando è possibile accendere e spegnere il LED.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、リモコンの「**OK**」キーを押すとLEDの点灯・消灯ができます。

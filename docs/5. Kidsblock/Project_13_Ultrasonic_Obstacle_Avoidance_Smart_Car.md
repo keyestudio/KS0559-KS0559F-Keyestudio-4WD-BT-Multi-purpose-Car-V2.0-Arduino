@@ -1,48 +1,48 @@
-# Progetto 13 Auto Intelligente con Evitamento Ostacoli a Ultrasuoni
+# Project 13 超音波障害物回避スマートカー
 
 ![](media/A296.png)
 
-### **1.Descrizione**
+### **1.説明**
 
-In questo progetto, miriamo a realizzare un'auto intelligente con evitamento ostacoli a ultrasuoni. Utilizzeremo l'ultrasuono per rilevare la distanza dall'ostacolo, che può essere usata per controllare il servo per ruotare e far muovere l'auto. Nel frattempo, la scheda LED 8X16 mostrerà il corrispondente schema di stato.
+このプロジェクトでは、超音波障害物回避スマートカーを作成します。超音波センサーを使って障害物までの距離を検出し、その情報をもとにサーボを制御して回転させ、車を動かします。同時に、8×16 LEDボードに対応する状態パターンを表示します。
 
-### **2.Diagramma di Flusso**
+### **2.フローチャート**
 
 ![img](media/A297.png)
 
-**La logica specifica dell'auto intelligente con evitamento ostacoli a ultrasuoni è mostrata di seguito:**
+**超音波障害物回避スマートカーの具体的なロジックは以下の通りです：**
 
 ![Img](media/A298.png)
 
 ![Img](media/A299.png)
 
-### **3.Diagramma di Collegamento**
+### **3.配線図**
 
 ![](media/A282.png)
 
-1). GND, VCC, SDA e SCL del modulo scheda LED 8\*8 sono collegati a G (GND), V (VCC), A4 e A5 della scheda di espansione.
+1). 8×8 LEDボードモジュールのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
 
-2). VCC, Trig, Echo e Gnd del sensore a ultrasuoni sono collegati a 5V (V), D12 (S), D13 (S) e Gnd (G).
+2). 超音波センサーのVCC、Trig、Echo、Gndはそれぞれ5V(V)、D12(S)、D13(S)、Gnd(G)に接続します。
 
-3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso è collegato a 5V (V) e il filo arancione è collegato ad A3.
+3). サーボはG、V、A3に接続します。茶色の線はGnd(G)、赤色の線は5V(V)、オレンジ色の線はA3に接続します。
 
-4). L'alimentazione è collegata alla porta BAT.
+4). 電源はBATポートに接続します。
 
-### **4.Codice di Test**
+### **4.テストコード**
 
-Prima di scrivere il codice, è necessario importare i file di libreria del sensore a ultrasuoni, della scheda LED 8x16 e del servo. I passaggi specifici sono i seguenti:
+コードを書く前に、超音波センサー、8×16 LEDボード、サーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
 
-Clicca ![](media/A29.png) per entrare nell'interfaccia della libreria di estensione di sensori/moduli/componenti, poi cerca il sensore “Ultrasonic” ![](media/A122.png) e cliccaci sopra. In questo modo, "**Not loaded**" cambia in "**loaded**", indicando che il sensore “**Ultrasonic**” è stato aggiunto con successo.
+センサー/モジュール/コンポーネントの拡張ライブラリ画面に入るには ![](media/A29.png) をクリックし、「Ultrasonic」センサー ![](media/A122.png) を検索してクリックします。これにより、「**Not loaded**」が「**loaded**」に変わり、「**Ultrasonic**」センサーが正常に追加されたことを示します。
 
 ![Img](media/A300.png)
 
 ![](/media/A284.png)
 
-Clicca ![](media/A33.png) per tornare all'interfaccia dell'editor di codice, si possono vedere i blocchi di istruzioni del sensore “**Ultrasonic**”, del modulo “**Matrix 8\*16 Aip1640**” e del componente “**Servo**” nell'area moduli.
+![](media/A33.png) をクリックしてコードエディタ画面に戻ると、追加された「**Ultrasonic**」センサー、「**Matrix 8×16 Aip1640**」モジュール、「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
 
 ![](media/A285.png)
 
-Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per riferimento.
+ブロックをドラッグして編集できます。以下のブロックは参考用です。
 
 (1).![](media/A126.png)
 
@@ -64,7 +64,7 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 (10).![](media/A291.png)
 
-**Codice di Test Completo**
+**完成したテストコード**
 
 ![](media/A303.png)
 
@@ -74,8 +74,8 @@ Puoi trascinare i blocchi per modificare. I blocchi elencati di seguito sono per
 
 ![](media/A306.png)
 
-### **5.Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo il diagramma di collegamento, accendi l'alimentazione esterna e poi porta l'interruttore DIP su ON.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れてDIPスイッチをONにします。
 
-L'auto intelligente si muove in avanti ed evita automaticamente gli ostacoli. Quando non c'è strada davanti, il servo guiderà il sensore a ultrasuoni a scansionare le distanze a sinistra, al centro e a destra, e l'auto girerà verso il lato aperto. Nel frattempo, la scheda LED 8X16 mostrerà il corrispondente schema di stato.
+スマートカーは前進し、自動的に障害物を回避します。前方に道がない場合、サーボが超音波センサーを駆動して左、中、右の距離をスキャンし、空いている側に車が旋回します。同時に、8×16 LEDボードに対応する状態パターンが表示されます。

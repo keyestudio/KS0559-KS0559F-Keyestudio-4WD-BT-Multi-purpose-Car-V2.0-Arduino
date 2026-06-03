@@ -1,46 +1,46 @@
-# Progetto 17 Auto Smart Bluetooth Multiuso
+# Project 17 多機能Bluetoothスマートカー
 
 ![2c1198e0ebd7c31622b7438469fb572c](media/A138.jpeg)
 
-### **1.Descrizione**
+### **1.説明**
 
-Nei progetti precedenti, l'auto eseguiva solo una singola funzione. Tuttavia, in questa lezione, integreremo tutte le sue funzioni tramite Bluetooth.
+これまでのプロジェクトでは、車は単一の機能のみを実行していました。しかし、このレッスンでは、Bluetoothを介してすべての機能を統合します。
 
-### **2.Diagramma di Flusso**
+### **2.フローチャート**
 
 ![73f4da1e321bc29282d3b2f5cb3168dd](media/A139.png)
 
-### **3.Diagramma di Collegamento**
+### **3.配線図**
 
 ![fce8edd349ddbcfe02e6f27feb73e90f](media/A140.png)
 
-1). GND, VCC, SDA e SCL della scheda LED 8\*8 sono collegati rispettivamente a G (GND), V (VCC), A4 e A5 della scheda di espansione.
+1). 8×8 LEDボードのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
 
-2). RXD, TXD, GND e VCC del modulo Bluetooth sono collegati rispettivamente a TX, RX, G e 5V sullo Shield motore 8833, mentre i pin STATE e BRK del modulo Bluetooth non devono essere collegati.
+2). BluetoothモジュールのRXD、TXD、GND、VCCはそれぞれ8833モーターシールドのTX、RX、G、5Vに接続し、BluetoothモジュールのSTATEおよびBRKピンは接続不要です。
 
-3). Il servo è collegato a G, V e A3. Il filo marrone è collegato a Gnd (G), il filo rosso a 5V (V) e il filo arancione a A3.
+3). サーボはG、V、A3に接続します。茶色の線はGnd(G)、赤色の線は5V(V)、オレンジ色の線はA3に接続します。
 
-4). G, V, S1, S2 e S3 del sensore di tracciamento linea sono collegati rispettivamente a G (GND), V (VCC), D11, D7 e D8 della scheda di espansione sensori.
+4). ライントラッキングセンサーのG、V、S1、S2、S3はセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
 
-5). VCC, Trig, Echo e Gnd del sensore ad ultrasuoni sono collegati a 5V (V), D12 (S), D13 (S) e Gnd (G).
+5). 超音波センサーのVCC、Trig、Echo、Gndはそれぞれ5V(V)、D12(S)、D13(S)、Gnd(G)に接続します。
 
-6). L'alimentazione è collegata alla porta BAT.
+6). 電源はBATポートに接続します。
 
-### **4.Codice di Test**
+### **4.テストコード**
 
-<span style="color: rgb(255, 76, 65);">**Nota:** Prima di caricare il codice di test, è necessario rimuovere il modulo Bluetooth, altrimenti il caricamento del codice fallirà. Collegare il modulo Bluetooth dopo aver caricato con successo il codice.</span>
+<span style="color: rgb(255, 76, 65);">**注意:** テストコードをアップロードする前にBluetoothモジュールを取り外す必要があります。そうしないとコードのアップロードに失敗します。コードのアップロードが成功した後にBluetoothモジュールを接続してください。</span>
 
 ```c
 //*******************************************************************************
 /*
 keyestudio 4wd BT Car 
-lezione 17
-Auto Multifunzionale Bluetooth
+lesson 17
+Bluetooth Multifunctional Car
 http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //Imposta il pin clock su A5
-#define SDA_Pin  A4  //Imposta il pin dati su A4
-//Array, usato per memorizzare i dati del pattern, può essere calcolato da soli o ottenuto dallo strumento modulo
+#define SCL_Pin  A5  // クロックピンをA5に設定
+#define SDA_Pin  A4  // データピンをA4に設定
+// パターンのデータを格納する配列。自分で計算するかモジュールツールから取得可能
 unsigned char start01[] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
 unsigned char front[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char back[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x48,0x90,0x48,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -53,42 +53,42 @@ unsigned char speed_a[] =
 unsigned char speed_d[] = 
 {0x00,0x02,0x04,0x08,0x10,0x20,0x40,0xff,0x40,0x20,0x10,0x08,0x04,0x02,0x00,0x00};
 
-int left_ctrl = 2;//definisce i pin di controllo direzione del motore gruppo B
-int left_pwm = 5;//definisce i pin di controllo PWM del motore gruppo B
-int right_ctrl = 4;//definisce i pin di controllo direzione del motore gruppo A
-int right_pwm = 6;//definisce i pin di controllo PWM del motore gruppo A
-int speeds = 150; //Imposta la velocità iniziale a 150
+int left_ctrl = 2; // グループBモーターの方向制御ピンを定義
+int left_pwm = 5;  // グループBモーターのPWM制御ピンを定義
+int right_ctrl = 4; // グループAモーターの方向制御ピンを定義
+int right_pwm = 6;  // グループAモーターのPWM制御ピンを定義
+int speeds = 150;   // 初期速度を150に設定
 
-const int servopin = A3;//imposta il pin del servo su A3 
+const int servopin = A3; // サーボのピンをA3に設定
 
-int L_pin = 11; //definisce il pin del sensore di tracciamento sinistro come D11
-int M_pin = 7; //definisce il pin del sensore di tracciamento centrale come D7
-int R_pin = 8; //definisce il pin del sensore di tracciamento destro come D8
+int L_pin = 11; // 左側トラッキングセンサーのピンをD11に定義
+int M_pin = 7;  // 中央トラッキングセンサーのピンをD7に定義
+int R_pin = 8;  // 右側トラッキングセンサーのピンをD8に定義
 int L_val, M_val, R_val;
 
-int trigPin = 12; //Pin TRIG collegato a D12
-int echoPin = 13; //Pin ECHO collegato a D13
+int trigPin = 12; // TRIGピンをD12に接続
+int echoPin = 13; // ECHOピンをD13に接続
 int distance, distance_l, distance_r;
 
 char BLE_val;
 
 void setup() {
-  Serial.begin(9600);//Imposta la velocità di trasmissione a 9600
-  pinMode(left_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo B come OUTPUT
-  pinMode(left_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo B come OUTPUT
-  pinMode(right_ctrl,OUTPUT);//imposta i pin di controllo direzione del motore gruppo A come OUTPUT
-  pinMode(right_pwm,OUTPUT);//imposta i pin di controllo PWM del motore gruppo A come OUTPUT
-  servopulse(servopin,90);//l'angolo del servo è 90 gradi
+  Serial.begin(9600);//ボーレートを9600に設定
+  pinMode(left_ctrl,OUTPUT);//グループBモーターの方向制御ピンをOUTPUTに設定
+  pinMode(left_pwm,OUTPUT);//グループBモーターのPWM制御ピンをOUTPUTに設定
+  pinMode(right_ctrl,OUTPUT);//グループAモーターの方向制御ピンをOUTPUTに設定
+  pinMode(right_pwm,OUTPUT);//グループAモーターのPWM制御ピンをOUTPUTに設定
+  servopulse(servopin,90);//サーボの角度を90度に設定
   delay(300);
-  pinMode(L_pin, INPUT); //I pin del sensore di tracciamento sono configurati in modalità input
+  pinMode(L_pin, INPUT); //トラッキングセンサーのピンを入力モードに設定
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
-  pinMode(trigPin, OUTPUT); //definisce TRIG come modalità output
-  pinMode(echoPin, INPUT); //definisce ECHO come modalità input
-  pinMode(SCL_Pin,OUTPUT);// Imposta il pin clock come output
-  pinMode(SDA_Pin,OUTPUT);//Imposta il pin dati come output
+  pinMode(trigPin, OUTPUT); //TRIGを出力モードに定義
+  pinMode(echoPin, INPUT); //ECHOを入力モードに定義
+  pinMode(SCL_Pin,OUTPUT);//クロックピンを出力に設定
+  pinMode(SDA_Pin,OUTPUT);//データピンを出力に設定
   matrix_display(clear);
-  matrix_display(start01); //visualizza il pattern di espressione start01
+  matrix_display(start01); //start01の表現パターンを表示
 }
 
 void loop() {
@@ -133,46 +133,46 @@ void loop() {
       matrix_display(speed_d); 
       break;
     
-      case  'U':  follow();  //Ricevuto ‘U’, entra in modalità follow
+      case  'U':  follow();  //‘U’を受信し、フォローモードに入る
       break; 
-      case  'Y':  avoid(); //Ricevuto ‘Y’, entra in modalità evitamento ostacoli  
+      case  'Y':  avoid(); //‘Y’を受信し、障害物回避モードに入る  
       break;  
-      case  'G':  confinement(); //Ricevuto ‘G’, entra in modalità confinamento
+      case  'G':  confinement(); //‘G’を受信し、閉じ込めモードに入る
       break;  
-      case  'X':  tracking(); //Ricevuto ‘X’, entra in modalità tracciamento
+      case  'X':  tracking(); //‘X’を受信し、トラッキングモードに入る
       break;  
     }
 }
 
-void car_front()//definisce lo stato di avanzamento
+void car_front()//前進状態を定義
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,(255-speeds));
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,(255-speeds));
 }
-void car_back()//definisce lo stato di retromarcia
+void car_back()//後退状態を定義
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,speeds);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,speeds);
 }
-void car_left()//imposta lo stato di svolta a sinistra
+void car_left()//左折状態を設定
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, speeds);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, (255-speeds));
 }
-void car_right()//imposta lo stato di svolta a destra
+void car_right()//右折状態を設定
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, (255-speeds));
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, speeds);
 }
-void car_Stop()//definisce lo stato di stop
+void car_Stop()//停止状態を定義
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,0);
@@ -180,44 +180,44 @@ void car_Stop()//definisce lo stato di stop
   analogWrite(right_pwm,0);
 }
 
-void speeds_a() { //funzione di accelerazione rapida
+void speeds_a() { //加速関数
   while (1) {
-    Serial.println(speeds);  //visualizza le informazioni sulla velocità 
-    if (speeds < 255) { //fino a 255
+    Serial.println(speeds);  //速度情報を表示 
+    if (speeds < 255) { //最大255まで
       matrix_display(clear);
       matrix_display(speed_a);
       speeds++;
-      delay(10);  //regola la velocità di crescita 
+      delay(10);  //成長速度を調整 
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //Ricevuto 'S', l'auto smette di accelerare
+    if (BLE_val == 'S') //‘S’を受信したら加速を停止
     break;
   }
 }
-void speeds_d() { //funzione di decelerazione
+void speeds_d() { //減速関数
   while (1) {
-    Serial.println(speeds);  //visualizza le informazioni sulla velocità
-    if (speeds > 0) { //fino a 0
+    Serial.println(speeds);  //速度情報を表示
+    if (speeds > 0) { //0まで減速
       matrix_display(clear);
       matrix_display(speed_d);
       speeds--;
-      delay(10);    //regola la velocità di decelerazione
+      delay(10);    //減速速度を調整
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //Ricevuto 'S', l'auto smette di decelerare
+    if (BLE_val == 'S') //‘S’を受信したら減速を停止
     break;
 }
 }
 
 int get_distance() {
   int distance = 0;
-  digitalWrite(trigPin, LOW);     // invia impulso tramite Trig/Pin, attiva il rilevamento HC-SR04, così da inviare il segnale ultrasonico a livello basso per 2μs
+  digitalWrite(trigPin, LOW);     // Trig/Pinを通じてパルスを送信し、HC-SR04の測距をトリガーするため、超音波信号インターフェースを2μsの低レベルに設定
   delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);    // imposta il segnale ultrasonico a livello alto per 10μs, qui almeno 10μs
+  digitalWrite(trigPin, HIGH);    // 超音波信号インターフェースを10μsの高レベルに設定（ここでは少なくとも10μs）
   delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);     // mantiene il segnale ultrasonico a livello basso
-  distance = pulseIn(echoPin, HIGH) / 58; // legge il tempo dell'impulso e converte il tempo in distanza (unità: cm)
-  Serial.println(distance);        // output valore distanza
+  digitalWrite(trigPin, LOW);     // 超音波信号インターフェースを低レベルに維持
+  distance = pulseIn(echoPin, HIGH) / 58; // パルス時間を読み取り、距離（単位：cm）に変換
+  Serial.println(distance);        // 距離値を出力
   return distance;
 }
 
@@ -226,29 +226,29 @@ void follow() {
   delay(200);
   int follow_flag = 1;
   while (follow_flag) {
-    distance = get_distance(); //chiama la funzione di rilevamento
-    if (distance < 8 ) {//Se la distanza è inferiore a 8
-      car_back();//la macchina va indietro
+    distance = get_distance(); // 測距関数を呼び出す
+    if (distance < 8 ) {// 距離が8未満の場合
+      car_back();// 車が後退する
       matrix_display(clear);
       matrix_display(back); 
     }
-    else if (distance >= 8 && distance < 13) { //Se la distanza è maggiore o uguale a 8, ma inferiore a 13
-      car_Stop();//ferma
+    else if (distance >= 8 && distance < 13) { // 距離が8以上13未満の場合
+      car_Stop();// 停止
       matrix_display(clear);
       matrix_display(STOP01); 
     }
-    else if (distance >= 13 && distance <= 35 ) { //Se la distanza è maggiore o uguale a 13, ma inferiore o uguale a 35
-      car_front();//la macchina va avanti
+    else if (distance >= 13 && distance <= 35 ) { // 距離が13以上35以下の場合
+      car_front();// 車が前進する
       matrix_display(clear);
       matrix_display(front);
     }
-    else {//Se nessuna delle condizioni precedenti
-      car_Stop();//ferma
+    else {// 上記のいずれにも該当しない場合
+      car_Stop();// 停止
       matrix_display(clear);
       matrix_display(STOP01); 
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') { //Quando viene ricevuta la S, la macchina si ferma
+    if (BLE_val == 'S') { // 'S'を受信した場合、車を停止する
       follow_flag = 0;
       car_Stop();
     }
@@ -258,47 +258,47 @@ void follow() {
 void avoid() {
   int avoid_flag = 1;
   while (avoid_flag) {
-    distance = get_distance(); //Chiama la funzione di rilevamento
-    if (distance > 0 && distance < 20) { //Se la distanza è inferiore a 20 e maggiore di 0
-      car_Stop();//si ferma
+    distance = get_distance(); // 測距関数を呼び出す
+    if (distance > 0 && distance < 20) { // 距離が0より大きく20未満の場合
+      car_Stop();// 停止
       matrix_display(clear);
-      matrix_display(STOP01);   //la matrice a punti mostra un pattern di stop
+      matrix_display(STOP01);   // ドットマトリクスに停止パターンを表示
       delay(1000);
-      servopulse(servopin,160); //porta il servocomando oltre 180 gradi
+      servopulse(servopin,160); // サーボを180度以上に動かす
       delay(500);
-      distance_l = get_distance(); //ottiene la distanza a sinistra 
+      distance_l = get_distance(); // 左側の距離を取得
       delay(100);
-      servopulse(servopin,20); //gira il servocomando a 0 gradi
+      servopulse(servopin,20); // サーボを0度に回す
       delay(500);
-      distance_r = get_distance(); //ottiene la distanza a destra
+      distance_r = get_distance(); // 右側の距離を取得
       delay(100);
-      if (distance_l > distance_r) { //confronta le distanze, se la sinistra è maggiore della destra
-        car_left();  //la macchina gira a sinistra
+      if (distance_l > distance_r) { // 距離を比較し、左の方が大きい場合
+        car_left();  // 車が左に曲がる
         matrix_display(clear);
-        matrix_display(left);   //la matrice a punti mostra un pattern a sinistra
-        servopulse(servopin,90);//il servocomando ritorna a 90 gradi
+        matrix_display(left);   // ドットマトリクスに左パターンを表示
+        servopulse(servopin,90);// サーボを90度に戻す
         delay(700);
         matrix_display(clear);
-        matrix_display(front);   //la matrice a punti mostra un pattern avanti
+        matrix_display(front);   // ドットマトリクスに前進パターンを表示
       } 
-      else { //Altrimenti se la destra è maggiore della sinistra
-        car_right();//la macchina gira a destra
+      else { // それ以外（右の方が大きい場合）
+        car_right();// 車が右に曲がる
         matrix_display(clear);
-        matrix_display(right);   //la matrice a punti mostra un pattern a destra
-        servopulse(servopin,90);//il servocomando ritorna a 90 gradi
+        matrix_display(right);   // ドットマトリクスに右パターンを表示
+        servopulse(servopin,90);// サーボを90度に戻す
         delay(700);
         matrix_display(clear);
-        matrix_display(front);   //la matrice a punti mostra un pattern avanti
+        matrix_display(front);   // ドットマトリクスに前進パターンを表示
       }
     }
-    else { //Quando la distanza frontale è maggiore o uguale a 20cm
-      car_front();//la macchina va avanti
+    else { // 前方距離が20以上の場合
+      car_front();// 車が前進する
       matrix_display(clear);
-      matrix_display(front);   //la matrice a punti mostra un pattern avanti
+      matrix_display(front);   // ドットマトリクスに前進パターンを表示
 
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') {//Quando viene ricevuta la S, la macchina si ferma
+    if (BLE_val == 'S') {// 'S'を受信した場合、車を停止する
       avoid_flag = 0;
       car_Stop();
     }
@@ -308,20 +308,20 @@ void avoid() {
 void confinement() {
   int confinement_flag = 1;
   while (confinement_flag) {
-    L_val = digitalRead(L_pin); //leggi il valore del sensore sinistro
-    M_val = digitalRead(M_pin); //leggi il valore del sensore centrale
-    R_val = digitalRead(R_pin); //leggi il valore del sensore destro
-    if ( L_val == 0 && M_val == 0 && R_val == 0 ) { //la macchina va avanti quando non viene rilevata alcuna linea nera
+    L_val = digitalRead(L_pin); // 左センサーの値を読み取る
+    M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
+    R_val = digitalRead(R_pin); // 右センサーの値を読み取る
+    if ( L_val == 0 && M_val == 0 && R_val == 0 ) { // 黒線が検出されない場合、車は前進する
       car_front();
     }
-    else { //Altrimenti, se uno qualsiasi dei sensori di tracciamento rileva una linea nera, la macchina va indietro e poi gira a sinistra
+    else { // それ以外の場合、いずれかのトラッキングセンサーが黒線を検出したら、車は後退してから左に曲がる
       car_back();
       delay(500);
       car_left();
       delay(800);
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') { //Quando viene ricevuta la S, la macchina si ferma
+    if (BLE_val == 'S') { // 'S'を受信したら、車は停止する
       confinement_flag = 0;
       car_Stop();
     }
@@ -331,40 +331,40 @@ void confinement() {
 void tracking() {
   int track_flag = 1;
   while (track_flag) {
-    L_val = digitalRead(L_pin); //leggi il valore del sensore sinistro
-    M_val = digitalRead(M_pin); //leggi il valore del sensore centrale
-    R_val = digitalRead(R_pin); //leggi il valore del sensore destro
-    if (M_val == 1) { //Linea nera rilevata al centro
-      if (L_val == 1 && R_val == 0) { //Se una linea nera è rilevata a sinistra, ma non a destra, gira a sinistra
+    L_val = digitalRead(L_pin); // 左センサーの値を読み取る
+    M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
+    R_val = digitalRead(R_pin); // 右センサーの値を読み取る
+    if (M_val == 1) { // 中央で黒線を検出
+      if (L_val == 1 && R_val == 0) { // 左に黒線があり右にない場合、左に曲がる
         car_left();
       }
-      else if (L_val == 0 && R_val == 1) { //Altrimenti, se una linea nera è rilevata a destra e non a sinistra, gira a destra
+      else if (L_val == 0 && R_val == 1) { // それ以外で右に黒線があり左にない場合、右に曲がる
         car_right();
       }
-      else { //Altrimenti, la macchina va avanti
+      else { // それ以外は車は前進する
         car_front();
       }
     }
-    else { //nessuna linea nera rilevata al centro
-      if (L_val == 1 && R_val == 0) { //Se una linea nera è rilevata a sinistra, ma non a destra, gira a sinistra
+    else { // 中央で黒線が検出されない場合
+      if (L_val == 1 && R_val == 0) { // 左に黒線があり右にない場合、右に曲がる
         car_right();
       }
-      else if (L_val == 0 && R_val == 1) { //Altrimenti, se una linea nera è rilevata a destra e non a sinistra, gira a destra
+      else if (L_val == 0 && R_val == 1) { // それ以外で右に黒線があり左にない場合、右に曲がる
         car_right();;
       }
-      else { //Altrimenti, ferma la macchina
+      else { // それ以外は停止する
         car_Stop();
       }
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') { //Quando viene ricevuta la S, la macchina si ferma
+    if (BLE_val == 'S') { // 'S'を受信したら、車は停止する
       track_flag = 0;
       car_Stop();
     }
   }
 }
 
-void servopulse(int servopin,int myangle)//Angolo di funzionamento del servocomando
+void servopulse(int servopin,int myangle)// サーボモーターの動作角度
 {
   for(int i=0; i<30; i++)
   {
@@ -376,22 +376,22 @@ void servopulse(int servopin,int myangle)//Angolo di funzionamento del servocoma
   }  
 }
 
-//questa funzione è usata per il display a matrice di punti
+// この関数はドットマトリックス表示に使用される
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //la funzione che chiama la condizione di inizio trasferimento dati
-  IIC_send(0xc0);  //seleziona indirizzo
+  IIC_start();  // データ転送開始条件を呼び出す関数
+  IIC_send(0xc0);  // アドレスを選択する
 
-  for (int i = 0; i < 16; i++) // i dati del pattern sono 16 byte
+  for (int i = 0; i < 16; i++) //パターンデータは16バイトです
   {
-    IIC_send(matrix_value[i]); //Trasmetti i dati del pattern
+    IIC_send(matrix_value[i]); //パターンのデータを送信します
   }
-  IIC_end();   //Termina la trasmissione dei dati del pattern
+  IIC_end();   //パターンデータ送信終了
   IIC_start();
-  IIC_send(0x8A);  //Controllo display, seleziona larghezza impulso 4/16
+  IIC_send(0x8A);  //表示制御、4/16パルス幅を選択
   IIC_end();
 }
-//Condizioni in cui inizia la trasmissione dei dati
+//データ送信が開始される条件
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -401,7 +401,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//Indica la fine della trasmissione dei dati
+//データ送信の終了を示す
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -412,27 +412,27 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//trasmetti dati
+//データ送信
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //Ogni byte ha 8 bit e viene controllato bit per bit a partire dal livello più basso
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //各バイトは8ビットで、最下位からビットごとにチェックします
   {
-    if (send_data & mask) { //Imposta i livelli alto e basso di SDA_Pin a seconda che ogni bit del byte sia 1 o 0
+    if (send_data & mask) { //バイトの各ビットが1か0かに応じてSDA_Pinの高低レベルを設定します
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //Porta alto il pin clock SCL_Pin per fermare la trasmissione dei dati
+    digitalWrite(SCL_Pin, HIGH); //クロックピンSCL_Pinを高レベルにしてデータ送信を停止します
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //Porta basso il pin clock SCL_Pin per cambiare il SEGNALE di SDA 
+    digitalWrite(SCL_Pin, LOW); //クロックピンSCL_Pinを低レベルにしてSDAの信号を変化させます
   }
 }
 //*******************************************************************************
 ```
 
-### **5. Risultato del Test**
+### **5.テスト結果**
 
-Dopo aver caricato con successo il codice sulla scheda V4.0, collega i cablaggi secondo lo schema elettrico, alimenta la fonte esterna e poi porta l'interruttore DIP su ON.
+コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源を入れてからDIPスイッチをONにします。
 
-Dopo che il modulo Bluetooth è stato collegato all'APP e l'APP mobile si è connessa con successo al Bluetooth, l'auto intelligente può essere controllata tramite l'APP mobile. Possiamo ottenere le funzioni corrispondenti premendo i pulsanti corrispondenti sull'APP mobile.
+BluetoothモジュールがAPPに接続され、モバイルAPPがBluetoothに正常に接続されると、モバイルAPPでスマートカーを制御できます。モバイルAPPの対応するボタンを押すことで、対応する機能を実現できます。
