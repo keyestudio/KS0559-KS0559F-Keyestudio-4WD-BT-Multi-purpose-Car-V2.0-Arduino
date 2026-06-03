@@ -1,162 +1,162 @@
-# Project 13 超音波障害物回避スマートカー
+# Project 13 Ultrasonic Obstakel Vermijdende Slimme Auto
 
 ![fd4044796307f709987b9d2e215e0911](media/A119.png)
 
-### **1.説明**
+### **1.Beschrijving**
 
-このプロジェクトでは、超音波を使った障害物回避スマートカーを作成します。超音波センサーで障害物までの距離を検出し、その情報を使ってサーボを回転させ、車を動かします。同時に、8X16 LEDボードに対応する状態パターンを表示します。
+In dit project willen we een ultrasone obstakel vermijdende slimme auto maken. We zullen de ultrasone sensor gebruiken om de afstand tot het obstakel te detecteren, wat gebruikt kan worden om de servo te besturen zodat deze draait en de auto kan bewegen. Tegelijkertijd zal het 8X16 LED-bord het bijbehorende statuspatroon weergeven.
 
-### **2.フローチャート**
+### **2.Stroomschema**
 
 ![img](media/A120.png)
 
-**超音波障害物回避スマートカーの具体的なロジックは以下の通りです：**
+**De specifieke logica van de ultrasone obstakel vermijdende slimme auto wordt hieronder weergegeven:**
 
 ![Img](media/A121.png)
 
 ![Img](media/A122.png)
 
-### **3.配線図**
+### **3.Aansluitschema**
 
 ![](media/A118.png)
 
-1). 8\*8 LEDボードモジュールのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
+1). GND, VCC, SDA en SCL van de 8\*8 LED-bordmodule zijn verbonden met G (GND), V (VCC), A4 en A5 van het uitbreidingsbord.
 
-2). 超音波センサーのVCC、Trig、Echo、GNDはそれぞれ5V(V)、D12(S)、D13(S)、GND(G)に接続します。
+2). VCC, Trig, Echo en Gnd van de ultrasone sensor zijn verbonden met 5V (V), D12 (S), D13 (S) en Gnd (G).
 
-3). サーボはG、V、A3に接続します。茶色の線はGND(G)、赤色の線は5V(V)、オレンジ色の線はA3に接続します。
+3). De servo is verbonden met G, V en A3. De bruine draad is aangesloten op Gnd (G), de rode draad is aangesloten op 5V (V) en de oranje draad is aangesloten op A3.
 
-4). 電源はBATポートに接続します。
+4). De voeding is aangesloten op de BAT-poort.
 
-### **4.テストコード**
+### **4.Testcode**
 
 ```c 
 //*******************************************************************************
 /*
  keyestudio 4wd BT Car
- lesson 13
- Avoiding Car
+ les 13
+ Vermijdende Auto
  http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  //クロックピンをA5に設定
-#define SDA_Pin  A4  //データピンをA4に設定
-//パターンのデータを格納する配列。自分で計算するかモジュールツールから取得可能
+#define SCL_Pin  A5  // Stel de klokpin in op A5
+#define SDA_Pin  A4  // Stel de datapin in op A4
+//Array, gebruikt om de data van het patroon op te slaan, kan zelf berekend worden of verkregen via de modulus tool
 unsigned char front[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char left[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x44,0x28,0x10,0x44,0x28,0x10,0x44,0x28,0x10,0x00};
 unsigned char right[] = {0x00,0x10,0x28,0x44,0x10,0x28,0x44,0x10,0x28,0x44,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char STOP01[] = {0x2E,0x2A,0x3A,0x00,0x02,0x3E,0x02,0x00,0x3E,0x22,0x3E,0x00,0x3E,0x0A,0x0E,0x00};
 unsigned char clear[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
-int left_ctrl = 2;//グループBモーターの方向制御ピンを定義
-int left_pwm = 5;//グループBモーターのPWM制御ピンを定義
-int right_ctrl = 4;//グループAモーターの方向制御ピンを定義
-int right_pwm = 6;//グループAモーターのPWM制御ピンを定義
+int left_ctrl = 2;//definieer de richtingsbesturingspinnen van motor groep B
+int left_pwm = 5;//definieer de PWM-besturingspinnen van motor groep B
+int right_ctrl = 4;//definieer de richtingsbesturingspinnen van motor groep A
+int right_pwm = 6;//definieer de PWM-besturingspinnen van motor groep A
 
-#include "SR04.h"//超音波センサーのライブラリを定義
-#define TRIG_PIN 12//超音波センサーの信号出力をD12に設定
-#define ECHO_PIN 13//超音波センサーの信号入力をD13に設定
+#include "SR04.h"//definieer de bibliotheek van de ultrasone sensor
+#define TRIG_PIN 12// stel het signaaluitgang van de ultrasone sensor in op D12 
+#define ECHO_PIN 13//stel het signaalingang van de ultrasone sensor in op D13 
 SR04 sr04 = SR04(ECHO_PIN,TRIG_PIN);
-long distance,a1,a2;//3つの距離を定義
-const int servopin = A3;//サーボのピンをA3に設定
+long distance,a1,a2;//definieer drie afstanden
+const int servopin = A3;//stel de pin van de servo in op A3 
 
 void setup() {
-  pinMode(left_ctrl,OUTPUT);//グループBモーターの方向制御ピンを出力に設定
-  pinMode(left_pwm,OUTPUT);//グループBモーターのPWM制御ピンを出力に設定
-  pinMode(right_ctrl,OUTPUT);//グループAモーターの方向制御ピンを出力に設定
-  pinMode(right_pwm,OUTPUT);//グループAモーターのPWM制御ピンを出力に設定
-  pinMode(TRIG_PIN, OUTPUT); //Trigピンを出力に設定
-  pinMode(ECHO_PIN, INPUT); //Echoピンを入力に設定
-  servopulse(servopin,90);//サーボの角度を90度に設定
+  pinMode(left_ctrl,OUTPUT);//stel de richtingsbesturingspinnen van motor groep B in als OUTPUT
+  pinMode(left_pwm,OUTPUT);//stel de PWM-besturingspinnen van motor groep B in als OUTPUT
+  pinMode(right_ctrl,OUTPUT);//stel de richtingsbesturingspinnen van motor groep A in als OUTPUT
+  pinMode(right_pwm,OUTPUT);//stel de PWM-besturingspinnen van motor groep A in als OUTPUT
+  pinMode(TRIG_PIN, OUTPUT); //Stel de trig pin in als output
+  pinMode(ECHO_PIN, INPUT); //Stel de echo pin in als input
+  servopulse(servopin,90);//de hoek van de servo is 90 graden
   delay(300);
-  pinMode(SCL_Pin,OUTPUT);//クロックピンを出力に設定
-  pinMode(SDA_Pin,OUTPUT);//データピンを出力に設定
+  pinMode(SCL_Pin,OUTPUT);// Stel de klokpin in als output
+  pinMode(SDA_Pin,OUTPUT);//Stel de datapin in als output
   matrix_display(clear);
 }
  
 void loop()
  {
-  avoid();//メインプログラムを実行
+  avoid();//voer het hoofdprogramma uit
 }
 
 void avoid()
 {
-  distance=sr04.Distance(); //超音波センサーで検出した値を取得
+  distance=sr04.Distance(); //verkrijg de waarde gedetecteerd door de ultrasone sensor 
 
-  if((distance < 20)&&(distance != 0))//距離が0より大きく20未満の場合  
+  if((distance < 20)&&(distance != 0))//als de afstand groter is dan 0 en kleiner dan 10  
 
   {
-    car_Stop();//停止
+    car_Stop();//stop
     matrix_display(clear);
-    matrix_display(STOP01);//停止パターンを表示
+    matrix_display(STOP01);//toon stop patroon
     delay(1000);
-    servopulse(servopin,160);//サーボを160°に回転
+    servopulse(servopin,160);//servo draait naar 160°
     delay(500);
-    a1=sr04.Distance();//距離を測定
+    a1=sr04.Distance();//meet de afstand
     delay(100);
-    servopulse(servopin,20);//20度に回転
+    servopulse(servopin,20);//draai naar 20 graden
     delay(500);
-    a2=sr04.Distance();//距離を測定
+    a2=sr04.Distance();//meet de afstand
     delay(100);
-    servopulse(servopin,90);  //90度の位置に戻す
+    servopulse(servopin,90);  //Keer terug naar de 90 graden positie
     delay(500);
-    if(a1 > a2)//距離を比較し、左の距離が右の距離より大きい場合
+    if(a1 > a2)//vergelijk de afstand, als de linker afstand groter is dan de rechter afstand
     {
-      car_left();//左に曲がる
+      car_left();//sla linksaf
       matrix_display(clear);
-      matrix_display(left);    //左折パターンを表示
-      servopulse(servopin,90);//サーボを90度に回転
-      delay(700); //左に700ms回転
+      matrix_display(left);    //toon linksaf patroon
+      servopulse(servopin,90);//servo draait naar 90 graden
+      delay(700); //sla 700ms linksaf
       matrix_display(clear);
-      matrix_display(front);  //前方パターンを表示
+      matrix_display(front);  //toon vooruit patroon
     }
-    else//右の距離が左より大きい場合
+    else//als de rechter afstand groter is dan de linker
     {
-      car_right();//右に曲がる
+      car_right();//sla rechtsaf
       matrix_display(clear);
-      matrix_display(right);  //右折パターンを表示
-      servopulse(servopin,90);//サーボを90度に回転
+      matrix_display(right);  //toon rechtsaf patroon
+      servopulse(servopin,90);//servo draait naar 90 graden
       delay(700);
       matrix_display(clear);
-      matrix_display(front);  //前方パターンを表示
+      matrix_display(front);  //toon vooruit patroon
     }
   }
-  else//それ以外の場合
+  else//anders
   {
-    car_front();//前進
+    car_front();//rij vooruit
     matrix_display(clear);
-    matrix_display(front);  //前方パターンを表示
+    matrix_display(front);  // toon vooruit patroon
   }
 }
 
-void car_front()//車が前進する
+void car_front()//auto rijdt vooruit
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,155);
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,155);
 }
-void car_back()//後退する
+void car_back()//rij achteruit
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,100);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,100);
 }
-void car_left()//車が左に曲がる
+void car_left()//auto slaat linksaf
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, 100);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, 155);
 }
-void car_right()//車が右に曲がる
+void car_right()//auto slaat rechtsaf
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, 155);
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, 100);
 }
-void car_Stop()//停止
+void car_Stop()//stop
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,0);
@@ -164,7 +164,7 @@ void car_Stop()//停止
   analogWrite(right_pwm,0);
 }
 
-void servopulse(int servopin,int myangle)//サーボの動作角度
+void servopulse(int servopin,int myangle)//de draaihoek van de servo
 {
   for(int i=0; i<20; i++)
   {
@@ -176,23 +176,22 @@ void servopulse(int servopin,int myangle)//サーボの動作角度
   } 
 }
 
-//この関数はドットマトリックス表示用
+//deze functie wordt gebruikt voor dot matrix display
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //データ転送開始条件を呼び出す関数
-  IIC_send(0xc0);  //アドレスを選択
+  IIC_start();  //de functie die de startconditie van datatransfer aanroept
+  IIC_send(0xc0);  //selecteer adres
 
-```cpp
-  for (int i = 0; i < 16; i++) //パターンデータは16バイトです
+  for (int i = 0; i < 16; i++) //de patroon data is 16 bytes
   {
-    IIC_send(matrix_value[i]); //パターンのデータを送信します
+    IIC_send(matrix_value[i]); //Zend de data van het patroon
   }
-  IIC_end();   //パターンデータ送信終了
+  IIC_end();   //Einde van patroon data transmissie
   IIC_start();
-  IIC_send(0x8A);  //表示制御、4/16パルス幅を選択
+  IIC_send(0x8A);  //Display controle, selecteer 4/16 pulsbreedte
   IIC_end();
 }
-//データ送信開始の条件
+//Voorwaarden waaronder datatransmissie begint
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -202,7 +201,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//データ送信終了を示す
+//Geeft het einde van datatransmissie aan
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -213,27 +212,27 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//データ送信
+//zend data
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //各バイトは8ビットで、最下位からビットごとにチェックします
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Elke byte heeft 8 bits en wordt bit voor bit gecontroleerd beginnend bij het laagste niveau
   {
-    if (send_data & mask) { //バイトの各ビットが1か0かに応じてSDA_Pinの高低レベルを設定します
+    if (send_data & mask) { //Stelt de hoge en lage niveaus van SDA_Pin in afhankelijk van of elk bit van de byte een 1 of een 0 is
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //クロックピンSCL_PinをHIGHにしてデータ送信を停止します
+    digitalWrite(SCL_Pin, HIGH); //Trek de klokpin SCL_Pin hoog om datatransmissie te stoppen
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //クロックピンSCL_PinをLOWにしてSDAの信号を変化させます
+    digitalWrite(SCL_Pin, LOW); //trek de klokpin SCL_Pin laag om het SIGNaal van SDA te veranderen
   }
 }
-//*******************************************************************************
+//******************************************************************************
 ```
 
-### **5.テスト結果**
+### **5. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源をオンにしてからDIPスイッチをONにします。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het bedradingsschema, zet de externe voeding aan en zet vervolgens de DIP-schakelaar op ON.
 
-スマートカーは前進し、自動的に障害物を回避します。前方に道がない場合、サーボが超音波センサーを駆動して左、中、右の距離をスキャンし、空いている側に車が旋回します。同時に、8X16 LEDボードには対応する状態パターンが表示されます。
+De slimme auto rijdt vooruit en ontwijkt automatisch obstakels. Wanneer er geen weg vooruit is, zal de servo de ultrasone sensor aansturen om de afstanden links, midden en rechts te scannen, en zal de auto naar de open zijde draaien. Ondertussen zal het 8X16 LED-bord het overeenkomstige statuspatroon weergeven.

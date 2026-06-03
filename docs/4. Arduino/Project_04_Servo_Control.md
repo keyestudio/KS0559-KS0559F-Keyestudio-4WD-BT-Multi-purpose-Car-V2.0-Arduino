@@ -1,106 +1,106 @@
-# Project 4 サーボ制御
+# Project 4 Servo Control
 
-### **1.説明**
+### **1.Beschrijving**
 
 ![image-20250509084654137](media/A25.png)
 
-サーボモーターは位置制御用の回転アクチュエーターです。主にハウジング、回路基板、コアレスモーター、ギア、位置センサーで構成されています。動作原理は、サーボがMCUや受信機から送られる信号を受け取り、周期20ms、幅1.5msの基準信号を生成し、取得した直流バイアス電圧とポテンショメーターの電圧を比較して電圧差を出力することです。
+Een servomotor is een positioneringsbesturingsrotatie-actuator. Het bestaat voornamelijk uit een behuizing, een printplaat, een kernloze motor, een tandwiel en een positieresensor. Het werkingsprincipe is dat de servo het signaal ontvangt dat door MCU's of ontvangers wordt verzonden en een referentiesignaal produceert met een periode van 20 ms en een breedte van 1,5 ms, vervolgens vergelijkt het de verkregen DC-voorspanningsspanning met de spanning van de potentiometer en verkrijgt het spanningsverschil als uitgang.
 
 ![image-20250509084710719](media/A26.png)
 
-一般的に、サーボには茶色、赤、オレンジの3本の線があります。茶色の線はグランド、赤は正極線、オレンジは信号線です。
+Over het algemeen heeft een servo drie draden in bruin, rood en oranje. De bruine draad is de aarde, de rode is de positieve poollijn en de oranje is een signaallijn.
 
-サーボモーターの回転角度はPWM（パルス幅変調）信号のデューティサイクルを調整することで制御されます。PWM信号の標準周期は20ms（50Hz）です。理論上、幅は1ms〜2msの範囲ですが、実際には0.5ms〜2.5msの範囲です。この幅は0°から180°の回転角度に対応します。ただし、ブランドによっては同じ信号でも回転角度が異なる場合があります。
+De rotatiehoek van de servomotor wordt geregeld door de duty cycle van het PWM (Pulse-Width Modulation) signaal aan te passen. De standaardcyclus van het PWM-signaal is 20 ms (50 Hz). Theoretisch ligt de breedte tussen 1 ms en 2 ms, maar in de praktijk is het tussen 0,5 ms en 2,5 ms. De breedte komt overeen met de rotatiehoek van 0° tot 180°. Let er echter op dat bij motoren van verschillende merken hetzelfde signaal verschillende rotatiehoeken kan veroorzaken.
 
 ![image-20250509084727797](media/A27.png)
 
-対応するサーボ角度は以下の通りです：
+De bijbehorende servohoeken worden hieronder weergegeven:
 
 ![image-20250509084739380](media/A28.png)
 
-### **2.仕様**
+### **2.Specificaties**
 
-- 動作電圧：DC 4.8V ～ 6V
+- Werkspanning: DC 4,8V ~ 6V
 
-- 動作角度範囲：約180°（500 → 2500 μsec時）
+- Werkingshoekbereik: ongeveer 180° (bij 500 → 2500 μsec)
 
-- パルス幅範囲：500 → 2500 μsec
+- Pulsbreedtebereik: 500 → 2500 μsec
 
-- 無負荷速度：0.12 ± 0.01 秒 / 60（DC 4.8V） 0.1 ± 0.01 秒 / 60（DC 6V）
+- Snelheid zonder belasting: 0,12 ± 0,01 sec / 60 (DC 4,8V) 0,1 ± 0,01 sec / 60 (DC 6V)
 
-- 無負荷電流：200 ± 20mA（DC 4.8V） 220 ± 20mA（DC 6V）
+- Stroom zonder belasting: 200 ± 20mA (DC 4,8V) 220 ± 20mA (DC 6V)
 
-- 停止トルク：1.3 ± 0.01kg·cm（DC 4.8V） 1.5 ± 0.1kg·cm（DC 6V）
+- Stopkoppel: 1,3 ± 0,01 kg·cm (DC 4,8V) 1,5 ± 0,1 kg·cm (DC 6V)
 
-- 停止電流：≦ 850mA（DC 4.8V） ≦ 1000mA（DC 6V）
+- Stopstroom: ≦ 850mA (DC 4,8V) ≦ 1000mA (DC 6V)
 
-- 待機電流：3 ± 1mA（DC 4.8V） 4 ± 1mA（DC 6V）
+- Stand-by stroom: 3 ± 1mA (DC 4,8V) 4 ± 1mA (DC 6V)
 
-### **3.コンポーネント**
+### **3.Componenten**
 
-|                     開発ボード *1                     |           8833 モータードライバー *1           |                           サーボ*1                            |
+|                     Development Board *1                     |           8833 Motor Driver *1           |                           Servo*1                            |
 | :----------------------------------------------------------: | :--------------------------------------: | :----------------------------------------------------------: |
 |           ![img](media/A8.jpg)           | ![img](media/A9.jpg) | ![image-20250509084654137](media/A25.png) |
-|                    18650 バッテリーホルダー*1                    |               USB ケーブル*1                |               18650 バッテリー*2（別途用意）               |
+|                    18650 Battery Holder*1                    |               USB Cable*1                |               18650 Battery*2（zelf geleverd）               |
 | ![image-20250509084950601](media/A29.png) |         ![img](media/A12.jpg)         | ![image-20250509085010348](media/A30.png) |
 
-### **4.配線図**
+### **4.Aansluitschema**
 
 ![image-20250509085038006](media/A31.png)
 
-配線メモ：サーボはG（GND）、V（VCC）、A3に接続します。サーボの茶色線はGnd（G）に、赤線は5V（V）に、オレンジ線はA3に接続します。
+Aansluitnotitie: De servo is verbonden met G (GND), V (VCC) en A3, de bruine draad van de servo is verbonden met Gnd (G), de rode is verbonden met 5V (V) en de oranje is aangesloten op A3.
 
-サーボは駆動電流の要求が高いため、外部電源に接続する必要があります。一般的に開発ボードの電流は十分ではありません。外部電源を接続しないと、開発ボードが焼損する恐れがあります。
+De servo moet worden aangesloten op een externe voeding vanwege de hoge stroomvraag voor het aansturen van de servo. Over het algemeen is de stroom van het development board niet groot genoeg. Zonder aansluiting op externe voeding kan het development board doorbranden.
 
-### **5.テストコード**
+### **5.Testcode**
 
 ```c
 //****************************************************************************
 /*
 keyestudio 4wd BT Car
-lesson 4.1
+les 4.1
 Servo
 http://www.keyestudio.com
 */
-#define servoPin A3  // サーボのピン
-int pos; // サーボの角度変数
-int pulsewidth; // サーボのパルス幅変数
+#define servoPin A3  //servo Pin
+int pos; //de hoekvariabele van de servo
+int pulsewidth; //pulsbreedtevariabele van de servo
 
 void setup() {
-  pinMode(servoPin, OUTPUT);  // サーボのピンを出力に設定
-  procedure(0); // サーボの角度を0度に設定
+  pinMode(servoPin, OUTPUT);  //zet de pinnen van de servo op output
+  procedure(0); //zet de hoek van de servo op 0 graden
 }
 
 void loop() {
-  for (pos = 0; pos <= 180; pos += 1) { // 0度から180度まで移動
-    // 1度ずつステップで
-    procedure(pos);              // 変数 'pos' の位置にサーボを動かす
-    delay(15);                   // サーボの回転速度を制御
+  for (pos = 0; pos <= 180; pos += 1) { // gaat van 0 graden tot 180 graden
+    // in stappen van 1 graad
+    procedure(pos);              // vertel de servo om naar positie in variabele 'pos' te gaan
+    delay(15);                   // controleer de rotatiesnelheid van de servo
   }
-  for (pos = 180; pos >= 0; pos -= 1) { // 180度から0度まで移動
-    procedure(pos);              // 変数 'pos' の位置にサーボを動かす
+  for (pos = 180; pos >= 0; pos -= 1) { // gaat van 180 graden tot 0 graden
+    procedure(pos);              // vertel de servo om naar positie in variabele 'pos' te gaan
     delay(15);                    
   }
 }
 
-// サーボを制御する関数
+//functie om servo te besturen
 void procedure(int myangle) {
-  pulsewidth = myangle * 11 + 500;  // パルス幅の値を計算
+  pulsewidth = myangle * 11 + 500;  //bereken de waarde van pulsbreedte
   digitalWrite(servoPin,HIGH);
-  delayMicroseconds(pulsewidth);   // 高レベルの時間がパルス幅
+  delayMicroseconds(pulsewidth);   //De duur van het hoge niveau is pulsbreedte
   digitalWrite(servoPin,LOW);
-  delay((20 - pulsewidth / 1000));  // サイクルは20msで、残りの時間は低レベル
+  delay((20 - pulsewidth / 1000));  //de cyclus is 20ms, het lage niveau duurt de rest van de tijd
 }
 //****************************************************************************
 ```
 
-### **6.テスト結果**
+### **6. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源を入れます。電源を入れたら、ディップスイッチを「ON」側に切り替えると、サーボは0°から180°の範囲で揺れ動きます。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het bedradingsschema en zet de externe voeding aan. Na het inschakelen, zet de dip switch op de "ON" stand, dan zal de servo zwaaien in het bereik van 0° tot 180°.
 
-### **7.拡張練習**
+### **7. Uitbreidingspraktijk**
 
-さらに、ライブラリファイルを使ってサーボを制御することも可能です。詳細は以下のリンクを参照してください：[https://www.arduino.cc/en/Reference/Servo](https://www.arduino.cc/en/Reference/Servo)。
+Bovendien kunnen we de servo besturen via een bibliotheekbestand. Raadpleeg de link: [https://www.arduino.cc/en/Reference/Servo](https://www.arduino.cc/en/Reference/Servo).
 
 ![image-20250509085122183](media/A32.png)
 
@@ -108,46 +108,46 @@ void procedure(int myangle) {
 //***************************************************************************
 /*
  keyestudio 4wd BT Car
- lesson 4.2
+ les 4.2
  Servo
  http://www.keyestudio.com
 */
 #include <Servo.h>
-Servo myservo;  // サーボを制御するためのサーボオブジェクトを作成
-// ほとんどのボードで12個のサーボオブジェクトを作成可能
-int pos = 0;    // サーボの位置を格納する変数
+Servo myservo;  // maak een servo-object aan om een servo te besturen
+// op de meeste boards kunnen twaalf servo-objecten worden aangemaakt
+int pos = 0;    // variabele om de servo-positie op te slaan
 
 void setup() {
-  myservo.attach(A3);  // ピンA3にサーボを接続してサーボオブジェクトに割り当てる
+  myservo.attach(A3);  // koppelt de servo op pin A3 aan het servo-object
 }
 void loop() {
-  for (pos = 0; pos <= 180; pos += 1) { // 0度から180度まで移動
-    // 1度ずつステップで
-    myservo.write(pos);              // 変数 'pos' の位置にサーボを動かす
-    delay(15);                       // サーボが位置に到達するまで15ms待つ
+  for (pos = 0; pos <= 180; pos += 1) { // gaat van 0 graden tot 180 graden
+    // in stappen van 1 graad
+    myservo.write(pos);              // vertel de servo om naar positie in variabele 'pos' te gaan
+    delay(15);                       // wacht 15ms tot de servo de positie bereikt
   }
-  for (pos = 180; pos >= 0; pos -= 1) { // 180度から0度まで移動
-    myservo.write(pos);              // 変数 'pos' の位置にサーボを動かす
-    delay(15);                       // サーボが位置に到達するまで15ms待つ
+  for (pos = 180; pos >= 0; pos -= 1) { // gaat van 180 graden tot 0 graden
+    myservo.write(pos);              // vertel de servo om naar positie in variabele 'pos' te gaan
+    delay(15);                       // wacht 15ms tot de servo de positie bereikt
   }
 }
 //***************************************************************************
 ```
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源を入れます。電源を入れたら、ディップスイッチを「ON」側に切り替えると、サーボは0°から180°の範囲で揺れ動きます。通常はライブラリファイルで制御します。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het bedradingsschema en zet de externe voeding aan. Na het inschakelen, zet de dip switch op de "ON" stand, dan zal de servo ook zwaaien in het bereik van 0° tot 180°. We besturen het meestal via een bibliotheekbestand.
 
-### **8.コード説明**
+### **8. Code-uitleg**
 
-Arduinoには**\#include \<Servo.h\>**（サーボ機能と文）が付属しています。
+Arduino wordt geleverd met **\#include \<Servo.h\>** (servo functie en instructie)
 
-以下はサーボ機能の一般的な文です：
+De volgende zijn enkele veelvoorkomende instructies van de servo functie:
 
-1). **attach（interface）**——サーボのインターフェースを設定
+1). **attach(interface)**——Stel de interface van de servo in
 
-2). **write（angle）**——サーボの回転角度を設定、設定可能な角度範囲は0°から180°
+2). **write(angle)**——Wordt gebruikt om de rotatiehoek van de servo in te stellen, en het ingestelde hoekbereik is van 0° tot 180°
 
-3). **read（）**——サーボの角度を読み取る、つまり“write()”のコマンド値を読み取る
+3). **read()**——wordt gebruikt om de hoek van de servo te lezen, namelijk het uitlezen van de opdrachtwaarde van “write()”
 
-4). **attached（）**——サーボのパラメータがインターフェースに送られているか判定
+4). **attached()**——Bepaalt of de parameter van de servo naar zijn interface is gestuurd
 
-<span style="color: rgb(255, 76, 65);">注意：</span> 上記の書き方は「servo変数名.具体的な文（） 」の形式です。例：myservo.attach(9)。
+<span style="color: rgb(255, 76, 65);">Opmerking:</span> Het bovenstaande schrijfformaat is “servo variabelenaam, specifieke instructie()”, bijvoorbeeld: myservo.attach(9).

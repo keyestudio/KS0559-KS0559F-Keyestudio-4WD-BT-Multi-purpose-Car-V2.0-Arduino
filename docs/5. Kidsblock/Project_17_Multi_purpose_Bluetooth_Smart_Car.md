@@ -1,53 +1,53 @@
-# Project 17 多機能 Bluetooth スマートカー
+# Project 17 Multi-purpose Bluetooth Smart Car
 
 ![](media/A349.jpeg)
 
-### **1.説明**
+### **1.Beschrijving**
 
-これまでのプロジェクトでは、車は単一の機能のみを実行していました。しかし、このレッスンでは、Bluetoothを介してすべての機能を統合します。
+In eerdere projecten voert de auto slechts één enkele functie uit. In deze les zullen we echter al zijn functies integreren via Bluetooth.
 
-### **2.フローチャート**
+### **2.Stroomschema**
 
 ![](media/A350.png)
 
-### **3.配線図**
+### **3.Aansluitschema**
 
 ![](media/A351.png)
 
-1). 8\*8 LEDボードのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
+1). GND, VCC, SDA en SCL van het 8\*8 LED-bord zijn verbonden met G (GND), V (VCC), A4 en A5 van het uitbreidingsbord.
 
-2). BluetoothモジュールのRXD、TXD、GND、VCCはそれぞれ8833モータードライバー拡張ボードのTX、RX、G、5Vに接続します。BluetoothモジュールのSTATEおよびBRKピンは接続不要です。
+2). De RXD, TXD, GND en VCC van de Bluetooth-module zijn respectievelijk verbonden met TX, RX, G en 5V op het 8833 motor driver uitbreidingsbord, terwijl de STATE- en BRK-pinnen van de Bluetooth-module niet hoeven te worden aangesloten.
 
-3). サーボはG、V、A3に接続します。茶色の線はGnd（G）に、赤色の線は5V（V）に、オレンジ色の線はA3に接続します。
+3). De servo is verbonden met G, V en A3. De bruine draad is aangesloten op Gnd (G), de rode draad op 5V (V) en de oranje draad op A3.
 
-4). ライントラッキングセンサーのG、V、S1、S2、S3はセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
+4). G, V, S1, S2 en S3 van de lijnvolgsensor zijn verbonden met G (GND), V (VCC), D11, D7 en D8 van het sensor uitbreidingsbord.
 
-5). 超音波センサーのVCC、Trig、Echo、Gndはそれぞれ5V（V）、D12（S）、D13（S）、Gnd（G）に接続します。
+5). VCC, Trig, Echo en Gnd van de ultrasone sensor zijn verbonden met 5V (V), D12 (S), D13 (S) en Gnd (G).
 
-6). 電源はBATポートに接続します。
+6). De voeding is verbonden met de BAT-poort.
 
-### **4.テストコード**
+### **4.Testcode**
 
-コードを書く前に、超音波センサー、8x16 LEDボード、サーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+Voordat je de code schrijft, is het noodzakelijk om de bibliotheekbestanden van de ultrasone sensor, het 8x16 LED-bord en de servo te importeren. De specifieke stappen zijn als volgt:
 
-![](media/A29.png)をクリックしてセンサー／モジュール／コンポーネントの拡張ライブラリ画面に入り、「**Ultrasonic**」センサー![](media/A122.png)を検索してクリックします。これにより「**Not loaded**」が「**loaded**」に変わり、「**Ultrasonic**」センサーが正常に追加されたことを示します。
+Klik op ![](media/A29.png) om de extensiebibliotheekinterface van sensoren/modules/componenten te openen, zoek vervolgens naar de “**Ultrasonic**” sensor ![](media/A122.png) en klik erop. Hierdoor verandert "**Not loaded**" in "**loaded**", wat aangeeft dat de “**Ultrasonic**” sensor succesvol is toegevoegd.
 
 ![Img](media/A300.png)
 
 ![](media/A124.png)
 
-![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加された「**Ultrasonic**」センサー、「**Matrix 8\*16 Aip1640**」モジュール、「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
+Klik op ![](media/A33.png) om terug te keren naar de code-editorinterface. Het instructieblok van de toegevoegde “**Ultrasonic**” sensor, “**Matrix 8\*16 Aip1640**” module en “**Servo**” component is zichtbaar in het modulegebied.
 
 ![](media/A285.png)
 
-**完成したテストコード**
+**Volledige testcode**
 
-<span style="color: rgb(255, 76, 65);">**注意：** テストコードをアップロードする前にBluetoothモジュールを取り外す必要があります。そうしないとコードのアップロードに失敗します。コードのアップロードが成功した後にBluetoothモジュールを接続してください。</span>
+<span style="color: rgb(255, 76, 65);">**Opmerking:** Verwijder de Bluetooth-module voordat je de testcode uploadt, anders kan de code niet worden geüpload. Sluit de Bluetooth-module pas aan nadat de code succesvol is geüpload.</span>
 
 ![](media/A352.png)
 
-### **5.テスト結果**
+### **5.Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源を入れてDIPスイッチをONにします。
+Nadat de code succesvol is geüpload naar de V4.0 board, verbind je de bedrading volgens het aansluitschema, zet je de externe voeding aan en zet je de DIP-schakelaar op ON.
 
-BluetoothモジュールがAPPに接続され、モバイルAPPがBluetoothに正常に接続されると、スマートカーはモバイルAPPで制御可能になります。モバイルAPPの対応するボタンを押すことで、対応する機能を実現できます。
+Nadat de Bluetooth-module is aangesloten op de APP en de mobiele APP succesvol is verbonden met Bluetooth, kan de smart car worden bestuurd via de mobiele APP. We kunnen de bijbehorende functies bereiken door op de overeenkomstige knoppen in de mobiele APP te drukken.

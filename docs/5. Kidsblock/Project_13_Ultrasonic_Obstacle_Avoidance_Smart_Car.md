@@ -1,48 +1,48 @@
-# Project 13 超音波障害物回避スマートカー
+# Project 13 Ultrasonic Obstakel Vermijdende Slimme Auto
 
 ![](media/A296.png)
 
-### **1.説明**
+### **1. Beschrijving**
 
-このプロジェクトでは、超音波障害物回避スマートカーを作成します。超音波センサーを使って障害物までの距離を検出し、その情報をもとにサーボを制御して回転させ、車を動かします。同時に、8×16 LEDボードに対応する状態パターンを表示します。
+In dit project willen we een ultrasone obstakel vermijdende slimme auto maken. We gebruiken de ultrasone sensor om de afstand tot het obstakel te detecteren, wat gebruikt kan worden om de servo te besturen zodat deze draait en de auto kan bewegen. Tegelijkertijd zal het 8X16 LED-bord het bijbehorende statuspatroon weergeven.
 
-### **2.フローチャート**
+### **2. Stroomschema**
 
 ![img](media/A297.png)
 
-**超音波障害物回避スマートカーの具体的なロジックは以下の通りです：**
+**De specifieke logica van de ultrasone obstakel vermijdende slimme auto wordt hieronder weergegeven:**
 
 ![Img](media/A298.png)
 
 ![Img](media/A299.png)
 
-### **3.配線図**
+### **3. Aansluitschema**
 
 ![](media/A282.png)
 
-1). 8×8 LEDボードモジュールのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
+1). GND, VCC, SDA en SCL van het 8\*8 LED-bordmodule zijn verbonden met G (GND), V (VCC), A4 en A5 van de uitbreidingskaart.
 
-2). 超音波センサーのVCC、Trig、Echo、Gndはそれぞれ5V(V)、D12(S)、D13(S)、Gnd(G)に接続します。
+2). VCC, Trig, Echo en Gnd van de ultrasone sensor zijn verbonden met 5V (V), D12 (S), D13 (S) en Gnd (G).
 
-3). サーボはG、V、A3に接続します。茶色の線はGnd(G)、赤色の線は5V(V)、オレンジ色の線はA3に接続します。
+3). De servo is verbonden met G, V en A3. De bruine draad is aangesloten op Gnd (G), de rode draad op 5V (V) en de oranje draad op A3.
 
-4). 電源はBATポートに接続します。
+4). De voeding is aangesloten op de BAT-poort.
 
-### **4.テストコード**
+### **4. Testcode**
 
-コードを書く前に、超音波センサー、8×16 LEDボード、サーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+Voordat je de code schrijft, is het noodzakelijk om de bibliotheekbestanden van de ultrasone sensor, het 8x16 LED-bord en de servo te importeren. De specifieke stappen zijn als volgt:
 
-センサー/モジュール/コンポーネントの拡張ライブラリ画面に入るには ![](media/A29.png) をクリックし、「Ultrasonic」センサー ![](media/A122.png) を検索してクリックします。これにより、「**Not loaded**」が「**loaded**」に変わり、「**Ultrasonic**」センサーが正常に追加されたことを示します。
+Klik op ![](media/A29.png) om de extensiebibliotheekinterface van sensoren/modules/componenten te openen, zoek vervolgens naar de “Ultrasonic” sensor ![](media/A122.png) en klik erop. Hierdoor verandert "**Not loaded**" in "**loaded**", wat aangeeft dat de “**Ultrasonic**” sensor succesvol is toegevoegd.
 
 ![Img](media/A300.png)
 
 ![](/media/A284.png)
 
-![](media/A33.png) をクリックしてコードエディタ画面に戻ると、追加された「**Ultrasonic**」センサー、「**Matrix 8×16 Aip1640**」モジュール、「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
+Klik op ![](media/A33.png) om terug te keren naar de code-editorinterface. De instructieblokken van de toegevoegde “**Ultrasonic” sensor**, “**Matrix 8\*16 Aip1640**” module en “**Servo**” component zijn zichtbaar in het modulegebied.
 
 ![](media/A285.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 (1).![](media/A126.png)
 
@@ -64,7 +64,7 @@
 
 (10).![](media/A291.png)
 
-**完成したテストコード**
+**Volledige Testcode**
 
 ![](media/A303.png)
 
@@ -74,8 +74,8 @@
 
 ![](media/A306.png)
 
-### **5.テスト結果**
+### **5. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れてDIPスイッチをONにします。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind je de bedrading volgens het aansluitschema, zet je de voeding aan en zet je de DIP-switch op ON.
 
-スマートカーは前進し、自動的に障害物を回避します。前方に道がない場合、サーボが超音波センサーを駆動して左、中、右の距離をスキャンし、空いている側に車が旋回します。同時に、8×16 LEDボードに対応する状態パターンが表示されます。
+De slimme auto rijdt vooruit en ontwijkt automatisch obstakels. Wanneer er geen weg vooruit is, zal de servo de ultrasone sensor aansturen om de afstanden links, midden en rechts te scannen, en zal de auto naar de open zijde draaien. Tegelijkertijd zal het 8X16 LED-bord het bijbehorende statuspatroon weergeven.

@@ -1,58 +1,58 @@
-# Project 14 IRリモコン制御スマートカー
+# Project 14 IR Afstandsbediening Smart Car
 
 ![](media/A307.jpeg)
 
-### **1.説明**
+### **1.Beschrijving**
 
-このプロジェクトでは、IRリモコン制御のスマートカーを作成し、IRリモコンのボタンを押して車を動かします。
+In dit project maken we een IR-afstandsbediening smart car en drukken we op de knop van de IR-afstandsbediening om de auto te laten bewegen.
 
-### **2.フローチャート**
+### **2.Stroomschema**
 
 ![img](media/A308.png)
 
-**IRリモコン制御スマートカーの具体的なロジックは以下の通りです：**
+**De specifieke logica van de IR-afstandsbediening smart car wordt hieronder weergegeven:**
 
-| 初期設定                                                     |           | LEDボードにスマイルフェイスを表示                   |
-| ----------------------------------------------------------- | --------- | ------------------------------------------------- |
-| リモコン                                                     | キー値    | キー状態                                          |
-| ![wps6-1747037981476-25](media/A309.jpg) | FF629D    | 前進 8*8 LEDボードに前進アイコンを表示             |
-| ![wps7-1747037985784-27](media/A310.jpg) | FFA857    | 後退 8*8 LEDボードに後退アイコンを表示             |
-| ![wps8](media/A311.jpg)                  | FF22DD    | 左回転 8*8 LEDボードに左向きアイコンを表示         |
-| ![wps9](media/A312.jpg)                  | FFC23D    | 右回転 8*8 LEDボードに右向きアイコンを表示         |
-| ![wps10](media/A313.jpg)                                 | FF02FD    | 停止 8*8 LEDボードに「STOP」を表示                  |
+| Initiële setup                                             |           | LED-board toont smiley                             |
+| ---------------------------------------------------------- | --------- | ------------------------------------------------- |
+| Afstandsbediening                                          | Sleutelwaarde | Sleutelstatus                                     |
+| ![wps6-1747037981476-25](media/A309.jpg) | FF629D    | Vooruit8*8 LED-board toont voorwaarts icoon       |
+| ![wps7-1747037985784-27](media/A310.jpg) | FFA857    | Achteruit8*8 LED-board toont achterwaarts icoon   |
+| ![wps8](media/A311.jpg)                  | FF22DD    | Draai naar links8*8 LED-board toont links icoon   |
+| ![wps9](media/A312.jpg)                  | FFC23D    | Draai naar rechts8*8 LED-board toont rechts icoon |
+| ![wps10](media/A313.jpg)                                 | FF02FD    | Stop8*8 LED-board toont “STOP”                     |
 
 
 
-### **3.配線図**
+### **3.Aansluitschema**
 
 ![](media/A314.png)
 
-1). 8\*8 LEDボードモジュールのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
+1). GND, VCC, SDA en SCL van het 8\*8 LED-board module zijn verbonden met G (GND), V (VCC), A4 en A5 van de uitbreidingskaart.
     
-2). IR受信機は8833モータードライバー拡張ボードに統合されているため、追加の配線は不要です。8833ボード上のIR受信機のピンはそれぞれG（GND）、V（VCC）、D3です。
+2). Omdat de IR-ontvanger geïntegreerd is op de 8833 motor driver uitbreidingskaart, is extra bedrading niet nodig. De pinnen van de IR-ontvanger op de 8833 kaart zijn respectievelijk G (GND), V (VCC) en D3. 
     
-3). サーボはG、V、A3に接続します。茶色の線はGnd（G）に、赤色の線は5V（V）に、オレンジ色の線はA3に接続します。
+3). De servo is verbonden met G, V en A3. De bruine draad is aangesloten op Gnd (G), de rode draad op 5V (V) en de oranje draad op A3.
     
-4). 電源はBATポートに接続します。
+4). De voeding is aangesloten op de BAT-poort
     
 
-### **4.テストコード**
+### **4.Testcode**
 
-<span style="color: rgb(255, 76, 65);">ご注意：ソフトウェアデモに表示されている赤外線モジュールはすでに拡張ボードに統合されており、別途供給されていません。そのため、下記画像に示されたモジュールは製品内に含まれていません。![](media/A144.png)</span>
+<span style="color: rgb(255, 76, 65);">Let op: De infraroodmodule die in de softwaredemonstratie wordt getoond, is al geïntegreerd in de uitbreidingskaart en wordt niet afzonderlijk geleverd. Daarom vindt u de module die op de afbeelding hieronder staat niet in het product.![](media/A144.png)</span>
 
-コードを書く前に、超音波センサー、8x16 LEDボード、サーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+Voordat je de code schrijft, is het noodzakelijk om de bibliotheekbestanden van de ultrasone sensor, 8x16 LED-board en de servo te importeren. De specifieke stappen zijn als volgt: 
     
-![](media/A29.png)をクリックしてセンサー/モジュール/コンポーネントの拡張ライブラリ画面に入り、「ir remote」センサー![](media/A144.png)を検索してクリックします。これにより「**Not loaded**」が「**loaded**」に変わり、「**ir remote**」センサーが正常に追加されたことを示します。
+Klik op ![](media/A29.png) om de extensiebibliotheekinterface van sensoren/modules/componenten te openen, zoek vervolgens naar de “ir remote” sensor ![](media/A144.png) en klik erop. Hierdoor verandert "**Not loaded**" in "**loaded**", wat aangeeft dat de “**ir remote**” sensor succesvol is toegevoegd. 
 
 ![Img](media/A315.png)
 
 ![](media/A146.png)
 
-![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加された「**ir remote**」センサー、「**Matrix 8*16 Aip1640**」モジュール、「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
+Klik op ![](media/A33.png) om terug te keren naar de code-editor interface, de instructieblokken van de toegevoegde “**ir remote**” sensor, “**Matrix 8\*16 Aip1640**” module en “**Servo**” component zijn zichtbaar in het modulegebied. 
 
 ![](media/A316.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. Hieronder staan blokken ter referentie
 
 (1).![](media/A126.png)
 
@@ -70,7 +70,7 @@
 
 (8).![](media/A321.png)
 
-**完成したテストコード**
+**Volledige testcode**
 
 ![](media/A322.png)
 
@@ -82,6 +82,6 @@
 
 ![](media/A326.png)
 
-### **5.テスト結果**
+### **5.Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れてからDIPスイッチをONにします。これでIRリモコンを使って車を動かすことができ、8X16 LEDボードに対応する状態パターンが表示されます。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind je de bedrading volgens het aansluitschema, zet je de externe voeding aan en zet je de DIP-switch op ON. Vervolgens kun je de IR-afstandsbediening gebruiken om de auto te laten bewegen en zal het 8X16 LED-board het overeenkomstige statuspatroon weergeven.

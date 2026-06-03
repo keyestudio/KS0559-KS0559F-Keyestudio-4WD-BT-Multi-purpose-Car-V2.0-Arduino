@@ -1,102 +1,102 @@
-# Project 1: LED Blink
+# Project 1: LED Knipperen
 
-### **1.説明**
+### **1.Beschrijving**
 
 ![image-20250508161034535](media/A6.png)
 
-初心者や愛好家向けに、LED Blinkは基本的なプログラムです。LEDはlight emitting diodes（発光ダイオード）の略で、Ga、As、P、Nなどの化学化合物で構成されています。
+Voor beginners en enthousiastelingen is LED Knipperen een fundamenteel programma. LED, de afkorting van light emitting diodes, bestaat uit Ga, As, P, N chemische verbindingen enzovoort.
 
-テストコードの遅延時間を変えることで、LEDはさまざまな色で点滅できます。制御時には、GNDとVCCに電源を入れ、S端子が高レベルの場合はLEDが点灯し、そうでなければ消灯します。
+De LED kan in diverse kleuren knipperen door de vertragingstijd in de testcode te wijzigen. Bij bediening, met stroom op GND en VCC, zal de LED aan zijn als het S-eind op hoog niveau staat, anders zal deze uitgaan.
 
-### **2.仕様**
+### **2.Specificatie**
 
-- 制御インターフェース：デジタルポート
+- Besturingsinterface: digitale poort
 
-- 動作電圧：DC 3.3-5V
+- Werkspanning: DC 3.3-5V
 
-- ピン間隔：2.54mm
+- Pinafstand: 2.54mm
 
-- LED表示色：赤
+- LED weergavekleur: rood
 
 ![image-20250508161015086](media/A7.png)
 
-### **3.コンポーネント**
+### **3.Componenten**
 
-|           Development Board *1           |           8833 Motor Driver *1           |     Red LED Module*1     |
-| :--------------------------------------: | :--------------------------------------: | :----------------------: |
+|           Development Board *1           |           8833 Motor Driver *1           |     Rode LED Module*1     |
+| :--------------------------------------: | :--------------------------------------: | :-----------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             3P Dupont Wire*1             |               USB Cable*1                |                          |
-|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                          |
+|             3P Dupont Draad*1             |               USB Kabel*1                |                           |
+|         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                           |
 
-### **4.配線図**
+### **4.Aansluitschema**
 
 ![image-20250508161123490](media/A13.png)
 
-上図からわかるように、Keyestudio 8833 motor ShieldはKeyestudio 4.0開発ボードに重ねられています。
+Zoals te zien is in bovenstaande afbeelding, is de Keyestudio 8833 motor Shield gestapeld op de Keyestudio 4.0 development board.
 
-LEDモジュールのピンG、V、Sはそれぞれ拡張ボードのG、5V、D9に接続されています。
+De pinnen G, V en S van de LED-module zijn respectievelijk verbonden met G, 5V en D9 van de uitbreidingskaart.
 
-### **5.テストコード**
+### **5.Testcode**
 
 ```c 
 //****************************************************************************
 /*
 keyestudio 4wd BT Car
-lesson 1.1
-Blink
+les 1.1
+Knipperen
 http://www.keyestudio.com
 */
 void setup()
 { 
-  pinMode(9, OUTPUT);// デジタルピン9を出力として初期化
+  pinMode(9, OUTPUT);// initialiseert digitale pin 9 als uitgang.
 }
     
-void loop() // このループ関数は永遠に繰り返し実行される
+void loop() // de loop functie draait oneindig door
 {  
-  digitalWrite(9, HIGH); // LEDを点灯（HIGHは電圧レベル）
-   delay(1000); // 1秒待つ
-   digitalWrite(9, LOW); // 電圧をLOWにしてLEDを消灯
-   delay(1000); // 1秒待つ
+  digitalWrite(9, HIGH); // zet de LED aan (HIGH is het spanningsniveau)
+   delay(1000); // wacht een seconde
+   digitalWrite(9, LOW); // zet de LED uit door de spanning op LOW te zetten
+   delay(1000); // wacht een seconde
 }
 //****************************************************************************
 ```
 
-### **6.テスト結果**
+### **6.Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、USBケーブルでコンピュータと接続してボードに電源を供給します。電源を入れると、D9に接続されたLEDが点灯と消灯を繰り返すのが見えます。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het aansluitschema en gebruik een USB-kabel om de computer met de board te verbinden voor voeding. Na het inschakelen zal je zien dat de LED verbonden met D9 aan en uit gaat.
 
-### **7.コード説明**
+### **7.Code Uitleg**
 
-pinMode(9，OUTPUT) - この関数はピンをINPUTかOUTPUTかを指定します
+pinMode(9，OUTPUT) - Deze functie geeft aan dat de pin INPUT of OUTPUT is
 
-digitalWrite(9，HIGH) - ピンがOUTPUTの場合、HIGH（5V出力）またはLOW（0V出力）に設定できます
+digitalWrite(9，HIGH) - Wanneer de pin OUTPUT is, kunnen we deze instellen op HIGH (uitgang 5V) of LOW (uitgang 0V)
 
-### **8.拡張練習**
+### **8.Uitbreidingsopdracht**
 
-LEDの点滅に成功しました。次に、遅延時間を変更するとLEDにどのような変化が起きるか観察してみましょう。
+We zijn erin geslaagd de LED te laten knipperen. Laten we nu observeren wat er met de LED gebeurt als we de vertragingstijd aanpassen.
 
 ```c
 //****************************************************************************
 /*
  keyestudio 4wd BT Car
- lesson 1.2
- delay
+ les 1.2
+ vertraging
  http://www.keyestudio.com
 */
 void setup()
 {  
-  // デジタルピン9を出力として初期化
+  // initialiseert digitale pin 11 als uitgang.
   pinMode(9, OUTPUT);
 }
-// このループ関数は永遠に繰り返し実行される
+// de loop functie draait oneindig door
 void loop()
 { 
-  digitalWrite(9, HIGH); // LEDを点灯（HIGHは電圧レベル）
-  delay(100); // 0.1秒待つ
-  digitalWrite(9, LOW); // 電圧をLOWにしてLEDを消灯
-  delay(100); // 0.1秒待つ
+  digitalWrite(9, HIGH); // zet de LED aan (HIGH is het spanningsniveau)
+  delay(100); // wacht 0.1 seconde
+  digitalWrite(9, LOW); // zet de LED uit door de spanning op LOW te zetten
+  delay(100); // wacht 0.1 seconde
 }
 //*****************************************************************
 ```
 
-テスト結果はLEDの点滅が速くなることを示しています。したがって、遅延時間はLEDの点滅周波数に影響を与えます。
+Het testresultaat toont dat de LED sneller knippert. Daarom beïnvloedt de vertragingstijd de knippersnelheid van de LED.

@@ -1,70 +1,71 @@
-# Project 7 Bluetooth Remote Control
+# Project 7 Bluetooth Afstandsbediening
 
 ![](media/A161.png)
 
-### **1.説明**
+### **1.Beschrijving**
 
-このキットにはDX-BT24 5.1 Bluetoothモジュールが含まれています。このBluetoothモジュールは256Kbのメモリを持ち、V5.1BLE Bluetooth仕様に準拠しており、ATコマンドをサポートしています。ユーザーは必要に応じてシリアルポートのボーレートやデバイス名などのパラメータを変更できます。
+Er zit een DX-BT24 5.1 Bluetooth-module in deze kit. Deze bluetooth-module heeft 256Kb opslagruimte en voldoet aan de V5.1BLE bluetooth-specificatie, die AT-commando's ondersteunt. Gebruikers kunnen parameters zoals de baudrate en apparaatsnaam van de seriële poort naar wens aanpassen.
 
-さらに、UARTインターフェースとBluetoothシリアルポートの透過伝送をサポートしており、低コスト、小型、低消費電力、高感度の送受信の利点も備えています。特に、強力な機能を実現するために必要な周辺部品が非常に少ないのが特徴です。
+Daarnaast ondersteunt het een UART-interface en bluetooth seriële poort transparante transmissie, wat ook de voordelen heeft van lage kosten, klein formaat, laag stroomverbruik en hoge gevoeligheid voor zenden en ontvangen. Opvallend is dat het slechts een paar randcomponenten nodig heeft om zijn krachtige functies te realiseren.
 
-### **2.仕様**
+### **2.Specificatie**
 
-- Bluetoothプロトコル: Bluetooth Specification V5.1 BLE
+- Bluetooth protocol: Bluetooth Specificatie V5.1 BLE
 
-- 動作距離: 開放環境で40mの超長距離通信が可能
+- Werkafstand: In een open omgeving kan het 40m ultra-lange afstand communicatie bereiken
+  
+- Werkfrequentie: 2.4GHz ISM-band
 
-- 動作周波数: 2.4GHz ISMバンド
+- Communicatie-interface: UART
 
-- 通信インターフェース: UART
+- Bluetooth certificering: Voldoet aan FCC CE ROHS REACH certificeringsstandaard
+  
+- Seriële poort parameters: 9600, 8 databits, 1 stopbit, geen pariteitsbit, geen flow control
+  
+- Voeding: 5V DC
 
-- Bluetooth認証: FCC CE ROHS REACH認証基準に準拠
+- Werktemperatuur: –10℃ tot +65℃
+  
 
-- シリアルポートパラメータ: 9600、8データビット、1ストップビット、パリティなし、フロー制御なし
+### **3.Toepassing**
 
-- 電源: 5V DC
+De DX-BT24 module ondersteunt ook het BT5.1 BLE protocol, dat direct kan worden verbonden met iOS-apparaten met BLE Bluetooth-functie, en ondersteunt resident draaien van achtergrondprogramma's. Het wordt voornamelijk gebruikt op het gebied van draadloze gegevensoverdracht over korte afstand. Het maakt het mogelijk om omslachtige kabelverbindingen te vermijden en kan seriële kabels direct vervangen.
 
-- 動作温度: –10℃ ～ +65℃
+**Succesvolle toepassingsgebieden van BT24 modules:**
 
-### **3.用途**
+※ Bluetooth draadloze gegevensoverdracht;
 
-DX-BT24モジュールはBT5.1 BLEプロトコルもサポートしており、BLE Bluetooth機能を持つiOSデバイスに直接接続可能で、バックグラウンドプログラムの常駐実行もサポートしています。主に短距離データの無線伝送分野で使用され、煩雑なケーブル接続を回避し、シリアルケーブルの直接置き換えが可能です。
+※ Mobiele telefoon, computer randapparatuur;
 
-**BT24モジュールの成功応用分野：**
+※ Handheld POS-apparatuur;
 
-※ Bluetooth無線データ伝送;
+※ Draadloze gegevensoverdracht van medische apparatuur;
 
-※ 携帯電話、コンピュータ周辺機器;
+※ Slimme huisbesturing;
 
-※ ハンドヘルドPOS機器;
+※ Bluetooth printer;
 
-※ 医療機器の無線データ伝送;
+※ Bluetooth afstandsbediening speelgoed;
 
-※ スマートホーム制御;
+※ Gedeelde fietsen;
 
-※ Bluetoothプリンター;
-
-※ Bluetoothリモコン玩具;
-
-※ 共有自転車;
-
-**ポート**
+**Poorten**
 
 ![](media/A162.png)
 
-①STATE：ステータスピン
+①STATE：Status pin
 
-②RX：受信ピン
+②RX：Ontvangst pin
 
-③TX：送信ピン
+③TX：Zend pin
 
-④GND：グランド
+④GND：GND
 
-⑤VCC：電源
+⑤VCC：Voeding
 
-⑥EN：イネーブルピン
+⑥EN： Enable pin
 
-BTモジュールを開発ボードに接続します。
+Verbind de BT-module met de ontwikkelbord.
 
 <table border="1">
 <tbody>
@@ -90,27 +91,29 @@ BTモジュールを開発ボードに接続します。
 </tr>
 </tbody>
 </table>
-### **4.コンポーネント**
 
-| Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1           |
+
+### **4.Componenten**
+
+| Ontwikkelbord *1           | 8833 Motor Driver *1       | Rode LED Module*1          |
 | ------------------------- | ------------------------- | -------------------------- |
 | ![img](media/A163.jpg) | ![img](media/A164.jpg) | ![img](media/A165.jpg)  |
-| 3P F-F Dupont Wire*1      | USB Cable*1               | DX-BT24 Bluetooth Module*1 |
+| 3P F-F Dupont Draad*1      | USB Kabel*1               | DX-BT24 Bluetooth Module*1 |
 | ![img](media/A166.jpg) | ![img](media/A167.jpg) | ![img](media/A168.jpg)  |
 
-### **5.配線図**
+### **5.Aansluitschema**
 
 ![](media/A169.png)
 
-BTモジュールのRXD、TXD、GND、VCCはそれぞれTX、RX、G、5Vに接続します。
+RXD, TXD, GND en VCC van de BT-module zijn verbonden met TX, RX, G en 5V.
 
-BTモジュールのSTATEとBRKは接続不要です。
+STATE en BRK van de BT-module hoeven niet verbonden te worden.
 
-<span style="color: rgb(255, 76, 65);">注意：</span> 8833ボードにBTモジュールを挿入する際の向きに注意してください。コードをアップロードする前に挿入しないでください。
+<span style="color: rgb(255, 76, 65);">Let op:</span> de richting van de BT-module bij het plaatsen op de 8833 board. En steek hem niet in voordat je de code uploadt.
 
-### **6.テストコード**
+### **6.Testcode**
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 (1).![](media/A126.png)
 
@@ -122,89 +125,89 @@ BTモジュールのSTATEとBRKは接続不要です。
 
 (5).![](media/A173.png)
 
-**完成テストコード**
+**Volledige Testcode**
 
-<span style="color: rgb(255, 76, 65);">**注意:** テストコードをアップロードする前にBluetoothモジュールを取り外す必要があります。そうしないとコードのアップロードに失敗します。コードのアップロードが成功した後にBluetoothモジュールを接続してください。</span>
+<span style="color: rgb(255, 76, 65);">**Let op:** Verwijder de Bluetooth-module voordat je de testcode uploadt, anders lukt het uploaden niet. Verbind de Bluetooth-module pas nadat de code succesvol is geüpload.</span>
 
 ![](media/A174.png)
 
-### **7.テスト結果**
+### **7.Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れた後、BTモジュールを挿入するとLEDが点滅し、その後BTアプリをダウンロードする必要があります。
+Na het succesvol uploaden van de code naar het V4.0 bord, verbind je de bedrading volgens het aansluitschema, en sluit je het bord via een USB-kabel aan op de computer om het bord van stroom te voorzien. Na het inschakelen steek je de BT-module in en zal de LED knipperen, daarna moeten we de BT-app downloaden.
 
-### **8.Bluetoothアプリのダウンロード**
+### **8.Download Bluetooth APP**
 
-**Appleシステム**
+**Apple systeem**
 
-(1).iPhoneのApp Storeを開きます。
+(1).Open de App Store op de iPhone.
 
-(2).keyes BTカーを検索して、APPを携帯電話にダウンロードします。
+(2). Zoek naar keyes BT auto en download de APP naar je telefoon.
 
 ![](media/A175.png)
     
 
-(3).インストール後、そのインターフェースに入ります。
+(3). Na installatie, ga naar de interface.
 
 ![](media/A176.png)
     
 
-(4).左上の「**Connect**」ボタンをクリックしてBluetoothを自動検索します。**BT24**が見つかったら、「**Connect**」をクリックしてBluetoothに接続し、次に ![](media/A177.png) をクリックして4WDスマートカーの制御インターフェースに入ります。 
+(4). Klik op de knop "**Connect**" linksboven om automatisch naar Bluetooth te zoeken. Wanneer **BT24** wordt gevonden, klik op "**Connect**" om Bluetooth te verbinden, en klik vervolgens op ![](media/A177.png) om de bedieningsinterface van de 4WD smart car te openen. 
 
 ![](media/A178.png)
     
-**Androidシステム**
+**Android Systeem**
     
 
-(1).Google Playストアに入り、「**keyes 4wd**」を検索します。
+(1). Ga naar de Google Play Store en zoek naar “**keyes 4wd**”.
 
 ![](media/A179.png)
 
-(2).インストール後、アプリアイコンは以下のように表示されます。
+(2). Het app-pictogram wordt hieronder weergegeven na installatie.
 
 ![](media/A180.png)
 
-(3).アプリをクリックして次のページに入ります。
+(3). Klik op de app om de volgende pagina te openen.
 
 ![](media/A181.png)
 
-(4).Bluetoothに接続した後、電源を入れるとBluetoothモジュールのLEDインジケーターが点滅します。「Connect」をタップしてBluetoothを検索します。
+(4). Na het verbinden van Bluetooth, sluit de voeding aan en zal de LED-indicator van de Bluetooth-module knipperen. Tik op “Connect” om naar Bluetooth te zoeken.
 
 ![](media/A182.jpeg)
 
-(5).**BT24**が見つかったら、「**connect**」をクリックしてBluetoothに接続します。「**connect**」が「**is connected**」に変わると、Bluetooth接続が成功したことを示します。下の写真のように、BluetoothのLEDは点灯したままになります。
+(5). Wanneer **BT24** wordt gevonden, klik op "**connect**" om Bluetooth te verbinden. Wanneer "**connect**" verandert in "**is connected**", betekent dit dat de Bluetooth-verbinding succesvol is. Zoals te zien is in de onderstaande afbeelding, blijft de Bluetooth LED aan.
 
 ![](media/A183.jpeg)
 
-(6).Bluetoothモジュールに接続した後、 ![](media/A80.png) をクリックしてボーレートを9600に設定します。Bluetooth APPのボタンを押すと、対応する文字が表示されます。以下の通りです：
+(6). Na het verbinden van de Bluetooth-module, klik op ![](media/A80.png) om de baudrate in te stellen op 9600. Druk op de knop van de Bluetooth APP, en de bijbehorende tekens worden weergegeven, zoals hieronder:
 
 ![](media/A184.png)
 
-| キー                                          | 機能                          |
+| Toets                                        | Functie                          |
 | -------------------------------------------- | --------------------------------- |
-| ![wps14](media/A185.jpg)                  | DX-BT24 5.1 Bluetoothモジュールとペアリング |
-| ![wps15](media/A186.jpg) | Bluetoothの切断              |
+| ![wps14](media/A185.jpg)                  | Koppel DX-BT24 5.1 Bluetooth-module |
+| ![wps15](media/A186.jpg) | Verbreek Bluetooth-verbinding              |
 
-|                                                              | 制御文字                                            | 機能                                                     |
+|                                                              | Controlekarakter                                            | Functie                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![wps16](media/A187.jpg)                 | 押す: F  <br />離す: S                                   | ボタンを押すと車が前進；<br />離すと停止 |
-| ![wps17](media/A188.jpg)                 | 押す: L  <br />離す: S                                   | ボタンを押すと車が左折；<br />離すと停止  |
-| ![wps18](media/A189.jpg)                 | 押す: R  <br />離す: S                                   | ボタンを押すと車が右折；<br />離すと停止 |
-| ![wps19](media/A190.jpg)                 | 押す: B  <br />離す: S                                   | ボタンを押すと車が後退；<br />離すと停止   |
-| ![wps20](media/A191.jpg)                 | 押す: “a”  <br />離す: “S”                               | クリックで加速（最大：255）                               |
-| ![wps21](media/A192.jpg)                 | 押す: “d”  <br />離す: “S”                               | クリックで減速（最小：0）                                |
-| ![wps22](media/A193.jpg)                 | クリックで携帯電話の重力<br />検知機能を開始：再度クリックで<br />重力検知制御を終了 |                                                              |
-| ![wps23](media/A194.jpg)                 | クリックで「X」を送信、<br />再度クリックで「S」を送信               | ライントレース機能を開始；<br />再度クリックで終了      |
-| ![wps24](media/A195.jpg)                 | クリックで「Y」を送信、<br />再度クリックで「S」を送信               | 超音波回避機能を開始；<br />再度クリックで終了 |
-| ![wps25](media/A196.jpg) | クリックで「U」を送信、<br />再度クリックで「S」を送信               | 超音波追従機能を開始；<br />再度クリックで終了 |
-| ![wps26](media/A197.jpg)                 | クリックで「G」を送信、<br />再度クリックで「S」を送信                | 制限機能を開始；<br />再度クリックで終了       |
+| ![wps16](media/A187.jpg)                 | Druk: F  <br />Loslaten: S                                   | Druk op de knop, de auto rijdt vooruit; <br />loslaten om te stoppen |
+| ![wps17](media/A188.jpg)                 | Druk: L  <br />Loslaten: S                                   | Druk op de knop, de auto draait naar links; <br />loslaten om te stoppen  |
+| ![wps18](media/A189.jpg)                 | Druk: R  <br />Loslaten: S                                   | Druk op de knop, de auto draait naar rechts; <br />loslaten om te stoppen |
+| ![wps19](media/A190.jpg)                 | Druk: B  <br />Loslaten: S                                   | Druk op de knop, de auto rijdt achteruit; <br />loslaten om te stoppen   |
+| ![wps20](media/A191.jpg)                 | Druk: “a”  <br />Loslaten: “S”                               | Klik om te versnellen (maximaal: 255)                               |
+| ![wps21](media/A192.jpg)                 | Druk: “d”  <br />Loslaten: “S”                               | Klik om te vertragen (minimaal: 0)                                |
+| ![wps22](media/A193.jpg)                 | Klik om de zwaartekrachtsensorfunctie van de <br />mobiele telefoon te starten: klik opnieuw om <br />de zwaartekrachtsensorbesturing te verlaten |                                                              |
+| ![wps23](media/A194.jpg)                 | Klik om “X” te verzenden, <br />klik opnieuw om “S” te verzenden               | Start lijnvolgfunctie; <br />klik opnieuw om te stoppen      |
+| ![wps24](media/A195.jpg)                 | Klik om “Y” te verzenden, <br />klik opnieuw om “S” te verzenden               | Start ultrasone vermijdingsfunctie; <br />klik opnieuw om te stoppen |
+| ![wps25](media/A196.jpg) | Klik om “U” te verzenden, <br />klik opnieuw om “S” te verzenden               | Start ultrasone volgfunctie; <br />klik opnieuw om te stoppen |
+| ![wps26](media/A197.jpg)                 | Klik om “G” te verzenden, <br />klik opnieuw om “S” te verzenden                | Start begrenzingsfunctie; <br />klik opnieuw om te stoppen       |
 
-### **9.拡張練習**
+### **9. Uitbreidingspraktijk**
 
-ここでは、携帯電話から送信されたコマンドを使用してLEDライトをオンまたはオフにする方法を見ていきます。配線図を見ると、LEDがD9ピンに接続されています。
+Hier gebruiken we het commando dat door de mobiele telefoon wordt verzonden om een LED-licht aan of uit te zetten. Volgens het aansluitdiagram is een LED verbonden met de D9-pin.
 
 ![](media/A198.png)
 
-ブロックをドラッグして編集できます。以下に示すブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 (1).![](media/A126.png)
 
@@ -220,8 +223,8 @@ BTモジュールのSTATEとBRKは接続不要です。
 
 (7).![](media/A201.png)
 
-**完成したテストコード**
+**Volledige testcode**
 
 ![](media/A202.png)
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、<td>![](media/A203.png)</td> と <td>![](media/A204.png)</td> をクリックしてLEDのオン・オフを制御します。
+Nadat je de code succesvol naar de V4.0-board hebt geüpload, verbind je de bedrading volgens het aansluitdiagram, en sluit je vervolgens de computer via een USB-kabel aan om het board van stroom te voorzien. Na het inschakelen klik je op <td>![](media/A203.png)</td> en <td>![](media/A204.png)</td> om de LED aan en uit te zetten.

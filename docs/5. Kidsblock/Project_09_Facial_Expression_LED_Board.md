@@ -1,172 +1,173 @@
-# Project 9 表情LEDボード
+# Project 9 Gezichtsuitdrukking LED Bord
 
 ![](media/A221.png)
 
-### **1.説明**
+### **1.Beschrijving** 
 
-ロボットに表情ボードが追加されたらどれほど楽しいでしょうか。Keyestudioの8\*16 LEDボードがその役割を果たします。これを使えば、自分で表情、画像、パターンなどの表示をデザインできます。
+Hoe leuk is het als er een expressiebord aan de robot wordt toegevoegd. En het Keyestudio 8\*16 LED bord kan dit voor elkaar krijgen. Met de hulp hiervan kun je zelf gezichtsuitdrukkingen, afbeeldingen, patronen en andere weergaven ontwerpen.
 
-8\*16 LEDボードは128個のLEDを備えています。マイクロプロセッサ（Arduino）のデータは2線式バスインターフェースを通じてAiP1640と通信します。したがって、モジュール上の128個のLEDのオン・オフを制御でき、モジュール上のドットマトリックスに必要なパターンを表示できます。配線の便宜のためにHX-2.54 4ピンケーブルが付属しています。
+Het 8\*16 LED bord heeft 128 LEDs. De data van de microprocessor (Arduino) communiceert met de AiP1640 via een tweedraads businterface. Hierdoor kan het de aan- en uitstand van 128 LEDs op de module aansturen, zodat de dotmatrix op de module het patroon kan weergeven dat je nodig hebt. Een HX-2.54 4Pin kabel wordt meegeleverd voor het gemak bij het bedraden.
 
-### **2.仕様**
+### **2.Specificaties**
 
-- 動作電圧：DC 3.3-5V
+- Werkspanning: DC 3.3-5V
 
-- 消費電力：400mW
+- Vermogensverlies: 400mW
 
-- 発振周波数：450KHz
+- Oscillatiefrequentie: 450KHz
 
-- 駆動電流：200mA
+- Stuurstroom: 200mA
 
-- 動作温度：-40〜80℃
+- Werktemperatuur: -40\~80℃
 
-- 通信方式：I2C
+- Communicatiemodus: I2C
   
 
-### **3.回路図**
+### **3.Schakelschema**
 
 ![](media/A222.png)
 
-### **4.動作原理**
+### **4.Werkingsprincipe**
 
-8\*16ドットマトリックスの各LEDをどう制御するか？1バイトは8ビットで、各ビットは0か1です。0のときはLEDが消灯、1のときは点灯します。1バイトでLEDの1列を制御でき、16バイトで16列のLEDを制御できます。これが8\*16ドットマトリックスです。
+Hoe wordt elke LED van de 8\*16 dotmatrix aangestuurd? Het is bekend dat elke byte 8 bits heeft en elke bit 0 of 1 is. Wanneer het 0 is, is de LED uit, en wanneer het 1 is, is de LED aan. Eén byte kan één kolom van de LED aansturen, en natuurlijk kunnen 16 bytes 16 kolommen van LEDs aansturen, dat is de 8\*16 dotmatrix.
 
-### **5.ピンの説明と通信プロトコル**
+### **5.Pinnenbeschrijving en communicatieprotocol**
 
-マイクロプロセッサ（Arduino）のデータは2線式バスケーブルを通じてAiP1640と通信します。
+De data van de microprocessor (Arduino) communiceert met de AiP1640 via een tweedraads buskabel.
 
-通信プロトコル図は以下の通りです。（SCLK）はSCL、（DIN）はSDAです。
+Het communicatieprotocoldiagram is als volgt (SCLK) is SCL, (DIN) is SDA.
 
 ![](media/A223.png)
 
-①データ入力の開始条件：SCLが高レベルで、SDAが高から低に変化する。
+①De startconditie voor datainvoer: SCL is hoog en SDA verandert van hoog naar laag.
 
-②データコマンド設定には以下の方法があります。
+②Voor het instellen van datacommandos zijn er methoden zoals in de onderstaande afbeelding.
 
-サンプルプログラムでは、**アドレスに自動で1を加える方法**を選択し、2進数は0100 0000、対応する16進数は0x40です。
+In ons voorbeeldprogramma wordt gekozen voor de manier om **automatisch 1 bij het adres op te tellen**, de binaire waarde is 0100 0000 en de overeenkomstige hexadecimale waarde is 0x40.
 
 ![Img](media/A224.png)
 
-③アドレスコマンド設定は以下のように選択できます。
+③Voor het instellen van het adrescommando kan het adres als volgt worden gekozen.
 
-サンプルプログラムでは最初の00Hを選択し、2進数1100 0000は16進数0xc0に対応します。
+In ons voorbeeldprogramma is het eerste 00H geselecteerd, en het binaire getal 1100 0000 komt overeen met het hexadecimale 0xc0.
 
 ![Img](media/A225.png)
 
-④データ入力の要件は、SCLが高レベルのときにSDAの信号は変化しないことです。SCLが低レベルのときのみSDAの信号を変更できます。データ入力は下位ビットから先に、上位ビットは後です。
+④De eis voor datainvoer is dat wanneer SCL op hoog niveau is tijdens het invoeren van data, het signaal op SDA onveranderd moet blijven. Alleen wanneer het kloksignaal op SCL laag is, mag het signaal op SDA worden veranderd. De invoer van data is eerst de laagste bit, daarna de hoogste bit.
 
-⑤データ送信終了の条件は、SCLが低レベル、SDAが低レベルの状態からSCLが高レベルになったときにSDAが高レベルになることです。
+⑤De conditie voor het einde van datatransmissie is dat wanneer SCL laag is, SDA laag is en SCL hoog wordt, het niveau van SDA hoog wordt.
 
-⑥表示制御では異なるパルス幅を設定でき、パルス幅は以下の図のように選択します。
+⑥Displaycontrole, stel verschillende pulsbreedtes in, de pulsbreedte kan worden gekozen zoals in de onderstaande afbeelding.
 
-例ではパルス幅は4/16で、2進数1000 1010に対応する16進数は0x8Aです。
+In het voorbeeld is de pulsbreedte 4/16, en het hexadecimale overeenkomende getal van 1000 1010 is 0x8A.
 
 ![Img](media/A226.png)
 
-**モジュールツールの使用説明**
+**Instructies voor het gebruik van de modulus tool**
 
-ドットマトリックスツールはオンライン版を使用し、リンクは：[http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#)
+De dotmatrix tool gebruikt de online versie, en de link is: [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#)
 
-①リンクにアクセスすると以下のページが表示されます。
+①Ga naar de link en de pagina verschijnt zoals hieronder
 
 ![](media/A227.png)
 
-②ドットマトリックスは8\*16なので、高さを8、幅を16に調整します。
+②De dotmatrix is 8\*16, dus stel de hoogte in op 8 en de breedte op 16, zoals in de afbeelding hieronder.
 
 ![](media/A228.png)
 
-③パターンから16進数データを生成
+③Genereer hexadecimale data van het patroon
 
-以下の図のように左クリックで選択、右クリックでキャンセルし、表示したいパターンを描き、「Generate」をクリックすると必要な16進数データが生成されます。
+Zoals in de afbeelding hieronder, druk met de linkermuisknop om te selecteren, rechtsklikken om te annuleren; teken het gewenste patroon, klik op Generate, en de benodigde hexadecimale data wordt gegenereerd.
 
 ![](media/A229.png)
 
-### **6.部品**
+### **6.Componenten**
 
-| 開発ボード *1             | 8833 モータードライバー *1       | 8x16 LEDパネル*1          |
-| ------------------------- | -------------------------------- | ------------------------- |
-| ![img](media/A230.jpg) | ![img](media/A231.jpg)          | ![img](media/A232.jpg)     |
-| USBケーブル*1             | HX-2.54 4P デュポン線 200mm *1  |                           |
-| ![img](media/A233.jpg) | ![img](media/A234.jpg)          |                           |
+| Ontwikkelbord *1           | 8833 Motor Driver *1            | 8x16 LED Paneel*1          |
+| ------------------------- | ------------------------------- | ------------------------- |
+| ![img](media/A230.jpg) | ![img](media/A231.jpg)       | ![img](media/A232.jpg) |
+| USB Kabel*1               | HX-2.54 4P Dupont Draad 200mm *1 |                           |
+| ![img](media/A233.jpg) | ![img](media/A234.jpg)       |                           |
 
 
 
-### **7.配線図**
+### **7.Aansluitschema**
 
 ![](media/A235.png)
 
-8x16 LEDライトボードのGND、VCC、SDA、SCLはそれぞれkeyestudioセンサー拡張ボードのGND、+（VCC）、A4、A5に接続され、2線式シリアル通信を行います。
+De GND, VCC, SDA en SCL van het 8x16 LED-lichtbord zijn respectievelijk verbonden met de keyestudio sensor uitbreidingskaart-(GND), + (VCC), A4, A5 voor tweedraads seriële communicatie.
 
-(<span style="color: rgb(255, 76, 65);">注意：</span> ArduinoのIICピンに接続されていますが、このモジュールはIIC通信用ではありません。ここでのIOポートはI2C通信をシミュレートするもので、任意の2つのピンに接続可能です)。
+(<span style="color: rgb(255, 76, 65);">Opmerking:</span> Hoewel het is verbonden met de IIC-pin van Arduino, is deze module niet voor IIC-communicatie. En de IO-poort hier simuleert I2C-communicatie en kan worden verbonden met willekeurige twee pinnen).
 
-### **8.テストコード**
+### **8.Testcode**
 
-コードを書く前に、8x16 LEDボードのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+Voordat je de code schrijft, is het noodzakelijk om het bibliotheekbestand van het 8x16 LED-bord te importeren. De specifieke stappen zijn als volgt:
 
-![](media/A29.png)をクリックしてセンサー/モジュール/コンポーネントの拡張ライブラリ画面に入り、「**Matrix 8\*16 Aip1640**」モジュールを検索し、![](media/A236.png)をクリックします。これにより「**Not loaded**」が「**loaded**」に変わり、「**Matrix 8\*16 Aip1640**」モジュールが正常に追加されたことを示します。
+Klik ![](media/A29.png) om de extensiebibliotheekinterface van sensoren/modules/componenten te openen, zoek vervolgens naar de “**Matrix 8\*16 Aip1640**” module ![](media/A236.png) en klik erop. Op deze manier verandert "**Not loaded**" in "**loaded**", wat aangeeft dat de “**Matrix 8\*16 Aip1640**” module succesvol is toegevoegd.
 
 ![Img](media/A237.png)
 
 ![](media/A238.png)
 
-![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加された「**Matrix 8\*16 Aip1640**」モジュールの命令ブロックがモジュールエリアに表示されます。
+Klik ![](media/A33.png) om terug te keren naar de code-editorinterface, het instructieblok van de toegevoegde “**Matrix 8\*16 Aip1640**” module is zichtbaar in het modulegebied.
 
 ![](media/A239.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. Hieronder staan blokken ter referentie.
 
 (1).![](media/A126.png)
 
 (2).![](media/A240.png)
 
-**完成したテストコード**
+**Volledige testcode**
 
 ![](media/A241.png)
 
-### **9.テスト結果**
+### **9.Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、DIPスイッチをONにすると、LEDボードに笑顔のパターンが表示されます。
+Na het succesvol uploaden van de code naar de V4.0 kaart, verbind de bedrading volgens het bedradingsschema, zet vervolgens de DIP-schakelaar op ON, er wordt een glimlachvormig patroon weergegeven op het LED-bord.
 
 ![](media/A242.png)
 
-### **10.コード説明**
+### **10.Code-uitleg**
 
-先ほど学んだモジュールツール [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#) を使い、ドットマトリックスにスタートパターン、前進、停止、クリアのパターンを表示させます。時間間隔は2000msです。
+We gebruiken de modulus-tool die we zojuist hebben geleerd, [http://dotmatrixtool.com/\#](http://dotmatrixtool.com/\#), om de dotmatrix het startpatroon, vooruitgaan, stoppen en daarna het patroon wissen te laten weergeven. Het tijdsinterval is 2000 ms.
 
 ![image-20250513092102687](media/A243.png)![image-20250513092107293](media/A244.png)![image-20250513092113035](media/A245.png)![image-20250513092116952](media/A246.png)
 
-笑顔の命令ブロック ![](media/A247.png)
 
-表情の命令ブロック：![](media/A248.png)
+Instructieblok voor smiley face![](media/A247.png)
 
-ハートの命令ブロック ![](media/A249.png)
+Instructieblok voor expressie: ![](media/A248.png)
 
-前進の命令ブロック ![](media/A250.png)
+Instructieblok voor hart ![](media/A249.png)
 
-**後退**の命令ブロック ![](media/A251.png)
+Instructieblok voor vooruitgaan![](media/A250.png)
 
-**左折**の命令ブロック ![](media/A252.png)
+Instructieblok voor **achteruit stappen** ![](media/A251.png)
 
-**右折**の命令ブロック ![](media/A253.png)
+Instructieblok voor **linksaf draaien** ![](media/A252.png)
 
-**停止**の命令ブロック ![](media/A254.png)
+Instructieblok voor **rechtsaf draaien** ![](media/A253.png)
 
-**画面クリア**の命令ブロック ![](media/A255.png)
+Instructieblok voor **stoppen**![](media/A254.png)
+
+Instructieblok voor **scherm wissen**![](media/A255.png)
 
 ![](media/A235.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. Hieronder staan blokken ter referentie.
 
-（1).![](media/A126.png)
+(1).![](media/A126.png)
 
-（2).![](media/A240.png)
+(2).![](media/A240.png)
 
 (3).![](media/A256.png)
 
-**完成したテストコード**
+**Volledige testcode**
 
 ![](media/A257.png)
 
-テストコードをアップロードすると、表情ボードはこれらのパターンを順番に表示し、このシーケンスを繰り返します。
+Na het uploaden van de testcode toont het gezichtsuitdrukkingbord deze patronen achtereenvolgens en herhaalt deze volgorde.
 
 ![image-20250513092222972](media/A258.png)![image-20250513092233711](media/A259.png)![image-20250513092238552](media/A260.png)

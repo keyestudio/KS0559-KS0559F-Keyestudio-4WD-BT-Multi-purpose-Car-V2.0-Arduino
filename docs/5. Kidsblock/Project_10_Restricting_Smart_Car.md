@@ -1,30 +1,30 @@
-# プロジェクト10 制限付きスマートカー
+# Project 10 Beperkende Smart Car
 
 ![](media/A261.jpeg)
 
-### **1.説明**
+### **1. Beschrijving**
 
-このプロジェクトでは、ライン追跡センサーとモータードライバーモジュールの知識を組み合わせて、制限付きスマートカーを作成します。実験では、ライン追跡センサーを使用してスマートカーの周囲に黒い線があるかどうかを検出し、その検出結果に基づいて2つのモーターの回転を制御し、黒い線で描かれた円の中にスマートカーをロックすることを目指します。
+In dit project combineren we de kennis van een lijnvolgsensor en motordrivermodules om een beperkende smart car te maken. In het experiment willen we de lijnvolgsensor gebruiken om te detecteren of er een zwarte lijn rondom de smart car is, en vervolgens de rotatie van de twee motoren te regelen op basis van de detectieresultaten, zodat de smart car in een cirkel getekend met een zwarte lijn wordt vergrendeld.
 
-### **2.フローチャート**
+### **2. Stroomschema**
 
 ![img](media/A262.png)
 
-制限付き4WDスマートカーの具体的なロジックは以下の表に示されています。
+De specifieke logica van de beperkende 4WD smart car wordt weergegeven in de tabel.
 
 ![Img](media/A263.png)
 
-### **3.配線図**
+### **3. Aansluitschema**
 
 ![](media/A264.png)
 
-ライン追跡センサーのG、V、S1、S2、S3は、それぞれセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
+G, V, S1, S2 en S3 van de lijnvolgsensor zijn verbonden met G (GND), V (VCC), D11, D7 en D8 van de sensor uitbreidingskaart.
 
-電源はBATポートに接続します。
+De voeding is aangesloten op de BAT-poort.
 
-### **4.テストコード**
+### **4. Testcode**
 
-ブロックをドラッグして編集できます。以下に示すブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 (1).![](media/A126.png)
 
@@ -38,10 +38,10 @@
 
 (6).![](media/A269.png)
 
-**完成テストコード**
+**Volledige testcode**
 
 ![KidsBlock Project-1747127137354](media/A270.png)
 
-### **5.テスト結果**
+### **5. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源を入れてからDIPスイッチをONにします。スマートカーを黒い円の中に置くと、その円の中だけを自律的に移動します。
+Na het succesvol uploaden van de code naar de V4.0 board, sluit je de bedrading aan volgens het aansluitschema, zet je de externe voeding aan en zet je de DIP-schakelaar op ON. Plaats de smart car in de zwarte cirkel, dan zal deze uitsluitend binnen de cirkel bewegen.

@@ -1,42 +1,42 @@
-# Project 16 Bluetooth スピードコントロールスマートカー
+# Project 16 Bluetooth Snelheidsregeling Slimme Auto
 
 ![](media/A327.jpeg)
 
-### **1.説明**
+### **1. Beschrijving**
 
-このプロジェクトでは、Bluetoothを使ってスマートカーの速度を調整します。変数で速度を定義し、それを変更することでスマートカーの速度を変えることができます。
+In dit project gebruiken we Bluetooth om de snelheid van de slimme auto aan te passen. We definiëren variabele snelheden en veranderen deze om de snelheid van de slimme auto te regelen.
 
-### **2.フローチャート**
+### **2. Stroomschema**
 
 ![image-20250513095810478](media/A340.png)
 
-### **3.配線図**
+### **3. Aansluitschema**
 
 ![](media/A329.png)
 
-1). 8\*8 LEDボードのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
+1). GND, VCC, SDA en SCL van het 8\*8 LED-bord zijn verbonden met G (GND), V (VCC), A4 en A5 van het uitbreidingsbord.
 
-2). BluetoothモジュールのRXD、TXD、GND、VCCはそれぞれ8833モータードライバー拡張ボードのTX、RX、G、5Vに接続します。BluetoothモジュールのSTATEとBRKピンは接続不要です。
+2). De RXD, TXD, GND en VCC van de Bluetooth-module zijn respectievelijk verbonden met TX, RX, G en 5V op het 8833 motor driver uitbreidingsbord, terwijl de STATE en BRK pinnen van de Bluetooth-module niet hoeven te worden aangesloten.
 
-3). サーボはG、V、A3に接続します。茶色の線はGnd（G）、赤色の線は5V（V）、オレンジ色の線はA3に接続します。
+3). De servo is verbonden met G, V en A3. De bruine draad is aangesloten op Gnd (G), de rode draad op 5V (V) en de oranje draad op A3.
 
-4). 電源はBATポートに接続します。
+4). De voeding is aangesloten op de BAT-poort.
 
-### **4.テストコード**
+### **4. Testcode**
 
-コードを書く前に、8x16 LEDボードとサーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+Voordat je de code schrijft, is het noodzakelijk om de bibliotheekbestanden van het 8x16 LED-bord en de servo te importeren. De specifieke stappen zijn als volgt:
 
-![](media/A29.png)をクリックしてセンサー/モジュール/コンポーネントの拡張ライブラリ画面に入り、「Matrix 8\*16 Aip1640」モジュールを検索し、![](media/A236.png)をクリックします。これで「**Not loaded**」が「**loaded**」に変わり、「**Matrix 8\*16 Aip1640**」モジュールが正常に追加されたことを示します。
+Klik op ![](media/A29.png) om de extensiebibliotheekinterface van sensoren/modules/componenten te openen, zoek vervolgens naar de “Matrix 8\*16 Aip1640” module ![](media/A236.png) en klik erop. Hierdoor verandert "**Not loaded**" in "**loaded**", wat aangeeft dat de “**Matrix 8\*16 Aip1640**” module succesvol is toegevoegd.
 
 ![Img](media/A237.png)
 
 ![](media/A238.png)
 
-![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加した「**Matrix 8\*16 Aip1640**」モジュールと「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
+Klik op ![](media/A33.png) om terug te keren naar de code-editor interface, de instructieblokken van de toegevoegde “**Matrix 8\*16 Aip1640**” module en “**Servo**” component zijn zichtbaar in het modulegebied.
 
 ![](media/A330.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie:
 
 (1).![](media/A126.png)
 
@@ -58,9 +58,9 @@
 
 (10).![](media/A341.png)
 
-**完成したテストコード**
+**Volledige Testcode**
 
-<span style="color: rgb(255, 76, 65);">**注意：** テストコードをアップロードする前にBluetoothモジュールを外す必要があります。そうしないとコードのアップロードに失敗します。コードのアップロードが成功したらBluetoothモジュールを接続してください。</span>
+<span style="color: rgb(255, 76, 65);">**Opmerking:** Verwijder de Bluetooth-module voordat je de testcode uploadt, anders kan de code niet worden geüpload. Sluit de Bluetooth-module pas aan nadat de code succesvol is geüpload.</span>
 
 ![](media/A342.png)
 
@@ -74,8 +74,8 @@
 
 ![](media/A346.png)
 
-### **5.テスト結果**
+### **5. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れてDIPスイッチをONにします。APPとBluetoothをペアリングすると、APPでスマートカーを操作して動かすことができます。
+Na het succesvol uploaden van de code naar het V4.0 bord, verbind je de bedrading volgens het aansluitschema, zet je de externe voeding aan en zet je de DIP-schakelaar op ON. Koppel de APP met Bluetooth, de slimme auto kan nu via de APP worden bestuurd.
 
-![](media/A347.png)を押すと車が加速し、![](media/A348.png)を押すと車が減速します。また、8\*16 LEDボードにはスマートカーの対応する状態パターンが表示されます。
+Druk op ![](media/A347.png), de auto zal versnellen, druk op ![](media/A348.png), de auto zal vertragen, en het 8\*16 LED-bord toont het overeenkomstige statuspatroon van de slimme auto.

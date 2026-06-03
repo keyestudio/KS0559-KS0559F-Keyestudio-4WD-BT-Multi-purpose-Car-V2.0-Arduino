@@ -1,30 +1,30 @@
-# Project 11 ライントラッキングスマートカー
+# Project 11 Lijnvolgende Slimme Auto
 
 ![](media/A271.png)
 
-### **1.説明**
+### **1. Beschrijving**
 
-ライントラッキングセンサーの動作原理に基づき、ライントラッキングスマートカーを作成します。
+Gebaseerd op het werkingsprincipe van de lijnvolgsensor, maken we een lijnvolgende slimme auto.
 
-このプロジェクトでは、スマートカーの底部に黒い線があるかどうかをライントラッキングセンサーで検出し、その検出結果に応じて2つのモーターグループの回転を制御し、スマートカーが黒い線に沿って走行するように制御します。
+In dit project detecteren we of er een zwarte lijn onder de slimme auto ligt via een lijnvolgsensor, en vervolgens besturen we de rotatie van de twee groepen motoren op basis van de detectieresultaten, zodat de slimme auto langs de zwarte lijn rijdt.
 
-### **2.フローチャート**
+### **2. Stroomschema**
 
 ![img](media/A272.png)
 
 ![Img](media/A273.png)
 
-### **3.配線図**
+### **3. Aansluitschema**
 
 ![](media/A264.png)
 
-ライントラッキングセンサーのG、V、S1、S2、S3はセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
+G, V, S1, S2 en S3 van de lijnvolgsensor zijn verbonden met G (GND), V (VCC), D11, D7 en D8 van de sensor uitbreidingskaart.
 
-電源はBATポートに接続します。
+De voeding is aangesloten op de BAT-poort.
 
-### **4.テストコード**
+### **4. Testcode**
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 (1).![](media/A126.png)
 
@@ -36,7 +36,7 @@
 
 (5).![](media/A276.png)
 
-**完成テストコード**
+**Volledige Testcode**
 
 ![](media/A277.png)
 
@@ -44,6 +44,6 @@
 
 ![](media/A279.png)
 
-### **5.テスト結果**
+### **5. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れてからDIPスイッチをONにします。するとスマートカーがラインに沿って走行します。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind je de bedrading volgens het aansluitschema, zet je de voeding aan en zet je de DIP-schakelaar op ON. Vervolgens zal de slimme auto langs de lijnen rijden.

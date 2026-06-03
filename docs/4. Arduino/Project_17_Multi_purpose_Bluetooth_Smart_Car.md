@@ -1,46 +1,46 @@
-# Project 17 多機能Bluetoothスマートカー
+# Project 17 Multi-purpose Bluetooth Smart Car
 
 ![2c1198e0ebd7c31622b7438469fb572c](media/A138.jpeg)
 
-### **1.説明**
+### **1.Beschrijving**
 
-これまでのプロジェクトでは、車は単一の機能のみを実行していました。しかし、このレッスンでは、Bluetoothを介してすべての機能を統合します。
+In eerdere projecten voert de auto slechts één enkele functie uit. In deze les zullen we echter al zijn functies integreren via Bluetooth.
 
-### **2.フローチャート**
+### **2.Stroomschema**
 
 ![73f4da1e321bc29282d3b2f5cb3168dd](media/A139.png)
 
-### **3.配線図**
+### **3.Aansluitschema**
 
 ![fce8edd349ddbcfe02e6f27feb73e90f](media/A140.png)
 
-1). 8×8 LEDボードのGND、VCC、SDA、SCLは拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
+1). GND, VCC, SDA en SCL van het 8\*8 LED-bord zijn verbonden met G (GND), V (VCC), A4 en A5 van het uitbreidingsbord.
 
-2). BluetoothモジュールのRXD、TXD、GND、VCCはそれぞれ8833モーターシールドのTX、RX、G、5Vに接続し、BluetoothモジュールのSTATEおよびBRKピンは接続不要です。
+2). De RXD, TXD, GND en VCC van de Bluetooth-module zijn respectievelijk verbonden met TX, RX, G en 5V op de 8833 motor Shield, terwijl de STATE- en BRK-pinnen van de Bluetooth-module niet hoeven te worden aangesloten.
 
-3). サーボはG、V、A3に接続します。茶色の線はGnd(G)、赤色の線は5V(V)、オレンジ色の線はA3に接続します。
+3). De servo is verbonden met G, V en A3. De bruine draad is verbonden met Gnd (G), de rode draad is verbonden met 5V (V) en de oranje draad is verbonden met A3.
 
-4). ライントラッキングセンサーのG、V、S1、S2、S3はセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
+4). G, V, S1, S2 en S3 van de lijnvolgsensor zijn verbonden met G (GND), V (VCC), D11, D7 en D8 van het sensor uitbreidingsbord.
 
-5). 超音波センサーのVCC、Trig、Echo、Gndはそれぞれ5V(V)、D12(S)、D13(S)、Gnd(G)に接続します。
+5). VCC, Trig, Echo en Gnd van de ultrasone sensor zijn verbonden met 5V (V), D12 (S), D13 (S) en Gnd (G).
 
-6). 電源はBATポートに接続します。
+6). De voeding is verbonden met de BAT-poort.
 
-### **4.テストコード**
+### **4.Testcode**
 
-<span style="color: rgb(255, 76, 65);">**注意:** テストコードをアップロードする前にBluetoothモジュールを取り外す必要があります。そうしないとコードのアップロードに失敗します。コードのアップロードが成功した後にBluetoothモジュールを接続してください。</span>
+<span style="color: rgb(255, 76, 65);">**Opmerking:** Verwijder de Bluetooth-module voordat je de testcode uploadt, anders kan de code niet worden geüpload. Verbind de Bluetooth-module pas nadat de code succesvol is geüpload.</span>
 
 ```c
 //*******************************************************************************
 /*
 keyestudio 4wd BT Car 
-lesson 17
-Bluetooth Multifunctional Car
+les 17
+Bluetooth multifunctionele auto
 http://www.keyestudio.com
 */ 
-#define SCL_Pin  A5  // クロックピンをA5に設定
-#define SDA_Pin  A4  // データピンをA4に設定
-// パターンのデータを格納する配列。自分で計算するかモジュールツールから取得可能
+#define SCL_Pin  A5  //Stel de klokpin in op A5
+#define SDA_Pin  A4  //Stel de datapin in op A4
+//Array, gebruikt om de gegevens van het patroon op te slaan, kan zelf worden berekend of verkregen via de modulus tool
 unsigned char start01[] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
 unsigned char front[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x12,0x09,0x12,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
 unsigned char back[] = {0x00,0x00,0x00,0x00,0x00,0x24,0x48,0x90,0x48,0x24,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -53,42 +53,42 @@ unsigned char speed_a[] =
 unsigned char speed_d[] = 
 {0x00,0x02,0x04,0x08,0x10,0x20,0x40,0xff,0x40,0x20,0x10,0x08,0x04,0x02,0x00,0x00};
 
-int left_ctrl = 2; // グループBモーターの方向制御ピンを定義
-int left_pwm = 5;  // グループBモーターのPWM制御ピンを定義
-int right_ctrl = 4; // グループAモーターの方向制御ピンを定義
-int right_pwm = 6;  // グループAモーターのPWM制御ピンを定義
-int speeds = 150;   // 初期速度を150に設定
+int left_ctrl = 2;//definieer de richtingsbesturingspinnen van motor groep B
+int left_pwm = 5;//definieer de PWM-besturingspinnen van motor groep B
+int right_ctrl = 4;//definieer de richtingsbesturingspinnen van motor groep A
+int right_pwm = 6;//definieer de PWM-besturingspinnen van motor groep A
+int speeds = 150; //Stel de beginsnelheid in op 150
 
-const int servopin = A3; // サーボのピンをA3に設定
+const int servopin = A3;//stel de pin van de servo in op A3 
 
-int L_pin = 11; // 左側トラッキングセンサーのピンをD11に定義
-int M_pin = 7;  // 中央トラッキングセンサーのピンをD7に定義
-int R_pin = 8;  // 右側トラッキングセンサーのピンをD8に定義
+int L_pin = 11; //definieer de linker lijnvolgsensor pin als D11
+int M_pin = 7; //definieer de middelste lijnvolgsensor pin als D7
+int R_pin = 8; //definieer de rechter lijnvolgsensor pin als D8
 int L_val, M_val, R_val;
 
-int trigPin = 12; // TRIGピンをD12に接続
-int echoPin = 13; // ECHOピンをD13に接続
+int trigPin = 12; //TRIG pin verbonden met D12
+int echoPin = 13; //ECHO pin verbonden met D13
 int distance, distance_l, distance_r;
 
 char BLE_val;
 
 void setup() {
-  Serial.begin(9600);//ボーレートを9600に設定
-  pinMode(left_ctrl,OUTPUT);//グループBモーターの方向制御ピンをOUTPUTに設定
-  pinMode(left_pwm,OUTPUT);//グループBモーターのPWM制御ピンをOUTPUTに設定
-  pinMode(right_ctrl,OUTPUT);//グループAモーターの方向制御ピンをOUTPUTに設定
-  pinMode(right_pwm,OUTPUT);//グループAモーターのPWM制御ピンをOUTPUTに設定
-  servopulse(servopin,90);//サーボの角度を90度に設定
+  Serial.begin(9600);//Stel baudrate in op 9600
+  pinMode(left_ctrl,OUTPUT);//stel richtingbesturingspinnen van groep B motor in op OUTPUT
+  pinMode(left_pwm,OUTPUT);//stel PWM-besturingspinnen van groep B motor in op OUTPUT
+  pinMode(right_ctrl,OUTPUT);//stel richtingbesturingspinnen van groep A motor in op OUTPUT
+  pinMode(right_pwm,OUTPUT);//stel PWM-besturingspinnen van groep A motor in op OUTPUT
+  servopulse(servopin,90);//de hoek van de servo is 90 graden
   delay(300);
-  pinMode(L_pin, INPUT); //トラッキングセンサーのピンを入力モードに設定
+  pinMode(L_pin, INPUT); //Tracking sensorpinnen zijn geconfigureerd voor inputmodus
   pinMode(M_pin, INPUT);
   pinMode(R_pin, INPUT);
-  pinMode(trigPin, OUTPUT); //TRIGを出力モードに定義
-  pinMode(echoPin, INPUT); //ECHOを入力モードに定義
-  pinMode(SCL_Pin,OUTPUT);//クロックピンを出力に設定
-  pinMode(SDA_Pin,OUTPUT);//データピンを出力に設定
+  pinMode(trigPin, OUTPUT); //definieer TRIG als outputmodus
+  pinMode(echoPin, INPUT); //definieer ECHO als inputmodus
+  pinMode(SCL_Pin,OUTPUT);// Stel de klokpin in op output
+  pinMode(SDA_Pin,OUTPUT);//Stel de datapin in op output
   matrix_display(clear);
-  matrix_display(start01); //start01の表現パターンを表示
+  matrix_display(start01); //toon start01 expressiepatroon
 }
 
 void loop() {
@@ -133,46 +133,46 @@ void loop() {
       matrix_display(speed_d); 
       break;
     
-      case  'U':  follow();  //‘U’を受信し、フォローモードに入る
+      case  'U':  follow();  //Ontvang ‘U’, ga naar volgmodus
       break; 
-      case  'Y':  avoid(); //‘Y’を受信し、障害物回避モードに入る  
+      case  'Y':  avoid(); //Ontvang ‘Y’, ga naar obstakelvermijdingsmodus  
       break;  
-      case  'G':  confinement(); //‘G’を受信し、閉じ込めモードに入る
+      case  'G':  confinement(); //Ontvang ‘G’, ga naar begrenzingsmodus
       break;  
-      case  'X':  tracking(); //‘X’を受信し、トラッキングモードに入る
+      case  'X':  tracking(); //Ontvang ‘X’, ga naar volgmodus
       break;  
     }
 }
 
-void car_front()//前進状態を定義
+void car_front()//definieer de toestand van vooruit rijden
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,(255-speeds));
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,(255-speeds));
 }
-void car_back()//後退状態を定義
+void car_back()//definieer de toestand van achteruit rijden
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,speeds);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,speeds);
 }
-void car_left()//左折状態を設定
+void car_left()//stel de toestand van linksaf slaan in
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, speeds);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, (255-speeds));
 }
-void car_right()//右折状態を設定
+void car_right()//stel de toestand van rechtsaf slaan in
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, (255-speeds));
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, speeds);
 }
-void car_Stop()//停止状態を定義
+void car_Stop()//definieer de toestand van stoppen
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,0);
@@ -180,44 +180,44 @@ void car_Stop()//停止状態を定義
   analogWrite(right_pwm,0);
 }
 
-void speeds_a() { //加速関数
+void speeds_a() { //functie voor snelheidsverhoging
   while (1) {
-    Serial.println(speeds);  //速度情報を表示 
-    if (speeds < 255) { //最大255まで
+    Serial.println(speeds);  //toon snelheidsinformatie 
+    if (speeds < 255) { //tot 255
       matrix_display(clear);
       matrix_display(speed_a);
       speeds++;
-      delay(10);  //成長速度を調整 
+      delay(10);  //pas de snelheid van de toename aan 
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //‘S’を受信したら加速を停止
+    if (BLE_val == 'S') //Ontvang 'S', de auto stopt met versnellen
     break;
   }
 }
-void speeds_d() { //減速関数
+void speeds_d() { //functie voor snelheidsvermindering
   while (1) {
-    Serial.println(speeds);  //速度情報を表示
-    if (speeds > 0) { //0まで減速
+    Serial.println(speeds);  //toon snelheidsinformatie
+    if (speeds > 0) { //tot 0
       matrix_display(clear);
       matrix_display(speed_d);
       speeds--;
-      delay(10);    //減速速度を調整
+      delay(10);    //pas de snelheid van de vertraging aan
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') //‘S’を受信したら減速を停止
+    if (BLE_val == 'S') //Ontvang 'S', de auto stopt met vertragen
     break;
 }
 }
 
 int get_distance() {
   int distance = 0;
-  digitalWrite(trigPin, LOW);     // Trig/Pinを通じてパルスを送信し、HC-SR04の測距をトリガーするため、超音波信号インターフェースを2μsの低レベルに設定
+  digitalWrite(trigPin, LOW);     // stuur puls via Trig/Pin, activeer HC-SR04 afstandsmeting, zodat het ultrasone signaalinterface laag niveau 2μs uitzendt
   delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);    // 超音波信号インターフェースを10μsの高レベルに設定（ここでは少なくとも10μs）
+  digitalWrite(trigPin, HIGH);    // maak ultrasoon signaalinterface hoog niveau 10μs, hier minimaal 10μs
   delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);     // 超音波信号インターフェースを低レベルに維持
-  distance = pulseIn(echoPin, HIGH) / 58; // パルス時間を読み取り、距離（単位：cm）に変換
-  Serial.println(distance);        // 距離値を出力
+  digitalWrite(trigPin, LOW);     // houd het ultrasone signaalinterface laag niveau
+  distance = pulseIn(echoPin, HIGH) / 58; // lees de pulstijd en zet de pulstijd om naar afstand (eenheid: cm)
+  Serial.println(distance);        // output afstandswaarde
   return distance;
 }
 
@@ -226,29 +226,29 @@ void follow() {
   delay(200);
   int follow_flag = 1;
   while (follow_flag) {
-    distance = get_distance(); // 測距関数を呼び出す
-    if (distance < 8 ) {// 距離が8未満の場合
-      car_back();// 車が後退する
+    distance = get_distance(); //roep de afstandsmeetfunctie aan
+    if (distance < 8 ) {//Als de afstand minder is dan 8
+      car_back();//rijdt de auto achteruit
       matrix_display(clear);
       matrix_display(back); 
     }
-    else if (distance >= 8 && distance < 13) { // 距離が8以上13未満の場合
-      car_Stop();// 停止
+    else if (distance >= 8 && distance < 13) { //Als de afstand groter dan of gelijk aan 8 is, maar minder dan 13
+      car_Stop();//stoppen
       matrix_display(clear);
       matrix_display(STOP01); 
     }
-    else if (distance >= 13 && distance <= 35 ) { // 距離が13以上35以下の場合
-      car_front();// 車が前進する
+    else if (distance >= 13 && distance <= 35 ) { //Als de afstand groter dan of gelijk aan 13 is, maar minder dan of gelijk aan 35
+      car_front();//rijdt de auto vooruit
       matrix_display(clear);
       matrix_display(front);
     }
-    else {// 上記のいずれにも該当しない場合
-      car_Stop();// 停止
+    else {//Als geen van bovenstaande
+      car_Stop();//stoppen
       matrix_display(clear);
       matrix_display(STOP01); 
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') { // 'S'を受信した場合、車を停止する
+    if (BLE_val == 'S') { //Wanneer S wordt ontvangen, stopt de auto
       follow_flag = 0;
       car_Stop();
     }
@@ -258,47 +258,47 @@ void follow() {
 void avoid() {
   int avoid_flag = 1;
   while (avoid_flag) {
-    distance = get_distance(); // 測距関数を呼び出す
-    if (distance > 0 && distance < 20) { // 距離が0より大きく20未満の場合
-      car_Stop();// 停止
+    distance = get_distance(); //roep de afstandsmeetfunctie aan
+    if (distance > 0 && distance < 20) { //Als de afstand minder is dan 20 en groter dan 0
+      car_Stop();//stoppen
       matrix_display(clear);
-      matrix_display(STOP01);   // ドットマトリクスに停止パターンを表示
+      matrix_display(STOP01);   //de dot matrix toont een stop patroon
       delay(1000);
-      servopulse(servopin,160); // サーボを180度以上に動かす
+      servopulse(servopin,160); //breng het stuurmechanisme over 180 graden
       delay(500);
-      distance_l = get_distance(); // 左側の距離を取得
+      distance_l = get_distance(); //meet de linker afstand 
       delay(100);
-      servopulse(servopin,20); // サーボを0度に回す
+      servopulse(servopin,20); //draai het stuurmechanisme naar 0 graden
       delay(500);
-      distance_r = get_distance(); // 右側の距離を取得
+      distance_r = get_distance(); //meet de rechter afstand
       delay(100);
-      if (distance_l > distance_r) { // 距離を比較し、左の方が大きい場合
-        car_left();  // 車が左に曲がる
+      if (distance_l > distance_r) { //vergelijk de afstanden, als links groter is dan rechts
+        car_left();  //de auto draait naar links
         matrix_display(clear);
-        matrix_display(left);   // ドットマトリクスに左パターンを表示
-        servopulse(servopin,90);// サーボを90度に戻す
+        matrix_display(left);   //de dot matrix toont een links patroon
+        servopulse(servopin,90);//het stuurmechanisme keert terug naar 90 graden
         delay(700);
         matrix_display(clear);
-        matrix_display(front);   // ドットマトリクスに前進パターンを表示
+        matrix_display(front);   //de dot matrix toont een vooruit patroon
       } 
-      else { // それ以外（右の方が大きい場合）
-        car_right();// 車が右に曲がる
+      else { //Anders als rechts groter is dan links
+        car_right();//de auto draait naar rechts
         matrix_display(clear);
-        matrix_display(right);   // ドットマトリクスに右パターンを表示
-        servopulse(servopin,90);// サーボを90度に戻す
+        matrix_display(right);   //de dot matrix toont een rechts patroon
+        servopulse(servopin,90);//het stuurmechanisme keert terug naar 90 graden
         delay(700);
         matrix_display(clear);
-        matrix_display(front);   // ドットマトリクスに前進パターンを表示
+        matrix_display(front);   //de dot matrix toont een vooruit patroon
       }
     }
-    else { // 前方距離が20以上の場合
-      car_front();// 車が前進する
+    else { //Wanneer de afstand voor minder dan of gelijk aan 10cm is
+      car_front();//rijdt de auto vooruit
       matrix_display(clear);
-      matrix_display(front);   // ドットマトリクスに前進パターンを表示
+      matrix_display(front);   //de dot matrix toont een vooruit patroon
 
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') {// 'S'を受信した場合、車を停止する
+    if (BLE_val == 'S') {//Wanneer S wordt ontvangen, stopt de auto
       avoid_flag = 0;
       car_Stop();
     }
@@ -308,20 +308,20 @@ void avoid() {
 void confinement() {
   int confinement_flag = 1;
   while (confinement_flag) {
-    L_val = digitalRead(L_pin); // 左センサーの値を読み取る
-    M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
-    R_val = digitalRead(R_pin); // 右センサーの値を読み取る
-    if ( L_val == 0 && M_val == 0 && R_val == 0 ) { // 黒線が検出されない場合、車は前進する
+    L_val = digitalRead(L_pin); //lees de waarde van de linkersensor
+    M_val = digitalRead(M_pin); //lees de waarde van de middensensor
+    R_val = digitalRead(R_pin); //lees de waarde van de rechtersensor
+    if ( L_val == 0 && M_val == 0 && R_val == 0 ) { //de auto gaat vooruit wanneer er geen zwarte lijn wordt gedetecteerd
       car_front();
     }
-    else { // それ以外の場合、いずれかのトラッキングセンサーが黒線を検出したら、車は後退してから左に曲がる
+    else { //Anders, als een van de volg sensoren een zwarte lijn detecteert, gaat de auto achteruit en draait dan naar links
       car_back();
       delay(500);
       car_left();
       delay(800);
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') { // 'S'を受信したら、車は停止する
+    if (BLE_val == 'S') { //Wanneer S wordt ontvangen, stopt de auto
       confinement_flag = 0;
       car_Stop();
     }
@@ -331,40 +331,40 @@ void confinement() {
 void tracking() {
   int track_flag = 1;
   while (track_flag) {
-    L_val = digitalRead(L_pin); // 左センサーの値を読み取る
-    M_val = digitalRead(M_pin); // 中央センサーの値を読み取る
-    R_val = digitalRead(R_pin); // 右センサーの値を読み取る
-    if (M_val == 1) { // 中央で黒線を検出
-      if (L_val == 1 && R_val == 0) { // 左に黒線があり右にない場合、左に曲がる
+    L_val = digitalRead(L_pin); //lees de waarde van de linkersensor
+    M_val = digitalRead(M_pin); //lees de waarde van de middensensor
+    R_val = digitalRead(R_pin); //lees de waarde van de rechtersensor
+    if (M_val == 1) { //Zwarte lijn gedetecteerd in het midden
+      if (L_val == 1 && R_val == 0) { //Als een zwarte lijn aan de linkerkant wordt gedetecteerd, maar niet aan de rechterkant, draai dan naar links
         car_left();
       }
-      else if (L_val == 0 && R_val == 1) { // それ以外で右に黒線があり左にない場合、右に曲がる
+      else if (L_val == 0 && R_val == 1) { //Anders, als een zwarte lijn aan de rechterkant wordt gedetecteerd en niet aan de linkerkant, draai dan naar rechts
         car_right();
       }
-      else { // それ以外は車は前進する
+      else { //Anders gaat de auto vooruit
         car_front();
       }
     }
-    else { // 中央で黒線が検出されない場合
-      if (L_val == 1 && R_val == 0) { // 左に黒線があり右にない場合、右に曲がる
+    else { //geen zwarte lijnen gedetecteerd in het midden
+      if (L_val == 1 && R_val == 0) { //Als een zwarte lijn aan de linkerkant wordt gedetecteerd, maar niet aan de rechterkant, draai dan naar links
         car_right();
       }
-      else if (L_val == 0 && R_val == 1) { // それ以外で右に黒線があり左にない場合、右に曲がる
+      else if (L_val == 0 && R_val == 1) { //Anders, als een zwarte lijn aan de rechterkant wordt gedetecteerd en niet aan de linkerkant, draai dan naar rechts
         car_right();;
       }
-      else { // それ以外は停止する
+      else { //Anders, stop
         car_Stop();
       }
     }
     BLE_val = Serial.read();
-    if (BLE_val == 'S') { // 'S'を受信したら、車は停止する
+    if (BLE_val == 'S') { //Wanneer S wordt ontvangen, stopt de auto
       track_flag = 0;
       car_Stop();
     }
   }
 }
 
-void servopulse(int servopin,int myangle)// サーボモーターの動作角度
+void servopulse(int servopin,int myangle)//Stuurservo draaihoek
 {
   for(int i=0; i<30; i++)
   {
@@ -376,22 +376,22 @@ void servopulse(int servopin,int myangle)// サーボモーターの動作角度
   }  
 }
 
-// この関数はドットマトリックス表示に使用される
+//deze functie wordt gebruikt voor dot matrix display
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  // データ転送開始条件を呼び出す関数
-  IIC_send(0xc0);  // アドレスを選択する
+  IIC_start();  //de functie die de startconditie voor datatransfer aanroept
+  IIC_send(0xc0);  //selecteer adres
 
-  for (int i = 0; i < 16; i++) //パターンデータは16バイトです
+  for (int i = 0; i < 16; i++) //de patroongegevens zijn 16 bytes
   {
-    IIC_send(matrix_value[i]); //パターンのデータを送信します
+    IIC_send(matrix_value[i]); //Zend de gegevens van het patroon
   }
-  IIC_end();   //パターンデータ送信終了
+  IIC_end();   //Beëindig de overdracht van patroongegevens
   IIC_start();
-  IIC_send(0x8A);  //表示制御、4/16パルス幅を選択
+  IIC_send(0x8A);  //Displaycontrole, selecteer 4/16 pulsbreedte
   IIC_end();
 }
-//データ送信が開始される条件
+//Voorwaarden waaronder gegevensoverdracht begint
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -401,7 +401,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//データ送信の終了を示す
+//Geeft het einde van de gegevensoverdracht aan
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -412,27 +412,27 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//データ送信
+//zend gegevens
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //各バイトは8ビットで、最下位からビットごとにチェックします
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Elke byte heeft 8 bits en wordt bit voor bit gecontroleerd, beginnend bij het laagste niveau
   {
-    if (send_data & mask) { //バイトの各ビットが1か0かに応じてSDA_Pinの高低レベルを設定します
+    if (send_data & mask) { //Stelt de hoge en lage niveaus van SDA_Pin in afhankelijk van of elk bit van de byte een 1 of een 0 is
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //クロックピンSCL_Pinを高レベルにしてデータ送信を停止します
+    digitalWrite(SCL_Pin, HIGH); //Trek de klokpin SCL_Pin hoog om de gegevensoverdracht te stoppen
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //クロックピンSCL_Pinを低レベルにしてSDAの信号を変化させます
+    digitalWrite(SCL_Pin, LOW); //trek de klokpin SCL_Pin laag om het SIGNaal van SDA te veranderen
   }
 }
 //*******************************************************************************
 ```
 
-### **5.テスト結果**
+### **5. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源を入れてからDIPスイッチをONにします。
+Na het succesvol uploaden van de code naar de V4.0 board, sluit de bedrading aan volgens het bedradingsschema, zet de externe voeding aan en zet vervolgens de DIP-schakelaar op AAN.
 
-BluetoothモジュールがAPPに接続され、モバイルAPPがBluetoothに正常に接続されると、モバイルAPPでスマートカーを制御できます。モバイルAPPの対応するボタンを押すことで、対応する機能を実現できます。
+Nadat de Bluetooth-module is aangesloten op de APP en de mobiele APP succesvol is verbonden met de Bluetooth, kan de slimme auto worden bestuurd via de mobiele APP. We kunnen de bijbehorende functies bereiken door op de overeenkomstige knoppen op de mobiele APP te drukken.

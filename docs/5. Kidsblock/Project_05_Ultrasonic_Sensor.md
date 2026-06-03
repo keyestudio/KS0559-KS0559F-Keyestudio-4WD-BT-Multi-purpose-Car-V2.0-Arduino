@@ -1,87 +1,87 @@
-# Project 5 超音波センサー
+# Project 5 Ultrasone Sensor
 
-### **1.説明**
+### **1.Beschrijving**
 
 ![](media/A109.png)
 
-HC-SR04超音波センサーは、コウモリが行うようにソナーを使って物体までの距離を測定します。高精度で安定した読み取りが可能な非接触距離検出を簡単に利用できるパッケージで提供します。超音波送信モジュールと受信モジュールがセットになっています。
+De HC-SR04 ultrasone sensor gebruikt sonar om de afstand tot een object te bepalen, zoals vleermuizen doen. Het biedt uitstekende contactloze afstandsdetectie met hoge nauwkeurigheid en stabiele metingen in een gebruiksvriendelijk pakket. Het wordt geleverd met een ultrasone zender- en ontvanger modules.
 
 ![Img](media/A110.png)
 
-HC-SR04または超音波センサーは、障害物検知や距離測定アプリケーションをはじめ、さまざまな電子プロジェクトで広く使われています。ここでは、Arduinoと超音波センサーを使った距離測定の簡単な方法と、Arduinoでの超音波センサーの使い方を紹介します。
+De HC-SR04 of ultrasone sensor wordt gebruikt in een breed scala aan elektronische projecten voor het creëren van obstakeldetectie en afstandsmeettoepassingen, evenals diverse andere toepassingen. Hier hebben we een eenvoudige methode gebracht om de afstand te meten met Arduino en een ultrasone sensor en hoe je de ultrasone sensor met Arduino gebruikt.
 
-### **2.仕様**
+### **2.Specificatie**
 
-- 動作電圧 : +5V DC
+- Werkspanning :+5V DC
 
-- 待機電流 : \<2mA
+- Ruststroom : \<2mA
 
-- 動作電流 : 15mA
+- Werkstroom: 15mA
 
-- 有効角度 : \<15°
+- Effectieve hoek: \<15°
 
-- 測定距離範囲 : 2cm – 300 cm
+- Afstandsbereik : 2cm – 300 cm
 
-- 精度 : 0.3 cm
+- Nauwkeurigheid : 0.3 cm
 
-- 測定角度 : 30度
+- Meethoek: 30 graden
 
-- トリガ入力パルス幅 : 10μS
+- Trigger ingang pulsbreedte: 10uS
 
 ![](media/A111.png)
 
-### **3.部品**
+### **3.Componenten**
 
-| 開発ボード *1             | 8833 モータードライバー *1 | 赤色LEDモジュール*1       | 超音波センサー*1          |
+| Development Board *1      | 8833 Motor Driver *1      | Rode LED Module*1          | Ultrasone Sensor*1       |
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| ![img](media/A112.jpg)    | ![img](media/A113.jpg)    | ![img](media/A114.jpg)    | ![img](media/A115.jpg)    |
-| 4P デュポン線*1           | USBケーブル*1             | 3P デュポン線*1           |                           |
-| ![img](media/A116.jpg)    | ![img](media/A117.jpg)    | ![img](media/A118.jpg)    |                           |
+| ![img](media/A112.jpg) | ![img](media/A113.jpg) | ![img](media/A114.jpg) | ![img](media/A115.jpg) |
+| 4P Dupont Draad*1          | USB Kabel*1               | 3P Dupont Draad*1          |                           |
+| ![img](media/A116.jpg) | ![img](media/A117.jpg) | ![img](media/A118.jpg) |                           |
 
-### **4.動作原理**
+### **4.Werkingprincipe**
 
-上の写真のように、2つの目のような形をしています。1つは送信側、もう1つは受信側です。
+Zoals op de bovenstaande afbeelding te zien is, lijkt het op twee ogen. Eén is de zendkant, de ander is de ontvangkant.
 
-超音波モジュールはトリガ信号を受けると超音波を発信します。超音波が物体に当たり反射して戻ってくると、モジュールはエコー信号を出力します。これにより、トリガ信号とエコー信号の時間差から物体までの距離を測定できます。
+De ultrasone module zal ultrasone golven uitzenden na het triggeren van een signaal. Wanneer de ultrasone golven het object tegenkomen en worden teruggekaatst, geeft de module een echo signaal af, zodat het de afstand tot het object kan bepalen aan de hand van het tijdsverschil tussen het trigger signaal en het echo signaal.
 
-tは信号が障害物に当たり戻ってくるまでの時間です。空気中の音速は約343m/sで、距離 = 速度 × 時間です。ただし、超音波は往復するため距離の2倍の時間がかかります。したがって、2で割る必要があり、超音波で測定した距離 = (速度 × 時間) / 2 となります。
+De t is de tijd dat het uitgezonden signaal het obstakel ontmoet en terugkeert. En de voortplantingssnelheid van geluid in de lucht is ongeveer 343m/s, en afstand = snelheid \* tijd. Echter, de ultrasone golf wordt uitgezonden en komt terug, wat 2 keer de afstand is. Daarom moet het gedeeld worden door 2, de afstand gemeten door ultrasone golf = (snelheid \* tijd)/2.
 
-**超音波モジュールの使用方法とチャート：**
+**Gebruiksmethode en schema van ultrasone module:**
 
-1). GPIOピンを使ってSR04のTrigピンに少なくとも10μsの高レベル信号を与え、距離測定をトリガします。
+1).Gebruik de GPIO pin om een hoog signaal van minstens 10μs aan de Trig pin van SR04 te geven, waarmee het getriggerd kan worden om afstand te detecteren.
 
-2). トリガ後、モジュールは自動的に8回の40KHz超音波パルスを送信し、信号の戻りを検出します。この処理はモジュールが自動で行います。
+2).Na het triggeren zal de module automatisch acht 40KHz ultrasone pulsen uitzenden en detecteren of er een signaal terugkomt. Deze stap wordt automatisch door de module uitgevoerd.
 
-3). 信号が戻ると、Echoピンは高レベルを出力し、その高レベルの継続時間が超音波送信から戻りまでの時間となります。
+3).Als het signaal terugkomt, zal de Echo pin een hoog signaal afgeven, en de duur van het hoge signaal is de tijd vanaf het uitzenden van de ultrasone golf tot de terugkomst.
 
 ![image-20250509143833078](media/A119.png)
 
 
-**超音波センサーの回路図：**
+**Schema van ultrasone sensor:**
 
 ![](media/A120.jpeg)
 
-### **5.配線図**
+### **5.Aansluitschema**
 
 ![](media/A121.png)
 
-超音波センサーのVCC、Trig、Echo、Gndはそれぞれ5V(V)、D12、D13、Gnd(G)に接続します。
+VCC, Trig, Echo en Gnd van de ultrasone sensor zijn verbonden met 5V(V), D12, D13 en Gnd(G)
 
-### **6.テストコード**
+### **6.Testcode**
 
-コードを書く前に、超音波センサーのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+Voordat je de code schrijft, is het noodzakelijk om het bibliotheekbestand van de ultrasone sensor te importeren. De specifieke stappen zijn als volgt: 
 
-![](media/A29.png)をクリックしてセンサー/モジュール/コンポーネントの拡張ライブラリ画面に入り、「**Ultrasonic**」センサーを検索し ![](media/A122.png)をクリックします。これで「**Not loaded**」が「**loaded**」に変わり、「**Ultrasonic**」センサーが正常に追加されたことを示します。
+Klik ![](media/A29.png) om de extensiebibliotheek interface van sensoren/modules/componenten te openen, zoek dan naar "**Ultrasonic**" sensor ![](media/A122.png) en klik erop. Op deze manier verandert "**Not loaded**" in "**loaded**", wat aangeeft dat de "**Ultrasonic**" sensor succesvol is toegevoegd. 
 
 ![Img](media/A123.png)
 
 ![](media/A124.png)
 
-![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加した「**Ultrasonic**」センサーの命令ブロックがモジュールエリアに表示されます。
+Klik ![](media/A33.png) om terug te keren naar de code-editor interface, het instructieblok van de toegevoegde "**Ultrasonic**" sensor is te zien in het modulegebied. 
 
 ![](media/A125.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 （1).![](media/A126.png)
 
@@ -97,25 +97,25 @@ tは信号が障害物に当たり戻ってくるまでの時間です。空気�
 
 (7).![](media/A132.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
 ![](media/A133.png)
 
-### **7.テスト結果**
+### **7. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、![](media/A80.png)をクリックしてボーレートを9600に設定します。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het bedradingsschema, en sluit vervolgens de computer via een USB-kabel aan om het board van stroom te voorzien. Na het inschakelen, klik op ![](media/A80.png) om de baudrate in te stellen op 9600.
 
-検出された距離が表示され、単位はcmとinchです。超音波センサーを手で遮ると、表示される距離の値が小さくなります。
+De gedetecteerde afstand wordt weergegeven, en de eenheid is cm en inch. Houd de ultrasone sensor met de hand tegen, de weergegeven afstandswaarde wordt kleiner.
 
 ![](media/A134.png)
 
-### **8.拡張練習**
+### **8. Uitbreidingspraktijk**
 
-超音波で距離を測定して表示しました。測定した距離でLEDを制御してみませんか？試してみましょう。LEDライトモジュールをD9ピンに接続します。
+We hebben zojuist de afstand gemeten die door de ultrasone sensor wordt weergegeven. Wat dacht je ervan om de LED te bedienen met de gemeten afstand? Laten we het proberen en een LED-lichtmodule aansluiten op de D9-pin.
 
 ![](media/A135.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 (1).![](media/A126.png)
 
@@ -131,10 +131,10 @@ tは信号が障害物に当たり戻ってくるまでの時間です。空気�
 
 (7).![](media/A132.png)
 
-**完全なテストコード**
+**Volledige Testcode**
 
 ![](media/A139.png)
 
 ![](media/A140.png)
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、超音波センサーを手で遮ってください（距離は2〜10cmの間）。その後、LEDが点灯するか確認します。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het bedradingsschema, en sluit vervolgens de computer via een USB-kabel aan om het board van stroom te voorzien. Na het inschakelen, blokkeer de ultrasone sensor met de hand (de afstand is tussen 2-10 cm), en controleer of de LED aan gaat.

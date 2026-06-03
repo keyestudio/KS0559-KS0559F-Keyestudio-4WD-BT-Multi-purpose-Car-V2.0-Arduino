@@ -1,104 +1,104 @@
-# Project 12 超音波追従スマートカー
+# Project 12 Ultrasonic Following Smart Car
 
 ![](media/A280.png)
 
-### **1.説明**
+### **1.Beschrijving**
 
-このプロジェクトでは、超音波センサーを使って4WDスマートカーと前方の障害物との距離を検出し、2つのモーターを制御して車を動かし、8\*8 LEDボードに笑顔のパターンを表示させます。
+In dit project gaan we de afstand tussen de 4WD smart car en de obstakels voor hem detecteren met een ultrasone sensor om twee motoren aan te sturen zodat de auto beweegt en het 8\*8 LED-bord een glimlachend gezichtspatroon toont.
 
-### **2.フローチャート**
+### **2.Stroomschema**
 
 ![img](media/A281.png)
 
 <table border="1">
 <tbody>
 <tr class="odd">
-<td>検出</td>
-<td>前方障害物の測定距離</td>
-<td>距離（単位：cm）</td>
+<td>Detectie</td>
+<td>Gemeten afstand van voorliggende obstakels</td>
+<td>afstand (eenheid: cm)</td>
 </tr>
 <tr class="even">
-<td>設定</td>
-<td>8*16 LEDボードに笑顔のパターンを表示</td>
+<td>Instelling</td>
+<td>8*16 LED-bord toont een glimlachpatroon.</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>サーボを90°に設定</td>
+<td>Servo instellen op 90°</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>条件</td>
-<td>距離≥20 かつ 距離≤50</td>
+<td>Voorwaarde</td>
+<td>afstand≥20 en afstand≤50</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>状態</td>
-<td>前進</td>
+<td>Status</td>
+<td>Vooruit rijden</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>条件</td>
-<td>距離＞10 かつ 距離＜20</td>
+<td>Voorwaarde</td>
+<td>afstand＞10 en afstand＜20</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>距離＞50</td>
+<td>afstand＞50</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>条件</td>
-<td>停止</td>
+<td>Voorwaarde</td>
+<td>stoppen</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>条件</td>
-<td>距離≤10</td>
+<td>Voorwaarde</td>
+<td>afstand≤10</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>条件</td>
-<td>後退</td>
+<td>Voorwaarde</td>
+<td>achteruit rijden</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 
 
-### **3.配線図**
+### **3.Aansluitschema**
 
 ![](media/A282.png)
 
-**配線方法：**
+**Aansluiten:**
 
-1). 8\*8 LEDボードのGND、VCC、SDA、SCLを拡張ボードのG（GND）、V（VCC）、A4、A5に接続します。
+1). GND, VCC, SDA en SCL van het 8\*8 LED-bord zijn verbonden met G (GND), V (VCC), A4 en A5 van de uitbreidingskaart.
 
-2). 超音波センサーのVCC、Trig、Echo、Gndをそれぞれ5V(V)、D12(S)、D13(S)、Gnd(G)に接続します。
+2). VCC, Trig, Echo en Gnd van de ultrasone sensor zijn verbonden met 5V (V), D12 (S), D13 (S) en Gnd (G).
 
-3). サーボはG、V、A3に接続します。茶色の線はGnd(G)、赤色の線は5V(V)、オレンジ色の線はA3に接続します。
+3). De servo is verbonden met G, V en A3. De bruine draad is aangesloten op Gnd (G), de rode draad op 5V (V) en de oranje draad op A3.
 
-4). 電源はBATポートに接続します。
+4). De voeding is aangesloten op de BAT-poort.
 
-### **4.テストコード**
+### **4.Testcode**
 
-コードを書く前に、超音波センサー、8x16 LEDボード、サーボのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+Voordat je de code schrijft, is het nodig om de bibliotheekbestanden van de ultrasone sensor, het 8x16 LED-bord en de servo te importeren. De specifieke stappen zijn als volgt:
 
-センサー/モジュール/コンポーネントの拡張ライブラリ画面に入るには ![](media/A29.png) をクリックし、「Ultrasonic」センサーを検索して ![](media/A122.png) をクリックします。
+Klik op ![](media/A29.png) om de extensiebibliotheekinterface van sensoren/modules/componenten te openen, zoek dan naar “Ultrasonic” sensor ![](media/A122.png) en klik erop.
 
-これで「**Not loaded**」が「**loaded**」に変わり、「**Ultrasonic**」センサーが正常に追加されたことを示します。
+Hierdoor verandert "**Not loaded**" in "**loaded**", wat aangeeft dat de “**Ultrasonic**” sensor succesvol is toegevoegd.
 
 ![Img](media/A283.png)
 
 ![](/media/A284.png)
 
-8x16 LEDボードとサーボのライブラリファイルも超音波センサーと同様に追加します。
+De bibliotheekbestanden van het 8x16 LED-bord en de servo worden op dezelfde manier toegevoegd als die van de ultrasone sensor.
 
-![](media/A33.png) をクリックしてコードエディタ画面に戻ると、追加した「**Ultrasonic**」センサー、「**Matrix 8\*16 Aip1640**」モジュール、「**Servo**」コンポーネントの命令ブロックがモジュールエリアに表示されます。
+Klik op ![](media/A33.png) om terug te keren naar de code-editorinterface, de instructieblokken van de toegevoegde “**Ultrasonic**” sensor, “**Matrix 8\*16 Aip1640**” module en “**Servo**” component zijn zichtbaar in het modulegebied.
 
 ![](media/A285.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie:
 
 (1).![](media/A126.png)
 
@@ -118,7 +118,7 @@
 
 (9).![](media/A292.png)
 
-**完成したテストコード**
+**Volledige testcode**
 
 ![](media/A293.png)
 
@@ -126,6 +126,6 @@
 
 ![](media/A295.png)
 
-### **5.テスト結果**
+### **5.Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れてDIPスイッチをONにします。サーボを90°に設定すると、スマートカーは障害物に合わせて動き、8X16 LEDボードに「smile」が表示されます。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het aansluitschema, zet de externe voeding aan en zet de DIP-switch op ON. Stel de servo in op 90°, de smart car zal bewegen met de obstakels mee en het 8X16 LED-bord zal een “glimlach” tonen.

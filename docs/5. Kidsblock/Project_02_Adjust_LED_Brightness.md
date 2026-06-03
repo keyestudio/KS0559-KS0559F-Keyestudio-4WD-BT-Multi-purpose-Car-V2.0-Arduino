@@ -1,48 +1,48 @@
-# Project 2: LEDの明るさ調整
+# Project 2: Pas de LED Helderheid aan
 
-### **1.説明**
+### **1.Beschrijving**
 
-前回のレッスンでは、LEDの点灯・消灯と点滅を制御しました。
+In de vorige les hebben we de LED aan en uit gezet en laten knipperen.
 
-このプロジェクトでは、PWMを使ってLEDの明るさを制御し、呼吸のような効果をシミュレートします。
+In dit project zullen we de helderheid van de LED regelen via PWM om een ademhalingseffect te simuleren.
 
-PWMはデジタル手段でアナログ出力を制御する方法です。デジタル制御を用いて異なるデューティサイクルの方形波（高レベルと低レベルを絶えず切り替える信号）を生成し、アナログ出力を制御します。一般的に、ポートの入力電圧は0Vと5Vです。
+PWM is een manier om de analoge uitgang digitaal te regelen. Digitale besturing wordt gebruikt om vierkante golven met verschillende duty cycles te genereren (een signaal dat constant wisselt tussen hoge en lage niveaus) om de analoge uitgang te regelen. Over het algemeen zijn de ingangsspanningen van poorten 0V en 5V.
 
-もし3Vが必要だったら？あるいは1V、3V、3.5Vの切り替えが必要だったら？抵抗を常に変えることはできません。そこでPWMを利用します。
+Wat als 3V vereist is? Of een schakelaar tussen 1V, 3V en 3,5V? We kunnen niet constant weerstanden veranderen. Om deze reden maken we gebruik van PWM.
 
 ![](media/A53.gif)
 
-Arduinoのデジタルポートの電圧出力はLOWとHIGHのみで、それぞれ0Vと5Vに対応します。LOWを0、HIGHを1と定義し、Arduinoが1秒間に500回0または1の信号を出力するとします。
+Voor de Arduino digitale poort spanningsuitgang zijn er alleen LOW en HIGH, die overeenkomen met een spanningsuitgang van 0V en 5V. Je kunt LOW definiëren als 0 en HIGH als 1, en de Arduino vijfhonderd 0 of 1 signalen binnen 1s laten uitsturen.
 
-もし500回すべてが1なら5V、すべてが0なら0Vです。0101010101...のように出力すると、出力ポートは2.5Vとなり、これは映画の表示に似ています。私たちが見る映画は完全に連続しているわけではなく、実際には1秒間に25枚の画像を出力しています。この場合、人間はそれを認識できませんし、PWMも同様です。異なる電圧を得るには、0と1の比率を制御する必要があります。単位時間あたりに出力される0と1の信号が多いほど、制御はより正確になります。
+Als alle vijfhonderd outputs 1 zijn, is dat 5V; als ze allemaal 0 zijn, is dat 0V. Als de output op deze manier 010101010101 is, dan is de uitgangspoort 2,5V, wat lijkt op het tonen van een film. De film die we kijken is niet volledig continu. Het geeft eigenlijk 25 beelden per seconde weer. In dit geval kan de mens het niet zien, net zoals bij PWM. Als we een andere spanning willen, moeten we de verhouding van 0 en 1 regelen. Hoe meer 0,1 signalen per tijdseenheid worden uitgezonden, hoe nauwkeuriger de regeling.
 
-PWMはデジタル手法でアナログ量を得る技術です。デジタル制御により方形波を形成し、方形波信号はオンとオフの2状態（高レベルと低レベル）だけを持ちます。0〜5Vの電圧はオン時間とオフ時間の比率を制御することでシミュレートできます。オンに費やす時間（技術的には高レベル時間）をパルス幅と呼び、PWMはパルス幅変調とも呼ばれます。
+PWM is een technologie die digitale methoden gebruikt om analoge grootheden te verkrijgen. Digitale besturing maakt het mogelijk een vierkante golf te vormen, het vierkante golfsignaal heeft slechts twee toestanden: aan en uit (hoog en laag). Een spanning variërend van 0 tot 5V kan worden gesimuleerd door de verhouding van aan- tot uit-tijd te regelen. De tijd dat het aan is (technisch hoog niveau genoemd) wordt pulsbreedte genoemd, daarom wordt PWM ook pulsbreedtemodulatie genoemd.
 
 ![](media/A54.png)
 
-緑の縦棒は方形波の1周期を表しています。各analogWrite(value)に書かれた値はパーセンテージに対応し、これをデューティサイクルと呼びます。このパーセンテージは1周期における高レベルの時間の割合、すなわちデューティサイクル = 高レベル時間 / 周期時間を指します。
+De groene verticale balken vertegenwoordigen één periode van de vierkante golf. De waarde die in elke analogWrite(value) wordt geschreven, komt overeen met een percentage, dat ook Duty Cycle wordt genoemd. Dit percentage verwijst naar de verhouding van de tijd die wordt ingenomen door het hoge niveau in een cyclus, dat wil zeggen, duty cycle = hoge niveau tijd / cyclus tijd.
 
-図の上から下へ、最初の方形波のデューティサイクルは0%で対応する値は0、LEDの明るさは最も暗く、つまり消灯状態です。高レベルが長く続くほど明るくなります。したがって、最後のデューティサイクル100%の値は255で、LEDは最も明るくなります。50%は明るさの半分、25%はより暗い状態です。
+In de afbeelding is van boven naar beneden de duty cycle van de eerste vierkante golf 0%, en de overeenkomstige waarde is 0, en de LED helderheid is het laagst, dat wil zeggen uitgeschakeld. Hoe langer het hoge niveau duurt, hoe helderder het zal zijn. Daarom is de waarde van de laatste duty cycle van 100% 255, en is de LED het helderst. 50% is half zo helder, en 25% is donkerder.
 
-PWMはLEDの明るさ調整やモーターの回転速度調整に多く使われ、モーターで駆動される車輪の速度も簡単に制御できます。Arduinoロボットを扱う際にPWMの利点がよりよく実感できます。
+PWM wordt vaker gebruikt om de helderheid van LED-lampen of de draaisnelheid van motoren aan te passen, en de wielsnelheid die door de motoren wordt aangedreven kan gemakkelijk worden geregeld. Bij het spelen met sommige Arduino-robots komen de voordelen van PWM beter tot uiting.
 
-### **2.部品**
+### **2.Componenten**
 
-| Development Board *1      | 8833 Motor Driver *1      | Red LED Module*1          |
+| Development Board *1      | 8833 Motor Driver *1      | Rode LED Module*1          |
 | ------------------------- | ------------------------- | ------------------------- |
 | ![img](media/A42.jpg) | ![img](media/A43.jpg) | ![img](media/A44.jpg) |
-| 3P F-F Dupont Wire*1      | USB Cable*1               |                           |
+| 3P F-F Dupont Wire*1      | USB Kabel*1               |                           |
 | ![img](media/A45.jpg) | ![img](media/A46.jpg) |                           |
 
-### **3.配線図**
+**3.Aansluitschema**
 
-配線は変更せずそのままにしてください。
+Houd de bedrading ongewijzigd.
 
 ![](media/A47.png)
 
-### **4.テストコード**
+### **4.Testcode**
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 (1).![](media/A55.png)
 
@@ -56,18 +56,18 @@ PWMはLEDの明るさ調整やモーターの回転速度調整に多く使わ�
 
 (6).![](media/A60.png)
 
-**完成テストコード**
+**Volledige Testcode**
 
 ![](media/A61.png)
 
-### **5.テスト結果**
+### **5.Testresultaat**
 
-コードをV4.0ボードに正常にアップロードし、配線図に従って配線を接続し、USBケーブルでコンピュータと接続してボードに電源を供給します。電源を入れると、LEDが明るくなったり暗くなったりを徐々に繰り返し、人の呼吸のような動きをします。すぐに点灯・消灯するわけではありません。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind je de bedrading volgens het aansluitschema en gebruik je een USB-kabel om de computer aan te sluiten om het board van stroom te voorzien. Na het inschakelen zul je zien dat de LED geleidelijk verandert van helder naar donker, zoals de ademhaling van een mens, in plaats van direct aan en uit te gaan.
 
-### **6.応用練習**
+### **6.Uitbreidingsopdracht**
 
-LEDのピンはそのままにして、コード（waitの後の値）を変更してください。
+Houd de pinnen van de LED ongewijzigd, verander dan de code (waarden achter wacht)
 
 ![](media/A62.png)
 
-開発ボードにコードをアップロードすると、LEDがよりゆっくり点滅します。
+Upload de code naar de ontwikkelkaart, vervolgens zal de LED langzamer knipperen.

@@ -1,6 +1,6 @@
 
-4. Arduino 
-=============
+4. Arduino Tutorial
+=======================
 
 .. toctree::
     :maxdepth: 2
@@ -10,13 +10,13 @@
 
 
 
-4.5 プロジェクト
+4.5 Arduino - Projecten
 -----------------------
 
 |image1|
 
 
-**注意：このコースでは、各センサー／モジュールのインターフェースに（G, -, GND）と記載されているものはマイナスポールを示し、Gはセンサーシールドまたは制御ボードのGまたはGNDに接続します。「V」はプラス極で、V、VCCまたは5Vに接続します。**
+**Opmerking: In deze cursus geeft de interface van elke sensor/module gemarkeerd met (G,-, GND) de negatieve pool aan, G is verbonden met G of GND van de sensor shield of besturingskaart; “V” is de positieve pool en verbonden met V, VCC of 5V.**
 
 
 

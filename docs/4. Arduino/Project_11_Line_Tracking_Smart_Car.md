@@ -1,131 +1,131 @@
-# Project 11 ライントラッキングスマートカー
+# Project 11 Lijnvolgende Slimme Auto
 
 ![eff7a15e697e8b78bde391f806ea024d](media/A112.png)
 
-### **1.説明**
+### **1. Beschrijving**
 
-ライントラッキングセンサーの動作原理に基づき、ライントラッキングスマートカーを作成します。
+Gebaseerd op het werkingsprincipe van de lijnvolgsensor, maken we een lijnvolgende slimme auto.
 
-このプロジェクトでは、スマートカーの底部に黒い線があるかどうかをライントラッキングセンサーで検出し、その検出結果に応じて2つのモーターグループの回転を制御し、スマートカーが黒い線に沿って走行するように制御します。
+In dit project detecteren we of er een zwarte lijn onder de slimme auto is via een lijnvolgsensor, en vervolgens besturen we de rotatie van de twee groepen motoren op basis van de detectieresultaten op een manier die de slimme auto langs de zwarte lijn laat rijden.
 
-### **2.フローチャート**
+### **2. Stroomschema**
 
 ![img](media/A113.png)
 
 ![Img](media/A114.png)
 
-### **3.配線図**
+### **3. Aansluitschema**
 
 ![88422b5f1464ad447e28ccbb8c39a8d4](media/A115.png)
 
-ライントラッキングセンサーのG、V、S1、S2、S3はセンサー拡張ボードのG（GND）、V（VCC）、D11、D7、D8に接続します。
+G, V, S1, S2 en S3 van de lijnvolgsensor zijn verbonden met G (GND), V (VCC), D11, D7 en D8 van de sensor uitbreidingskaart.
 
-電源はBATポートに接続します。
+De voeding is aangesloten op de BAT-poort.
 
-### **4.テストコード**
+### **4. Testcode**
 
 ```c
 //*************************************************************************
 /*
  keyestudio 4wd BT Car
- lesson 11
- Tracking Car
+ les 11
+ Volgauto
  http://www.keyestudio.com
 */ 
-//Data from the smile pattern obtained from the touch tool
+//Data van het smile-patroon verkregen via de touch tool
 unsigned char start01[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
-#define SDA_Pin  A4  //データピンをA4に設定
-#define SCL_Pin  A5  //クロックピンをA5に設定
+#define SDA_Pin  A4  //Stel datapin in op A4
+#define SCL_Pin  A5  //Stel klokpin in op A5
 
-int left_ctrl = 2;//グループBモーターの方向制御ピンを定義
-int left_pwm = 5;//グループBモーターのPWM制御ピンを定義
-int right_ctrl = 4;//グループAモーターの方向制御ピンを定義
-int right_pwm = 6;//グループAモーターのPWM制御ピンを定義
-int sensor_L = 11;//左ライントラッキングセンサーのピンを定義
-int sensor_M = 7;//中央ライントラッキングセンサーのピンを定義
-int sensor_R = 8;//右ライントラッキングセンサーのピンを定義
-int L_val,M_val,R_val;//これらの変数を定義
+int left_ctrl = 2; //definieer de richtingsbesturingspinnen van groep B motor
+int left_pwm = 5;  //definieer de PWM-besturingspinnen van groep B motor
+int right_ctrl = 4; //definieer de richtingsbesturingspinnen van groep A motor
+int right_pwm = 6;  //definieer de PWM-besturingspinnen van groep A motor
+int sensor_L = 11;  //definieer de pin van de linker lijnvolgsensor
+int sensor_M = 7;   //definieer de pin van de middelste lijnvolgsensor
+int sensor_R = 8;   //definieer de pin van de rechter lijnvolgsensor
+int L_val, M_val, R_val; //definieer deze variabelen
 
 void setup() {
-  Serial.begin(9600);//シリアルモニターを開始し、ボーレートを9600に設定
-  pinMode(left_ctrl,OUTPUT);//グループBモーターの方向制御ピンをOUTPUTに設定
-  pinMode(left_pwm,OUTPUT);//グループBモーターのPWM制御ピンをOUTPUTに設定
-  pinMode(right_ctrl,OUTPUT);//グループAモーターの方向制御ピンをOUTPUTに設定
-  pinMode(right_pwm,OUTPUT);//グループAモーターのPWM制御ピンをOUTPUTに設定
-  pinMode(sensor_L,INPUT);//左ライントラッキングセンサーのピンをINPUTに設定
-  pinMode(sensor_M,INPUT);//中央ライントラッキングセンサーのピンをINPUTに設定
-  pinMode(sensor_R,INPUT);//右ライントラッキングセンサーのピンをINPUTに設定
-  //ピンを出力に設定
+  Serial.begin(9600); //start seriële monitor en stel baudrate in op 9600
+  pinMode(left_ctrl, OUTPUT); //stel richtingsbesturingspinnen van groep B motor in als OUTPUT
+  pinMode(left_pwm, OUTPUT);  //stel PWM-besturingspinnen van groep B motor in als OUTPUT
+  pinMode(right_ctrl, OUTPUT); //stel richtingsbesturingspinnen van groep A motor in als OUTPUT
+  pinMode(right_pwm, OUTPUT);  //stel PWM-besturingspinnen van groep A motor in als OUTPUT
+  pinMode(sensor_L, INPUT);   //stel de pinnen van linker lijnvolgsensor in als INPUT
+  pinMode(sensor_M, INPUT);   //stel de pinnen van middelste lijnvolgsensor in als INPUT
+  pinMode(sensor_R, INPUT);   //stel de pinnen van rechter lijnvolgsensor in als INPUT
+  //Stel pin in als output
   pinMode(SCL_Pin, OUTPUT);
   pinMode(SDA_Pin, OUTPUT);
-  matrix_display(start01);//スタートパターンを表示
+  matrix_display(start01); //Toon startpatroon
 }
 
 void loop() 
 {
-  tracking(); //メインプログラムを実行
+  tracking(); //voer hoofdprogramma uit
 }
 
 void tracking()
 {
-  L_val = digitalRead(sensor_L);//左ライントラッキングセンサーの値を読み取る
-  M_val = digitalRead(sensor_M);//中央ライントラッキングセンサーの値を読み取る
-  R_val = digitalRead(sensor_R);//右ライントラッキングセンサーの値を読み取る
+  L_val = digitalRead(sensor_L); //lees de waarde van linker lijnvolgsensor
+  M_val = digitalRead(sensor_M); //lees de waarde van middelste lijnvolgsensor
+  R_val = digitalRead(sensor_R); //lees de waarde van rechter lijnvolgsensor
 
-  if(M_val == 1){//中央のセンサーの状態が1の場合、黒い線を検出していることを意味する
+  if(M_val == 1){ //als de status van de middelste sensor 1 is, wat betekent dat er een zwarte lijn wordt gedetecteerd
 
 ```cpp
-     if (L_val == 1 && R_val == 0) { //左側に黒い線が検出され、右側には検出されていない場合、左に曲がる
+     if (L_val == 1 && R_val == 0) { //Als er een zwarte lijn aan de linkerkant wordt gedetecteerd, maar niet aan de rechterkant, ga dan linksaf
         left();
     }
-     else if (L_val == 0 && R_val == 1) { //それ以外で、右側に黒い線が検出され、左側には検出されていない場合、右に曲がる
+     else if (L_val == 0 && R_val == 1) { //Anders, als er een zwarte lijn aan de rechterkant wordt gedetecteerd en niet aan de linkerkant, ga dan rechtsaf
       right();
     }
-     else { //それ以外は前進
+     else { //Anders, rechtdoor
       front();
     }
   }
-  else { //中央に黒い線が検出されていない場合
-    if (L_val == 1 && R_val == 0) { //左側に黒い線が検出され、右側には検出されていない場合、左に曲がる
+  else { //Geen zwarte lijnen gedetecteerd in het midden
+    if (L_val == 1 && R_val == 0) { //Als er een zwarte lijn aan de linkerkant wordt gedetecteerd, maar niet aan de rechterkant, ga dan linksaf
       left();
     }
-    else if (L_val == 0 && R_val == 1) { //それ以外で、右側に黒い線が検出され、左側には検出されていない場合、右に曲がる
+    else if (L_val == 0 && R_val == 1) { //Anders, als er een zwarte lijn aan de rechterkant wordt gedetecteerd en niet aan de linkerkant, ga dan rechtsaf
       right();
     }
-    else { //それ以外は停止
+    else { //Anders, stop
       Stop();
     }
   }
 }
-void front()//前進状態を定義
+void front()//definieer de status van vooruitgaan
 {
   digitalWrite(left_ctrl,HIGH);
   analogWrite(left_pwm,155);
   digitalWrite(right_ctrl,HIGH);
   analogWrite(right_pwm,155);
 }
-void back()//後退状態を定義
+void back()//definieer de status van achteruitgaan
 {
   digitalWrite(left_ctrl,LOW);
   analogWrite(left_pwm,100);
   digitalWrite(right_ctrl,LOW);
   analogWrite(right_pwm,100);
 }
-void left()//左折状態を定義
+void left()//definieer de status van linksaf slaan
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm, 100);  
   digitalWrite(right_ctrl, HIGH);
   analogWrite(right_pwm, 155);
 }
-void right()//右折状態を定義
+void right()//definieer de status van rechtsaf slaan
 {
   digitalWrite(left_ctrl, HIGH);
   analogWrite(left_pwm, 155);
   digitalWrite(right_ctrl, LOW);
   analogWrite(right_pwm, 100);
 }
-void Stop()//停止状態を定義
+void Stop()//definieer de status van stoppen
 {
   digitalWrite(left_ctrl, LOW);
   analogWrite(left_pwm,0);
@@ -133,22 +133,22 @@ void Stop()//停止状態を定義
   analogWrite(right_pwm,0);
 }
 
-//この関数はドットマトリックス表示に使用される
+//deze functie wordt gebruikt voor dot matrix display
 void matrix_display(unsigned char matrix_value[])
 {
-  IIC_start();  //データ転送開始条件を呼び出す関数
-  IIC_send(0xc0);  //アドレス選択
+  IIC_start();  //de functie die de startconditie van datatransmissie aanroept
+  IIC_send(0xc0);  //selecteer adres
 
-  for (int i = 0; i < 16; i++) //パターンデータは16バイト
+  for (int i = 0; i < 16; i++) //het patroon data is 16 bytes
   {
-    IIC_send(matrix_value[i]); //パターンのデータを送信
+    IIC_send(matrix_value[i]); //Zend de data van het patroon
   }
-  IIC_end();   //パターンデータ送信終了
+  IIC_end();   //Eindig patroon data transmissie
   IIC_start();
-  IIC_send(0x8A);  //表示制御、4/16パルス幅を選択
+  IIC_send(0x8A);  //Display controle, selecteer 4/16 pulsbreedte
   IIC_end();
 }
-//データ送信開始の条件
+//Condities waaronder datatransmissie begint
 void IIC_start()
 {
   digitalWrite(SDA_Pin, HIGH);
@@ -158,7 +158,7 @@ void IIC_start()
   delayMicroseconds(3);
   digitalWrite(SCL_Pin, LOW);
 }
-//データ送信終了を示す
+//Geeft het einde van datatransmissie aan
 void IIC_end()
 {
   digitalWrite(SCL_Pin, LOW);
@@ -169,25 +169,25 @@ void IIC_end()
   digitalWrite(SDA_Pin, HIGH);
   delayMicroseconds(3);
 }
-//データ送信
+//zend data
 void IIC_send(unsigned char send_data)
 {
-  for (byte mask = 0x01; mask != 0; mask <<= 1) //各バイトは8ビットで、最下位からビットごとにチェック
+  for (byte mask = 0x01; mask != 0; mask <<= 1) //Elke byte heeft 8 bits en wordt bit voor bit gecontroleerd beginnend bij het laagste niveau
   {
-    if (send_data & mask) { //バイトの各ビットが1か0かに応じてSDA_Pinの高低レベルを設定
+    if (send_data & mask) { //Stelt de hoge en lage niveaus van SDA_Pin in afhankelijk van of elk bit van de byte een 1 of een 0 is
       digitalWrite(SDA_Pin, HIGH);
     } else {
       digitalWrite(SDA_Pin, LOW);
     }
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, HIGH); //クロックピンSCL_Pinを高レベルにしてデータ送信を停止
+    digitalWrite(SCL_Pin, HIGH); //Trek de klokpin SCL_Pin hoog om datatransmissie te stoppen
     delayMicroseconds(3);
-    digitalWrite(SCL_Pin, LOW); //クロックピンSCL_Pinを低レベルにしてSDAの信号を変化させる
+    digitalWrite(SCL_Pin, LOW); //trek de klokpin SCL_Pin laag om het SIGNaal van SDA te veranderen
   }
 }
 //*************************************************************************
 ```
 
-### **5.テスト結果**
+### **5. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、外部電源をオンにしてからDIPスイッチをONにします。すると、スマートカーはラインに沿って走行します。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het bedradingsschema, zet de externe voeding aan en zet vervolgens de DIP-schakelaar op ON. Dan zal de slimme auto langs de lijnen rijden.

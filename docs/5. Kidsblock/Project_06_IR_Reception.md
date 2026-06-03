@@ -1,68 +1,68 @@
-# Project 6 IR Reception
+# Project 6 IR Ontvangst
 
 ![](media/A141.png)
 
-### **1.説明**
+### **1.Beschrijving** 
 
-赤外線リモコンは日常生活で広く使われていることは間違いありません。テレビ、ステレオ、ビデオレコーダー、衛星信号受信機など、さまざまな家電製品の制御に使用されます。赤外線リモコンは赤外線送信システムと赤外線受信システムで構成されており、つまり赤外線リモコンと赤外線受信モジュール、およびデコード可能なマイコンから成り立っています。
+Er is geen twijfel dat infrarood afstandsbediening alomtegenwoordig is in het dagelijks leven. Het wordt gebruikt om verschillende huishoudelijke apparaten te bedienen, zoals tv's, stereosystemen, videorecorders en satellietsignaalontvangers. Infrarood afstandsbediening bestaat uit een infrarood zend- en ontvangstsysteem, dat wil zeggen een infrarood afstandsbediening en infrarood ontvangermodule en een microcontroller die kan decoderen.  
 
 ![](media/A142.png)
 
-リモコンから発信される38Kの赤外線搬送波信号は、リモコン内のエンコードチップによって符号化されています。これはパイロットコード、ユーザーコード、ユーザー逆コード、データコード、データ逆コードの一連で構成されています。パルスの時間間隔によって0か1の信号かを区別し、これらの0、1信号で符号化が行われています。
+Het 38K infrarood draaggolfsignaal dat door de afstandsbediening wordt uitgezonden, wordt gecodeerd door de encoderchip in de afstandsbediening. Het bestaat uit een sectie pilotcode, gebruikerscode, gebruikers inverse code, datacode en data inverse code. Het tijdsinterval van de puls wordt gebruikt om te onderscheiden of het een 0- of 1-signaal is en de codering bestaat uit deze 0- en 1-signalen.
 
-同じリモコンのユーザーコードは一定ですが、データコードはキーを識別します。
+De gebruikerscode van dezelfde afstandsbediening is constant terwijl de datacode de toets kan onderscheiden.
 
-リモコンのボタンが押されると、リモコンは赤外線搬送波信号を送信します。IR受信機が信号を受信すると、プログラムは搬送波信号をデコードし、どのキーが押されたかを判定します。MCUは受信した0と1の信号をデコードし、リモコンのどのキーが押されたかを判断します。
+Wanneer de afstandsbedieningknop wordt ingedrukt, zendt de afstandsbediening een infrarood draaggolfsignaal uit. Wanneer de IR-ontvanger het signaal ontvangt, decodeert het programma het draaggolfsignaal en bepaalt welke toets is ingedrukt. De MCU decodeert het ontvangen 01-signaal en bepaalt zo welke toets op de afstandsbediening is ingedrukt.
 
-使用する赤外線受信機は赤外線受信モジュールです。主に赤外線受信ヘッドで構成されており、受信、増幅、復調を一体化したデバイスです。内部ICは復調を完了しており、赤外線受信から出力までを実現し、TTL信号に対応しています。
+De infraroodontvanger die we gebruiken is een infrarood ontvanger module. Deze bestaat voornamelijk uit een infrarood ontvangerkop, een apparaat dat ontvangst, versterking en demodulatie integreert. De interne IC heeft de demodulatie voltooid en kan van infraroodontvangst naar uitgang gaan en is compatibel met TTL-signalen.
 
-さらに、赤外線リモコンや赤外線データ伝送に適しています。受信機で作られた赤外線受信モジュールは信号線、VCC、GNDの3ピンのみで構成されており、Arduinoや他のマイコンとの通信が非常に便利です。
+Daarnaast is het geschikt voor infrarood afstandsbediening en infrarood gegevensoverdracht. De infrarood ontvangermodule gemaakt door de ontvanger heeft slechts drie pinnen: signaallijn, VCC en GND. Het is zeer handig om te communiceren met Arduino en andere microcontrollers.
 
-### **2.仕様**
+### **2.Specificatie**
 
-- 動作電圧: 3.3-5V（DC）
+- Werkspanning: 3.3-5V (DC)
 
-- 出力信号: デジタル信号
+- Uitgangssignaal: Digitaal signaal
 
-- 受信角度: 90度
+- Ontvangshoek: 90 graden
 
-- 周波数: 38kHz
+- Frequentie: 38kHz
 
-- 受信距離: 10m
+- Ontvangstafstand: 10m
 
-下の写真は赤外線受信機の実物と回路図です。
+De afbeelding toont het echte product en het circuitdiagram van de infraroodontvanger.
 
 ![](media/A141.png)
 
 ![](media/A143.png)
 
-### **3.部品**
+### **3.Componenten**
 
-| 開発ボード *1             | 8833 モータードライバ *1  | 赤色LEDモジュール *1       |
-| ------------------------- | ------------------------- | ------------------------- |
-| ![img](media/A42.jpg)     | ![img](media/A43.jpg)     | ![img](media/A44.jpg)     |
-| 3P F-F デュポン線 *1      | USBケーブル *1            |                           |
-| ![img](media/A45.jpg)     | ![img](media/A46.jpg)     |                           |
+| Ontwikkelbord *1          | 8833 Motor Driver *1       | Rode LED Module *1         |
+| ------------------------- | -------------------------- | -------------------------- |
+| ![img](media/A42.jpg)     | ![img](media/A43.jpg)      | ![img](media/A44.jpg)      |
+| 3P F-F Dupont Kabel *1    | USB Kabel *1               |                            |
+| ![img](media/A45.jpg)     | ![img](media/A46.jpg)      |                            |
 
-8833ボードはIR受信機を統合しているため、配線は不要です。IR受信モジュールのピンはG（GND）、V（VCC）、D3です。
+Aangezien het 8833 bord geïntegreerd is met de IR-ontvanger, is bedrading niet nodig. De pinnen van de IR-ontvangermodule zijn G (GND), V (VCC) en D3.
 
-### **4.テストコード**
+### **4.Testcode**
 
-<span style="color: rgb(255, 76, 65);">ご注意：ソフトウェアデモに表示されている赤外線モジュールはすでに拡張ボードに統合されており、単体での供給はありません。そのため、下の画像に示されているモジュールは製品に含まれていません。![](media/A144.png)</span>
+<span style="color: rgb(255, 76, 65);">Let op: De infraroodmodule die in de software demonstratie wordt getoond, is al geïntegreerd in het uitbreidingsbord en wordt niet apart geleverd. Daarom zult u de module die op de onderstaande afbeelding staat niet in het product vinden.![](media/A144.png)</span>
 
-コードを書く前に、IR受信センサーのライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+Voordat je de code schrijft, is het noodzakelijk om het bibliotheekbestand van de IR-ontvangersensor te importeren. De specifieke stappen zijn als volgt: 
 
-![](media/A29.png)をクリックしてセンサー/モジュール/コンポーネントの拡張ライブラリ画面に入り、「**ir remote**」センサー![](media/A144.png)を検索してクリックします。これにより「**Not loaded**」が「**loaded**」に変わり、「ir remote」センサーが正常に追加されたことを示します。
+Klik op ![](media/A29.png) om de extensiebibliotheekinterface van sensoren/modules/componenten te openen, zoek dan naar de “**ir remote**” sensor ![](media/A144.png) en klik erop. Hierdoor verandert "**Not loaded**" in "**loaded**", wat aangeeft dat de “ir remote” sensor succesvol is toegevoegd. 
 
 ![Img](media/A145.png)
 
 ![](media/A146.png)
 
-![](media/A33.png)をクリックしてコードエディタ画面に戻ると、追加された「**ir remote**」センサーの命令ブロックがモジュールエリアに表示されます。
+Klik op ![](media/A33.png) om terug te keren naar de code-editor interface, de instructieblok van de toegevoegde “**ir remote**” sensor is zichtbaar in het modulegebied. 
 
 ![](media/A147.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 (1).![](media/A126.png)
 
@@ -72,31 +72,31 @@
 
 (4).![](media/A150.png)
 
-**完成したテストコード**
+**Volledige Testcode**
 
 ![](media/A151.png)
 
-### **5.テスト結果**
+### **5.Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、![](media/A80.png)をクリックしてボーレートを9600に設定します。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het bedradingsschema, en sluit vervolgens de computer via een USB-kabel aan om de board van stroom te voorzien. Na het inschakelen, klik op ![](media/A80.png) om de baudrate in te stellen op 9600.
 
-リモコンを取り出し、赤外線受信センサーに信号を送信します。対応するキーのキー値が表示されます。キーの押下時間が長すぎると、FFFFFFFFが文字化けしやすくなります。
+Pak de afstandsbediening en stuur een signaal naar de infraroodontvanger sensor. Je kunt de toetswaarde van de overeenkomstige toets zien; als de toets te lang wordt ingedrukt, is FFFFFFFF geneigd tot corrupte tekens.
 
 ![](media/A152.png)
 
-リモコンのキー値は以下の通りです。
+De toetswaarden van de afstandsbediening worden hieronder weergegeven.
 
 ![](media/A153.jpeg)
 
-### **6. 拡張練習**
+### **6. Uitbreidingspraktijk**
 
-IRリモコンのキー値をデコードしました。測定値でLEDを制御してみませんか？実験を設計してみましょう。
+We hebben de toetswaarde van de IR-afstandsbediening gedecodeerd. Wat dacht je ervan om de LED te bedienen met de gemeten waarde? We kunnen een experiment ontwerpen.
 
-LEDをD9に接続し、リモコンのキーを押してLEDの点灯・消灯を行います。
+Sluit een LED aan op D9, druk vervolgens op de toetsen van de afstandsbediening om de LED aan en uit te zetten.
 
 ![](media/A154.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
 (1).![](media/A126.png)
 
@@ -114,8 +114,8 @@ LEDをD9に接続し、リモコンのキーを押してLEDの点灯・消灯を
 
 (8).![](media/A159.png)
 
-**完成したテストコード**
+**Volledige testcode**
 
 ![](media/A160.png)
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータに接続してボードに電源を供給します。電源を入れたら、リモコンの「**OK**」キーを押すとLEDの点灯・消灯ができます。
+Na het succesvol uploaden van de code naar de V4.0 board, verbind de bedrading volgens het bedradingsschema, en sluit vervolgens de computer via een USB-kabel aan om de board van stroom te voorzien. Na het inschakelen, kan het indrukken van de "**OK**" toets op de afstandsbediening de LED aan en uit zetten.

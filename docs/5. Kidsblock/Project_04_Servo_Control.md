@@ -1,86 +1,86 @@
-# Project 4 サーボ制御
+# Project 4 Servo Control
 
-### **1. 説明**
+### **1.Beschrijving**
 
 ![](media/A90.jpeg)
 
-サーボモーターは位置制御用の回転アクチュエーターです。主にハウジング、回路基板、コアレスモーター、ギア、位置センサーで構成されています。動作原理は、サーボがMCUや受信機から送られた信号を受け取り、周期20ms、幅1.5msの基準信号を生成し、取得した直流バイアス電圧とポテンショメーターの電圧を比較して電圧差を出力することです。
+Een servomotor is een positie-gestuurde roterende actuator. Het bestaat voornamelijk uit een behuizing, een printplaat, een kernloze motor, een tandwiel en een positietransducer. Het werkingsprincipe is dat de servo het signaal ontvangt dat door MCU's of ontvangers wordt verzonden en een referentiesignaal produceert met een periode van 20 ms en een breedte van 1,5 ms, vervolgens vergelijkt het de verkregen DC-voorspanning met de spanning van de potentiometer en verkrijgt het spanningsverschil als uitgang.
 
 ![](media/A91.png)
 
-一般的に、サーボには茶色、赤、オレンジの3本の線があります。茶色の線はグランド、赤は正極線、オレンジは信号線です。
+Over het algemeen heeft een servo drie draden in bruin, rood en oranje. De bruine draad is de aarde, de rode is de positieve lijn en de oranje is de signaallijn.
 
-サーボモーターの回転角度はPWM（パルス幅変調）信号のデューティ比を調整することで制御されます。PWM信号の標準周期は20ms（50Hz）です。理論上、幅は1ms〜2msの範囲ですが、実際には0.5ms〜2.5msの範囲です。この幅は0°から180°までの回転角度に対応します。ただし、ブランドによっては同じ信号でも回転角度が異なる場合があります。
+De rotatiehoek van de servomotor wordt geregeld door de duty cycle van het PWM (Pulse-Width Modulation) signaal aan te passen. De standaardcyclus van het PWM-signaal is 20 ms (50 Hz). Theoretisch ligt de breedte tussen 1 ms en 2 ms, maar in de praktijk is het tussen 0,5 ms en 2,5 ms. De breedte komt overeen met de rotatiehoek van 0° tot 180°. Let op dat bij verschillende merken motoren hetzelfde signaal verschillende rotatiehoeken kan veroorzaken.
 
 ![](media/A92.jpg)
 
-対応するサーボ角度は以下の通りです：
+De bijbehorende servohoeken worden hieronder weergegeven:
 
 ![](media/A93.png)
 
-### **2. 仕様**
+### **2.Specificaties**
 
-- 動作電圧：DC 4.8V 〜 6V
+- Werkspanning: DC 4,8V ~ 6V
 
-- 動作角度範囲：約180°（500 → 2500 μsec時）
+- Werkingshoek bereik: ongeveer 180° (bij 500 → 2500 μsec)
 
-- パルス幅範囲：500 → 2500 μsec
+- Pulsbreedte bereik: 500 → 2500 μsec
 
-- 無負荷速度：0.12 ± 0.01秒 / 60（DC 4.8V） 0.1 ± 0.01秒 / 60（DC 6V）
+- Snelheid zonder belasting: 0,12 ± 0,01 sec / 60 (DC 4,8V) 0,1 ± 0,01 sec / 60 (DC 6V)
   
-- 無負荷電流：200 ± 20mA（DC 4.8V） 220 ± 20mA（DC 6V）
+- Stroom zonder belasting: 200 ± 20mA (DC 4,8V) 220 ± 20mA (DC 6V)
 
-- 停止トルク：1.3 ± 0.01kg·cm（DC 4.8V） 1.5 ± 0.1kg·cm（DC 6V）
+- Stopkoppel: 1,3 ± 0,01 kg·cm (DC 4,8V) 1,5 ± 0,1 kg·cm (DC 6V)
   
-- 停止電流：≦ 850mA（DC 4.8V） ≦ 1000mA（DC 6V）
+- Stopstroom: ≦ 850mA (DC 4,8V) ≦ 1000mA (DC 6V)
 
-- 待機電流：3 ± 1mA（DC 4.8V） 4 ± 1mA（DC 6V）
+- Stand-by stroom: 3 ± 1mA (DC 4,8V) 4 ± 1mA (DC 6V)
 
-### **3. コンポーネント**
+### **3.Componenten**
 
-| 開発ボード *1             | 8833 モータードライバー *1 | サーボ*1                                    |
+| Ontwikkelbord *1           | 8833 Motor Driver *1       | Servo*1                                     |
 | ------------------------- | ------------------------- | ------------------------------------------- |
 | ![img](media/A94.jpg)     | ![img](media/A95.jpg)     | ![img](media/A96.png)                        |
-| 18650 バッテリーホルダー*1 | USB ケーブル*1            | 18650 バッテリー*2（自己準備）              |
+| 18650 Batterijhouder*1    | USB-kabel*1               | 18650 Batterij*2 (zelf mee te brengen)      |
 | ![img](media/A97.png)     | ![img](media/A98.jpg)     | ![img](media/A99.png)                        |
 
-### **4. 配線図**
+### **4.Aansluitschema**
 
 ![](media/A100.png)
 
-配線の注意：サーボはG（GND）、V（VCC）、A3に接続します。サーボの茶色線はGnd（G）に、赤線は5V（V）に、オレンジ線はA3に接続します。
+Aansluitnotitie: De servo is verbonden met G (GND), V (VCC) en A3, de bruine draad van de servo is verbonden met Gnd (G), de rode is verbonden met 5V (V) en de oranje is aangesloten op A3.
 
-サーボは駆動電流の要求が高いため、外部電源に接続する必要があります。一般的に開発ボードの電流は十分ではありません。外部電源を接続しないと、開発ボードが焼損する恐れがあります。
+De servo moet worden aangesloten op een externe voeding vanwege de hoge stroomvraag voor het aansturen van de servo. Over het algemeen is de stroom van het ontwikkelbord niet groot genoeg. Zonder externe voeding kan het ontwikkelbord doorbranden.
 
-### **5. テストコード**
+### **5.Testcode**
 
-コードを書く前に、サーボライブラリファイルをインポートする必要があります。具体的な手順は以下の通りです：
+Voordat je de code schrijft, is het noodzakelijk om de servo-bibliotheek te importeren. De specifieke stappen zijn als volgt:
 
-![](media/A29.png)をクリックしてセンサー/モジュール/コンポーネントの拡張ライブラリ画面に入り、「**Servo**」を探します。
+Klik op ![](media/A29.png) om de extensiebibliotheekinterface van sensoren/modules/componenten te openen, zoek vervolgens naar "**Servo**".
 
 ![](media/A101.png)  
-コンポーネントをクリックします。これで「**Not Loaded**」が「**loaded**」に変わり、「**Servo**」コンポーネントが正常に追加されたことを示します。
+Selecteer de component en klik erop. Hierdoor verandert "**Not Loaded**" in "**loaded**", wat aangeeft dat de "**Servo**" component succesvol is toegevoegd.
 
 ![Img](media/A102.png)
 
 ![](media/A103.png)
 
-![](media/A33.png)をクリックしてコードエディタに戻ると、モジュールエリアに「**Servo**」コンポーネントの指令ブロックが追加されています。
+Klik op ![](media/A33.png) om terug te keren naar de code-editor, en in het modules-gedeelte zie je het toegevoegde "**Servo**" component directive blok.
 
 ![](media/A104.png)
 
-ブロックをドラッグして編集できます。以下のブロックは参考用です。
+Je kunt blokken slepen om te bewerken. De onderstaande blokken zijn ter referentie.
 
-(1). ![](media/A105.png)
+(1).![](media/A105.png)
 
-(2). ![](media/A106.png)
+(2).![](media/A106.png)
 
-(3). ![](media/A107.png)
+(3).![](media/A107.png)
 
-**完成テストコード**
+**Volledige Testcode**
 
 ![](media/A108.png)
 
-### **6. テスト結果**
+### **6.Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線し、外部電源を入れます。電源を入れたらディップスイッチを「ON」側に切り替えると、サーボが0°から180°の範囲で揺れ動きます。
+Na het succesvol uploaden van de code naar het V4.0 bord, verbind je de bedrading volgens het aansluitschema en zet je de externe voeding aan. Na het inschakelen zet je de dip-switch op de "ON" stand, waarna de servo zal bewegen binnen het bereik van 0° tot 180°.

@@ -1,44 +1,44 @@
-# Project 2: LEDの明るさ調整
+# Project 2: Pas LED Helderheid Aan
 
-### **1.説明**
+### **1.Beschrijving**
 
-前回のレッスンでは、LEDのオン・オフ制御と点滅を行いました。
+In de vorige les hebben we de LED aan en uit gezet en laten knipperen.
 
-このプロジェクトでは、PWMを使ってLEDの明るさを制御し、呼吸するような効果をシミュレートします。
+In dit project zullen we de helderheid van de LED regelen via PWM om een ademhalingseffect te simuleren.
 
-PWMはデジタル手段でアナログ出力を制御する方法です。デジタル制御を用いて異なるデューティサイクルの方形波（高レベルと低レベルを絶えず切り替える信号）を生成し、アナログ出力を制御します。一般的に、ポートの入力電圧は0Vと5Vです。
+PWM is een manier om de analoge uitgang via digitale middelen te regelen. Digitale besturing wordt gebruikt om vierkante golven met verschillende duty cycles te genereren (een signaal dat constant wisselt tussen hoge en lage niveaus) om de analoge uitgang te regelen. Over het algemeen zijn de ingangsspanningen van poorten 0V en 5V.
 
-もし3Vが必要だったら？あるいは1V、3V、3.5Vの切り替えが必要だったら？抵抗を常に変えることはできません。そこでPWMを利用します。
+Wat als 3V vereist is? Of een schakelaar tussen 1V, 3V en 3,5V? We kunnen niet constant weerstanden veranderen. Om deze reden maken we gebruik van PWM.
 
 ![bbcfcb9ae56abb7e80ee587246fc4be9](media/A14.gif)
 
-Arduinoのデジタルポートの電圧出力はLOWとHIGHの2つだけで、それぞれ0Vと5Vに対応します。LOWを0、HIGHを1と定義し、Arduinoが1秒間に500回0または1の信号を出力するとします。
+Voor de Arduino digitale poort spanningsuitgang zijn er alleen LOW en HIGH, die overeenkomen met de spanningsuitgang van 0V en 5V. Je kunt LOW definiëren als 0 en HIGH als 1, en de Arduino vijfhonderd 0 of 1 signalen binnen 1s laten uitsturen.
 
-もし500回すべてが1なら5V、すべてが0なら0Vです。このように010101010101と出力すると、出力ポートは2.5Vとなり、映画の表示に似ています。私たちが見る映画は完全に連続しているわけではなく、実際には1秒間に25枚の画像を出力しています。この場合、人間には連続して見えますが、PWMも同様です。異なる電圧を得るには、0と1の比率を制御する必要があります。単位時間あたりに出力される0と1の信号が多いほど、制御はより正確になります。
+Als alle vijfhonderd outputs 1 zijn, is dat 5V; als ze allemaal 0 zijn, is dat 0V. Als je op deze manier 010101010101 uitstuurt, dan is de uitgangspoort 2,5V, wat lijkt op het tonen van een film. De film die we kijken is niet volledig continu. Het geeft eigenlijk 25 beelden per seconde weer. In dit geval kan de mens het niet zien, net zoals bij PWM. Als we een andere spanning willen, moeten we de verhouding van 0 en 1 regelen. Hoe meer 0,1 signalen per tijdseenheid worden uitgezonden, hoe nauwkeuriger de regeling.
 
-PWMはデジタル手段でアナログ量を得る技術です。デジタル制御により方形波を形成し、方形波信号はオンとオフの2状態（高レベルと低レベル）だけを持ちます。0〜5Vの電圧はオンとオフの時間比率を制御することでシミュレートできます。オンの時間（技術的には高レベル時間）をパルス幅と呼ぶため、PWMはパルス幅変調とも呼ばれます。
+PWM is een technologie die digitale methoden gebruikt om analoge grootheden te verkrijgen. Digitale besturing maakt het mogelijk een vierkante golf te vormen, het vierkante golfsignaal heeft slechts twee toestanden: aan en uit (hoog en laag). Een spanning variërend van 0 tot 5V kan worden gesimuleerd door de verhouding van aan- tot uit-tijd te regelen. De tijd dat het aan is (technisch hoog niveau genoemd) wordt pulsbreedte genoemd, daarom wordt PWM ook pulsbreedtemodulatie genoemd.
 
-緑の縦棒は方形波の1周期を表しています。各analogWrite(value)に書かれた値はパーセンテージに対応し、デューティサイクルとも呼ばれます。このパーセンテージは1周期における高レベルの時間比率、すなわちデューティサイクル = 高レベル時間 / 周期時間を指します。
+De groene verticale balken vertegenwoordigen één periode van de vierkante golf. De waarde die in elke analogWrite(value) wordt geschreven, komt overeen met een percentage, ook wel Duty Cycle genoemd. Dit percentage verwijst naar de verhouding van de tijd die wordt ingenomen door het hoge niveau in een cyclus, dat wil zeggen duty cycle = hoge niveau tijd / cyclus tijd.
 
-図では上から下に向かって、最初の方形波のデューティサイクルは0%、対応する値は0で、LEDの明るさは最も低く、つまり消灯状態です。高レベルが長く続くほど明るくなります。したがって、最後のデューティサイクル100%の値は255で、LEDは最も明るくなります。50%は明るさの半分、25%はより暗くなります。
+In de afbeelding is van boven naar beneden de duty cycle van de eerste vierkante golf 0%, en de bijbehorende waarde is 0, en de LED helderheid is het laagst, dat wil zeggen uitgeschakeld. Hoe langer het hoge niveau duurt, hoe helderder het zal zijn. Daarom is de waarde van de laatste duty cycle van 100% 255, en is de LED het helderst. 50% is half zo helder, en 25% is donkerder.
 
-PWMはLEDの明るさ調整やモーターの回転速度調整に多く使われ、モーターで駆動される車輪の速度も簡単に制御できます。Arduinoロボットを操作するとき、PWMの利点がよりよく実感できます。
+PWM wordt vaker gebruikt om de helderheid van LED-lampen of de rotatiesnelheid van motoren aan te passen, en de wielsnelheid die door de motoren wordt aangedreven kan gemakkelijk worden geregeld. Bij het spelen met sommige Arduino-robots komen de voordelen van PWM beter tot uiting.
 
-### **2.部品**
+### **2.Componenten**
 
-|           Development Board *1           |           8833 Motor Driver *1           |     Red LED Module*1     |
+|           Development Board *1           |           8833 Motor Driver *1           |     Rode LED Module*1     |
 | :--------------------------------------: | :--------------------------------------: | :----------------------: |
 | ![img](media/A8.jpg) | ![img](media/A9.jpg) | ![img](media/A10.jpg) |
-|             3P Dupont Wire*1             |               USB Cable*1                |                          |
+|             3P Dupont Draad*1             |               USB Kabel*1                |                          |
 |         ![img](media/A11.jpg)         |         ![img](media/A12.jpg)         |                          |
 
-### **3.配線図**
+### **3.Aansluitschema**
 
-配線はそのまま変更しないでください。
+Houd de bedrading ongewijzigd.
 
 ![image-20250508161123490](media/A13.png)
 
-### **4.テストコード**
+### **4.Testcode**
 
 ```c
 //*****************************************************************
@@ -48,110 +48,110 @@ PWMはLEDの明るさ調整やモーターの回転速度調整に多く使わ�
  pwm
  http://www.keyestudio.com
 */
-int ledPin = 9; // D9にLEDピンを定義
+int ledPin = 9; // Definieer de LED pin op D9
 int value;
 
 void setup () {
-  pinMode (ledPin, OUTPUT); // ledPinを出力として初期化
+  pinMode (ledPin, OUTPUT); // initialiseer ledPin als uitgang.
 }
 
 void loop () {
   for (value = 0; value <255; value = value + 1) 
   {
-    analogWrite (ledPin, value); // LEDが徐々に明るく点灯する
-    delay (5); // 5ms待機
+    analogWrite (ledPin, value); // LED licht geleidelijk op
+    delay (5); // vertraging 5ms
   }
   for (value = 255; value> 0; value = value-1) 
   {
-    analogWrite (ledPin, value); // LEDが徐々に暗くなる
-    delay (5); // 5ms待機
+    analogWrite (ledPin, value); // LED gaat geleidelijk uit
+    delay (5); // vertraging 5ms
   }
 }
 //*****************************************************************
 ```
 
-### **5.テスト結果**
+### **5. Testresultaat**
 
-コードをV4.0ボードに正常にアップロードした後、配線図に従って配線を接続し、USBケーブルでコンピュータと接続してボードに電源を供給します。電源を入れると、LEDが明るさを徐々に変化させ、人の呼吸のようにすぐに点灯・消灯するのではなく、徐々に明るくなったり暗くなったりするのが見えます。
+Nadat de code succesvol is geüpload naar de V4.0 board, verbind je de bedrading volgens het bedradingsschema en gebruik je een USB-kabel om de computer aan te sluiten om de board van stroom te voorzien. Na het inschakelen zul je zien dat de LED geleidelijk verandert van helder naar donker, zoals de ademhaling van een mens, in plaats van direct aan en uit te gaan.
 
-### **6.コード説明**
+### **6. Code-uitleg**
 
-特定の文を繰り返す必要がある場合、for文を使うことができます。
+Als we een bepaalde instructie willen herhalen, kunnen we de for-instructie gebruiken.
 
-for文の形式は以下の通りです：
+Het formaat van de for-instructie wordt hieronder weergegeven:
 
 ![image-20250508162458776](media/A15.png)
 
-FORの繰り返し順序：
+FOR cyclische volgorde:
 
-ラウンド1：1 → 2 → 3 → 4
+Ronde 1: 1 → 2 → 3 → 4
 
-ラウンド2：2 → 3 → 4
+Ronde 2: 2 → 3 → 4
 
 …
 
-数字2が成立しなくなるまで、「for」ループは終了します。
+Totdat nummer 2 niet meer geldt, is de “for” lus voorbij,
 
-この順序を理解したら、コードに戻りましょう：
+Na het begrijpen van deze volgorde, gaan we terug naar de code:
 
 **for (int value = 0; value \< 255; value=value+1)**
 
 **for (int value = 255; value \>0; value=value-1)**
 
-この2つの“for”文は、valueを0から255まで増加させ、次に255から0まで減少させ、また255まで増加させる…という無限ループを作ります。
+De twee “for” instructies zorgen ervoor dat value toeneemt van 0 tot 255, daarna afneemt van 255 tot 0, dan weer toeneemt tot 255... oneindig doorgaat.
 
-次に新しい関数 ----- analogWrite() があります。
+Er is een nieuwe functie in het volgende ----- analogWrite().
 
-デジタルポートは0か1の2つの状態しか持たないことは知っています。では、どうやってアナログ値をデジタル値に送るのでしょうか？ここでこの関数が必要になります。Arduinoボードを観察して、“\~”とマークされた6つのピンがPWM信号を出力できることを見つけましょう。
+We weten dat een digitale poort slechts twee toestanden heeft: 0 en 1. Dus hoe stuur je een analoge waarde naar een digitale waarde? Hier is deze functie nodig. Laten we het Arduino board bekijken en 6 pinnen vinden die gemarkeerd zijn met “\~” en PWM-signalen kunnen uitsturen.
 
-関数の形式は以下の通りです：
+Functieformaat als volgt:
 
 **analogWrite(pin,value)**
 
-analogWrite()はPWMポートに0〜255の範囲のアナログ値を書き込むために使われます。値は0〜255の範囲です。PWM機能を持つデジタルピン（例えばピン3、5、6、9、10、11）にのみ書き込めることに注意してください。
+analogWrite() wordt gebruikt om een analoge waarde van 0~255 te schrijven voor een PWM-poort, dus de waarde ligt in het bereik van 0~255. Let op dat je alleen digitale pinnen met PWM-functie kunt schrijven, zoals pin 3, 5, 6, 9, 10, 11.
 
-PWMはデジタル方式でアナログ量を得る技術です。デジタル制御は方形波を形成し、方形波信号はオンとオフの2つの状態（高レベルまたは低レベル）しか持ちません。オンとオフの時間比率を制御することで、0〜5Vの電圧をシミュレートできます。オンの時間（学術的には高レベルと呼ばれる）をパルス幅と呼び、PWMはパルス幅変調とも呼ばれます。
+PWM is een technologie om analoge grootheden te verkrijgen via digitale methode. Digitale besturing vormt een vierkante golf, en het vierkante golfsignaal heeft slechts twee toestanden: aan en uit (dat wil zeggen, hoog of laag niveau). Door de verhouding van de duur van aan en uit te regelen, kan een spanning van 0 tot 5V worden gesimuleerd. De tijd dat het aan is (in academische termen hoog niveau genoemd) wordt pulsbreedte genoemd, dus PWM wordt ook pulsbreedtemodulatie genoemd.
 
-以下の5つの方形波を通じて、PWMについてさらに学びましょう。
+Aan de hand van de volgende vijf vierkante golven leren we meer over PWM.
 
 ![image-20250508162529349](media/A16.png)
 
-上図では、緑の線が1周期を表し、analogWrite()の値はDuty Cycle（デューティサイクル）と呼ばれる割合に対応します。デューティサイクルは周期内で高レベルが占める時間の割合を意味します。上から順に、最初の方形波のデューティサイクルは0%で対応する値は0です。
+In bovenstaande afbeelding stelt de groene lijn een periode voor, en de waarde van analogWrite() komt overeen met een percentage dat ook Duty Cycle wordt genoemd. Duty cycle geeft de verhouding aan van de tijd dat het hoge niveau aanwezig is in de cyclus. Van boven naar beneden is de duty cycle van de eerste vierkante golf 0% en de bijbehorende waarde is 0.
 
-LEDの明るさは最も低く、つまり消灯状態です。高レベルの時間が長いほどLEDは明るくなります。したがって、最後のデューティサイクルは100%で255に対応し、LEDは最も明るくなります。50%は半分の明るさ、25%はより暗いことを意味します。
+De helderheid van de LED is het laagst, dat wil zeggen uit. Hoe langer het hoge niveau duurt, hoe helderder de LED. Daarom is de laatste duty cycle 100%, wat overeenkomt met 255, en is de LED het helderst. En 50% is half zo helder, 25% betekent donkerder.
 
-PWMはLEDの明るさ調整やモーターの回転速度調整に多く使われます。
+PWM wordt vaker gebruikt voor het aanpassen van de helderheid van LED’s of de draaisnelheid van motoren.
 
-スマートロボットカーの制御において重要な役割を果たします。次のプロジェクトを学ぶのが待ちきれないことでしょう。
+Het speelt een cruciale rol bij het besturen van slimme robotauto’s. Ik geloof dat je niet kunt wachten om het volgende project te leren.
 
-**7.拡張練習**
+### **7. Uitbreidingsopdracht**
 
-delayの値を変更し、ピンはそのままにして、LEDの変化を観察してみましょう。
+Laten we de waarde van delay aanpassen en de pin ongewijzigd laten, en vervolgens observeren hoe de LED verandert.
 
 ```c
 //***********************************************************
 /*
  keyestudio 4wd BT Car
- lesson 2.2
+ les 2.2
  pwm
  http://www.keyestudio.com
 */
-int ledPin = 9; // D9にLEDピンを定義
+int ledPin = 9; // Definieer de LED-pin op D9
 void setup () {
-   pinMode(ledPin, OUTPUT); // ledPinを出力として初期化
+   pinMode(ledPin, OUTPUT); // initialiseer ledPin als uitgang.
 }
 
 void loop () {
    for (int value = 0; value <255; value = value + 1) {
-     analogWrite (ledPin, value); // LEDが徐々に明るく点灯する
-     delay (30); // 30ms待機
+     analogWrite (ledPin, value); // LED licht geleidelijk op
+     delay (30); // vertraging 30ms
    }
    for (int value = 255; value> 0; value = value-1) {
-     analogWrite (ledPin, value); // LEDが徐々に暗くなる
-     delay (30); // 30ms待機
+     analogWrite (ledPin, value); // LED gaat geleidelijk uit
+     delay (30); // vertraging 30ms
    }
 }
 //***********************************************************
 ```
 
-開発ボードにコードをアップロードすると、LEDがよりゆっくり点滅します。
+Upload de code naar de ontwikkelkaart, vervolgens zal de LED langzamer knipperen.
